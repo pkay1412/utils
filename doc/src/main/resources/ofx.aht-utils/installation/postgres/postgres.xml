@@ -20,46 +20,12 @@
 	</ofx:paragraph>
 	
 	<ofx:section>
-		<ofx:title lang="en">Installation</ofx:title>	
-		<ofx:section container="true" classifier="debianSqueeze">
-			<ofx:title>Linux (Debian Squeeze)</ofx:title>
-			<ofx:listing>
-				<ofx:raw>export http_proxy=http://proxy:3128 (optional)
-wget http://download.osgeo.org/postgis/source/postgis-2.0.3.tar.gz
-tar xfvz postgis-2.0.3.tar.gz
-cd postgis-2.0.3
-./configure
-make
-sudo make install
-sudo ldconfig
-sudo make comments-install</ofx:raw>
-			</ofx:listing>
-		</ofx:section>
-		<ofx:section container="true" classifier="debianWheezy">
-			<ofx:title>Linux (Debian Wheezy)</ofx:title>
-			<ofx:listing>
-				<ofx:raw>apt-get install postgresql-9.1-postgis</ofx:raw>
-			</ofx:listing>
-		</ofx:section>
-		<ofx:section container="true" classifier="ubuntu14">
-			<ofx:title>Ubuntu (14.04 LTS)</ofx:title>
-			<ofx:listing>
-				<ofx:raw>sudo apt-get install postgresql-9.3-postgis-2.1</ofx:raw>
-			</ofx:listing>
-		</ofx:section>
-		<ofx:section container="true" classifier="osx">
-			<ofx:title>OSX Yosemite</ofx:title>
-			<ofx:listing>
-				<ofx:raw>brew install postgis</ofx:raw>
-			</ofx:listing>
-			
-			<ofx:listing>
-				<ofx:raw>ln -sfv /usr/local/opt/postgresql/*.plist ~/Library/LaunchAgents
-launchctl load ~/Library/LaunchAgents/homebrew.mxcl.postgresql.plist
-createuser --superuser postgres</ofx:raw>
-			</ofx:listing>
-	
-		</ofx:section>
+		<ofx:title lang="en">Installation</ofx:title>
+		
+		<ofx:section include="install/debian.xml"/>
+		<ofx:section include="install/ubuntu.xml"/>
+		<ofx:section include="install/osx.xml"/>
+
 	</ofx:section>
 	
 	<ofx:section>
@@ -89,6 +55,33 @@ createuser --superuser postgres</ofx:raw>
 		</ofx:paragraph>
 		<ofx:listing classifier="debianWheezy" setting="sql" external="listing/admin/db/postgres/terminate/debian/wheezy.sql"/>
 	</ofx:section>
+	
+	<ofx:section>
+		<ofx:title lang="en">Network Connection</ofx:title>
+		
+		<ofx:paragraph lang="en">
+			By default the postgresql installation only accepts connections from the localhost.
+			In pg_hba.conf
+		</ofx:paragraph>
+		
+		<ofx:listing>
+				<ofx:raw># TYPE  DATABASE        USER            ADDRESS                 METHOD
+host    all             all             10.0.0.0/24             md5</ofx:raw>
+		</ofx:listing>
+		
+		<ofx:paragraph lang="en">
+			In postgresql.conf.
+		</ofx:paragraph>
+		
+		<ofx:listing>
+				<ofx:raw>		<ofx:listing>
+				<ofx:raw># - Connection Settings -
+listen_addresses = '*'</ofx:raw>
+		</ofx:listing></ofx:raw>
+		</ofx:listing>
+		
+	</ofx:section>
+	
 	
 	<ofx:section>
 		<ofx:title lang="en">Database optimization</ofx:title>

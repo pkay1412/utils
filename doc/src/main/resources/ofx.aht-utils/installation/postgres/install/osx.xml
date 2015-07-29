@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ofx:section xmlns:ofx="http://www.openfuxml.org"
+			 xmlns:media="http://www.openfuxml.org/media"
+			 xmlns:table="http://www.openfuxml.org/table"
+			 xmlns:layout="http://www.openfuxml.org/layout"
+			 xmlns:text="http://www.openfuxml.org/text"
+			 xmlns:l="http://www.openfuxml.org/list"
+		container="true">	
+
+	<ofx:section container="true" classifier="osx">
+			<ofx:title>OSX Yosemite</ofx:title>
+			<ofx:listing>
+				<ofx:raw>brew install postgis</ofx:raw>
+			</ofx:listing>
+			
+			<ofx:listing>
+				<ofx:raw>ln -sfv /usr/local/opt/postgresql/*.plist ~/Library/LaunchAgents
+launchctl load ~/Library/LaunchAgents/homebrew.mxcl.postgresql.plist
+createuser --superuser postgres</ofx:raw>
+			</ofx:listing>
+	
+		</ofx:section>
+</ofx:section>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ofx:section xmlns:ofx="http://www.openfuxml.org"
+			 xmlns:media="http://www.openfuxml.org/media"
+			 xmlns:table="http://www.openfuxml.org/table"
+			 xmlns:layout="http://www.openfuxml.org/layout"
+			 xmlns:text="http://www.openfuxml.org/text"
+			 xmlns:l="http://www.openfuxml.org/list"
+		container="true">	
+
+	<ofx:section container="true" classifier="ubuntu14">
+		<ofx:title>Ubuntu (14.04 LTS)</ofx:title>
+		
+		<ofx:listing>
+			<ofx:raw>sudo apt-get install postgresql-9.3-postgis-2.1</ofx:raw>
+		</ofx:listing>
+	</ofx:section>
+</ofx:section>
