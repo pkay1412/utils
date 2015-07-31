@@ -22,13 +22,14 @@ public class PostgresDrop extends AbstractPostgresShell implements UtilsDbShell
 	{		
 		super.cmdPre();
 
-		for(String table : Arrays.asList(config.getStringArray(UtilsDbShell.cfgDbTablesDrop))){dropTable(table);}
+		for(String table : Arrays.asList(config.getStringArray(UtilsDbShell.cfgDbTablesDrop))){dropTable(table,false);}
+		for(String table : Arrays.asList(config.getStringArray(UtilsDbShell.cfgDbCascadeDrop))){dropTable(table,true);}
 		for(String seq : Arrays.asList(config.getStringArray(UtilsDbShell.cfgDbSequenceDrop))){dropSequence(seq);}
 		debugDatabase();
 		super.cmdPost();
 	}
 	
-	private String dropTable(String table)
+	private String dropTable(String table, boolean cascade)
 	{
 		StringBuffer sb = new StringBuffer();
 		sb.append(pDbShell.getValue());
@@ -37,6 +38,7 @@ public class PostgresDrop extends AbstractPostgresShell implements UtilsDbShell
 		sb.append(" -d ").append(pDbName.getValue());
 		sb.append(" -c '");
 		sb.append("DROP TABLE IF EXISTS ").append(table);
+		if(cascade){sb.append(" CASCADE");}
 		sb.append(";'");
 		
 		super.addLine(sb.toString());

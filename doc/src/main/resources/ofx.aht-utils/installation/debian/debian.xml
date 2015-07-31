@@ -46,46 +46,44 @@
 	<ofx:section include="../tools/ssh.xml"/>
 	<ofx:section include="../tools/less.xml"/>
 	<ofx:section include="../tools/unzip.xml"/>
-			
+
+	<ofx:section classifier="ubuntu14">
+		<ofx:title lang="en">Sudo</ofx:title>
 		
+		<ofx:paragraph lang="en" version="1">
+			 sudo  is a program for Unix-like computer operating systems that allows users to run
+			 programs with the security privileges of another user (normally the superuser, or root).
+			 Its name is a concatenation of "su" (substitute user) and "do", or take action.
+		</ofx:paragraph>
 		
-		<ofx:section classifier="ubuntu14">
-			<ofx:title lang="en">Sudo</ofx:title>
+		<ofx:paragraph lang="en" version="1">
+			Unlike the su command, users typically supply their own password to sudo rather than the
+			root password. After authentication, and if the /usr/local/etc/sudoers
+			(sometimes found at /etc/sudoers) configuration file permits the user access,
+			then the system will invoke the requested command.
+			The sudoers configuration file enables a huge amount of configurability, including but not
+			limited to: enabling root commands only from the invoking terminal; not requiring a password
+			for certain commands; requiring a password per user or group; requiring re-entry of a password
+			every time or never requiring a password at all for a particular command line.
+			It can also be configured to permit passing arguments or multiple commands,
+			and even supports commands with regular expressions.
 			
-			<ofx:paragraph lang="en" version="1">
-				 sudo  is a program for Unix-like computer operating systems that allows users to run
-				 programs with the security privileges of another user (normally the superuser, or root).
-				 Its name is a concatenation of "su" (substitute user) and "do", or take action.
-			</ofx:paragraph>
-			
-			<ofx:paragraph lang="en" version="1">
-				Unlike the su command, users typically supply their own password to sudo rather than the
-				root password. After authentication, and if the /usr/local/etc/sudoers
-				(sometimes found at /etc/sudoers) configuration file permits the user access,
-				then the system will invoke the requested command.
-				The sudoers configuration file enables a huge amount of configurability, including but not
-				limited to: enabling root commands only from the invoking terminal; not requiring a password
-				for certain commands; requiring a password per user or group; requiring re-entry of a password
-				every time or never requiring a password at all for a particular command line.
-				It can also be configured to permit passing arguments or multiple commands,
-				and even supports commands with regular expressions.
-				
-				As root user you can use the following command to install sudo:
-			</ofx:paragraph>
-		
-			<ofx:listing>
-				<ofx:raw>apt-get install sudo</ofx:raw>
-			</ofx:listing>
-		</ofx:section>
-		
-		<ofx:section id="section.admin.installation.debian.ubuntu14" classifier="ubuntu14">
-				<ofx:title lang="en">Setting the root password</ofx:title>
-			
-				<ofx:paragraph lang="en">
-					The next part of the installation is to "set the root password".
-					Open the teminal and type in, the following command:
-					<text:emphasis style="typewriter">sudo passwd root</text:emphasis>
-					Double check your password.
-				</ofx:paragraph>
-		</ofx:section>
+			As root user you can use the following command to install sudo:
+		</ofx:paragraph>
+	
+		<ofx:listing>
+			<ofx:raw>apt-get install sudo</ofx:raw>
+		</ofx:listing>
+	</ofx:section>
+	
+	<ofx:section id="section.admin.installation.debian.ubuntu14" classifier="ubuntu14">
+		<ofx:title lang="en">Setting the root password</ofx:title>
+	
+		<ofx:paragraph lang="en">
+			The next part of the installation is to "set the root password".
+			Open the teminal and type in, the following command:
+			<text:emphasis style="typewriter">sudo passwd root</text:emphasis>
+			Double check your password.
+		</ofx:paragraph>
+	</ofx:section>
 </ofx:section>

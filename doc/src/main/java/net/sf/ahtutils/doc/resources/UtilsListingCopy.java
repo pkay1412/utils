@@ -63,16 +63,13 @@ public class UtilsListingCopy
 	
 	public static final String mavenVersions = "development/maven-versions.xml";
 	
+	private Map<String,String> replace;
 	private MultiResourceLoader mrl;
 	private File dirListing;
 	
 	public UtilsListingCopy(Configuration config)
 	{
-		mrl = new MultiResourceLoader();
-		File baseDoc = new File(config.getString(UtilsDocumentation.keyBaseLatexDir));
-		dirListing = new File(baseDoc,"listing");
-		logger.info("Using base.dir ("+UtilsDocumentation.keyBaseLatexDir+"): "+baseDoc.getAbsolutePath());
-		logger.info("Using listing.dir (base.dir/listing): "+dirListing.getAbsolutePath());
+		this("listing.aht-utils",new File(config.getString(UtilsDocumentation.keyBaseLatexDir)));
 	}
 	
 	public UtilsListingCopy(String prefix,File baseDoc)
@@ -82,22 +79,15 @@ public class UtilsListingCopy
 		dirListing = new File(baseDoc,"listing");
 		logger.info("Using base.dir ("+UtilsDocumentation.keyBaseLatexDir+"): "+baseDoc.getAbsolutePath());
 		logger.info("Using listing.dir (base.dir/listing): "+dirListing.getAbsolutePath());
+		replace = new Hashtable<String,String>();
 	}
 	
-	public void copy(String src, String dst, String find, String replace) throws UtilsConfigurationException
+	public void addReplacement(String key, String value)
 	{
-		Map<String,String> map = new Hashtable<String,String>();
-		map.put(find, replace);
-		copy(src,dst,map);
+		replace.put(key,value);
 	}
 	
 	public void copy(String src, String dst) throws UtilsConfigurationException
-	{
-		Map<String,String> map = new Hashtable<String,String>();
-		copy(src,dst,map);
-	}
-	
-	public void copy(String src, String dst, Map<String,String> replace) throws UtilsConfigurationException
 	{
 		try
 		{
