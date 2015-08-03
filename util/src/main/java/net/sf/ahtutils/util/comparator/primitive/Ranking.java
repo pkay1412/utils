@@ -1,4 +1,4 @@
-package net.sf.ahtutils.controller.util;
+package net.sf.ahtutils.util.comparator.primitive;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -21,6 +21,7 @@ public class Ranking
 		for(int i=0;i<tmp.size();i++){result[i]=tmp.get(i);}
 		return result;
 	}
+	
 	public List<Integer> rank(List<Integer> listPoints)
 	{
 		List <Rank> rankList = new ArrayList<Rank>();

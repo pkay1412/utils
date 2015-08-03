@@ -6,7 +6,7 @@ import net.sf.ahtutils.model.ejb.status.AhtUtilsDescription;
 import net.sf.ahtutils.model.ejb.status.AhtUtilsLang;
 import net.sf.ahtutils.model.ejb.status.AhtUtilsStatus;
 import net.sf.ahtutils.test.AbstractAhtUtilTest;
-import net.sf.ahtutils.test.controller.util.TestRankComparator;
+import net.sf.ahtutils.util.comparator.primitive.TestRankComparator;
 import net.sf.ahtutils.xml.status.Description;
 import net.sf.ahtutils.xml.status.Descriptions;
 import net.sf.ahtutils.xml.status.Lang;
