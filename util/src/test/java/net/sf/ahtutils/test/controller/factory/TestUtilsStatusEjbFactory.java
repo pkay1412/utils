@@ -1,19 +1,5 @@
 package net.sf.ahtutils.test.controller.factory;
 
-import net.sf.ahtutils.exception.ejb.UtilsConstraintViolationException;
-import net.sf.ahtutils.factory.ejb.status.EjbStatusFactory;
-import net.sf.ahtutils.model.ejb.status.AhtUtilsDescription;
-import net.sf.ahtutils.model.ejb.status.AhtUtilsLang;
-import net.sf.ahtutils.model.ejb.status.AhtUtilsStatus;
-import net.sf.ahtutils.test.AbstractAhtUtilTest;
-import net.sf.ahtutils.util.comparator.primitive.TestRankComparator;
-import net.sf.ahtutils.xml.status.Description;
-import net.sf.ahtutils.xml.status.Descriptions;
-import net.sf.ahtutils.xml.status.Lang;
-import net.sf.ahtutils.xml.status.Langs;
-import net.sf.ahtutils.xml.status.Status;
-import net.sf.exlp.util.io.LoggerInit;
-
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
@@ -21,9 +7,22 @@ import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import net.sf.ahtutils.exception.ejb.UtilsConstraintViolationException;
+import net.sf.ahtutils.factory.ejb.status.EjbStatusFactory;
+import net.sf.ahtutils.model.ejb.status.AhtUtilsDescription;
+import net.sf.ahtutils.model.ejb.status.AhtUtilsLang;
+import net.sf.ahtutils.model.ejb.status.AhtUtilsStatus;
+import net.sf.ahtutils.test.AbstractAhtUtilTest;
+import net.sf.ahtutils.xml.status.Description;
+import net.sf.ahtutils.xml.status.Descriptions;
+import net.sf.ahtutils.xml.status.Lang;
+import net.sf.ahtutils.xml.status.Langs;
+import net.sf.ahtutils.xml.status.Status;
+import net.sf.exlp.util.io.LoggerInit;
+
 public class TestUtilsStatusEjbFactory extends AbstractAhtUtilTest
 {
-	final static Logger logger = LoggerFactory.getLogger(TestRankComparator.class);
+	final static Logger logger = LoggerFactory.getLogger(TestUtilsStatusEjbFactory.class);
 	
 	private EjbStatusFactory<AhtUtilsStatus,AhtUtilsLang,AhtUtilsDescription> facStatus;
 	private Status status;
