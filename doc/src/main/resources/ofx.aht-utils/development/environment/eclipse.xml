@@ -40,7 +40,7 @@
 				<ofx:title lang="en">Eclipse Marketplace Subversive 2.0 installation</ofx:title>
 					<layout:alignment horizontal="center"/>
 					<layout:width unit="percentage">60</layout:width>
-				<media:media lang="en" src="png.aht-utils/development/environment/eclipse/luna/marketplace.png" dst="en/admin/development/environment/eclipse/marketplace"/>
+				<media:media lang="en" src="png.aht-utils/development/environment/eclipse/luna/marketplace.png" dst="en/admin/development/environment/eclipse/luna/marketplace"/>
 			</media:image>
 			
 			<ofx:paragraph lang="en">
@@ -108,7 +108,7 @@
 				<ofx:title lang="en">Eclipse SCM connectors installation</ofx:title>
 					<layout:alignment horizontal="center"/>
 					<layout:width unit="percentage">60</layout:width>
-				<media:media lang="en" src="png.aht-utils/development/environment/eclipse/luna/connectors.png" dst="en/admin/development/environment/eclipse/connectors"/>
+				<media:media lang="en" src="png.aht-utils/development/environment/eclipse/luna/connectors.png" dst="en/admin/development/environment/eclipse/luna/connectors"/>
 			</media:image>		
 
 		</ofx:section>
