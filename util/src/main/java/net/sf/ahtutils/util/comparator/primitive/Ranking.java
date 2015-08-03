@@ -1,4 +1,4 @@
-package net.sf.ahtutils.controller.util;
+package net.sf.ahtutils.util.comparator.primitive;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -21,9 +21,11 @@ public class Ranking
 		for(int i=0;i<tmp.size();i++){result[i]=tmp.get(i);}
 		return result;
 	}
+	
 	public List<Integer> rank(List<Integer> listPoints)
 	{
 		List <Rank> rankList = new ArrayList<Rank>();
+		
 		Rank[] sortList = new Rank[listPoints.size()]; 
 		List <Integer> result = new ArrayList<Integer>();
 		
@@ -42,15 +44,15 @@ public class Ranking
 	
 	int getNumberOfEqualPoints (Rank[] rankList)
 	{
-		int points=0, anzahl=0;
+		int score=0, anzahl=0;
 		
 		for (int i=0; i<= rankList.length; i++)
 		{
-			points = rankList[i].getPoints();
+			score = rankList[i].getScore();
 			
 			for (int j=0; j<=rankList.length;j++)
 			{
-				if(rankList[j].getPoints()==points)
+				if(rankList[j].getScore()==score)
 				{
 					anzahl++;
 				}
@@ -76,24 +78,24 @@ public class Ranking
 	
 	public class Rank implements Comparator<Rank>
 	{
-		public int index, points;
+		public int index, score;
 
 		public	Rank () {}
-		public	Rank (int index, int points)
+		public	Rank (int index, int score)
 		{
 			this.index = index;
-			this.points = points;
+			this.score = score;
 		}
 
-		private int getIndex() {return index;}
+		public int getIndex() {return index;}
 		public void setIndex(int index) {this.index = index;}
 
-		public int getPoints() {return points;}
-		public void setPoints(int points) {this.points = points;}
+		public int getScore() {return score;}
+		public void setScore(int score) {this.score = score;}
 		@Override
 		public int compare(Rank a, Rank b)
 		{
-			return(new Integer(a.getPoints())).compareTo(b.getPoints())*-1;
+			return(new Integer(a.getScore())).compareTo(b.getScore())*-1;
 		}
 	}
 }
