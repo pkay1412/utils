@@ -36,7 +36,7 @@ public class TestRanking extends AbstractAhtUtilTest
     	rnd = null;
     }
  
-    @Test @Ignore
+    @Test //@Ignore
     public void testOrderedAsc()
     {
     	int[] points = {1,2,3};
@@ -45,7 +45,7 @@ public class TestRanking extends AbstractAhtUtilTest
     	Assert.assertArrayEquals(expected, actual);
     }
     
-    @Test @Ignore
+    @Test //@Ignore
     public void testOrderedRnd()
     {
     	int[] points = {1,6,5};
@@ -54,7 +54,7 @@ public class TestRanking extends AbstractAhtUtilTest
     	Assert.assertArrayEquals(expected, actual);
     }
     
-    @Test @Ignore
+    @Test // @Ignore
     public void testUnOrdered()
     {
     	int[] points = {5,1,4};
@@ -63,7 +63,7 @@ public class TestRanking extends AbstractAhtUtilTest
     	Assert.assertArrayEquals(expected, actual);
     }
     
-    @Test @Ignore
+    @Test //@Ignore
     public void testDoubleLow()
     {
     	int[] points = {3,5,3};
@@ -72,7 +72,7 @@ public class TestRanking extends AbstractAhtUtilTest
     	Assert.assertArrayEquals(expected, actual);
     }
    
-    @Test @Ignore
+    @Test //@Ignore
     public void testDoubleHigh()
     {
     	int[] points = {7,5,7};
@@ -81,7 +81,7 @@ public class TestRanking extends AbstractAhtUtilTest
     	Assert.assertArrayEquals(expected, actual);
     }
     
-    @Test @Ignore
+    @Test //@Ignore
     public void testRandom()
     {
     	int nr = 1000;
@@ -98,7 +98,7 @@ public class TestRanking extends AbstractAhtUtilTest
     	}
     }
     
-    @Test
+    @Test //@Ignore
     public void comparator()
     {	
     	Ranking r = new Ranking();

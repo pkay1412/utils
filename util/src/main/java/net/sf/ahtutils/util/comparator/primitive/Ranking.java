@@ -1,9 +1,6 @@
 package net.sf.ahtutils.util.comparator.primitive;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 
 import com.google.common.primitives.Ints;
 
@@ -25,57 +22,52 @@ public class Ranking
 	public List<Integer> rank(List<Integer> listPoints)
 	{
 		List <Rank> rankList = new ArrayList<Rank>();
-		
-		Rank[] sortList = new Rank[listPoints.size()]; 
+        List <Integer> tmp = new ArrayList<Integer>();
+		Rank[] sortList = new Rank[listPoints.size()];
 		List <Integer> result = new ArrayList<Integer>();
-		
-		int zaehler = 0; 
+
+        tmp.addAll(listPoints);
+		Collections.sort(listPoints);
+        Collections.reverse(listPoints);
+		int zaehler = 1;
 		
 		for (Integer i: listPoints)
 		{
-			rankList.add(new Rank(zaehler, i));
-			zaehler++;
-		}
-		
-		Collections.sort(rankList, new Rank());	
-		
-		return result;
+            rankList.add(new Rank(zaehler, i));
+            rankList = getEqualPoints(rankList);
+            zaehler++;
+        }
+
+        for(Rank r : rankList)
+        {
+            for (int i = 0; i < tmp.size(); i++) {
+                if (r.getScore() == tmp.get(i) && sortList[i] == null) { sortList[i] = r; }
+            }
+        }
+        for(Rank ra : sortList) {
+            result.add(ra.getIndex());
+        }
+        return result;
 	}
-	
-	int getNumberOfEqualPoints (Rank[] rankList)
+
+    List<Rank> getEqualPoints (List<Rank> rankList)
 	{
-		int score=0, anzahl=0;
-		
-		for (int i=0; i<= rankList.length; i++)
-		{
-			score = rankList[i].getScore();
-			
-			for (int j=0; j<=rankList.length;j++)
-			{
-				if(rankList[j].getScore()==score)
-				{
-					anzahl++;
-				}
-			}
-		}
-		return anzahl;
-	}
-	
-	public Rank[] setRank(Rank[] rankList)
-	{
-		int rankZaehler = 0, anz = 0;
-		
-		for (int i=rankZaehler; i<=rankZaehler+anz;)
-		{
-			anz = getNumberOfEqualPoints(rankList);
-			rankList[i].index = rankZaehler;
-			rankZaehler = rankZaehler+anz;
-		}
-		
-		return rankList;
-	}
-		
-	
+        for(int j = 0; j < rankList.size(); j++)
+        {
+            for (int k = 1+j; k < rankList.size(); k++)
+            {
+                setRank(rankList.get(j), rankList.get(k));
+            }
+        }
+        return rankList;
+    }
+
+    public void setRank(Rank rank1, Rank rank2)
+    {
+        if (rank1.getScore() == rank2.getScore())
+            rank2.setIndex(rank1.getIndex());
+    }
+
 	public class Rank implements Comparator<Rank>
 	{
 		public int index, score;
