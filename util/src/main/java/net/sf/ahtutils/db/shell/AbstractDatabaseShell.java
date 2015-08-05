@@ -74,8 +74,12 @@ public class AbstractDatabaseShell
 		
 		txtWriter = new ExlpTxtWriter();
 		
-		txtWriter.add(OsBashFile.prefix());
-		txtWriter.add(OsBashFile.comment("Automaticall generated script for SQL "+operation.toString()));
+		try
+		{
+			txtWriter.add(OsBashFile.prefix());
+			txtWriter.add(OsBashFile.comment("Automaticall generated script for SQL "+operation.toString()));
+		}
+		catch (ExlpUnsupportedOsException e) {e.printStackTrace();}
 		txtWriter.add("");
 		txtWriter.add("");
 	}
