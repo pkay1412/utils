@@ -99,6 +99,15 @@ public class TestRanking extends AbstractAhtUtilTest
     }
     
     @Test
+    public void complex()
+    {
+    	int[] points   = {3,5,7,2,3,4,6,7,4};
+    	int[] expected = {7,4,1,9,7,5,3,1,5};
+    	int[] actual = ranking.rank(points);
+    	Assert.assertArrayEquals(expected, actual);
+    }
+    
+    @Test
     public void comparator()
     {	
     	Ranking r = new Ranking();

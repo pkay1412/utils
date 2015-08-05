@@ -30,6 +30,7 @@ public class UtilsLatexDevelopmentDocumentationBuilder extends AbstractLatexDocu
 	public static enum ErCode {erIntroduction}
 	public static enum EclipseClassifier {luna,svn,git,texlipse}
 	public static enum Code {latex,doc}
+	public static enum Maven {mvnIntroduction,mvnShortcuts,mvnStructure}
 		
 	public UtilsLatexDevelopmentDocumentationBuilder(Configuration config, Translations translations,String[] langs, CrossMediaManager cmm,DefaultSettingsManager dsm)
 	{
@@ -48,10 +49,16 @@ public class UtilsLatexDevelopmentDocumentationBuilder extends AbstractLatexDocu
 		
 		addConfig(Code.latex.toString(),"ofx.aht-utils/development/environment/latex.xml","admin/development/environment/latex");
 		addConfig(Code.doc.toString(),"ofx.aht-utils/development/documentation.xml","admin/development/documentation");
+		
+		addConfig(Maven.mvnIntroduction.toString(),"ofx.aht-utils/development/maven/introduction.xml","admin/development/maven/introduction");
+		addConfig(Maven.mvnShortcuts.toString(),"ofx.aht-utils/development/maven/shortcuts.xml","admin/development/maven/shortcuts");
+		addConfig(Maven.mvnStructure.toString(),"ofx.aht-utils/development/maven/structure.xml","admin/development/maven/structure");
 	}
 
 	public void render(Code code) throws UtilsConfigurationException, OfxConfigurationException{render(2,code);}
 	public void render(int lvl, Code code) throws UtilsConfigurationException, OfxConfigurationException{render(lvl,code.toString());}
+	
+	public void render(int lvl, Maven code) throws UtilsConfigurationException, OfxConfigurationException{render(lvl,code.toString());}
 	
 	public void render(ErCode code) throws UtilsConfigurationException, OfxConfigurationException{render(code.toString());}
 	
