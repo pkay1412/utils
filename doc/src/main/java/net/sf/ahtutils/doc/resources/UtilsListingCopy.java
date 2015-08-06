@@ -25,6 +25,7 @@ public class UtilsListingCopy
 	private String prefix = "listing.aht-utils";
 	
 	public static final String codeApp = "@@@APP@@@";
+	public static final String patternJbossDS = "@@@JBOSS-DS@@@";
 	
 	public static final String dbPostgresPrepartionDebian = "admin/db/postgres/dump/debian/preparation.sh";
 	public static final String dbPostgresCronDebian = "admin/db/postgres/dump/debian/cron.tab";
@@ -54,6 +55,8 @@ public class UtilsListingCopy
 	public static final String jbEap6UndeployLog = "admin/installation/jboss/deployment/eap6/log/undeploy.txt";
 	public static final String jbEap6UpdateCli = "admin/installation/jboss/deployment/eap6/cli/update.sh";
 	public static final String jbEap6ConfigMem = "admin/installation/jboss/config/eap6/standalone.mem.txt";
+	public static final String jbPostgresDriver = "admin/installation/jboss/config/ds-driver-postgres.xml";
+	public static final String jbPostgresDs = "admin/installation/jboss/config/ds-postgres.xml";
 	
 	public static final String apacheProxy = "admin/installation/apache/proxy.txt";
 	
@@ -87,6 +90,11 @@ public class UtilsListingCopy
 		replace.put(key,value);
 	}
 	
+	public void copy(String fileRef) throws UtilsConfigurationException
+	{
+		copy(fileRef,fileRef);
+	}
+	
 	public void copy(String src, String dst) throws UtilsConfigurationException
 	{
 		try
@@ -113,5 +121,16 @@ public class UtilsListingCopy
 		}
 		catch (FileNotFoundException e) {throw new UtilsConfigurationException(e.getMessage());}
 		catch (IOException e) {throw new UtilsConfigurationException(e.getMessage());}
+	}
+	
+	public String jbossConfig(String product, String version, String file)
+	{		
+		StringBuffer sb = new StringBuffer();
+		sb.append("admin/installation/jboss/config");
+		sb.append("/").append(product);
+		sb.append("/").append(version);
+		sb.append("/").append(file.substring(file.lastIndexOf("/")+1));
+		
+		return sb.toString();
 	}
 }
