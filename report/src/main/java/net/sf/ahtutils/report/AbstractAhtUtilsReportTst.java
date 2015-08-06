@@ -89,6 +89,7 @@ public class AbstractAhtUtilsReportTst
 	{
 		reportId = id;
 		report = ReportXpath.getReport(reports, id);
+		logger.info("Loading Report "+report.getExample());
 		
 		//Load the JDom representation of the example for further processing in ReportHandler
 		jdomReport = JDomUtil.load(report.getExample());

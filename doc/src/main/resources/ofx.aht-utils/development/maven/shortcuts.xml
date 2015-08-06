@@ -38,6 +38,16 @@
 	                <t:cell><ofx:paragraph>mvnC</ofx:paragraph></t:cell>
 	                <t:cell><ofx:paragraph>mvn -Pram clean install compile -DskipTests</ofx:paragraph></t:cell>
 	            </t:row>
+				<t:row>
+	                <t:cell><ofx:paragraph>Test</ofx:paragraph></t:cell>
+	                <t:cell><ofx:paragraph>mvnT</ofx:paragraph></t:cell>
+	                <t:cell><ofx:paragraph>mvn -Pram clean test</ofx:paragraph></t:cell>
+	            </t:row>
+				<t:row>
+	                <t:cell><ofx:paragraph>Arquillian Test</ofx:paragraph></t:cell>
+	                <t:cell><ofx:paragraph>mvnA Class</ofx:paragraph></t:cell>
+	                <t:cell><ofx:paragraph>mvn -Pram clean test -Dtest=$1</ofx:paragraph></t:cell>
+	            </t:row>
 	            <t:row>
 	                <t:cell><ofx:paragraph>JBoss Deploy</ofx:paragraph></t:cell>
 	                <t:cell><ofx:paragraph>mvnJ</ofx:paragraph></t:cell>
