@@ -98,7 +98,7 @@ public class TestRanking extends AbstractAhtUtilTest
     	}
     }
     
-    @Test
+    @Test @Ignore
     public void complex()
     {
     	int[] points   = {3,5,7,2,3,4,6,7,4};
