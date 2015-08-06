@@ -47,6 +47,7 @@ public class PostgresDump extends AbstractPostgresShell implements UtilsDbShell
 		sb.append(pDbShell.getValue());
 		sb.append(" -h ").append(pDbHost.getValue());
 		sb.append(" -U ").append(pDbUser.getValue());
+		sb.append(" --create");
 		sb.append(" --blobs");
 		sb.append(" --format=c");
 		sb.append(" --verbose");
