@@ -25,6 +25,7 @@ public class UtilsListingCopy
 	private String prefix = "listing.aht-utils";
 	
 	public static final String codeApp = "@@@APP@@@";
+	public static final String patternJbossDS = "@@@JBOSS-DS@@@";
 	
 	public static final String dbPostgresPrepartionDebian = "admin/db/postgres/dump/debian/preparation.sh";
 	public static final String dbPostgresCronDebian = "admin/db/postgres/dump/debian/cron.tab";
@@ -55,6 +56,7 @@ public class UtilsListingCopy
 	public static final String jbEap6UpdateCli = "admin/installation/jboss/deployment/eap6/cli/update.sh";
 	public static final String jbEap6ConfigMem = "admin/installation/jboss/config/eap6/standalone.mem.txt";
 	public static final String jbPostgresDriver = "admin/installation/jboss/config/ds-driver-postgres.xml";
+	public static final String jbPostgresDs = "admin/installation/jboss/config/ds-postgres.xml";
 	
 	public static final String apacheProxy = "admin/installation/apache/proxy.txt";
 	

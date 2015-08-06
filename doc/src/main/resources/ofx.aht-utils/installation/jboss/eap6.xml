@@ -44,7 +44,7 @@ cd eap-build
 			
 		</ofx:section>
 		
-		<ofx:section classifier="eap6Source">
+		<ofx:section>
 			<ofx:title lang="en">Installation</ofx:title>
 		
 			<ofx:paragraph lang="de" version="1">
@@ -119,7 +119,7 @@ fi</ofx:raw>
 					the application server. The password shown is the given listing is an example and should
 					be changed for production use.
 				</ofx:paragraph>
-				<ofx:listing external="listing/admin/installation/jboss/datasource.xml"/>
+				<ofx:listing external="listing/admin/installation/jboss/config/ds-postgres.xml"/>
 				
 				<ofx:section container="true" classifier="postgis">
 					<ofx:title lang="en">PostGIS Database Driver</ofx:title>
@@ -130,11 +130,7 @@ fi</ofx:raw>
 						in the section <text:emphasis italic="true">server/profile/subsystem</text:emphasis> of the subsystem
 						<text:emphasis italic="true">urn:jboss:domain:datasources:1.1</text:emphasis> as a new driver:
 					</ofx:paragraph>
-					<ofx:listing>
-					<ofx:raw><![CDATA[<driver name="org.postgresql" module="org.postgresql">
-	<xa-datasource-class>org.postgresql.xa.PGXADataSource</xa-datasource-class>
-</driver>]]></ofx:raw>
-				</ofx:listing>
+					<ofx:listing external="listing/admin/installation/jboss/config/ds-driver-postgres.xml"/>
 				</ofx:section>
 			</ofx:section>
 			

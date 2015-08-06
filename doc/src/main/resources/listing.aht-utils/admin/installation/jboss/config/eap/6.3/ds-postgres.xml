@@ -1,0 +1,22 @@
+<datasource jndi-name="java:jboss/datasources/@@@JBOSS-DS@@@"
+		pool-name="@@@JBOSS-DS@@@" enabled="true" jta="true"
+		use-java-context="true" use-ccm="true">
+	<connection-url>jdbc:postgresql://localhost:5432/@@@APP@@@</connection-url>
+	<driver>org.postgresql</driver>
+	<pool>
+		<min-pool-size>10</min-pool-size>
+		<max-pool-size>100</max-pool-size>
+		<prefill>false</prefill>
+		<use-strict-min>false</use-strict-min>
+		<flush-strategy>FailingConnectionOnly</flush-strategy>
+	</pool>
+	<security>
+		<user-name>@@@APP@@@</user-name>
+		<password>@@@APP@@@</password>
+	</security>
+	<validation>
+		<check-valid-connection-sql>SELECT 1</check-valid-connection-sql>
+		<validate-on-match>false</validate-on-match>
+		<background-validation>false</background-validation>
+	</validation>
+</datasource>
