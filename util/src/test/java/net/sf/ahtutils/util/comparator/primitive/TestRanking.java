@@ -8,7 +8,6 @@ import java.util.Random;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -36,7 +35,7 @@ public class TestRanking extends AbstractAhtUtilTest
     	rnd = null;
     }
  
-    @Test @Ignore
+    @Test
     public void testOrderedAsc()
     {
     	int[] points = {1,2,3};
@@ -45,7 +44,7 @@ public class TestRanking extends AbstractAhtUtilTest
     	Assert.assertArrayEquals(expected, actual);
     }
     
-    @Test @Ignore
+    @Test
     public void testOrderedRnd()
     {
     	int[] points = {1,6,5};
@@ -54,7 +53,7 @@ public class TestRanking extends AbstractAhtUtilTest
     	Assert.assertArrayEquals(expected, actual);
     }
     
-    @Test @Ignore
+    @Test
     public void testUnOrdered()
     {
     	int[] points = {5,1,4};
@@ -63,7 +62,7 @@ public class TestRanking extends AbstractAhtUtilTest
     	Assert.assertArrayEquals(expected, actual);
     }
     
-    @Test @Ignore
+    @Test
     public void testDoubleLow()
     {
     	int[] points = {3,5,3};
@@ -72,7 +71,7 @@ public class TestRanking extends AbstractAhtUtilTest
     	Assert.assertArrayEquals(expected, actual);
     }
    
-    @Test @Ignore
+    @Test
     public void testDoubleHigh()
     {
     	int[] points = {7,5,7};
@@ -81,7 +80,7 @@ public class TestRanking extends AbstractAhtUtilTest
     	Assert.assertArrayEquals(expected, actual);
     }
     
-    @Test @Ignore
+    @Test
     public void testRandom()
     {
     	int nr = 1000;
@@ -98,7 +97,7 @@ public class TestRanking extends AbstractAhtUtilTest
     	}
     }
     
-    @Test @Ignore
+    @Test
     public void complex()
     {
     	int[] points   = {3,5,7,2,3,4,6,7,4};

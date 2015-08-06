@@ -9,14 +9,15 @@ import org.jdom2.Document;
 import org.jdom2.Element;
 import org.jdom2.Namespace;
 import org.jdom2.filter.Filters;
-import org.jdom2.xpath.*;
+import org.jdom2.output.Format;
+import org.jdom2.xpath.XPathExpression;
+import org.jdom2.xpath.XPathFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import net.sf.ahtutils.controller.jboss.JbossModuleConfigurator.Product;
 import net.sf.exlp.util.io.resourceloader.MultiResourceLoader;
 import net.sf.exlp.util.xml.JDomUtil;
-
 
 public class JbossConfigConfigurator
 {
@@ -56,15 +57,17 @@ public class JbossConfigConfigurator
 	public void addDs(Element element)
 	{
         XPathExpression<Element> xpee = XPathFactory.instance().compile("/ns1:server/ns1:profile/ns2:subsystem/ns2:datasources", Filters.element(), null, getNamespaceList());
-        xpee.evaluateFirst(doc).addContent(0, element);
+        Element datasources = xpee.evaluateFirst(doc);
+        JDomUtil.setNameSpaceRecursive(element, datasources.getNamespace());
+        datasources.addContent(0, element);
     }
-
-
 	
 	public void addDbDriver(Element element)
 	{
         XPathExpression<Element> xpee = XPathFactory.instance().compile("/ns1:server/ns1:profile/ns2:subsystem/ns2:datasources/ns2:drivers", Filters.element(), null, getNamespaceList());
-        xpee.evaluateFirst(doc).addContent(element);
+        Element drivers = xpee.evaluateFirst(doc);
+        JDomUtil.setNameSpaceRecursive(element, drivers.getNamespace());
+        drivers.addContent(element);
 	}
 	
 	public void changePublicInterface()
@@ -90,11 +93,13 @@ public class JbossConfigConfigurator
         ns.add(Namespace.getNamespace("ns2", doc.getRootElement().getChildren().get(2).getChildren().get(1).getNamespaceURI()));
         return ns;
     }
+    
+    public Document getDocument(){return doc;}
 
-	
-	public void write(File fTarget)
+	public void write()
 	{
-		JDomUtil.debug(doc);
-		logger.info("Writing to "+jbossBaseDir.getAbsolutePath());
+		File f = new File(jbossBaseDir,"/standalone/configuration/standalone.xml");
+		JDomUtil.save(doc, f, Format.getPrettyFormat());
+		logger.info("Writing to "+f.getAbsolutePath());
 	}
 }
