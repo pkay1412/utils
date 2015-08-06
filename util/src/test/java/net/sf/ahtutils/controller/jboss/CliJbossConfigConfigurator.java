@@ -15,9 +15,9 @@ public class CliJbossConfigConfigurator
 	
 		String jbo = "/Volumes/ramdisk/jboss-eap-6.3";
 		JbossConfigConfigurator jboss = new JbossConfigConfigurator(JbossModuleConfigurator.Product.eap,"6.3",jbo);
-//        jboss.addDs();
-        jboss.addDbDriver();
-//        jboss.write(null);
+        jboss.addDs();
+//        jboss.addDbDriver();
+        jboss.write(null);
 
 	}
 }
