@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.NoSuchElementException;
 
 import net.sf.ahtutils.interfaces.db.UtilsDbShell;
+import net.sf.exlp.exception.ExlpUnsupportedOsException;
 import net.sf.exlp.factory.xml.config.XmlParameterFactory;
 import net.sf.exlp.factory.xml.config.XmlParametersFactory;
 import net.sf.exlp.interfaces.util.TextWriter;
@@ -73,8 +74,12 @@ public class AbstractDatabaseShell
 		
 		txtWriter = new ExlpTxtWriter();
 		
-		txtWriter.add(OsBashFile.prefix());
-		txtWriter.add(OsBashFile.comment("Automaticall generated script for SQL "+operation.toString()));
+		try
+		{
+			txtWriter.add(OsBashFile.prefix());
+			txtWriter.add(OsBashFile.comment("Automaticall generated script for SQL "+operation.toString()));
+		}
+		catch (ExlpUnsupportedOsException e) {e.printStackTrace();}
 		txtWriter.add("");
 		txtWriter.add("");
 	}
@@ -101,7 +106,10 @@ public class AbstractDatabaseShell
 	
 	public File getShellFile()
 	{
-		return new File(config.getString(UtilsDbShell.cfgDirShell),config.getString("db."+operation.toString()+".shell"));
+		String extension = "";
+		try {extension = "."+OsBashFile.fileExtention();}
+		catch (ExlpUnsupportedOsException e) {e.printStackTrace();}
+		return new File(config.getString(UtilsDbShell.cfgDirShell),config.getString("db."+operation.toString()+".shell")+extension);
 	}
 	
 	//Configuration Parameter

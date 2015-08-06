@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ofx:section xmlns:ofx="http://www.openfuxml.org"
+			xmlns:l="http://www.openfuxml.org/list"
+			xmlns:t="http://www.openfuxml.org/table"
+			xmlns:media="http://www.openfuxml.org/media"
+			xmlns:layout="http://www.openfuxml.org/layout"
+			id="section.admin.development.maven.shortcuts">
+	<ofx:title lang="en">Maven Shortcuts</ofx:title>
+		
+		<t:table id="table.admin.development.maven.shortcuts">
+	
+	    <ofx:title lang="en" version="1">Maven Shortcuts</ofx:title>
+	    
+	    <t:specification>
+	        <t:columns> 
+	            <t:column><layout:width unit="percentage" flex="true" narrow="true">30.0</layout:width></t:column>
+	            <t:column><layout:width unit="percentage" flex="true" narrow="true">10.0</layout:width></t:column>
+	            <t:column><layout:width unit="percentage" flex="true" narrow="false">60.0</layout:width></t:column>
+	        </t:columns>
+	    </t:specification>
+	    <t:content>
+	        <t:head>
+	            <t:row>
+	                <t:cell>
+	                <ofx:paragraph lang="en">Description</ofx:paragraph>
+	                </t:cell>
+	                <t:cell>
+	                    <ofx:paragraph lang="en">Shortcut</ofx:paragraph>
+	                </t:cell>
+	                <t:cell>
+	                    <ofx:paragraph lang="en">Command</ofx:paragraph>
+	                </t:cell>
+	            </t:row>
+	        </t:head>
+	        <t:body>
+	            <t:row>
+	                <t:cell><ofx:paragraph>Compile</ofx:paragraph></t:cell>
+	                <t:cell><ofx:paragraph>mvnC</ofx:paragraph></t:cell>
+	                <t:cell><ofx:paragraph>mvn -Pram clean install compile -DskipTests</ofx:paragraph></t:cell>
+	            </t:row>
+	            <t:row>
+	                <t:cell><ofx:paragraph>JBoss Deploy</ofx:paragraph></t:cell>
+	                <t:cell><ofx:paragraph>mvnJ</ofx:paragraph></t:cell>
+	                <t:cell><ofx:paragraph>mvn -Pram clean package jboss-as:deploy -DskipTests</ofx:paragraph></t:cell>
+	            </t:row>
+	            <t:row>
+	                <t:cell><ofx:paragraph>Package</ofx:paragraph></t:cell>
+	                <t:cell><ofx:paragraph>mvnP</ofx:paragraph></t:cell>
+	                <t:cell><ofx:paragraph>mvn -Pram clean package jboss-as:deploy -DskipTests</ofx:paragraph></t:cell>
+	            </t:row>
+				<t:row>
+	                <t:cell><ofx:paragraph>LaTex</ofx:paragraph></t:cell>
+	                <t:cell><ofx:paragraph>mvnL</ofx:paragraph></t:cell>
+	                <t:cell><ofx:paragraph>mvn -Pram clean latex:latex -DskipTests</ofx:paragraph></t:cell>
+	            </t:row>
+	        </t:body>
+	    </t:content>
+	</t:table>
+	
+	<ofx:paragraph lang="en">
+		On some environments the additional paramteter -Djava.awt.headless=true prevents that applications on the screen loose the focus
+		for the windows-less java commands.
+	</ofx:paragraph>
+	
+</ofx:section>

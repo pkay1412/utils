@@ -36,10 +36,10 @@ public class PostgresDrop extends AbstractPostgresShell implements UtilsDbShell
 		sb.append(" -h ").append(pDbHost.getValue());
 		sb.append(" -U ").append(pDbUser.getValue());
 		sb.append(" -d ").append(pDbName.getValue());
-		sb.append(" -c '");
+		sb.append(" -c \"");
 		sb.append("DROP TABLE IF EXISTS ").append(table);
 		if(cascade){sb.append(" CASCADE");}
-		sb.append(";'");
+		sb.append(";\"");
 		
 		super.addLine(sb.toString());
 		return sb.toString();
@@ -52,9 +52,9 @@ public class PostgresDrop extends AbstractPostgresShell implements UtilsDbShell
 		sb.append(" -h ").append(pDbHost.getValue());
 		sb.append(" -U ").append(pDbUser.getValue());
 		sb.append(" -d ").append(pDbName.getValue());
-		sb.append(" -c '");
+		sb.append(" -c \"");
 		sb.append("DROP SEQUENCE IF EXISTS ").append(seq);
-		sb.append(";'");
+		sb.append(";\"");
 		
 		super.addLine(sb.toString());
 		return sb.toString();
@@ -67,9 +67,9 @@ public class PostgresDrop extends AbstractPostgresShell implements UtilsDbShell
 		sb.append(" -h ").append(pDbHost.getValue());
 		sb.append(" -U ").append(pDbUser.getValue());
 		sb.append(" -d ").append(pDbName.getValue());
-		sb.append(" -c '");
+		sb.append(" -c \"");
 		sb.append("\\d ");
-		sb.append(";'");
+		sb.append(";\"");
 		
 		super.addLine(sb.toString());
 		return sb.toString();

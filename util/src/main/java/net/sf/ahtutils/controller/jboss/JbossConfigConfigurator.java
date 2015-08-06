@@ -68,15 +68,7 @@ public class JbossConfigConfigurator
 	
 	public void addDbDriver()
 	{
-        List<Namespace> ns = new ArrayList<Namespace>();
-        ns.add(Namespace.getNamespace("ns1", "urn:jboss:domain:1.6"));
-        ns.add(Namespace.getNamespace("ns2", "urn:jboss:domain:datasources:1.2" ));
-
-        XPathExpression<Element> xpee = XPathFactory.instance().compile("/ns1:server/ns1:profile/ns2:subsystem/ns2:datasources", Filters.element(), null, ns);
-        List<Element> ele = xpee.evaluate(doc);
-        for(Element e : ele)
-            System.out.println(e.getName());
-//        ele.get(2).setContent(2,getDummyElement("driverTest"));
+//        add TestDummy
 	}
 	
 	public void changePublicInterface()
