@@ -78,6 +78,7 @@ public class JbossConfigConfigurator
             {
                 e.getChildren().clear();
                 e.addContent(interfacePublic);
+                e.getChildren().get(0).setNamespace(e.getNamespace());
             }
         }
     }
