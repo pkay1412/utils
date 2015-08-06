@@ -25,6 +25,7 @@
 		<ofx:section include="install/debian.xml"/>
 		<ofx:section include="install/ubuntu.xml"/>
 		<ofx:section include="install/osx.xml"/>
+        <ofx:section include="install/windows.xml"/>
 
 	</ofx:section>
 	

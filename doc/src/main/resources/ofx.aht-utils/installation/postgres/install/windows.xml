@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ofx:section xmlns:ofx="http://www.openfuxml.org"
+             xmlns:media="http://www.openfuxml.org/media"
+             xmlns:table="http://www.openfuxml.org/table"
+             xmlns:layout="http://www.openfuxml.org/layout"
+             xmlns:text="http://www.openfuxml.org/text"
+             xmlns:l="http://www.openfuxml.org/list"
+             container="true">
+
+    <ofx:section container="true" classifier="windows">
+        <ofx:title>Windows</ofx:title>
+
+        <ofx:paragraph lang="en" >
+            First download PostgrSQL from <text:emphasis style="typewriter">http://www.enterprisedb.com/products-services-training/pgdownload#windows</text:emphasis>.
+            To start the installation double click the postgresql.exe you've downloaded and a setup wizard will guide you through the installation.
+            Follow ist step by step:
+        </ofx:paragraph>
+        <l:list>
+            <l:type ordering="unordered">
+                <l:item>
+                    <ofx:paragraph lang="en">Choose the installation directory (i.e: <text:emphasis style="typewiter">C:\Program Files\PostgreSQL\9.4</text:emphasis>)
+                     and finish this step with clicking <text:emphasis style="typewriter">"Next"</text:emphasis>
+                    </ofx:paragraph>
+                </l:item>
+                <l:item>
+                    <ofx:paragraph lang="en">Next choose the data directory (i.e: <text:emphasis style="typewiter">C:\Program Files\PostgreSQL\9.4\data</text:emphasis>)
+                        and finish this step with clicking <text:emphasis style="typewriter">"Next"</text:emphasis>
+                    </ofx:paragraph>
+                </l:item>
+            </l:type>
+        </l:list>
+
+    </ofx:section>
+
+    <ofx:section container="true" classifier="windows">
+        <ofx:title>Windows</ofx:title>
+
+        <ofx:listing>
+            <ofx:raw>apt-get install postgresql-9.1-postgis</ofx:raw>
+        </ofx:listing>
+
+    </ofx:section>
+</ofx:section>
