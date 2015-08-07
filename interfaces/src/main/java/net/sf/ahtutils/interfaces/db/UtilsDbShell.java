@@ -15,9 +15,10 @@ public interface UtilsDbShell
 	public static final String cfgBinRestore = "db.bin.restore";
 	public static final String cfgBinDrop = "db.bin.drop";
 	
-	public static final String cfgDbTablesDrop = "db.tables.drop.table";
-	public static final String cfgDbCascadeDrop = "db.tables.drop.cascade";
-	public static final String cfgDbSequenceDrop = "db.tables.drop.sequence";
+	public static final String cfgDbDrop = "db.tables.drop";
+	public static final String cfgDbDropTable = "db.tables.drop.table";
+	public static final String cfgDbDropCascade = "db.tables.drop.cascade";
+	public static final String cfgDbDropSequence = "db.tables.drop.sequence";
 	
 	public static final String cfgDbTablesRestore = "db.tables.restore.table";
 	public static final String cfgDbSequenceRestore = "db.tables.restore.sequence";

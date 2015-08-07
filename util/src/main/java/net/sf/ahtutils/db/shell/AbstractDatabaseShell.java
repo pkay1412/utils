@@ -4,6 +4,11 @@ import java.io.File;
 import java.util.List;
 import java.util.NoSuchElementException;
 
+import org.apache.commons.configuration.Configuration;
+import org.jdom2.Document;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import net.sf.ahtutils.interfaces.db.UtilsDbShell;
 import net.sf.exlp.exception.ExlpUnsupportedOsException;
 import net.sf.exlp.factory.xml.config.XmlParameterFactory;
@@ -14,22 +19,13 @@ import net.sf.exlp.util.io.txt.ExlpTxtWriter;
 import net.sf.exlp.xml.config.Parameter;
 import net.sf.exlp.xml.config.Parameters;
 
-import org.apache.commons.configuration.Configuration;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 public class AbstractDatabaseShell
 {
 	final static Logger logger = LoggerFactory.getLogger(AbstractDatabaseShell.class);
 	
 	protected Configuration config;
-	protected UtilsDbShell.Operation operation;
+	protected Document xmlConfig;
 	
-	public void setOperation(UtilsDbShell.Operation operation)
-	{
-		this.operation = operation;
-	}
-
 	protected Parameter pDbShell,pDbDump,pDbRestore;
 	protected Parameter pDbHost,pDbName,pDbUser,pDbPwd;
 	protected Parameter pSqlDir;
@@ -43,8 +39,13 @@ public class AbstractDatabaseShell
 	
 	public AbstractDatabaseShell(Configuration config,UtilsDbShell.Operation operation)
 	{
+		this(config,operation,null);
+	}
+	public AbstractDatabaseShell(Configuration config,UtilsDbShell.Operation operation,Document xmlConfig)
+	{
 		this.config=config;
 		this.operation=operation;
+		this.xmlConfig=xmlConfig;
 		
 		configurationParamter = XmlParametersFactory.build();
 		
@@ -115,4 +116,7 @@ public class AbstractDatabaseShell
 	//Configuration Parameter
 	protected Parameters configurationParamter;
 	public Parameters getConfigurationParameter(){return configurationParamter;}
+	
+	protected UtilsDbShell.Operation operation;
+	public void setOperation(UtilsDbShell.Operation operation){this.operation = operation;}
 }
