@@ -102,4 +102,15 @@ public class JbossConfigConfigurator
 		JDomUtil.save(doc, f, Format.getPrettyFormat());
 		logger.info("Writing to "+f.getAbsolutePath());
 	}
+
+    public void changeTimeout(int second)
+    {
+        List<Namespace> ns = new ArrayList<Namespace>();
+        ns.add(Namespace.getNamespace("ns1", doc.getRootElement().getNamespaceURI()));
+        ns.add(Namespace.getNamespace("ns2", doc.getRootElement().getChildren().get(2).getChildren().get(20).getNamespaceURI()));
+
+        XPathExpression<Element> xpee = XPathFactory.instance().compile("/ns1:server/ns1:profile/ns2:subsystem/ns2:coordinator-environment", Filters.element(), null, ns);
+        Element coordinator_environment = xpee.evaluateFirst(doc);
+        coordinator_environment.setAttribute("default-timeout", Integer.toString(second));
+    }
 }
