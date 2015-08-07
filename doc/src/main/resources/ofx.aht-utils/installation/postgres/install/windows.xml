@@ -11,33 +11,87 @@
         <ofx:title>Windows</ofx:title>
 
         <ofx:paragraph lang="en" >
-            First download PostgrSQL from <text:emphasis style="typewriter">http://www.enterprisedb.com/products-services-training/pgdownload#windows</text:emphasis>.
-            To start the installation double click the postgresql.exe you've downloaded and a setup wizard will guide you through the installation.
-            Follow ist step by step:
+            First download PostgreSQL from <text:emphasis style="typewriter">http://www.enterprisedb.com/products-services-training/pgdownload#windows</text:emphasis>.
+            To start the installation double click the postgresql.exe you've downloaded and a setup wizard will guide you through.
+            Follow it step by step:
         </ofx:paragraph>
         <l:list>
             <l:type ordering="unordered">
                 <l:item>
-                    <ofx:paragraph lang="en">Choose the installation directory (i.e: <text:emphasis style="typewiter">C:\Program Files\PostgreSQL\9.4</text:emphasis>)
-                     and finish this step with clicking <text:emphasis style="typewriter">"Next"</text:emphasis>
+                    <ofx:paragraph lang="en">Choose the installation directory or keep the default one and press <text:emphasis style="typewriter">Next</text:emphasis>
                     </ofx:paragraph>
                 </l:item>
                 <l:item>
-                    <ofx:paragraph lang="en">Next choose the data directory (i.e: <text:emphasis style="typewiter">C:\Program Files\PostgreSQL\9.4\data</text:emphasis>)
-                        and finish this step with clicking <text:emphasis style="typewriter">"Next"</text:emphasis>
+                    <ofx:paragraph lang="en">Next choose the data directory or keep the default one, too, and press <text:emphasis style="typewriter">Next</text:emphasis>
+                    </ofx:paragraph>
+                </l:item>
+                <l:item>
+                    <ofx:paragraph lang="en">Enter a password you want to use as superuser, press<text:emphasis style="typewriter">Next</text:emphasis> to continue
+                    </ofx:paragraph>
+                </l:item>
+                <l:item>
+                    <ofx:paragraph lang="en">Press <text:emphasis style="typewriter">Next</text:emphasis>, keep portnumber, except you need to change it.
+                    </ofx:paragraph>
+                </l:item>
+                <l:item>
+                    <ofx:paragraph lang="en">Leave locale on default amd press <text:emphasis style="typewriter">Next</text:emphasis>
+                    </ofx:paragraph>
+                </l:item>
+                <l:item>
+                    <ofx:paragraph lang="en">Press <text:emphasis style="typewriter">Next</text:emphasis> to start the installation.
+                    </ofx:paragraph>
+                </l:item>
+                <l:item>
+                    <ofx:paragraph lang="en">Before pressing <text:emphasis style="typewriter">Finish</text:emphasis> assure the checkbox to start "StackBuilder" is checked.
                     </ofx:paragraph>
                 </l:item>
             </l:type>
         </l:list>
-
     </ofx:section>
 
     <ofx:section container="true" classifier="windows">
-        <ofx:title>Windows</ofx:title>
-
-        <ofx:listing>
-            <ofx:raw>apt-get install postgresql-9.1-postgis</ofx:raw>
-        </ofx:listing>
-
+        <ofx:title>StackBuilder</ofx:title>
+        <ofx:paragraph lang="en">"StackBuilder" helps you to install Extensions for PostgreSQL. It opens in a new window, where you need to choose your PostgreSQL installation in the dropdown menu.
+            Be sure the program has internet access. If you are behind a proxy enter its data after pressing <text:emphasis style="typewriter">Proxy Server</text:emphasis>.
+            Follow these steps:
+        </ofx:paragraph>
+        <l:list>
+            <l:type ordering="unordered">
+                <l:item>
+                    <ofx:paragraph lang="en">Press <text:emphasis style="typewriter">Next</text:emphasis> to continue.
+                    </ofx:paragraph>
+                </l:item>
+                <l:item>
+                    <ofx:paragraph lang="en">Search for the PostGIS Bundle (see figure below), confirm with <text:emphasis style="typewriter">Next</text:emphasis>
+                    </ofx:paragraph>
+                </l:item>
+                <l:item>
+                    <ofx:paragraph lang="en">Press<text:emphasis style="typewriter">Next</text:emphasis> to start the download.
+                    </ofx:paragraph>
+                </l:item>
+                <l:item>
+                    <ofx:paragraph lang="en">Press <text:emphasis style="typewriter">Next</text:emphasis>again.
+                    </ofx:paragraph>
+                </l:item>
+                <l:item>
+                    <ofx:paragraph lang="en">Accept the licence and press <text:emphasis style="typewriter">Next</text:emphasis> in the following window.
+                    </ofx:paragraph>
+                </l:item>
+                <l:item>
+                    <ofx:paragraph lang="en">Choose the destination directory (i.e. your PostgreSQL directory) and press <text:emphasis style="typewriter">Next</text:emphasis> to start the installation.
+                    </ofx:paragraph>
+                </l:item>
+                <l:item>
+                    <ofx:paragraph lang="en">After successful installation close by clicking <text:emphasis style="typewriter">Close</text:emphasis>.
+                    </ofx:paragraph>
+                </l:item>
+                <l:item>
+                    <ofx:paragraph lang="en">Return to the StackBuilder Wizard which should be still open, close it with <text:emphasis style="typewriter">Finish</text:emphasis>.
+                    </ofx:paragraph>
+                </l:item>
+            </l:type>
+        </l:list>
+        <ofx:paragraph lang="en">During installation you would be ask to set or change some environment variables, always confirm with <text:emphasis style="typewriter">Yes</text:emphasis>.
+        </ofx:paragraph>
     </ofx:section>
 </ofx:section>
