@@ -4,6 +4,8 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 import net.sf.ahtutils.test.AhtUtilsTstBootstrap;
+import net.sf.exlp.util.xml.JDomUtil;
+
 import org.jdom2.Element;
 
 public class CliJbossConfigConfigurator
@@ -20,9 +22,9 @@ public class CliJbossConfigConfigurator
         jboss.addDs(getDummyElement("datasourceTest"));
         jboss.changePublicInterface();
 
-        jboss.write(null);
-
+        JDomUtil.debug(jboss.getDocument());
 	}
+	
     static Element getDummyElement(String test)
     {
         Element element = new Element(test);

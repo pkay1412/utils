@@ -2,12 +2,13 @@ package net.sf.ahtutils.db.shell.postgres;
 
 import java.util.Arrays;
 
-import net.sf.ahtutils.interfaces.db.UtilsDbShell;
-import net.sf.exlp.exception.ExlpUnsupportedOsException;
-
 import org.apache.commons.configuration.Configuration;
+import org.jdom2.Document;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import net.sf.ahtutils.interfaces.db.UtilsDbShell;
+import net.sf.exlp.exception.ExlpUnsupportedOsException;
 
 public class PostgresDrop extends AbstractPostgresShell implements UtilsDbShell
 {
@@ -15,16 +16,28 @@ public class PostgresDrop extends AbstractPostgresShell implements UtilsDbShell
 	
 	public PostgresDrop(Configuration config)
     {
-		super(config,UtilsDbShell.Operation.restore);
+		this(config,null);
+    }
+	public PostgresDrop(Configuration config,Document xmlConfig)
+    {
+		super(config,UtilsDbShell.Operation.restore,xmlConfig);
     }
 	
 	public void buildCommands(boolean withStructure) throws ExlpUnsupportedOsException
 	{		
 		super.cmdPre();
 
-		for(String table : Arrays.asList(config.getStringArray(UtilsDbShell.cfgDbTablesDrop))){dropTable(table,false);}
-		for(String table : Arrays.asList(config.getStringArray(UtilsDbShell.cfgDbCascadeDrop))){dropTable(table,true);}
-		for(String seq : Arrays.asList(config.getStringArray(UtilsDbShell.cfgDbSequenceDrop))){dropSequence(seq);}
+		if(xmlConfig!=null)
+		{
+			//TODO Childs of UtilsDbShell.cfgDbDrop
+		}
+		else
+		{
+			for(String table : Arrays.asList(config.getStringArray(UtilsDbShell.cfgDbDropTable))){dropTable(table,false);}
+			for(String table : Arrays.asList(config.getStringArray(UtilsDbShell.cfgDbDropCascade))){dropTable(table,true);}
+			for(String seq : Arrays.asList(config.getStringArray(UtilsDbShell.cfgDbDropSequence))){dropSequence(seq);}
+		}
+		
 		debugDatabase();
 		super.cmdPost();
 	}
