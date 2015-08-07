@@ -96,10 +96,8 @@
 
 	
 	<ofx:paragraph lang="en">
-		The entity relationship diagram of the security framework is shown in 
-		image.admin.security.er
-		.
-		
+		The entity relationship diagram of the security framework is shown in Figure
+		<ofx:reference target="image.admin.security.er"/>.
 	</ofx:paragraph>
 	
 	<media:image id="image.admin.security.er">
