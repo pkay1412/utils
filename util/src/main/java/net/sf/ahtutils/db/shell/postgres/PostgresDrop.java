@@ -1,9 +1,14 @@
 package net.sf.ahtutils.db.shell.postgres;
 
 import java.util.Arrays;
+import java.util.List;
 
 import org.apache.commons.configuration.Configuration;
 import org.jdom2.Document;
+import org.jdom2.Element;
+import org.jdom2.filter.Filters;
+import org.jdom2.xpath.XPathExpression;
+import org.jdom2.xpath.XPathFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -16,11 +21,11 @@ public class PostgresDrop extends AbstractPostgresShell implements UtilsDbShell
 	
 	public PostgresDrop(Configuration config)
     {
-		this(config,null);
+		this(config, null);
     }
 	public PostgresDrop(Configuration config,Document xmlConfig)
     {
-		super(config,UtilsDbShell.Operation.restore,xmlConfig);
+		super(config, UtilsDbShell.Operation.restore, xmlConfig);
     }
 	
 	public void buildCommands(boolean withStructure) throws ExlpUnsupportedOsException
@@ -29,7 +34,29 @@ public class PostgresDrop extends AbstractPostgresShell implements UtilsDbShell
 
 		if(xmlConfig!=null)
 		{
-			//TODO Childs of UtilsDbShell.cfgDbDrop
+            XPathExpression<Element> xpe = XPathFactory.instance().compile("/config/db/tables/drop", Filters.element());
+            List<Element> elementList = xpe.evaluateFirst(xmlConfig).getChildren();
+            for(Element e : elementList)
+            {
+                if(e.getName().equals("table"))
+                {
+                   dropTable(e.getText(),false);
+                }
+                else
+                {
+                    if(e.getName().equals("cascade"))
+                    {
+                        dropTable(e.getText(),true);
+                    }
+                    else
+                    {
+                        if(e.getName().equals("sequence"))
+                        {
+                            dropSequence(e.getText());
+                        }
+                    }
+                }
+            }
 		}
 		else
 		{
