@@ -117,7 +117,7 @@
 			<ofx:title lang="en">Checkout Project From SVN Repository</ofx:title>
 			
 			<ofx:paragraph lang="en">
-					The next part of the installation ist to "Checkout a Project From SVN Repository".
+					The next part of the installation is to "Checkout a Project From SVN Repository".
 					Go to the top menu and press "window", open "show view", go to "other", look for "SVN" and click "SVN Repositories",
 					select "New" and "Repository Location", enter the URL (see below) and the password, press "Finish".
 					Now you are able to the see the repository location and right click on "trunk", select "Checkout as Maven Project", click on "Next" and "Finish".
@@ -134,15 +134,7 @@
 			
 		</ofx:section>
 		
-		<ofx:section id="section.admin.installation.eclipse.luna.texlipse" classifier="texlipse">
-			<ofx:title lang="en">TeXlipse</ofx:title>
-			
-			<ofx:paragraph lang="en">
-					Describe installation TeXlipse
-					http://texlipse.sourceforge.net/manual/installation.html
-			</ofx:paragraph>
-		</ofx:section>
-		
+		<ofx:section include="texlipse.xml"/>	
 	</ofx:section>
 	
 	<ofx:section container="true" classifier="git">

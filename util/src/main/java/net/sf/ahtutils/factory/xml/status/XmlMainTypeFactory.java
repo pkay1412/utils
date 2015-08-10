@@ -87,7 +87,7 @@ public class XmlMainTypeFactory
 		return xml;
 	}
 	
-	public static MainType build(Status status)
+	public static MainType transform(Status status)
 	{
 		MainType type = new MainType();
 		type.setCode(status.getCode());

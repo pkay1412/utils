@@ -7,6 +7,16 @@
 			 xmlns:l="http://www.openfuxml.org/list">
 	<ofx:title lang="en">Unzip</ofx:title>
 			
+	<ofx:paragraph lang="en" version="1">
+		 ZIP is an archive file format that supports lossless data compression.
+		 A .ZIP file may contain one or more files or folders that may have been compressed.
+		The format was originally created in 1989 by Phil Katz and is now supported by many software utilities.
+	</ofx:paragraph>
+	
+	<ofx:paragraph lang="en" version="1">
+		 As root user you can use the following command to install unzip:
+	</ofx:paragraph>
+
 	<ofx:listing>
 		<ofx:raw>apt-get install unzip</ofx:raw>
 	</ofx:listing>
