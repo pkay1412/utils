@@ -120,6 +120,19 @@
 			<artifactId>ooxml-schemas</artifactId>
 			<version>1.0</version>
 		</dependency>
+		
+		<!-- REST -->
+		<dependency>
+			<groupId>org.jboss.resteasy</groupId>
+			<artifactId>resteasy-jaxrs</artifactId>
+			<scope>provided</scope>
+			<exclusions>
+				<exclusion>
+					<artifactId>commons-logging</artifactId>
+					<groupId>commons-logging</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
 	</dependencies>
 	
 	<dependencyManagement>

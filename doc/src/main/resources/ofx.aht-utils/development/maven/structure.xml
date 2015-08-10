@@ -12,55 +12,55 @@
 	    
 	    <l:item>
 	    	<ofx:paragraph lang="en">
-				beans
+				The "beans modul" is responsible for the data processing. Furthermore, the modul provides the project logic.
 			</ofx:paragraph>
 	    </l:item>
 	    
 	    <l:item>
 	    	<ofx:paragraph lang="en">
-				client
+				The "client modul" contains the application.
 			</ofx:paragraph>
 	    </l:item>
 	    
 	    <l:item>
 	    	<ofx:paragraph lang="en">
-				doc
+				The "doc modul" is necessary for the software documentation. Every manual for the web application is included here.  
 			</ofx:paragraph>
 	    </l:item>
 	    
 	    <l:item>
 	    	<ofx:paragraph lang="en">
-				ear
+				The "ear modul" combines all other modules to a so-called "Enterprise Application Archive". This "ear-file" is executable on the host system.
 			</ofx:paragraph>
 	    </l:item>
 	    
 		<l:item>
 	    	<ofx:paragraph lang="en">
-				entities
+				The "entities modul" maps the project data model to the database structure.
 			</ofx:paragraph>
 	    </l:item>
 	    
 		<l:item>
 	    	<ofx:paragraph lang="en">
-				interfaces
+				The "interfaces modul" provides all necessary connections between the used technologies. 
 			</ofx:paragraph>
 	    </l:item>
 	    
 		<l:item>
 	    	<ofx:paragraph lang="en">
-				util
+				 The "util modul" provides factories and tools.
 			</ofx:paragraph>
 	    </l:item>
 	    
 	    <l:item>
 	    	<ofx:paragraph lang="en">
-				web
+				The "web modul" is the graphical user interface (GUI) for the web application.
 			</ofx:paragraph>
 	    </l:item>
 	    
 		<l:item>
 	    	<ofx:paragraph lang="en">
-				xml
+				The "xml modul" implements a data model for communication between services. 
 			</ofx:paragraph>
 	    </l:item>
 	    
