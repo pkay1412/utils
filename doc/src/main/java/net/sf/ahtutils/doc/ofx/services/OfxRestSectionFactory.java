@@ -75,9 +75,9 @@ public class OfxRestSectionFactory extends AbstractUtilsOfxDocumentationFactory
 		section.getContent().add(XmlParagraphFactory.text(rest.description()));
 		
 		Paragraph p = XmlParagraphFactory.build();
-		p.getContent().add("The service is providing the following methods using the context path ");
+		p.getContent().add("The service is using the context path ");
 		p.getContent().add(OfxEmphasisFactory.typewriter(path.value()));
-		p.getContent().add(":");
+		p.getContent().add(" and offering the following methods:");
 		section.getContent().add(p);
 		
 		org.openfuxml.content.list.List list = XmlListFactory.build(Ordering.unordered);
