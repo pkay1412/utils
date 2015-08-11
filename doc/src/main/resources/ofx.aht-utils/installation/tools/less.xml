@@ -15,7 +15,7 @@
 		 resulting in faster load times with large files.
 	</ofx:paragraph>
 	
-		<ofx:paragraph lang="en" version="1">
+	<ofx:paragraph lang="en" version="1">
 		 As root user you can use the following command to install less:
 	</ofx:paragraph>
 
