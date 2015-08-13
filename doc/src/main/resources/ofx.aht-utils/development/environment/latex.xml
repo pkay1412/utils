@@ -46,7 +46,8 @@
 		<ofx:title lang="en">Generation of Manuals</ofx:title>
 		
 		<ofx:paragraph lang="en" version="1">
-			The source for the manuals is located in the doc-module (the doc directory of the project).
+			The source for the manuals is located in the doc-module
+			(the <text:emphasis style="typewriter">doc</text:emphasis> directory of the project).
 			In this directory the following command has to be excecuted:
 		</ofx:paragraph>
 		
@@ -55,7 +56,7 @@
 		</ofx:listing>
 		
 		<ofx:paragraph lang="en" version="1">
-			This produces the pdf in the doc/target folder
+			This produces the PDF files in the <text:emphasis style="typewriter">doc/target</text:emphasis> folder.
 		</ofx:paragraph>
 		
 	</ofx:section>

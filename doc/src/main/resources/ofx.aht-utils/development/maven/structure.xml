@@ -2,6 +2,7 @@
 <ofx:section xmlns:ofx="http://www.openfuxml.org"
 			xmlns:l="http://www.openfuxml.org/list"
 			xmlns:t="http://www.openfuxml.org/table"
+			xmlns:text="http://www.openfuxml.org/text"
 			xmlns:media="http://www.openfuxml.org/media"
 			xmlns:layout="http://www.openfuxml.org/layout"
 			id="section.admin.development.er">
@@ -12,55 +13,62 @@
 	    
 	    <l:item>
 	    	<ofx:paragraph lang="en">
-				The "beans modul" is responsible for the data processing. Furthermore, the modul provides the project logic.
+				The <text:emphasis italic="true">beans</text:emphasis> module is responsible for the data processing and
+				includes the business logic of the system.
 			</ofx:paragraph>
 	    </l:item>
 	    
 	    <l:item>
 	    	<ofx:paragraph lang="en">
-				The "client modul" contains the application.
+				The <text:emphasis italic="true">client</text:emphasis> contains several executeables to directly connect
+				to the application server.
 			</ofx:paragraph>
 	    </l:item>
 	    
 	    <l:item>
 	    	<ofx:paragraph lang="en">
-				The "doc modul" is necessary for the software documentation. Every manual for the web application is included here.  
+				The complete documentation of the system is available in the <text:emphasis italic="true">doc</text:emphasis>
+				module.  
 			</ofx:paragraph>
 	    </l:item>
 	    
 	    <l:item>
 	    	<ofx:paragraph lang="en">
-				The "ear modul" combines all other modules to a so-called "Enterprise Application Archive". This "ear-file" is executable on the host system.
+				The <text:emphasis italic="true">ear</text:emphasis> module
+				(also known as Enterprise Application Archive) combines other modules and
+				can be deployed on an application server.
 			</ofx:paragraph>
 	    </l:item>
 	    
 		<l:item>
 	    	<ofx:paragraph lang="en">
-				The "entities modul" maps the project data model to the database structure.
+				The domain object model is defined in the <text:emphasis italic="true">entities</text:emphasis> module.
+				With use of object-relational-mapping the database structure is created.
 			</ofx:paragraph>
 	    </l:item>
 	    
 		<l:item>
 	    	<ofx:paragraph lang="en">
-				The "interfaces modul" provides all necessary connections between the used technologies. 
+				The <text:emphasis italic="true">interfaces</text:emphasis> module
+				describes interfaces shared by other modules. 
 			</ofx:paragraph>
 	    </l:item>
 	    
 		<l:item>
 	    	<ofx:paragraph lang="en">
-				 The "util modul" provides factories and tools.
+				 The <text:emphasis italic="true">interfaces</text:emphasis> module provides factories and tools.
 			</ofx:paragraph>
 	    </l:item>
 	    
 	    <l:item>
 	    	<ofx:paragraph lang="en">
-				The "web modul" is the graphical user interface (GUI) for the web application.
+				The <text:emphasis italic="true">web</text:emphasis> module contains the graphical user interface (GUI) for the web application.
 			</ofx:paragraph>
 	    </l:item>
 	    
 		<l:item>
 	    	<ofx:paragraph lang="en">
-				The "xml modul" implements a data model for communication between services. 
+				The <text:emphasis italic="true">xml</text:emphasis> module implements a data model used for web service communication. 
 			</ofx:paragraph>
 	    </l:item>
 	    
