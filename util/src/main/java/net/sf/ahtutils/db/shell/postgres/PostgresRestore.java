@@ -52,8 +52,8 @@ public class PostgresRestore extends AbstractPostgresShell implements UtilsDbShe
 		sb.append(" --no-owner");
 		sb.append(" --data-only");
 		
-		sb.append(" -t '"+table+"'");
-		sb.append(" ").append(pSqlDir.getValue()+File.separator+pDbName.getValue()+".sql");
+		sb.append(" -t "/*'"*/+table/*+"'"*/);
+		sb.append(" ").append(pSqlDir.getValue() + File.separator + pDbName.getValue() + ".sql");
 		
 		// Trigger http://dba.stackexchange.com/questions/23000/disable-constraints-before-using-pg-restore-exe
 		// http://www.postgresonline.com/special_feature.php?sf_name=postgresql83_pg_dumprestore_cheatsheet
@@ -72,7 +72,7 @@ public class PostgresRestore extends AbstractPostgresShell implements UtilsDbShe
 		sb.append(" -h ").append(pDbHost.getValue());
 		sb.append(" -U ").append(pDbUser.getValue());
 		sb.append(" -d ").append(pDbName.getValue());
-		sb.append(" -c \"").append("SELECT setval('"+seq+"', (SELECT MAX(id) FROM "+table+"));").append("\"");
+		sb.append(" -c \"").append("SELECT setval("/*'"*/+seq+/*"'*/", (SELECT MAX(id) FROM "+table+"));").append("\"");
 		
 		super.addLine(sb.toString());
 		return sb.toString();
