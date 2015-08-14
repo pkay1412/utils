@@ -28,6 +28,11 @@ public class TestXmlXlsColumn extends AbstractXmlReportTest
     {
     	XlsColumn xml = new XlsColumn();
     	
+    	xml.setColumn("A");
+    	xml.setLabel("myLabel");
+    	xml.setRequired(true);
+    	xml.setExample("myExample");
+    	
     	return xml;
     }
     

@@ -6,12 +6,12 @@
     <xsd:import namespace="http://www.openfuxml.org/chart" schemaLocation="../../../../../../ofx/xml/src/main/xsd/addon/chart.xsd"/>
     <xsd:element name="reports">
 	    <xsd:complexType>
-	            <xsd:sequence>
-		            <xsd:element ref="r:report" maxOccurs="unbounded"/>
-				</xsd:sequence>
-				<xsd:attribute name="dir" type="xsd:string"/>
-				<xsd:attribute name="resources" type="xsd:string"/>
-				<xsd:attribute name="templates" type="xsd:string"/>
+            <xsd:sequence>
+	            <xsd:element ref="r:report" maxOccurs="unbounded"/>
+			</xsd:sequence>
+			<xsd:attribute name="dir" type="xsd:string"/>
+			<xsd:attribute name="resources" type="xsd:string"/>
+			<xsd:attribute name="templates" type="xsd:string"/>
 		</xsd:complexType>    
     </xsd:element>
     <xsd:element name="report">
@@ -199,6 +199,7 @@
 	            <xsd:element ref="r:xlsSheet" maxOccurs="unbounded"/>
 	           	
             </xsd:sequence>
+            <xsd:attribute name="code" type="xsd:string"/>
         </xsd:complexType>
     </xsd:element>
     <xsd:element name="xlsSheet">
@@ -215,9 +216,9 @@
 	            
 	           	
             </xsd:sequence>
-            <xsd:attribute name="label" type="xsd:string"/>
             <xsd:attribute name="column" type="xsd:string"/>
             <xsd:attribute name="required" type="xsd:boolean"/>
+            <xsd:attribute name="label" type="xsd:string"/>
             <xsd:attribute name="example" type="xsd:string"/>
         </xsd:complexType>
     </xsd:element>
