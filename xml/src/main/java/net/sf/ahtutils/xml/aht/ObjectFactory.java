@@ -30,19 +30,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Query }
-     * 
-     */
-    public Query createQuery() {
-        return new Query();
-    }
-
-    /**
      * Create an instance of {@link Aht }
      * 
      */
     public Aht createAht() {
         return new Aht();
+    }
+
+    /**
+     * Create an instance of {@link Query }
+     * 
+     */
+    public Query createQuery() {
+        return new Query();
     }
 
 }

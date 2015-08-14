@@ -30,11 +30,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Indicator }
+     * Create an instance of {@link Monitoring }
      * 
      */
-    public Indicator createIndicator() {
-        return new Indicator();
+    public Monitoring createMonitoring() {
+        return new Monitoring();
+    }
+
+    /**
+     * Create an instance of {@link Transmission }
+     * 
+     */
+    public Transmission createTransmission() {
+        return new Transmission();
     }
 
     /**
@@ -43,6 +51,14 @@ public class ObjectFactory {
      */
     public DataSet createDataSet() {
         return new DataSet();
+    }
+
+    /**
+     * Create an instance of {@link Indicator }
+     * 
+     */
+    public Indicator createIndicator() {
+        return new Indicator();
     }
 
     /**
@@ -70,11 +86,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Monitoring }
+     * Create an instance of {@link ProcessingResult }
      * 
      */
-    public Monitoring createMonitoring() {
-        return new Monitoring();
+    public ProcessingResult createProcessingResult() {
+        return new ProcessingResult();
     }
 
     /**
@@ -83,14 +99,6 @@ public class ObjectFactory {
      */
     public Component createComponent() {
         return new Component();
-    }
-
-    /**
-     * Create an instance of {@link ProcessingResult }
-     * 
-     */
-    public ProcessingResult createProcessingResult() {
-        return new ProcessingResult();
     }
 
     /**
@@ -107,14 +115,6 @@ public class ObjectFactory {
      */
     public Actor createActor() {
         return new Actor();
-    }
-
-    /**
-     * Create an instance of {@link Transmission }
-     * 
-     */
-    public Transmission createTransmission() {
-        return new Transmission();
     }
 
 }

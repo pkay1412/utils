@@ -38,11 +38,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Time }
+     * Create an instance of {@link Figures }
      * 
      */
-    public Time createTime() {
-        return new Time();
+    public Figures createFigures() {
+        return new Figures();
     }
 
     /**
@@ -54,11 +54,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Figures }
+     * Create an instance of {@link Time }
      * 
      */
-    public Figures createFigures() {
-        return new Figures();
+    public Time createTime() {
+        return new Time();
     }
 
 }

@@ -19,19 +19,19 @@ import net.sf.ahtutils.xml.security.User;
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType>
- *   &lt;complexContent>
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *       &lt;sequence>
- *         &lt;element ref="{http://ahtutils.aht-group.com/security}user"/>
- *         &lt;element ref="{http://ahtutils.aht-group.com/status}status"/>
- *         &lt;element ref="{http://ahtutils.aht-group.com/status}statement"/>
- *         &lt;element ref="{http://ahtutils.aht-group.com/status}declaration"/>
- *       &lt;/sequence>
- *       &lt;attribute name="record" type="{http://www.w3.org/2001/XMLSchema}dateTime" />
- *     &lt;/restriction>
- *   &lt;/complexContent>
- * &lt;/complexType>
+ * &lt;complexType&gt;
+ *   &lt;complexContent&gt;
+ *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
+ *       &lt;sequence&gt;
+ *         &lt;element ref="{http://ahtutils.aht-group.com/security}user"/&gt;
+ *         &lt;element ref="{http://ahtutils.aht-group.com/status}status"/&gt;
+ *         &lt;element ref="{http://ahtutils.aht-group.com/status}statement"/&gt;
+ *         &lt;element ref="{http://ahtutils.aht-group.com/status}declaration"/&gt;
+ *       &lt;/sequence&gt;
+ *       &lt;attribute name="record" type="{http://www.w3.org/2001/XMLSchema}dateTime" /&gt;
+ *     &lt;/restriction&gt;
+ *   &lt;/complexContent&gt;
+ * &lt;/complexType&gt;
  * </pre>
  * 
  * 

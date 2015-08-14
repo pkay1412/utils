@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<r:xlsDefinition xmlns:r="http://ahtutils.aht-group.com/report">
+    <r:xlsWorkbook code="myCode"/>
+    <r:xlsWorkbook code="myCode"/>
+</r:xlsDefinition>

@@ -30,11 +30,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Request }
+     * Create an instance of {@link Info }
      * 
      */
-    public Request createRequest() {
-        return new Request();
+    public Info createInfo() {
+        return new Info();
     }
 
     /**
@@ -46,11 +46,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Info }
+     * Create an instance of {@link Request }
      * 
      */
-    public Info createInfo() {
-        return new Info();
+    public Request createRequest() {
+        return new Request();
     }
 
 }

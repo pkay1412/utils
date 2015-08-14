@@ -142,10 +142,10 @@
         </jxb:schemaBindings>
     </jxb:bindings>
     
-	<jxb:bindings schemaLocation="../../../../../ofx/xml/src/main/xsd/addon/chart.xsd" node="/xsd:schema">
+<!-- 	<jxb:bindings schemaLocation="../../../../../ofx/xml/src/main/xsd/addon/chart.xsd" node="/xsd:schema">
         <jxb:schemaBindings>
             <jxb:package name="org.openfuxml.xml.addon.chart"/>
         </jxb:schemaBindings>
-    </jxb:bindings>
+    </jxb:bindings>  -->
    
 </jxb:bindings>

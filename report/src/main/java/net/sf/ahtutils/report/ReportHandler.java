@@ -392,10 +392,11 @@ public class ReportHandler {
 			OfxChartRenderer ofxRenderer = new OfxChartRenderer();
 			for (Media media : info.getMedia())
 			{
-				Chart chart          = media.getChart();
-				JFreeChart jfreeChart = ofxRenderer.render(chart);
-				BufferedImage chartImage = jfreeChart.createBufferedImage(320, 240);
-				mapReportParameter.put(media.getCode(), chartImage);
+				logger.warn("Chart module deactivated");
+//				Chart chart          = media.getChart();
+//				JFreeChart jfreeChart = ofxRenderer.render(chart);
+//				BufferedImage chartImage = jfreeChart.createBufferedImage(320, 240);
+//				mapReportParameter.put(media.getCode(), chartImage);
 			}
 		}
 	

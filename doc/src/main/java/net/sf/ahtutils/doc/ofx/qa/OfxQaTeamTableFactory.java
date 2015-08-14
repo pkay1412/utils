@@ -156,5 +156,5 @@ public class OfxQaTeamTableFactory extends AbstractUtilsOfxDocumentationFactory
 		row.getCell().add(OfxCellFactory.createParagraphCell(sb.toString()));
 		
 		return row;
-	}	
+	}
 }
