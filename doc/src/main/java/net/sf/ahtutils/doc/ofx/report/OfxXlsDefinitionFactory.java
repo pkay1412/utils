@@ -47,6 +47,7 @@ public class OfxXlsDefinitionFactory extends AbstractUtilsOfxDocumentationFactor
 		headerKeys = new ArrayList<String>();
 		headerKeys.add("auXlsDefinitionColumn");
 		headerKeys.add("auXlsDefinitionRequired");
+		headerKeys.add("auXlsDefinitionAttribute");
 		headerKeys.add("auXlsDefinitionDescription");
 	}
 	
@@ -75,9 +76,10 @@ public class OfxXlsDefinitionFactory extends AbstractUtilsOfxDocumentationFactor
 	private Specification createSpecifications()
 	{
 		Columns cols = new Columns();
-		cols.getColumn().add(OfxColumnFactory.flex(30));
-		cols.getColumn().add(OfxColumnFactory.flex(15));
+		cols.getColumn().add(OfxColumnFactory.flex(5));
+		cols.getColumn().add(OfxColumnFactory.flex(10));
 		cols.getColumn().add(OfxColumnFactory.flex(35));
+		cols.getColumn().add(OfxColumnFactory.flex(50));
 			
 		
 		Specification specification = new Specification();
@@ -112,6 +114,7 @@ public class OfxXlsDefinitionFactory extends AbstractUtilsOfxDocumentationFactor
 		row.getCell().add(OfxCellFactory.createParagraphCell(xlsColumn.getColumn()));
 		row.getCell().add(OfxCellFactory.createParagraphCell(""+xlsColumn.isRequired()));
 		row.getCell().add(OfxMultiLangFactory.cell(langs, xlsColumn.getLangs()));
+		row.getCell().add(OfxMultiLangFactory.cell(langs, xlsColumn.getDescriptions()));
 		
 		return row;
 	}	

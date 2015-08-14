@@ -47,6 +47,13 @@ public class OfxMultiLangFactory
 		return cell;
 	}
 	
+	public static Cell cell(String[] keys, Descriptions descriptions)
+	{
+		Cell cell = OfxCellFactory.build();
+		cell.getContent().addAll(paragraph(keys,descriptions));
+		return cell;
+	}
+	
 	public static List<Paragraph> paragraph(String[] keys, Langs langs)
 	{
 		List<Paragraph> paragraphs = new ArrayList<Paragraph>();
