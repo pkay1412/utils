@@ -23,7 +23,7 @@
 		
 	</ofx:section>
 	
-	<ofx:section>
+	<ofx:section id="section.admin.db.postgresql.backup">
 		<ofx:title lang="en">Backup</ofx:title>
 			
 		<ofx:paragraph lang="en" >

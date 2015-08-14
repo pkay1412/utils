@@ -30,27 +30,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link To }
+     * Create an instance of {@link Mails }
      * 
      */
-    public To createTo() {
-        return new To();
-    }
-
-    /**
-     * Create an instance of {@link EmailAddress }
-     * 
-     */
-    public EmailAddress createEmailAddress() {
-        return new EmailAddress();
-    }
-
-    /**
-     * Create an instance of {@link Template }
-     * 
-     */
-    public Template createTemplate() {
-        return new Template();
+    public Mails createMails() {
+        return new Mails();
     }
 
     /**
@@ -78,6 +62,22 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link EmailAddress }
+     * 
+     */
+    public EmailAddress createEmailAddress() {
+        return new EmailAddress();
+    }
+
+    /**
+     * Create an instance of {@link To }
+     * 
+     */
+    public To createTo() {
+        return new To();
+    }
+
+    /**
      * Create an instance of {@link Cc }
      * 
      */
@@ -91,6 +91,14 @@ public class ObjectFactory {
      */
     public Bcc createBcc() {
         return new Bcc();
+    }
+
+    /**
+     * Create an instance of {@link Template }
+     * 
+     */
+    public Template createTemplate() {
+        return new Template();
     }
 
     /**
@@ -110,11 +118,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Mails }
+     * Create an instance of {@link Tracker }
      * 
      */
-    public Mails createMails() {
-        return new Mails();
+    public Tracker createTracker() {
+        return new Tracker();
     }
 
     /**
@@ -123,14 +131,6 @@ public class ObjectFactory {
      */
     public Link createLink() {
         return new Link();
-    }
-
-    /**
-     * Create an instance of {@link Tracker }
-     * 
-     */
-    public Tracker createTracker() {
-        return new Tracker();
     }
 
 }

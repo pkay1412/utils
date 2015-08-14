@@ -18,26 +18,27 @@ import javax.xml.bind.annotation.XmlType;
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType>
- *   &lt;complexContent>
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *       &lt;sequence>
- *         &lt;element ref="{http://ahtutils.aht-group.com/status}transistions"/>
- *         &lt;element ref="{http://ahtutils.aht-group.com/status}langs"/>
- *         &lt;element ref="{http://ahtutils.aht-group.com/status}descriptions"/>
- *         &lt;element ref="{http://ahtutils.aht-group.com/status}lang" maxOccurs="unbounded"/>
- *       &lt;/sequence>
- *       &lt;attribute name="id" type="{http://www.w3.org/2001/XMLSchema}long" />
- *       &lt;attribute name="key" type="{http://www.w3.org/2001/XMLSchema}string" />
- *       &lt;attribute name="code" type="{http://www.w3.org/2001/XMLSchema}string" />
- *       &lt;attribute name="group" type="{http://www.w3.org/2001/XMLSchema}string" />
- *       &lt;attribute name="label" type="{http://www.w3.org/2001/XMLSchema}string" />
- *       &lt;attribute name="visible" type="{http://www.w3.org/2001/XMLSchema}boolean" />
- *       &lt;attribute name="image" type="{http://www.w3.org/2001/XMLSchema}string" />
- *       &lt;attribute name="position" type="{http://www.w3.org/2001/XMLSchema}int" />
- *     &lt;/restriction>
- *   &lt;/complexContent>
- * &lt;/complexType>
+ * &lt;complexType&gt;
+ *   &lt;complexContent&gt;
+ *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
+ *       &lt;sequence&gt;
+ *         &lt;element ref="{http://ahtutils.aht-group.com/status}transistions"/&gt;
+ *         &lt;element ref="{http://ahtutils.aht-group.com/status}langs"/&gt;
+ *         &lt;element ref="{http://ahtutils.aht-group.com/status}descriptions"/&gt;
+ *         &lt;element ref="{http://ahtutils.aht-group.com/status}lang" maxOccurs="unbounded"/&gt;
+ *         &lt;element ref="{http://ahtutils.aht-group.com/status}parent"/&gt;
+ *       &lt;/sequence&gt;
+ *       &lt;attribute name="id" type="{http://www.w3.org/2001/XMLSchema}long" /&gt;
+ *       &lt;attribute name="key" type="{http://www.w3.org/2001/XMLSchema}string" /&gt;
+ *       &lt;attribute name="code" type="{http://www.w3.org/2001/XMLSchema}string" /&gt;
+ *       &lt;attribute name="group" type="{http://www.w3.org/2001/XMLSchema}string" /&gt;
+ *       &lt;attribute name="label" type="{http://www.w3.org/2001/XMLSchema}string" /&gt;
+ *       &lt;attribute name="visible" type="{http://www.w3.org/2001/XMLSchema}boolean" /&gt;
+ *       &lt;attribute name="image" type="{http://www.w3.org/2001/XMLSchema}string" /&gt;
+ *       &lt;attribute name="position" type="{http://www.w3.org/2001/XMLSchema}int" /&gt;
+ *     &lt;/restriction&gt;
+ *   &lt;/complexContent&gt;
+ * &lt;/complexType&gt;
  * </pre>
  * 
  * 
@@ -47,7 +48,8 @@ import javax.xml.bind.annotation.XmlType;
     "transistions",
     "langs",
     "descriptions",
-    "lang"
+    "lang",
+    "parent"
 })
 @XmlRootElement(name = "subType")
 public class SubType
@@ -63,6 +65,8 @@ public class SubType
     protected Descriptions descriptions;
     @XmlElement(required = true)
     protected List<Lang> lang;
+    @XmlElement(required = true)
+    protected Parent parent;
     @XmlAttribute(name = "id")
     protected Long id;
     @XmlAttribute(name = "key")
@@ -199,6 +203,34 @@ public class SubType
 
     public void unsetLang() {
         this.lang = null;
+    }
+
+    /**
+     * Gets the value of the parent property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Parent }
+     *     
+     */
+    public Parent getParent() {
+        return parent;
+    }
+
+    /**
+     * Sets the value of the parent property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Parent }
+     *     
+     */
+    public void setParent(Parent value) {
+        this.parent = value;
+    }
+
+    public boolean isSetParent() {
+        return (this.parent!= null);
     }
 
     /**

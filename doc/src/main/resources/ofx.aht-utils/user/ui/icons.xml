@@ -169,7 +169,7 @@
 	                    <ofx:paragraph>Change the number of items shown by the system</ofx:paragraph>
 	                </table:cell>
 	            </table:row>
-<!-- 	            <table:row>
+ 	            <table:row>
 	                <table:cell>
 	                    <media:image>
 	                        <layout:height unit="em">1.0</layout:height>
@@ -180,10 +180,10 @@
 	                    <ofx:paragraph>Help</ofx:paragraph>
 	                </table:cell>
 	                <table:cell>
-	                    <ofx:paragraph>Send Message to Administrator or HelpDesk</ofx:paragraph>
+	                    <ofx:paragraph>The user is forwarded to the help desk</ofx:paragraph>
 	                </table:cell>
 	            </table:row>
-	            <table:row>
+<!--	            <table:row>
 	                <table:cell>
 	                    <media:image>
 	                        <layout:height unit="em">1.0</layout:height>

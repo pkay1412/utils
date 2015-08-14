@@ -10,7 +10,6 @@ import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
-import org.openfuxml.xml.addon.chart.Chart;
 
 
 /**
@@ -19,29 +18,28 @@ import org.openfuxml.xml.addon.chart.Chart;
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType>
- *   &lt;complexContent>
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *       &lt;sequence>
- *         &lt;element ref="{http://ahtutils.aht-group.com/report}template"/>
- *         &lt;element ref="{http://ahtutils.aht-group.com/report}jr" maxOccurs="unbounded"/>
- *         &lt;element ref="{http://www.openfuxml.org/chart}chart"/>
- *       &lt;/sequence>
- *       &lt;attribute name="refId" type="{http://www.w3.org/2001/XMLSchema}long" />
- *       &lt;attribute name="code" type="{http://www.w3.org/2001/XMLSchema}string" />
- *       &lt;attribute name="dir" type="{http://www.w3.org/2001/XMLSchema}string" />
- *       &lt;attribute name="type">
- *         &lt;simpleType>
- *           &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
- *             &lt;enumeration value="pdf"/>
- *             &lt;enumeration value="xls"/>
- *             &lt;enumeration value="chart"/>
- *           &lt;/restriction>
- *         &lt;/simpleType>
- *       &lt;/attribute>
- *     &lt;/restriction>
- *   &lt;/complexContent>
- * &lt;/complexType>
+ * &lt;complexType&gt;
+ *   &lt;complexContent&gt;
+ *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
+ *       &lt;sequence&gt;
+ *         &lt;element ref="{http://ahtutils.aht-group.com/report}template"/&gt;
+ *         &lt;element ref="{http://ahtutils.aht-group.com/report}jr" maxOccurs="unbounded"/&gt;
+ *       &lt;/sequence&gt;
+ *       &lt;attribute name="refId" type="{http://www.w3.org/2001/XMLSchema}long" /&gt;
+ *       &lt;attribute name="code" type="{http://www.w3.org/2001/XMLSchema}string" /&gt;
+ *       &lt;attribute name="dir" type="{http://www.w3.org/2001/XMLSchema}string" /&gt;
+ *       &lt;attribute name="type"&gt;
+ *         &lt;simpleType&gt;
+ *           &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
+ *             &lt;enumeration value="pdf"/&gt;
+ *             &lt;enumeration value="xls"/&gt;
+ *             &lt;enumeration value="chart"/&gt;
+ *           &lt;/restriction&gt;
+ *         &lt;/simpleType&gt;
+ *       &lt;/attribute&gt;
+ *     &lt;/restriction&gt;
+ *   &lt;/complexContent&gt;
+ * &lt;/complexType&gt;
  * </pre>
  * 
  * 
@@ -49,8 +47,7 @@ import org.openfuxml.xml.addon.chart.Chart;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
     "template",
-    "jr",
-    "chart"
+    "jr"
 })
 @XmlRootElement(name = "media")
 public class Media
@@ -62,8 +59,6 @@ public class Media
     protected Template template;
     @XmlElement(required = true)
     protected List<Jr> jr;
-    @XmlElement(namespace = "http://www.openfuxml.org/chart", required = true)
-    protected Chart chart;
     @XmlAttribute(name = "refId")
     protected Long refId;
     @XmlAttribute(name = "code")
@@ -136,34 +131,6 @@ public class Media
 
     public void unsetJr() {
         this.jr = null;
-    }
-
-    /**
-     * Gets the value of the chart property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Chart }
-     *     
-     */
-    public Chart getChart() {
-        return chart;
-    }
-
-    /**
-     * Sets the value of the chart property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Chart }
-     *     
-     */
-    public void setChart(Chart value) {
-        this.chart = value;
-    }
-
-    public boolean isSetChart() {
-        return (this.chart!= null);
     }
 
     /**

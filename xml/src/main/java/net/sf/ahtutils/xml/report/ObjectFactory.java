@@ -46,46 +46,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Field }
-     * 
-     */
-    public Field createField() {
-        return new Field();
-    }
-
-    /**
-     * Create an instance of {@link Template }
-     * 
-     */
-    public Template createTemplate() {
-        return new Template();
-    }
-
-    /**
-     * Create an instance of {@link Element }
-     * 
-     */
-    public Element createElement() {
-        return new Element();
-    }
-
-    /**
-     * Create an instance of {@link Resources }
-     * 
-     */
-    public Resources createResources() {
-        return new Resources();
-    }
-
-    /**
-     * Create an instance of {@link Resource.Value }
-     * 
-     */
-    public Resource.Value createResourceValue() {
-        return new Resource.Value();
-    }
-
-    /**
      * Create an instance of {@link Reports }
      * 
      */
@@ -110,6 +70,30 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link Template }
+     * 
+     */
+    public Template createTemplate() {
+        return new Template();
+    }
+
+    /**
+     * Create an instance of {@link Field }
+     * 
+     */
+    public Field createField() {
+        return new Field();
+    }
+
+    /**
+     * Create an instance of {@link Element }
+     * 
+     */
+    public Element createElement() {
+        return new Element();
+    }
+
+    /**
      * Create an instance of {@link Jr }
      * 
      */
@@ -118,19 +102,27 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link Resources }
+     * 
+     */
+    public Resources createResources() {
+        return new Resources();
+    }
+
+    /**
+     * Create an instance of {@link Resource.Value }
+     * 
+     */
+    public Resource.Value createResourceValue() {
+        return new Resource.Value();
+    }
+
+    /**
      * Create an instance of {@link Templates }
      * 
      */
     public Templates createTemplates() {
         return new Templates();
-    }
-
-    /**
-     * Create an instance of {@link File }
-     * 
-     */
-    public File createFile() {
-        return new File();
     }
 
     /**
@@ -163,6 +155,46 @@ public class ObjectFactory {
      */
     public Info.Footer createInfoFooter() {
         return new Info.Footer();
+    }
+
+    /**
+     * Create an instance of {@link File }
+     * 
+     */
+    public File createFile() {
+        return new File();
+    }
+
+    /**
+     * Create an instance of {@link XlsDefinition }
+     * 
+     */
+    public XlsDefinition createXlsDefinition() {
+        return new XlsDefinition();
+    }
+
+    /**
+     * Create an instance of {@link XlsWorkbook }
+     * 
+     */
+    public XlsWorkbook createXlsWorkbook() {
+        return new XlsWorkbook();
+    }
+
+    /**
+     * Create an instance of {@link XlsSheet }
+     * 
+     */
+    public XlsSheet createXlsSheet() {
+        return new XlsSheet();
+    }
+
+    /**
+     * Create an instance of {@link XlsColumn }
+     * 
+     */
+    public XlsColumn createXlsColumn() {
+        return new XlsColumn();
     }
 
 }

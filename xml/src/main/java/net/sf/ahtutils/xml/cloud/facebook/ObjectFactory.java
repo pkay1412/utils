@@ -38,30 +38,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link App.Redirect }
-     * 
-     */
-    public App.Redirect createAppRedirect() {
-        return new App.Redirect();
-    }
-
-    /**
-     * Create an instance of {@link Oauth }
-     * 
-     */
-    public Oauth createOauth() {
-        return new Oauth();
-    }
-
-    /**
-     * Create an instance of {@link Token }
-     * 
-     */
-    public Token createToken() {
-        return new Token();
-    }
-
-    /**
      * Create an instance of {@link SignedRequest }
      * 
      */
@@ -75,6 +51,30 @@ public class ObjectFactory {
      */
     public User createUser() {
         return new User();
+    }
+
+    /**
+     * Create an instance of {@link Oauth }
+     * 
+     */
+    public Oauth createOauth() {
+        return new Oauth();
+    }
+
+    /**
+     * Create an instance of {@link App.Redirect }
+     * 
+     */
+    public App.Redirect createAppRedirect() {
+        return new App.Redirect();
+    }
+
+    /**
+     * Create an instance of {@link Token }
+     * 
+     */
+    public Token createToken() {
+        return new Token();
     }
 
 }

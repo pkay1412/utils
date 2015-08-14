@@ -53,10 +53,16 @@ public class ProcessingTimeTracker
 	
 	public String buildDefaultDebug(String prefix)
 	{
+
 		StringBuffer sb = new StringBuffer();
 		sb.append(prefix);
 		sb.append(" ").append(counter).append(" times");
 		sb.append(" in ").append(toTotalTime());
+		if(counter>0)
+		{
+			long total = stop-start;
+			sb.append(" avg: "+(total/counter));
+		}
 		return sb.toString();
 	}
 	

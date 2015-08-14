@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsd:schema targetNamespace="http://ahtutils.aht-group.com/report"
     xmlns:r="http://ahtutils.aht-group.com/report"
-    xmlns:chart="http://www.openfuxml.org/chart"
+    xmlns:us="http://ahtutils.aht-group.com/status"
     xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-    <xsd:import namespace="http://www.openfuxml.org/chart" schemaLocation="../../../../../../ofx/xml/src/main/xsd/addon/chart.xsd"/>
+    <xsd:import namespace="http://ahtutils.aht-group.com/status" schemaLocation="status.xsd"/>
     <xsd:element name="reports">
 	    <xsd:complexType>
-	            <xsd:sequence>
-		            <xsd:element ref="r:report" maxOccurs="unbounded"/>
-				</xsd:sequence>
-				<xsd:attribute name="dir" type="xsd:string"/>
-				<xsd:attribute name="resources" type="xsd:string"/>
-				<xsd:attribute name="templates" type="xsd:string"/>
+            <xsd:sequence>
+	            <xsd:element ref="r:report" maxOccurs="unbounded"/>
+			</xsd:sequence>
+			<xsd:attribute name="dir" type="xsd:string"/>
+			<xsd:attribute name="resources" type="xsd:string"/>
+			<xsd:attribute name="templates" type="xsd:string"/>
 		</xsd:complexType>    
     </xsd:element>
     <xsd:element name="report">
@@ -64,7 +64,7 @@
             <xsd:sequence>
                 <xsd:element ref="r:template" maxOccurs="1"/>
 	            <xsd:element ref="r:jr" maxOccurs="unbounded"/>
-                <xsd:element ref="chart:chart" maxOccurs="1"/>
+ <!--                <xsd:element ref="chart:chart" maxOccurs="1"/>  -->
             </xsd:sequence>
             <xsd:attribute name="refId" type="xsd:long"/>
             <xsd:attribute name="code" type="xsd:string"/>
@@ -182,6 +182,44 @@
                 <xsd:extension base="xsd:string">
                 </xsd:extension>
             </xsd:simpleContent>
+        </xsd:complexType>
+    </xsd:element>
+    
+    <xsd:element name="xlsDefinition">
+        <xsd:complexType>
+            <xsd:sequence>
+	            <xsd:element ref="r:xlsWorkbook" maxOccurs="unbounded"/>
+	           	
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="xlsWorkbook">
+        <xsd:complexType>
+            <xsd:sequence>
+	            <xsd:element ref="r:xlsSheet" maxOccurs="unbounded"/>
+	           	
+            </xsd:sequence>
+            <xsd:attribute name="code" type="xsd:string"/>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="xlsSheet">
+        <xsd:complexType>
+            <xsd:sequence>
+	            <xsd:element ref="r:xlsColumn" maxOccurs="unbounded"/>
+	           	
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="xlsColumn">
+        <xsd:complexType>
+            <xsd:sequence>
+	            <xsd:element ref="us:langs" maxOccurs="1"/>
+                <xsd:element ref="us:descriptions" maxOccurs="1"/>
+            </xsd:sequence>
+            <xsd:attribute name="column" type="xsd:string"/>
+            <xsd:attribute name="required" type="xsd:boolean"/>
+            <xsd:attribute name="label" type="xsd:string"/>
+            <xsd:attribute name="example" type="xsd:string"/>
         </xsd:complexType>
     </xsd:element>
 </xsd:schema>
