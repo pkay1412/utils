@@ -18,21 +18,21 @@ import net.sf.ahtutils.xml.text.Remark;
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType>
- *   &lt;complexContent>
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *       &lt;sequence>
- *         &lt;element ref="{http://ahtutils.aht-group.com/text}question"/>
- *         &lt;element ref="{http://ahtutils.aht-group.com/text}remark"/>
- *         &lt;element ref="{http://ahtutils.aht-group.com/status}unit"/>
- *       &lt;/sequence>
- *       &lt;attribute name="id" type="{http://www.w3.org/2001/XMLSchema}long" />
- *       &lt;attribute name="position" type="{http://www.w3.org/2001/XMLSchema}int" />
- *       &lt;attribute name="code" type="{http://www.w3.org/2001/XMLSchema}string" />
- *       &lt;attribute name="topic" type="{http://www.w3.org/2001/XMLSchema}string" />
- *     &lt;/restriction>
- *   &lt;/complexContent>
- * &lt;/complexType>
+ * &lt;complexType&gt;
+ *   &lt;complexContent&gt;
+ *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
+ *       &lt;sequence&gt;
+ *         &lt;element ref="{http://ahtutils.aht-group.com/text}question"/&gt;
+ *         &lt;element ref="{http://ahtutils.aht-group.com/text}remark"/&gt;
+ *         &lt;element ref="{http://ahtutils.aht-group.com/status}unit"/&gt;
+ *       &lt;/sequence&gt;
+ *       &lt;attribute name="id" type="{http://www.w3.org/2001/XMLSchema}long" /&gt;
+ *       &lt;attribute name="position" type="{http://www.w3.org/2001/XMLSchema}int" /&gt;
+ *       &lt;attribute name="code" type="{http://www.w3.org/2001/XMLSchema}string" /&gt;
+ *       &lt;attribute name="topic" type="{http://www.w3.org/2001/XMLSchema}string" /&gt;
+ *     &lt;/restriction&gt;
+ *   &lt;/complexContent&gt;
+ * &lt;/complexType&gt;
  * </pre>
  * 
  * 

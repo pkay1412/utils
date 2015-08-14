@@ -30,19 +30,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Exceptions }
+     * Create an instance of {@link DataUpdate }
      * 
      */
-    public Exceptions createExceptions() {
-        return new Exceptions();
+    public DataUpdate createDataUpdate() {
+        return new DataUpdate();
     }
 
     /**
-     * Create an instance of {@link Exception }
+     * Create an instance of {@link Mapper }
      * 
      */
-    public Exception createException() {
-        return new Exception();
+    public Mapper createMapper() {
+        return new Mapper();
     }
 
     /**
@@ -62,11 +62,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Entity }
+     * Create an instance of {@link Exceptions }
      * 
      */
-    public Entity createEntity() {
-        return new Entity();
+    public Exceptions createExceptions() {
+        return new Exceptions();
+    }
+
+    /**
+     * Create an instance of {@link Exception }
+     * 
+     */
+    public Exception createException() {
+        return new Exception();
     }
 
     /**
@@ -78,19 +86,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Mapper }
+     * Create an instance of {@link Entity }
      * 
      */
-    public Mapper createMapper() {
-        return new Mapper();
-    }
-
-    /**
-     * Create an instance of {@link DataUpdate }
-     * 
-     */
-    public DataUpdate createDataUpdate() {
-        return new DataUpdate();
+    public Entity createEntity() {
+        return new Entity();
     }
 
 }

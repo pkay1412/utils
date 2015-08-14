@@ -22,21 +22,21 @@ import net.sf.ahtutils.xml.text.Remark;
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType>
- *   &lt;complexContent>
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *       &lt;sequence>
- *         &lt;element ref="{http://ahtutils.aht-group.com/status}description"/>
- *         &lt;element ref="{http://ahtutils.aht-group.com/status}category"/>
- *         &lt;element ref="{http://ahtutils.aht-group.com/status}status"/>
- *         &lt;element ref="{http://ahtutils.aht-group.com/text}remark"/>
- *         &lt;element ref="{http://ahtutils.aht-group.com/survey}section" maxOccurs="unbounded"/>
- *       &lt;/sequence>
- *       &lt;attribute name="id" type="{http://www.w3.org/2001/XMLSchema}long" />
- *       &lt;attribute name="code" type="{http://www.w3.org/2001/XMLSchema}string" />
- *     &lt;/restriction>
- *   &lt;/complexContent>
- * &lt;/complexType>
+ * &lt;complexType&gt;
+ *   &lt;complexContent&gt;
+ *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
+ *       &lt;sequence&gt;
+ *         &lt;element ref="{http://ahtutils.aht-group.com/status}description"/&gt;
+ *         &lt;element ref="{http://ahtutils.aht-group.com/status}category"/&gt;
+ *         &lt;element ref="{http://ahtutils.aht-group.com/status}status"/&gt;
+ *         &lt;element ref="{http://ahtutils.aht-group.com/text}remark"/&gt;
+ *         &lt;element ref="{http://ahtutils.aht-group.com/survey}section" maxOccurs="unbounded"/&gt;
+ *       &lt;/sequence&gt;
+ *       &lt;attribute name="id" type="{http://www.w3.org/2001/XMLSchema}long" /&gt;
+ *       &lt;attribute name="code" type="{http://www.w3.org/2001/XMLSchema}string" /&gt;
+ *     &lt;/restriction&gt;
+ *   &lt;/complexContent&gt;
+ * &lt;/complexType&gt;
  * </pre>
  * 
  * 

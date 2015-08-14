@@ -15,18 +15,18 @@ import javax.xml.bind.annotation.XmlType;
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType>
- *   &lt;complexContent>
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *       &lt;attribute name="type" type="{http://www.w3.org/2001/XMLSchema}string" />
- *       &lt;attribute name="code" type="{http://www.w3.org/2001/XMLSchema}string" />
- *       &lt;attribute name="valid" type="{http://www.w3.org/2001/XMLSchema}boolean" />
- *       &lt;attribute name="min" type="{http://www.w3.org/2001/XMLSchema}int" />
- *       &lt;attribute name="max" type="{http://www.w3.org/2001/XMLSchema}int" />
- *       &lt;attribute name="actual" type="{http://www.w3.org/2001/XMLSchema}int" />
- *     &lt;/restriction>
- *   &lt;/complexContent>
- * &lt;/complexType>
+ * &lt;complexType&gt;
+ *   &lt;complexContent&gt;
+ *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
+ *       &lt;attribute name="type" type="{http://www.w3.org/2001/XMLSchema}string" /&gt;
+ *       &lt;attribute name="code" type="{http://www.w3.org/2001/XMLSchema}string" /&gt;
+ *       &lt;attribute name="valid" type="{http://www.w3.org/2001/XMLSchema}boolean" /&gt;
+ *       &lt;attribute name="min" type="{http://www.w3.org/2001/XMLSchema}int" /&gt;
+ *       &lt;attribute name="max" type="{http://www.w3.org/2001/XMLSchema}int" /&gt;
+ *       &lt;attribute name="actual" type="{http://www.w3.org/2001/XMLSchema}int" /&gt;
+ *     &lt;/restriction&gt;
+ *   &lt;/complexContent&gt;
+ * &lt;/complexType&gt;
  * </pre>
  * 
  * 

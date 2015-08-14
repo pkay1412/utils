@@ -28,27 +28,27 @@ import net.sf.ahtutils.xml.utils.TrafficLights;
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType>
- *   &lt;complexContent>
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *       &lt;sequence>
- *         &lt;element ref="{http://ahtutils.aht-group.com/access}role"/>
- *         &lt;element ref="{http://ahtutils.aht-group.com/status}langs"/>
- *         &lt;element ref="{http://ahtutils.aht-group.com/status}status"/>
- *         &lt;element ref="{http://ahtutils.aht-group.com/status}type"/>
- *         &lt;element ref="{http://ahtutils.aht-group.com/qa}test"/>
- *         &lt;element ref="{http://ahtutils.aht-group.com/security}staff"/>
- *         &lt;element ref="{http://ahtutils.aht-group.com/survey}templates"/>
- *         &lt;element ref="{http://ahtutils.aht-group.com/survey}template"/>
- *         &lt;element ref="{http://ahtutils.aht-group.com/survey}surveys"/>
- *         &lt;element ref="{http://ahtutils.aht-group.com/survey}survey"/>
- *         &lt;element ref="{http://ahtutils.aht-group.com/utils}trafficLight"/>
- *         &lt;element ref="{http://ahtutils.aht-group.com/utils}trafficLights"/>
- *       &lt;/sequence>
- *       &lt;attribute name="lang" type="{http://www.w3.org/2001/XMLSchema}string" />
- *     &lt;/restriction>
- *   &lt;/complexContent>
- * &lt;/complexType>
+ * &lt;complexType&gt;
+ *   &lt;complexContent&gt;
+ *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
+ *       &lt;sequence&gt;
+ *         &lt;element ref="{http://ahtutils.aht-group.com/access}role"/&gt;
+ *         &lt;element ref="{http://ahtutils.aht-group.com/status}langs"/&gt;
+ *         &lt;element ref="{http://ahtutils.aht-group.com/status}status"/&gt;
+ *         &lt;element ref="{http://ahtutils.aht-group.com/status}type"/&gt;
+ *         &lt;element ref="{http://ahtutils.aht-group.com/qa}test"/&gt;
+ *         &lt;element ref="{http://ahtutils.aht-group.com/security}staff"/&gt;
+ *         &lt;element ref="{http://ahtutils.aht-group.com/survey}templates"/&gt;
+ *         &lt;element ref="{http://ahtutils.aht-group.com/survey}template"/&gt;
+ *         &lt;element ref="{http://ahtutils.aht-group.com/survey}surveys"/&gt;
+ *         &lt;element ref="{http://ahtutils.aht-group.com/survey}survey"/&gt;
+ *         &lt;element ref="{http://ahtutils.aht-group.com/utils}trafficLight"/&gt;
+ *         &lt;element ref="{http://ahtutils.aht-group.com/utils}trafficLights"/&gt;
+ *       &lt;/sequence&gt;
+ *       &lt;attribute name="lang" type="{http://www.w3.org/2001/XMLSchema}string" /&gt;
+ *     &lt;/restriction&gt;
+ *   &lt;/complexContent&gt;
+ * &lt;/complexType&gt;
  * </pre>
  * 
  * 

@@ -19,21 +19,21 @@ import net.sf.ahtutils.xml.status.Scope;
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType>
- *   &lt;complexContent>
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *       &lt;sequence>
- *         &lt;element ref="{http://ahtutils.aht-group.com/status}langs"/>
- *         &lt;element ref="{http://ahtutils.aht-group.com/status}descriptions"/>
- *         &lt;element ref="{http://ahtutils.aht-group.com/status}scope"/>
- *       &lt;/sequence>
- *       &lt;attribute name="id" type="{http://www.w3.org/2001/XMLSchema}long" />
- *       &lt;attribute name="threshold" type="{http://www.w3.org/2001/XMLSchema}double" />
- *       &lt;attribute name="colorText" type="{http://www.w3.org/2001/XMLSchema}string" />
- *       &lt;attribute name="colorBackground" type="{http://www.w3.org/2001/XMLSchema}string" />
- *     &lt;/restriction>
- *   &lt;/complexContent>
- * &lt;/complexType>
+ * &lt;complexType&gt;
+ *   &lt;complexContent&gt;
+ *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
+ *       &lt;sequence&gt;
+ *         &lt;element ref="{http://ahtutils.aht-group.com/status}langs"/&gt;
+ *         &lt;element ref="{http://ahtutils.aht-group.com/status}descriptions"/&gt;
+ *         &lt;element ref="{http://ahtutils.aht-group.com/status}scope"/&gt;
+ *       &lt;/sequence&gt;
+ *       &lt;attribute name="id" type="{http://www.w3.org/2001/XMLSchema}long" /&gt;
+ *       &lt;attribute name="threshold" type="{http://www.w3.org/2001/XMLSchema}double" /&gt;
+ *       &lt;attribute name="colorText" type="{http://www.w3.org/2001/XMLSchema}string" /&gt;
+ *       &lt;attribute name="colorBackground" type="{http://www.w3.org/2001/XMLSchema}string" /&gt;
+ *     &lt;/restriction&gt;
+ *   &lt;/complexContent&gt;
+ * &lt;/complexType&gt;
  * </pre>
  * 
  * 

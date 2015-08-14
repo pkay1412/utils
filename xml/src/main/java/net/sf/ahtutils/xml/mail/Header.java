@@ -15,24 +15,24 @@ import javax.xml.bind.annotation.XmlType;
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType>
- *   &lt;complexContent>
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *       &lt;sequence>
- *         &lt;element ref="{http://ahtutils.aht-group.com/mail}from"/>
- *         &lt;element ref="{http://ahtutils.aht-group.com/mail}to"/>
- *         &lt;element ref="{http://ahtutils.aht-group.com/mail}cc"/>
- *         &lt;element ref="{http://ahtutils.aht-group.com/mail}bcc"/>
- *         &lt;element name="subject">
- *           &lt;simpleType>
- *             &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
- *             &lt;/restriction>
- *           &lt;/simpleType>
- *         &lt;/element>
- *       &lt;/sequence>
- *     &lt;/restriction>
- *   &lt;/complexContent>
- * &lt;/complexType>
+ * &lt;complexType&gt;
+ *   &lt;complexContent&gt;
+ *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
+ *       &lt;sequence&gt;
+ *         &lt;element ref="{http://ahtutils.aht-group.com/mail}from"/&gt;
+ *         &lt;element ref="{http://ahtutils.aht-group.com/mail}to"/&gt;
+ *         &lt;element ref="{http://ahtutils.aht-group.com/mail}cc"/&gt;
+ *         &lt;element ref="{http://ahtutils.aht-group.com/mail}bcc"/&gt;
+ *         &lt;element name="subject"&gt;
+ *           &lt;simpleType&gt;
+ *             &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
+ *             &lt;/restriction&gt;
+ *           &lt;/simpleType&gt;
+ *         &lt;/element&gt;
+ *       &lt;/sequence&gt;
+ *     &lt;/restriction&gt;
+ *   &lt;/complexContent&gt;
+ * &lt;/complexType&gt;
  * </pre>
  * 
  * 

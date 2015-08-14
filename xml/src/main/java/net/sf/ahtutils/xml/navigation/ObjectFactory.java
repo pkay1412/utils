@@ -54,19 +54,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link MenuItem }
-     * 
-     */
-    public MenuItem createMenuItem() {
-        return new MenuItem();
-    }
-
-    /**
      * Create an instance of {@link Menu }
      * 
      */
     public Menu createMenu() {
         return new Menu();
+    }
+
+    /**
+     * Create an instance of {@link MenuItem }
+     * 
+     */
+    public MenuItem createMenuItem() {
+        return new MenuItem();
     }
 
     /**
