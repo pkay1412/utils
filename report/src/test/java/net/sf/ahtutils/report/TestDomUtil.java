@@ -72,11 +72,12 @@ public class TestDomUtil extends AbstractAhtUtilsReportTest
 		OfxChartRenderer ofxRenderer = new OfxChartRenderer();
 		for (Media media : info.getMedia())
 		{
-			Chart chart          = media.getChart();
-			logger.error("Test chart");
-			JaxbUtil.error(chart);
-			JFreeChart jfreeChart = ofxRenderer.render(chart);
-			BufferedImage chartImage = jfreeChart.createBufferedImage(300, 400);
+			logger.warn("Chart Module deactivated");
+//			Chart chart          = media.getChart();
+//			logger.error("Test chart");
+//			JaxbUtil.error(chart);
+//			JFreeChart jfreeChart = ofxRenderer.render(chart);
+//			BufferedImage chartImage = jfreeChart.createBufferedImage(300, 400);
 		}
 	}
 	

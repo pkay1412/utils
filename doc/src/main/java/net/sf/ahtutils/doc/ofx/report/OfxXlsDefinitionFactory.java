@@ -25,6 +25,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import net.sf.ahtutils.doc.ofx.AbstractUtilsOfxDocumentationFactory;
+import net.sf.ahtutils.doc.ofx.util.OfxMultiLangFactory;
 import net.sf.ahtutils.xml.report.XlsColumn;
 import net.sf.ahtutils.xml.report.XlsSheet;
 import net.sf.ahtutils.xml.security.Staff;
@@ -110,7 +111,7 @@ public class OfxXlsDefinitionFactory extends AbstractUtilsOfxDocumentationFactor
 		
 		row.getCell().add(OfxCellFactory.createParagraphCell(xlsColumn.getColumn()));
 		row.getCell().add(OfxCellFactory.createParagraphCell(""+xlsColumn.isRequired()));
-		row.getCell().add(OfxCellFactory.createParagraphCell(xlsColumn.getLabel()));
+		row.getCell().add(OfxMultiLangFactory.cell(langs, xlsColumn.getLangs()));
 		
 		return row;
 	}	
