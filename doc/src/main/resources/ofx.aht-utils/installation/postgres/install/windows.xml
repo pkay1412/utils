@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <ofx:section xmlns:ofx="http://www.openfuxml.org"
              xmlns:media="http://www.openfuxml.org/media"
-             xmlns:table="http://www.openfuxml.org/table"
              xmlns:layout="http://www.openfuxml.org/layout"
              xmlns:text="http://www.openfuxml.org/text"
              xmlns:l="http://www.openfuxml.org/list"
@@ -51,8 +50,8 @@
 
     <ofx:section container="true" classifier="windows">
         <ofx:title>StackBuilder</ofx:title>
-        <ofx:paragraph lang="en">"StackBuilder" helps you to install Extensions for PostgreSQL. It opens in a new window, where you need to choose your PostgreSQL installation in the dropdown menu.
-            Be sure the program has internet access. If you are behind a proxy enter its data after pressing <text:emphasis style="typewriter">Proxy Server</text:emphasis>.
+        <ofx:paragraph lang="en">"StackBuilder" helps you to install extensions for PostgreSQL. It opens a new window, where you have to choose your PostgreSQL installation in the dropdown menu.
+            Be sure the program has internet access. If you are behind a proxy enter its data after clicking on <text:emphasis style="typewriter">Proxy Server</text:emphasis>.
             Follow these steps:
         </ofx:paragraph>
         <l:list>
@@ -62,7 +61,7 @@
                     </ofx:paragraph>
                 </l:item>
                 <l:item>
-                    <ofx:paragraph lang="en">Search for the PostGIS Bundle (see figure below), confirm with <text:emphasis style="typewriter">Next</text:emphasis>
+                    <ofx:paragraph lang="en">Search for the PostGIS Bundle (see figure below) and confirm with <text:emphasis style="typewriter">Next</text:emphasis>
                     </ofx:paragraph>
                 </l:item>
                 <l:item>
@@ -78,20 +77,34 @@
                     </ofx:paragraph>
                 </l:item>
                 <l:item>
-                    <ofx:paragraph lang="en">Choose the destination directory (i.e. your PostgreSQL directory) and press <text:emphasis style="typewriter">Next</text:emphasis> to start the installation.
+                    <ofx:paragraph lang="en">Choose the destination directory (default: your PostgreSQL directory) and press <text:emphasis style="typewriter">Next</text:emphasis> to start the installation.
                     </ofx:paragraph>
                 </l:item>
                 <l:item>
-                    <ofx:paragraph lang="en">After successful installation close by clicking <text:emphasis style="typewriter">Close</text:emphasis>.
+                    <ofx:paragraph lang="en">After the installation was successful, close it by clicking on <text:emphasis style="typewriter">Close</text:emphasis>.
                     </ofx:paragraph>
                 </l:item>
                 <l:item>
-                    <ofx:paragraph lang="en">Return to the StackBuilder Wizard which should be still open, close it with <text:emphasis style="typewriter">Finish</text:emphasis>.
+                    <ofx:paragraph lang="en">Return to the StackBuilder Wizard, which should be still open, and close it with <text:emphasis style="typewriter">Finish</text:emphasis>.
                     </ofx:paragraph>
                 </l:item>
             </l:type>
         </l:list>
-        <ofx:paragraph lang="en">During installation you would be ask to set or change some environment variables, always confirm with <text:emphasis style="typewriter">Yes</text:emphasis>.
+        <ofx:paragraph lang="en">During installation you will be ask to set or change some environment variables, always confirm with <text:emphasis style="typewriter">Yes</text:emphasis>.
         </ofx:paragraph>
+
+        <media:image id="image.admin.installation.postgres.stackbuilder">
+            <ofx:title lang="en">StackBuilder Setup Wizard</ofx:title>
+            <layout:alignment horizontal="center"/>
+            <layout:width unit="percentage">60</layout:width>
+            <media:media lang="en" src="png.aht-utils\installation\postgresql\stackBuilderStart.png" dst="en/admin/installation/postgres/stackbuilder"/>
+        </media:image>
+
+        <media:image id="image.admin.installation.postgres.postgis">
+            <ofx:title lang="en">PostGIS selection</ofx:title>
+            <layout:alignment horizontal="center"/>
+            <layout:width unit="percentage">60</layout:width>
+            <media:media lang="en" src="png.aht-utils\installation\postgresql\postGIS_install.png" dst="en/admin/installation/postgres/postgis"/>
+        </media:image>
     </ofx:section>
 </ofx:section>

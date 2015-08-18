@@ -3,8 +3,10 @@ package net.sf.ahtutils.controller.jboss;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
+import org.jdom2.Content;
 import org.jdom2.Document;
 import org.jdom2.Element;
 import org.jdom2.Namespace;
@@ -56,7 +58,7 @@ public class JbossConfigConfigurator
 	
 	public void addDs(Element element)
 	{
-        XPathExpression<Element> xpee = XPathFactory.instance().compile("/ns1:server/ns1:profile/ns2:subsystem/ns2:datasources", Filters.element(), null, getNamespaceList());
+        XPathExpression<Element> xpee = XPathFactory.instance().compile("/ns1:server/ns1:profile/ns3:subsystem/ns3:datasources", Filters.element(), null, getNamespaceList());
         Element datasources = xpee.evaluateFirst(doc);
         JDomUtil.setNameSpaceRecursive(element, datasources.getNamespace());
         datasources.addContent(0, element);
@@ -64,7 +66,7 @@ public class JbossConfigConfigurator
 	
 	public void addDbDriver(Element element)
 	{
-        XPathExpression<Element> xpee = XPathFactory.instance().compile("/ns1:server/ns1:profile/ns2:subsystem/ns2:datasources/ns2:drivers", Filters.element(), null, getNamespaceList());
+        XPathExpression<Element> xpee = XPathFactory.instance().compile("/ns1:server/ns1:profile/ns3:subsystem/ns3:datasources/ns3:drivers", Filters.element(), null, getNamespaceList());
         Element drivers = xpee.evaluateFirst(doc);
         JDomUtil.setNameSpaceRecursive(element, drivers.getNamespace());
         drivers.addContent(element);
@@ -73,7 +75,7 @@ public class JbossConfigConfigurator
 	public void changePublicInterface()
 	{
         Element interfacePublic = new Element("any-address");
-        XPathExpression<Element> xpe = XPathFactory.instance().compile("/ns1:server/ns1:interfaces", Filters.element(), null, Namespace.getNamespace("ns1", doc.getRootElement().getNamespaceURI()));
+        XPathExpression<Element> xpe = XPathFactory.instance().compile("/ns1:server/ns1:interfaces", Filters.element(), null,getNamespaceList());
         Element ele = xpe.evaluateFirst(doc);
         for(Element e : ele.getChildren())
         {
@@ -88,9 +90,17 @@ public class JbossConfigConfigurator
 
     private List<Namespace> getNamespaceList()
     {
+        Iterator<Content> desc = doc.getRootElement().getDescendants();
+        List<Namespace> tmp = new ArrayList<Namespace>(doc.getRootElement().getNamespacesIntroduced());
+        while(desc.hasNext()) {
+            tmp.addAll(desc.next().getNamespacesIntroduced());
+        }
         List<Namespace> ns = new ArrayList<Namespace>();
-        ns.add(Namespace.getNamespace("ns1", doc.getRootElement().getNamespaceURI()));
-        ns.add(Namespace.getNamespace("ns2", doc.getRootElement().getChildren().get(2).getChildren().get(1).getNamespaceURI()));
+        int i = 1;
+        for(Namespace namespace : tmp) {
+            ns.add(Namespace.getNamespace("ns" + i, namespace.getURI()));
+            i++;
+        }
         return ns;
     }
     
@@ -105,11 +115,7 @@ public class JbossConfigConfigurator
 
     public void changeTimeout(int second)
     {
-        List<Namespace> ns = new ArrayList<Namespace>();
-        ns.add(Namespace.getNamespace("ns1", doc.getRootElement().getNamespaceURI()));
-        ns.add(Namespace.getNamespace("ns2", doc.getRootElement().getChildren().get(2).getChildren().get(20).getNamespaceURI()));
-
-        XPathExpression<Element> xpee = XPathFactory.instance().compile("/ns1:server/ns1:profile/ns2:subsystem/ns2:coordinator-environment", Filters.element(), null, ns);
+        XPathExpression<Element> xpee = XPathFactory.instance().compile("/ns1:server/ns1:profile/ns22:subsystem/ns22:coordinator-environment", Filters.element(), null, getNamespaceList());
         Element coordinator_environment = xpee.evaluateFirst(doc);
         coordinator_environment.setAttribute("default-timeout", Integer.toString(second));
     }

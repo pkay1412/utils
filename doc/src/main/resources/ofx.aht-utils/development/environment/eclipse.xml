@@ -28,7 +28,7 @@
 			The first thing you need to install, is Eclipse Luna for Java EE Developers. You can download it from: 
 			<text:emphasis style="typewriter">www.eclipse.org/downloads</text:emphasis>		
 			After finishing your download unpack Eclipse Luna to your installation path.
-			For example <text:emphasis style="typewriter">C:programm fileseclipse</text:emphasis>	
+			For example <text:emphasis style="typewriter">C:\program files\eclipse</text:emphasis>
 			The next step, is to define your workspace. You need a unique one (e.g. workspaceLuna), if
 			you are using multiple version of eclipse.
 		</ofx:paragraph>
@@ -45,7 +45,7 @@
 			
 			<ofx:paragraph lang="en">
 				For the installation of <text:emphasis style="italic">"Subversive Team Provider 2.0"</text:emphasis>, you have to go to the Eclipse Marketplace.
-				You will find it: <text:emphasis style="typewriter">Help -> Eclipse Markeplace</text:emphasis>
+				You will find it: <text:emphasis style="typewriter">Help -> Eclipse Marketplace</text:emphasis>
 				Search for <text:emphasis style="italic">"Subversive"</text:emphasis>. Mark and install <text:emphasis style="italic">"SVN Team Provider 2.0"</text:emphasis> (see figure below).
 				Follow these steps:
 			</ofx:paragraph>
