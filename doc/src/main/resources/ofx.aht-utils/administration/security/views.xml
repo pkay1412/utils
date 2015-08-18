@@ -7,5 +7,14 @@
 			 id="section.admin.security.views">
 	<ofx:title lang="en">Views and Actions</ofx:title>
 	
+	<ofx:paragraph>
+-	Categories (which page)
+-	View (Rights to see the content)
+-	Actions (Permission to change/edit/save the content)
+	</ofx:paragraph>
 	
+	<ofx:paragraph>
+You are able to edit the views and actions of a user in this views and action page. Choose a category and select the view you want to edit. Afterwards a new window will appear called “view”. In this window is space for a description in English and French.
+Under this window is another field called Actions, you are able to define actions for the view in the selected category. 
+	</ofx:paragraph>
 </ofx:section>

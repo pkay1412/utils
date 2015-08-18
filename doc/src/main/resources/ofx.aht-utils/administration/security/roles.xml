@@ -7,5 +7,18 @@
 			 id="section.admin.security.roles">
 	<ofx:title lang="en">Roles</ofx:title>
 	
+	<ofx:paragraph>
+	-	Categories (of Roles)
+-	Roles (Roles for the Category)
+-	Role (a User Category including permission and actions for the Group)
+	</ofx:paragraph>
+	
+	<ofx:paragraph>
+	Roles describes the function of a single person in this system.
+	As you can see, there are divided into categories and you get the existing roles to a category by clicking on it.
+	Click on the role you want to edit. If you want to add a user-role to a Use-Case,
+	click on the green plus in the upper right corner and select the Use-Case you want to add.
+	This method is also working with views and actions. These new rights are available after relogging into the system.
+	</ofx:paragraph>
 	
 </ofx:section>

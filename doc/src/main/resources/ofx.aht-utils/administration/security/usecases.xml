@@ -7,5 +7,16 @@
 			 id="section.admin.security.usecases">
 	<ofx:title lang="en">Usecases</ofx:title>
 	
+	<ofx:paragraph>
+-	Categories (what kind of User)
+-	Use Case (Group of views/actions)
+	</ofx:paragraph>
+	
+	<ofx:paragraph>
+	Use-Cases describes views and actions combined in a group.
+	If you choose a category and select a Use-Case, you are able to add or delete views and the related
+	action by clicking the plus button in the upper right corner.
+	These changes take effect after relogging into the system.
+	</ofx:paragraph>
 	
 </ofx:section>
