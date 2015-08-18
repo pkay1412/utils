@@ -14,4 +14,5 @@ public @interface RestDescription
 {
    String label() default "";
    String description() default "";
+   int orderNr() default 0;
 }
