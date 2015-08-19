@@ -31,6 +31,7 @@ public class TestXmlChange extends AbstractXmlAuditTest
     	xml.setAid(1);
     	xml.setAction("action");
     	xml.setText("myValue");
+    	xml.setType("myType");
     	
     	if(withChilds)
     	{

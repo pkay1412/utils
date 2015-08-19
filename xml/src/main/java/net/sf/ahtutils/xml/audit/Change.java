@@ -24,6 +24,7 @@ import javax.xml.bind.annotation.XmlType;
  *       &lt;/sequence&gt;
  *       &lt;attribute name="aid" type="{http://www.w3.org/2001/XMLSchema}int" /&gt;
  *       &lt;attribute name="action" type="{http://www.w3.org/2001/XMLSchema}string" /&gt;
+ *       &lt;attribute name="type" type="{http://www.w3.org/2001/XMLSchema}string" /&gt;
  *       &lt;attribute name="text" type="{http://www.w3.org/2001/XMLSchema}string" /&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -48,6 +49,8 @@ public class Change
     protected Integer aid;
     @XmlAttribute(name = "action")
     protected String action;
+    @XmlAttribute(name = "type")
+    protected String type;
     @XmlAttribute(name = "text")
     protected String text;
 
@@ -137,6 +140,34 @@ public class Change
 
     public boolean isSetAction() {
         return (this.action!= null);
+    }
+
+    /**
+     * Gets the value of the type property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getType() {
+        return type;
+    }
+
+    /**
+     * Sets the value of the type property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setType(String value) {
+        this.type = value;
+    }
+
+    public boolean isSetType() {
+        return (this.type!= null);
     }
 
     /**

@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<at:change xmlns:at="http://ahtutils.aht-group.com/audit" aid="1" action="action" text="myValue">
-    <at:scope id="123" category="myCategory" entity="myEntity"/>
+<at:change xmlns:at="http://ahtutils.aht-group.com/audit" aid="1" action="action" type="myType" text="myValue">
+    <at:scope id="123" class="myClass" category="myCategory" entity="myEntity"/>
 </at:change>
