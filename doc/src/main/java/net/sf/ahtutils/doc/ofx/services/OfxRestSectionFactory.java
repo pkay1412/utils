@@ -83,29 +83,63 @@ public class OfxRestSectionFactory extends AbstractUtilsOfxDocumentationFactory
 		org.openfuxml.content.list.List list = XmlListFactory.build(Ordering.unordered);
 
 		List<Section> sections = new ArrayList<Section>();
-		int i = 0;
-		while ( i < c.getDeclaredMethods().length)
-		{
-			list.getItem().add(null);
-			sections.add(null);
-			i++;
-		}
-		for(Method method : c.getDeclaredMethods())
-		{
-			for(Annotation methodA : method.getDeclaredAnnotations())
-			{
-				if(methodA instanceof RestDescription)
-				{
-					RestDescription r = (RestDescription)methodA;
-					int index = r.orderNr()-1;
-					list.getItem().add(index ,XmlListItemFactory.build(r.label()));
-					list.getItem().remove(r.orderNr());
-					sections.add(index, build(c,method));
-					sections.remove(r.orderNr());
-				}
-			}
-		}
-		
+
+        List<Method> methods = new ArrayList<Method>();
+
+        for(Method method : c.getDeclaredMethods())
+            methods.add(method);
+        List<RestDescription> rdList = new ArrayList<RestDescription>();
+        for(Method m : methods)
+            for(Annotation an : m.getDeclaredAnnotations())
+            {
+                if(an instanceof RestDescription)
+                    rdList.add((RestDescription)an);
+            }
+//		int i = 0;
+//		while ( i < c.getDeclaredMethods().length)
+//		{
+//			list.getItem().add(null);
+//			sections.add(null);
+//			i++;
+//		}
+//        for(Method method : c.getDeclaredMethods())
+//        {
+//            for(Annotation methodA : method.getDeclaredAnnotations())
+//            {
+//                if(methodA instanceof RestDescription)
+//                {
+//                    RestDescription r = (RestDescription)methodA;
+//                    if(r.orderNr() != 0)
+//                    {
+//                        int index = r.orderNr()-1;
+//                        list.getItem().add(index ,XmlListItemFactory.build(r.label()));
+//                        sections.add(index, build(c,method));
+//                    }
+//                    else
+//                    {
+//                        list.getItem().add(XmlListItemFactory.build(r.label()));
+//                        sections.add(build(c,method));
+//                    }
+//                }
+//            }
+//        }
+//        for(int j = 0; j < list.getItem().size(); j++)
+//        {
+//            if (list.getItem().get(j) == null)
+//            {
+//                list.getItem().remove(j);
+//                j--;
+//            }
+//        }
+//
+//        for(int j = 0; j < section.getContent().size(); j++)
+//        {
+//            if (section.getContent().get(j) == null)
+//            {
+//                list.getItem().remove(j);
+//                j--;
+//            }
+//        }
 		section.getContent().add(list);
 		section.getContent().addAll(sections);
 		
@@ -126,7 +160,7 @@ public class OfxRestSectionFactory extends AbstractUtilsOfxDocumentationFactory
 		sbId.append(".").append(method.getName().toLowerCase());
 	
 		Section section = XmlSectionFactory.build();
-		section.getContent().add(XmlTitleFactory.build("Service: "+rest.label()));
+		section.getContent().add(XmlTitleFactory.build("Service: " + rest.label()));
 		section.getContent().add(XmlParagraphFactory.text(rest.description()));
 		
 		section.getContent().add(table(method,sbId.toString(),rest.label()));

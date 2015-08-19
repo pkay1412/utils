@@ -36,11 +36,18 @@ public class TestAuditScopeProcessor extends AbstractAhtUtilsTest
 		list.add(XmlChangeFactory.build(2, a));
 		list.add(XmlChangeFactory.build(3, b));
 		list.add(XmlChangeFactory.build(4, c));
+        list.add(XmlChangeFactory.build(4, b));
+        list.add(XmlChangeFactory.build(4, a));
+        list.add(XmlChangeFactory.build(4, b));
+        list.add(XmlChangeFactory.build(4, c));
+        list.add(XmlChangeFactory.build(4, a));
+        list.add(XmlChangeFactory.build(4, c));
+
 		
 		asp = new AuditScopeProcessor();
 	}
  
-    @Test @Ignore
+    @Test //@Ignore
     public void nrOfScopes()
     {	
     	List<Scope> actual = asp.group(list);
