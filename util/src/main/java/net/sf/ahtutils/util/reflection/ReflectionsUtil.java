@@ -62,26 +62,32 @@ public class ReflectionsUtil {
 	 */
 	 public static Object resolveExpression(Object parent, String expression) throws Exception
 	 {
-		 String[] pathToProperty = expression.split(".");
-			for (String node : pathToProperty)
-			{
-				Object nodeObject = simpleInvokeMethod("get" +node,
+             logger.info("Resolving " +expression + " on " +parent.toString());
+             if (expression.contains("."))
+             {
+                 int elements = expression.split("\\.").length;
+                 logger.info("Still resolving " +elements);
+                 String pathToProperty = expression.substring(0, expression.indexOf("."));
+                 logger.info("Path to Property " +pathToProperty);
+                 String getter         = "get" +(pathToProperty.substring(0, 1).toUpperCase() + pathToProperty.substring(1));
+                 logger.info("Getter: " +getter);
+                 Object nextObject = simpleInvokeMethod(getter,
 					      new Object[] { },
 					      parent.getClass(),
-					      parent); 
-				if (nodeObject == null)
-				{
-					Object empty = getParameterClass(parent, "get" +node).newInstance();
-					simpleInvokeMethod("set" +node,
-						      new Object[] { },
-						      parent.getClass(),
-						      parent);
-					nodeObject = empty;
-				}
-				parent   = nodeObject;
-			//	property = node;
-			}
-			return parent;
+					      parent);
+                 return resolveExpression(nextObject, expression.substring(expression.indexOf(".")+1, expression.length()));
+                 
+                 
+             }
+             else 
+             {
+                 String methodName = "get" +(expression.substring(0, 1).toUpperCase() + expression.substring(1));
+                 logger.info("Requesting value by invoking " +methodName + "()");
+                 return simpleInvokeMethod(methodName,
+					      new Object[] { },
+					      parent.getClass(),
+					      parent);
+             }	
 	 }
 	 
 	 /**
@@ -100,16 +106,17 @@ public class ReflectionsUtil {
 		logger.trace("Invoking " +methodName);
 		
 		// Now find the correct method
+                logger.trace("Searching for methods of class " +targetClass.getName());
 		Method[] methods = targetClass.getMethods();
 		Method m         = null;
 		for (Method method : methods)
 		{
-			if (method.getName().equals(methodName))
-			{
-				m = method;
-			}
+                    logger.trace("Found method " +method.getName());
+                    if (method.getName().equals(methodName))
+                    {
+                            m = method;
+                    }
 		}
-		
 		if (Modifier.isPrivate(m.getModifiers()))
 		{
 			m.setAccessible(true);
