@@ -81,8 +81,15 @@ public class OfxRestSectionFactory extends AbstractUtilsOfxDocumentationFactory
 		section.getContent().add(p);
 		
 		org.openfuxml.content.list.List list = XmlListFactory.build(Ordering.unordered);
-		
+
 		List<Section> sections = new ArrayList<Section>();
+		int i = 0;
+		while ( i < c.getDeclaredMethods().length)
+		{
+			list.getItem().add(null);
+			sections.add(null);
+			i++;
+		}
 		for(Method method : c.getDeclaredMethods())
 		{
 			for(Annotation methodA : method.getDeclaredAnnotations())
@@ -90,8 +97,11 @@ public class OfxRestSectionFactory extends AbstractUtilsOfxDocumentationFactory
 				if(methodA instanceof RestDescription)
 				{
 					RestDescription r = (RestDescription)methodA;
-					list.getItem().add(XmlListItemFactory.build(r.label()));
-					sections.add(build(c,method));
+					int index = r.orderNr()-1;
+					list.getItem().add(index ,XmlListItemFactory.build(r.label()));
+					list.getItem().remove(r.orderNr());
+					sections.add(index, build(c,method));
+					sections.remove(r.orderNr());
 				}
 			}
 		}
