@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<at:revision xmlns:at="http://ahtutils.aht-group.com/audit" rev="123" date="2011-11-11T11:11:11">
+    <at:user firstName="myFirst" lastName="myLast"/>
+    <at:scope id="123" label="myLabel"/>
+    <at:scope id="123" label="myLabel"/>
+</at:revision>

@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<at:scope xmlns:at="http://ahtutils.aht-group.com/audit" id="123" label="myLabel">
+    <at:change action="action" type="type">myValue</at:change>
+    <at:change action="action" type="type">myValue</at:change>
+</at:scope>
