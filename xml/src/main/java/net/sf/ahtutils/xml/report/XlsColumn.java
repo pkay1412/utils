@@ -24,12 +24,11 @@ import net.sf.ahtutils.xml.status.Langs;
  *       &lt;sequence&gt;
  *         &lt;element ref="{http://ahtutils.aht-group.com/status}langs"/&gt;
  *         &lt;element ref="{http://ahtutils.aht-group.com/status}descriptions"/&gt;
+ *         &lt;element ref="{http://ahtutils.aht-group.com/report}xlsTransformation"/&gt;
  *       &lt;/sequence&gt;
  *       &lt;attribute name="column" type="{http://www.w3.org/2001/XMLSchema}string" /&gt;
  *       &lt;attribute name="required" type="{http://www.w3.org/2001/XMLSchema}boolean" /&gt;
  *       &lt;attribute name="label" type="{http://www.w3.org/2001/XMLSchema}string" /&gt;
- *       &lt;attribute name="dataClass" type="{http://www.w3.org/2001/XMLSchema}string" /&gt;
- *       &lt;attribute name="formatPattern" type="{http://www.w3.org/2001/XMLSchema}string" /&gt;
  *       &lt;attribute name="example" type="{http://www.w3.org/2001/XMLSchema}string" /&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -41,7 +40,8 @@ import net.sf.ahtutils.xml.status.Langs;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
     "langs",
-    "descriptions"
+    "descriptions",
+    "xlsTransformation"
 })
 @XmlRootElement(name = "xlsColumn")
 public class XlsColumn
@@ -53,16 +53,14 @@ public class XlsColumn
     protected Langs langs;
     @XmlElement(namespace = "http://ahtutils.aht-group.com/status", required = true)
     protected Descriptions descriptions;
+    @XmlElement(required = true)
+    protected XlsTransformation xlsTransformation;
     @XmlAttribute(name = "column")
     protected String column;
     @XmlAttribute(name = "required")
     protected Boolean required;
     @XmlAttribute(name = "label")
     protected String label;
-    @XmlAttribute(name = "dataClass")
-    protected String dataClass;
-    @XmlAttribute(name = "formatPattern")
-    protected String formatPattern;
     @XmlAttribute(name = "example")
     protected String example;
 
@@ -120,6 +118,34 @@ public class XlsColumn
 
     public boolean isSetDescriptions() {
         return (this.descriptions!= null);
+    }
+
+    /**
+     * Gets the value of the xlsTransformation property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link XlsTransformation }
+     *     
+     */
+    public XlsTransformation getXlsTransformation() {
+        return xlsTransformation;
+    }
+
+    /**
+     * Sets the value of the xlsTransformation property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link XlsTransformation }
+     *     
+     */
+    public void setXlsTransformation(XlsTransformation value) {
+        this.xlsTransformation = value;
+    }
+
+    public boolean isSetXlsTransformation() {
+        return (this.xlsTransformation!= null);
     }
 
     /**
@@ -208,62 +234,6 @@ public class XlsColumn
 
     public boolean isSetLabel() {
         return (this.label!= null);
-    }
-
-    /**
-     * Gets the value of the dataClass property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getDataClass() {
-        return dataClass;
-    }
-
-    /**
-     * Sets the value of the dataClass property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setDataClass(String value) {
-        this.dataClass = value;
-    }
-
-    public boolean isSetDataClass() {
-        return (this.dataClass!= null);
-    }
-
-    /**
-     * Gets the value of the formatPattern property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getFormatPattern() {
-        return formatPattern;
-    }
-
-    /**
-     * Sets the value of the formatPattern property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setFormatPattern(String value) {
-        this.formatPattern = value;
-    }
-
-    public boolean isSetFormatPattern() {
-        return (this.formatPattern!= null);
     }
 
     /**

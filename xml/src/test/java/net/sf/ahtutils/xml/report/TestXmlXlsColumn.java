@@ -34,13 +34,12 @@ public class TestXmlXlsColumn extends AbstractXmlReportTest
     	xml.setLabel("myLabel");
     	xml.setRequired(true);
     	xml.setExample("myExample");
-    	xml.setDataClass("myDataClass");
-    	xml.setFormatPattern("myPattern");
     	
     	if(withChildren)
     	{
     		xml.setLangs(TestXmlLangs.create(false));
     		xml.setDescriptions(TestXmlDescriptions.create(false));
+    		xml.setXlsTransformation(TestXmlXlsTransformation.create(false));
     	}
     	
     	return xml;

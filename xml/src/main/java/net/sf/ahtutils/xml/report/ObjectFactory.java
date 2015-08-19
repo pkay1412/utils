@@ -197,4 +197,12 @@ public class ObjectFactory {
         return new XlsColumn();
     }
 
+    /**
+     * Create an instance of {@link XlsTransformation }
+     * 
+     */
+    public XlsTransformation createXlsTransformation() {
+        return new XlsTransformation();
+    }
+
 }

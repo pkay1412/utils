@@ -215,13 +215,19 @@
             <xsd:sequence>
 	            <xsd:element ref="us:langs" maxOccurs="1"/>
                 <xsd:element ref="us:descriptions" maxOccurs="1"/>
+                <xsd:element ref="r:xlsTransformation" maxOccurs="1"/>
             </xsd:sequence>
             <xsd:attribute name="column" type="xsd:string"/>
             <xsd:attribute name="required" type="xsd:boolean"/>
             <xsd:attribute name="label" type="xsd:string"/>
+            <xsd:attribute name="example" type="xsd:string"/>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="xlsTransformation">
+        <xsd:complexType>
             <xsd:attribute name="dataClass" type="xsd:string"/>
             <xsd:attribute name="formatPattern" type="xsd:string"/>
-            <xsd:attribute name="example" type="xsd:string"/>
+            <xsd:attribute name="beanProperty" type="xsd:string"/>
         </xsd:complexType>
     </xsd:element>
 </xsd:schema>
