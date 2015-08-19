@@ -25,7 +25,9 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element ref="{http://ahtutils.aht-group.com/audit}change" maxOccurs="unbounded"/&gt;
  *       &lt;/sequence&gt;
  *       &lt;attribute name="id" type="{http://www.w3.org/2001/XMLSchema}long" /&gt;
- *       &lt;attribute name="label" type="{http://www.w3.org/2001/XMLSchema}string" /&gt;
+ *       &lt;attribute name="class" type="{http://www.w3.org/2001/XMLSchema}string" /&gt;
+ *       &lt;attribute name="category" type="{http://www.w3.org/2001/XMLSchema}string" /&gt;
+ *       &lt;attribute name="entity" type="{http://www.w3.org/2001/XMLSchema}string" /&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
@@ -47,8 +49,12 @@ public class Scope
     protected List<Change> change;
     @XmlAttribute(name = "id")
     protected Long id;
-    @XmlAttribute(name = "label")
-    protected String label;
+    @XmlAttribute(name = "class")
+    protected String clazz;
+    @XmlAttribute(name = "category")
+    protected String category;
+    @XmlAttribute(name = "entity")
+    protected String entity;
 
     /**
      * Gets the value of the change property.
@@ -120,31 +126,87 @@ public class Scope
     }
 
     /**
-     * Gets the value of the label property.
+     * Gets the value of the clazz property.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getLabel() {
-        return label;
+    public String getClazz() {
+        return clazz;
     }
 
     /**
-     * Sets the value of the label property.
+     * Sets the value of the clazz property.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setLabel(String value) {
-        this.label = value;
+    public void setClazz(String value) {
+        this.clazz = value;
     }
 
-    public boolean isSetLabel() {
-        return (this.label!= null);
+    public boolean isSetClazz() {
+        return (this.clazz!= null);
+    }
+
+    /**
+     * Gets the value of the category property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getCategory() {
+        return category;
+    }
+
+    /**
+     * Sets the value of the category property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setCategory(String value) {
+        this.category = value;
+    }
+
+    public boolean isSetCategory() {
+        return (this.category!= null);
+    }
+
+    /**
+     * Gets the value of the entity property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getEntity() {
+        return entity;
+    }
+
+    /**
+     * Sets the value of the entity property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setEntity(String value) {
+        this.entity = value;
+    }
+
+    public boolean isSetEntity() {
+        return (this.entity!= null);
     }
 
 }

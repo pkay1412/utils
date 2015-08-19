@@ -29,7 +29,9 @@ public class TestXmlScope extends AbstractXmlAuditTest
     {
     	Scope xml = new Scope();
     	xml.setId(123);
-    	xml.setLabel("myLabel");
+    	xml.setCategory("myCategory");
+    	xml.setEntity("myEntity");
+    	xml.setClazz("myClass");
     	
     	if(withChilds)
     	{

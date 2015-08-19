@@ -5,9 +5,9 @@ import java.io.Serializable;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
-import javax.xml.bind.annotation.XmlValue;
 
 
 /**
@@ -17,12 +17,16 @@ import javax.xml.bind.annotation.XmlValue;
  * 
  * <pre>
  * &lt;complexType&gt;
- *   &lt;simpleContent&gt;
- *     &lt;extension base="&lt;http://www.w3.org/2001/XMLSchema&gt;string"&gt;
+ *   &lt;complexContent&gt;
+ *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
+ *       &lt;sequence&gt;
+ *         &lt;element ref="{http://ahtutils.aht-group.com/audit}scope"/&gt;
+ *       &lt;/sequence&gt;
+ *       &lt;attribute name="aid" type="{http://www.w3.org/2001/XMLSchema}int" /&gt;
  *       &lt;attribute name="action" type="{http://www.w3.org/2001/XMLSchema}string" /&gt;
- *       &lt;attribute name="type" type="{http://www.w3.org/2001/XMLSchema}string" /&gt;
- *     &lt;/extension&gt;
- *   &lt;/simpleContent&gt;
+ *       &lt;attribute name="text" type="{http://www.w3.org/2001/XMLSchema}string" /&gt;
+ *     &lt;/restriction&gt;
+ *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
  * </pre>
  * 
@@ -30,7 +34,7 @@ import javax.xml.bind.annotation.XmlValue;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "value"
+    "scope"
 })
 @XmlRootElement(name = "change")
 public class Change
@@ -38,39 +42,73 @@ public class Change
 {
 
     private final static long serialVersionUID = 1L;
-    @XmlValue
-    protected String value;
+    @XmlElement(required = true)
+    protected Scope scope;
+    @XmlAttribute(name = "aid")
+    protected Integer aid;
     @XmlAttribute(name = "action")
     protected String action;
-    @XmlAttribute(name = "type")
-    protected String type;
+    @XmlAttribute(name = "text")
+    protected String text;
 
     /**
-     * Gets the value of the value property.
+     * Gets the value of the scope property.
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link Scope }
      *     
      */
-    public String getValue() {
-        return value;
+    public Scope getScope() {
+        return scope;
     }
 
     /**
-     * Sets the value of the value property.
+     * Sets the value of the scope property.
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link Scope }
      *     
      */
-    public void setValue(String value) {
-        this.value = value;
+    public void setScope(Scope value) {
+        this.scope = value;
     }
 
-    public boolean isSetValue() {
-        return (this.value!= null);
+    public boolean isSetScope() {
+        return (this.scope!= null);
+    }
+
+    /**
+     * Gets the value of the aid property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Integer }
+     *     
+     */
+    public int getAid() {
+        return aid;
+    }
+
+    /**
+     * Sets the value of the aid property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Integer }
+     *     
+     */
+    public void setAid(int value) {
+        this.aid = value;
+    }
+
+    public boolean isSetAid() {
+        return (this.aid!= null);
+    }
+
+    public void unsetAid() {
+        this.aid = null;
     }
 
     /**
@@ -102,31 +140,31 @@ public class Change
     }
 
     /**
-     * Gets the value of the type property.
+     * Gets the value of the text property.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getType() {
-        return type;
+    public String getText() {
+        return text;
     }
 
     /**
-     * Sets the value of the type property.
+     * Sets the value of the text property.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setType(String value) {
-        this.type = value;
+    public void setText(String value) {
+        this.text = value;
     }
 
-    public boolean isSetType() {
-        return (this.type!= null);
+    public boolean isSetText() {
+        return (this.text!= null);
     }
 
 }

@@ -28,13 +28,13 @@ public class TestXmlChange extends AbstractXmlAuditTest
     public static Change create(boolean withChilds)
     {
     	Change xml = new Change();
+    	xml.setAid(1);
     	xml.setAction("action");
-    	xml.setType("type");
-    	xml.setValue("myValue");
+    	xml.setText("myValue");
     	
     	if(withChilds)
     	{
-    		
+    		xml.setScope(TestXmlScope.create(false));
     	}
     	
     	return xml;
