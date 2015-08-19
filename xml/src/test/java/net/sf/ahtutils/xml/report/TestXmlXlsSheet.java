@@ -3,6 +3,7 @@ package net.sf.ahtutils.xml.report;
 import java.io.FileNotFoundException;
 
 import net.sf.ahtutils.test.UtilsXmlTestBootstrap;
+import net.sf.ahtutils.xml.status.TestXmlLangs;
 import net.sf.exlp.util.xml.JaxbUtil;
 
 import org.junit.BeforeClass;
@@ -30,8 +31,8 @@ public class TestXmlXlsSheet extends AbstractXmlReportTest
     	
     	if(withChildren)
     	{
-    		xml.getXlsColumn().add(TestXmlXlsColumn.create(false));
-    		xml.getXlsColumn().add(TestXmlXlsColumn.create(false));
+    		xml.setLangs(TestXmlLangs.create(false));
+    		xml.getXlsColumn().add(TestXmlXlsColumn.create(false));xml.getXlsColumn().add(TestXmlXlsColumn.create(false));
     	}
     	
     	return xml;

@@ -59,6 +59,7 @@ public class OfxRoleTableFactory extends AbstractUtilsOfxDocumentationFactory
 		dsm = new OfxDefaultSettingsManager();
 	}
 	
+	@Deprecated
 	public String saveDescription(Category category, String[] headerKeys) throws OfxAuthoringException
 	{
 		try
@@ -96,12 +97,60 @@ public class OfxRoleTableFactory extends AbstractUtilsOfxDocumentationFactory
 		catch (ExlpXpathNotUniqueException e) {throw new OfxAuthoringException(e.getMessage());}
 	}
 	
+	public String saveDescription(net.sf.ahtutils.xml.security.Category category, String[] headerKeys) throws OfxAuthoringException
+	{
+		try
+		{
+			String id = "table.admin.security.role."+category.getCode();
+			
+			Comment comment = XmlCommentFactory.build();
+			OfxCommentBuilder.fixedId(comment, id);
+			DocumentationCommentBuilder.configKeyReference(comment, config, UtilsDocumentation.keyRoles, "Roles are defined in");
+			DocumentationCommentBuilder.translationKeys(comment,config,UtilsDocumentation.keyTranslationFile);
+			DocumentationCommentBuilder.tableHeaders(comment,headerKeys);
+			DocumentationCommentBuilder.tableKey(comment,keyCaptionPrefix,"Table Caption Prefix");
+			OfxCommentBuilder.doNotModify(comment);
+			
+			Table table = toOfxSec(category.getRoles().getRole(),headerKeys);
+			table.setId(id);
+			table.setComment(comment);
+			
+			if(langs.length>1){logger.warn("Incorrect Assignment");}
+			Lang lPrefix = StatusXpath.getLang(translations, keyCaptionPrefix, langs[0]);
+			Lang lCategory = StatusXpath.getLang(category.getLangs(), langs[0]);
+			table.setTitle(XmlTitleFactory.build(lPrefix.getTranslation()+" "+lCategory.getTranslation()));
+			
+			LatexTableRenderer tableRenderer = new LatexTableRenderer(cmm,dsm);
+			tableRenderer.setPreBlankLine(false);
+			JaxbUtil.trace(table);
+			tableRenderer.render(table);
+			
+			StringWriter sw = new StringWriter();
+			tableRenderer.write(sw);
+			return sw.toString();
+		}
+		catch (IOException e) {throw new OfxAuthoringException(e.getMessage());}
+		catch (ExlpXpathNotFoundException e) {throw new OfxAuthoringException(e.getMessage());}
+		catch (ExlpXpathNotUniqueException e) {throw new OfxAuthoringException(e.getMessage());}
+	}
+	
+	@Deprecated
 	public Table toOfx(List<Role> lRoles, String[] headerKeys)
 	{
 		Table table = new Table();
 		table.setSpecification(createSpecifications());
 		
 		table.setContent(createContent(lRoles,headerKeys));
+		
+		return table;
+	}
+	
+	public Table toOfxSec(List<net.sf.ahtutils.xml.security.Role> lRoles, String[] headerKeys)
+	{
+		Table table = new Table();
+		table.setSpecification(createSpecifications());
+		
+		table.setContent(createContentSec(lRoles,headerKeys));
 		
 		return table;
 	}
@@ -118,6 +167,7 @@ public class OfxRoleTableFactory extends AbstractUtilsOfxDocumentationFactory
 		return specification;
 	}
 	
+	@Deprecated
 	private Content createContent(List<Role> lRoles, String[] headerKeys)
 	{
 		Head head = new Head();
@@ -136,6 +186,25 @@ public class OfxRoleTableFactory extends AbstractUtilsOfxDocumentationFactory
 		return content;
 	}
 	
+	private Content createContentSec(List<net.sf.ahtutils.xml.security.Role> lRoles, String[] headerKeys)
+	{
+		Head head = new Head();
+		head.getRow().add(createHeaderRow(headerKeys));
+		
+		Body body = new Body();
+		for(net.sf.ahtutils.xml.security.Role role : lRoles)
+		{
+			body.getRow().add(createRow(role));
+		}
+		
+		Content content = new Content();
+		content.getBody().add(body);
+		content.setHead(head);
+		
+		return content;
+	}
+	
+	@Deprecated
 	private Row createRow(Role role)
 	{
 		String code,description;
@@ -162,5 +231,33 @@ public class OfxRoleTableFactory extends AbstractUtilsOfxDocumentationFactory
 		row.getCell().add(OfxCellFactory.createParagraphCell(code));
 		row.getCell().add(OfxCellFactory.createParagraphCell(description));
 		return row;
-	}	
+	}
+	
+	private Row createRow(net.sf.ahtutils.xml.security.Role role)
+	{
+		String code,description;
+		
+		try
+		{
+			if(langs.length>1){logger.warn("Incorrect Assignment");}
+			Lang l = StatusXpath.getLang(role.getLangs(), langs[0]);
+			code = l.getTranslation();
+		}
+		catch (ExlpXpathNotFoundException e){code = e.getMessage();}
+		catch (ExlpXpathNotUniqueException e){code = e.getMessage();}
+		
+		try
+		{
+			if(langs.length>1){logger.warn("Incorrect Assignment");}
+			Description d = StatusXpath.getDescription(role.getDescriptions(), langs[0]);
+			description = d.getValue();
+		}
+		catch (ExlpXpathNotFoundException e){description = e.getMessage();}
+		catch (ExlpXpathNotUniqueException e){description = e.getMessage();}		
+		
+		Row row = new Row();
+		row.getCell().add(OfxCellFactory.createParagraphCell(code));
+		row.getCell().add(OfxCellFactory.createParagraphCell(description));
+		return row;
+	}
 }

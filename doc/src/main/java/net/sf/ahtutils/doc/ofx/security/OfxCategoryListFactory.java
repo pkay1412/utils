@@ -46,12 +46,26 @@ public class OfxCategoryListFactory extends AbstractUtilsOfxDocumentationFactory
 		this.dsm=dsm;
 	}
 	
+	@Deprecated
 	public String saveDescription(java.util.List<Category> lRc) throws OfxAuthoringException
 	{
 		try
 		{
 			LatexListRenderer renderer = new LatexListRenderer(cmm,dsm,false);
 			renderer.render(create(lRc),new LatexSectionRenderer(cmm,dsm,0,null));
+			StringWriter sw = new StringWriter();
+			renderer.write(sw);
+			return sw.toString();
+		}
+		catch (IOException e) {throw new OfxAuthoringException(e.getMessage());}
+	}
+	
+	public String saveDescriptionSec(java.util.List<net.sf.ahtutils.xml.security.Category> lRc) throws OfxAuthoringException
+	{
+		try
+		{
+			LatexListRenderer renderer = new LatexListRenderer(cmm,dsm,false);
+			renderer.render(createSecurity(lRc),new LatexSectionRenderer(cmm,dsm,0,null));
 			StringWriter sw = new StringWriter();
 			renderer.write(sw);
 			return sw.toString();
@@ -77,6 +91,24 @@ public class OfxCategoryListFactory extends AbstractUtilsOfxDocumentationFactory
 		return list;
 	}
 	
+	public List createSecurity(java.util.List<net.sf.ahtutils.xml.security.Category> lRc)
+	{
+		Comment comment = XmlCommentFactory.build();
+		OfxCommentBuilder.doNotModify(comment);
+		
+		List list = createList();
+		list.setComment(comment);
+		
+		for(net.sf.ahtutils.xml.security.Category category : lRc)
+		{
+			try {list.getItem().add(createItem(category));}
+			catch (ExlpXpathNotFoundException e) {e.printStackTrace();}
+			catch (ExlpXpathNotUniqueException e) {e.printStackTrace();}
+		}
+		
+		return list;
+	}
+	
 	private List createList()
 	{
 		Type type = new Type();
@@ -89,6 +121,38 @@ public class OfxCategoryListFactory extends AbstractUtilsOfxDocumentationFactory
 	}
 	
 	private Item createItem(Category category) throws ExlpXpathNotFoundException, ExlpXpathNotUniqueException
+	{
+		String description,text;
+		
+		try
+		{
+			if(langs.length>1){logger.warn("Incorrect Assignment");}
+			Lang l = StatusXpath.getLang(category.getLangs(), langs[0]);
+			description = l.getTranslation();
+		}
+		catch (ExlpXpathNotFoundException e){description = e.getMessage();}
+		catch (ExlpXpathNotUniqueException e){description = e.getMessage();}
+		
+		try
+		{
+			if(langs.length>1){logger.warn("Incorrect Assignment");}
+			Description d = StatusXpath.getDescription(category.getDescriptions(), langs[0]);
+			text = d.getValue();
+		}
+		catch (ExlpXpathNotFoundException e){text = e.getMessage();}
+		catch (ExlpXpathNotUniqueException e){text = e.getMessage();}		
+		
+		Paragraph p = new Paragraph();
+		p.getContent().add(text);
+		
+		Item item = new Item();
+		item.setName(description);
+		item.getContent().add(p);
+		
+		return item;
+	}
+	
+	private Item createItem(net.sf.ahtutils.xml.security.Category category) throws ExlpXpathNotFoundException, ExlpXpathNotUniqueException
 	{
 		String description,text;
 		

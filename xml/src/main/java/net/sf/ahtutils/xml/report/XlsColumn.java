@@ -28,6 +28,8 @@ import net.sf.ahtutils.xml.status.Langs;
  *       &lt;attribute name="column" type="{http://www.w3.org/2001/XMLSchema}string" /&gt;
  *       &lt;attribute name="required" type="{http://www.w3.org/2001/XMLSchema}boolean" /&gt;
  *       &lt;attribute name="label" type="{http://www.w3.org/2001/XMLSchema}string" /&gt;
+ *       &lt;attribute name="dataClass" type="{http://www.w3.org/2001/XMLSchema}string" /&gt;
+ *       &lt;attribute name="formatPattern" type="{http://www.w3.org/2001/XMLSchema}string" /&gt;
  *       &lt;attribute name="example" type="{http://www.w3.org/2001/XMLSchema}string" /&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -57,6 +59,10 @@ public class XlsColumn
     protected Boolean required;
     @XmlAttribute(name = "label")
     protected String label;
+    @XmlAttribute(name = "dataClass")
+    protected String dataClass;
+    @XmlAttribute(name = "formatPattern")
+    protected String formatPattern;
     @XmlAttribute(name = "example")
     protected String example;
 
@@ -202,6 +208,62 @@ public class XlsColumn
 
     public boolean isSetLabel() {
         return (this.label!= null);
+    }
+
+    /**
+     * Gets the value of the dataClass property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getDataClass() {
+        return dataClass;
+    }
+
+    /**
+     * Sets the value of the dataClass property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setDataClass(String value) {
+        this.dataClass = value;
+    }
+
+    public boolean isSetDataClass() {
+        return (this.dataClass!= null);
+    }
+
+    /**
+     * Gets the value of the formatPattern property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getFormatPattern() {
+        return formatPattern;
+    }
+
+    /**
+     * Sets the value of the formatPattern property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setFormatPattern(String value) {
+        this.formatPattern = value;
+    }
+
+    public boolean isSetFormatPattern() {
+        return (this.formatPattern!= null);
     }
 
     /**

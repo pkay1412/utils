@@ -65,6 +65,11 @@
 				with several allowed user interactions to perform a complex use-case.
 			</ofx:paragraph>
 	    </l:item>
+	    <l:item name="XX" lang="fr">
+	    	<ofx:paragraph>
+				XX
+			</ofx:paragraph>
+	    </l:item>
 
 		<l:item name="Rollen" lang="de" version="1" id="section.admin.security.introduction.list.roles">
 			<ofx:paragraph>
@@ -90,8 +95,9 @@
 		by the <text:emphasis italic="true">System Administrators</text:emphasis> needs to be rarely done. In most
 		cases it is required if the business processes or organisation structure changes to reflect these changes in the
 		information system. The assignment of <text:emphasis bold="true">Roles</text:emphasis> to
-		<text:emphasis bold="true">Users</text:emphasis> is a daily-work tasks for the
-		<text:emphasis italic="true">System Administrators</text:emphasis> while adding new users to the system.
+		<text:emphasis bold="true">Users</text:emphasis> is a daily-work task for the
+		<text:emphasis italic="true">System Administrators</text:emphasis> at the same time
+		when adding new users to the system.
 	</ofx:paragraph>
 
 	
