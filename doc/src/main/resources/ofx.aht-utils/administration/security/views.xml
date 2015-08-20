@@ -6,15 +6,14 @@
 			 xmlns:layout="http://www.openfuxml.org/layout"
 			 id="section.admin.security.views">
 	<ofx:title lang="en">Views and Actions</ofx:title>
-	
+		
 	<ofx:paragraph>
--	Categories (which page)
--	View (Rights to see the content)
--	Actions (Permission to change/edit/save the content)
-	</ofx:paragraph>
-	
-	<ofx:paragraph>
-You are able to edit the views and actions of a user in this views and action page. Choose a category and select the view you want to edit. Afterwards a new window will appear called “view”. In this window is space for a description in English and French.
-Under this window is another field called Actions, you are able to define actions for the view in the selected category. 
+		In the Views and Actions section of the administration page, you are able to edit the "Views and Actions" of a user. 
+		Every existing view is categorized and divided into several categories to create a better overview.
+		Choose a category and select the view you want to edit. The entries (Name/Description) on the right side are the editable items of the
+		actual selected view. 
+		Every linked action is provided by the developers and not editable by the LIS system administrator. If you want to save
+		your current changes, press the save button on the upper right side of your window. Every change takes effect after relogging
+		into the system. 
 	</ofx:paragraph>
 </ofx:section>
