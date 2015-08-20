@@ -8,15 +8,12 @@
 	<ofx:title lang="en">Usecases</ofx:title>
 	
 	<ofx:paragraph>
--	Categories (what kind of User)
--	Use Case (Group of views/actions)
-	</ofx:paragraph>
-	
-	<ofx:paragraph>
-	Use-Cases describes views and actions combined in a group.
-	If you choose a category and select a Use-Case, you are able to add or delete views and the related
-	action by clicking the plus button in the upper right corner.
-	These changes take effect after relogging into the system.
+		The Use-Cases area of the administrator page describes rules for views and actions combined in a group.
+		Every Use-Case is categorized and divided into several categories to create a better overview, like the "Views & Actions" page.
+		It is also possible to edit or change the names and descriptions for every Use-Case level.
+		This site is set up hierarchically, from a Use-Case name to the "Views and Actions", where you can add or remove single rules for each type.
+		If you want to add or remove a rule to an existing Use-Case, simply press the green add button and select the wanted entry or 
+		click the red remove button to delete the selected item. These changes takes effect without saving the rule.
 	</ofx:paragraph>
 	
 </ofx:section>
