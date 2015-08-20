@@ -62,15 +62,15 @@ public class ReflectionsUtil {
 	 */
 	 public static Object resolveExpression(Object parent, String expression) throws Exception
 	 {
-             logger.info("Resolving " +expression + " on " +parent.toString());
+             logger.trace("Resolving " +expression + " on " +parent.toString());
              if (expression.contains("."))
              {
                  int elements = expression.split("\\.").length;
-                 logger.info("Still resolving " +elements);
+                 logger.trace("Still resolving " +elements);
                  String pathToProperty = expression.substring(0, expression.indexOf("."));
-                 logger.info("Path to Property " +pathToProperty);
+                 logger.trace("Path to Property " +pathToProperty);
                  String getter         = "get" +(pathToProperty.substring(0, 1).toUpperCase() + pathToProperty.substring(1));
-                 logger.info("Getter: " +getter);
+                 logger.trace("Getter: " +getter);
                  Object nextObject = simpleInvokeMethod(getter,
 					      new Object[] { },
 					      parent.getClass(),
@@ -82,7 +82,7 @@ public class ReflectionsUtil {
              else 
              {
                  String methodName = "get" +(expression.substring(0, 1).toUpperCase() + expression.substring(1));
-                 logger.info("Requesting value by invoking " +methodName + "()");
+                 logger.trace("Requesting value by invoking " +methodName + "()");
                  return simpleInvokeMethod(methodName,
 					      new Object[] { },
 					      parent.getClass(),
