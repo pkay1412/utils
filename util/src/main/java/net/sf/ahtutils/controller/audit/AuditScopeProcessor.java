@@ -4,7 +4,6 @@ import java.util.*;
 
 import net.sf.ahtutils.xml.audit.Change;
 import net.sf.ahtutils.xml.audit.Scope;
-import net.sf.exlp.util.xml.JaxbUtil;
 
 public class AuditScopeProcessor
 {
@@ -26,18 +25,28 @@ public class AuditScopeProcessor
             addChanges(changes, me);
             scopes.add(me.getValue());
         }
+        deleteScopes(changes);
 
         return scopes;
     }
 
     private void addChanges(List<Change> changes, Map.Entry<String, Scope> me )
     {
-        for (Change c : changes) {
+        for (Change c : changes)
+        {
             String key = c.getScope().getId() + "/" + c.getScope().getClazz();
             if (me.getKey().equals(key))
             {
                 me.getValue().getChange().add(c);
             }
+        }
+    }
+
+    private void deleteScopes(List<Change> changes)
+    {
+        for (Change c : changes)
+        {
+            c.setScope(null);
         }
     }
 }

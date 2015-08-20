@@ -57,10 +57,7 @@ public class TestAuditScopeProcessor extends AbstractAhtUtilsTest
         List<Scope> actual = asp.group(list);
         for(Scope s : actual)
         {
-            for(Change c : s.getChange())
-            {
-                Assert.assertTrue(c.isSetScope());
-            }
+            Assert.assertTrue(s.isSetChange());
         }
         Revision r = new Revision();
         r.getScope().addAll(actual);
@@ -74,5 +71,6 @@ public class TestAuditScopeProcessor extends AbstractAhtUtilsTest
 		TestAuditScopeProcessor test = new TestAuditScopeProcessor();
 		test.init();
 		test.nrOfScopes();
+//        test.childs();
 	} 
 }
