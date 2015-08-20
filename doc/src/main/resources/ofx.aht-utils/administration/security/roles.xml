@@ -15,4 +15,6 @@
 	These changes takes effect after the edited user is relogging to the system.
 	</ofx:paragraph>
 	
+	<ofx:include lang="en">en/section/admin/security/include/roles</ofx:include>
+	
 </ofx:section>

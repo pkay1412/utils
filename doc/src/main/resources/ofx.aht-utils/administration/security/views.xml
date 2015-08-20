@@ -8,12 +8,13 @@
 	<ofx:title lang="en">Views and Actions</ofx:title>
 		
 	<ofx:paragraph>
-		In the Views and Actions section of the administration page, you are able to edit the "Views and Actions" of a user. 
-		Every existing view is categorized and divided into several categories to create a better overview.
+		Every view is divided into several categories to achieve a better overview.
 		Choose a category and select the view you want to edit. The entries (Name/Description) on the right side are the editable items of the
 		actual selected view. 
-		Every linked action is provided by the developers and not editable by the LIS system administrator. If you want to save
-		your current changes, press the save button on the upper right side of your window. Every change takes effect after relogging
-		into the system. 
+		Every linked action is provided by the developers and not editable by the MEIS system administrator. If you want to save
+		your current changes, press the save button on the upper right side. Every change takes effect after the edited user is relogging into the system. 
 	</ofx:paragraph>
+	
+	<ofx:include lang="en">en/section/admin/security/include/views</ofx:include>
+	
 </ofx:section>
