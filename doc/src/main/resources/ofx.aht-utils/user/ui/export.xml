@@ -13,14 +13,14 @@
 		clicking the appropriate icon. The the system will generate the desired file and directly
 		start a download in the browser. The behavior on how this is handled on the client side
 		depends on the browser and personal settings of the user for his browser.
-		A common behavior is to store the file in 
+		A common behavior is to store the file in the 
 		<text:emphasis italic="true">Downloads</text:emphasis> folder or to directly
 		open it.
 	</ofx:paragraph>
 
 	
 	<table:table  id="table.user.ui.export.file">
-	    <ofx:title lang="en">Summary of export formats</ofx:title>
+	    <ofx:title lang="en">Summary of Export Formats</ofx:title>
 	    <table:specification>
 	        <table:columns>
 	            <table:column><layout:alignment horizontal="center"/></table:column>

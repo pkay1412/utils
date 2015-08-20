@@ -13,8 +13,8 @@
 		the <text:emphasis italic="true">creation</text:emphasis>,
 		<text:emphasis italic="true">modification</text:emphasis>
 		and <text:emphasis italic="true">deletion</text:emphasis> of these objects.
-		All of these changes are stored in the system with a global revision number stored together
-		with the timestamp and the user who has performed the action.
+		All of these changes are stored in the system with a global revision number together
+		with the time stamp and the user who has performed the action.
 	</ofx:paragraph>
 	
 	<table:table  id="table.user.ui.icons">
