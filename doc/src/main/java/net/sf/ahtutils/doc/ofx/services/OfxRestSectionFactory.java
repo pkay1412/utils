@@ -3,6 +3,7 @@ package net.sf.ahtutils.doc.ofx.services;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import javax.ws.rs.Consumes;
@@ -82,68 +83,59 @@ public class OfxRestSectionFactory extends AbstractUtilsOfxDocumentationFactory
 		
 		org.openfuxml.content.list.List list = XmlListFactory.build(Ordering.unordered);
 
-		List<Section> sections = new ArrayList<Section>();
-
-        List<Method> methods = new ArrayList<Method>();
-
+        List<Section> sections = new ArrayList<Section>();
+        int i = 0;
+        while ( i < c.getDeclaredMethods().length)
+        {
+            list.getItem().add(null);
+            sections.add(null);
+            i++;
+        }
         for(Method method : c.getDeclaredMethods())
-            methods.add(method);
-        List<RestDescription> rdList = new ArrayList<RestDescription>();
-        for(Method m : methods)
-            for(Annotation an : m.getDeclaredAnnotations())
+        {
+            for(Annotation methodA : method.getDeclaredAnnotations())
             {
-                if(an instanceof RestDescription)
-                    rdList.add((RestDescription)an);
+                if(methodA instanceof RestDescription)
+                {
+                    RestDescription r = (RestDescription)methodA;
+                    if(r.orderNr() != 0)
+                    {
+                        int index = r.orderNr()-1;
+                        list.getItem().add(index ,XmlListItemFactory.build(r.label()));
+                        sections.add(index, build(c,method));
+                    }
+                    else
+                    {
+                        list.getItem().add(XmlListItemFactory.build(r.label()));
+                        sections.add(build(c,method));
+                    }
+                }
             }
-//		int i = 0;
-//		while ( i < c.getDeclaredMethods().length)
-//		{
-//			list.getItem().add(null);
-//			sections.add(null);
-//			i++;
-//		}
-//        for(Method method : c.getDeclaredMethods())
-//        {
-//            for(Annotation methodA : method.getDeclaredAnnotations())
-//            {
-//                if(methodA instanceof RestDescription)
-//                {
-//                    RestDescription r = (RestDescription)methodA;
-//                    if(r.orderNr() != 0)
-//                    {
-//                        int index = r.orderNr()-1;
-//                        list.getItem().add(index ,XmlListItemFactory.build(r.label()));
-//                        sections.add(index, build(c,method));
-//                    }
-//                    else
-//                    {
-//                        list.getItem().add(XmlListItemFactory.build(r.label()));
-//                        sections.add(build(c,method));
-//                    }
-//                }
-//            }
-//        }
-//        for(int j = 0; j < list.getItem().size(); j++)
-//        {
-//            if (list.getItem().get(j) == null)
-//            {
-//                list.getItem().remove(j);
-//                j--;
-//            }
-//        }
-//
-//        for(int j = 0; j < section.getContent().size(); j++)
-//        {
-//            if (section.getContent().get(j) == null)
-//            {
-//                list.getItem().remove(j);
-//                j--;
-//            }
-//        }
-		section.getContent().add(list);
-		section.getContent().addAll(sections);
-		
-		return section;
+        }
+        System.out.println(list.getItem().size());
+        for(int j = 0; j < list.getItem().size(); j++)
+        {
+            if (list.getItem().get(j) == null)
+            {
+                list.getItem().remove(j);
+                j--;
+            }
+        }
+        System.out.println(list.getItem().size());
+
+        for(int j = 0; j < section.getContent().size(); j++)
+        {
+            if (section.getContent().get(j) == null)
+            {
+                list.getItem().remove(j);
+                j--;
+            }
+        }
+
+        section.getContent().add(list);
+        section.getContent().addAll(sections);
+
+        return section;
 	}
 	
 	private Section build(Class<?> c, Method method)
