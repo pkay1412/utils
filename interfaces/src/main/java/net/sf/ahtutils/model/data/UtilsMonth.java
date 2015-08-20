@@ -48,7 +48,7 @@ public class UtilsMonth implements Serializable,Comparable<UtilsMonth>
 		return new EqualsBuilder().append(year, rhs.year).append(month, rhs.month).isEquals();
 	}
 
-	public int hashCode() {return new HashCodeBuilder(17, 51).append(year).append(month).toHashCode();}
+	public int hashCode() {return new HashCodeBuilder(17,51).append(year).append(month).toHashCode();}
 	
 	public int compareTo(UtilsMonth other)
 	{

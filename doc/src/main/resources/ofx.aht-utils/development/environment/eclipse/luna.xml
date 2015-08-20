@@ -4,140 +4,120 @@
 			xmlns:media="http://www.openfuxml.org/media"
 			xmlns:layout="http://www.openfuxml.org/layout"
 			xmlns:text="http://www.openfuxml.org/text"
-			xmlns:l="http://www.openfuxml.org/list">
-	
-	<ofx:title lang="en" classifier="luna">Installation of Eclipse (Luna)</ofx:title>
-	
-	<ofx:paragraph lang="en">
-			In computer programming, Eclipse is an integrated development environment (IDE).
-			It contains a base workspace and an extensible plug-in system for customizing the environment.
-			Written mostly in Java, Eclipse can be used to develop applications in many different programming languages.
-	</ofx:paragraph>
+			xmlns:l="http://www.openfuxml.org/list"
+			container="true" classifier="luna">
 	
 	<ofx:paragraph lang="en">
-			The initial codebase originated from IBM VisualAge.
-			The Eclipse software development kit (SDK), which includes the Java development tools, is meant for Java developers.
-			Users can extend its abilities by installing plug-ins written for the Eclipse Platform,
-			such as development toolkits for other programming languages, and can write and contribute their own plug-in modules.
-			Released under the terms of the Eclipse Public License, Eclipse SDK is free and open source software.
+		The first thing you need to install, is Eclipse Luna for Java EE Developers. You can download it from: 
+		<text:emphasis style="typewriter">www.eclipse.org/downloads</text:emphasis>		
+		After finishing your download unpack Eclipse Luna to your installation path.
+		For example <text:emphasis style="typewriter">C: program files eclipse</text:emphasis>
+		The next step, is to define your workspace. You need a unique one (e.g. workspaceLuna), if
+		you are using multiple version of eclipse.
 	</ofx:paragraph>
 	
-	<ofx:section container="true" classifier="luna">
+	<ofx:section id="section.admin.installation.eclipse.luna.svn.install" classifier="svn">
+		<ofx:title lang="en">Subversion (SVN)</ofx:title>
 	
+		<media:image id="image.admin.development.environment.marketplace">
+			<ofx:title lang="en">Eclipse Marketplace Subversive 2.0 installation</ofx:title>
+				<layout:alignment horizontal="center"/>
+				<layout:width unit="percentage">60</layout:width>
+			<media:media lang="en" src="png.aht-utils/development/environment/eclipse/luna/marketplace.png" dst="en/admin/development/environment/eclipse/luna/marketplace"/>
+		</media:image>
+		
 		<ofx:paragraph lang="en">
-			The first thing you need to install, is Eclipse Luna for Java EE Developers. You can download it from: 
-			<text:emphasis style="typewriter">www.eclipse.org/downloads</text:emphasis>		
-			After finishing your download unpack Eclipse Luna to your installation path.
-			For example <text:emphasis style="typewriter">C: program files eclipse</text:emphasis>
-			The next step, is to define your workspace. You need a unique one (e.g. workspaceLuna), if
-			you are using multiple version of eclipse.
+			For the installation of <text:emphasis style="italic">"Subversive Team Provider 2.0"</text:emphasis>, you have to go to the Eclipse Marketplace.
+			You will find it: <text:emphasis style="typewriter">Help -> Eclipse Marketplace</text:emphasis>
+			Search for <text:emphasis style="italic">"Subversive"</text:emphasis>. Mark and install <text:emphasis style="italic">"SVN Team Provider 2.0"</text:emphasis> (see figure below).
+			Follow these steps:
 		</ofx:paragraph>
 		
-		<ofx:section id="section.admin.installation.eclipse.luna.svn.install" classifier="svn">
-			<ofx:title lang="en">Subversion (SVN)</ofx:title>
+		<l:list>
+    		<l:type ordering="unordered"/>	
+    		   		
+				<l:item>
+    				<ofx:paragraph lang="en">Please press <text:emphasis style="typewriter">Confirm</text:emphasis> to start the installation.</ofx:paragraph>
+   				</l:item>
+   		
+				<l:item>
+    				<ofx:paragraph lang="en">Press <text:emphasis style="typewriter">OK</text:emphasis>(Proceed even if "Subversive SVN Team Provider 2.0" is not available).</ofx:paragraph>
+   				</l:item>
+   		
+				<l:item>
+    				<ofx:paragraph lang="en">Press <text:emphasis style="typewriter">Accept</text:emphasis> to continue.</ofx:paragraph>
+		   		</l:item>
+   		
+				<l:item>
+    				<ofx:paragraph lang="en">Now press <text:emphasis style="typewriter">Finish</text:emphasis> and restart eclipse to confirm your changes.</ofx:paragraph>
+		   		</l:item>
+   		</l:list>
 		
-			<media:image id="image.admin.development.environment.marketplace">
-				<ofx:title lang="en">Eclipse Marketplace Subversive 2.0 installation</ofx:title>
-					<layout:alignment horizontal="center"/>
-					<layout:width unit="percentage">60</layout:width>
-				<media:media lang="en" src="png.aht-utils/development/environment/eclipse/luna/marketplace.png" dst="en/admin/development/environment/eclipse/luna/marketplace"/>
-			</media:image>
-			
-			<ofx:paragraph lang="en">
-				For the installation of <text:emphasis style="italic">"Subversive Team Provider 2.0"</text:emphasis>, you have to go to the Eclipse Marketplace.
-				You will find it: <text:emphasis style="typewriter">Help -> Eclipse Marketplace</text:emphasis>
-				Search for <text:emphasis style="italic">"Subversive"</text:emphasis>. Mark and install <text:emphasis style="italic">"SVN Team Provider 2.0"</text:emphasis> (see figure below).
-				Follow these steps:
-			</ofx:paragraph>
-			
-			<l:list>
-	    		<l:type ordering="unordered"/>	
-	    		   		
-					<l:item>
-	    				<ofx:paragraph lang="en">Please press <text:emphasis style="typewriter">Confirm</text:emphasis> to start the installation.</ofx:paragraph>
-	   				</l:item>
-	   		
-					<l:item>
-	    				<ofx:paragraph lang="en">Press <text:emphasis style="typewriter">OK</text:emphasis>(Proceed even if "Subversive SVN Team Provider 2.0" is not available).</ofx:paragraph>
-	   				</l:item>
-	   		
-					<l:item>
-	    				<ofx:paragraph lang="en">Press <text:emphasis style="typewriter">Accept</text:emphasis> to continue.</ofx:paragraph>
-			   		</l:item>
-	   		
-					<l:item>
-	    				<ofx:paragraph lang="en">Now press <text:emphasis style="typewriter">Finish</text:emphasis> and restart eclipse to confirm your changes.</ofx:paragraph>
-			   		</l:item>
-	   		</l:list>
-			
-			<ofx:paragraph lang="en">
-				Now select <text:emphasis style="typewriter">"New"</text:emphasis> from the <text:emphasis style="typewriter">File</text:emphasis> menu and choose <text:emphasis style="typewriter">"Other..."</text:emphasis>,
-				search for "Maven" and <text:emphasis style="italic">"Checkout Maven Projects from SCM"</text:emphasis>, press <text:emphasis style="typewriter">"Next"</text:emphasis>
-				and go for the writing "Find more SCM connectors in the m2e Marketplace" (see figure below). 
-				Find: <text:emphasis style="italic">"Subversive"</text:emphasis> and select <text:emphasis style="italic">"m2e-subversive"</text:emphasis> and press <text:emphasis style="typewriter">"Finish"</text:emphasis>.
-				Follow these steps:
-			</ofx:paragraph>
-			
-			<l:list>
-	    		<l:type ordering="unordered"/>	
-	    		   		
-					<l:item>
-	    				<ofx:paragraph lang="en">Please press <text:emphasis style="typewriter">Next</text:emphasis> to start the installation.</ofx:paragraph>
-	   				</l:item>
-	   		
-					<l:item>
-	    				<ofx:paragraph lang="en">Press <text:emphasis style="typewriter">Next</text:emphasis> to continue.</ofx:paragraph>
-	   				</l:item>
-	   		
-					<l:item>
-	    				<ofx:paragraph lang="en">Press <text:emphasis style="typewriter">Accept</text:emphasis> to continue.</ofx:paragraph>
-			   		</l:item>
-			   		
-			   		<l:item>
-	    				<ofx:paragraph lang="en">Press <text:emphasis style="typewriter">OK</text:emphasis>, if there is a warning for "unsigned contend" to proceed.</ofx:paragraph>
-			   		</l:item>
-	   		
-					<l:item>
-	    				<ofx:paragraph lang="en">Now press <text:emphasis style="typewriter">Finish</text:emphasis> and restart eclipse to confirm your changes.</ofx:paragraph>
-			   		</l:item>
-	   		</l:list>
-	   		
-	   		<ofx:paragraph>If you were asked for a SVN KIT, please select <text:emphasis style="typewriter">"SVN KIT 1.8.6"</text:emphasis>.</ofx:paragraph>
-			
-			<media:image id="image.admin.development.environment.connectors">
-				<ofx:title lang="en">Eclipse SCM connectors installation</ofx:title>
-					<layout:alignment horizontal="center"/>
-					<layout:width unit="percentage">60</layout:width>
-				<media:media lang="en" src="png.aht-utils/development/environment/eclipse/luna/connectors.png" dst="en/admin/development/environment/eclipse/luna/connectors"/>
-			</media:image>		
+		<ofx:paragraph lang="en">
+			Now select <text:emphasis style="typewriter">"New"</text:emphasis> from the <text:emphasis style="typewriter">File</text:emphasis> menu and choose <text:emphasis style="typewriter">"Other..."</text:emphasis>,
+			search for "Maven" and <text:emphasis style="italic">"Checkout Maven Projects from SCM"</text:emphasis>, press <text:emphasis style="typewriter">"Next"</text:emphasis>
+			and go for the writing "Find more SCM connectors in the m2e Marketplace" (see figure below). 
+			Find: <text:emphasis style="italic">"Subversive"</text:emphasis> and select <text:emphasis style="italic">"m2e-subversive"</text:emphasis> and press <text:emphasis style="typewriter">"Finish"</text:emphasis>.
+			Follow these steps:
+		</ofx:paragraph>
+		
+		<l:list>
+    		<l:type ordering="unordered"/>	
+    		   		
+				<l:item>
+    				<ofx:paragraph lang="en">Please press <text:emphasis style="typewriter">Next</text:emphasis> to start the installation.</ofx:paragraph>
+   				</l:item>
+   		
+				<l:item>
+    				<ofx:paragraph lang="en">Press <text:emphasis style="typewriter">Next</text:emphasis> to continue.</ofx:paragraph>
+   				</l:item>
+   		
+				<l:item>
+    				<ofx:paragraph lang="en">Press <text:emphasis style="typewriter">Accept</text:emphasis> to continue.</ofx:paragraph>
+		   		</l:item>
+		   		
+		   		<l:item>
+    				<ofx:paragraph lang="en">Press <text:emphasis style="typewriter">OK</text:emphasis>, if there is a warning for "unsigned contend" to proceed.</ofx:paragraph>
+		   		</l:item>
+   		
+				<l:item>
+    				<ofx:paragraph lang="en">Now press <text:emphasis style="typewriter">Finish</text:emphasis> and restart eclipse to confirm your changes.</ofx:paragraph>
+		   		</l:item>
+   		</l:list>
+   		
+   		<ofx:paragraph>If you were asked for a SVN KIT, please select <text:emphasis style="typewriter">"SVN KIT 1.8.6"</text:emphasis>.</ofx:paragraph>
+		
+		<media:image id="image.admin.development.environment.connectors">
+			<ofx:title lang="en">Eclipse SCM connectors installation</ofx:title>
+				<layout:alignment horizontal="center"/>
+				<layout:width unit="percentage">60</layout:width>
+			<media:media lang="en" src="png.aht-utils/development/environment/eclipse/luna/connectors.png" dst="en/admin/development/environment/eclipse/luna/connectors"/>
+		</media:image>		
 
-		</ofx:section>
-		
-		<ofx:section id="section.admin.installation.eclipse.luna.svn.checkout">
-			<ofx:title lang="en">Checkout Project From SVN Repository</ofx:title>
-			
-			<ofx:paragraph lang="en">
-					The next part of the installation is to "Checkout a Project From SVN Repository".
-					Go to the top menu and press "window", open "show view", go to "other", look for "SVN" and click "SVN Repositories",
-					select "New" and "Repository Location", enter the URL (see below) and the password, press "Finish".
-					Now you are able to the see the repository location and right click on "trunk", select "Checkout as Maven Project", click on "Next" and "Finish".
-			</ofx:paragraph>
-			
-			<ofx:listing id="listing.admin.installation.eclipse.vcs.url">
-				<ofx:raw>https://www.example.com/svn/project</ofx:raw>
-			</ofx:listing>
-			
-			<ofx:paragraph lang="en">
-					Since the Maven build tool is downloading all dependencies for the project while setting it up in eclipse, this process takes very long when triggered the first time.
-					
-			</ofx:paragraph>
-			
-		</ofx:section>
-		
-		<ofx:section include="texlipse.xml"/>	
 	</ofx:section>
 	
-	<ofx:section container="true" classifier="git">
+	<ofx:section id="section.admin.installation.eclipse.luna.svn.checkout">
+		<ofx:title lang="en">Checkout Project From SVN Repository</ofx:title>
+		
+		<ofx:paragraph lang="en">
+				The next part of the installation is to "Checkout a Project From SVN Repository".
+				Go to the top menu and press "window", open "show view", go to "other", look for "SVN" and click "SVN Repositories",
+				select "New" and "Repository Location", enter the URL (see below) and the password, press "Finish".
+				Now you are able to the see the repository location and right click on "trunk", select "Checkout as Maven Project", click on "Next" and "Finish".
+		</ofx:paragraph>
+		
+		<ofx:listing id="listing.admin.installation.eclipse.vcs.url">
+			<ofx:raw>https://www.example.com/svn/project</ofx:raw>
+		</ofx:listing>
+		
+		<ofx:paragraph lang="en">
+				Since the Maven build tool is downloading all dependencies for the project while setting it up in eclipse, this process takes very long when triggered the first time.
+				
+		</ofx:paragraph>
+		
+	</ofx:section>
+	
+		<ofx:section container="true" classifier="git">
 		<ofx:section id="section.admin.installation.eclipse.kepler" classifier="kepler">
 			<ofx:title lang="en">GIT</ofx:title>
 			
@@ -197,16 +177,8 @@
 				</ofx:paragraph>
 			</ofx:section>
 			
-			
 		</ofx:section>
 	</ofx:section>
 	
-	<ofx:section>
-		<ofx:title lang="en">FAQ</ofx:title>
-		<ofx:paragraph lang="en">
-			Q: Hanging during start at org.eclipse.mylyn.tasks.ui
-			A: Try to delete the file <text:emphasis style="typewriter">.metadata/.plugins/org.eclipse.e4.workbench/workbench.xmi</text:emphasis> in your workspace directory. Otherwise it's the best to restore the complete workspace from a backup.
-		</ofx:paragraph>
-	</ofx:section>
-	
+	<ofx:section include="texlipse.xml"/>
 </ofx:section>

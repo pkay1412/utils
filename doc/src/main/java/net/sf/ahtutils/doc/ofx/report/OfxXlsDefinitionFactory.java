@@ -28,11 +28,7 @@ import net.sf.ahtutils.doc.ofx.AbstractUtilsOfxDocumentationFactory;
 import net.sf.ahtutils.doc.ofx.util.OfxMultiLangFactory;
 import net.sf.ahtutils.xml.report.XlsColumn;
 import net.sf.ahtutils.xml.report.XlsSheet;
-import net.sf.ahtutils.xml.security.Staff;
 import net.sf.ahtutils.xml.status.Translations;
-import net.sf.ahtutils.xml.xpath.StatusXpath;
-import net.sf.exlp.exception.ExlpXpathNotFoundException;
-import net.sf.exlp.exception.ExlpXpathNotUniqueException;
 
 public class OfxXlsDefinitionFactory extends AbstractUtilsOfxDocumentationFactory
 {
@@ -76,8 +72,8 @@ public class OfxXlsDefinitionFactory extends AbstractUtilsOfxDocumentationFactor
 	private Specification createSpecifications()
 	{
 		Columns cols = new Columns();
-		cols.getColumn().add(OfxColumnFactory.flex(15));
-		cols.getColumn().add(OfxColumnFactory.flex(35));
+		cols.getColumn().add(OfxColumnFactory.flex(15,true));
+		cols.getColumn().add(OfxColumnFactory.flex(35,true));
 		cols.getColumn().add(OfxColumnFactory.flex(50));
 			
 		
