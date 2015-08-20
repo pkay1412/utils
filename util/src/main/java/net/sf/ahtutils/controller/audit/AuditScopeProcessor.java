@@ -4,6 +4,7 @@ import java.util.*;
 
 import net.sf.ahtutils.xml.audit.Change;
 import net.sf.ahtutils.xml.audit.Scope;
+import net.sf.exlp.util.xml.JaxbUtil;
 
 public class AuditScopeProcessor
 {
@@ -15,26 +16,28 @@ public class AuditScopeProcessor
     public List<Scope> group(List<Change> changes)
     {
         List<Scope> scopes = new ArrayList<Scope>();
-        for(Change change : changes)
-        {
-            scopes.add(change.getScope());
+        LinkedHashMap<String, Scope> tmp = new LinkedHashMap<String, Scope>();
+
+        for (Change change : changes) {
+            tmp.put(change.getScope().getId() + "/" + change.getScope().getClazz(), change.getScope());
         }
-        List<Scope> singleScopes = isDouble(scopes);
-        return singleScopes;
+
+        for(Map.Entry<String, Scope> me : tmp.entrySet()) {
+            addChanges(changes, me);
+            scopes.add(me.getValue());
+        }
+
+        return scopes;
     }
 
-    private List<Scope> isDouble(List<Scope> scopes)
+    private void addChanges(List<Change> changes, Map.Entry<String, Scope> me )
     {
-        Map<String, Scope> scopeIdentity = new HashMap<String, Scope>();
-        for(Scope sc : scopes)
-            if(!scopeIdentity.containsKey(sc.getId() + "-" + sc.getClazz()) && !scopeIdentity.containsValue(sc))
-                scopeIdentity.put(sc.getId() + "-" + sc.getClazz(), sc);
-
-        List<Scope> scopeList = new ArrayList<Scope>();
-        for (Object o : scopeIdentity.entrySet()) {
-            Map.Entry pair = (Map.Entry) o;
-            scopeList.add((Scope) pair.getValue());
+        for (Change c : changes) {
+            String key = c.getScope().getId() + "/" + c.getScope().getClazz();
+            if (me.getKey().equals(key))
+            {
+                me.getValue().getChange().add(c);
+            }
         }
-        return scopeList;
     }
 }
