@@ -9,7 +9,7 @@
 	<ofx:title lang="en">Icons</ofx:title>
 	
 	<ofx:paragraph lang="en">
-		A computer icon is a pictogram displayed on a computer screen in order to help user navigate a computer system or mobile device.
+		A computer icon is a pictogram displayed on a computer screen in order to help users navigate a computer system or mobile device.
 		A common understanding for icons are,
 		that "good icons should be more like road signs than illustrations,
 		easily comprehensible, and not cluttered with extraneous detail".
@@ -24,7 +24,7 @@
 		</ofx:paragraph>
 	
 	<table:table  id="table.user.ui.icons">
-	    <ofx:title lang="en">Summary of commonly used icons</ofx:title>
+	    <ofx:title lang="en">Summary of Commonly Used Icons</ofx:title>
 	    <table:specification>
 	        <table:columns>
 	            <table:column><layout:alignment horizontal="center"/></table:column>
@@ -78,7 +78,7 @@
 	                    <ofx:paragraph>Add</ofx:paragraph>
 	                </table:cell>
 	                <table:cell>
-	                    <ofx:paragraph>Creates or add a element to your current table</ofx:paragraph>
+	                    <ofx:paragraph>Creates or adds an element to your current table</ofx:paragraph>
 	                </table:cell>
 	            </table:row>
 	            <table:row>
@@ -92,7 +92,7 @@
 	                    <ofx:paragraph>Remove</ofx:paragraph>
 	                </table:cell>
 	                <table:cell>
-	                    <ofx:paragraph>Remove the current item of your table</ofx:paragraph>
+	                    <ofx:paragraph>Remove the current item from your table</ofx:paragraph>
 	                </table:cell>
 	            </table:row>
 <!--	            <table:row>
@@ -114,7 +114,7 @@
 	                </table:cell>
 	                <table:cell><ofx:paragraph>Delete</ofx:paragraph></table:cell>
 	                <table:cell>
-	                    <ofx:paragraph>Removes the current item from you table and deletes it</ofx:paragraph>
+	                    <ofx:paragraph>Removes the current item from your table and deletes it</ofx:paragraph>
 	                </table:cell>
 	            </table:row>
 	            <table:row>
@@ -126,7 +126,7 @@
 	                </table:cell>
 	                <table:cell><ofx:paragraph>Save</ofx:paragraph></table:cell>
 	                <table:cell>
-	                    <ofx:paragraph>Enter your current changes/modifications</ofx:paragraph>
+	                    <ofx:paragraph>Save your current changes/modifications</ofx:paragraph>
 	                </table:cell>
 	            </table:row>
 	            <table:row>
