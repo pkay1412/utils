@@ -2,10 +2,15 @@ package net.sf.ahtutils.db.shell.postgres;
 
 import java.io.File;
 import java.util.Arrays;
+import java.util.List;
 import java.util.NoSuchElementException;
 
 import org.apache.commons.configuration.Configuration;
 import org.jdom2.Document;
+import org.jdom2.Element;
+import org.jdom2.filter.Filters;
+import org.jdom2.xpath.XPathExpression;
+import org.jdom2.xpath.XPathFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -66,10 +71,33 @@ public class PostgresRestore extends AbstractPostgresShell implements UtilsDbShe
 	private void buildRestoreDataScript() throws ExlpUnsupportedOsException
 	{		
 		super.cmdPre();
-
-		for(String table : Arrays.asList(config.getStringArray(UtilsDbShell.cfgDbTablesRestore))){restoreTable(table);}
-		for(String table : Arrays.asList(config.getStringArray(UtilsDbShell.cfgDbTablesRestoreTrigger))){restoreTableDisabledTrigger(table);}
-		for(String table : Arrays.asList(config.getStringArray(UtilsDbShell.cfgDbSequenceRestore))){restoreSequence(table);}
+		
+		XPathExpression<Element> xpe = XPathFactory.instance().compile("/config/db/tables/restore", Filters.element());
+        List<Element> elementList = xpe.evaluateFirst(xmlConfig).getChildren();
+		for(Element e : elementList)
+        {
+            if(e.getName().equals("table"))
+            {
+               restoreTable(e.getText());
+            }
+            else
+            {
+                if(e.getName().equals("ttable"))
+                {
+                	restoreTableDisabledTrigger(e.getText());
+                }
+                else
+                {
+                    if(e.getName().equals("sequence"))
+                    {
+                        restoreSequence(e.getText());
+                    }
+                }
+            }
+        }
+//		for(String table : Arrays.asList(config.getStringArray(UtilsDbShell.cfgDbTablesRestore))){restoreTable(table);}
+//		for(String table : Arrays.asList(config.getStringArray(UtilsDbShell.cfgDbTablesRestoreTrigger))){restoreTableDisabledTrigger(table);}
+//		for(String table : Arrays.asList(config.getStringArray(UtilsDbShell.cfgDbSequenceRestore))){restoreSequence(table);}
 //		for(String table : Arrays.asList(config.getStringArray(UtilsDbShell.cfgDbTablesKey))){fixPrimaryKey(table);}
 		
 		super.cmdPost();
