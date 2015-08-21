@@ -10,24 +10,24 @@ import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class TestXmlFile extends AbstractXmlReportTest
+public class TestXmlHash extends AbstractXmlReportTest
 {
-	final static Logger logger = LoggerFactory.getLogger(TestXmlFile.class);
+	final static Logger logger = LoggerFactory.getLogger(TestXmlHash.class);
 	
-	@BeforeClass public static void initFiles(){setXmlFile(dirSuffix,File.class);}
+	@BeforeClass public static void initFiles(){setXmlFile(dirSuffix,Hash.class);}
     
     @Test
     public void xml() throws FileNotFoundException
     {
-    	File test = create();
-    	File ref = JaxbUtil.loadJAXB(fXml.getAbsolutePath(), File.class);
+    	Hash test = create();
+    	Hash ref = JaxbUtil.loadJAXB(fXml.getAbsolutePath(), Hash.class);
     	assertJaxbEquals(ref, test);
     }
     
-    public static File create()
+    public static Hash create()
     {
-    	File xml = new File();
-    	xml.setValue("myFileName");
+    	Hash xml = new Hash();
+    	xml.setValue("myHash");
     	return xml;
     }
     
@@ -37,9 +37,9 @@ public class TestXmlFile extends AbstractXmlReportTest
     {
 		UtilsXmlTestBootstrap.init();
 			
-		TestXmlFile.initJaxb();
-		TestXmlFile.initFiles();	
-		TestXmlFile test = new TestXmlFile();
+		TestXmlHash.initJaxb();
+		TestXmlHash.initFiles();	
+		TestXmlHash test = new TestXmlHash();
 		test.save();
     }
 }

@@ -19,7 +19,8 @@ import javax.xml.bind.annotation.XmlValue;
  * &lt;complexType&gt;
  *   &lt;simpleContent&gt;
  *     &lt;extension base="&lt;http://www.w3.org/2001/XMLSchema&gt;string"&gt;
- *       &lt;attribute name="version" type="{http://www.w3.org/2001/XMLSchema}int" /&gt;
+ *       &lt;attribute name="type" type="{http://www.w3.org/2001/XMLSchema}string" /&gt;
+ *       &lt;attribute name="version" type="{http://www.w3.org/2001/XMLSchema}long" /&gt;
  *     &lt;/extension&gt;
  *   &lt;/simpleContent&gt;
  * &lt;/complexType&gt;
@@ -39,8 +40,10 @@ public class Entity
     private final static long serialVersionUID = 1L;
     @XmlValue
     protected String value;
+    @XmlAttribute(name = "type")
+    protected String type;
     @XmlAttribute(name = "version")
-    protected Integer version;
+    protected Long version;
 
     /**
      * Gets the value of the value property.
@@ -71,14 +74,42 @@ public class Entity
     }
 
     /**
+     * Gets the value of the type property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getType() {
+        return type;
+    }
+
+    /**
+     * Sets the value of the type property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setType(String value) {
+        this.type = value;
+    }
+
+    public boolean isSetType() {
+        return (this.type!= null);
+    }
+
+    /**
      * Gets the value of the version property.
      * 
      * @return
      *     possible object is
-     *     {@link Integer }
+     *     {@link Long }
      *     
      */
-    public int getVersion() {
+    public long getVersion() {
         return version;
     }
 
@@ -87,10 +118,10 @@ public class Entity
      * 
      * @param value
      *     allowed object is
-     *     {@link Integer }
+     *     {@link Long }
      *     
      */
-    public void setVersion(int value) {
+    public void setVersion(long value) {
         this.version = value;
     }
 

@@ -9,12 +9,16 @@ public class XmlEntityFactory
 {
 	final static Logger logger = LoggerFactory.getLogger(XmlEntityFactory.class);
 	
-	public static Entity build(long id)
+	public static Entity build(long id){return build(null,id);}
+	public static Entity build(String type, long id)
 	{
 		Entity xml = new Entity();
+		xml.setType(type);
 		xml.setValue(new Long(id).toString());
 		return xml;
 	}
+	
+	
 	
 	public static long toLong(Entity entity)
 	{

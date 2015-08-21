@@ -173,10 +173,28 @@
                 <xsd:element ref="r:media" maxOccurs="unbounded"/>
                 <xsd:element ref="r:jr" maxOccurs="unbounded"/>
                 <xsd:element ref="r:file" maxOccurs="1"/>
+                <xsd:element ref="r:hash" maxOccurs="1"/>
+                <xsd:element ref="r:user" maxOccurs="1"/>
             </xsd:sequence>
         </xsd:complexType>
     </xsd:element>
     <xsd:element name="file">
+        <xsd:complexType>
+            <xsd:simpleContent>
+                <xsd:extension base="xsd:string">
+                </xsd:extension>
+            </xsd:simpleContent>
+        </xsd:complexType>
+    </xsd:element>
+	<xsd:element name="hash">
+        <xsd:complexType>
+            <xsd:simpleContent>
+                <xsd:extension base="xsd:string">
+                </xsd:extension>
+            </xsd:simpleContent>
+        </xsd:complexType>
+    </xsd:element>
+	<xsd:element name="user">
         <xsd:complexType>
             <xsd:simpleContent>
                 <xsd:extension base="xsd:string">

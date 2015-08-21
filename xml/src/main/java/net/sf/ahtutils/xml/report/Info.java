@@ -59,6 +59,8 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *         &lt;element ref="{http://ahtutils.aht-group.com/report}media" maxOccurs="unbounded"/&gt;
  *         &lt;element ref="{http://ahtutils.aht-group.com/report}jr" maxOccurs="unbounded"/&gt;
  *         &lt;element ref="{http://ahtutils.aht-group.com/report}file"/&gt;
+ *         &lt;element ref="{http://ahtutils.aht-group.com/report}hash"/&gt;
+ *         &lt;element ref="{http://ahtutils.aht-group.com/report}user"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -75,7 +77,9 @@ import javax.xml.datatype.XMLGregorianCalendar;
     "footer",
     "media",
     "jr",
-    "file"
+    "file",
+    "hash",
+    "user"
 })
 @XmlRootElement(name = "info")
 public class Info
@@ -97,6 +101,10 @@ public class Info
     protected List<Jr> jr;
     @XmlElement(required = true)
     protected File file;
+    @XmlElement(required = true)
+    protected Hash hash;
+    @XmlElement(required = true)
+    protected User user;
 
     /**
      * Gets the value of the title property.
@@ -310,6 +318,62 @@ public class Info
 
     public boolean isSetFile() {
         return (this.file!= null);
+    }
+
+    /**
+     * Gets the value of the hash property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Hash }
+     *     
+     */
+    public Hash getHash() {
+        return hash;
+    }
+
+    /**
+     * Sets the value of the hash property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Hash }
+     *     
+     */
+    public void setHash(Hash value) {
+        this.hash = value;
+    }
+
+    public boolean isSetHash() {
+        return (this.hash!= null);
+    }
+
+    /**
+     * Gets the value of the user property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link User }
+     *     
+     */
+    public User getUser() {
+        return user;
+    }
+
+    /**
+     * Sets the value of the user property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link User }
+     *     
+     */
+    public void setUser(User value) {
+        this.user = value;
+    }
+
+    public boolean isSetUser() {
+        return (this.user!= null);
     }
 
 

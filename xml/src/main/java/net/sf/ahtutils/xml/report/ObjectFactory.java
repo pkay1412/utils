@@ -166,6 +166,22 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link Hash }
+     * 
+     */
+    public Hash createHash() {
+        return new Hash();
+    }
+
+    /**
+     * Create an instance of {@link User }
+     * 
+     */
+    public User createUser() {
+        return new User();
+    }
+
+    /**
      * Create an instance of {@link XlsDefinition }
      * 
      */

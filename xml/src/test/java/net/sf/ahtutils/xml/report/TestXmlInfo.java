@@ -2,14 +2,14 @@ package net.sf.ahtutils.xml.report;
 
 import java.io.FileNotFoundException;
 
-import net.sf.ahtutils.test.AbstractAhtUtilsXmlTest;
-import net.sf.ahtutils.test.UtilsXmlTestBootstrap;
-import net.sf.exlp.util.xml.JaxbUtil;
-
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import net.sf.ahtutils.test.AbstractAhtUtilsXmlTest;
+import net.sf.ahtutils.test.UtilsXmlTestBootstrap;
+import net.sf.exlp.util.xml.JaxbUtil;
 
 public class TestXmlInfo extends AbstractXmlReportTest
 {
@@ -44,6 +44,9 @@ public class TestXmlInfo extends AbstractXmlReportTest
     	Info.Record record = new Info.Record();
     	record.setValue(AbstractAhtUtilsXmlTest.getDefaultXmlDate());
     	xml.setRecord(record);
+    	
+    	xml.setHash(TestXmlHash.create());
+    	xml.setUser(TestXmlUser.create());
     	
     	if(withChildren)
     	{
