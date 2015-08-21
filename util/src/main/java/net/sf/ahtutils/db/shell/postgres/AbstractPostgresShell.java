@@ -13,12 +13,16 @@ import net.sf.exlp.exception.ExlpUnsupportedOsException;
 import net.sf.exlp.factory.xml.config.XmlParameterFactory;
 import net.sf.exlp.shell.cmd.ShellCmdExport;
 import net.sf.exlp.shell.cmd.ShellCmdUnset;
+import net.sf.exlp.xml.config.Parameter;
 
 public class AbstractPostgresShell extends AbstractDatabaseShell
 {
 	final static Logger logger = LoggerFactory.getLogger(AbstractPostgresShell.class);
 	
+	protected boolean pwdSet;
+	
 	private static final String PGPWASSWORD = "PGPASSWORD";
+	protected Parameter pDbSuperUser,pDbSuperPwd;
 	
 	public AbstractPostgresShell(Configuration config,UtilsDbShell.Operation operation)
 	{
@@ -37,13 +41,25 @@ public class AbstractPostgresShell extends AbstractDatabaseShell
 	
 	public void cmdPre() throws ExlpUnsupportedOsException
 	{
-		super.addLine(ShellCmdExport.export(PGPWASSWORD,pDbPwd.getValue()));
+		setPwd(pDbPwd.getValue());
 		super.addLine("");
 	}
 	
 	public void cmdPost() throws ExlpUnsupportedOsException
 	{
 		super.addLine("");
+		unsetPwd();
+	}
+	
+	protected void setPwd(String pwd) throws ExlpUnsupportedOsException
+	{
+		super.addLine(ShellCmdExport.export(PGPWASSWORD,pwd));
+		pwdSet = true;
+	}
+	
+	protected void unsetPwd() throws ExlpUnsupportedOsException
+	{
 		super.addLine(ShellCmdUnset.unset(PGPWASSWORD));
+		pwdSet = false;
 	}
 }

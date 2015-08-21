@@ -22,6 +22,7 @@ public interface UtilsDbShell
 	public static final String cfgDbDropSequence = "db.tables.drop.sequence";
 	
 	public static final String cfgDbTablesRestore = "db.tables.restore.table";
+	public static final String cfgDbTablesRestoreTrigger = "db.tables.restore.ttable";
 	public static final String cfgDbSequenceRestore = "db.tables.restore.sequence";
 	public static final String cfgDbTablesKey = "db.tables.key.table";
 	

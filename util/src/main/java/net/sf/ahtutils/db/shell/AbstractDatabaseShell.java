@@ -61,11 +61,11 @@ public class AbstractDatabaseShell
 		pDbName.setValue(config.getString(pDbName.getKey()));
 		configurationParamter.getParameter().add(pDbName);
 		
-		pDbUser = XmlParameterFactory.build("db."+operation.toString()+".user", "DB User for athentication of "+operation.toString(), true);
+		pDbUser = XmlParameterFactory.build("db."+operation.toString()+".user.name", "DB User for athentication of "+operation.toString(), true);
 		pDbUser.setValue(config.getString(pDbUser.getKey()));
 		configurationParamter.getParameter().add(pDbUser);
 		
-		pDbPwd = XmlParameterFactory.build("db."+operation.toString()+".password", "DB Password for athentication of "+operation.toString(), true);
+		pDbPwd = XmlParameterFactory.build("db."+operation.toString()+".user.password", "DB Password for athentication of "+operation.toString(), true);
 		pDbPwd.setValue(config.getString(pDbPwd.getKey()));
 		configurationParamter.getParameter().add(pDbPwd);
 		

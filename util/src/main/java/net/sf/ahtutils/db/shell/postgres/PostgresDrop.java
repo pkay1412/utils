@@ -28,6 +28,13 @@ public class PostgresDrop extends AbstractPostgresShell implements UtilsDbShell
 		super(config, UtilsDbShell.Operation.restore, xmlConfig);
     }
 	
+	public void writeShell() throws ExlpUnsupportedOsException
+	{
+		operation=UtilsDbShell.Operation.drop;
+		buildCommands(false);
+		this.save();
+	}
+	
 	public void buildCommands(boolean withStructure) throws ExlpUnsupportedOsException
 	{		
 		super.cmdPre();
