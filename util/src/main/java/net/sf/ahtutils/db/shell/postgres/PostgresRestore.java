@@ -26,7 +26,26 @@ public class PostgresRestore extends AbstractPostgresShell implements UtilsDbShe
 		configurationParamter.getParameter().add(pDbRestore);
     }
 	
+	@Deprecated
 	public void buildCommands(boolean withStructure) throws ExlpUnsupportedOsException
+	{
+		restoreTables();
+	}
+	
+	public void writeShell() throws ExlpUnsupportedOsException
+	{
+		operation=UtilsDbShell.Operation.restore;
+		scope = UtilsDbShell.Scope.data;
+		restoreTables();
+		this.save();
+		
+		txtWriter.clear();
+		scope = UtilsDbShell.Scope.structure;
+		restoreStructure();
+		this.save();
+	}
+	
+	public void restoreTables() throws ExlpUnsupportedOsException
 	{		
 		super.cmdPre();
 
@@ -91,4 +110,28 @@ public class PostgresRestore extends AbstractPostgresShell implements UtilsDbShe
 		return sb.toString();
 	}
 	
+	
+	public void restoreStructure() throws ExlpUnsupportedOsException
+	{		
+		super.cmdPre();
+
+		StringBuffer sb = new StringBuffer();
+		sb.append(pDbRestore.getValue());
+		sb.append(" --verbose");
+		sb.append(" -h ").append(pDbHost.getValue());
+		sb.append(" -U ").append(pDbUser.getValue());
+		sb.append(" -d ").append(pDbName.getValue());
+//		sb.append(" --disable-triggers");
+		sb.append(" --no-privileges");
+		sb.append(" --no-owner");
+		sb.append(" --schema-only");
+		sb.append(" ").append(pSqlDir.getValue() + File.separator + pDbName.getValue() + ".sql");
+		
+		// Trigger http://dba.stackexchange.com/questions/23000/disable-constraints-before-using-pg-restore-exe
+		// http://www.postgresonline.com/special_feature.php?sf_name=postgresql83_pg_dumprestore_cheatsheet
+		
+		super.addLine(sb.toString());
+		
+		super.cmdPost();
+	}
 }

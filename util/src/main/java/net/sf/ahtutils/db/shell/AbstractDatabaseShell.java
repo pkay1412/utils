@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.NoSuchElementException;
 
 import org.apache.commons.configuration.Configuration;
+import org.apache.commons.lang.WordUtils;
 import org.jdom2.Document;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,7 +15,10 @@ import net.sf.exlp.exception.ExlpUnsupportedOsException;
 import net.sf.exlp.factory.xml.config.XmlParameterFactory;
 import net.sf.exlp.factory.xml.config.XmlParametersFactory;
 import net.sf.exlp.interfaces.util.TextWriter;
+import net.sf.exlp.shell.cmd.ShellCmdChmod;
+import net.sf.exlp.shell.os.OsArchitectureUtil;
 import net.sf.exlp.shell.os.OsBashFile;
+import net.sf.exlp.shell.spawn.Spawn;
 import net.sf.exlp.util.io.txt.ExlpTxtWriter;
 import net.sf.exlp.xml.config.Parameter;
 import net.sf.exlp.xml.config.Parameters;
@@ -32,8 +36,7 @@ public class AbstractDatabaseShell
 	
 	protected String dbSchema;
 	
-	protected List<String> tables;
-	public List<String> getTables(){return tables;}
+	protected List<String> tables; public List<String> getTables(){return tables;}
 	
 	protected ExlpTxtWriter txtWriter;
 	
@@ -108,9 +111,28 @@ public class AbstractDatabaseShell
 	public File getShellFile()
 	{
 		String extension = "";
-		try {extension = "."+OsBashFile.fileExtention();}
-		catch (ExlpUnsupportedOsException e) {e.printStackTrace();}
-		return new File(config.getString(UtilsDbShell.cfgDirShell),config.getString("db."+operation.toString()+".shell")+extension);
+		String opScope = "";
+		
+		try {extension = "."+OsBashFile.fileExtention();} catch (ExlpUnsupportedOsException e) {e.printStackTrace();}
+		
+		if(scope!=null)
+		{
+			opScope = WordUtils.capitalize(scope.toString());
+		}
+		
+		return new File(config.getString(UtilsDbShell.cfgDirShell),config.getString("db."+operation.toString()+".shell")+opScope+extension);
+	}
+	
+	protected void save() throws ExlpUnsupportedOsException
+	{
+		File f = getShellFile(); 
+		txtWriter.writeFile(f);
+		
+		if(OsArchitectureUtil.isUnixLike())
+		{
+			Spawn spawn = new Spawn(ShellCmdChmod.executeable(f));
+			spawn.cmd();
+		}
 	}
 	
 	//Configuration Parameter
@@ -119,4 +141,6 @@ public class AbstractDatabaseShell
 	
 	protected UtilsDbShell.Operation operation;
 	public void setOperation(UtilsDbShell.Operation operation){this.operation = operation;}
+	
+	protected UtilsDbShell.Scope scope;
 }

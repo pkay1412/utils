@@ -9,6 +9,7 @@ import net.sf.exlp.xml.config.Parameters;
 public interface UtilsDbShell
 {
 	public static enum Operation {dump,restore,drop}
+	public static enum Scope {all,data,structure}
 	
 	public static final String cfgBinPsql = "db.bin.psql";
 	public static final String cfgBinDump = "db.bin.dump";
