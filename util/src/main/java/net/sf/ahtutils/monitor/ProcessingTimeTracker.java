@@ -21,20 +21,13 @@ public class ProcessingTimeTracker
 	public ProcessingTimeTracker(boolean autoStart)
 	{
 		counter=0;
+		start=0;
+		stop=0;
 		if(autoStart){start();}
 	}
 	
-
-	
-	public void start()
-	{
-		start = System.currentTimeMillis();
-	}
-	
-	public void stop()
-	{
-		stop = System.currentTimeMillis();
-	}
+	public void start() {start = System.currentTimeMillis();}
+	public void stop() {stop = System.currentTimeMillis();}
 	
 	public void round()
 	{
@@ -45,6 +38,7 @@ public class ProcessingTimeTracker
 	
 	public String toTotalTime()
 	{
+		if(stop==0){stop();}
 		StringBuffer sb = new StringBuffer();
 		sb.append(stop-start);
 		sb.append(" ms");
