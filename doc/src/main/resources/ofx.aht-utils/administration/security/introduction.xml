@@ -26,7 +26,7 @@
 	    </l:item>
 	    <l:item name="Views" lang="en" version="2" id="section.admin.security.introduction.list.views">
 	    	<ofx:paragraph>
-				A view is a single web-page of the system. Examples for a view is the welcome-page or the administrator-page.
+				A view is a single web page of the system. Examples for a view is the welcome page or the administrator page.
 				Views are implemented and defined by the <text:emphasis italic="true">System Developers</text:emphasis>.
 				The <text:emphasis italic="true">System Administrators</text:emphasis> are not able to add new
 				views to the system, but are able to change the names and descriptions
@@ -56,13 +56,13 @@
 				sind Rollen zugehörig und stellen eine Möglichkeit dar, den Zugriff auf mehrere Sichten/Aktionen durch eine einzelne Definition zu steuern.
 			</ofx:paragraph>
 	    </l:item>
-	    <l:item name="Use-Cases" lang="en" version="2" id="section.admin.security.introduction.list.usecases">
+	    <l:item name="Use Cases" lang="en" version="2" id="section.admin.security.introduction.list.usecases">
 	    	<ofx:paragraph>
 				are initially implemented by the <text:emphasis italic="true">System Developers</text:emphasis>,
 				but <text:emphasis italic="true">System Administrators</text:emphasis> have full access to this configuration
-				and are able to add, remove or modify use-cases. Each use-case contains
+				and are able to add, remove or modify use cases. Each use case contains
 				multiple views or actions. This reflects the requirement that a user usually needs access to multiple pages
-				with several allowed user interactions to perform a complex use-case.
+				with several allowed user interactions to perform a complex use case.
 			</ofx:paragraph>
 	    </l:item>
 	    <l:item name="XX" lang="fr">
@@ -91,11 +91,11 @@
 
 	<ofx:paragraph lang="en">
 		The management of
-		<text:emphasis bold="true">Roles</text:emphasis> or <text:emphasis bold="true">Use-Cases</text:emphasis>
+		<text:emphasis bold="true">Roles</text:emphasis> or <text:emphasis bold="true">Use Cases</text:emphasis>
 		by the <text:emphasis italic="true">System Administrators</text:emphasis> needs to be rarely done. In most
 		cases it is required if the business processes or organisation structure changes to reflect these changes in the
 		information system. The assignment of <text:emphasis bold="true">Roles</text:emphasis> to
-		<text:emphasis bold="true">Users</text:emphasis> is a daily-work task for the
+		<text:emphasis bold="true">Users</text:emphasis> is a daily work task for the
 		<text:emphasis italic="true">System Administrators</text:emphasis> at the same time
 		when adding new users to the system.
 	</ofx:paragraph>
@@ -120,7 +120,7 @@
 		with business processes (also represented in the page flow) and derived from functional and non-functional requirements and
 		has corresponding visual elements like buttons, filters or tables. Additionally to the elements itself the
 		<text:emphasis italic="true">content</text:emphasis> (e.g. of tables) can be different based on different access rights.
-		The <text:emphasis bold="true">Use-Cases</text:emphasis> are a convient way to aggregate different
+		The <text:emphasis bold="true">Use Cases</text:emphasis> are a convinient way to aggregate different
 		<text:emphasis bold="true">Views</text:emphasis> and <text:emphasis bold="true">Actions</text:emphasis> and assign
 		them to a <text:emphasis bold="true">Role</text:emphasis>
 	</ofx:paragraph>
@@ -128,8 +128,8 @@
 	<ofx:paragraph lang="en">
 		This illustrates that the definiton of the security concept is mainly done by the
 		<text:emphasis italic="true">Developers</text:emphasis>,
-		to achieve a user-friendly and both flexible system,
-		the <text:emphasis italic="true">Administrator</text:emphasis> only has to deal with the assignment of
+		to achieve a user-friendly and both flexible system.
+		The <text:emphasis italic="true">Administrator</text:emphasis> has to deal with the assignment of
 		<text:emphasis bold="true">Roles</text:emphasis> to <text:emphasis bold="true">User</text:emphasis>.
 	</ofx:paragraph>
 	
