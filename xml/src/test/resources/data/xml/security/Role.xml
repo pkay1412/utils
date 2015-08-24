@@ -5,4 +5,5 @@
     <sec:views/>
     <sec:actions/>
     <sec:usecases/>
+    <sec:staffs/>
 </sec:role>

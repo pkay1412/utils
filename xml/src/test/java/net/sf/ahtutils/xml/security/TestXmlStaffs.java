@@ -3,6 +3,7 @@ package net.sf.ahtutils.xml.security;
 import java.io.FileNotFoundException;
 
 import net.sf.ahtutils.test.UtilsXmlTestBootstrap;
+import net.sf.ahtutils.xml.status.TestXmlDomain;
 import net.sf.exlp.util.xml.JaxbUtil;
 
 import org.junit.BeforeClass;
@@ -30,6 +31,7 @@ public class TestXmlStaffs extends AbstractXmlSecurityTest
 
     	if(withChilds)
     	{
+    		xml.setDomain(TestXmlDomain.create(false));
     		xml.getStaff().add(TestXmlStaff.create(false));xml.getStaff().add(TestXmlStaff.create(false));
     	}
     	return xml;

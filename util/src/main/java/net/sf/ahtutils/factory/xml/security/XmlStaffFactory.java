@@ -29,10 +29,13 @@ public class XmlStaffFactory<L extends UtilsLang,
 {
 	final static Logger logger = LoggerFactory.getLogger(XmlStaffFactory.class);
 		
+	private String lang;
 	private Staff q;
 	
-	public XmlStaffFactory(Staff q)
+	public XmlStaffFactory(Staff q){this(null,q);}
+	public XmlStaffFactory(String lang, Staff q)
 	{
+		this.lang=lang;
 		this.q=q;
 	}
 	
@@ -57,7 +60,7 @@ public class XmlStaffFactory<L extends UtilsLang,
 		
 		if(q.isSetRole())
 		{
-			XmlRoleFactory<L,D,C,R,V,U,A,USER> f = new XmlRoleFactory<L,D,C,R,V,U,A,USER>(q.getRole());
+			XmlRoleFactory<L,D,C,R,V,U,A,USER> f = new XmlRoleFactory<L,D,C,R,V,U,A,USER>(lang,q.getRole());
 			xml.setRole(f.build(staff.getRole()));
 		}
 		

@@ -85,7 +85,6 @@ public class XmlRoleFactory<L extends UtilsLang,
 		
 		if(q.isSetLabel() && lang!=null && role.getName().containsKey(lang))
 		{
-
 			xml.setLabel(role.getName().get(lang).getLang());
 		}
 			

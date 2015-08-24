@@ -40,6 +40,15 @@ public class XmlUserFactory<L extends UtilsLang,
 		return xml;
 	}
 	
+	public static User build(String firstName, String lastName, String email)
+	{
+		User xml = new User();
+		xml.setFirstName(firstName);
+		xml.setLastName(lastName);
+		xml.setEmail(email);
+		return xml;
+	}
+	
 	public User build(USER user)
 	{
 		User xml = new User();

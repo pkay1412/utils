@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <p:responsibilities xmlns:sec="http://ahtutils.aht-group.com/security" xmlns:s="http://ahtutils.aht-group.com/status" xmlns:p="http://ahtutils.aht-group.com/project">
     <sec:roles type="myType"/>
-    <sec:user firstName="myFirst" lastName="myLast"/>
-    <sec:user firstName="myFirst" lastName="myLast"/>
+    <sec:user firstName="myFirst" lastName="myLast" email="myEmail"/>
+    <sec:user firstName="myFirst" lastName="myLast" email="myEmail"/>
 </p:responsibilities>

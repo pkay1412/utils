@@ -10,6 +10,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 import net.sf.ahtutils.xml.access.Role;
 import net.sf.ahtutils.xml.qa.Test;
+import net.sf.ahtutils.xml.security.Category;
 import net.sf.ahtutils.xml.security.Staff;
 import net.sf.ahtutils.xml.status.Langs;
 import net.sf.ahtutils.xml.status.Status;
@@ -37,6 +38,7 @@ import net.sf.ahtutils.xml.utils.TrafficLights;
  *         &lt;element ref="{http://ahtutils.aht-group.com/status}status"/&gt;
  *         &lt;element ref="{http://ahtutils.aht-group.com/status}type"/&gt;
  *         &lt;element ref="{http://ahtutils.aht-group.com/qa}test"/&gt;
+ *         &lt;element ref="{http://ahtutils.aht-group.com/security}category"/&gt;
  *         &lt;element ref="{http://ahtutils.aht-group.com/security}staff"/&gt;
  *         &lt;element ref="{http://ahtutils.aht-group.com/survey}templates"/&gt;
  *         &lt;element ref="{http://ahtutils.aht-group.com/survey}template"/&gt;
@@ -60,6 +62,7 @@ import net.sf.ahtutils.xml.utils.TrafficLights;
     "status",
     "type",
     "test",
+    "category",
     "staff",
     "templates",
     "template",
@@ -84,6 +87,8 @@ public class Query
     protected Type type;
     @XmlElement(namespace = "http://ahtutils.aht-group.com/qa", required = true)
     protected Test test;
+    @XmlElement(namespace = "http://ahtutils.aht-group.com/security", required = true)
+    protected Category category;
     @XmlElement(namespace = "http://ahtutils.aht-group.com/security", required = true)
     protected Staff staff;
     @XmlElement(namespace = "http://ahtutils.aht-group.com/survey", required = true)
@@ -239,6 +244,34 @@ public class Query
 
     public boolean isSetTest() {
         return (this.test!= null);
+    }
+
+    /**
+     * Gets the value of the category property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Category }
+     *     
+     */
+    public Category getCategory() {
+        return category;
+    }
+
+    /**
+     * Sets the value of the category property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Category }
+     *     
+     */
+    public void setCategory(Category value) {
+        this.category = value;
+    }
+
+    public boolean isSetCategory() {
+        return (this.category!= null);
     }
 
     /**

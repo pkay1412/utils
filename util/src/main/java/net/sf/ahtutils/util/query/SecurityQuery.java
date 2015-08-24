@@ -21,7 +21,7 @@ import net.sf.ahtutils.xml.status.Domain;
 
 public class SecurityQuery
 {
-	public static enum Key {role,roleLabel,exStaff}
+	public static enum Key {role,roleLabel,exStaff,categoryLabel}
 	
 	private static Map<Key,Query> mQueries;
 	
@@ -33,6 +33,7 @@ public class SecurityQuery
 			Query q = new Query();
 			switch(key)
 			{
+				case categoryLabel: q.setCategory(categoryLabel());
 				default: break;
 			}
 			mQueries.put(key, q);
@@ -89,12 +90,29 @@ public class SecurityQuery
 		return xml;
 	}
 	
+	public static Staff staffUserRole()
+	{
+		Staff xml = new Staff();
+		xml.setRole(roleLabel());
+		xml.setUser(user());
+		
+		return xml;
+	}
+	
 	public static Category exCategory()
 	{
 		Category xml = new Category();
 		xml.setCode("");
 		xml.setLangs(StatusQuery.langs());
 		xml.setDescriptions(StatusQuery.descriptions());
+		return xml;
+	}
+	
+	public static Category categoryLabel()
+	{
+		Category xml = new Category();
+		xml.setCode("");
+		xml.setLabel("");
 		return xml;
 	}
 	
@@ -117,7 +135,6 @@ public class SecurityQuery
 		xml.setActions(XmlActionsFactory.build());xml.getActions().getAction().add(XmlActionFactory.build(""));
 		xml.setViews(XmlViewsFactory.build());xml.getViews().getView().add(XmlViewFactory.build(""));
 		xml.setUsecases(XmlUsecasesFactory.build());xml.getUsecases().getUsecase().add(XmlUsecaseFactory.build(""));
-		
 		return xml;
 	}
 	

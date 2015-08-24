@@ -29,6 +29,7 @@ public class TestXmlUser extends AbstractXmlSecurityTest
     	User xml = new User();
     	xml.setFirstName("myFirst");
     	xml.setLastName("myLast");
+    	xml.setEmail("myEmail");
 
     	if(withChilds)
     	{

@@ -2,6 +2,8 @@
 package net.sf.ahtutils.xml.security;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
@@ -29,9 +31,11 @@ import net.sf.ahtutils.xml.status.Langs;
  *         &lt;element ref="{http://ahtutils.aht-group.com/security}actions"/&gt;
  *         &lt;element ref="{http://ahtutils.aht-group.com/security}usecases"/&gt;
  *         &lt;element ref="{http://ahtutils.aht-group.com/access}views"/&gt;
+ *         &lt;element ref="{http://ahtutils.aht-group.com/security}staffs" maxOccurs="unbounded"/&gt;
  *       &lt;/sequence&gt;
  *       &lt;attribute name="code" type="{http://www.w3.org/2001/XMLSchema}string" /&gt;
  *       &lt;attribute name="index" type="{http://www.w3.org/2001/XMLSchema}int" /&gt;
+ *       &lt;attribute name="label" type="{http://www.w3.org/2001/XMLSchema}string" /&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
@@ -46,7 +50,8 @@ import net.sf.ahtutils.xml.status.Langs;
     "roles",
     "actions",
     "usecases",
-    "views"
+    "views",
+    "staffs"
 })
 @XmlRootElement(name = "category")
 public class Category
@@ -66,10 +71,14 @@ public class Category
     protected Usecases usecases;
     @XmlElement(namespace = "http://ahtutils.aht-group.com/access", required = true)
     protected Views views;
+    @XmlElement(required = true)
+    protected List<Staffs> staffs;
     @XmlAttribute(name = "code")
     protected String code;
     @XmlAttribute(name = "index")
     protected Integer index;
+    @XmlAttribute(name = "label")
+    protected String label;
 
     /**
      * Gets the value of the langs property.
@@ -240,6 +249,43 @@ public class Category
     }
 
     /**
+     * Gets the value of the staffs property.
+     * 
+     * <p>
+     * This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the staffs property.
+     * 
+     * <p>
+     * For example, to add a new item, do as follows:
+     * <pre>
+     *    getStaffs().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link Staffs }
+     * 
+     * 
+     */
+    public List<Staffs> getStaffs() {
+        if (staffs == null) {
+            staffs = new ArrayList<Staffs>();
+        }
+        return this.staffs;
+    }
+
+    public boolean isSetStaffs() {
+        return ((this.staffs!= null)&&(!this.staffs.isEmpty()));
+    }
+
+    public void unsetStaffs() {
+        this.staffs = null;
+    }
+
+    /**
      * Gets the value of the code property.
      * 
      * @return
@@ -297,6 +343,34 @@ public class Category
 
     public void unsetIndex() {
         this.index = null;
+    }
+
+    /**
+     * Gets the value of the label property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getLabel() {
+        return label;
+    }
+
+    /**
+     * Sets the value of the label property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setLabel(String value) {
+        this.label = value;
+    }
+
+    public boolean isSetLabel() {
+        return (this.label!= null);
     }
 
 }

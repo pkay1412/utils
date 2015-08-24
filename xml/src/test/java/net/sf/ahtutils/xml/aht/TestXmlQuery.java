@@ -6,6 +6,7 @@ import java.io.FileNotFoundException;
 import net.sf.ahtutils.test.UtilsXmlTestBootstrap;
 import net.sf.ahtutils.xml.access.TestXmlRole;
 import net.sf.ahtutils.xml.qa.TestXmlTest;
+import net.sf.ahtutils.xml.security.TestXmlCategory;
 import net.sf.ahtutils.xml.security.TestXmlStaff;
 import net.sf.ahtutils.xml.status.TestXmlLangs;
 import net.sf.ahtutils.xml.status.TestXmlStatus;
@@ -55,6 +56,7 @@ public class TestXmlQuery extends AbstractXmlAhtTest
     		
     		xml.setTest(TestXmlTest.create(false));
     		
+    		xml.setCategory(TestXmlCategory.create(false));
     		xml.setStaff(TestXmlStaff.create(false));
     		
     		xml.setTemplates(TestXmlTemplates.create(false));

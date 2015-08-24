@@ -30,6 +30,9 @@ public class TestXmlCategory extends AbstractXmlSecurityTest
     public static Category create(boolean withChilds)
     {
     	Category xml = new Category();
+    	xml.setIndex(1);
+    	xml.setCode("myCode");
+    	xml.setLabel("myLabel");
     	
     	if(withChilds)
     	{
@@ -39,6 +42,7 @@ public class TestXmlCategory extends AbstractXmlSecurityTest
     		xml.setActions(TestXmlActions.create(false));
     		xml.setViews(TestXmlViews.create(false));
     		xml.setUsecases(TestXmlUsecases.create(false));
+    		xml.getStaffs().add(TestXmlStaffs.create(false));xml.getStaffs().add(TestXmlStaffs.create(false));
     	}
     	
     	return xml;

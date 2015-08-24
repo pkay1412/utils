@@ -1,5 +1,8 @@
 package net.sf.ahtutils.factory.xml.security;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import net.sf.ahtutils.factory.xml.status.XmlDescriptionsFactory;
 import net.sf.ahtutils.factory.xml.status.XmlLangsFactory;
 import net.sf.ahtutils.interfaces.model.status.UtilsDescription;
@@ -10,19 +13,17 @@ import net.sf.ahtutils.model.interfaces.security.UtilsSecurityCategory;
 import net.sf.ahtutils.model.interfaces.security.UtilsSecurityRole;
 import net.sf.ahtutils.model.interfaces.security.UtilsSecurityUsecase;
 import net.sf.ahtutils.model.interfaces.security.UtilsSecurityView;
+import net.sf.ahtutils.xml.aht.Query;
 import net.sf.ahtutils.xml.security.Category;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 public class XmlCategoryFactory <L extends UtilsLang,D extends UtilsDescription,C extends UtilsSecurityCategory<L,D,C,R,V,U,A,USER>,R extends UtilsSecurityRole<L,D,C,R,V,U,A,USER>,V extends UtilsSecurityView<L,D,C,R,V,U,A,USER>,U extends UtilsSecurityUsecase<L,D,C,R,V,U,A,USER>,A extends UtilsSecurityAction<L,D,C,R,V,U,A,USER>,USER extends UtilsUser<L,D,C,R,V,U,A,USER>>
 {
 	final static Logger logger = LoggerFactory.getLogger(XmlRoleFactory.class);
 		
-	@SuppressWarnings("unused")
 	private String lang;
 	private net.sf.ahtutils.xml.security.Category q;
 	
+	public XmlCategoryFactory(Query q){this(q.getLang(),q.getCategory());}
 	public XmlCategoryFactory(String lang,net.sf.ahtutils.xml.security.Category q)
 	{
 		this.lang=lang;
@@ -45,6 +46,26 @@ public class XmlCategoryFactory <L extends UtilsLang,D extends UtilsDescription,
 		{
 			XmlDescriptionsFactory<D> f = new XmlDescriptionsFactory<D>(q.getDescriptions());
 			xml.setDescriptions(f.create(category.getDescription()));
+		}
+		
+		if(q.isSetLabel() && lang!=null)
+		{
+			if(category.getName()!=null)
+			{
+				if(category.getName().containsKey(lang)){xml.setLabel(category.getName().get(lang).getLang());}
+				else
+				{
+					String msg = "No translation "+lang+" available in "+category;
+					logger.warn(msg);
+					xml.setLabel(msg);
+				}
+			}
+			else
+			{
+				String msg = "No @name available in "+category;
+				logger.warn(msg);
+				xml.setLabel(msg);
+			}
 		}
 		
 		return xml;

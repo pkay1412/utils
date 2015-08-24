@@ -27,6 +27,7 @@ import net.sf.ahtutils.xml.status.Langs;
  *         &lt;element ref="{http://ahtutils.aht-group.com/security}views"/&gt;
  *         &lt;element ref="{http://ahtutils.aht-group.com/security}actions"/&gt;
  *         &lt;element ref="{http://ahtutils.aht-group.com/security}usecases"/&gt;
+ *         &lt;element ref="{http://ahtutils.aht-group.com/security}staffs"/&gt;
  *       &lt;/sequence&gt;
  *       &lt;attribute name="id" type="{http://www.w3.org/2001/XMLSchema}long" /&gt;
  *       &lt;attribute name="code" type="{http://www.w3.org/2001/XMLSchema}string" /&gt;
@@ -44,7 +45,8 @@ import net.sf.ahtutils.xml.status.Langs;
     "langs",
     "views",
     "actions",
-    "usecases"
+    "usecases",
+    "staffs"
 })
 @XmlRootElement(name = "role")
 public class Role
@@ -62,6 +64,8 @@ public class Role
     protected Actions actions;
     @XmlElement(required = true)
     protected Usecases usecases;
+    @XmlElement(required = true)
+    protected Staffs staffs;
     @XmlAttribute(name = "id")
     protected Long id;
     @XmlAttribute(name = "code")
@@ -207,6 +211,34 @@ public class Role
 
     public boolean isSetUsecases() {
         return (this.usecases!= null);
+    }
+
+    /**
+     * Gets the value of the staffs property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Staffs }
+     *     
+     */
+    public Staffs getStaffs() {
+        return staffs;
+    }
+
+    /**
+     * Sets the value of the staffs property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Staffs }
+     *     
+     */
+    public void setStaffs(Staffs value) {
+        this.staffs = value;
+    }
+
+    public boolean isSetStaffs() {
+        return (this.staffs!= null);
     }
 
     /**

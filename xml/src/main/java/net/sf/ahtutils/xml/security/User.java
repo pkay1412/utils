@@ -25,6 +25,7 @@ import javax.xml.bind.annotation.XmlType;
  *       &lt;attribute name="id" type="{http://www.w3.org/2001/XMLSchema}long" /&gt;
  *       &lt;attribute name="firstName" type="{http://www.w3.org/2001/XMLSchema}string" /&gt;
  *       &lt;attribute name="lastName" type="{http://www.w3.org/2001/XMLSchema}string" /&gt;
+ *       &lt;attribute name="email" type="{http://www.w3.org/2001/XMLSchema}string" /&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
@@ -50,6 +51,8 @@ public class User
     protected String firstName;
     @XmlAttribute(name = "lastName")
     protected String lastName;
+    @XmlAttribute(name = "email")
+    protected String email;
 
     /**
      * Gets the value of the staffs property.
@@ -165,6 +168,34 @@ public class User
 
     public boolean isSetLastName() {
         return (this.lastName!= null);
+    }
+
+    /**
+     * Gets the value of the email property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getEmail() {
+        return email;
+    }
+
+    /**
+     * Sets the value of the email property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setEmail(String value) {
+        this.email = value;
+    }
+
+    public boolean isSetEmail() {
+        return (this.email!= null);
     }
 
 }

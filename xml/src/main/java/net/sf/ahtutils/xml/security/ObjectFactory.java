@@ -110,14 +110,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Security }
-     * 
-     */
-    public Security createSecurity() {
-        return new Security();
-    }
-
-    /**
      * Create an instance of {@link Category }
      * 
      */
@@ -131,6 +123,14 @@ public class ObjectFactory {
      */
     public Roles createRoles() {
         return new Roles();
+    }
+
+    /**
+     * Create an instance of {@link Security }
+     * 
+     */
+    public Security createSecurity() {
+        return new Security();
     }
 
     /**

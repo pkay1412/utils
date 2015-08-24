@@ -40,6 +40,7 @@ public class TestXmlRole extends AbstractXmlSecurityTest
     		xml.setActions(TestXmlActions.create(false));
     		xml.setViews(TestXmlViews.create(false));
     		xml.setUsecases(TestXmlUsecases.create(false));
+    		xml.setStaffs(TestXmlStaffs.create(false));
     	}
     	return xml;
     }
