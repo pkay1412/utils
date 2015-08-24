@@ -16,7 +16,7 @@
 		</ofx:paragraph>  -->	
 		
 		<media:image id="image.admin.installation.debian.base.jessie.boot">
-			<ofx:title lang="en">Debian installer boot menu</ofx:title>
+			<ofx:title lang="en">Debian Installer Boot Menu</ofx:title>
 			<layout:alignment horizontal="center"/>
 			<layout:width unit="percentage">60</layout:width>
 			<media:media lang="en" src="png.aht-utils/installation/debian/jessie/boot.png" dst="en/admin/installation/debian/jessie/boot"/>
@@ -63,7 +63,7 @@
 	   		
 			<l:item>
 	    		<ofx:paragraph lang="en">
-	    			Create a account to work with, this is your login.
+	    			Create an account to work with, this is your login.
 	    			For example "Developer" with password "dev".
 	    		</ofx:paragraph>
 	   		</l:item>
@@ -72,11 +72,11 @@
 	   		
 		<ofx:paragraph lang="en" version="1">				
 			Network Time Protocol (NTP) is a networking protocol for clock synchronization between computer systems. 
-			It may fails, if no Internet connection is established.		
+			It may fail, if no Internet connection is established.		
 		</ofx:paragraph>
 		
 		<ofx:section id="section.admin.installation.debian.base.jessie.partition" classifier="simple">
-			<ofx:title lang="en">Partition disks</ofx:title>
+			<ofx:title lang="en">Partition Disks</ofx:title>
 			
 			<media:image id="image.admin.installation.debian.base.jessie.partition.method">
 				<ofx:title lang="en">Partition Method</ofx:title>
@@ -93,7 +93,7 @@
 				or alternatively three primary partitions and an extended partition. A primary partition contains one file system.
 				
 				Please select "Guided - use entire disk". Now select 
-				your HDD and choose "All files in one partition" and go on. After this move finish partitioning and write changes 
+				your HDD and choose "All files in one partition" and go on. After this move to "finish partitioning" and write the changes 
 				to disk. Check your configuration and confirm it.
 			</ofx:paragraph>
 			
@@ -107,7 +107,7 @@
 		</ofx:section>
 		
 		<ofx:section id="section.admin.installation.debian.mirror">
-			<ofx:title lang="en">Package manager (Mirror)</ofx:title>
+			<ofx:title lang="en">Package Manager (Mirror)</ofx:title>
 			
 			<ofx:paragraph lang="en" version="1">
 				A package manager is a collection of software tools that automates the process of installing, 
@@ -131,9 +131,10 @@
 			<ofx:title lang="en">Software Selection</ofx:title>
 			
 			<ofx:paragraph lang="en" version="1">
-				All available software packages can be de-selected. This ensures aht the installation will only have a minimal
+				All available software packages can be de-selected. This ensures that the installation will only have a minimal
 				number of packages and modules available. This minimizes the risks of errors or faulty configurations and 
-				facilitate future upgrade procedures. Press TAB and select <text:emphasis style="typewriter">CONTINUE</text:emphasis>. All necessary packages will be installed manually.
+				facilitates future upgrade procedures. Press TAB and select <text:emphasis style="typewriter">CONTINUE</text:emphasis>. 
+				All necessary packages will be installed manually.
 			</ofx:paragraph>
 			
 			<media:image id="image.admin.installation.debian.base.jessie.software">
@@ -149,7 +150,7 @@
 			<ofx:title lang="en">Finishing Installation</ofx:title>
 			
 			<ofx:paragraph lang="en" version="1">
-				Install GRUB boot loader to the master boot record, this step is necessary to select the operating system after booting your system.
+				Install GRUB boot loader to the master boot record. This step is necessary to select the operating system after booting your system.
 				Press <text:emphasis style="typewriter">YES</text:emphasis>.
 				The base installation of debian is now ready.
 			</ofx:paragraph>
@@ -157,7 +158,7 @@
 			<media:image id="image.admin.installation.debian.base.jessie.console">
 				<layout:alignment horizontal="center"/>
 				<layout:width unit="percentage">60</layout:width>
-			    <ofx:title>Debian Login console</ofx:title>
+			    <ofx:title>Debian Login Console</ofx:title>
 				<media:media lang="en" src="png.aht-utils/installation/debian/jessie/console.png" dst="en/admin/installation/debian/jessie/console"/>
 			</media:image>	
 		</ofx:section>

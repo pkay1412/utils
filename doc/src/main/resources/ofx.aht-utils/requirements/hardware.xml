@@ -74,7 +74,7 @@
 			are summarized in the following table.
 		</ofx:paragraph>
 		<ofx:paragraph lang="en">
-			There are multiple server required for security aspects and best performance.
+			There are multiple servers required for security aspects and best performance.
 		</ofx:paragraph>
 		
 		<t:table id="table.admin.system.logs.type">

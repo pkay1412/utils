@@ -31,7 +31,7 @@
 	
 	<ofx:section>
 		<ofx:title lang="de">Erstellung der Datenbank</ofx:title>
-		<ofx:title lang="en">Database creation</ofx:title>
+		<ofx:title lang="en">Database Creation</ofx:title>
 		
 		<ofx:paragraph lang="en" classifier="debianWheezy">
 			The following example creates a template, which can be re-used for creating other
@@ -42,7 +42,7 @@
 		<ofx:listing classifier="debianWheezy" setting="sql" external="listing/admin/db/postgres/template/debian/wheezy.sql"/>
 		
 		<ofx:paragraph lang="en" classifier="debianWheezy">
-			Then the actual database can be created with the following commands
+			Then the actual database can be created with the following commands:
 		</ofx:paragraph>
 
 		<ofx:listing classifier="debianWheezy" setting="sql" external="listing/admin/db/postgres/create/debian/wheezy.sql"/>
@@ -85,10 +85,10 @@ listen_addresses = '*'</ofx:raw>
 	
 	
 	<ofx:section>
-		<ofx:title lang="en">Database optimization</ofx:title>
+		<ofx:title lang="en">Database Optimization</ofx:title>
 		
 		<ofx:paragraph lang="en">
-			The owners of some pre-defined tables have to changed to match the owner of the database:
+			The owners of some pre-defined tables have to be changed to match the owner of the database:
 		</ofx:paragraph>
 		
 		<ofx:listing classifier="debianWheezy" external="listing/admin/db/postgres/tuning/debian/wheezy.sql"/>

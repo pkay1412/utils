@@ -36,7 +36,7 @@
 	    </l:item>
 	    
 	    <!-- Developer -->
-	    <l:item name="Metwork" lang="en" classifier="reqNetwork">
+	    <l:item name="Network" lang="en" classifier="reqNetwork">
 	    	<ofx:paragraph>
 				The network ...
 			</ofx:paragraph>

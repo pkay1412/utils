@@ -14,7 +14,7 @@
 	</ofx:paragraph>
 
 	<ofx:paragraph lang="en">
-		The W3C Web Services Architecture Working Group has identifeid two major classes of Web services:
+		The W3C Web Services Architecture Working Group has identified two major classes of Web services:
 	</ofx:paragraph>
 
 	<l:list>
@@ -23,7 +23,7 @@
 	    <l:item>
 	    	<ofx:paragraph lang="en">
 				REST-compliant Web services, in which the primary purpose of the service is to manipulate
-				representations of Web resources using a uniform set of stateless operations.
+				representations of Web resources using a uniform set of state less operations.
 			</ofx:paragraph>
 	    </l:item>
 	    <l:item>

@@ -82,12 +82,6 @@
 			</ofx:paragraph>
 	    </l:item>
 	    
-	    <l:item>
-	    	<ofx:paragraph lang="en">
-				Maintain data center environmental and monitoring equipment.
-			</ofx:paragraph>
-	    </l:item>
-	    
 	   	<l:item>
 	    	<ofx:paragraph lang="en">
 				Configure and maintain Microsoft Windows Server. 

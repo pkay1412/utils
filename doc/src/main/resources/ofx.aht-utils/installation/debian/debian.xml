@@ -16,15 +16,21 @@
 	
 	<ofx:paragraph lang="en" version="1">
 		Debian GNU/Linux is one of the most popular Linux distributions for personal computers and network servers.
-		Debian is seen as a stable Linux distribution, and as a consequence has been used as a base for other Linux distributions,
-		there are over 140 active Debian derivatives, one of the most popular ones is Ubuntu.
+		Debian is seen as a stable Linux distribution, and as a consequence has been used as a base for other Linux distributions.
+		There are over 140 active Debian derivatives, one of the most popular ones is Ubuntu.
 	</ofx:paragraph>
 	
 	<ofx:paragraph lang="en" version="1">
-		Since Debian can be used free of charge, it can easily be obtained from the projects website. There is a huge variety of installation methods to choose from.
-		A very convenient one is using the minimum installation CD. You can download the disk image for your architecture (mostly i386 for older 32-bit machines and amd64 for newer 64-bit CPUs like Intel Core processors and above) from http://www.debian.org/distrib/netinst. Then the image needs to be written to a CD or DVD recordable.
-		The Ubuntu project offers HowTos for all common operating systems like Microsoft Windows, Apple Mac OS X and Linux on how to actually burn this image to the disk at https://help.ubuntu.com/community/BurningIsoHowto.
-		Once the CD or DVD is prepared, the computer needs to be booted from the optical disk drive and the (non-graphical) installer should be selected from the boot screen.
+		Since Debian can be used free of charge, it can easily be obtained from the projects website. 
+		There is a huge variety of installation methods to choose from.
+		A very convenient one is using the minimum installation CD. 
+		You can download the disk image for your architecture (mostly i386 for older 32-bit machines 
+		and amd64 for newer 64-bit CPUs like Intel Core processors and above) from http://www.debian.org/distrib/netinst. 
+		Then the image needs to be written to a CD or DVD recordable.
+		The Ubuntu project offers HowTos for all common operating systems like Microsoft Windows, Apple Mac OS X and Linux 
+		on how to actually burn this image to the disk at https://help.ubuntu.com/community/BurningIsoHowto.
+		Once the CD or DVD is prepared, the computer needs to be booted from the optical disk drive and the (non-graphical) installer 
+		should be selected from the boot screen.
 		The Debian installer then guides you through the complete setup process. 
 	</ofx:paragraph>
 	
@@ -64,7 +70,7 @@
 			The sudoers configuration file enables a huge amount of configurability, including but not
 			limited to: enabling root commands only from the invoking terminal; not requiring a password
 			for certain commands; requiring a password per user or group; requiring re-entry of a password
-			every time or never requiring a password at all for a particular command line.
+			every time, or never requiring a password at all for a particular command line.
 			It can also be configured to permit passing arguments or multiple commands,
 			and even supports commands with regular expressions.
 			
@@ -77,11 +83,11 @@
 	</ofx:section>
 	
 	<ofx:section id="section.admin.installation.debian.ubuntu14" classifier="ubuntu14">
-		<ofx:title lang="en">Setting the root password</ofx:title>
+		<ofx:title lang="en">Setting the Root Password</ofx:title>
 	
 		<ofx:paragraph lang="en">
 			The next part of the installation is to "set the root password".
-			Open the teminal and type in, the following command:
+			Open the teminal and type in the following command:
 			<text:emphasis style="typewriter">sudo passwd root</text:emphasis>
 			Double check your password.
 		</ofx:paragraph>

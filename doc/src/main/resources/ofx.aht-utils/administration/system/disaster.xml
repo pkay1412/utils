@@ -8,7 +8,6 @@
 	
 	<ofx:paragraph lang="en">
 		In case of serious damage to the system, a disaster recovery procedure has to be applied.
-		Even with.
 	</ofx:paragraph>
 	
 	<ofx:paragraph lang="en">
@@ -28,7 +27,7 @@
 	
 		<ofx:paragraph lang="en">
 			The setup steps for the application server do not differ much from the initial setup of the system.
-			Only difference is that init scripts for setting up the database do not need to be performed. 
+			The only difference is that init scripts for setting up the database do not need to be performed. 
 		</ofx:paragraph>
 	
 	</ofx:section>
@@ -38,8 +37,8 @@
 	
 		<ofx:paragraph lang="en">
 			The complete database is regularly backed up to a single file. To restore the database,
-			database server and database itself has to be created in the same way as described for a regular
-			installation.
+			the database server and the database itself have to be created in the same way as described 
+			for a regular installation.
 		</ofx:paragraph>
 	
 	</ofx:section>

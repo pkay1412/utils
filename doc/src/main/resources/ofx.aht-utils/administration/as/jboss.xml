@@ -26,20 +26,16 @@
 			<text:emphasis italic="true">/opt/jboss-eap/bin</text:emphasis>
 		</ofx:paragraph>
 	
-		<ofx:section>
-			<ofx:title lang="en">Release</ofx:title>
-		
-			<ofx:paragraph lang="en" version="1">
-				The release activity follows from the completed development process.
-				It includes all the operations to prepare a system for assembly and transfer to the customer site.
-				Therefore, it must determine the resources required to operate at the customer site and collect
-				information for carrying out subsequent activities of deployment process.
-			</ofx:paragraph>
+		<ofx:paragraph lang="en" version="1">
+			The release activity consists of several steps.
+			It includes all the operations to prepare a system for assembly and transfer to the customer site.
+			Therefore, it must determine the resources required to operate at the customer site and collect
+			information for carrying out subsequent activities of deployment process.
+		</ofx:paragraph>
 			
-		</ofx:section>
 		
 		<ofx:section id="section.admin.as.jboss.deploy">
-			<ofx:title lang="en">Deployment</ofx:title>
+			<ofx:title lang="en">Initial Deployment</ofx:title>
 		
 			<ofx:paragraph lang="en" version="1">
 				Installation is the activity of starting up the executable component of software.
@@ -76,7 +72,7 @@
 			<ofx:title lang="en">Undeployment</ofx:title>
 		
 			<ofx:paragraph lang="en" version="1">
-				Uninstallation is the inverse of installation.
+				Uninstallation is the reverse of installation.
 				It is the removal of a system that is no longer required.
 				It also involves some reconfiguration of other software systems in order to remove the uninstalled system’s files
 				and dependencies.

@@ -45,7 +45,7 @@
 		<ofx:listing classifier="debian" external="listing/admin/db/postgres/dump/debian/cron.tab"/>
 			
 		<ofx:paragraph lang="en" >
-			The successfull editing of the crontab can be verified by listing all entries with the command
+			The successful editing of the crontab can be verified by listing all entries with the command
 			<text:emphasis italic="true">crontab -l</text:emphasis>.
 		</ofx:paragraph>
 		
