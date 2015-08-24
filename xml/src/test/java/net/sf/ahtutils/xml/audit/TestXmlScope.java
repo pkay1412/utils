@@ -35,6 +35,7 @@ public class TestXmlScope extends AbstractXmlAuditTest
     	
     	if(withChilds)
     	{
+    		xml.setRevision(TestXmlRevision.create(false));
     		xml.getChange().add(TestXmlChange.create(false));xml.getChange().add(TestXmlChange.create(false));
     	}
     	

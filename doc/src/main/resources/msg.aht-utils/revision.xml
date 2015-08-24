@@ -7,11 +7,25 @@
     		<s:lang key="fr" translation="Revision History"/>
     	</s:langs>
     </s:translation>
-    	<s:translation key="aupRevisionTooltipToggleHistory">
+	<s:translation key="aupRevisionTooltipToggleHistory">
     	<s:langs>
     		<s:lang key="de" translation="Toggle Revision History"/>
     		<s:lang key="en" translation="Toggle Revision History"/>
     		<s:lang key="fr" translation="Toggle Revision History"/>
+    	</s:langs>
+    </s:translation>
+	<s:translation key="aupRevisionNumber">
+    	<s:langs>
+    		<s:lang key="de" translation="Revision Number"/>
+    		<s:lang key="en" translation="Revision Number"/>
+    		<s:lang key="fr" translation="Revision Number"/>
+    	</s:langs>
+    </s:translation>
+    	<s:translation key="aupRevisionNumberShort">
+    	<s:langs>
+    		<s:lang key="de" translation="Rev."/>
+    		<s:lang key="en" translation="Rev."/>
+    		<s:lang key="fr" translation="Rev."/>
     	</s:langs>
     </s:translation>
 </s:translations>

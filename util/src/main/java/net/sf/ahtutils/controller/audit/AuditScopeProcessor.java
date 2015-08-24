@@ -1,8 +1,12 @@
 package net.sf.ahtutils.controller.audit;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
 
 import net.sf.ahtutils.xml.audit.Change;
+import net.sf.ahtutils.xml.audit.Revision;
 import net.sf.ahtutils.xml.audit.Scope;
 
 public class AuditScopeProcessor
@@ -15,7 +19,7 @@ public class AuditScopeProcessor
     public List<Scope> group(List<Change> changes)
     {
         List<Scope> scopes = new ArrayList<Scope>();
-        LinkedHashMap<String, Scope> tmp = new LinkedHashMap<String, Scope>();
+        LinkedHashMap<String,Scope> tmp = new LinkedHashMap<String,Scope>();
 
         for (Change change : changes) {
             tmp.put(change.getScope().getId() + "/" + change.getScope().getClazz(), change.getScope());
@@ -48,5 +52,13 @@ public class AuditScopeProcessor
         {
             c.setScope(null);
         }
+    }
+
+    public List<Change> flat(List<Revision> revisions)
+    {
+    	List<Change> changes = new ArrayList<Change>();
+    	
+    	
+    	return changes;
     }
 }

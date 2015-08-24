@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <at:scope xmlns:at="http://ahtutils.aht-group.com/audit" id="123" class="myClass" category="myCategory" entity="myEntity">
+    <at:revision rev="123" date="2011-11-11T11:11:11"/>
     <at:change aid="1" action="action" type="myType" text="myValue"/>
     <at:change aid="1" action="action" type="myType" text="myValue"/>
 </at:scope>

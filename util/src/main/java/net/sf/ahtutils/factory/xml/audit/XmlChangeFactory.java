@@ -17,4 +17,12 @@ public class XmlChangeFactory
 		xml.setScope(scope);
 		return xml;
 	}
+	
+	public static Change build(int aid, String text)
+	{
+		Change xml = new Change();
+		xml.setAid(aid);
+		xml.setText(text);
+		return xml;
+	}
 }

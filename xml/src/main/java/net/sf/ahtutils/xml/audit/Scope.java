@@ -22,6 +22,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
+ *         &lt;element ref="{http://ahtutils.aht-group.com/audit}revision"/&gt;
  *         &lt;element ref="{http://ahtutils.aht-group.com/audit}change" maxOccurs="unbounded"/&gt;
  *       &lt;/sequence&gt;
  *       &lt;attribute name="id" type="{http://www.w3.org/2001/XMLSchema}long" /&gt;
@@ -37,6 +38,7 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
+    "revision",
     "change"
 })
 @XmlRootElement(name = "scope")
@@ -45,6 +47,8 @@ public class Scope
 {
 
     private final static long serialVersionUID = 1L;
+    @XmlElement(required = true)
+    protected Revision revision;
     @XmlElement(required = true)
     protected List<Change> change;
     @XmlAttribute(name = "id")
@@ -55,6 +59,34 @@ public class Scope
     protected String category;
     @XmlAttribute(name = "entity")
     protected String entity;
+
+    /**
+     * Gets the value of the revision property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Revision }
+     *     
+     */
+    public Revision getRevision() {
+        return revision;
+    }
+
+    /**
+     * Sets the value of the revision property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Revision }
+     *     
+     */
+    public void setRevision(Revision value) {
+        this.revision = value;
+    }
+
+    public boolean isSetRevision() {
+        return (this.revision!= null);
+    }
 
     /**
      * Gets the value of the change property.
