@@ -15,14 +15,14 @@
 	<ofx:paragraph lang="en" version="1">
 		An XML file describes the software project being built, its dependencies on other external modules and components,
 		the build order, directories, and required plug-ins.
-		It comes with pre-defined targets for performing certain well-defined tasks such as compilation of code and
+		It comes with predefined targets for performing certain well defined tasks such as compilation of code and
 		its packaging.
 	</ofx:paragraph>
 	
 	<ofx:paragraph lang="en" version="1">
 		Maven dynamically downloads Java libraries and Maven plug-ins from one or more repositories such as the Maven 2 Central Repository,
 		and stores them in a local cache. This local cache of downloaded artifacts can also be updated with artifacts created by local projects.
-		Public repositories can also be updated.
+		Public repositories also can be updated.
 	</ofx:paragraph>
 	
 	<ofx:section>
@@ -45,8 +45,9 @@ tar -xvzf path_to_download/apache-maven-3.3.3-bin.tar.gz</ofx:raw>
 				PATH (oder am Ende der Datei) hinzugefügt werden.
 			</ofx:paragraph>
 			<ofx:paragraph lang="de" version="1">
-				Then the following entry has to added in /etc/profile before
-				export PATH (or at the end of the file).
+				Then the following entry has to added in the file 
+				<text:emphasis style="typewriter">/etc/profile</text:emphasis>
+				before the command <text:emphasis italic="true">export PATH</text:emphasis> (or at the end of the file).
 			</ofx:paragraph>
 			
 			<ofx:listing>

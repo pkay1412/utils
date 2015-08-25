@@ -27,8 +27,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.w3c.dom.Document;
 
-import com.lowagie.text.pdf.PdfReader;
-import com.lowagie.text.pdf.parser.PdfTextExtractor;
+import com.itextpdf.text.pdf.PdfReader;
+import com.itextpdf.text.pdf.parser.PdfReaderContentParser;
+import com.itextpdf.text.pdf.parser.SimpleTextExtractionStrategy;
+import com.itextpdf.text.pdf.parser.TextExtractionStrategy;
+import java.io.PrintWriter;
 
 public class AbstractAhtUtilsReportTst
 {
@@ -126,9 +129,13 @@ public class AbstractAhtUtilsReportTst
 	
 	protected void assertEmptyPage(byte[] data) throws IOException
 	{
-		 PdfTextExtractor parser =new PdfTextExtractor(new PdfReader(data));
-		 String textOfFirstPage = parser.getTextFromPage(1);
-		 Assert.assertTrue("First generated page counts zero characters",textOfFirstPage.length()>0);
+                PdfReader reader = new PdfReader(data);
+                PdfReaderContentParser parser = new PdfReaderContentParser(reader);
+                TextExtractionStrategy strategy = null;
+                strategy = parser.processContent(1, new SimpleTextExtractionStrategy());
+                reader.close();
+		strategy.getResultantText();
+		Assert.assertTrue("First generated page counts zero characters",strategy.getResultantText().length()>0);
 	}
 	
 	protected void assertJaxbEquals(Object expected, Object actual)

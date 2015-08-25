@@ -24,11 +24,14 @@
 				<groupId>jaxen</groupId>
 				<artifactId>jaxen</artifactId>
 		</dependency>
-		
+		<dependency>
+                    <groupId>com.itextpdf</groupId>
+                    <artifactId>itextpdf</artifactId>
+                </dependency>
+
 			<dependency>
 			    <groupId>net.sf.jasperreports</groupId>
 			    <artifactId>jasperreports</artifactId>
-			    <version>5.0.1</version>
 			    <exclusions>
 			    	<!-- 
 			    	<exclusion>
@@ -41,12 +44,12 @@
 			    		<groupId>commons-logging</groupId>
 			    	</exclusion>
 			    	<exclusion>
-			    		<artifactId>xml-apis</artifactId>
-			    		<groupId>xml-apis</groupId>
+				    <artifactId>xml-apis</artifactId>
+				    <groupId>xml-apis</groupId>
 			    	</exclusion>
 			    	<exclusion>
-			    		 <groupId>bouncycastle</groupId>
-  						 <artifactId>bcmail-jdk14</artifactId>
+				    <groupId>bouncycastle</groupId>
+				    <artifactId>bcmail-jdk14</artifactId>
   		    		</exclusion>
   		    		<exclusion>
 			    		 <groupId>bouncycastle</groupId>
@@ -157,6 +160,7 @@
 		<dependency>
 			<groupId>org.apache.poi</groupId>
 			<artifactId>poi-ooxml</artifactId>
+                        <version>3.11</version>
 		</dependency>
 		
 		<!-- Logging -->

@@ -10,13 +10,13 @@
 	<ofx:title lang="en">OS Ticket</ofx:title>
 	
 	<ofx:paragraph lang="en" version="1">
-		OS Ticket is an open source support ticket system with many features and tools than most of the expensive support ticket systems on the market.
+		OS Ticket is an open source support ticket system with as many features and tools as most of the commercial support ticket systems.
 	</ofx:paragraph>
 	
 	<ofx:section id="section.admin.installation.osticket">
 	<ofx:title lang="en">Base Installation</ofx:title>
 	
-	<ofx:paragraph lang="en" version="1">After your Debian base installation, osticket need some requirements</ofx:paragraph>
+	<ofx:paragraph lang="en" version="1">After your Debian base installation, osticket needs some requirements</ofx:paragraph>
 		
 		<l:list>
 	    	<l:type ordering="unordered"/>	   		
@@ -67,7 +67,7 @@
 			<ofx:title lang="en">Configuration</ofx:title>
 			
 			<ofx:paragraph lang="en" version="1">
-				In addition to the prerequirements, osticket need some preconfiguration, before the installation:
+				In addition to the prerequirements, osticket needs some preconfiguration before the installation:
 				
 				Go to your osticket installation destination and execute the following lines.
 				<ofx:listing>
@@ -82,7 +82,7 @@
 						<ofx:raw>ln -s var/www/osticket x.x.x/upload var/www/tickets</ofx:raw>
 				</ofx:listing>
 				
-				After these steps, osticket is avaibale and ready for the installation under following adress:
+				After these steps, osticket is available and ready for the installation under following adress:
 				
 				<ofx:listing>
 						<ofx:raw>xxx.xxx.xxx.xxx/tickets</ofx:raw>

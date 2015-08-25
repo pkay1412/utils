@@ -10,19 +10,19 @@
     <ofx:title lang="en">Installation of Eclipse (Mars)</ofx:title>
 
     <ofx:paragraph lang="en">
-        The first thing you need to install, is Eclipse Mars for Java EE Developers. You can download it from:
+        The first thing you need to install is Eclipse Mars for Java EE Developers. You can download it from:
         <text:emphasis style="typewriter">www.eclipse.org/downloads</text:emphasis>
         After finishing your download unpack Eclipse Mars to your installation path.
         For example <text:emphasis style="typewriter">C:\program files\eclipse</text:emphasis>
-        The next step, is to define your workspace. You need a unique one (e.g. workspaceMars), if
-        you are using multiple version of eclipse.
+        The next step is to define your workspace. You need a unique one (e.g. workspaceMars), if
+        you are using multiple versions of eclipse.
     </ofx:paragraph>
 
     <ofx:section id="section.admin.installation.eclipse.mars.svn.install" classifier="svn">
         <ofx:title lang="en">Subversion (SVN)</ofx:title>
 
         <media:image id="image.admin.development.environment.marketplace">
-            <ofx:title lang="en">Eclipse Marketplace Subversive 3.0.0 installation</ofx:title>
+            <ofx:title lang="en">Eclipse Marketplace Subversive 3.0.0 Installation</ofx:title>
             <layout:alignment horizontal="center"/>
             <layout:width unit="percentage">60</layout:width>
             <media:media lang="en" src="png.aht-utils/development/environment/eclipse/mars/marketplace_Mars" dst="en/admin/development/environment/eclipse/mars/marketplace"/>
@@ -43,7 +43,7 @@
             </l:item>
 
             <l:item>
-                <ofx:paragraph lang="en">Press <text:emphasis style="typewriter">Confirm</text:emphasis>(Proceed even if "Subversive SVN Team Provider 3.0.0" is not available).</ofx:paragraph>
+                <ofx:paragraph lang="en">Press <text:emphasis style="typewriter">Confirm</text:emphasis> (Proceed even if "Subversive SVN Team Provider 3.0.0" is not available).</ofx:paragraph>
             </l:item>
 
             <l:item>

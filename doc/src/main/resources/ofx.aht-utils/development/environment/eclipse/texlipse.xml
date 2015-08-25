@@ -10,7 +10,7 @@
 	
 	<ofx:paragraph lang="en">
 			Before you can install the TeXlipse plugin you must uninstall all previous versions of Texlipse. 
-			Then navigate to the "Install new software" window under "Help" "and click it.
+			Then navigate to the "Install new software" window under "Help" and click it.
 	</ofx:paragraph>
 	
 	<media:image id="image.admin.installation.texlipse">

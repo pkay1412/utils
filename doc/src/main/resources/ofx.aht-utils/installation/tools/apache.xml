@@ -8,7 +8,7 @@
 	<ofx:title>Apache Webserver</ofx:title>
 				
 			<ofx:paragraph lang="en">
-				The Apache HTTP Server  is the world's most widely used web server software.
+				The Apache HTTP Server is the world's most widely used web server software.
 				Originally based on the NCSA HTTPd server, the development of Apache began in early 1995 after
 				work on the NCSA code stalled. Apache played a key role in the initial growth of the
 				World Wide Web, quickly overtaking NCSA HTTPd as the dominant HTTP server,
@@ -21,7 +21,7 @@
 				the software is available for a wide variety of operating systems,
 				including Windows, OS X, Linux, Unix, FreeBSD, Solaris, NetWare, OS/2, TPF, OpenVMS and eComStation. Released under the Apache License, Apache is free and open-source software.
 	
-				As of June 2013, Apache was estimated to serve 54.2&#037;  of all active web sites and 53.3&#037; 
+				As of June 2013, Apache was estimated to serve 54.2%  of all active web sites and 53.3% 
 				of the top servers across all domains.
 			</ofx:paragraph>
 		
