@@ -16,6 +16,7 @@ public class RestUrlDelay
 		sb.append("REST connection to ");
 		sb.append(url);
 		sb.append(" (").append(key).append(")");
+		logger.info(sb.toString());
 		return url;
 	}
 	
