@@ -9,7 +9,8 @@
 	
 	<ofx:paragraph lang="en">
 		The process of approval is available by clicking a button in the respective panel.
-		Depending on the status of the actual approval process
+		Depending on the state of the actual approval process the button adopts one of three shapes as shown in Table
+		<ofx:reference target="section.user.ui.buttons"/>.
 	</ofx:paragraph>
 	
 	<table:table  id="section.user.ui.buttons">
@@ -39,7 +40,7 @@
 	                </table:cell>
 	                <table:cell><ofx:paragraph>Waiting</ofx:paragraph></table:cell>
 	                <table:cell>
-	                    <ofx:paragraph>waiting</ofx:paragraph>
+	                    <ofx:paragraph>The process is still waiting for approval.</ofx:paragraph>
 	                </table:cell>
 	            </table:row>
 	            <table:row>
@@ -49,9 +50,9 @@
 	                        <media:media src="svg.aht-utils/icon/ui/approval/accepted.svg" dst="icon/ui/approval/accepted"/>
 	                    </media:image>
 	                </table:cell>
-	                <table:cell><ofx:paragraph>Rejected</ofx:paragraph></table:cell>
+	                <table:cell><ofx:paragraph>Accepted</ofx:paragraph></table:cell>
 	                <table:cell>
-	                    <ofx:paragraph>Rejected</ofx:paragraph>
+	                    <ofx:paragraph>The process has been approved.</ofx:paragraph>
 	                </table:cell>
 	            </table:row>
 	           <table:row>
@@ -63,7 +64,7 @@
 	                </table:cell>
 	                <table:cell><ofx:paragraph>Rejected</ofx:paragraph></table:cell>
 	                <table:cell>
-	                    <ofx:paragraph>Rejected</ofx:paragraph>
+	                    <ofx:paragraph>The process has been rejected.</ofx:paragraph>
 	                </table:cell>
 	            </table:row>
 	        </table:body>
