@@ -124,7 +124,7 @@ public class ReportExporter extends AbstractMojo
 		            	}
 		            	else
 		            	{
-		            		JasperReport subreport = (JasperReport) JRLoader.loadObject(report.getDir() +"/jrxml/" +jr.getType() +jr.getName() +".jasper");
+		            		JasperReport subreport = (JasperReport) JRLoader.loadObject(new File(report.getDir() +"/jrxml/" +jr.getType() +jr.getName() +".jasper"));
 		            		params.put(jr.getType() +jr.getName(), subreport);
 		            	}
 		            }
