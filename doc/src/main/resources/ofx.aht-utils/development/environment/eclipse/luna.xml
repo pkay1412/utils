@@ -9,18 +9,19 @@
 	
 	<ofx:paragraph lang="en">
 		The first thing you need to install, is Eclipse Luna for Java EE Developers. You can download it from: 
+		
 		<text:emphasis style="typewriter">www.eclipse.org/downloads</text:emphasis>		
 		After finishing your download unpack Eclipse Luna to your installation path.
 		For example <text:emphasis style="typewriter">C: program files eclipse</text:emphasis>
-		The next step, is to define your workspace. You need a unique one (e.g. workspaceLuna), if
-		you are using multiple version of eclipse.
+		The next step is to define your workspace. You need a unique one (e.g. workspaceLuna), if
+		you are using multiple versions of eclipse.
 	</ofx:paragraph>
 	
 	<ofx:section id="section.admin.installation.eclipse.luna.svn.install" classifier="svn">
 		<ofx:title lang="en">Subversion (SVN)</ofx:title>
 	
 		<media:image id="image.admin.development.environment.marketplace">
-			<ofx:title lang="en">Eclipse Marketplace Subversive 2.0 installation</ofx:title>
+			<ofx:title lang="en">Eclipse Marketplace Subversive 2.0 Installation</ofx:title>
 				<layout:alignment horizontal="center"/>
 				<layout:width unit="percentage">60</layout:width>
 			<media:media lang="en" src="png.aht-utils/development/environment/eclipse/luna/marketplace.png" dst="en/admin/development/environment/eclipse/luna/marketplace"/>
@@ -29,7 +30,8 @@
 		<ofx:paragraph lang="en">
 			For the installation of <text:emphasis style="italic">"Subversive Team Provider 2.0"</text:emphasis>, you have to go to the Eclipse Marketplace.
 			You will find it: <text:emphasis style="typewriter">Help -> Eclipse Marketplace</text:emphasis>
-			Search for <text:emphasis style="italic">"Subversive"</text:emphasis>. Mark and install <text:emphasis style="italic">"SVN Team Provider 2.0"</text:emphasis> (see figure below).
+			Search for <text:emphasis style="italic">"Subversive"</text:emphasis>. 
+			Mark and install <text:emphasis style="italic">"SVN Team Provider 2.0"</text:emphasis> (see figure below).
 			Follow these steps:
 		</ofx:paragraph>
 		
@@ -41,7 +43,7 @@
    				</l:item>
    		
 				<l:item>
-    				<ofx:paragraph lang="en">Press <text:emphasis style="typewriter">OK</text:emphasis>(Proceed even if "Subversive SVN Team Provider 2.0" is not available).</ofx:paragraph>
+    				<ofx:paragraph lang="en">Press <text:emphasis style="typewriter">OK</text:emphasis> (Proceed even if "Subversive SVN Team Provider 2.0" is not available).</ofx:paragraph>
    				</l:item>
    		
 				<l:item>
@@ -85,10 +87,10 @@
 		   		</l:item>
    		</l:list>
    		
-   		<ofx:paragraph>If you were asked for a SVN KIT, please select <text:emphasis style="typewriter">"SVN KIT 1.8.6"</text:emphasis>.</ofx:paragraph>
+   		<ofx:paragraph>If you were asked for an SVN KIT, please select <text:emphasis style="typewriter">"SVN KIT 1.8.6"</text:emphasis>.</ofx:paragraph>
 		
 		<media:image id="image.admin.development.environment.connectors">
-			<ofx:title lang="en">Eclipse SCM connectors installation</ofx:title>
+			<ofx:title lang="en">Eclipse SCM Connectors Installation</ofx:title>
 				<layout:alignment horizontal="center"/>
 				<layout:width unit="percentage">60</layout:width>
 			<media:media lang="en" src="png.aht-utils/development/environment/eclipse/luna/connectors.png" dst="en/admin/development/environment/eclipse/luna/connectors"/>
@@ -111,7 +113,8 @@
 		</ofx:listing>
 		
 		<ofx:paragraph lang="en">
-				Since the Maven build tool is downloading all dependencies for the project while setting it up in eclipse, this process takes very long when triggered the first time.
+				Since the Maven build tool is downloading all dependencies for the project while setting it up in eclipse, 
+				this process takes very long when triggered the first time.
 				
 		</ofx:paragraph>
 		
@@ -157,7 +160,7 @@
 				<ofx:title lang="en">Checkout GIT repository</ofx:title>
 			
 				<ofx:paragraph lang="en">
-					The next part of the installation ist to "Checkout a GIT Repository".
+					The next part of the installation is to "Checkout a GIT Repository".
 					Now right click on your "Project Explorer", select "new", press "Other", search for "Maven" and "Checkout Maven Projects from SCM", press "Next"
 					and copy the SCM URL to the text field and click "Next".
 				</ofx:paragraph>

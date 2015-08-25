@@ -3,7 +3,7 @@
 		xmlns:text="http://www.openfuxml.org/text"
 	id="section.development.environment.latex">
 	
-	<ofx:title>Latex</ofx:title>
+	<ofx:title>LaTeX</ofx:title>
 	
 	<ofx:paragraph lang="en">
 		LaTeX is a document preparation system and document markup language.
@@ -32,7 +32,7 @@
 		</ofx:paragraph>
 		
 		<ofx:paragraph lang="en" version="1">
-			For Debian based operating systems, e.g. Ubuntu, the package <text:emphasis italic="true">TeX Live</text:emphasis> ist provided
+			For Debian based operating systems, e.g. Ubuntu, the package <text:emphasis italic="true">TeX Live</text:emphasis> is provided
 			and can be installed with:
 		</ofx:paragraph>
 		
@@ -48,7 +48,7 @@
 		<ofx:paragraph lang="en" version="1">
 			The source for the manuals is located in the doc-module
 			(the <text:emphasis style="typewriter">doc</text:emphasis> directory of the project).
-			In this directory the following command has to be excecuted:
+			In this directory the following command has to be executed:
 		</ofx:paragraph>
 		
 		<ofx:listing>

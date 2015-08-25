@@ -17,8 +17,8 @@
 					<text:emphasis style="typewriter">unzip</text:emphasis>,
 					<text:emphasis style="typewriter">patch</text:emphasis>,
 					<text:emphasis style="typewriter">maven</text:emphasis>
-					and a installed <text:emphasis italic="true">Java JDK</text:emphasis>.
-					The bash script can be donwloaded by <text:emphasis style="typewriter">git</text:emphasis> and the command
+					and an installed <text:emphasis italic="true">Java JDK</text:emphasis>.
+					The bash script can be downloaded by <text:emphasis style="typewriter">git</text:emphasis> and the command
 					<text:emphasis style="typewriter">build-eap.sh</text:emphasis> downloads and compiles the latest version available:
 				</ofx:paragraph>
 			
@@ -29,10 +29,10 @@ cd eap-build
 			</ofx:listing>
 			
 			<ofx:paragraph lang="en">
-				The build will take a while, especially when it will be executed at the first time.
+				The build will take a while, especially when it will be executed for the first time.
 				Several files like the sources (36 MB) and the repository (561 MB) will be downloaded.
 				During the build process (<text:emphasis italic="true">Launching Maven build</text:emphasis>
-				multiple addidional Maven dependencies will be downloaded, too. The process can be observed with
+				multiple additional Maven dependencies will be downloaded, too. The process can be observed with
 				<text:emphasis style="typewriter">tail -f eap-build/work/build.log</text:emphasis>.
 			</ofx:paragraph>
 			
@@ -89,15 +89,15 @@ fi</ofx:raw>
 				</ofx:listing>
 				
 				<ofx:paragraph lang="en" version="1">
-					The dafault memory settings are not sufficient to server multiple users at once and should be increased:
+					The default memory settings are not sufficient to serve multiple users at once and should be increased:
 				</ofx:paragraph>
 				<ofx:listing setting="shell" external="listing/admin/installation/jboss/config/eap6/standalone.mem.txt"/>
 
 				<ofx:paragraph lang="en" version="2">
-					In some cases internal algorihtms try to access a graphical user interface, which is not
-					neccasary in this setup. This will be prevented by starting in 
+					In some cases internal algorithms try to access a graphical user interface, which is not
+					necessary in this setup. This will be prevented by starting in 
 					<text:emphasis bold="true">headless</text:emphasis> mode.
-					To avoid debug outputs in a language different than english,
+					To avoid debug outputs in a language different than English,
 					the language should be explicitly be set to
 					<text:emphasis bold="true">en</text:emphasis>.
 				</ofx:paragraph>
@@ -115,8 +115,8 @@ fi</ofx:raw>
 				<ofx:title lang="en">Data Source</ofx:title>
 				
 				<ofx:paragraph lang="en" version="1">
-					The data source describes the connection to the database and registeres it internally in
-					the application server. The password shown is the given listing is an example and should
+					The data source describes the connection to the database and registers it internally on
+					the application server. The password shown in the given listing is an example and should
 					be changed for production use.
 				</ofx:paragraph>
 				<ofx:listing external="listing/admin/installation/jboss/config/ds-postgres.xml"/>
@@ -128,6 +128,7 @@ fi</ofx:raw>
 						The database driver for PostgreSQL has to be registered in
 						<text:emphasis style="typewriter">/standalone/configuration/standalone.conf</text:emphasis>
 						in the section <text:emphasis italic="true">server/profile/subsystem</text:emphasis> of the subsystem
+						
 						<text:emphasis italic="true">urn:jboss:domain:datasources:1.1</text:emphasis> as a new driver:
 					</ofx:paragraph>
 					<ofx:listing external="listing/admin/installation/jboss/config/ds-driver-postgres.xml"/>
@@ -140,7 +141,7 @@ fi</ofx:raw>
 				<ofx:paragraph lang="en" version="1">
 					The default configuration of JBoss is to only listen on connections originated from
 					<text:emphasis italic="true">localhost</text:emphasis>. To enable access from other systems, the settings for the
-					<text:emphasis italic="true">public interface</text:emphasis> have to be changed in
+					<text:emphasis italic="true">public interface</text:emphasis> have to be changed to
 					<text:emphasis style="typewriter">/standalone/configuration/standalone.conf</text:emphasis> in the
 					<text:emphasis italic="true">interfaces</text:emphasis> section (near at the end of the file).
 				</ofx:paragraph>
@@ -160,7 +161,7 @@ fi</ofx:raw>
 					All modules can be automatically installed by unpacking the provided archive
 					<text:emphasis style="typewriter">jboss-modules-tgz</text:emphasis> in the directory
 					<text:emphasis style="typewriter">/opt/jboss-eap-6.1/modules/system/layers/base</text:emphasis>.
-					The following subsection describe the differences to the original configuration files.
+					The following subsections describe the differences to the original configuration files.
 				</ofx:paragraph>
 				
 				<ofx:section classifier="postgis">
@@ -170,7 +171,7 @@ fi</ofx:raw>
 						Similar to the setup of other JDBC database drivers for JBoss,
 						a module <text:emphasis bold="true">org.postgresql</text:emphasis> has to be registered.
 						In the directory <text:emphasis style="typewriter">/modules/org/postgresql/main</text:emphasis>
-						the new file <text:emphasis style="typewriter">module.xml</text:emphasis> must be created
+						a new file named <text:emphasis style="typewriter">module.xml</text:emphasis> must be created
 						with the following content:
 					</ofx:paragraph>
 					<ofx:listing>
@@ -308,7 +309,7 @@ fi</ofx:raw>
 		</ofx:section>
 		
 		<ofx:section>
-			<ofx:title lang="en">Start JBoss as a service</ofx:title>
+			<ofx:title lang="en">Start JBoss as a Service</ofx:title>
 			
 			<ofx:paragraph lang="en" version="1">
 					xxx
