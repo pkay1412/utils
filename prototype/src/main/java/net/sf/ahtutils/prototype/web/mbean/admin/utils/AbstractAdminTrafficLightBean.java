@@ -94,6 +94,7 @@ public class AbstractAdminTrafficLightBean <L extends UtilsLang,
 		logger.debug(AbstractLogMessage.saveEntity(trafficLight));
 		trafficLight = fUtils.save(trafficLight);
 		reloadTrafficLights();
+		fireUpdate();
 	}
 	
 	public void rm() throws UtilsConstraintViolationException
@@ -102,5 +103,10 @@ public class AbstractAdminTrafficLightBean <L extends UtilsLang,
 		fUtils.rm(trafficLight);
 		trafficLight=null;
 		reloadTrafficLights();
+	}
+	
+	public void fireUpdate()
+	{
+	    logger.warn("This should never be called in the Abstract class, it should be overwritten!");
 	}
 }
