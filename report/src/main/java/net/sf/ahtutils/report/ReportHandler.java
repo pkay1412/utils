@@ -11,6 +11,13 @@ import java.util.Map;
 
 import javax.imageio.ImageIO;
 
+import org.apache.commons.jxpath.JXPathContext;
+import org.jdom2.Namespace;
+import org.openfuxml.addon.chart.OfxChartRenderer;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.w3c.dom.Document;
+
 import net.sf.ahtutils.report.exception.ReportException;
 import net.sf.ahtutils.xml.report.Info;
 import net.sf.ahtutils.xml.report.Jr;
@@ -41,15 +48,6 @@ import net.sf.jasperreports.engine.query.JRXPathQueryExecuterFactory;
 import net.sf.jasperreports.engine.util.JRLoader;
 import net.sf.jasperreports.engine.xml.JRXmlLoader;
 import net.sf.jasperreports.engine.xml.JRXmlTemplateLoader;
-
-import org.apache.commons.jxpath.JXPathContext;
-import org.jdom2.Namespace;
-import org.jfree.chart.JFreeChart;
-import org.openfuxml.addon.chart.OfxChartRenderer;
-import org.openfuxml.xml.addon.chart.Chart;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.w3c.dom.Document;
 
 /**
  * @author helgehemmer

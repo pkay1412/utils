@@ -1,7 +1,6 @@
 package net.sf.ahtutils.db.shell.postgres;
 
 import java.io.File;
-import java.util.Arrays;
 import java.util.List;
 import java.util.NoSuchElementException;
 

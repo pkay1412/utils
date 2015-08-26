@@ -1,28 +1,25 @@
 package net.sf.ahtutils.report;
 
-import java.awt.image.BufferedImage;
 import java.io.IOException;
 
 import javax.xml.parsers.ParserConfigurationException;
 
-import net.sf.ahtutils.test.AbstractAhtUtilsReportTest;
-import net.sf.ahtutils.xml.report.Info;
-import net.sf.ahtutils.xml.report.Media;
-import net.sf.ahtutils.xml.report.Info.Title;
-import net.sf.exlp.util.xml.DomUtil;
-import net.sf.exlp.util.xml.JDomUtil;
-import net.sf.exlp.util.xml.JaxbUtil;
-
 import org.jdom2.Namespace;
-import org.jfree.chart.JFreeChart;
 import org.junit.Before;
 import org.junit.Test;
 import org.openfuxml.addon.chart.OfxChartRenderer;
-import org.openfuxml.xml.addon.chart.Chart;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
+
+import net.sf.ahtutils.test.AbstractAhtUtilsReportTest;
+import net.sf.ahtutils.xml.report.Info;
+import net.sf.ahtutils.xml.report.Info.Title;
+import net.sf.ahtutils.xml.report.Media;
+import net.sf.exlp.util.xml.DomUtil;
+import net.sf.exlp.util.xml.JDomUtil;
+import net.sf.exlp.util.xml.JaxbUtil;
 
 public class TestDomUtil extends AbstractAhtUtilsReportTest
 {

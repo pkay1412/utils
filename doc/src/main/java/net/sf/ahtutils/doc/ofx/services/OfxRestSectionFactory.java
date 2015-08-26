@@ -3,7 +3,6 @@ package net.sf.ahtutils.doc.ofx.services;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import javax.ws.rs.Consumes;
