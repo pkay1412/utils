@@ -21,11 +21,26 @@
 			<lang key="fr" translation="Type" />
 		</langs>
 	</translation>
-		<translation key="aupAuditLogMessage">
+	<translation key="aupAuditLogMessage">
 		<langs>
 			<lang key="de" translation="Message" />
 			<lang key="en" translation="Message" />
 			<lang key="fr" translation="Message" />
 		</langs>
 	</translation>
+	<translation key="aupAuditScope">
+		<langs>
+			<lang key="de" translation="Werte geänder zu" />
+			<lang key="en" translation="Values changed to" />
+			<lang key="fr" translation="Values changed to" />
+		</langs>
+	</translation>
+	<translation key="aupAuditValuesChangedTo">
+		<langs>
+			<lang key="de" translation="Werte geänder zu" />
+			<lang key="en" translation="Values changed to" />
+			<lang key="fr" translation="Values changed to" />
+		</langs>
+	</translation>	
+	
 </translations>
