@@ -21,12 +21,13 @@ public interface UtilsDbShell
 	public static final String cfgDbDropCascade = "db.tables.drop.cascade";
 	public static final String cfgDbDropSequence = "db.tables.drop.sequence";
 	
-	public static final String cfgDbTablesRestore = "db.tables.restore.table";
+	public static final String cfgRestoreTable = "db.tables.restore.table";
 	public static final String cfgDbTablesRestoreTrigger = "db.tables.restore.ttable";
 	public static final String cfgDbSequenceRestore = "db.tables.restore.sequence";
 	public static final String cfgDbTablesKey = "db.tables.key.table";
 	
 	public static final String cfgDirSql = "db.dir.sql";
+	public static final String dirRestore = "db.dir.restore";
 	public static final String cfgDirShell = "db.dir.shell";
 	
 	TextWriter getWriter();

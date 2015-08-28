@@ -32,7 +32,7 @@ public class AbstractDatabaseShell
 	
 	protected Parameter pDbShell,pDbDump,pDbRestore;
 	protected Parameter pDbHost,pDbName,pDbUser,pDbPwd;
-	protected Parameter pSqlDir;
+	protected Parameter pDirDump,pDirRestore;
 	
 	protected String dbSchema;
 	
@@ -69,12 +69,16 @@ public class AbstractDatabaseShell
 		pDbPwd.setValue(config.getString(pDbPwd.getKey()));
 		configurationParamter.getParameter().add(pDbPwd);
 		
+		pDirRestore = XmlParameterFactory.build(UtilsDbShell.dirRestore, "Directory for restore file", true);
+		pDirRestore.setValue(config.getString(pDirRestore.getKey()));
+		configurationParamter.getParameter().add(pDirRestore);
+		
+		pDirDump = XmlParameterFactory.build(UtilsDbShell.dirRestore, "Directory for dump file", true);
+		pDirDump.setValue(config.getString(pDirDump.getKey()));
+		configurationParamter.getParameter().add(pDirDump);
+		
 		try{dbSchema = config.getString("db."+operation.toString()+".schema");}
 		catch (NoSuchElementException e){}
-		
-		pSqlDir = XmlParameterFactory.build(UtilsDbShell.cfgDirSql, "Directory for SQL files", true);
-		pSqlDir.setValue(config.getString(pSqlDir.getKey()));
-		configurationParamter.getParameter().add(pSqlDir);
 		
 		txtWriter = new ExlpTxtWriter();
 		
@@ -133,6 +137,14 @@ public class AbstractDatabaseShell
 			Spawn spawn = new Spawn(ShellCmdChmod.executeable(f));
 			spawn.cmd();
 		}
+	}
+	
+	protected String getElementAfterLastDot(String cfg)
+	{
+		int index = cfg.lastIndexOf(".");
+		String e = cfg.substring(index+1);
+		logger.trace(e);
+		return e;
 	}
 	
 	//Configuration Parameter

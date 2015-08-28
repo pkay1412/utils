@@ -75,30 +75,13 @@ public class PostgresRestore extends AbstractPostgresShell implements UtilsDbShe
         List<Element> elementList = xpe.evaluateFirst(xmlConfig).getChildren();
 		for(Element e : elementList)
         {
-            if(e.getName().equals("table"))
-            {
-               restoreTable(e.getText());
-            }
-            else
-            {
-                if(e.getName().equals("ttable"))
-                {
-                	restoreTableDisabledTrigger(e.getText());
-                }
-                else
-                {
-                    if(e.getName().equals("sequence"))
-                    {
-                        restoreSequence(e.getText());
-                    }
-                }
-            }
+            if(e.getName().equals(getElementAfterLastDot(UtilsDbShell.cfgRestoreTable))) {restoreTable(e.getText());}
+            else if(e.getName().equals(getElementAfterLastDot(UtilsDbShell.cfgDbTablesRestoreTrigger))){restoreTableDisabledTrigger(e.getText());}
         }
-//		for(String table : Arrays.asList(config.getStringArray(UtilsDbShell.cfgDbTablesRestore))){restoreTable(table);}
-//		for(String table : Arrays.asList(config.getStringArray(UtilsDbShell.cfgDbTablesRestoreTrigger))){restoreTableDisabledTrigger(table);}
-//		for(String table : Arrays.asList(config.getStringArray(UtilsDbShell.cfgDbSequenceRestore))){restoreSequence(table);}
-//		for(String table : Arrays.asList(config.getStringArray(UtilsDbShell.cfgDbTablesKey))){fixPrimaryKey(table);}
-		
+		for(Element e : elementList)
+		{
+			if(e.getName().equals(getElementAfterLastDot(UtilsDbShell.cfgDbSequenceRestore))){restoreSequence(e.getText());}
+		}		
 		super.cmdPost();
 	}
 	
@@ -115,7 +98,7 @@ public class PostgresRestore extends AbstractPostgresShell implements UtilsDbShe
 		sb.append(" --no-owner");
 		sb.append(" --data-only");
 		sb.append(" -t " + table);
-		sb.append(" ").append(pSqlDir.getValue() + File.separator + pDbName.getValue() + ".sql");
+		sb.append(" ").append(pDirRestore.getValue() + File.separator + pDbName.getValue() + ".sql");
 		
 		super.addLine(sb.toString());
 		return sb.toString();
@@ -135,7 +118,7 @@ public class PostgresRestore extends AbstractPostgresShell implements UtilsDbShe
 		sb.append(" --no-owner");
 		sb.append(" --data-only");
 		sb.append(" -t " + table);
-		sb.append(" ").append(pSqlDir.getValue() + File.separator + pDbName.getValue() + ".sql");
+		sb.append(" ").append(pDirRestore.getValue() + File.separator + pDbName.getValue() + ".sql");
 		
 		// Trigger http://dba.stackexchange.com/questions/23000/disable-constraints-before-using-pg-restore-exe
 		// http://www.postgresonline.com/special_feature.php?sf_name=postgresql83_pg_dumprestore_cheatsheet
@@ -190,7 +173,7 @@ public class PostgresRestore extends AbstractPostgresShell implements UtilsDbShe
 		sb.append(" --no-privileges");
 		sb.append(" --no-owner");
 		sb.append(" --schema-only");
-		sb.append(" ").append(pSqlDir.getValue() + File.separator + pDbName.getValue() + ".sql");		
+		sb.append(" ").append(pDirRestore.getValue() + File.separator + pDbName.getValue() + ".sql");		
 		super.addLine(sb.toString());
 	}
 }
