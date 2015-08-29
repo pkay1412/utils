@@ -3,6 +3,9 @@ package net.sf.ahtutils.monitor;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.joda.time.DateTime;
+import org.joda.time.Period;
+import org.joda.time.format.PeriodFormat;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -43,6 +46,13 @@ public class ProcessingTimeTracker
 		sb.append(stop-start);
 		sb.append(" ms");
 		return sb.toString();
+	}
+	
+	public String toTotalPeriod()
+	{
+		if(stop==0){stop();}	
+		Period period = new Period(new DateTime(start), new DateTime());
+		return PeriodFormat.getDefault().print(period);
 	}
 	
 	public String buildDefaultDebug(String prefix)
