@@ -1,0 +1,44 @@
+package net.sf.ahtutils.monitor;
+
+import java.util.Hashtable;
+import java.util.Map;
+
+import org.apache.commons.io.FileUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+public class BucketSizeCounter
+{
+	final static Logger logger = LoggerFactory.getLogger(BucketSizeCounter.class);
+	
+	private String category;
+	private Map<String,Long> map;
+	
+	public BucketSizeCounter(){this("Default Category");}
+	public BucketSizeCounter(String category)
+	{
+		this.category=category;
+		map = new Hashtable<String,Long>();
+	}
+		
+	public void add(String event,long size)
+	{
+		if(!map.containsKey(event)){map.put(event, 0l);}
+		map.put(event, map.get(event)+size);
+	}
+	
+	public long events(String event)
+	{
+		if(map.containsKey(event)){return map.get(event);}
+		else{return 0;}
+	}
+	
+	public void debugAsFileSize()
+	{
+		logger.info("Sizes in category "+category);
+		for(String key : map.keySet())
+		{
+			logger.info("\t"+key+": "+FileUtils.byteCountToDisplaySize(map.get(key)));
+		}
+	}
+}
