@@ -73,7 +73,7 @@ public class AbstractDatabaseShell
 		pDirRestore.setValue(config.getString(pDirRestore.getKey()));
 		configurationParamter.getParameter().add(pDirRestore);
 		
-		pDirDump = XmlParameterFactory.build(UtilsDbShell.dirRestore, "Directory for dump file", true);
+		pDirDump = XmlParameterFactory.build(UtilsDbShell.dirDump, "Directory for dump file", true);
 		pDirDump.setValue(config.getString(pDirDump.getKey()));
 		configurationParamter.getParameter().add(pDirDump);
 		
@@ -90,16 +90,6 @@ public class AbstractDatabaseShell
 		catch (ExlpUnsupportedOsException e) {e.printStackTrace();}
 		txtWriter.add("");
 		txtWriter.add("");
-	}
-	
-	public void debug()
-	{
-		logger.info("Bin: "+pDbShell.getValue()+" ("+UtilsDbShell.cfgBinDump+")");
-		logger.info("Host: "+pDbHost.getValue()+" (db."+operation.toString()+".user)");
-		logger.info("DB: "+pDbName.getValue()+" (db."+operation.toString()+".db)");
-		logger.info("User: "+pDbUser.getValue()+" (db."+operation.toString()+".user)");
-		logger.info("Pwd: "+pDbPwd.getValue()+" (db."+operation.toString()+".password)");
-		if(dbSchema!=null){logger.info("Schema: "+dbSchema+" (db."+operation.toString()+".schema)");}
 	}
 	
 	protected void addLine(String line)

@@ -75,12 +75,12 @@ public class PostgresRestore extends AbstractPostgresShell implements UtilsDbShe
         List<Element> elementList = xpe.evaluateFirst(xmlConfig).getChildren();
 		for(Element e : elementList)
         {
-            if(e.getName().equals(getElementAfterLastDot(UtilsDbShell.cfgRestoreTable))) {restoreTable(e.getText());}
-            else if(e.getName().equals(getElementAfterLastDot(UtilsDbShell.cfgDbTablesRestoreTrigger))){restoreTableDisabledTrigger(e.getText());}
+            if(e.getName().equals(getElementAfterLastDot(UtilsDbShell.restoreTable))) {restoreTable(e.getText());}
+            else if(e.getName().equals(getElementAfterLastDot(UtilsDbShell.restoreTrigger))){restoreTableDisabledTrigger(e.getText());}
         }
 		for(Element e : elementList)
 		{
-			if(e.getName().equals(getElementAfterLastDot(UtilsDbShell.cfgDbSequenceRestore))){restoreSequence(e.getText());}
+			if(e.getName().equals(getElementAfterLastDot(UtilsDbShell.restroreSequence))){restoreSequence(e.getText());}
 		}		
 		super.cmdPost();
 	}
