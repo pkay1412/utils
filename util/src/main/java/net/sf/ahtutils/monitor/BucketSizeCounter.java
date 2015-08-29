@@ -20,13 +20,15 @@ public class BucketSizeCounter
 		this.category=category;
 		map = new Hashtable<String,Long>();
 	}
-		
-	public void add(String event,long size)
+	
+	public <E extends Enum<E>> void add(E event, long size){add(event.toString(),size);}
+	public void add(String event, long size)
 	{
 		if(!map.containsKey(event)){map.put(event, 0l);}
 		map.put(event, map.get(event)+size);
 	}
 	
+	public <E extends Enum<E>> long events(E event, long size){return events(event.toString());}
 	public long events(String event)
 	{
 		if(map.containsKey(event)){return map.get(event);}

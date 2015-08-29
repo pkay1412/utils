@@ -19,13 +19,15 @@ public class ProcessingEventCounter
 		this.category=category;
 		map = new Hashtable<String,Integer>();
 	}
-		
+	
+	public <E extends Enum<E>> void add(E event){add(event.toString());}
 	public void add(String event)
 	{
 		if(!map.containsKey(event)){map.put(event, 0);}
 		map.put(event, map.get(event)+1);
 	}
 	
+	public <E extends Enum<E>> int events(E event){return events(event.toString());}
 	public int events(String event)
 	{
 		if(map.containsKey(event)){return map.get(event);}
