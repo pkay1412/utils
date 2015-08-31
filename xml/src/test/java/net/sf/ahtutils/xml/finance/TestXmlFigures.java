@@ -4,6 +4,7 @@ import java.io.FileNotFoundException;
 
 import net.sf.ahtutils.test.AbstractXmlTest;
 import net.sf.ahtutils.test.UtilsXmlTestBootstrap;
+import net.sf.ahtutils.xml.text.TestXmlRemark;
 import net.sf.exlp.util.xml.JaxbUtil;
 
 import org.junit.BeforeClass;
@@ -31,10 +32,11 @@ public class TestXmlFigures extends AbstractXmlFinanceTest
 
     	if(withChilds)
     	{
-    		xml.getFinance().add(TestXmlFinance.create(false));
-    		xml.getFinance().add(TestXmlFinance.create(false));
-    		xml.getTime().add(TestXmlTime.create(false));
-    		xml.getTime().add(TestXmlTime.create(false));
+    		xml.getFinance().add(TestXmlFinance.create(false));xml.getFinance().add(TestXmlFinance.create(false));
+    		
+    		xml.getTime().add(TestXmlTime.create(false));xml.getTime().add(TestXmlTime.create(false));
+    		
+    		xml.getRemark().add(TestXmlRemark.create(false));xml.getRemark().add(TestXmlRemark.create(false));
     	}
     	    	
     	return xml;

@@ -182,6 +182,22 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link Labels }
+     * 
+     */
+    public Labels createLabels() {
+        return new Labels();
+    }
+
+    /**
+     * Create an instance of {@link Label }
+     * 
+     */
+    public Label createLabel() {
+        return new Label();
+    }
+
+    /**
      * Create an instance of {@link XlsDefinition }
      * 
      */

@@ -30,9 +30,9 @@
 	</translation>
 	<translation key="aupAuditScope">
 		<langs>
-			<lang key="de" translation="Werte geänder zu" />
-			<lang key="en" translation="Values changed to" />
-			<lang key="fr" translation="Values changed to" />
+			<lang key="de" translation="Bereich" />
+			<lang key="en" translation="Scope" />
+			<lang key="fr" translation="Scope" />
 		</langs>
 	</translation>
 	<translation key="aupAuditValuesChangedTo">

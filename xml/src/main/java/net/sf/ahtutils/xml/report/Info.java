@@ -61,6 +61,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *         &lt;element ref="{http://ahtutils.aht-group.com/report}file"/&gt;
  *         &lt;element ref="{http://ahtutils.aht-group.com/report}hash"/&gt;
  *         &lt;element ref="{http://ahtutils.aht-group.com/report}user"/&gt;
+ *         &lt;element ref="{http://ahtutils.aht-group.com/report}labels"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -79,7 +80,8 @@ import javax.xml.datatype.XMLGregorianCalendar;
     "jr",
     "file",
     "hash",
-    "user"
+    "user",
+    "labels"
 })
 @XmlRootElement(name = "info")
 public class Info
@@ -105,6 +107,8 @@ public class Info
     protected Hash hash;
     @XmlElement(required = true)
     protected User user;
+    @XmlElement(required = true)
+    protected Labels labels;
 
     /**
      * Gets the value of the title property.
@@ -374,6 +378,34 @@ public class Info
 
     public boolean isSetUser() {
         return (this.user!= null);
+    }
+
+    /**
+     * Gets the value of the labels property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Labels }
+     *     
+     */
+    public Labels getLabels() {
+        return labels;
+    }
+
+    /**
+     * Sets the value of the labels property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Labels }
+     *     
+     */
+    public void setLabels(Labels value) {
+        this.labels = value;
+    }
+
+    public boolean isSetLabels() {
+        return (this.labels!= null);
     }
 
 

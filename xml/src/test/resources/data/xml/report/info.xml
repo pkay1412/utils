@@ -9,4 +9,5 @@
     <r:file>myFileName</r:file>
     <r:hash>myHash</r:hash>
     <r:user>myUser</r:user>
+    <r:labels/>
 </r:info>

@@ -51,6 +51,8 @@ public class TestXmlInfo extends AbstractXmlReportTest
     	if(withChildren)
     	{
     		xml.getJr().add(TestJr.create());xml.getJr().add(TestJr.create());
+    		
+    		xml.setLabels(TestXmlLabels.create(false));
     	}
     	
     	xml.setFile(TestXmlFile.create());

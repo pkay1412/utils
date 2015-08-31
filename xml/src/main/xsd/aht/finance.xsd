@@ -2,11 +2,14 @@
 <xsd:schema targetNamespace="http://ahtutils.aht-group.com/finance"
     xmlns:f="http://ahtutils.aht-group.com/finance"
     xmlns:s="http://ahtutils.aht-group.com/status"
+    xmlns:t="http://ahtutils.aht-group.com/text"
     xmlns:xsd="http://www.w3.org/2001/XMLSchema">
     <xsd:import namespace="http://ahtutils.aht-group.com/status" schemaLocation="status.xsd"/>
+    <xsd:import namespace="http://ahtutils.aht-group.com/text" schemaLocation="text.xsd"/>
     <xsd:element name="figures">
         <xsd:complexType>
             <xsd:sequence>
+            	<xsd:element ref="t:remark" maxOccurs="unbounded"/>
                 <xsd:element ref="f:finance" maxOccurs="unbounded"/>
                 <xsd:element ref="f:time" maxOccurs="unbounded"/>
             </xsd:sequence>

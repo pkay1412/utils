@@ -125,8 +125,8 @@
             <xsd:attribute name="className" type="xsd:string"/>
         </xsd:complexType>
     </xsd:element>
-     <xsd:element name="element">
-        <xsd:complexType>
+	<xsd:element name="element">
+		<xsd:complexType>
             <xsd:attribute name="type">
              <xsd:simpleType>
 		            <xsd:restriction base="xsd:string">
@@ -175,7 +175,22 @@
                 <xsd:element ref="r:file" maxOccurs="1"/>
                 <xsd:element ref="r:hash" maxOccurs="1"/>
                 <xsd:element ref="r:user" maxOccurs="1"/>
+                <xsd:element ref="r:labels" maxOccurs="1"/>
             </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="labels">
+		<xsd:complexType>
+            <xsd:sequence>
+            	<xsd:element ref="r:label" maxOccurs="unbounded"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+   <xsd:element name="label">
+        <xsd:complexType>
+            <xsd:attribute name="scope" type="xsd:string"/>
+            <xsd:attribute name="key" type="xsd:string"/>
+            <xsd:attribute name="value" type="xsd:string"/>
         </xsd:complexType>
     </xsd:element>
     <xsd:element name="file">
