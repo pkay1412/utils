@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<r:labels xmlns:r="http://ahtutils.aht-group.com/report">
+    <r:label scope="myScope" key="myKey" value="myLabel"/>
+</r:labels>
