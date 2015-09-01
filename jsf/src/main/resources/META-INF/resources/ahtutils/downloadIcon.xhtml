@@ -11,10 +11,12 @@
 		<composite:attribute name="disabled"   required="false" default="true"/>
 		<composite:attribute name="value"      required="true"/>
 		<composite:attribute name="type"       required="true"/>
+		<composite:attribute name="onclick"    required="false"/>
+		
 	</composite:interface>
 
 	<composite:implementation>
-		<p:commandLink rendered="#{cc.attrs.disabled}" ajax="false" icon="ui-icon-arrowthick-1-s">
+		<p:commandLink rendered="#{cc.attrs.disabled}" ajax="false" onclick="#{cc.attrs.onclick}" icon="ui-icon-arrowthick-1-s">
 			<h:graphicImage styleClass="#{cc.attrs.styleClass}" library="gfx" name="#{iconBean.icon12[cc.attrs.type]}"/>
 			<p:fileDownload value="#{cc.attrs.value}" />
 		</p:commandLink>
