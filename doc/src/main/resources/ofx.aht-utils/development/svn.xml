@@ -4,11 +4,71 @@
 			xmlns:t="http://www.openfuxml.org/table"
 			xmlns:media="http://www.openfuxml.org/media"
 			xmlns:layout="http://www.openfuxml.org/layout"
+			xmlns:text="http://www.openfuxml.org/text"
 			id="section.admin.development.svn">
 	<ofx:title lang="en">Version Control System (SVN)</ofx:title>
 	
 	<ofx:paragraph lang="en">
-		TBD: Descibe SVN usage
+		Version Control System (SVN) is a software versioning and revision control system, 
+		that helps software developers to work together and maintain a complete history of their work.
 	</ofx:paragraph>
+	
+	<ofx:paragraph lang="en">
+		During the usage of SVN, there are a lot of specific terms you have to work with.
+		The most important are explained below.
+	</ofx:paragraph>
+	
+	<l:list>
+	    	<l:type ordering="unordered"/>	
+    		   		
+			<l:item>
+	    		<ofx:paragraph lang="en">
+	    			<text:emphasis bold="true">Repository:</text:emphasis>
+	    		</ofx:paragraph>
+	    		<ofx:paragraph lang="en">
+	    			A repository is the central place where the project itself and the history is stored.
+	    			It is accessed over a network and acting as a server. Clients can connect to the repository and store/receive all changes. 
+	    		</ofx:paragraph>
+	   		</l:item>
+	   		
+	   		<l:item>
+	    		<ofx:paragraph lang="en">
+	    			<text:emphasis bold="true">Trunk:</text:emphasis>
+	    		</ofx:paragraph>
+	    		<ofx:paragraph lang="en">
+	    			The trunk is the main directory and contains all necessary project files. 
+	    			It is usually checked out to work on the project.	
+	    		</ofx:paragraph>
+	   		</l:item>
+	   		
+	   		<l:item>
+	    		<ofx:paragraph lang="en">
+	    			<text:emphasis bold="true">Synchronize with Repository:</text:emphasis>
+	    		</ofx:paragraph>
+	    		<ofx:paragraph lang="en">
+	    			The Synchronize with Repository view shows all changes between local project version and server version. 
+	    			You have the opportunities to update/commit all changes or to revert conflicted files.
+	    		</ofx:paragraph>
+	   		</l:item>
+	   		
+	   		<l:item>
+	    		<ofx:paragraph lang="en">
+	    			<text:emphasis bold="true">Commit all outgoing changes:</text:emphasis>
+	    		</ofx:paragraph>
+	    		<ofx:paragraph lang="en">
+	    			Commit is a process of storing changes from the local project to central server. 
+	    			After you commit your changes, these are available for the team. 
+	    		</ofx:paragraph>
+	   		</l:item>
+	   		
+			<l:item>
+	    		<ofx:paragraph lang="en">
+	    			<text:emphasis bold="true">Update all incoming changes:</text:emphasis>
+	    		</ofx:paragraph>
+	    		<ofx:paragraph lang="en">
+	    			During the update process, users receive commited changes to their local working copy.
+	    		</ofx:paragraph>
+	   		</l:item>
+	</l:list>
 	
 </ofx:section>
