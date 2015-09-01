@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
@@ -26,6 +27,7 @@ import net.sf.ahtutils.xml.text.Remark;
  *         &lt;element ref="{http://ahtutils.aht-group.com/finance}finance" maxOccurs="unbounded"/&gt;
  *         &lt;element ref="{http://ahtutils.aht-group.com/finance}time" maxOccurs="unbounded"/&gt;
  *       &lt;/sequence&gt;
+ *       &lt;attribute name="id" type="{http://www.w3.org/2001/XMLSchema}long" /&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
@@ -51,6 +53,8 @@ public class Figures
     protected List<Finance> finance;
     @XmlElement(required = true)
     protected List<Time> time;
+    @XmlAttribute(name = "id")
+    protected Long id;
 
     /**
      * Gets the value of the remark property.
@@ -161,6 +165,38 @@ public class Figures
 
     public void unsetTime() {
         this.time = null;
+    }
+
+    /**
+     * Gets the value of the id property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Long }
+     *     
+     */
+    public long getId() {
+        return id;
+    }
+
+    /**
+     * Sets the value of the id property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Long }
+     *     
+     */
+    public void setId(long value) {
+        this.id = value;
+    }
+
+    public boolean isSetId() {
+        return (this.id!= null);
+    }
+
+    public void unsetId() {
+        this.id = null;
     }
 
 }

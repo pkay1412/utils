@@ -77,20 +77,36 @@
     		<s:lang key="fr" translation="%"/>
     	</s:langs>
     </s:translation>
-	<s:translation key="aupPayed">
+    
+    <s:translation key="aupAmountBudgeted">
     	<s:langs>
-    		<s:lang key="de" translation="Payed"/>
-    		<s:lang key="en" translation="Payed"/>
-    		<s:lang key="fr" translation="Payed"/>
+    		<s:lang key="de" translation="Budgeted"/>
+    		<s:lang key="en" translation="Budgeted"/>
+    		<s:lang key="fr" translation="Budgeted"/>
     	</s:langs>
     </s:translation>
-	<s:translation key="aupInvoiced">
+	<s:translation key="aupAmountContracted">
+    	<s:langs>
+    		<s:lang key="de" translation="Contracted"/>
+    		<s:lang key="en" translation="Contracted"/>
+    		<s:lang key="fr" translation="Contracted"/>
+    	</s:langs>
+    </s:translation>
+	<s:translation key="aupAmountInvoiced">
     	<s:langs>
     		<s:lang key="de" translation="In Rechnung"/>
     		<s:lang key="en" translation="Invoiced"/>
     		<s:lang key="fr" translation="Invoiced"/>
     	</s:langs>
     </s:translation>
+	<s:translation key="aupAmountPayed">
+    	<s:langs>
+    		<s:lang key="de" translation="Payed"/>
+    		<s:lang key="en" translation="Payed"/>
+    		<s:lang key="fr" translation="Payed"/>
+    	</s:langs>
+    </s:translation>
+
     
 	<s:translation key="aupPriceUnit">
     	<s:langs>

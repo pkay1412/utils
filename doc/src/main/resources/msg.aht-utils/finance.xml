@@ -15,11 +15,4 @@
     	</s:langs>
     </s:translation>
     
-	<s:translation key="aupBudgetBudgeted">
-    	<s:langs>
-    		<s:lang key="de" translation="Budgeted"/>
-    		<s:lang key="en" translation="Budgeted"/>
-    		<s:lang key="fr" translation="Budgeted"/>
-    	</s:langs>
-    </s:translation>
 </s:translations>

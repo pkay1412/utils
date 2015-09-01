@@ -29,7 +29,8 @@ public class TestXmlFigures extends AbstractXmlFinanceTest
     public static Figures create(boolean withChilds)
     {
     	Figures xml = new Figures();
-
+    	xml.setId(123);
+    	
     	if(withChilds)
     	{
     		xml.getFinance().add(TestXmlFinance.create(false));xml.getFinance().add(TestXmlFinance.create(false));
