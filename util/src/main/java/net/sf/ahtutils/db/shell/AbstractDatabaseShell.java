@@ -30,6 +30,7 @@ public class AbstractDatabaseShell
 	protected Configuration config;
 	protected Document xmlConfig;
 	
+	private Parameter pDirShell;
 	protected Parameter pDbShell,pDbDump,pDbRestore;
 	protected Parameter pDbHost,pDbName,pDbUser,pDbPwd;
 	protected Parameter pDirDump,pDirRestore;
@@ -51,6 +52,10 @@ public class AbstractDatabaseShell
 		this.xmlConfig=xmlConfig;
 		
 		configurationParamter = XmlParametersFactory.build();
+		
+		pDirShell = XmlParameterFactory.build(UtilsDbShell.cfgDirShell, "Directory for shell scripts", true);
+		pDirShell.setValue(config.getString(pDirShell.getKey()));
+		configurationParamter.getParameter().add(pDirShell);
 		
 		pDbHost = XmlParameterFactory.build("db."+operation.toString()+".host", "DB Host for "+operation.toString(), false);
 		try{pDbHost.setValue(config.getString(pDbHost.getKey()));}
@@ -114,7 +119,7 @@ public class AbstractDatabaseShell
 			opScope = WordUtils.capitalize(scope.toString());
 		}
 		
-		return new File(config.getString(UtilsDbShell.cfgDirShell),config.getString("db."+operation.toString()+".shell")+opScope+extension);
+		return new File(pDirShell.getValue(),config.getString("db."+operation.toString()+".shell")+opScope+extension);
 	}
 	
 	protected void save() throws ExlpUnsupportedOsException
