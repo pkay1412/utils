@@ -24,6 +24,16 @@
             </xsd:simpleContent>
         </xsd:complexType>
     </xsd:element>
+    
+	<xsd:element name="criteria">
+        <xsd:complexType>
+            <xsd:attribute name="id" type="xsd:long"/>
+            <xsd:attribute name="code" type="xsd:string"/>
+            <xsd:attribute name="type" type="xsd:string"/>
+            <xsd:attribute name="value" type="xsd:string"/>
+        </xsd:complexType>
+    </xsd:element>
+    
     <xsd:element name="trafficLights">
         <xsd:complexType>
             <xsd:sequence>

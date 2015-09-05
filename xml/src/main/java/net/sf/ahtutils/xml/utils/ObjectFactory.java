@@ -61,4 +61,12 @@ public class ObjectFactory {
         return new Property();
     }
 
+    /**
+     * Create an instance of {@link Criteria }
+     * 
+     */
+    public Criteria createCriteria() {
+        return new Criteria();
+    }
+
 }

@@ -220,12 +220,12 @@ public class UtilsFacadeBean implements UtilsFacade
 	@Override public <T extends EjbWithCode, E extends Enum<E>> T fByCode(Class<T> type, E code) throws UtilsNotFoundException {return this.fByCode(type, code.toString());}
 	@Override public <T extends EjbWithCode> T fByCode(Class<T> type, String code) throws UtilsNotFoundException
 	{
-		CriteriaBuilder criteriaBuilder = em.getCriteriaBuilder();
-        CriteriaQuery<T> criteriaQuery = criteriaBuilder.createQuery(type);
-        Root<T> root = criteriaQuery.from(type);
-        criteriaQuery = criteriaQuery.where(root.<T>get("code").in(code));
+		CriteriaBuilder cB = em.getCriteriaBuilder();
+        CriteriaQuery<T> cQ = cB.createQuery(type);
+        Root<T> root = cQ.from(type);
+        cQ = cQ.where(root.<T>get("code").in(code));
 
-		TypedQuery<T> q = em.createQuery(criteriaQuery); 
+		TypedQuery<T> q = em.createQuery(cQ); 
 		try	{return q.getSingleResult();}
 		catch (NoResultException ex){throw new UtilsNotFoundException("Nothing found "+type.getSimpleName()+" for code="+code);}
 		catch (NonUniqueResultException ex){throw new UtilsNotFoundException("Results for "+type.getSimpleName()+" and code="+code+" not unique");}
