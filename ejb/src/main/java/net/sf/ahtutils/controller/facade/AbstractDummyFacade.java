@@ -442,4 +442,10 @@ public class AbstractDummyFacade implements UtilsFacade
 		// TODO Auto-generated method stub
 		
 	}
+
+	@Override
+	public <T extends EjbWithCode, E extends Enum<E>> T fByCode(Class<T> type, E code) throws UtilsNotFoundException {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

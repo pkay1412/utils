@@ -30,7 +30,6 @@ public class LatexSecurityWriter extends AbstractDocumentationLatexWriter
 {	
 	final static Logger logger = LoggerFactory.getLogger(LatexSecurityWriter.class);
 	
-	private final static String dirMenuTree = "tree/menu";
 	private final static String dirTabs = "tab/security";
 	private final static String dirDescriptions = "description/security";
 		

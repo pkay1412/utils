@@ -45,6 +45,7 @@ public interface UtilsFacade extends UtilsIdFacade
 	<E extends EjbEquals<T>,T extends EjbWithId> boolean equalsAttributes(Class<T> c,E object); 
 	
 	//CODE
+	<T extends EjbWithCode, E extends Enum<E>> T fByCode(Class<T> type, E code) throws UtilsNotFoundException;
 	<T extends EjbWithCode> T fByCode(Class<T> type, String code) throws UtilsNotFoundException;
 	<T extends EjbWithTypeCode> T fByTypeCode(Class<T> c, String type, String code) throws UtilsNotFoundException;
 	<T extends EjbWithNonUniqueCode> List<T> allByCode(Class<T> type, String code);
