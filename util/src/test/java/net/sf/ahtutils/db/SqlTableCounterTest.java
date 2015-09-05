@@ -1,5 +1,7 @@
 package net.sf.ahtutils.db;
 
+import java.io.File;
+
 import org.apache.commons.configuration.Configuration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,12 +20,13 @@ public class SqlTableCounterTest
     {
     	Configuration config = AhtUtilsTestBootstrap.init();
     	
-    	String db1 = config.getString(cDb1);
-    	String db2 = config.getString(cDb2);
-    	logger.info(cDb1+": "+db1);
-    	logger.info(cDb2+": "+db2);
+    	File db1 = new File(config.getString(cDb1));
+    	File db2 = new File(config.getString(cDb2));
     	
-        SqlTableCounter sqltc = new SqlTableCounter("/Volumes/ramdisk",db1, db2);
+    	logger.info(cDb1+": "+db1.getAbsolutePath());
+    	logger.info(cDb2+": "+db2.getAbsolutePath());
+    	
+        SqlTableCounter sqltc = new SqlTableCounter(db1, db2);
         sqltc.output();
     }
 }

@@ -18,10 +18,10 @@ public class SqlTableCounter
 	private File f1;
 	private File f2;
 
-	public SqlTableCounter(String path, String filename1, String filename2)
+	public SqlTableCounter(File f1, File f2)
 	{
-		f1 = new File(path, filename1);
-		f2 = new File(path, filename2);
+		this.f1=f1;
+		this.f2=f2;
 	}
 	
     public void readData(File f, Map<String,String> map) throws IOException
