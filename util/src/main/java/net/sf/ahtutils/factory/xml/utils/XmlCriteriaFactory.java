@@ -9,6 +9,10 @@ public class XmlCriteriaFactory
 {
 	final static Logger logger = LoggerFactory.getLogger(XmlCriteriaFactory.class);
 		
+	public static <E extends Enum<E>> Criteria build(E code, Boolean value){return build(code.toString(),value);}
+	public static <E extends Enum<E>> Criteria build(E code, Integer value){return build(code.toString(),value);}
+	public static <E extends Enum<E>> Criteria build(E code, String value){return build(code.toString(),value);}
+	
 	public static Criteria build(String code, Boolean value){return build(code,Boolean.class.getSimpleName(),value.toString());}
 	public static Criteria build(String code, Integer value){return build(code,Integer.class.getSimpleName(),value.toString());}
 	public static Criteria build(String code, String value){return build(code,String.class.getSimpleName(),value.toString());}
