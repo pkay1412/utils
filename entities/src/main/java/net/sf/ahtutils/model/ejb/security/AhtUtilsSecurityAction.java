@@ -26,7 +26,7 @@ import net.sf.ahtutils.model.interfaces.with.EjbWithCode;
 import net.sf.ahtutils.model.qualifier.EjbErNode;
 
 @Entity
-@Table(uniqueConstraints = @UniqueConstraint(columnNames = {"code"}))
+@Table(uniqueConstraints=@UniqueConstraint(columnNames = {"code"}))
 @EjbErNode(name="Action",category="security")
 
 public class AhtUtilsSecurityAction implements EjbWithCode,Serializable,EjbRemoveable,EjbPersistable,

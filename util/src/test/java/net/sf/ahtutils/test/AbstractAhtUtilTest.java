@@ -57,7 +57,5 @@ public class AbstractAhtUtilTest extends AbstractAhtUtilsTest
 		}
 	}
 	
-	
-	
 	public void setSaveReference(boolean saveReference) {this.saveReference = saveReference;}
 }

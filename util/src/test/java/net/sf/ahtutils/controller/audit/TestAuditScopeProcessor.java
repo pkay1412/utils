@@ -15,7 +15,7 @@ import net.sf.ahtutils.factory.xml.audit.XmlRevisionFactory;
 import net.sf.ahtutils.factory.xml.audit.XmlRevisionsFactory;
 import net.sf.ahtutils.factory.xml.audit.XmlScopeFactory;
 import net.sf.ahtutils.test.AbstractAhtUtilsTest;
-import net.sf.ahtutils.test.AhtUtilsTstBootstrap;
+import net.sf.ahtutils.test.AhtUtilsTestBootstrap;
 import net.sf.ahtutils.xml.audit.Change;
 import net.sf.ahtutils.xml.audit.Revision;
 import net.sf.ahtutils.xml.audit.Revisions;
@@ -124,7 +124,7 @@ public class TestAuditScopeProcessor extends AbstractAhtUtilsTest
     
     public static void main (String[] args) throws Exception
 	{
-		AhtUtilsTstBootstrap.init();
+		AhtUtilsTestBootstrap.init();
 		
 		TestAuditScopeProcessor test = new TestAuditScopeProcessor();
 		

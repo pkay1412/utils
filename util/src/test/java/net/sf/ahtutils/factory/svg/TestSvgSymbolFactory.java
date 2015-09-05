@@ -17,7 +17,7 @@ import net.sf.ahtutils.model.ejb.status.AhtUtilsLang;
 import net.sf.ahtutils.model.ejb.symbol.DefaultGeoJsfGraphic;
 import net.sf.ahtutils.model.ejb.symbol.DefaultGeoJsfGraphicStyle;
 import net.sf.ahtutils.model.ejb.symbol.DefaultGeoJsfGraphicType;
-import net.sf.ahtutils.test.AhtUtilsTstBootstrap;
+import net.sf.ahtutils.test.AhtUtilsTestBootstrap;
 
 public class TestSvgSymbolFactory
 {
@@ -44,7 +44,7 @@ public class TestSvgSymbolFactory
 	
 	public static void main(String[] args) throws TranscoderException, IOException, ParserConfigurationException
 	{
-		AhtUtilsTstBootstrap.init();
+		AhtUtilsTestBootstrap.init();
 		TestSvgSymbolFactory test = new TestSvgSymbolFactory();
 		test.test();
 	}

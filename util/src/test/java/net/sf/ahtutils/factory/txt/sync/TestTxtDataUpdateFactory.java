@@ -3,7 +3,7 @@ package net.sf.ahtutils.factory.txt.sync;
 import net.sf.ahtutils.factory.xml.status.XmlTypeFactory;
 import net.sf.ahtutils.monitor.DataUpdateTracker;
 import net.sf.ahtutils.test.AbstractAhtUtilsTest;
-import net.sf.ahtutils.test.AhtUtilsTstBootstrap;
+import net.sf.ahtutils.test.AhtUtilsTestBootstrap;
 
 import org.junit.Assert;
 import org.junit.Before;
@@ -45,7 +45,7 @@ public class TestTxtDataUpdateFactory extends AbstractAhtUtilsTest
     
 	public static void main (String[] args) throws Exception
 	{
-		AhtUtilsTstBootstrap.init();
+		AhtUtilsTestBootstrap.init();
 		
 		TestTxtDataUpdateFactory test = new TestTxtDataUpdateFactory();
 		test.init();

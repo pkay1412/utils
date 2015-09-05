@@ -1,7 +1,7 @@
 package net.sf.ahtutils.controller.util.poi;
 
 import net.sf.ahtutils.controller.util.UtilsPasswordGenerator;
-import net.sf.ahtutils.test.AhtUtilsTstBootstrap;
+import net.sf.ahtutils.test.AhtUtilsTestBootstrap;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -29,7 +29,7 @@ public class TestUtilsPasswordGenerator
 	
 	public static void main (String[] args) throws Exception
 	{
-		AhtUtilsTstBootstrap.init();
+		AhtUtilsTestBootstrap.init();
 		logger.debug("Test");
 		TestUtilsPasswordGenerator test = new TestUtilsPasswordGenerator();
 		test.direct();

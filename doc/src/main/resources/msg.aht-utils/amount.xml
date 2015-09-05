@@ -49,11 +49,32 @@
     		<s:lang key="fr" translation="Entitled Amount"/>
     	</s:langs>
     </s:translation>
+    <s:translation key="aupAmountEntitled1">
+    	<s:langs>
+    		<s:lang key="de" translation="Entitled"/>
+    		<s:lang key="en" translation="Entitled"/>
+    		<s:lang key="fr" translation="Entitled"/>
+    	</s:langs>
+    </s:translation>
 	<s:translation key="aupAmountTransaction">
     	<s:langs>
     		<s:lang key="de" translation="Transaction Amount"/>
     		<s:lang key="en" translation="Transaction Amount"/>
     		<s:lang key="fr" translation="Transaction Amount"/>
+    	</s:langs>
+    </s:translation>
+    	<s:translation key="aupAmountTransaction1">
+    	<s:langs>
+    		<s:lang key="de" translation="Transaction"/>
+    		<s:lang key="en" translation="Transaction"/>
+    		<s:lang key="fr" translation="Transaction"/>
+    	</s:langs>
+    </s:translation>
+        <s:translation key="aupAmountBankCharges2">
+    	<s:langs>
+    		<s:lang key="de" translation="Bankgebühren"/>
+    		<s:lang key="en" translation="Bank Charges"/>
+    		<s:lang key="fr" translation="Bank Charges"/>
     	</s:langs>
     </s:translation>
 	<s:translation key="aupAmountOrdered">

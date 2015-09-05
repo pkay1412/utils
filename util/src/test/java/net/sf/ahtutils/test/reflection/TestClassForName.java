@@ -1,7 +1,7 @@
 package net.sf.ahtutils.test.reflection;
 
 import net.sf.ahtutils.test.AbstractAhtUtilsTest;
-import net.sf.ahtutils.test.AhtUtilsTstBootstrap;
+import net.sf.ahtutils.test.AhtUtilsTestBootstrap;
 import net.sf.ahtutils.xml.aht.Aht;
 
 import org.junit.Assert;
@@ -29,7 +29,7 @@ public class TestClassForName extends AbstractAhtUtilsTest
 	
 	public static void main(String args[]) throws Exception
     {
-		AhtUtilsTstBootstrap.init();
+		AhtUtilsTestBootstrap.init();
 		
 		TestClassForName test = new TestClassForName();
 		test.test();
