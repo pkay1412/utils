@@ -42,6 +42,13 @@
     		<s:lang key="fr" translation="Unit"/>
     	</s:langs>
     </s:translation>
+	<s:translation key="aupCriteria2">
+    	<s:langs>
+    		<s:lang key="de" translation="Kriterien"/>
+    		<s:lang key="en" translation="Criteria"/>
+    		<s:lang key="fr" translation="Criteria"/>
+    	</s:langs>
+    </s:translation>
 	<s:translation key="aupStatus">
     	<s:langs>
     		<s:lang key="de" translation="Status"/>
