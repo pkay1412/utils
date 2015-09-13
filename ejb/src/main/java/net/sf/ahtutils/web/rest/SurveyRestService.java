@@ -35,7 +35,7 @@ import net.sf.ahtutils.interfaces.model.survey.UtilsSurveyTemplate;
 import net.sf.ahtutils.interfaces.rest.survey.UtilsSurveyRestExport;
 import net.sf.ahtutils.interfaces.rest.survey.UtilsSurveyRestImport;
 import net.sf.ahtutils.monitor.DataUpdateTracker;
-import net.sf.ahtutils.util.query.SurveyQuery;
+import net.sf.ahtutils.util.query.xml.SurveyQuery;
 import net.sf.ahtutils.xml.aht.Aht;
 import net.sf.ahtutils.xml.status.Status;
 import net.sf.ahtutils.xml.survey.Answer;

@@ -1,4 +1,4 @@
-package net.sf.ahtutils.util.query;
+package net.sf.ahtutils.util.query.xml;
 
 import java.util.Date;
 import java.util.Hashtable;
@@ -26,7 +26,7 @@ import net.sf.exlp.util.DateUtil;
 
 public class SurveyQuery
 {
-	public static enum Key {exTemplate,exSurveys,exSurvey,structure}
+	public static enum Key {exTemplate,exSurveys,exSurvey}
 	
 	private static Map<Key,Query> mQueries;
 	
@@ -42,7 +42,6 @@ public class SurveyQuery
 				case exTemplate: q.setTemplate(exTemplate());break;
 				case exSurvey: q.setSurvey(exSurvey());break;
 				case exSurveys: q.setSurveys(exSurveys());break;
-				case structure: q.setSurvey(structure());break;
 			}
 			mQueries.put(key, q);
 		}
@@ -57,6 +56,7 @@ public class SurveyQuery
 		xml.setId(0);
 		xml.setCode("");
 		xml.setDescription(XmlDescriptionFactory.build(""));
+		xml.setRemark(XmlRemarkFactory.build(""));
 		xml.setCategory(XmlCategoryFactory.create(""));
 		xml.setStatus(XmlStatusFactory.create(""));
 		xml.getSection().add(exSection());
@@ -71,6 +71,7 @@ public class SurveyQuery
 		xml.setCode("");
 		xml.setPosition(0);
 		xml.setDescription(XmlDescriptionFactory.build(""));
+		xml.setRemark(XmlRemarkFactory.build(""));
 		xml.getQuestion().add(exQuestion());
 		return xml;
 	}
@@ -124,19 +125,6 @@ public class SurveyQuery
 		xml.setQuestion(net.sf.ahtutils.factory.xml.survey.XmlQuestionFactory.id());
 		xml.setValueBoolean(true);
 		xml.setValueNumber(0);
-		return xml;
-	}
-	
-	public static Survey structure()
-	{				
-		Survey xml = new Survey();
-		xml.setId(0);
-		xml.setName("");
-		xml.setValidFrom(DateUtil.toXmlGc(new Date()));
-		xml.setValidTo(DateUtil.toXmlGc(new Date()));
-		xml.setStatus(XmlStatusFactory.create(""));
-		xml.setTemplate(XmlTemplateFactory.id());
-		xml.getData().add(exData());
 		return xml;
 	}
 }

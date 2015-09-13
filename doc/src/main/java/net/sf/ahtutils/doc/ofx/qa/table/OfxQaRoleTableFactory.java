@@ -1,12 +1,12 @@
-package net.sf.ahtutils.doc.ofx.qa;
+package net.sf.ahtutils.doc.ofx.qa.table;
 
 import java.util.List;
 
 import net.sf.ahtutils.doc.DocumentationCommentBuilder;
 import net.sf.ahtutils.doc.UtilsDocumentation;
 import net.sf.ahtutils.doc.ofx.AbstractUtilsOfxDocumentationFactory;
-import net.sf.ahtutils.xml.qa.Qa;
-import net.sf.ahtutils.xml.security.Staff;
+import net.sf.ahtutils.xml.security.Category;
+import net.sf.ahtutils.xml.security.Role;
 import net.sf.ahtutils.xml.status.Translations;
 import net.sf.ahtutils.xml.xpath.StatusXpath;
 import net.sf.exlp.exception.ExlpXpathNotFoundException;
@@ -32,26 +32,27 @@ import org.openfuxml.util.OfxCommentBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class OfxQaTeamTableFactory extends AbstractUtilsOfxDocumentationFactory
+public class OfxQaRoleTableFactory extends AbstractUtilsOfxDocumentationFactory
 {
-	final static Logger logger = LoggerFactory.getLogger(OfxQaTeamTableFactory.class);
-	private static String keyCaption = "auTableQmTeamCaption";
+	final static Logger logger = LoggerFactory.getLogger(OfxQaRoleTableFactory.class);
+	private static String keyCaption = "auTableQmRoles";
 	
-	public OfxQaTeamTableFactory(Configuration config, String lang, Translations translations)
+	public OfxQaRoleTableFactory(Configuration config, String lang, Translations translations)
 	{
 		this(config,new String[] {lang},translations);
 	}
-	public OfxQaTeamTableFactory(Configuration config, String[] langs, Translations translations)
+	public OfxQaRoleTableFactory(Configuration config, String[] langs, Translations translations)
 	{
 		super(config,langs,translations);
 	}
 	
-	public Table build(Qa qa, List<String> headerKeys) throws OfxAuthoringException
+	public Table build(Category category, List<String> headerKeys) throws OfxAuthoringException
 	{
 		try
 		{
-			Table table = toOfx(qa.getStaff(),headerKeys);
-			table.setId("table.qa.team");
+			Table table = toOfx(category.getRoles().getRole(),headerKeys);
+			table.setId("table.qa.roles");
+			
 			if(langs.length>1){logger.warn("Incorrect Assignment");}
 			table.setTitle(XmlTitleFactory.build(StatusXpath.getLang(translations, keyCaption, langs[0]).getTranslation()));
 			
@@ -59,7 +60,7 @@ public class OfxQaTeamTableFactory extends AbstractUtilsOfxDocumentationFactory
 			OfxCommentBuilder.fixedId(comment, table.getId());
 			DocumentationCommentBuilder.translationKeys(comment,config,UtilsDocumentation.keyTranslationFile);
 			DocumentationCommentBuilder.tableHeaders(comment,headerKeys);
-			DocumentationCommentBuilder.tableKey(comment,keyCaption,"Table Caption Prefix");
+			DocumentationCommentBuilder.tableKey(comment,keyCaption,"Table Caption");
 			OfxCommentBuilder.doNotModify(comment);
 			table.setComment(comment);
 			
@@ -69,41 +70,22 @@ public class OfxQaTeamTableFactory extends AbstractUtilsOfxDocumentationFactory
 		catch (ExlpXpathNotUniqueException e) {throw new OfxAuthoringException(e.getMessage());}
 	}
 	
-	public Table toOfx(List<Staff> lStaff, List<String> headerKeys)
+	public Table toOfx(List<Role> lRole, List<String> headerKeys)
 	{
 		Table table = new Table();
-		table.setSpecification(createSpecifications(headerKeys.size()));
+		table.setSpecification(createSpecifications());
 		
-		table.setContent(createContent(lStaff,headerKeys));
+		table.setContent(createContent(lRole,headerKeys));
 		
 		return table;
 	}
 	
-	private Specification createSpecifications(int columns)
+	private Specification createSpecifications()
 	{
 		Columns cols = new Columns();
-		if(columns==2)
-		{
-			cols.getColumn().add(OfxColumnFactory.build(XmlAlignmentFactory.Horizontal.left));
-			cols.getColumn().add(OfxColumnFactory.flex(60));
-		}
-		else if(columns==3)
-		{
-			cols.getColumn().add(OfxColumnFactory.build(XmlAlignmentFactory.Horizontal.left));
-			cols.getColumn().add(OfxColumnFactory.flex(35));
-			cols.getColumn().add(OfxColumnFactory.flex(40));
-		}
-		else if(columns==4)
-		{
+		cols.getColumn().add(OfxColumnFactory.build(XmlAlignmentFactory.Horizontal.left));
+		cols.getColumn().add(OfxColumnFactory.flex(80));
 			
-			cols.getColumn().add(OfxColumnFactory.flex(30));
-			cols.getColumn().add(OfxColumnFactory.flex(15));
-			cols.getColumn().add(OfxColumnFactory.flex(35));
-			cols.getColumn().add(OfxColumnFactory.flex(20));
-		}
-		else {logger.warn("Columns "+columns+" NYI");}
-			
-		
 		Specification specification = new Specification();
 		specification.setColumns(cols);
 		specification.setFloat(XmlFloatFactory.build(false));
@@ -111,13 +93,13 @@ public class OfxQaTeamTableFactory extends AbstractUtilsOfxDocumentationFactory
 		return specification;
 	}
 	
-	private Content createContent(List<Staff> lStaff, List<String> headerKeys)
+	private Content createContent(List<Role> lRole, List<String> headerKeys)
 	{
 		Head head = new Head();
 		head.getRow().add(createHeaderRow(headerKeys));
 		
 		Body body = new Body();
-		for(Staff staff : lStaff)
+		for(Role staff : lRole)
 		{
 			body.getRow().add(createRow(staff));
 		}
@@ -129,32 +111,24 @@ public class OfxQaTeamTableFactory extends AbstractUtilsOfxDocumentationFactory
 		return content;
 	}
 	
-	private Row createRow(Staff staff)
+	private Row createRow(Role staff)
 	{
-		Row row = new Row();
-		
-		row.getCell().add(OfxCellFactory.createParagraphCell(staff.getUser().getFirstName()+" "+staff.getUser().getLastName()));
-		
 		String roleName;
-		if(langs.length>1){logger.warn("Incorrect Assignment");}
-		try{roleName = StatusXpath.getLang(staff.getRole().getLangs(), langs[0]).getTranslation();}
+		String roleDesc = "";
+		
+		try
+		{
+			if(langs.length>1){logger.warn("Incorrect Assignment");}
+			roleName = StatusXpath.getLang(staff.getLangs(), langs[0]).getTranslation();
+			roleDesc = StatusXpath.getDescription(staff.getDescriptions(), langs[0]).getValue();
+		}
 		catch (ExlpXpathNotFoundException e){roleName = e.getMessage();}
 		catch (ExlpXpathNotUniqueException e){roleName = e.getMessage();}
+
+		Row row = new Row();
 		row.getCell().add(OfxCellFactory.createParagraphCell(roleName));
-		
-		
-		
-		if(staff.isSetResponsible()){row.getCell().add(OfxCellFactory.createParagraphCell(staff.getResponsible().getLabel()));}
-		else{row.getCell().add(OfxCellFactory.createParagraphCell(""));}
-		
-		StringBuffer sb = new StringBuffer();
-		
-		if(staff.isSetStatus()){sb.append(staff.getStatus().getLabel());}
-		if(staff.isSetType() && staff.isSetStatus()){sb.append(", ");}
-		if(staff.isSetType()){sb.append(staff.getType().getLabel());}
-		
-		row.getCell().add(OfxCellFactory.createParagraphCell(sb.toString()));
+		row.getCell().add(OfxCellFactory.createParagraphCell(roleDesc));
 		
 		return row;
-	}
+	}	
 }
