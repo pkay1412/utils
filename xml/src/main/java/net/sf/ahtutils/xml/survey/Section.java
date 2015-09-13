@@ -26,6 +26,7 @@ import net.sf.ahtutils.xml.text.Remark;
  *       &lt;sequence&gt;
  *         &lt;element ref="{http://ahtutils.aht-group.com/status}description"/&gt;
  *         &lt;element ref="{http://ahtutils.aht-group.com/text}remark"/&gt;
+ *         &lt;element ref="{http://ahtutils.aht-group.com/survey}section" maxOccurs="unbounded"/&gt;
  *         &lt;element ref="{http://ahtutils.aht-group.com/survey}question" maxOccurs="unbounded"/&gt;
  *       &lt;/sequence&gt;
  *       &lt;attribute name="id" type="{http://www.w3.org/2001/XMLSchema}long" /&gt;
@@ -42,6 +43,7 @@ import net.sf.ahtutils.xml.text.Remark;
 @XmlType(name = "", propOrder = {
     "description",
     "remark",
+    "section",
     "question"
 })
 @XmlRootElement(name = "section")
@@ -54,6 +56,8 @@ public class Section
     protected Description description;
     @XmlElement(namespace = "http://ahtutils.aht-group.com/text", required = true)
     protected Remark remark;
+    @XmlElement(required = true)
+    protected List<Section> section;
     @XmlElement(required = true)
     protected List<Question> question;
     @XmlAttribute(name = "id")
@@ -117,6 +121,43 @@ public class Section
 
     public boolean isSetRemark() {
         return (this.remark!= null);
+    }
+
+    /**
+     * Gets the value of the section property.
+     * 
+     * <p>
+     * This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the section property.
+     * 
+     * <p>
+     * For example, to add a new item, do as follows:
+     * <pre>
+     *    getSection().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link Section }
+     * 
+     * 
+     */
+    public List<Section> getSection() {
+        if (section == null) {
+            section = new ArrayList<Section>();
+        }
+        return this.section;
+    }
+
+    public boolean isSetSection() {
+        return ((this.section!= null)&&(!this.section.isEmpty()));
+    }
+
+    public void unsetSection() {
+        this.section = null;
     }
 
     /**

@@ -78,10 +78,11 @@ public class XmlTemplateFactory<L extends UtilsLang,D extends UtilsDescription,S
 		return xml;
 	}
 	
-	public static Template id()
+	public static Template id(){return id(0);}
+	public static Template id(long id)
 	{
 		Template xml = new Template();
-		xml.setId(0);
+		xml.setId(id);
 		return xml;
 	}
 }

@@ -58,6 +58,17 @@ public class XmlSectionFactory<L extends UtilsLang,D extends UtilsDescription,SU
 			}
 		}
 		
+		if(q.isSetSection())
+		{
+			XmlSectionFactory<L,D,SURVEY,SS,TEMPLATE,TS,TC,SECTION,QUESTION,UNIT,ANSWER,DATA,OPTION,CORRELATION> f = new XmlSectionFactory<L,D,SURVEY,SS,TEMPLATE,TS,TC,SECTION,QUESTION,UNIT,ANSWER,DATA,OPTION,CORRELATION>(q.getSection().get(0));
+			if(fSurvey!=null){f.lazyLoad(fSurvey,cSection);}
+			
+			for(SECTION section : ejb.getSections())
+			{
+				xml.getSection().add(f.build(section));
+			}
+		}
+		
 		return xml;
 	}
 	

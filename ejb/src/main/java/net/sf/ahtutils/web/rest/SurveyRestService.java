@@ -1,5 +1,8 @@
 package net.sf.ahtutils.web.rest;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import net.sf.ahtutils.controller.util.query.StatusQuery;
 import net.sf.ahtutils.db.xml.AhtStatusDbInit;
 import net.sf.ahtutils.exception.ejb.UtilsConstraintViolationException;
@@ -46,9 +49,6 @@ import net.sf.ahtutils.xml.survey.Template;
 import net.sf.ahtutils.xml.survey.Templates;
 import net.sf.ahtutils.xml.sync.DataUpdate;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 public class SurveyRestService <L extends UtilsLang,
 							D extends UtilsDescription,
 							SURVEY extends UtilsSurvey<L,D,SURVEY,SS,TEMPLATE,TS,TC,SECTION,QUESTION,UNIT,ANSWER,DATA,OPTION,CORRELATION>,
@@ -63,7 +63,7 @@ public class SurveyRestService <L extends UtilsLang,
 							DATA extends UtilsSurveyData<L,D,SURVEY,SS,TEMPLATE,TS,TC,SECTION,QUESTION,UNIT,ANSWER,DATA,OPTION,CORRELATION>,
 							OPTION extends UtilsSurveyOption<L,D,SURVEY,SS,TEMPLATE,TS,TC,SECTION,QUESTION,UNIT,ANSWER,DATA,OPTION,CORRELATION>,
 							CORRELATION extends UtilsSurveyCorrelation<L,D,SURVEY,SS,TEMPLATE,TS,TC,SECTION,QUESTION,UNIT,ANSWER,DATA,OPTION,CORRELATION>>
-					implements UtilsSurveyRestExport,UtilsSurveyRestImport
+					implements UtilsSurveyRestExport,UtilsSurveyRestImport//,UtilsSurveyRest
 {
 	final static Logger logger = LoggerFactory.getLogger(SurveyRestService.class);
 	
@@ -82,7 +82,7 @@ public class SurveyRestService <L extends UtilsLang,
 	private final Class<CORRELATION> cCorrelation;
 	
 	private XmlStatusFactory fStatus;
-	private XmlTemplateFactory<L,D,SURVEY,SS,TEMPLATE,TS,TC,SECTION,QUESTION,UNIT,ANSWER,DATA,OPTION,CORRELATION> fTemplate;
+	private XmlTemplateFactory<L,D,SURVEY,SS,TEMPLATE,TS,TC,SECTION,QUESTION,UNIT,ANSWER,DATA,OPTION,CORRELATION> xfTemplate;
 	private XmlSurveyFactory<L,D,SURVEY,SS,TEMPLATE,TS,TC,SECTION,QUESTION,UNIT,ANSWER,DATA,OPTION,CORRELATION> xfSurveys;
 	private XmlSurveyFactory<L,D,SURVEY,SS,TEMPLATE,TS,TC,SECTION,QUESTION,UNIT,ANSWER,DATA,OPTION,CORRELATION> xfSurvey;
 	
@@ -109,11 +109,12 @@ public class SurveyRestService <L extends UtilsLang,
 		this.cCorrelation=cCorrelation;
 	
 		fStatus = new XmlStatusFactory(StatusQuery.get(StatusQuery.Key.StatusExport).getStatus());
-		fTemplate = new XmlTemplateFactory<L,D,SURVEY,SS,TEMPLATE,TS,TC,SECTION,QUESTION,UNIT,ANSWER,DATA,OPTION,CORRELATION>(SurveyQuery.get(SurveyQuery.Key.exTeplate).getTemplate());
-		fTemplate.lazyLoad(fSurvey,cTEMPLATE,cSection);
+		xfTemplate = new XmlTemplateFactory<L,D,SURVEY,SS,TEMPLATE,TS,TC,SECTION,QUESTION,UNIT,ANSWER,DATA,OPTION,CORRELATION>(SurveyQuery.get(SurveyQuery.Key.exTemplate).getTemplate());
+		xfTemplate.lazyLoad(fSurvey,cTEMPLATE,cSection);
 		
 		xfSurveys = new XmlSurveyFactory<L,D,SURVEY,SS,TEMPLATE,TS,TC,SECTION,QUESTION,UNIT,ANSWER,DATA,OPTION,CORRELATION>(SurveyQuery.get(SurveyQuery.Key.exSurveys).getSurveys().getSurvey().get(0));
 		xfSurvey = new XmlSurveyFactory<L,D,SURVEY,SS,TEMPLATE,TS,TC,SECTION,QUESTION,UNIT,ANSWER,DATA,OPTION,CORRELATION>(SurveyQuery.get(SurveyQuery.Key.exSurvey).getSurvey());
+		
 		xfSurvey.lazyLoad(fSurvey,cSurvey,cData);
 		
 		efTemlate = EjbSurveyTemplateFactory.factory(cTEMPLATE);
@@ -179,7 +180,7 @@ public class SurveyRestService <L extends UtilsLang,
 		Templates xml = new Templates();
 		for(TEMPLATE template : fSurvey.all(cTEMPLATE))
 		{
-			xml.getTemplate().add(fTemplate.build(template));
+			xml.getTemplate().add(xfTemplate.build(template));
 		}
 		return xml;
 	}
@@ -310,5 +311,20 @@ public class SurveyRestService <L extends UtilsLang,
 	{
 		logger.warn("This method should be never used here! You have to implement your project-specific method!");
 		return null;
+	}
+	
+	// Survey
+	
+//	@Override
+	public Survey surveyStructure(long id)
+	{
+		Survey xml = new Survey();
+		try
+		{
+			TEMPLATE ejb = fSurvey.find(cTEMPLATE,id);
+			xml.setTemplate(xfTemplate.build(ejb));
+		}
+		catch (UtilsNotFoundException e) {e.printStackTrace();}
+		return xml;
 	}
 }

@@ -11,6 +11,7 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 import net.sf.ahtutils.xml.security.Staff;
+import net.sf.ahtutils.xml.survey.Survey;
 
 
 /**
@@ -25,6 +26,7 @@ import net.sf.ahtutils.xml.security.Staff;
  *       &lt;sequence&gt;
  *         &lt;element ref="{http://ahtutils.aht-group.com/qa}category" maxOccurs="unbounded"/&gt;
  *         &lt;element ref="{http://ahtutils.aht-group.com/security}staff" maxOccurs="unbounded"/&gt;
+ *         &lt;element ref="{http://ahtutils.aht-group.com/survey}survey"/&gt;
  *       &lt;/sequence&gt;
  *       &lt;attribute name="id" type="{http://www.w3.org/2001/XMLSchema}long" /&gt;
  *       &lt;attribute name="client" type="{http://www.w3.org/2001/XMLSchema}string" /&gt;
@@ -39,7 +41,8 @@ import net.sf.ahtutils.xml.security.Staff;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
     "category",
-    "staff"
+    "staff",
+    "survey"
 })
 @XmlRootElement(name = "qa")
 public class Qa
@@ -51,6 +54,8 @@ public class Qa
     protected List<Category> category;
     @XmlElement(namespace = "http://ahtutils.aht-group.com/security", required = true)
     protected List<Staff> staff;
+    @XmlElement(namespace = "http://ahtutils.aht-group.com/survey", required = true)
+    protected Survey survey;
     @XmlAttribute(name = "id")
     protected Long id;
     @XmlAttribute(name = "client")
@@ -130,6 +135,34 @@ public class Qa
 
     public void unsetStaff() {
         this.staff = null;
+    }
+
+    /**
+     * Gets the value of the survey property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Survey }
+     *     
+     */
+    public Survey getSurvey() {
+        return survey;
+    }
+
+    /**
+     * Sets the value of the survey property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Survey }
+     *     
+     */
+    public void setSurvey(Survey value) {
+        this.survey = value;
+    }
+
+    public boolean isSetSurvey() {
+        return (this.survey!= null);
     }
 
     /**

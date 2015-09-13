@@ -40,6 +40,7 @@ public class TestXmlSection extends AbstractXmlSurveyTest
     		xml.setDescription(TestXmlDescription.create(false));
     		
     		xml.getQuestion().add(TestXmlQuestion.create(false));xml.getQuestion().add(TestXmlQuestion.create(false));
+    		xml.getSection().add(TestXmlSection.create(false));xml.getSection().add(TestXmlSection.create(false));
     	}
     	
     	return xml;

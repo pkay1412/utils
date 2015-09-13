@@ -31,6 +31,7 @@
         	<xsd:sequence>
         		<xsd:element ref="us:description" maxOccurs="1"/>
                 <xsd:element ref="text:remark" maxOccurs="1"/>
+                <xsd:element ref="survey:section" maxOccurs="unbounded"/>
                 <xsd:element ref="survey:question" maxOccurs="unbounded"/>
             </xsd:sequence>
             <xsd:attribute name="id" type="xsd:long"/>

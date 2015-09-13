@@ -4,6 +4,7 @@ import java.io.FileNotFoundException;
 
 import net.sf.ahtutils.test.UtilsXmlTestBootstrap;
 import net.sf.ahtutils.xml.security.TestXmlStaff;
+import net.sf.ahtutils.xml.survey.TestXmlSurvey;
 import net.sf.exlp.util.xml.JaxbUtil;
 
 import org.junit.BeforeClass;
@@ -36,6 +37,7 @@ public class TestXmlQa extends AbstractXmlQaTest
     	{
     		xml.getCategory().add(TestXmlCategory.create(false));xml.getCategory().add(TestXmlCategory.create(false));
     		xml.getStaff().add(TestXmlStaff.create(false));xml.getStaff().add(TestXmlStaff.create(false));
+    		xml.setSurvey(TestXmlSurvey.create(false));
     	}
     	
     	return xml;

@@ -26,7 +26,7 @@ import net.sf.exlp.util.DateUtil;
 
 public class SurveyQuery
 {
-	public static enum Key {exTeplate,exSurveys,exSurvey}
+	public static enum Key {exTemplate,exSurveys,exSurvey,structure}
 	
 	private static Map<Key,Query> mQueries;
 	
@@ -39,9 +39,10 @@ public class SurveyQuery
 			Query q = new Query();
 			switch(key)
 			{
-				case exTeplate: q.setTemplate(exTeplate());break;
+				case exTemplate: q.setTemplate(exTemplate());break;
 				case exSurvey: q.setSurvey(exSurvey());break;
 				case exSurveys: q.setSurveys(exSurveys());break;
+				case structure: q.setSurvey(structure());break;
 			}
 			mQueries.put(key, q);
 		}
@@ -50,7 +51,7 @@ public class SurveyQuery
 		return q;
 	}
 	
-	public static Template exTeplate()
+	public static Template exTemplate()
 	{		
 		Template xml = new Template();
 		xml.setId(0);
@@ -59,6 +60,7 @@ public class SurveyQuery
 		xml.setCategory(XmlCategoryFactory.create(""));
 		xml.setStatus(XmlStatusFactory.create(""));
 		xml.getSection().add(exSection());
+		xml.getSection().get(0).getSection().add(exSection());
 		return xml;
 	}
 	
@@ -122,6 +124,19 @@ public class SurveyQuery
 		xml.setQuestion(net.sf.ahtutils.factory.xml.survey.XmlQuestionFactory.id());
 		xml.setValueBoolean(true);
 		xml.setValueNumber(0);
+		return xml;
+	}
+	
+	public static Survey structure()
+	{				
+		Survey xml = new Survey();
+		xml.setId(0);
+		xml.setName("");
+		xml.setValidFrom(DateUtil.toXmlGc(new Date()));
+		xml.setValidTo(DateUtil.toXmlGc(new Date()));
+		xml.setStatus(XmlStatusFactory.create(""));
+		xml.setTemplate(XmlTemplateFactory.id());
+		xml.getData().add(exData());
 		return xml;
 	}
 }

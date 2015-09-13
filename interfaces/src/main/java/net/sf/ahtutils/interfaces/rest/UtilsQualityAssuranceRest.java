@@ -31,7 +31,6 @@ public interface UtilsQualityAssuranceRest
 	@Produces(MediaType.APPLICATION_XML)
 	Aht qaStatusCondition();
 	
-	
 	@GET @Path("/team/{id:[0-9]*}")
 	@Produces(MediaType.APPLICATION_XML)
 	Qa qaTeam(@PathParam("id") long qaId);
@@ -39,6 +38,10 @@ public interface UtilsQualityAssuranceRest
 	@GET @Path("/categories/{id:[0-9]*}")
 	@Produces(MediaType.APPLICATION_XML)
 	Qa qaCategories(@PathParam("id") long qaId);
+	
+	@GET @Path("/survey/{id:[0-9]*}")
+	@Produces(MediaType.APPLICATION_XML)
+	Qa qaSurvey(@PathParam("id") long qaId);
 	
 	@GET @Path("/category/{id:[0-9]*}/tests")
 	@Produces(MediaType.APPLICATION_XML)
