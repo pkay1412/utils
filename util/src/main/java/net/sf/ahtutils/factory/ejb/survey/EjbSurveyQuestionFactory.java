@@ -56,10 +56,8 @@ public class EjbSurveyQuestionFactory<L extends UtilsLang,
 				xQuestion.getRemark().getValue());
 	}
 	
-	public QUESTION build(SECTION section,UNIT unit)
-	{
-		return build(section,unit,null,0,null,null,null);
-	}
+	public QUESTION build(SECTION section){return build(section,null,null,0,null,null,null);}
+	public QUESTION build(SECTION section,UNIT unit){return build(section,unit,null,0,null,null,null);}
 	
 	public QUESTION build(SECTION section,UNIT unit, String code,int position,String topic,String question,String remark)
 	{

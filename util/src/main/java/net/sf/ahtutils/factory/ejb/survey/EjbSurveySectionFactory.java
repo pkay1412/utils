@@ -66,4 +66,21 @@ public class EjbSurveySectionFactory<L extends UtilsLang,
 		
 		return ejb;
 	}
+	
+	public SECTION build(SECTION parent, String name){return build(parent,0,name);}
+	public SECTION build(SECTION parent, int position, String name)
+	{
+		SECTION ejb = null;
+		try
+		{
+			ejb = cSection.newInstance();
+			ejb.setSection(parent);
+			ejb.setName(name);
+			ejb.setPosition(position);
+		}
+		catch (InstantiationException e) {e.printStackTrace();}
+		catch (IllegalAccessException e) {e.printStackTrace();}
+		
+		return ejb;
+	}
 }

@@ -7,4 +7,11 @@
     		<s:lang key="fr" translation="Reporting Relevant"/>
     	</s:langs>
     </s:translation>
+    <s:translation key="aupQaTestUrl">
+    	<s:langs>
+    		<s:lang key="de" translation="URL"/>
+    		<s:lang key="en" translation="URL"/>
+    		<s:lang key="fr" translation="URL"/>
+    	</s:langs>
+    </s:translation>
 </s:translations>

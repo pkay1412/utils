@@ -1,5 +1,7 @@
 package net.sf.ahtutils.interfaces.model.qa;
 
+import java.util.Date;
+
 import net.sf.ahtutils.interfaces.model.status.UtilsDescription;
 import net.sf.ahtutils.interfaces.model.status.UtilsLang;
 import net.sf.ahtutils.interfaces.model.status.UtilsStatus;
@@ -49,4 +51,7 @@ QAUS extends UtilsStatus<QAUS,L,D>>
 	
 	String getComment();
 	void setComment(String comment);
+	
+	Date getRecord();
+	void setRecord(Date record);
 }

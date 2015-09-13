@@ -91,4 +91,18 @@
     		<s:lang key="fr" translation="Remark"/>
     	</s:langs>
     </s:translation>   
+    <s:translation key="aupSurveyAreas">
+    	<s:langs>
+    		<s:lang key="de" translation="Areas"/>
+    		<s:lang key="en" translation="Areas"/>
+    		<s:lang key="fr" translation="Areas"/>
+    	</s:langs>
+    </s:translation>    
+    <s:translation key="aupSurveyArea">
+    	<s:langs>
+    		<s:lang key="de" translation="Area"/>
+    		<s:lang key="en" translation="Area"/>
+    		<s:lang key="fr" translation="Area"/>
+    	</s:langs>
+    </s:translation>
 </s:translations>

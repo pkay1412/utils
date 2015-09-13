@@ -1,5 +1,6 @@
 package net.sf.ahtutils.interfaces.model.qa;
 
+import java.util.Date;
 import java.util.List;
 
 import net.sf.ahtutils.interfaces.model.status.UtilsDescription;
@@ -43,6 +44,9 @@ QAUS extends UtilsStatus<QAUS,L,D>>
 	
 	String getReference();
 	void setReference(String reference);
+
+	String getUrl();
+	void setUrl(String url);
 	
 	String getDescription();
 	void setDescription(String description);
@@ -74,4 +78,6 @@ QAUS extends UtilsStatus<QAUS,L,D>>
 	Double getWeight();
 	void setWeight(Double weight);
 	
+	Date getRecord();
+	void setRecord(Date record);
 }
