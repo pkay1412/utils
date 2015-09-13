@@ -8,7 +8,7 @@ package net.sf.ahtutils.doc.loc;
  */
 public class CounterSelector
 { 
-	public static enum Lang{donotcount,unknown,xml,jsp,css,java,cpp,sql,vb,bat,make,matlab,fortran,pascal,perl};
+	public static enum Lang{donotcount,unknown,xml,jsp,css,java,cpp,sql,vb,bat,make,matlab,fortran,pascal,perl,xhtml};
     
 	String fileName;
 	
@@ -27,8 +27,8 @@ public class CounterSelector
                 fileName.endsWith(".c") ||
                 fileName.endsWith(".h") ) {result = Lang.cpp;}
         else if (fileName.endsWith(".sql") ) {result = Lang.sql;}
-        else if (fileName.endsWith(".xml") ||
-        		fileName.endsWith(".jrxml")) {result = Lang.xml;}
+        else if (fileName.endsWith(".xhtml")) {result = Lang.xhtml;}
+        else if (fileName.endsWith(".xml") || fileName.endsWith(".jrxml")) {result = Lang.xml;}
         else if (fileName.endsWith(".css") ) {result = Lang.css;}
         else if (fileName.endsWith(".jsf") || 
         		fileName.endsWith(".jsp") ||

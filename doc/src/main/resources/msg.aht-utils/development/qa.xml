@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<s:translations xmlns:s="http://ahtutils.aht-group.com/status">
+	<s:translation key="aupQaReportingRelevant">
+    	<s:langs>
+    		<s:lang key="de" translation="Reporting Relevant"/>
+    		<s:lang key="en" translation="Reporting Relevant"/>
+    		<s:lang key="fr" translation="Reporting Relevant"/>
+    	</s:langs>
+    </s:translation>
+</s:translations>

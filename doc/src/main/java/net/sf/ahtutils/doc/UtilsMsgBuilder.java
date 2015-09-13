@@ -43,6 +43,7 @@ public class UtilsMsgBuilder
 	public static final String srcFacesMessages = "msg.aht-utils/facesMessages.xml";
 	
 	public static final String srcSurvey = "msg.aht-utils/survey.xml";
+	public static final String devQa = "msg.aht-utils/development/qa.xml";
 	
 	final static Logger logger = LoggerFactory.getLogger(UtilsMsgBuilder.class);
 		
