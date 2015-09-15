@@ -53,11 +53,11 @@ public class OfxMultiLangWriter
 		}
 	}
 	
-	public  void section(int sectionLevel,String fileName,Section section) throws OfxAuthoringException, OfxConfigurationException, IOException
+	public void section(int sectionLevel,String fileName,Section section) throws OfxAuthoringException, OfxConfigurationException, IOException
 	{
 		for(String lang : keys)
 		{
-			File f = new File(baseLatex,lang+"/section/"+fileName);
+			File f = buildFile(lang+"/section/"+fileName);
 			logger.trace(f.getAbsolutePath());
 			OfxLangFilter omf = new OfxLangFilter(lang);
 			
@@ -69,5 +69,11 @@ public class OfxMultiLangWriter
 			logger.trace("Writing to : "+f.getAbsolutePath());
 			StringIO.writeTxt(f, sw.toString());
 		}
+	}
+	
+	private File buildFile(String fileName)
+	{
+		if(!fileName.endsWith(".tex")){fileName = fileName+".tex";}
+		return new File(baseLatex,fileName);
 	}
 }

@@ -1,6 +1,7 @@
 package net.sf.ahtutils.doc.ofx.qa;
 
 import org.apache.commons.configuration.Configuration;
+import org.apache.commons.io.FilenameUtils;
 import org.openfuxml.content.ofx.Comment;
 import org.openfuxml.content.ofx.Section;
 import org.openfuxml.exception.OfxAuthoringException;
@@ -70,17 +71,16 @@ public class OfxQaContainerInputSectionFactory extends AbstractUtilsOfxDocumenta
 		
 		for(net.sf.ahtutils.xml.survey.Section s : template.getSection())
 		{
-			section.getContent().add(buildCategory(s,path));
+			for(String lang : langs)
+			{
+				Section sub = XmlSectionFactory.build();
+				sub.setContainer(true);
+				sub.setLang(lang);
+				sub.setInclude(FilenameUtils.normalize(lang+"/"+path+"/"+s.getPosition()));
+				section.getContent().add(sub);
+			}
 		}
 		
-		return section;
-	}
-	
-	private Section buildCategory(net.sf.ahtutils.xml.survey.Section s, String path)
-	{
-		Section section = XmlSectionFactory.build();
-		section.setContainer(true);
-		section.setInclude(path+"/"+s.getPosition());
 		return section;
 	}
 }

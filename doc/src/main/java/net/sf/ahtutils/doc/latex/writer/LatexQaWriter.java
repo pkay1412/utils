@@ -17,6 +17,7 @@ import org.openfuxml.interfaces.media.CrossMediaManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import net.sf.ahtutils.doc.UtilsDocumentation;
 import net.sf.ahtutils.doc.ofx.qa.OfxQaContainerInputSectionFactory;
 import net.sf.ahtutils.doc.ofx.qa.OfxSectionQaCategoryFactory;
 import net.sf.ahtutils.doc.ofx.qa.OfxSectionQaNfrFactory;
@@ -26,6 +27,7 @@ import net.sf.ahtutils.doc.ofx.qa.table.OfxQaSummaryTableFactory;
 import net.sf.ahtutils.doc.ofx.qa.table.OfxQaTeamTableFactory;
 import net.sf.ahtutils.doc.ofx.status.OfxStatusTableFactory;
 import net.sf.ahtutils.doc.ofx.status.OfxStatusTableFactory.Code;
+import net.sf.ahtutils.doc.ofx.util.OfxMultiLangWriter;
 import net.sf.ahtutils.exception.processing.UtilsConfigurationException;
 import net.sf.ahtutils.xml.aht.Aht;
 import net.sf.ahtutils.xml.qa.Category;
@@ -38,7 +40,10 @@ public class LatexQaWriter extends AbstractDocumentationLatexWriter
 {	
 	final static Logger logger = LoggerFactory.getLogger(LatexQaWriter.class);
 	
+	private OfxMultiLangWriter ofxMlw;
 	private OfxQaContainerInputSectionFactory ofContainerInput;
+	private OfxSectionQaNfrFactory ofNfr;
+	
 	private boolean withResponsible,withOrganisation;
 	
 	private String imagePathPrefix;
@@ -48,11 +53,18 @@ public class LatexQaWriter extends AbstractDocumentationLatexWriter
 	public LatexQaWriter(Configuration config, Translations translations,String[] langs, CrossMediaManager cmm,DefaultSettingsManager dsm)
 	{
 		super(config,translations,langs,cmm,dsm);
+		File baseDir = new File(config.getString(UtilsDocumentation.keyBaseLatexDir));
+		ofxMlw = new OfxMultiLangWriter(baseDir,langs,cmm,dsm);
+		
 		ofContainerInput = new OfxQaContainerInputSectionFactory(config,langs,translations);
+		ofNfr = new OfxSectionQaNfrFactory(config,langs,translations);
+		
 		imagePathPrefix = null;
 		withResponsible = false;
 		withOrganisation = false;
 	}
+	
+	public void setUnits(Aht units){ofNfr.setUnits(units);}
 	
 	private List<String> buildHeaderKeys()
 	{
@@ -193,22 +205,13 @@ public class LatexQaWriter extends AbstractDocumentationLatexWriter
 	//NFR
 	public void writeNfr(Survey survey) throws OfxAuthoringException, IOException, OfxConfigurationException
 	{
-		for(String lang : langs)
-		{
-			writeNfr(lang,survey);
-		}
-	}
-	
-	private void writeNfr(String lang, Survey survey) throws OfxAuthoringException, IOException, OfxConfigurationException
-	{
-		writeSection(ofContainerInput.build(survey.getTemplate(),lang+"/section/qa/nfr"), new File(baseLatexDir+"/"+lang+"/section/qa/nfr.tex"));
-		OfxSectionQaNfrFactory ofx = new OfxSectionQaNfrFactory(config,lang,translations);
+		
+		
+		ofxMlw.section(2,"/qa/nfr",ofContainerInput.build(survey.getTemplate(),"/section/qa/nfr"));
 		
 		for(net.sf.ahtutils.xml.survey.Section surveySection : survey.getTemplate().getSection())
 		{
-			String path = lang+"/section/qa/nfr";
-			File f = new File(baseLatexDir+"/"+path+"/"+surveySection.getPosition()+".tex");
-			writeSection(ofx.build(surveySection), f);
+			ofxMlw.section(2, "/qa/nfr/"+surveySection.getPosition(), ofNfr.build(surveySection));
 		}
 	}
 		

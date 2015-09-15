@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ofx:section xmlns:ofx="http://www.openfuxml.org"
+			 xmlns:media="http://www.openfuxml.org/media"
+			 xmlns:table="http://www.openfuxml.org/table"
+			 xmlns:layout="http://www.openfuxml.org/layout"
+			 xmlns:text="http://www.openfuxml.org/text"
+			 xmlns:l="http://www.openfuxml.org/list"
+		id="section.admin.scp">
+	<ofx:title lang="en">Secure Copy Protocol (SCP)</ofx:title>
+	
+	<ofx:paragraph lang="en" version="1">
+		The SCP protocol is a network protocol, which supports file transfers between hosts on a network.
+		SCP uses Secure Shell (SSH) for data transfer and uses the same mechanisms for authentication,
+		thereby ensuring the authenticity and confidentiality of the data in transit.
+		A client can send (upload) files to a server,
+		optionally including their basic attributes (permissions, timestamps).
+		Clients can also request files or directories from a server (download).
+		SCP runs over TCP port 22 by default. Like RCP, there is no RFC that defines the specifics of the protocol.
+	</ofx:paragraph>
+		
+	<l:list>
+	    	<l:type ordering="unordered"/>	
+    		   		
+			<l:item>
+	    		<ofx:paragraph lang="en">scp username@remotehost:file.txt /local/directory</ofx:paragraph>
+	   		</l:item>
+	   		
+	   		<l:item>
+	    		<ofx:paragraph lang="en">scp file.txt username@remotehost:/remote/directory</ofx:paragraph>
+	   		</l:item>
+	   		
+	   		<l:item>
+	    		<ofx:paragraph lang="en">scp -r /local/directory/a username@remotehost:/remote/directory/b</ofx:paragraph>
+	   		</l:item>
+	   		
+			<l:item>
+	    		<ofx:paragraph lang="en">scp u1@remote1:/remote/dir/1.txt u2@rh2.edu:/remote/dir</ofx:paragraph>
+	   		</l:item>
+	</l:list>
+
+	
+	<ofx:paragraph lang="en" version="1">
+	-r recursive
+		-C compression
+		-P 2264 port
+	</ofx:paragraph>
+	
+</ofx:section>

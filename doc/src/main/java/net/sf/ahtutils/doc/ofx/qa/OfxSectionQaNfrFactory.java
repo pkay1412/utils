@@ -14,6 +14,7 @@ import org.slf4j.LoggerFactory;
 
 import net.sf.ahtutils.doc.ofx.AbstractUtilsOfxDocumentationFactory;
 import net.sf.ahtutils.doc.ofx.qa.table.OfxQaNfrQuestionTableFactory;
+import net.sf.ahtutils.xml.aht.Aht;
 import net.sf.ahtutils.xml.status.Translations;
 
 public class OfxSectionQaNfrFactory extends AbstractUtilsOfxDocumentationFactory
@@ -22,15 +23,13 @@ public class OfxSectionQaNfrFactory extends AbstractUtilsOfxDocumentationFactory
 	
 	private OfxQaNfrQuestionTableFactory ofxTableQuestions;
 	
-	public OfxSectionQaNfrFactory(Configuration config, String lang, Translations translations)
-	{
-		this(config,new String[] {lang},translations);
-	}
 	public OfxSectionQaNfrFactory(Configuration config, String[] langs, Translations translations)
 	{
 		super(config,langs,translations);
 		ofxTableQuestions = new OfxQaNfrQuestionTableFactory(config,langs,translations);
 	}
+	
+	public void setUnits(Aht units) {ofxTableQuestions.setUnits(units);}
 	
 	public Section build(net.sf.ahtutils.xml.survey.Section surveySection) throws OfxAuthoringException
 	{
@@ -62,4 +61,6 @@ public class OfxSectionQaNfrFactory extends AbstractUtilsOfxDocumentationFactory
 		
 		return xml;
 	}
+	
+	
 }

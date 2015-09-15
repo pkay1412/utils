@@ -11,10 +11,12 @@ import org.openfuxml.factory.xml.ofx.content.text.XmlTitleFactory;
 import org.openfuxml.factory.xml.table.OfxCellFactory;
 import org.openfuxml.factory.xml.text.OfxTextFactory;
 
+import net.sf.ahtutils.xml.aht.Aht;
 import net.sf.ahtutils.xml.status.Description;
 import net.sf.ahtutils.xml.status.Descriptions;
 import net.sf.ahtutils.xml.status.Lang;
 import net.sf.ahtutils.xml.status.Langs;
+import net.sf.ahtutils.xml.status.Status;
 import net.sf.ahtutils.xml.xpath.StatusXpath;
 import net.sf.exlp.exception.ExlpXpathNotFoundException;
 import net.sf.exlp.exception.ExlpXpathNotUniqueException;
@@ -38,6 +40,21 @@ public class OfxMultiLangFactory
 			title.getContent().add(OfxTextFactory.build(key,text));
 		}
 		return title;
+	}
+	
+	public static Cell cell(String[] langs, String code, Aht aht)
+	{
+		if(aht!=null)
+		{
+			try
+			{
+				Status status = StatusXpath.getStatus(aht.getStatus(), code);
+				return cell(langs,status.getLangs());
+			}
+			catch (ExlpXpathNotFoundException e) {}
+			catch (ExlpXpathNotUniqueException e) {}
+		}
+		return OfxCellFactory.createParagraphCell(code);
 	}
 	
 	public static Cell cell(String[] keys, Langs langs)
