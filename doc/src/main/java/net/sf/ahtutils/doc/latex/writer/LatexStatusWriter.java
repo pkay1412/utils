@@ -5,8 +5,10 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import net.sf.ahtutils.db.xml.UtilsDbXmlSeedUtil;
+import net.sf.ahtutils.doc.UtilsDocumentation;
 import net.sf.ahtutils.doc.ofx.status.OfxStatusTableFactory;
 import net.sf.ahtutils.doc.ofx.status.OfxStatusTableFactory.Code;
+import net.sf.ahtutils.doc.ofx.util.OfxMultiLangWriter;
 import net.sf.ahtutils.exception.processing.UtilsConfigurationException;
 import net.sf.ahtutils.xml.aht.Aht;
 import net.sf.ahtutils.xml.dbseed.Db;
@@ -25,6 +27,7 @@ public class LatexStatusWriter extends AbstractDocumentationLatexWriter
 {	
 	final static Logger logger = LoggerFactory.getLogger(LatexStatusWriter.class);
 	
+	private OfxMultiLangWriter ofxMlw;
 	private final static String dirStatus = "tab/status";
 	
 	private UtilsDbXmlSeedUtil seedUtil;
@@ -32,9 +35,12 @@ public class LatexStatusWriter extends AbstractDocumentationLatexWriter
 	private String seedKey,seedKeyParent;
 	private boolean withIcon;
 	
-	public LatexStatusWriter(Configuration config, Translations translations,String[] langs, CrossMediaManager cmm,DefaultSettingsManager dsm) throws UtilsConfigurationException
+	public LatexStatusWriter(Configuration config, Translations translations,String[] langs, CrossMediaManager cmm,DefaultSettingsManager dsm, String dirTable) throws UtilsConfigurationException
 	{
 		super(config,translations,langs,cmm,dsm);
+		File baseDir = new File(config.getString(UtilsDocumentation.keyBaseLatexDir));
+		ofxMlw = new OfxMultiLangWriter(baseDir,langs,cmm,dsm);
+		ofxMlw.setDirTable(dirTable);
 		
 		withIcon = false;
 		
@@ -114,18 +120,13 @@ public class LatexStatusWriter extends AbstractDocumentationLatexWriter
 		try
 		{
 			logger.info(texName);
-			for(String lang : langs)
-			{
-				OfxStatusTableFactory fOfx = new OfxStatusTableFactory(config,lang,translations);
-				fOfx.setColWidths(colWidths);
-				
-				if(ahtParents!=null){fOfx.activateParents(ahtParents);}
-				fOfx.renderColumn(Code.icon, withIcon);
-				
-				Table table = fOfx.buildLatexTable(texName.replaceAll("/", "."),athStatus);
-				File f = new File(baseLatexDir+"/"+lang+"/"+dirStatus+"/"+texName+".tex");
-				writeTable(table, f);
-			}
+			OfxStatusTableFactory fOfx = new OfxStatusTableFactory(config,langs,translations);
+			fOfx.setColWidths(colWidths);
+			if(ahtParents!=null){fOfx.activateParents(ahtParents);}
+			fOfx.renderColumn(Code.icon, withIcon);
+			
+			Table table = fOfx.buildLatexTable(texName.replaceAll("/", "."),athStatus);
+			ofxMlw.table("/status/"+texName, table);
 		}
 		catch (OfxAuthoringException e) {throw new UtilsConfigurationException(e.getMessage());}
 		catch (IOException e) {throw new UtilsConfigurationException(e.getMessage());}

@@ -34,8 +34,14 @@ public class OfxMultiLangWriter
 		this.keys=keys;
 		this.cmm=cmm;
 		this.dsm=dsm;
+		
+		dirTable = "table";
 	}
 	
+	private String dirTable;
+	public String getDirTable() {return dirTable;}
+	public void setDirTable(String dirTable) {this.dirTable = dirTable;}
+
 	public void table(String fileName, Table table) throws OfxAuthoringException, IOException
 	{
 		for(String lang : keys)
@@ -46,7 +52,7 @@ public class OfxMultiLangWriter
 			tableRenderer.setPreBlankLine(false);
 			tableRenderer.render(omf.filterLang(table));
 			
-			File f = new File(baseLatex,lang+"/table/"+fileName);
+			File f = buildFile(lang+"/"+dirTable+"/"+fileName);
 			StringWriter sw = new StringWriter();
 			tableRenderer.write(sw);
 			StringIO.writeTxt(f, sw.toString());
