@@ -70,36 +70,34 @@ public class OfxQaRoleTableFactory extends AbstractUtilsOfxDocumentationFactory
 		catch (ExlpXpathNotUniqueException e) {throw new OfxAuthoringException(e.getMessage());}
 	}
 	
-	public Table toOfx(List<Role> lRole, List<String> headerKeys)
+	public Table toOfx(List<Role> roles, List<String> headerKeys)
 	{
 		Table table = new Table();
 		table.setSpecification(createSpecifications());
 		
-		table.setContent(createContent(lRole,headerKeys));
+		table.setContent(createContent(roles,headerKeys));
 		
 		return table;
 	}
 	
 	private Specification createSpecifications()
 	{
+		Specification specification = new Specification();
 		Columns cols = new Columns();
 		cols.getColumn().add(OfxColumnFactory.build(XmlAlignmentFactory.Horizontal.left));
 		cols.getColumn().add(OfxColumnFactory.flex(80));
-			
-		Specification specification = new Specification();
 		specification.setColumns(cols);
 		specification.setFloat(XmlFloatFactory.build(false));
-		
 		return specification;
 	}
 	
-	private Content createContent(List<Role> lRole, List<String> headerKeys)
+	private Content createContent(List<Role> roles, List<String> headerKeys)
 	{
 		Head head = new Head();
 		head.getRow().add(createHeaderRow(headerKeys));
 		
 		Body body = new Body();
-		for(Role staff : lRole)
+		for(Role staff : roles)
 		{
 			body.getRow().add(createRow(staff));
 		}

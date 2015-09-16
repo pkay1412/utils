@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ofx:section xmlns:ofx="http://www.openfuxml.org"
+	xmlns:text="http://www.openfuxml.org/text"
+	id="section.development.latex.generation">
+	
+	<ofx:title lang="en">Generation of Manuals</ofx:title>
+		
+	<ofx:paragraph lang="en" version="1">
+		The source for the manuals is located in the doc-module
+		(the <text:emphasis style="typewriter">doc</text:emphasis> directory of the project).
+		In this directory the following command has to be executed:
+	</ofx:paragraph>
+	
+	<ofx:listing>
+		<ofx:raw>mvn clean latex:latex</ofx:raw>
+	</ofx:listing>
+	
+	<ofx:paragraph lang="en" version="1">
+		This produces the PDF files in the <text:emphasis style="typewriter">doc/target</text:emphasis> folder.
+	</ofx:paragraph>
+	
+</ofx:section>

@@ -5,61 +5,10 @@
 	
 	<ofx:title>LaTeX</ofx:title>
 	
-	<ofx:paragraph lang="en">
-		LaTeX is a document preparation system and document markup language.
-		It is widely used for the communication and publication of scientific documents in many fields,
-		including mathematics, physics, and computer science.
-		It also has a prominent role in the preparation and publication of books and articles that contain complex multilingual materials,
-		such as Sanskrit and Arabic.
-		LaTeX uses the TeX typesetting program for formatting its output, and is itself written in the TeX macro language.
-		LaTeX is not the name of a particular editing program,
-		but refers to the encoding or tagging conventions that are used in LaTeX documents.
-	</ofx:paragraph>
-	
-	<ofx:paragraph lang="en">
-		In this context, LaTeX is used as an intermediate format as part of a pipeline for translating XML-based content to PDF.
-		The typesetting system offers programmable desktop publishing features and extensive facilities for automating most aspects of
-		typesetting and desktop publishing,
-		including numbering and cross-referencing of tables and figures, chapter and section headings, the inclusion of graphics,
-		page layout, indexing and bibliographies.
-	</ofx:paragraph>
-	
-	<ofx:section>
-		<ofx:title lang="en">Installation</ofx:title>
+	<ofx:section include="../latex/introduction.xml"/>
+	<ofx:section include="../latex/installation.xml"/>
+	<ofx:section include="../latex/generation.xml"/>
 		
-		<ofx:paragraph lang="en" version="1">
-			The installation steps depend on the operating system.
-		</ofx:paragraph>
-		
-		<ofx:paragraph lang="en" version="1">
-			For Debian based operating systems, e.g. Ubuntu, the package <text:emphasis italic="true">TeX Live</text:emphasis> is provided
-			and can be installed with:
-		</ofx:paragraph>
-		
-		<ofx:listing>
-			<ofx:raw>apt-get install texlive-full</ofx:raw>
-		</ofx:listing>
-		
-	</ofx:section>
-	
-	<ofx:section>
-		<ofx:title lang="en">Generation of Manuals</ofx:title>
-		
-		<ofx:paragraph lang="en" version="1">
-			The source for the manuals is located in the doc-module
-			(the <text:emphasis style="typewriter">doc</text:emphasis> directory of the project).
-			In this directory the following command has to be executed:
-		</ofx:paragraph>
-		
-		<ofx:listing>
-			<ofx:raw>mvn clean latex:latex</ofx:raw>
-		</ofx:listing>
-		
-		<ofx:paragraph lang="en" version="1">
-			This produces the PDF files in the <text:emphasis style="typewriter">doc/target</text:emphasis> folder.
-		</ofx:paragraph>
-		
-	</ofx:section>
 	
 		
 </ofx:section>
