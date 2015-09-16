@@ -24,6 +24,7 @@ import org.slf4j.LoggerFactory;
 import net.sf.ahtutils.doc.DocumentationCommentBuilder;
 import net.sf.ahtutils.doc.latex.writer.AbstractDocumentationLatexWriter;
 import net.sf.ahtutils.exception.processing.UtilsConfigurationException;
+import net.sf.ahtutils.model.interfaces.with.EjbWithCode;
 import net.sf.ahtutils.xml.status.Translations;
 
 public class AbstractLatexDocumentationBuilder extends AbstractDocumentationLatexWriter
@@ -65,6 +66,9 @@ public class AbstractLatexDocumentationBuilder extends AbstractDocumentationLate
 	protected void render(String code) throws UtilsConfigurationException, OfxConfigurationException{render(1,code);}
 	protected void render(int lvl, String code) throws UtilsConfigurationException, OfxConfigurationException{render(lvl,code,null);}
 	protected void render(String code,String classifier[]) throws UtilsConfigurationException, OfxConfigurationException{render(1,code,classifier);}
+	
+	public  <E extends Enum<E>> void renderE(int lvl, E code) throws UtilsConfigurationException, OfxConfigurationException{render(lvl,code.toString(),null);}
+	public  <E extends Enum<E>> void renderE(int lvl, E code, String classifier[]) throws UtilsConfigurationException, OfxConfigurationException{render(lvl,code.toString(),classifier);}
 	protected void render(int lvl, String code,String classifier[]) throws UtilsConfigurationException, OfxConfigurationException
 	{
 		try

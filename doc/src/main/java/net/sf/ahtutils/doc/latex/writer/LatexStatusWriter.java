@@ -28,8 +28,6 @@ public class LatexStatusWriter extends AbstractDocumentationLatexWriter
 	final static Logger logger = LoggerFactory.getLogger(LatexStatusWriter.class);
 	
 	private OfxMultiLangWriter ofxMlw;
-	private final static String dirStatus = "tab/status";
-	
 	private UtilsDbXmlSeedUtil seedUtil;
 	
 	private String seedKey,seedKeyParent;

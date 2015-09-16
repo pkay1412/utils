@@ -13,10 +13,8 @@
 		are summarized in Table <ofx:reference target="table.admin.development.maven.shortcuts"/>.
 	</ofx:paragraph>
 		
-		<t:table id="table.admin.development.maven.shortcuts">
-	
+	<t:table id="table.admin.development.maven.shortcuts">	
 	    <ofx:title lang="en" version="1">Maven Shortcuts</ofx:title>
-	    
 	    <t:specification>
 	        <t:columns> 
 	            <t:column><layout:width unit="percentage" flex="true" narrow="true">30.0</layout:width></t:column>
@@ -27,15 +25,9 @@
 	    <t:content>
 	        <t:head>
 	            <t:row>
-	                <t:cell>
-	                <ofx:paragraph lang="en">Description</ofx:paragraph>
-	                </t:cell>
-	                <t:cell>
-	                    <ofx:paragraph lang="en">Shortcut</ofx:paragraph>
-	                </t:cell>
-	                <t:cell>
-	                    <ofx:paragraph lang="en">Command</ofx:paragraph>
-	                </t:cell>
+	                <t:cell><ofx:paragraph lang="en">Description</ofx:paragraph></t:cell>
+	                <t:cell><ofx:paragraph lang="en">Shortcut</ofx:paragraph></t:cell>
+	                <t:cell><ofx:paragraph lang="en">Command</ofx:paragraph></t:cell>
 	            </t:row>
 	        </t:head>
 	        <t:body>

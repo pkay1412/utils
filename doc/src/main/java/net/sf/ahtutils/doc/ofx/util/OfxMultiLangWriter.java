@@ -53,6 +53,7 @@ public class OfxMultiLangWriter
 			tableRenderer.render(omf.filterLang(table));
 			
 			File f = buildFile(lang+"/"+dirTable+"/"+fileName);
+			logger.trace(f.getAbsolutePath());
 			StringWriter sw = new StringWriter();
 			tableRenderer.write(sw);
 			StringIO.writeTxt(f, sw.toString());

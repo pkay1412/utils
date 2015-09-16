@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <ofx:section xmlns:ofx="http://www.openfuxml.org"
 			 xmlns:media="http://www.openfuxml.org/media"
-			 xmlns:table="http://www.openfuxml.org/table"
+			 xmlns:t="http://www.openfuxml.org/table"
 			 xmlns:layout="http://www.openfuxml.org/layout"
 			 xmlns:text="http://www.openfuxml.org/text"
 			 xmlns:l="http://www.openfuxml.org/list"
-		id="section.admin.scp">
+		id="section.admin.maintenance.scp">
 	<ofx:title lang="en">Secure Copy Protocol (SCP)</ofx:title>
 	
 	<ofx:paragraph lang="en" version="1">
@@ -17,32 +17,72 @@
 		Clients can also request files or directories from a server (download).
 		SCP runs over TCP port 22 by default. Like RCP, there is no RFC that defines the specifics of the protocol.
 	</ofx:paragraph>
-		
-	<l:list>
-	    	<l:type ordering="unordered"/>	
-    		   		
-			<l:item>
-	    		<ofx:paragraph lang="en">scp username@remotehost:file.txt /local/directory</ofx:paragraph>
-	   		</l:item>
-	   		
-	   		<l:item>
-	    		<ofx:paragraph lang="en">scp file.txt username@remotehost:/remote/directory</ofx:paragraph>
-	   		</l:item>
-	   		
-	   		<l:item>
-	    		<ofx:paragraph lang="en">scp -r /local/directory/a username@remotehost:/remote/directory/b</ofx:paragraph>
-	   		</l:item>
-	   		
-			<l:item>
-	    		<ofx:paragraph lang="en">scp u1@remote1:/remote/dir/1.txt u2@rh2.edu:/remote/dir</ofx:paragraph>
-	   		</l:item>
-	</l:list>
-
 	
 	<ofx:paragraph lang="en" version="1">
-	-r recursive
-		-C compression
-		-P 2264 port
+		The most important use cases of SCP are listed here:
 	</ofx:paragraph>
+	
+	<l:list>
+	    <l:type ordering="unordered"/>
+	    
+	    <l:item>
+	    	<ofx:paragraph>Copies a remote file to a local directory</ofx:paragraph>
+	    	<ofx:paragraph><text:emphasis style="typewriter">scp username@remotehost:file.txt /local/directory</text:emphasis></ofx:paragraph>
+	    </l:item>
+	    
+		<l:item>
+	    	<ofx:paragraph>Copy a file in the actual local working directory to a remote directory</ofx:paragraph>
+			<ofx:paragraph><text:emphasis style="typewriter">scp file.txt username@remotehost:/remote/directory</text:emphasis></ofx:paragraph>
+	    </l:item>
+	    
+	    <l:item>
+	    	<ofx:paragraph>Copies the content of a local directory to another directory of a remote hos</ofx:paragraph>
+	    	<ofx:paragraph><text:emphasis style="typewriter">scp -r /local/directory/a username@remotehost:/remote/directory/b</text:emphasis></ofx:paragraph>
+	            
+	    </l:item>
+	    
+		<l:item>
+			<ofx:paragraph>Copies a file from one remote host to the other</ofx:paragraph>
+			<ofx:paragraph><text:emphasis style="typewriter">scp u1@remote1:/remote/dir/1.txt u2@rh2.edu:/remote/dir</text:emphasis></ofx:paragraph>
+	    </l:item>	
+	    
+	</l:list>
+	
+	<ofx:paragraph lang="en" version="1">
+		Some optional parameter of SCP are summarized in Table
+		<ofx:reference target="table.admin.maintenance.scp.parameter"/>.
+	</ofx:paragraph>
+
+	<t:table id="table.admin.maintenance.scp.parameter">	
+	    <ofx:title lang="en" version="1">Optional Parameters</ofx:title>
+	    <t:specification>
+	        <t:columns> 
+	            <t:column><layout:width unit="percentage" flex="true" narrow="true">30.0</layout:width></t:column>
+	            <t:column><layout:width unit="percentage" flex="true" narrow="false">70.0</layout:width></t:column>
+	        </t:columns>
+	    </t:specification>
+	    <t:content>
+	        <t:head>
+	            <t:row>
+	                <t:cell><ofx:paragraph lang="en">Parameter</ofx:paragraph></t:cell>
+	                <t:cell><ofx:paragraph lang="en">Description</ofx:paragraph></t:cell>
+	            </t:row>
+	        </t:head>
+	        <t:body>
+	            <t:row>
+	            	<t:cell><ofx:paragraph><text:emphasis style="typewriter">-r</text:emphasis></ofx:paragraph></t:cell>
+	                <t:cell><ofx:paragraph>Rekursive</ofx:paragraph></t:cell>
+	            </t:row>
+	            <t:row>
+	            	<t:cell><ofx:paragraph><text:emphasis style="typewriter">-C</text:emphasis></ofx:paragraph></t:cell>
+	                <t:cell><ofx:paragraph>Enables compression</ofx:paragraph></t:cell>
+	            </t:row>
+	            <t:row>
+	            	<t:cell><ofx:paragraph><text:emphasis style="typewriter">-p 2234</text:emphasis></ofx:paragraph></t:cell>
+	                <t:cell><ofx:paragraph>Connects to a specifc port, e.g. 2234.</ofx:paragraph></t:cell>
+	            </t:row>
+	        </t:body>
+	    </t:content>
+	</t:table>
 	
 </ofx:section>
