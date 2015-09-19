@@ -24,7 +24,6 @@ import org.slf4j.LoggerFactory;
 import net.sf.ahtutils.doc.DocumentationCommentBuilder;
 import net.sf.ahtutils.doc.latex.writer.AbstractDocumentationLatexWriter;
 import net.sf.ahtutils.exception.processing.UtilsConfigurationException;
-import net.sf.ahtutils.model.interfaces.with.EjbWithCode;
 import net.sf.ahtutils.xml.status.Translations;
 
 public class AbstractLatexDocumentationBuilder extends AbstractDocumentationLatexWriter

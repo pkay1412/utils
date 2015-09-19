@@ -31,8 +31,6 @@ import org.slf4j.LoggerFactory;
 public class OfxTableQaTestFactory extends AbstractUtilsOfxDocumentationFactory
 {
 	final static Logger logger = LoggerFactory.getLogger(OfxTableQaTestFactory.class);
-
-	private String[] headerKeys;
 	
 	public OfxTableQaTestFactory(Configuration config, String lang, Translations translations)
 	{
