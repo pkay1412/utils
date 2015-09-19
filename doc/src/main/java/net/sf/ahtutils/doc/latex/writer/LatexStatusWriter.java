@@ -8,7 +8,6 @@ import net.sf.ahtutils.db.xml.UtilsDbXmlSeedUtil;
 import net.sf.ahtutils.doc.UtilsDocumentation;
 import net.sf.ahtutils.doc.ofx.status.OfxStatusTableFactory;
 import net.sf.ahtutils.doc.ofx.status.OfxStatusTableFactory.Code;
-import net.sf.ahtutils.doc.ofx.util.OfxMultiLangWriter;
 import net.sf.ahtutils.exception.processing.UtilsConfigurationException;
 import net.sf.ahtutils.xml.aht.Aht;
 import net.sf.ahtutils.xml.dbseed.Db;
@@ -20,6 +19,7 @@ import org.openfuxml.content.table.Table;
 import org.openfuxml.exception.OfxAuthoringException;
 import org.openfuxml.interfaces.DefaultSettingsManager;
 import org.openfuxml.interfaces.media.CrossMediaManager;
+import org.openfuxml.renderer.latex.OfxMultiLangLatexWriter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -27,7 +27,7 @@ public class LatexStatusWriter extends AbstractDocumentationLatexWriter
 {	
 	final static Logger logger = LoggerFactory.getLogger(LatexStatusWriter.class);
 	
-	private OfxMultiLangWriter ofxMlw;
+	private OfxMultiLangLatexWriter ofxMlw;
 	private UtilsDbXmlSeedUtil seedUtil;
 	
 	private String seedKey,seedKeyParent;
@@ -37,7 +37,7 @@ public class LatexStatusWriter extends AbstractDocumentationLatexWriter
 	{
 		super(config,translations,langs,cmm,dsm);
 		File baseDir = new File(config.getString(UtilsDocumentation.keyBaseLatexDir));
-		ofxMlw = new OfxMultiLangWriter(baseDir,langs,cmm,dsm);
+		ofxMlw = new OfxMultiLangLatexWriter(baseDir,langs,cmm,dsm);
 		ofxMlw.setDirTable(dirTable);
 		
 		withIcon = false;

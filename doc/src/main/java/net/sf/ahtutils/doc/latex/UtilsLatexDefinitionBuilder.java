@@ -14,10 +14,14 @@ public class UtilsLatexDefinitionBuilder extends OfxLatexDefinitionBuilder
 		
 	public static enum Code {colors}
 	
+	public static String glossaryWeb = "ofx.aht-utils/glossary/web.xml";
+	
 	public UtilsLatexDefinitionBuilder(Configuration config)
 	{
 		super(config.getString(UtilsDocumentation.keyBaseLatexDir));
 	}
 	
 	public void copyColors() throws OfxConfigurationException {copyResource("tex.aht-utils","colors");}
+	
+	
 }

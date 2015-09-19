@@ -14,6 +14,7 @@ import org.openfuxml.factory.xml.layout.XmlAlignmentFactory;
 import org.openfuxml.factory.xml.table.OfxColumnFactory;
 import org.openfuxml.interfaces.DefaultSettingsManager;
 import org.openfuxml.interfaces.media.CrossMediaManager;
+import org.openfuxml.renderer.latex.OfxMultiLangLatexWriter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -27,7 +28,6 @@ import net.sf.ahtutils.doc.ofx.qa.table.OfxQaSummaryTableFactory;
 import net.sf.ahtutils.doc.ofx.qa.table.OfxQaTeamTableFactory;
 import net.sf.ahtutils.doc.ofx.status.OfxStatusTableFactory;
 import net.sf.ahtutils.doc.ofx.status.OfxStatusTableFactory.Code;
-import net.sf.ahtutils.doc.ofx.util.OfxMultiLangWriter;
 import net.sf.ahtutils.exception.processing.UtilsConfigurationException;
 import net.sf.ahtutils.xml.aht.Aht;
 import net.sf.ahtutils.xml.qa.Category;
@@ -40,7 +40,7 @@ public class LatexQaWriter extends AbstractDocumentationLatexWriter
 {	
 	final static Logger logger = LoggerFactory.getLogger(LatexQaWriter.class);
 	
-	private OfxMultiLangWriter ofxMlw;
+	private OfxMultiLangLatexWriter ofxMlw;
 	private OfxQaContainerInputSectionFactory ofContainerInput;
 	private OfxSectionQaNfrFactory ofNfr;
 	
@@ -54,7 +54,7 @@ public class LatexQaWriter extends AbstractDocumentationLatexWriter
 	{
 		super(config,translations,langs,cmm,dsm);
 		File baseDir = new File(config.getString(UtilsDocumentation.keyBaseLatexDir));
-		ofxMlw = new OfxMultiLangWriter(baseDir,langs,cmm,dsm);
+		ofxMlw = new OfxMultiLangLatexWriter(baseDir,langs,cmm,dsm);
 		
 		ofContainerInput = new OfxQaContainerInputSectionFactory(config,langs,translations);
 		ofNfr = new OfxSectionQaNfrFactory(config,langs,translations);
