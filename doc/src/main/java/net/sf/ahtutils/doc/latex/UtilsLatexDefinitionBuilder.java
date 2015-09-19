@@ -14,7 +14,9 @@ public class UtilsLatexDefinitionBuilder extends OfxLatexDefinitionBuilder
 		
 	public static enum Code {colors}
 	
-	public static String glossaryWeb = "ofx.aht-utils/glossary/web.xml";
+	public static String glossaryWeb = "ofx.aht-utils/editorial/glossary/web.xml";
+	
+	public static String acronymServer = "ofx.aht-utils/editorial/acronym/server.xml";
 	
 	public UtilsLatexDefinitionBuilder(Configuration config)
 	{
