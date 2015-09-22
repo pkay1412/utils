@@ -62,7 +62,10 @@ public class UtilsSurveyFacadeBean <L extends UtilsLang,
 	@Override public SECTION load(Class<SECTION> cSection, SECTION section)
 	{
 		section = em.find(cSection,section.getId());
-		section.getSections().size();
+		for(SECTION sub : section.getSections())
+		{
+			sub.getQuestions().size();
+		}
 		section.getQuestions().size();
 		return section;
 	}
@@ -124,7 +127,14 @@ public class UtilsSurveyFacadeBean <L extends UtilsLang,
 		
 		Set<Long> existing = new HashSet<Long>();
 		for(ANSWER a : data.getAnswers()){existing.add(a.getQuestion().getId());result.add(a);}
-		for(SECTION s : template.getSections())
+		createAnswers(existing,template.getSections(),data,result);
+		
+		return result;
+	}
+	
+	private void createAnswers(Set<Long> existing, List<SECTION> sections, DATA data, List<ANSWER> result)
+	{
+		for(SECTION s : sections)
 		{
 			for(QUESTION q : s.getQuestions())
 			{
@@ -132,14 +142,14 @@ public class UtilsSurveyFacadeBean <L extends UtilsLang,
 				{
 					try
 					{
-						ANSWER answer = this.persist(efAnswer.build(q, data));
+						ANSWER answer = this.persist(efAnswer.build(q,data));
 						result.add(answer);
 					}
 					catch (UtilsConstraintViolationException e) {e.printStackTrace();}
 				}
 			}
+			createAnswers(existing,s.getSections(),data,result);
 		}
-		return result;
 	}
 
 	@Override
