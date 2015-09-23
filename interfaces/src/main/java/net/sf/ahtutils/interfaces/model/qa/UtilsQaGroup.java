@@ -10,9 +10,8 @@ import net.sf.ahtutils.model.interfaces.security.UtilsSecurityRole;
 import net.sf.ahtutils.model.interfaces.security.UtilsSecurityUsecase;
 import net.sf.ahtutils.model.interfaces.security.UtilsSecurityView;
 import net.sf.ahtutils.model.interfaces.with.EjbWithId;
-import net.sf.ahtutils.model.interfaces.with.EjbWithRecord;
 
-public interface UtilsQaTestDiscussion<L extends UtilsLang,
+public interface UtilsQaGroup<L extends UtilsLang,
 D extends UtilsDescription,
 C extends UtilsSecurityCategory<L,D,C,R,V,U,A,USER>,
 R extends UtilsSecurityRole<L,D,C,R,V,U,A,USER>,
@@ -34,11 +33,7 @@ QATC extends UtilsStatus<QATC,L,D>,
 QATS extends UtilsStatus<QATS,L,D>,
 QARS extends UtilsStatus<QARS,L,D>,
 QAUS extends UtilsStatus<QAUS,L,D>>
-			extends EjbWithId,EjbWithRecord
+			extends EjbWithId
 {
-	QAT getTest();
-	void setTest(QAT test);
 	
-	STAFF getStaff();
-	void setStaff(STAFF staff);
 }
