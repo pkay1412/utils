@@ -1,5 +1,7 @@
 package net.sf.ahtutils.interfaces.model.qa;
 
+import java.util.List;
+
 import net.sf.ahtutils.interfaces.model.status.UtilsDescription;
 import net.sf.ahtutils.interfaces.model.status.UtilsLang;
 import net.sf.ahtutils.interfaces.model.status.UtilsStatus;
@@ -35,5 +37,12 @@ QARS extends UtilsStatus<QARS,L,D>,
 QAUS extends UtilsStatus<QAUS,L,D>>
 			extends EjbWithId
 {
+    String getName();
+	void setName(String name);
 	
+	String getDescription();
+	void setDescription(String description);
+	
+	List<STAFF> getStaffs();
+	void setStaffs(List<STAFF> staffs);
 }

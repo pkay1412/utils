@@ -1,5 +1,7 @@
 package net.sf.ahtutils.interfaces.model.qa;
 
+import java.util.List;
+
 import net.sf.ahtutils.interfaces.model.security.UtilsStaff;
 import net.sf.ahtutils.interfaces.model.status.UtilsDescription;
 import net.sf.ahtutils.interfaces.model.status.UtilsLang;
@@ -47,4 +49,7 @@ QAUS extends UtilsStatus<QAUS,L,D>>
 	
 	Boolean getReportingRelevant();
 	void setReportingRelevant(Boolean reportingRelevant);
+	
+	List<GROUP> getGroups();
+	void setGroups(List<GROUP> groups);
 }

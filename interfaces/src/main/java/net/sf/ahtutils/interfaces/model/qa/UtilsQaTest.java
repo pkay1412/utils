@@ -81,4 +81,10 @@ QAUS extends UtilsStatus<QAUS,L,D>>
 	
 	Date getRecord();
 	void setRecord(Date record);
+	
+	Integer getDuration();
+	void setDuration(Integer duration);
+	
+	List<GROUP> getGroups();
+	void setGroups(List<GROUP> groups);
 }
