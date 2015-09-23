@@ -44,7 +44,10 @@ public class OfxQaContainerInputSectionFactory extends AbstractUtilsOfxDocumenta
 		{
 			if(!c.getCode().equals("T"))
 			{
-				section.getContent().add(buildCategory(c,path));
+				for(String lang : langs)
+				{
+					section.getContent().add(buildCategory(c,lang+path));
+				}
 			}
 		}
 		

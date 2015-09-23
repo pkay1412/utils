@@ -109,21 +109,6 @@ public class OfxTableQaTestFactory extends AbstractUtilsOfxDocumentationFactory
 		return row;
 	}
 	
-	private Row buildDescription(Test test)
-	{
-		Row row = new Row();
-		row.getCell().add(OfxCellFactory.createParagraphCell("Description"));
-		if(test.isSetDescription() && test.getDescription().isSetValue())
-		{
-			row.getCell().add(OfxCellFactory.createParagraphCell(test.getDescription().getValue()));
-		}
-		else
-		{
-			row.getCell().add(OfxCellFactory.createParagraphCell(""));
-		}
-		return row;
-	}
-	
 	private Row buildReference(Test test)
 	{
 		Row row = new Row();

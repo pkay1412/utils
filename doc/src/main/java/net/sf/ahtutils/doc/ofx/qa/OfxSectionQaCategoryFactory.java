@@ -6,11 +6,17 @@ import java.util.List;
 import net.sf.ahtutils.doc.ofx.AbstractUtilsOfxDocumentationFactory;
 import net.sf.ahtutils.doc.ofx.qa.table.OfxTableQaFrResultFactory;
 import net.sf.ahtutils.doc.ofx.qa.test.OfxTableQaTestFactory;
+import net.sf.ahtutils.xml.aht.Aht;
 import net.sf.ahtutils.xml.qa.Category;
 import net.sf.ahtutils.xml.qa.Expected;
 import net.sf.ahtutils.xml.qa.Info;
 import net.sf.ahtutils.xml.qa.Test;
+import net.sf.ahtutils.xml.status.Lang;
+import net.sf.ahtutils.xml.status.Status;
 import net.sf.ahtutils.xml.status.Translations;
+import net.sf.ahtutils.xml.xpath.StatusXpath;
+import net.sf.exlp.exception.ExlpXpathNotFoundException;
+import net.sf.exlp.exception.ExlpXpathNotUniqueException;
 
 import org.apache.commons.configuration.Configuration;
 import org.openfuxml.content.ofx.Comment;
@@ -32,6 +38,8 @@ public class OfxSectionQaCategoryFactory extends AbstractUtilsOfxDocumentationFa
 	private OfxTableQaTestFactory fOfxTableTest;
 	private OfxTableQaFrResultFactory fOfxTableTestResult;
 	
+	private Aht conditions;
+	
 	public OfxSectionQaCategoryFactory(Configuration config, String lang, Translations translations)
 	{
 		this(config,new String[] {lang},translations);
@@ -42,6 +50,8 @@ public class OfxSectionQaCategoryFactory extends AbstractUtilsOfxDocumentationFa
 		fOfxTableTest = new OfxTableQaTestFactory(config,langs,translations);
 		fOfxTableTestResult = new OfxTableQaFrResultFactory(config,langs,translations);
 	}
+	
+	public void setTestConditions(Aht conditions){this.conditions=conditions;}
 	
 	public Section build(Category category) throws OfxAuthoringException
 	{
@@ -95,9 +105,21 @@ public class OfxSectionQaCategoryFactory extends AbstractUtilsOfxDocumentationFa
 	
 	private List<Paragraph> infoParagraph(Info info)
 	{
+		String condition = null;
+		if(conditions!=null)
+		try
+		{
+			Status status = StatusXpath.getStatus(conditions.getStatus(), info.getStatus().getCode());
+			Lang lCondition = StatusXpath.getLang(status.getLangs(),"en");
+			condition = lCondition.getTranslation();
+		}
+		catch (ExlpXpathNotFoundException e) {}
+		catch (ExlpXpathNotUniqueException e) {}
+		if(conditions==null){condition = info.getStatus().getCode();}
+		
 		List<Paragraph> list = new ArrayList<Paragraph>();
 		Paragraph p1 = XmlParagraphFactory.build();
-		p1.getContent().add("The development status of this is currently: "+info.getStatus().getCode());
+		p1.getContent().add("The development status of this test is currently: "+condition);
 		list.add(p1);
 		
 		if(info.isSetComment() && info.getComment().isSetValue() && info.getComment().getValue().length()>0)

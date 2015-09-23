@@ -1,5 +1,7 @@
 package net.sf.ahtutils.doc.ofx.qa;
 
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.List;
 import java.util.Map;
@@ -7,6 +9,7 @@ import java.util.Map;
 import org.apache.commons.configuration.Configuration;
 import org.openfuxml.content.ofx.Comment;
 import org.openfuxml.content.ofx.Section;
+import org.openfuxml.content.ofx.Title;
 import org.openfuxml.content.table.Table;
 import org.openfuxml.exception.OfxAuthoringException;
 import org.openfuxml.factory.xml.ofx.content.XmlCommentFactory;
@@ -55,9 +58,24 @@ public class OfxSectionQaNfrFactory extends AbstractUtilsOfxDocumentationFactory
 		xml.getContent().add(comment);
 		
 		Map<Long,Map<Long,Answer>> mapAnswers = buildAnswerMap(surveyAnswers);
+		
+		List<Section> sections = new ArrayList<Section>();
 		for(net.sf.ahtutils.xml.survey.Section ss : surveySection.getSection())
 		{
-			xml.getContent().add(section(ss,mapAnswers,staff));
+			sections.add(section(ss,mapAnswers,staff));
+		}
+
+		if(sections.size()==1)
+		{
+			for(Serializable s : sections.get(0).getContent())
+			{
+				logger.trace(s.getClass().getSimpleName());
+				if(!(s instanceof Title)){xml.getContent().add(s);}
+			}
+		}
+		else
+		{
+			xml.getContent().addAll(sections);
 		}
 		
 		return xml;
