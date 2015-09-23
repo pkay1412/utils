@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import net.sf.ahtutils.doc.ofx.AbstractUtilsOfxDocumentationFactory;
+import net.sf.ahtutils.doc.ofx.qa.table.OfxTableQaFrResultFactory;
 import net.sf.ahtutils.doc.ofx.qa.test.OfxTableQaTestFactory;
-import net.sf.ahtutils.doc.ofx.qa.test.OfxTableQaTestResultFactory;
 import net.sf.ahtutils.xml.qa.Category;
 import net.sf.ahtutils.xml.qa.Expected;
 import net.sf.ahtutils.xml.qa.Info;
@@ -30,7 +30,7 @@ public class OfxSectionQaCategoryFactory extends AbstractUtilsOfxDocumentationFa
 	final static Logger logger = LoggerFactory.getLogger(OfxSectionQaCategoryFactory.class);
 
 	private OfxTableQaTestFactory fOfxTableTest;
-	private OfxTableQaTestResultFactory fOfxTableTestResult;
+	private OfxTableQaFrResultFactory fOfxTableTestResult;
 	
 	public OfxSectionQaCategoryFactory(Configuration config, String lang, Translations translations)
 	{
@@ -40,7 +40,7 @@ public class OfxSectionQaCategoryFactory extends AbstractUtilsOfxDocumentationFa
 	{
 		super(config,langs,translations);
 		fOfxTableTest = new OfxTableQaTestFactory(config,langs,translations);
-		fOfxTableTestResult = new OfxTableQaTestResultFactory(config,langs,translations);
+		fOfxTableTestResult = new OfxTableQaFrResultFactory(config,langs,translations);
 	}
 	
 	public Section build(Category category) throws OfxAuthoringException

@@ -37,6 +37,7 @@ import net.sf.ahtutils.xml.status.Translations;
 import net.sf.ahtutils.xml.xpath.StatusXpath;
 import net.sf.exlp.exception.ExlpXpathNotFoundException;
 import net.sf.exlp.exception.ExlpXpathNotUniqueException;
+import net.sf.exlp.util.xml.JaxbUtil;
 
 public class OfxQaSummaryTableFactory extends AbstractUtilsOfxDocumentationFactory
 {
@@ -138,7 +139,7 @@ public class OfxQaSummaryTableFactory extends AbstractUtilsOfxDocumentationFacto
 	private Row createRow(Test test)
 	{
 		Row row = new Row();
-		
+		JaxbUtil.trace(test);
 		try
 		{
 			Cell cellClient = new Cell();

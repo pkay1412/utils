@@ -11,6 +11,7 @@
     <survey:template id="123" code="myCode"/>
     <survey:surveys/>
     <survey:survey id="123" name="myName" validFrom="2011-11-11" validTo="2011-11-11"/>
+    <survey:answer id="123" valueBoolean="true" valueNumber="123"/>
     <u:trafficLight id="123" colorText="ff00ff" colorBackground="00ff00"/>
     <u:trafficLights/>
 </aht:query>

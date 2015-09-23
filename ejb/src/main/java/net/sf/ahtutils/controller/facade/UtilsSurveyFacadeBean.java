@@ -161,4 +161,10 @@ public class UtilsSurveyFacadeBean <L extends UtilsLang,
 		}
 		return this.saveProtected(data);
 	}
+
+	@Override public List<ANSWER> fAnswers(Class<ANSWER> cAnswer, Class<DATA> cData, SURVEY survey)
+	{
+		
+		return this.allForGrandParent(cAnswer, cData, "data", survey, "survey");
+	}
 }

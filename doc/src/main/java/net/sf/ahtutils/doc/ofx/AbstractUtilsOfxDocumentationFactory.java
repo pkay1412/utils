@@ -23,6 +23,7 @@ public class AbstractUtilsOfxDocumentationFactory
 	protected Configuration config;
 	protected String[] langs;
 	protected Translations translations;
+	protected String imagePathPrefix;
 	
 	public AbstractUtilsOfxDocumentationFactory(Configuration config, String[] langs, Translations translations)
 	{

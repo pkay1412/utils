@@ -1,4 +1,4 @@
-package net.sf.ahtutils.doc.ofx.qa.test;
+package net.sf.ahtutils.doc.ofx.qa.table;
 
 import net.sf.ahtutils.doc.ofx.AbstractUtilsOfxDocumentationFactory;
 import net.sf.ahtutils.doc.ofx.status.OfxStatusImageFactory;
@@ -10,6 +10,9 @@ import net.sf.ahtutils.xml.xpath.StatusXpath;
 import net.sf.exlp.exception.ExlpXpathNotFoundException;
 import net.sf.exlp.exception.ExlpXpathNotUniqueException;
 import net.sf.exlp.util.xml.JaxbUtil;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 
 import org.apache.commons.configuration.Configuration;
 import org.openfuxml.content.table.Body;
@@ -28,19 +31,21 @@ import org.openfuxml.factory.xml.table.OfxColumnFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class OfxTableQaTestResultFactory extends AbstractUtilsOfxDocumentationFactory
+public class OfxTableQaFrResultFactory extends AbstractUtilsOfxDocumentationFactory
 {
-	final static Logger logger = LoggerFactory.getLogger(OfxTableQaTestResultFactory.class);
-	private String imagePathPrefix;
+	final static Logger logger = LoggerFactory.getLogger(OfxTableQaFrResultFactory.class);
 	
-	public OfxTableQaTestResultFactory(Configuration config, String lang, Translations translations)
+	private DateFormat df;
+	
+	public OfxTableQaFrResultFactory(Configuration config, String lang, Translations translations)
 	{
 		this(config,new String[] {lang},translations);
 	}
-	public OfxTableQaTestResultFactory(Configuration config, String[] langs, Translations translations)
+	public OfxTableQaFrResultFactory(Configuration config, String[] langs, Translations translations)
 	{
 		super(config,langs,translations);
 		imagePathPrefix = config.getString("doc.ofx.imagePathPrefixQA");
+		df = SimpleDateFormat.getDateInstance();
 	}
 	
 	public Table buildTestTable(Test test) throws OfxAuthoringException
@@ -64,10 +69,11 @@ public class OfxTableQaTestResultFactory extends AbstractUtilsOfxDocumentationFa
 	private Specification createTableSpecifications()
 	{
 		Columns cols = new Columns();
+		cols.getColumn().add(OfxColumnFactory.flex(20,true));
+		cols.getColumn().add(OfxColumnFactory.flex(20,true));
 		cols.getColumn().add(OfxColumnFactory.build(XmlAlignmentFactory.Horizontal.left));
-		cols.getColumn().add(OfxColumnFactory.build(XmlAlignmentFactory.Horizontal.left));
-		cols.getColumn().add(OfxColumnFactory.flex(80));
-		cols.getColumn().add(OfxColumnFactory.flex(80));
+		cols.getColumn().add(OfxColumnFactory.flex(20,true));
+		cols.getColumn().add(OfxColumnFactory.flex(60));
 		
 		Specification specification = new Specification();
 		specification.setFloat(XmlFloatFactory.build(false));
@@ -79,6 +85,7 @@ public class OfxTableQaTestResultFactory extends AbstractUtilsOfxDocumentationFa
 	protected Row createHeaderRow(Test test)
 	{
 		Row row = new Row();
+		row.getCell().add(OfxCellFactory.createParagraphCell("Date"));
 		row.getCell().add(OfxCellFactory.createParagraphCell("User"));
 		row.getCell().add(OfxCellFactory.createParagraphCell("Result"));
 		row.getCell().add(OfxCellFactory.createParagraphCell("Actual"));
@@ -110,12 +117,16 @@ public class OfxTableQaTestResultFactory extends AbstractUtilsOfxDocumentationFa
 	
 	private Row buildRow(Result result)
 	{
+		JaxbUtil.trace(result);
 		Row row = new Row();
+		
+		if(result.isSetRecord()){row.getCell().add(OfxCellFactory.createParagraphCell(df.format(result.getRecord().toGregorianCalendar().getTime())));}
+		else{row.getCell().add(OfxCellFactory.createParagraphCell(""));}
+		
 		row.getCell().add(OfxCellFactory.createParagraphCell(result.getStaff().getUser().getLastName()));
 		row.getCell().add(OfxCellFactory.image(OfxStatusImageFactory.build(imagePathPrefix,result.getStatus())));
 		row.getCell().add(OfxCellFactory.createParagraphCell(result.getActual().getValue()));
 		row.getCell().add(OfxCellFactory.createParagraphCell(result.getComment().getValue()));
 		return row;
 	}
-	
 }

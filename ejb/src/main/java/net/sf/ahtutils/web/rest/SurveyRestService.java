@@ -17,6 +17,7 @@ import net.sf.ahtutils.factory.ejb.survey.EjbSurveySectionFactory;
 import net.sf.ahtutils.factory.ejb.survey.EjbSurveyTemplateFactory;
 import net.sf.ahtutils.factory.xml.status.XmlStatusFactory;
 import net.sf.ahtutils.factory.xml.status.XmlTypeFactory;
+import net.sf.ahtutils.factory.xml.survey.XmlAnswerFactory;
 import net.sf.ahtutils.factory.xml.survey.XmlSurveyFactory;
 import net.sf.ahtutils.factory.xml.survey.XmlTemplateFactory;
 import net.sf.ahtutils.factory.xml.sync.XmlMapperFactory;
@@ -78,6 +79,7 @@ public class SurveyRestService <L extends UtilsLang,
 	private final Class<TC> cTC;
 	private final Class<QUESTION> cQuestion;
 	private final Class<UNIT> cUNIT;
+	private final Class<ANSWER> cAnswer;
 	private final Class<DATA> cData;
 	private final Class<CORRELATION> cCorrelation;
 	
@@ -85,6 +87,7 @@ public class SurveyRestService <L extends UtilsLang,
 	private XmlTemplateFactory<L,D,SURVEY,SS,TEMPLATE,TS,TC,SECTION,QUESTION,UNIT,ANSWER,DATA,OPTION,CORRELATION> xfTemplate;
 	private XmlSurveyFactory<L,D,SURVEY,SS,TEMPLATE,TS,TC,SECTION,QUESTION,UNIT,ANSWER,DATA,OPTION,CORRELATION> xfSurveys;
 	private XmlSurveyFactory<L,D,SURVEY,SS,TEMPLATE,TS,TC,SECTION,QUESTION,UNIT,ANSWER,DATA,OPTION,CORRELATION> xfSurvey;
+	private XmlAnswerFactory<L,D,SURVEY,SS,TEMPLATE,TS,TC,SECTION,QUESTION,UNIT,ANSWER,DATA,OPTION,CORRELATION> xfAnswer;
 	
 	private EjbSurveyTemplateFactory<L,D,SURVEY,SS,TEMPLATE,TS,TC,SECTION,QUESTION,UNIT,ANSWER,DATA,OPTION,CORRELATION> efTemlate;
 	private EjbSurveySectionFactory<L,D,SURVEY,SS,TEMPLATE,TS,TC,SECTION,QUESTION,UNIT,ANSWER,DATA,OPTION,CORRELATION> efSection;
@@ -105,6 +108,7 @@ public class SurveyRestService <L extends UtilsLang,
 		this.cTC=cTC;
 		this.cQuestion=cQuestion;
 		this.cUNIT=cUNIT;
+		this.cAnswer=cAnswer;
 		this.cData=cData;
 		this.cCorrelation=cCorrelation;
 	
@@ -113,9 +117,11 @@ public class SurveyRestService <L extends UtilsLang,
 		xfTemplate.lazyLoad(fSurvey,cTEMPLATE,cSection);
 		
 		xfSurveys = new XmlSurveyFactory<L,D,SURVEY,SS,TEMPLATE,TS,TC,SECTION,QUESTION,UNIT,ANSWER,DATA,OPTION,CORRELATION>(SurveyQuery.get(SurveyQuery.Key.exSurveys).getSurveys().getSurvey().get(0));
-		xfSurvey = new XmlSurveyFactory<L,D,SURVEY,SS,TEMPLATE,TS,TC,SECTION,QUESTION,UNIT,ANSWER,DATA,OPTION,CORRELATION>(SurveyQuery.get(SurveyQuery.Key.exSurvey).getSurvey());
 		
+		xfSurvey = new XmlSurveyFactory<L,D,SURVEY,SS,TEMPLATE,TS,TC,SECTION,QUESTION,UNIT,ANSWER,DATA,OPTION,CORRELATION>(SurveyQuery.get(SurveyQuery.Key.exSurvey).getSurvey());
 		xfSurvey.lazyLoad(fSurvey,cSurvey,cData);
+		
+		xfAnswer = new XmlAnswerFactory<L,D,SURVEY,SS,TEMPLATE,TS,TC,SECTION,QUESTION,UNIT,ANSWER,DATA,OPTION,CORRELATION>(SurveyQuery.get(SurveyQuery.Key.surveyAnswers));
 		
 		efTemlate = EjbSurveyTemplateFactory.factory(cTEMPLATE);
 		efSection = EjbSurveySectionFactory.factory(cSection);
@@ -325,6 +331,23 @@ public class SurveyRestService <L extends UtilsLang,
 			xml.setTemplate(xfTemplate.build(ejb));
 		}
 		catch (UtilsNotFoundException e) {e.printStackTrace();}
+		return xml;
+	}
+	
+	public Survey surveyAnswers(long id)
+	{
+		Survey xml = new Survey();
+		Data data = new Data();
+		try
+		{
+			SURVEY survey = fSurvey.find(cSurvey,id);
+			for(ANSWER answer : fSurvey.fAnswers(cAnswer, cData, survey))
+			{
+				data.getAnswer().add(xfAnswer.build(answer));
+			}
+		}
+		catch (UtilsNotFoundException e) {e.printStackTrace();}
+		xml.getData().add(data);
 		return xml;
 	}
 }

@@ -11,6 +11,7 @@ import net.sf.ahtutils.xml.security.TestXmlStaff;
 import net.sf.ahtutils.xml.status.TestXmlLangs;
 import net.sf.ahtutils.xml.status.TestXmlStatus;
 import net.sf.ahtutils.xml.status.TestXmlType;
+import net.sf.ahtutils.xml.survey.TestXmlAnswer;
 import net.sf.ahtutils.xml.survey.TestXmlSurvey;
 import net.sf.ahtutils.xml.survey.TestXmlSurveys;
 import net.sf.ahtutils.xml.survey.TestXmlTemplate;
@@ -63,6 +64,7 @@ public class TestXmlQuery extends AbstractXmlAhtTest
     		xml.setTemplate(TestXmlTemplate.create(false));
     		xml.setSurveys(TestXmlSurveys.create(false));
     		xml.setSurvey(TestXmlSurvey.create(false));
+    		xml.setAnswer(TestXmlAnswer.create(false));
     		
     		xml.setTrafficLights(TestXmlTrafficLights.create(false));
     		xml.setTrafficLight(TestXmlTrafficLight.create(false));

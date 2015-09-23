@@ -24,6 +24,7 @@ import net.sf.ahtutils.xml.qa.Actual;
 import net.sf.ahtutils.xml.qa.Comment;
 import net.sf.ahtutils.xml.qa.Result;
 import net.sf.ahtutils.xml.qa.Test;
+import net.sf.exlp.util.DateUtil;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -70,6 +71,9 @@ QAUS extends UtilsStatus<QAUS,L,D>>
 	{
 		Result xml = new Result();
 	
+		if(q.isSetId()){xml.setId(result.getId());}
+		if(q.isSetRecord() && result.getRecord()!=null){xml.setRecord(DateUtil.toXmlGc(result.getRecord()));}
+		
 		if(q.isSetStatus())
 		{
 			XmlStatusFactory f = new XmlStatusFactory(null,q.getStatus());

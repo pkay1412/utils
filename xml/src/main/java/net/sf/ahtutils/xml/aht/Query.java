@@ -15,6 +15,7 @@ import net.sf.ahtutils.xml.security.Staff;
 import net.sf.ahtutils.xml.status.Langs;
 import net.sf.ahtutils.xml.status.Status;
 import net.sf.ahtutils.xml.status.Type;
+import net.sf.ahtutils.xml.survey.Answer;
 import net.sf.ahtutils.xml.survey.Survey;
 import net.sf.ahtutils.xml.survey.Surveys;
 import net.sf.ahtutils.xml.survey.Template;
@@ -44,6 +45,7 @@ import net.sf.ahtutils.xml.utils.TrafficLights;
  *         &lt;element ref="{http://ahtutils.aht-group.com/survey}template"/&gt;
  *         &lt;element ref="{http://ahtutils.aht-group.com/survey}surveys"/&gt;
  *         &lt;element ref="{http://ahtutils.aht-group.com/survey}survey"/&gt;
+ *         &lt;element ref="{http://ahtutils.aht-group.com/survey}answer"/&gt;
  *         &lt;element ref="{http://ahtutils.aht-group.com/utils}trafficLight"/&gt;
  *         &lt;element ref="{http://ahtutils.aht-group.com/utils}trafficLights"/&gt;
  *       &lt;/sequence&gt;
@@ -68,6 +70,7 @@ import net.sf.ahtutils.xml.utils.TrafficLights;
     "template",
     "surveys",
     "survey",
+    "answer",
     "trafficLight",
     "trafficLights"
 })
@@ -99,6 +102,8 @@ public class Query
     protected Surveys surveys;
     @XmlElement(namespace = "http://ahtutils.aht-group.com/survey", required = true)
     protected Survey survey;
+    @XmlElement(namespace = "http://ahtutils.aht-group.com/survey", required = true)
+    protected Answer answer;
     @XmlElement(namespace = "http://ahtutils.aht-group.com/utils", required = true)
     protected TrafficLight trafficLight;
     @XmlElement(namespace = "http://ahtutils.aht-group.com/utils", required = true)
@@ -412,6 +417,34 @@ public class Query
 
     public boolean isSetSurvey() {
         return (this.survey!= null);
+    }
+
+    /**
+     * Gets the value of the answer property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Answer }
+     *     
+     */
+    public Answer getAnswer() {
+        return answer;
+    }
+
+    /**
+     * Sets the value of the answer property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Answer }
+     *     
+     */
+    public void setAnswer(Answer value) {
+        this.answer = value;
+    }
+
+    public boolean isSetAnswer() {
+        return (this.answer!= null);
     }
 
     /**

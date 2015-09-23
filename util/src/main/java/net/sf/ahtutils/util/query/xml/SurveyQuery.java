@@ -26,7 +26,7 @@ import net.sf.exlp.util.DateUtil;
 
 public class SurveyQuery
 {
-	public static enum Key {exTemplate,exSurveys,exSurvey}
+	public static enum Key {exTemplate,exSurveys,exSurvey,surveyAnswers}
 	
 	private static Map<Key,Query> mQueries;
 	
@@ -42,6 +42,7 @@ public class SurveyQuery
 				case exTemplate: q.setTemplate(exTemplate());break;
 				case exSurvey: q.setSurvey(exSurvey());break;
 				case exSurveys: q.setSurveys(exSurveys());break;
+				case surveyAnswers: q.setAnswer(surveyAnswers());
 			}
 			mQueries.put(key, q);
 		}
@@ -125,6 +126,19 @@ public class SurveyQuery
 		xml.setQuestion(net.sf.ahtutils.factory.xml.survey.XmlQuestionFactory.id());
 		xml.setValueBoolean(true);
 		xml.setValueNumber(0);
+		return xml;
+	}
+	
+	private static Answer surveyAnswers()
+	{
+		Data data = XmlDataFactory.id();
+		data.setCorrelation(XmlCorrelationFactory.id());
+		
+		Answer xml = XmlAnswerFactory.id();
+		xml.setQuestion(net.sf.ahtutils.factory.xml.survey.XmlQuestionFactory.id());
+		xml.setValueBoolean(true);
+		xml.setValueNumber(0);
+		xml.setData(data);
 		return xml;
 	}
 }

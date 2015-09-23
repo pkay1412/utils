@@ -1,5 +1,6 @@
 package net.sf.ahtutils.util.query.xml;
 
+import java.util.Date;
 import java.util.Hashtable;
 import java.util.Map;
 
@@ -22,6 +23,7 @@ import net.sf.ahtutils.xml.qa.Test;
 import net.sf.ahtutils.xml.security.Role;
 import net.sf.ahtutils.xml.security.Staff;
 import net.sf.ahtutils.xml.status.Status;
+import net.sf.exlp.util.DateUtil;
 
 public class QaQuery
 {
@@ -86,8 +88,9 @@ public class QaQuery
 		status.setImage("");
 		
 		Result xml = new Result();
-		xml.setStaff(staff);
 		xml.setId(0);
+		xml.setStaff(staff);
+		xml.setRecord(DateUtil.getXmlGc4D(new Date()));
 		xml.setStatus(status);
 		xml.setActual(XmlResultFactory.buildActual(""));
 		xml.setComment(XmlResultFactory.buildComment(""));

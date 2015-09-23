@@ -11,6 +11,7 @@ import net.sf.ahtutils.interfaces.model.survey.UtilsSurveyOption;
 import net.sf.ahtutils.interfaces.model.survey.UtilsSurveyQuestion;
 import net.sf.ahtutils.interfaces.model.survey.UtilsSurveySection;
 import net.sf.ahtutils.interfaces.model.survey.UtilsSurveyTemplate;
+import net.sf.ahtutils.xml.aht.Query;
 import net.sf.ahtutils.xml.survey.Answer;
 
 import org.slf4j.Logger;
@@ -22,6 +23,7 @@ public class XmlAnswerFactory<L extends UtilsLang,D extends UtilsDescription,SUR
 		
 	private Answer q;
 	
+	public XmlAnswerFactory(Query q){this(q.getAnswer());}
 	public XmlAnswerFactory(Answer q)
 	{
 		this.q=q;

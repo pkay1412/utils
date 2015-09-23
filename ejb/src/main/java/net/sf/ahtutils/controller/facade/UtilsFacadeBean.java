@@ -761,9 +761,9 @@ public class UtilsFacadeBean implements UtilsFacade
 		return q.getResultList();
 	}
 	
-	@Override public <T extends EjbWithId, P extends EjbWithId, GP extends EjbWithId> List<T> allForGrandParent(Class<T> queryClass, Class<P> pClass, String pName, GP gpClass, String gpName)
+	@Override public <T extends EjbWithId, P extends EjbWithId, GP extends EjbWithId> List<T> allForGrandParent(Class<T> queryClass, Class<P> pClass, String pName, GP gpObject, String gpName)
 	{
-		ParentPredicate<GP> ppGrandparent = ParentPredicate.create(gpClass, gpName);
+		ParentPredicate<GP> ppGrandparent = ParentPredicate.create(gpObject, gpName);
 		return fForAndOrGrandParents(queryClass,pClass,pName,ParentPredicate.list(ppGrandparent),ParentPredicate.empty());
 	}
 	

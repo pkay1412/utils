@@ -39,6 +39,7 @@ public interface UtilsSurveyFacade <L extends UtilsLang,
 	
 	TEMPLATE fcSurveyTemplate(Class<TEMPLATE> cTemplate, Class<TS> cTS, TC category);
 	List<ANSWER> fcAnswers(Class<DATA> cData, Class<ANSWER> cAnswer, Class<TEMPLATE> cTemplate, DATA data);
+	List<ANSWER> fAnswers(Class<ANSWER> cAnswer, Class<DATA> cData, SURVEY survey);
 	
 	DATA saveData(Class<DATA> cData, Class<CORRELATION> cCorrelation, DATA data) throws UtilsConstraintViolationException, UtilsLockingException;
 }

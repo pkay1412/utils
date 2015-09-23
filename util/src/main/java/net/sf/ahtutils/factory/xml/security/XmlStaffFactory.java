@@ -1,5 +1,12 @@
 package net.sf.ahtutils.factory.xml.security;
 
+import java.util.Hashtable;
+import java.util.List;
+import java.util.Map;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import net.sf.ahtutils.interfaces.model.security.UtilsStaff;
 import net.sf.ahtutils.interfaces.model.status.UtilsDescription;
 import net.sf.ahtutils.interfaces.model.status.UtilsLang;
@@ -12,9 +19,6 @@ import net.sf.ahtutils.model.interfaces.security.UtilsSecurityView;
 import net.sf.ahtutils.model.interfaces.with.EjbWithId;
 import net.sf.ahtutils.xml.security.Staff;
 import net.sf.ahtutils.xml.status.Domain;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 public class XmlStaffFactory<L extends UtilsLang,
 							D extends UtilsDescription,
@@ -72,6 +76,16 @@ public class XmlStaffFactory<L extends UtilsLang,
 		}
 		
 		return xml;
-		
+	}
+	
+	public static Map<Long,Staff> toMapId(List<Staff> staffs)
+	{
+		Map<Long,Staff> map = new Hashtable<Long,Staff>();
+		for(Staff staff : staffs)
+		{
+			long id = staff.getId();
+			if(!map.containsKey(id)){map.put(id,staff);}
+		}
+		return map;
 	}
 }

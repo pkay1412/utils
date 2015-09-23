@@ -47,6 +47,7 @@ QAUS extends UtilsStatus<QAUS,L,D>>
 {
 	final static Logger logger = LoggerFactory.getLogger(XmlQaFactory.class);
 		
+	@SuppressWarnings("unused")
 	private Qa q;
 	
 	public XmlQaFactory(Qa q)

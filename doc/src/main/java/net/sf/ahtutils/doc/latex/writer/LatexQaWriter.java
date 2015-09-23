@@ -32,6 +32,7 @@ import net.sf.ahtutils.exception.processing.UtilsConfigurationException;
 import net.sf.ahtutils.xml.aht.Aht;
 import net.sf.ahtutils.xml.qa.Category;
 import net.sf.ahtutils.xml.qa.Qa;
+import net.sf.ahtutils.xml.security.Staff;
 import net.sf.ahtutils.xml.status.Translations;
 import net.sf.ahtutils.xml.survey.Survey;
 import net.sf.exlp.util.xml.JaxbUtil;
@@ -173,11 +174,11 @@ public class LatexQaWriter extends AbstractDocumentationLatexWriter
 	
 	public void writeQaCategoriesInput(Qa qa,String lang) throws OfxAuthoringException, IOException, OfxConfigurationException
 	{
-		File fCategories = new File(baseLatexDir+"/"+lang+"/section/qa/categories.tex");
+		File fCategories = new File(baseLatexDir+"/"+lang+"/section/qa/fr.tex");
 		File fAgreements = new File(baseLatexDir+"/"+lang+"/section/qa/agreements.tex");
 		File fSummary = new File(baseLatexDir+"/"+lang+"/section/qa/summary.tex");
 			
-		writeSection(ofContainerInput.build(qa,lang+"/section/qa/category"), fCategories);
+		writeSection(ofContainerInput.build(qa,lang+"/section/qa/fr"), fCategories);
 		writeSection(ofContainerInput.build(qa,lang+"/tab/qa/agreement"), fAgreements);
 		writeSection(ofContainerInput.build(qa,lang+"/tab/qa/summary"), fSummary);
 	}
@@ -194,24 +195,22 @@ public class LatexQaWriter extends AbstractDocumentationLatexWriter
 	
 	public void writeQaCategory(Category category, String lang) throws OfxAuthoringException, IOException, OfxConfigurationException
 	{
-		String path = lang+"/section/qa/category";
+		String path = lang+"/section/qa/fr";
 		File f = new File(baseLatexDir+"/"+path+"/"+category.getCode()+".tex");
 		
 		OfxSectionQaCategoryFactory fOfx = new OfxSectionQaCategoryFactory(config,lang,translations);
 		Section section = fOfx.build(category);
-		writeSection(section, f);
+		writeSection(2,section, f);
 	}
 	
 	//NFR
-	public void writeNfr(Survey survey) throws OfxAuthoringException, IOException, OfxConfigurationException
+	public void writeNfr(Survey surveyQuestions, Survey surveyAnswers, List<Staff> staff) throws OfxAuthoringException, IOException, OfxConfigurationException
 	{
+		ofxMlw.section(2,"/qa/nfr",ofContainerInput.build(surveyQuestions.getTemplate(),"/section/qa/nfr"));
 		
-		
-		ofxMlw.section(2,"/qa/nfr",ofContainerInput.build(survey.getTemplate(),"/section/qa/nfr"));
-		
-		for(net.sf.ahtutils.xml.survey.Section surveySection : survey.getTemplate().getSection())
+		for(net.sf.ahtutils.xml.survey.Section surveySection : surveyQuestions.getTemplate().getSection())
 		{
-			ofxMlw.section(2, "/qa/nfr/"+surveySection.getPosition(), ofNfr.build(surveySection));
+			ofxMlw.section(2, "/qa/nfr/"+surveySection.getPosition(), ofNfr.build(surveySection,surveyAnswers,staff));
 		}
 	}
 		
