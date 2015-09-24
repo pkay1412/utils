@@ -37,6 +37,9 @@ QARS extends UtilsStatus<QARS,L,D>,
 QAUS extends UtilsStatus<QAUS,L,D>>
 			extends EjbWithId
 {
+	QA getQa();
+	void setQa(QA qa);
+	
     String getName();
 	void setName(String name);
 	
