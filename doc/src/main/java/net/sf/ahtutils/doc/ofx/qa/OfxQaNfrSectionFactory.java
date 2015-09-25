@@ -22,7 +22,7 @@ import org.slf4j.LoggerFactory;
 
 import net.sf.ahtutils.doc.ofx.AbstractUtilsOfxDocumentationFactory;
 import net.sf.ahtutils.doc.ofx.qa.table.OfxQaNfrQuestionTableFactory;
-import net.sf.ahtutils.doc.ofx.qa.table.OfxTableQaNfrResultFactory;
+import net.sf.ahtutils.doc.ofx.qa.table.OfxQaNfrResultTableFactory;
 import net.sf.ahtutils.xml.aht.Aht;
 import net.sf.ahtutils.xml.security.Staff;
 import net.sf.ahtutils.xml.status.Translations;
@@ -30,19 +30,19 @@ import net.sf.ahtutils.xml.survey.Answer;
 import net.sf.ahtutils.xml.survey.Survey;
 import net.sf.exlp.util.xml.JaxbUtil;
 
-public class OfxSectionQaNfrFactory extends AbstractUtilsOfxDocumentationFactory
+public class OfxQaNfrSectionFactory extends AbstractUtilsOfxDocumentationFactory
 {
-	final static Logger logger = LoggerFactory.getLogger(OfxSectionQaNfrFactory.class);
+	final static Logger logger = LoggerFactory.getLogger(OfxQaNfrSectionFactory.class);
 	
 	private OfxQaNfrQuestionTableFactory ofxTableQuestions;
-	private OfxTableQaNfrResultFactory ofxTableAnswers;
+	private OfxQaNfrResultTableFactory ofxTableAnswers;
 	
-	public OfxSectionQaNfrFactory(Configuration config, String[] langs, Translations translations)
+	public OfxQaNfrSectionFactory(Configuration config, String[] langs, Translations translations)
 	{
 		super(config,langs,translations);
 		imagePathPrefix = config.getString("doc.ofx.imagePathPrefixQA");
 		ofxTableQuestions = new OfxQaNfrQuestionTableFactory(config,langs,translations);
-		ofxTableAnswers = new OfxTableQaNfrResultFactory(config,langs,translations);
+		ofxTableAnswers = new OfxQaNfrResultTableFactory(config,langs,translations);
 	}
 	
 	public void setUnits(Aht units) {ofxTableQuestions.setUnits(units);}

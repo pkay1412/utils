@@ -39,7 +39,7 @@ import net.sf.exlp.exception.ExlpXpathNotFoundException;
 import net.sf.exlp.exception.ExlpXpathNotUniqueException;
 import net.sf.exlp.util.xml.JaxbUtil;
 
-public class OfxQaSummaryTableFactory extends AbstractUtilsOfxDocumentationFactory
+public class OfxQaFrSummaryTableFactory extends AbstractUtilsOfxDocumentationFactory
 {
 	final static Logger logger = LoggerFactory.getLogger(OfxQaNfrQuestionTableFactory.class);
 	private static String keyCaptionPrefix = "auTableQmAgreement";
@@ -53,11 +53,11 @@ public class OfxQaSummaryTableFactory extends AbstractUtilsOfxDocumentationFacto
 	private Aht testConditions;
 	private Aht resultStatus;
 	
-	public OfxQaSummaryTableFactory(Configuration config, String lang, Translations translations)
+	public OfxQaFrSummaryTableFactory(Configuration config, String lang, Translations translations)
 	{
 		this(config,new String[] {lang},translations);
 	}
-	public OfxQaSummaryTableFactory(Configuration config, String[] langs, Translations translations)
+	public OfxQaFrSummaryTableFactory(Configuration config, String[] langs, Translations translations)
 	{
 		super(config,langs,translations);
 		

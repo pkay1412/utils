@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import net.sf.ahtutils.doc.ofx.AbstractUtilsOfxDocumentationFactory;
-import net.sf.ahtutils.doc.ofx.qa.table.OfxTableQaFrResultFactory;
+import net.sf.ahtutils.doc.ofx.qa.table.OfxQaFrResultTableFactory;
 import net.sf.ahtutils.doc.ofx.qa.test.OfxTableQaTestFactory;
 import net.sf.ahtutils.xml.aht.Aht;
 import net.sf.ahtutils.xml.qa.Category;
@@ -31,24 +31,24 @@ import org.openfuxml.util.OfxCommentBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class OfxSectionQaCategoryFactory extends AbstractUtilsOfxDocumentationFactory
+public class OfxQaFrSectionFactory extends AbstractUtilsOfxDocumentationFactory
 {
-	final static Logger logger = LoggerFactory.getLogger(OfxSectionQaCategoryFactory.class);
+	final static Logger logger = LoggerFactory.getLogger(OfxQaFrSectionFactory.class);
 
 	private OfxTableQaTestFactory fOfxTableTest;
-	private OfxTableQaFrResultFactory fOfxTableTestResult;
+	private OfxQaFrResultTableFactory fOfxTableTestResult;
 	
 	private Aht conditions;
 	
-	public OfxSectionQaCategoryFactory(Configuration config, String lang, Translations translations)
+	public OfxQaFrSectionFactory(Configuration config, String lang, Translations translations)
 	{
 		this(config,new String[] {lang},translations);
 	}
-	public OfxSectionQaCategoryFactory(Configuration config, String[] langs, Translations translations)
+	public OfxQaFrSectionFactory(Configuration config, String[] langs, Translations translations)
 	{
 		super(config,langs,translations);
 		fOfxTableTest = new OfxTableQaTestFactory(config,langs,translations);
-		fOfxTableTestResult = new OfxTableQaFrResultFactory(config,langs,translations);
+		fOfxTableTestResult = new OfxQaFrResultTableFactory(config,langs,translations);
 	}
 	
 	public void setTestConditions(Aht conditions){this.conditions=conditions;}

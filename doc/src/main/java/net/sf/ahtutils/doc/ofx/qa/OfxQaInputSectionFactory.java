@@ -17,15 +17,15 @@ import net.sf.ahtutils.xml.qa.Qa;
 import net.sf.ahtutils.xml.status.Translations;
 import net.sf.ahtutils.xml.survey.Template;
 
-public class OfxQaContainerInputSectionFactory extends AbstractUtilsOfxDocumentationFactory
+public class OfxQaInputSectionFactory extends AbstractUtilsOfxDocumentationFactory
 {
-	final static Logger logger = LoggerFactory.getLogger(OfxQaContainerInputSectionFactory.class);
+	final static Logger logger = LoggerFactory.getLogger(OfxQaInputSectionFactory.class);
 
-	public OfxQaContainerInputSectionFactory(Configuration config, String lang, Translations translations)
+	public OfxQaInputSectionFactory(Configuration config, String lang, Translations translations)
 	{
 		this(config,new String[] {lang},translations);
 	}
-	public OfxQaContainerInputSectionFactory(Configuration config, String[] langs, Translations translations)
+	public OfxQaInputSectionFactory(Configuration config, String[] langs, Translations translations)
 	{
 		super(config,langs,translations);
 	}

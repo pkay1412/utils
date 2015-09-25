@@ -35,18 +35,18 @@ import net.sf.exlp.exception.ExlpXpathNotFoundException;
 import net.sf.exlp.exception.ExlpXpathNotUniqueException;
 import net.sf.exlp.util.xml.JaxbUtil;
 
-public class OfxTableQaNfrResultFactory extends AbstractUtilsOfxDocumentationFactory
+public class OfxQaNfrResultTableFactory extends AbstractUtilsOfxDocumentationFactory
 {
-	final static Logger logger = LoggerFactory.getLogger(OfxTableQaNfrResultFactory.class);
+	final static Logger logger = LoggerFactory.getLogger(OfxQaNfrResultTableFactory.class);
 	
 	@SuppressWarnings("unused")
 	private DateFormat df;
 	
-	public OfxTableQaNfrResultFactory(Configuration config, String lang, Translations translations)
+	public OfxQaNfrResultTableFactory(Configuration config, String lang, Translations translations)
 	{
 		this(config,new String[] {lang},translations);
 	}
-	public OfxTableQaNfrResultFactory(Configuration config, String[] langs, Translations translations)
+	public OfxQaNfrResultTableFactory(Configuration config, String[] langs, Translations translations)
 	{
 		super(config,langs,translations);
 		imagePathPrefix = config.getString("doc.ofx.imagePathPrefixQA");

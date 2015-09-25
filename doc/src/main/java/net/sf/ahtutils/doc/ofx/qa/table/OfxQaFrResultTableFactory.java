@@ -31,17 +31,17 @@ import org.openfuxml.factory.xml.table.OfxColumnFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class OfxTableQaFrResultFactory extends AbstractUtilsOfxDocumentationFactory
+public class OfxQaFrResultTableFactory extends AbstractUtilsOfxDocumentationFactory
 {
-	final static Logger logger = LoggerFactory.getLogger(OfxTableQaFrResultFactory.class);
+	final static Logger logger = LoggerFactory.getLogger(OfxQaFrResultTableFactory.class);
 	
 	private DateFormat df;
 	
-	public OfxTableQaFrResultFactory(Configuration config, String lang, Translations translations)
+	public OfxQaFrResultTableFactory(Configuration config, String lang, Translations translations)
 	{
 		this(config,new String[] {lang},translations);
 	}
-	public OfxTableQaFrResultFactory(Configuration config, String[] langs, Translations translations)
+	public OfxQaFrResultTableFactory(Configuration config, String[] langs, Translations translations)
 	{
 		super(config,langs,translations);
 		imagePathPrefix = config.getString("doc.ofx.imagePathPrefixQA");
