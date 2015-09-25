@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<qa:groups xmlns:s="http://ahtutils.aht-group.com/status" xmlns:qa="http://ahtutils.aht-group.com/qa">
+    <qa:group id="123" position="1" name="myName"/>
+    <qa:group id="123" position="1" name="myName"/>
+</qa:groups>

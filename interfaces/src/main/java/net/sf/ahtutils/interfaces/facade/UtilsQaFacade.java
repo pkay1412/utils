@@ -51,6 +51,7 @@ public interface UtilsQaFacade
 		QA load(Class<QA> clQa, QA qa);
 		QAC load(Class<QAC> clQac, QAC category);
 		QAT load(Class<QAT> clTest, QAT test);
+		List<GROUP> fQaGroups(Class<GROUP> cGroup, QA qa);
 		List<QAT> fQaTests(Class<QAT> clTest, Class<QAC> clCategory, Class<QA> clQa, QA qa);
 		List<QAT> fQaTests(Class<QAT> clTest, Class<QAC> clCategory, List<QAC> category);
 }

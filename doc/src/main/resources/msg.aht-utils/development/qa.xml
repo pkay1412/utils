@@ -14,4 +14,11 @@
     		<s:lang key="fr" translation="URL"/>
     	</s:langs>
     </s:translation>
+	<s:translation key="aupQaGroup">
+    	<s:langs>
+    		<s:lang key="de" translation="Group"/>
+    		<s:lang key="en" translation="Group"/>
+    		<s:lang key="fr" translation="Group"/>
+    	</s:langs>
+    </s:translation>
 </s:translations>

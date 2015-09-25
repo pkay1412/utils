@@ -5,4 +5,5 @@
     <sec:staff id="123"/>
     <sec:staff id="123"/>
     <survey:survey id="123" name="myName" validFrom="2011-11-11" validTo="2011-11-11"/>
+    <qa:groups/>
 </qa:qa>

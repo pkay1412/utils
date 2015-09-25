@@ -27,6 +27,7 @@ import net.sf.ahtutils.xml.survey.Survey;
  *         &lt;element ref="{http://ahtutils.aht-group.com/qa}category" maxOccurs="unbounded"/&gt;
  *         &lt;element ref="{http://ahtutils.aht-group.com/security}staff" maxOccurs="unbounded"/&gt;
  *         &lt;element ref="{http://ahtutils.aht-group.com/survey}survey"/&gt;
+ *         &lt;element ref="{http://ahtutils.aht-group.com/qa}groups"/&gt;
  *       &lt;/sequence&gt;
  *       &lt;attribute name="id" type="{http://www.w3.org/2001/XMLSchema}long" /&gt;
  *       &lt;attribute name="client" type="{http://www.w3.org/2001/XMLSchema}string" /&gt;
@@ -42,7 +43,8 @@ import net.sf.ahtutils.xml.survey.Survey;
 @XmlType(name = "", propOrder = {
     "category",
     "staff",
-    "survey"
+    "survey",
+    "groups"
 })
 @XmlRootElement(name = "qa")
 public class Qa
@@ -56,6 +58,8 @@ public class Qa
     protected List<Staff> staff;
     @XmlElement(namespace = "http://ahtutils.aht-group.com/survey", required = true)
     protected Survey survey;
+    @XmlElement(required = true)
+    protected Groups groups;
     @XmlAttribute(name = "id")
     protected Long id;
     @XmlAttribute(name = "client")
@@ -163,6 +167,34 @@ public class Qa
 
     public boolean isSetSurvey() {
         return (this.survey!= null);
+    }
+
+    /**
+     * Gets the value of the groups property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Groups }
+     *     
+     */
+    public Groups getGroups() {
+        return groups;
+    }
+
+    /**
+     * Sets the value of the groups property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Groups }
+     *     
+     */
+    public void setGroups(Groups value) {
+        this.groups = value;
+    }
+
+    public boolean isSetGroups() {
+        return (this.groups!= null);
     }
 
     /**

@@ -19,6 +19,7 @@ import org.slf4j.LoggerFactory;
 
 import net.sf.ahtutils.doc.UtilsDocumentation;
 import net.sf.ahtutils.doc.ofx.qa.OfxQaContainerInputSectionFactory;
+import net.sf.ahtutils.doc.ofx.qa.OfxQaGroupSectionFactory;
 import net.sf.ahtutils.doc.ofx.qa.OfxSectionQaCategoryFactory;
 import net.sf.ahtutils.doc.ofx.qa.OfxSectionQaNfrFactory;
 import net.sf.ahtutils.doc.ofx.qa.table.OfxQaAgreementTableFactory;
@@ -107,7 +108,7 @@ public class LatexQaWriter extends AbstractDocumentationLatexWriter
 	}
 	
 	//Team
-	public void writeQaTeam(Qa qa,boolean withResponsible, boolean withOrganisation) throws OfxAuthoringException, IOException
+	public void team(Qa qa,boolean withResponsible, boolean withOrganisation) throws OfxAuthoringException, IOException
 	{
 		setWithResponsible(withResponsible);
 		setWithOrganisation(withOrganisation);
@@ -116,14 +117,22 @@ public class LatexQaWriter extends AbstractDocumentationLatexWriter
 			writeQaTeam(qa, lang);
 		}
 	}
-	
+		
 	public void writeQaTeam(Qa qa,String lang) throws OfxAuthoringException, IOException
 	{
 		File f = new File(baseLatexDir+"/"+lang+"/tab/qa/team.tex");
 		
 		OfxQaTeamTableFactory fOfx = new OfxQaTeamTableFactory(config,lang,translations);
 		Table table = fOfx.build(qa, buildHeaderKeys());
+		ofxMlw.table("qa/team", table, "table");
+		
 		writeTable(table, f);
+	}
+	
+	public void groups(Qa qa) throws OfxAuthoringException, IOException, OfxConfigurationException
+	{
+		OfxQaGroupSectionFactory f = new OfxQaGroupSectionFactory(config,langs,translations);
+		ofxMlw.section(1, "qa/groups",f.build(qa.getGroups()));
 	}
 	
 	// Agreements

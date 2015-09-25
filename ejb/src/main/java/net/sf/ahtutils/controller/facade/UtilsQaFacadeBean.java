@@ -119,4 +119,9 @@ public class UtilsQaFacadeBean <L extends UtilsLang,
 	 {
 		 return this.allForOrParents(clTest, ParentPredicate.createFromList(clCategory, "category", categories));
 	 }
+	@Override
+	public List<GROUP> fQaGroups(Class<GROUP> cGroup, QA qa)
+	{
+		return this.allForParent(cGroup, "qa", qa);
+	}
 }
