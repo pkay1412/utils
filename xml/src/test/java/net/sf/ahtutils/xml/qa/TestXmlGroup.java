@@ -3,6 +3,7 @@ package net.sf.ahtutils.xml.qa;
 import java.io.FileNotFoundException;
 
 import net.sf.ahtutils.test.UtilsXmlTestBootstrap;
+import net.sf.ahtutils.xml.security.TestXmlStaff;
 import net.sf.exlp.util.xml.JaxbUtil;
 
 import org.junit.BeforeClass;
@@ -34,6 +35,7 @@ public class TestXmlGroup extends AbstractXmlQaTest
     	if(withChilds)
     	{
     		xml.setDescription(net.sf.ahtutils.xml.status.TestXmlDescription.create(false));
+    		xml.getStaff().add(TestXmlStaff.create(false));xml.getStaff().add(TestXmlStaff.create(false));
     	}
     	
     	return xml;

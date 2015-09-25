@@ -46,17 +46,18 @@ public class UtilsCrudHandlerParent <T extends EjbCrudWithParent, P extends EjbW
 	public void add()
 	{
 		logger.info(AbstractLogMessage.addEntity(cT));
-		entity = bean.buildEntity(cT);
+		entity = bean.crudBuild(cT);
 	}
 	
 	public void select()
 	{
 		logger.info(AbstractLogMessage.selectEntity(entity));
+		bean.crudSelect();
 	}
 	
 	public void save() throws UtilsConstraintViolationException, UtilsLockingException
 	{
-		entity = bean.updateEntity(entity);
+		entity = bean.crudUpdate(entity);
 		entity = fUtils.save(entity);
 		reloadList();
 	}

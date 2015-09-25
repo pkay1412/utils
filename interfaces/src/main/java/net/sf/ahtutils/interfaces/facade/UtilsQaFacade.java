@@ -48,10 +48,11 @@ public interface UtilsQaFacade
 
 		extends UtilsFacade
 {	
-		QA load(Class<QA> clQa, QA qa);
-		QAC load(Class<QAC> clQac, QAC category);
-		QAT load(Class<QAT> clTest, QAT test);
+		QA load(Class<QA> cQa, QA qa);
+		QAC load(Class<QAC> cQac, QAC category);
+		QAT load(Class<QAT> cTest, QAT test);
+		GROUP load(Class<GROUP> cGroup, GROUP group);
 		List<GROUP> fQaGroups(Class<GROUP> cGroup, QA qa);
-		List<QAT> fQaTests(Class<QAT> clTest, Class<QAC> clCategory, Class<QA> clQa, QA qa);
-		List<QAT> fQaTests(Class<QAT> clTest, Class<QAC> clCategory, List<QAC> category);
+		List<QAT> fQaTests(Class<QAT> cTest, Class<QAC> cCategory, Class<QA> cQa, QA qa);
+		List<QAT> fQaTests(Class<QAT> lTest, Class<QAC> cCategory, List<QAC> category);
 }

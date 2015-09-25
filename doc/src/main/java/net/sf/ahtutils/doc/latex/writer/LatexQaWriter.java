@@ -25,7 +25,7 @@ import net.sf.ahtutils.doc.ofx.qa.OfxSectionQaNfrFactory;
 import net.sf.ahtutils.doc.ofx.qa.table.OfxQaAgreementTableFactory;
 import net.sf.ahtutils.doc.ofx.qa.table.OfxQaRoleTableFactory;
 import net.sf.ahtutils.doc.ofx.qa.table.OfxQaSummaryTableFactory;
-import net.sf.ahtutils.doc.ofx.qa.table.OfxQaTeamTableFactory;
+import net.sf.ahtutils.doc.ofx.qa.table.OfxQaStaffTableFactory;
 import net.sf.ahtutils.doc.ofx.status.OfxStatusTableFactory;
 import net.sf.ahtutils.doc.ofx.status.OfxStatusTableFactory.Code;
 import net.sf.ahtutils.exception.processing.UtilsConfigurationException;
@@ -122,8 +122,9 @@ public class LatexQaWriter extends AbstractDocumentationLatexWriter
 	{
 		File f = new File(baseLatexDir+"/"+lang+"/tab/qa/team.tex");
 		
-		OfxQaTeamTableFactory fOfx = new OfxQaTeamTableFactory(config,lang,translations);
-		Table table = fOfx.build(qa, buildHeaderKeys());
+		OfxQaStaffTableFactory fOfx = new OfxQaStaffTableFactory(config,lang,translations);
+		fOfx.setColumns(OfxQaStaffTableFactory.ColumCode.name,OfxQaStaffTableFactory.ColumCode.role,OfxQaStaffTableFactory.ColumCode.organisationDepartment);
+		Table table = fOfx.team(qa.getStaff());
 		ofxMlw.table("qa/team", table, "table");
 		
 		writeTable(table, f);

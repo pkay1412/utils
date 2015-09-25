@@ -21,4 +21,16 @@
     		<s:lang key="fr" translation="Group"/>
     	</s:langs>
     </s:translation>
+        <s:translation key="aupQaOrganisation">
+    	<s:langs>
+    		<s:lang key="de" translation="Organisation"/>
+    		<s:lang key="en" translation="Organisation"/>
+    	</s:langs>
+    </s:translation>    
+	<s:translation key="aupQaDepartment">
+    	<s:langs>
+    		<s:lang key="de" translation="Department"/>
+    		<s:lang key="en" translation="Department"/>
+    	</s:langs>
+    </s:translation>
 </s:translations>

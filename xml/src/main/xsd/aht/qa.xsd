@@ -32,6 +32,7 @@
         <xsd:complexType>
         	<xsd:sequence>
         		<xsd:element ref="us:description" maxOccurs="1"/>
+        		<xsd:element ref="sec:staff" maxOccurs="unbounded"/>
             </xsd:sequence>
             <xsd:attribute name="id" type="xsd:long"/>
             <xsd:attribute name="position" type="xsd:int"/>

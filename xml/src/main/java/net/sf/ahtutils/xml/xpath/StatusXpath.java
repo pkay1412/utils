@@ -76,7 +76,6 @@ public class StatusXpath
 		}
 		catch (ExlpXpathNotFoundException e) {throw new ExlpXpathNotFoundException(translation.getKey()+" "+e.getMessage());}
 		catch (ExlpXpathNotUniqueException e) {throw e;}
-		
 	}
 	
 	public static synchronized Type getType(Types types,String key) throws ExlpXpathNotFoundException, ExlpXpathNotUniqueException

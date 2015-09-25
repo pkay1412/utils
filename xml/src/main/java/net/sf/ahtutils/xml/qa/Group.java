@@ -2,12 +2,15 @@
 package net.sf.ahtutils.xml.qa;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
+import net.sf.ahtutils.xml.security.Staff;
 import net.sf.ahtutils.xml.status.Description;
 
 
@@ -22,6 +25,7 @@ import net.sf.ahtutils.xml.status.Description;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
  *         &lt;element ref="{http://ahtutils.aht-group.com/status}description"/&gt;
+ *         &lt;element ref="{http://ahtutils.aht-group.com/security}staff" maxOccurs="unbounded"/&gt;
  *       &lt;/sequence&gt;
  *       &lt;attribute name="id" type="{http://www.w3.org/2001/XMLSchema}long" /&gt;
  *       &lt;attribute name="position" type="{http://www.w3.org/2001/XMLSchema}int" /&gt;
@@ -35,7 +39,8 @@ import net.sf.ahtutils.xml.status.Description;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "description"
+    "description",
+    "staff"
 })
 @XmlRootElement(name = "group")
 public class Group
@@ -45,6 +50,8 @@ public class Group
     private final static long serialVersionUID = 1L;
     @XmlElement(namespace = "http://ahtutils.aht-group.com/status", required = true)
     protected Description description;
+    @XmlElement(namespace = "http://ahtutils.aht-group.com/security", required = true)
+    protected List<Staff> staff;
     @XmlAttribute(name = "id")
     protected Long id;
     @XmlAttribute(name = "position")
@@ -78,6 +85,43 @@ public class Group
 
     public boolean isSetDescription() {
         return (this.description!= null);
+    }
+
+    /**
+     * Gets the value of the staff property.
+     * 
+     * <p>
+     * This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the staff property.
+     * 
+     * <p>
+     * For example, to add a new item, do as follows:
+     * <pre>
+     *    getStaff().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link Staff }
+     * 
+     * 
+     */
+    public List<Staff> getStaff() {
+        if (staff == null) {
+            staff = new ArrayList<Staff>();
+        }
+        return this.staff;
+    }
+
+    public boolean isSetStaff() {
+        return ((this.staff!= null)&&(!this.staff.isEmpty()));
+    }
+
+    public void unsetStaff() {
+        this.staff = null;
     }
 
     /**

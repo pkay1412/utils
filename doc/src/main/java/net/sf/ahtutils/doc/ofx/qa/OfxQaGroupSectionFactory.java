@@ -13,6 +13,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import net.sf.ahtutils.doc.ofx.AbstractUtilsOfxDocumentationFactory;
+import net.sf.ahtutils.doc.ofx.qa.table.OfxQaStaffTableFactory;
 import net.sf.ahtutils.xml.qa.Group;
 import net.sf.ahtutils.xml.qa.Groups;
 import net.sf.ahtutils.xml.status.Translations;
@@ -21,11 +22,13 @@ public class OfxQaGroupSectionFactory extends AbstractUtilsOfxDocumentationFacto
 {
 	final static Logger logger = LoggerFactory.getLogger(OfxQaGroupSectionFactory.class);
 
+	private OfxQaStaffTableFactory ofStaff;
 	
 	public OfxQaGroupSectionFactory(Configuration config, String[] langs, Translations translations)
 	{
 		super(config,langs,translations);
-
+		ofStaff = new OfxQaStaffTableFactory(config,langs,translations);
+		ofStaff.setColumns(OfxQaStaffTableFactory.ColumCode.organisationDepartment,OfxQaStaffTableFactory.ColumCode.name,OfxQaStaffTableFactory.ColumCode.responsibility);
 	}
 	
 	public Section build(Groups groups) throws OfxAuthoringException
@@ -53,8 +56,8 @@ public class OfxQaGroupSectionFactory extends AbstractUtilsOfxDocumentationFacto
 		section.getContent().add(group.getDescription().getValue());
 		section.getContent().add(XmlParagraphFactory.text(group.getDescription().getValue()));
 
+		section.getContent().add(ofStaff.group(group.getStaff()));
+		
 		return section;
 	}
-	
-
 }

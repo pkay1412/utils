@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<qa:group xmlns:s="http://ahtutils.aht-group.com/status" xmlns:qa="http://ahtutils.aht-group.com/qa" id="123" position="1" name="myName">
+<qa:group xmlns:s="http://ahtutils.aht-group.com/status" xmlns:sec="http://ahtutils.aht-group.com/security" xmlns:qa="http://ahtutils.aht-group.com/qa" id="123" position="1" name="myName">
     <s:description version="1" key="myKey">myValue</s:description>
+    <sec:staff id="123"/>
+    <sec:staff id="123"/>
 </qa:group>

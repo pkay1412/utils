@@ -76,19 +76,26 @@ public class UtilsQaFacadeBean <L extends UtilsLang,
 		return qa;
 	}
 	
-	public QAC load(Class<QAC> clQac, QAC category)
+	public QAC load(Class<QAC> cQac, QAC category)
 	{		
-		category = em.find(clQac, category.getId());
+		category = em.find(cQac, category.getId());
 		category.getTests().size();
 		return category;
 	}
 	
-	public QAT load(Class<QAT> clQat, QAT test)
+	public QAT load(Class<QAT> cQat, QAT test)
 	{		
-		test = em.find(clQat, test.getId());
+		test = em.find(cQat, test.getId());
 		test.getDiscussions().size();
 		test.getResults().size();
 		return test;
+	}
+	
+	@Override public GROUP load(Class<GROUP> cGroup, GROUP group)
+	{		
+		group = em.find(cGroup, group.getId());
+		group.getStaffs().size();
+		return group;
 	}
 	
 	public List<QAT> fQaTests(Class<QAT> clTest, Class<QAC> clCategory, Class<QA> clQa, QA qa)

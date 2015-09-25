@@ -4,6 +4,7 @@ import net.sf.ahtutils.model.interfaces.with.EjbWithId;
 
 public interface CrudHandlerBean <T extends EjbWithId>
 {
-	T buildEntity(Class<T> cT);
-	T updateEntity(T t);
+	T crudBuild(Class<T> cT);
+	T crudUpdate(T t);
+	void crudSelect();
 }
