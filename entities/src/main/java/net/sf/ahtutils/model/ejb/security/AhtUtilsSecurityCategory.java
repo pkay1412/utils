@@ -35,16 +35,25 @@ public class AhtUtilsSecurityCategory implements Serializable, EjbWithCode,EjbRe
 	
 	public static enum Code{system,regional}
 	
-	// >>>>>>>>>>>>>>>>>>>>>>>>>>Fields<<<<<<<<<<<<<<<<<<<<<<<<<<<	
 
 	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long id;
+	@Override public long getId() {return id;}
+	@Override public void setId(long id) {this.id = id;}
 	
 	@NotNull
 	private String code;
+	@Override public String getCode() {return code;}
+	@Override public void setCode(String code) {this.code = code;}
 	
 	@NotNull
 	private String type;
+	@Override public String getType() {return type;}
+	@Override public void setType(String type) {this.type = type;}
+	
+	private Integer position;
+	@Override public Integer getPosition() {return position;}
+	@Override public void setPosition(Integer position) {this.position = position;}
 	
 	@OneToMany(cascade = CascadeType.ALL, fetch=FetchType.EAGER)
 	@MapKey(name = "lkey")
@@ -58,34 +67,16 @@ public class AhtUtilsSecurityCategory implements Serializable, EjbWithCode,EjbRe
 	public Map<String, AhtUtilsDescription> getDescription() {return description;}
 	public void setDescription(Map<String, AhtUtilsDescription> description) {this.description = description;}
 	
-	// >>>>>>>>>>>>>>>>>>>>>>>>>>Getters and Setters<<<<<<<<<<<<<<<<<<<<<<<<<<<	
-	
-	public long getId() {return id;}
-	public void setId(long id) {this.id = id;}
-	
-	public String getCode() {return code;}
-	public void setCode(String code) {this.code = code;}
-	
-	public String getType() {return type;}
-	public void setType(String type) {this.type = type;}
-	
-
-	
-
-	
-	// >>>>>>>>>>>>>>>>>>>>>>>>>>Methods<<<<<<<<<<<<<<<<<<<<<<<<<<<	
 	
 	public String toString()
 	{
 		StringBuffer sb = new StringBuffer();
-			sb.append("id="+id);
+		sb.append("id="+id);
 		return sb.toString();
 	}
 	
 	public boolean equals(Object object)
 	{
-        return (object instanceof AhtUtilsSecurityCategory)
-             ? id == ((AhtUtilsSecurityCategory) object).getId()
-             : (object == this);
+        return (object instanceof AhtUtilsSecurityCategory) ? id == ((AhtUtilsSecurityCategory) object).getId() : (object == this);
     }
 }

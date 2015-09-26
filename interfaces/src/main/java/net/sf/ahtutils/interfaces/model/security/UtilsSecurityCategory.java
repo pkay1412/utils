@@ -22,6 +22,6 @@ public interface UtilsSecurityCategory<L extends UtilsLang,
 {
 	public static enum Type {role,view,usecase}
 	
-//	public List<R> getRoles();
-//	public void setRoles(List<R> roles);
+	Integer getPosition();
+	void setPosition(Integer position);
 }
