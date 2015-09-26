@@ -16,14 +16,18 @@
 	</composite:interface>
 	
 	<composite:implementation>
-		<p:dataTable var="c" value="#{cc.attrs.bean.categories}"
+		<p:dataTable var="c" value="#{cc.attrs.bean.categories}" draggableRows="true"
 			selection="#{cc.attrs.bean.category}" selectionMode="single" rowKey="#{c.id}">
 			<f:facet name="header">
 				<aht:pfDataTableHeader title="#{msg.aupSecurityCategories}">
 					<aht:icon rendered="#{cc.attrs.withAdd}" type="add" listener="#{cc.attrs.bean.addCategory()}" update="#{cc.attrs.update}"/>
 				</aht:pfDataTableHeader>
 			</f:facet>
+			<p:ajax event="rowReorder" listener="#{cc.attrs.bean.reorderCategories()}" update="@form"/>
 			<p:ajax event="rowSelect" update="#{cc.attrs.update}" listener="#{cc.attrs.bean.selectCategory}"/>  
+            <p:column>  
+				<h:outputText value="#{c.position}" />  
+            </p:column>
             <p:column headerText="#{msg.aupSecurityCategory}">  
 				<h:outputText value="#{c.name[userBean.localeCode].lang}" />  
             </p:column>

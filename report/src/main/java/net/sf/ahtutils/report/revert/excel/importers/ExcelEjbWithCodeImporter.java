@@ -5,7 +5,7 @@ import java.io.Serializable;
 
 import net.sf.ahtutils.exception.ejb.UtilsConstraintViolationException;
 import net.sf.ahtutils.exception.ejb.UtilsNotFoundException;
-import net.sf.ahtutils.model.interfaces.with.EjbWithCode;
+import net.sf.ahtutils.interfaces.model.with.code.EjbWithCode;
 import net.sf.ahtutils.report.revert.excel.AbstractExcelImporter;
 import net.sf.ahtutils.report.revert.excel.ImportStrategy;
 

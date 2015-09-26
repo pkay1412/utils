@@ -2,7 +2,7 @@ package net.sf.ahtutils.util.query.sql;
 
 import java.util.List;
 
-import net.sf.ahtutils.model.interfaces.with.EjbWithCode;
+import net.sf.ahtutils.interfaces.model.with.code.EjbWithCode;
 import net.sf.ahtutils.model.interfaces.with.EjbWithId;
 
 public class UtilsSqlQueryHelper

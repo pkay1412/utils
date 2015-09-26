@@ -7,8 +7,8 @@ import java.util.Map;
 
 import net.sf.ahtutils.exception.ejb.UtilsConstraintViolationException;
 import net.sf.ahtutils.interfaces.facade.UtilsFacade;
+import net.sf.ahtutils.interfaces.model.with.code.EjbWithCode;
 import net.sf.ahtutils.model.interfaces.crud.EjbRemoveable;
-import net.sf.ahtutils.model.interfaces.with.EjbWithCode;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

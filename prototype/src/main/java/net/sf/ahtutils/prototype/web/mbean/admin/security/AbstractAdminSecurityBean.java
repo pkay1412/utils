@@ -3,9 +3,13 @@ package net.sf.ahtutils.prototype.web.mbean.admin.security;
 import java.io.Serializable;
 import java.util.List;
 
+import net.sf.ahtutils.controller.factory.ejb.security.EjbSecurityActionFactory;
 import net.sf.ahtutils.controller.factory.ejb.security.EjbSecurityCategoryFactory;
 import net.sf.ahtutils.controller.factory.ejb.security.EjbSecurityRoleFactory;
 import net.sf.ahtutils.controller.factory.ejb.security.EjbSecurityUsecaseFactory;
+import net.sf.ahtutils.exception.ejb.UtilsConstraintViolationException;
+import net.sf.ahtutils.exception.ejb.UtilsLockingException;
+import net.sf.ahtutils.exception.ejb.UtilsNotFoundException;
 import net.sf.ahtutils.factory.ejb.status.EjbDescriptionFactory;
 import net.sf.ahtutils.factory.ejb.status.EjbLangFactory;
 import net.sf.ahtutils.interfaces.facade.UtilsSecurityFacade;
@@ -36,18 +40,28 @@ public class AbstractAdminSecurityBean <L extends UtilsLang,
 	final static Logger logger = LoggerFactory.getLogger(AbstractAdminSecurityBean.class);
 	
 	protected UtilsSecurityFacade fSecurity;
+	protected UtilsSecurityCategory.Type categoryType;
 	
 	protected EjbLangFactory<L> efLang;
 	protected EjbDescriptionFactory<D> efDescription;
 	protected EjbSecurityCategoryFactory<L,D,C,R,V,U,A,USER> efCategory;
 	protected EjbSecurityRoleFactory<L,D,C,R,V,U,A,USER> efRole;
 	protected EjbSecurityUsecaseFactory<L,D,C,R,V,U,A,USER> efUsecase;
+	protected EjbSecurityActionFactory<L,D,C,R,V,U,A,USER> efAction;
 	
 	protected Class<C> cCategory;
 	protected Class<R> cRole;
 	protected Class<V> cView;
 	protected Class<U> cUsecase;
 	protected Class<A> cAction;
+	
+	//Category
+	protected List<C> categories;
+	public List<C> getCategories() {return categories;}
+	
+	protected C category;
+	public void setCategory(C category) {this.category = category;}
+	public C getCategory() {return category;}
 	
 	//OP Views
 	protected List<V> opViews;
@@ -97,7 +111,6 @@ public class AbstractAdminSecurityBean <L extends UtilsLang,
 	public U getTblUsecase(){return tblUsecase;}
 	public void setTblUsecase(U tblUsecase){this.tblUsecase = tblUsecase;}
 	
-	
 	protected String[] langs;
 	
 	public void initSecuritySuper(final Class<L> cLang, final Class<D> cDescription, final Class<C> cCategory, final Class<R> cRole, final Class<V> cView, final Class<U> cUsecase, final Class<A> cAction, final Class<USER> cUser, String[] langs)
@@ -114,10 +127,37 @@ public class AbstractAdminSecurityBean <L extends UtilsLang,
 		efCategory = EjbSecurityCategoryFactory.factory(cLang,cDescription,cCategory,cRole,cView,cUsecase,cAction,cUser);
 		efRole = EjbSecurityRoleFactory.factory(cLang,cDescription,cCategory,cRole,cView,cUsecase,cAction,cUser);
 		efUsecase = EjbSecurityUsecaseFactory.factory(cLang,cDescription,cCategory,cRole,cView,cUsecase,cAction,cUser);
+		efAction = EjbSecurityActionFactory.factory(cLang,cDescription,cCategory,cRole,cView,cUsecase,cAction,cUser);
+		
+		reloadCategories();
 	}
 	
 	public void selectTblAction() {logger.info(AbstractLogMessage.selectEntity(tblAction));}
 	public void selectTblView() {logger.info(AbstractLogMessage.selectEntity(tblView));}
 	public void selectTblUsecase() {logger.info(AbstractLogMessage.selectEntity(tblUsecase));}
 	
+	protected void selectCategory() throws UtilsNotFoundException
+	{
+		logger.info(AbstractLogMessage.selectEntity(category));
+		category = efLang.persistMissingLangs(fSecurity,langs,category);
+		category = efDescription.persistMissingLangs(fSecurity,langs,category);
+	}
+	
+	protected void reloadCategories()
+	{
+		logger.info("reloadCategories");
+		categories = fSecurity.allOrderedPosition(cCategory,categoryType);
+	}
+	
+	protected void reorderCategories() throws UtilsConstraintViolationException, UtilsLockingException
+	{
+		logger.info("updateOrder "+categories.size());
+		int i=1;
+		for(C c : categories)
+		{
+			c.setPosition(i);
+			fSecurity.update(c);
+			i++;
+		}
+	}
 }

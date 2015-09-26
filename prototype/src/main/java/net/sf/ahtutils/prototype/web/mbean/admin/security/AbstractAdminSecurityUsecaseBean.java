@@ -33,16 +33,9 @@ public class AbstractAdminSecurityUsecaseBean <L extends UtilsLang,
 {
 	private static final long serialVersionUID = 1L;
 	final static Logger logger = LoggerFactory.getLogger(AbstractAdminSecurityUsecaseBean.class);
-
-	private List<C> categories;
-	public List<C> getCategories() {return categories;}
 	
 	private List<U> usecases;
 	public List<U> getUsecases() {return usecases;}
-	
-	private C category;
-	public void setCategory(C category) {this.category = category;}
-	public C getCategory() {return category;}
 	
 	private U usecase;
 	public U getUsecase(){return usecase;}
@@ -50,16 +43,16 @@ public class AbstractAdminSecurityUsecaseBean <L extends UtilsLang,
 	
 	public void initSuper(String[] langs,final Class<L> cLang,final Class<D> cDescription, final Class<C> cCategory,final Class<R> cRole,final Class<V> cView,final Class<U> cUsecase, final Class<A> cAction,final Class<USER> cUser)
 	{
+		categoryType = UtilsSecurityCategory.Type.usecase;
 		initSecuritySuper(cLang,cDescription,cCategory,cRole,cView,cUsecase,cAction,cUser,langs);
 		opViews = fSecurity.all(cView);
 		opActions = new ArrayList<A>();
-		reloadCategories();
 	}
 	
 	//SELECT
 	public void selectCategory() throws UtilsNotFoundException
 	{
-		logger.info(AbstractLogMessage.selectEntity(category));
+		super.selectCategory();
 		reloadUsecases();
 		usecase=null;
 	}
@@ -73,11 +66,7 @@ public class AbstractAdminSecurityUsecaseBean <L extends UtilsLang,
 	}
 	
 	//Reload
-	private void reloadCategories()
-	{
-		logger.info("reloadCategories");
-		categories = fSecurity.allForType(cCategory,UtilsSecurityCategory.Type.usecase.toString());
-	}
+
 	private void reloadUsecases() throws UtilsNotFoundException
 	{
 		logger.info("reloadUsecases");

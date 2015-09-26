@@ -33,20 +33,21 @@ import net.sf.ahtutils.interfaces.model.status.UtilsDescription;
 import net.sf.ahtutils.interfaces.model.status.UtilsLang;
 import net.sf.ahtutils.interfaces.model.with.EjbWithEmail;
 import net.sf.ahtutils.interfaces.model.with.EjbWithNr;
-import net.sf.ahtutils.interfaces.model.with.EjbWithTypeCode;
+import net.sf.ahtutils.interfaces.model.with.code.EjbWithCode;
 import net.sf.ahtutils.interfaces.model.with.code.EjbWithNonUniqueCode;
+import net.sf.ahtutils.interfaces.model.with.code.EjbWithType;
+import net.sf.ahtutils.interfaces.model.with.code.EjbWithTypeCode;
+import net.sf.ahtutils.interfaces.model.with.position.EjbWithPosition;
+import net.sf.ahtutils.interfaces.model.with.position.EjbWithPositionType;
+import net.sf.ahtutils.interfaces.model.with.position.EjbWithPositionVisible;
 import net.sf.ahtutils.interfaces.rest.security.UtilsSecurityAction;
 import net.sf.ahtutils.model.interfaces.UtilsProperty;
 import net.sf.ahtutils.model.interfaces.crud.EjbMergeable;
 import net.sf.ahtutils.model.interfaces.crud.EjbRemoveable;
 import net.sf.ahtutils.model.interfaces.idm.UtilsUser;
-import net.sf.ahtutils.model.interfaces.with.EjbWithCode;
 import net.sf.ahtutils.model.interfaces.with.EjbWithId;
 import net.sf.ahtutils.model.interfaces.with.EjbWithName;
-import net.sf.ahtutils.model.interfaces.with.EjbWithPosition;
-import net.sf.ahtutils.model.interfaces.with.EjbWithPositionVisible;
 import net.sf.ahtutils.model.interfaces.with.EjbWithRecord;
-import net.sf.ahtutils.model.interfaces.with.EjbWithType;
 import net.sf.ahtutils.model.interfaces.with.EjbWithValidFrom;
 
 import org.slf4j.Logger;
@@ -400,6 +401,22 @@ public class UtilsFacadeBean implements UtilsFacade
 		select.where(cB.equal(p1Path, p1.getId()),
 				cB.lessThanOrEqualTo(eRecord, toRecord),
 				cB.greaterThanOrEqualTo(eRecord, fromRecord));
+		
+		return em.createQuery(select).getResultList();
+	}
+	
+	@Override public <T extends EjbWithPositionType, E extends Enum<E>> List<T> allOrderedPosition(Class<T> cT, E enu)
+	{
+		CriteriaBuilder cb = em.getCriteriaBuilder();
+		CriteriaQuery<T> criteriaQuery = cb.createQuery(cT);
+		Root<T> from = criteriaQuery.from(cT);
+		Path<Object> pathType = from.get("type");
+		
+		Expression<Integer> eOrder = from.get("position");
+		
+		CriteriaQuery<T> select = criteriaQuery.select(from);
+		select.orderBy(cb.asc(eOrder));
+		select.where(cb.equal(pathType, enu.toString()));
 		
 		return em.createQuery(select).getResultList();
 	}

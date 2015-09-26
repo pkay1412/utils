@@ -3,13 +3,12 @@ package net.sf.ahtutils.prototype.web.mbean.admin.security;
 import java.io.Serializable;
 import java.util.List;
 
-import net.sf.ahtutils.controller.factory.ejb.security.EjbSecurityActionFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import net.sf.ahtutils.exception.ejb.UtilsConstraintViolationException;
 import net.sf.ahtutils.exception.ejb.UtilsLockingException;
 import net.sf.ahtutils.exception.ejb.UtilsNotFoundException;
-import net.sf.ahtutils.factory.ejb.status.EjbDescriptionFactory;
-import net.sf.ahtutils.factory.ejb.status.EjbLangFactory;
-import net.sf.ahtutils.interfaces.facade.UtilsSecurityFacade;
 import net.sf.ahtutils.interfaces.model.security.UtilsSecurityCategory;
 import net.sf.ahtutils.interfaces.model.security.UtilsSecurityRole;
 import net.sf.ahtutils.interfaces.model.security.UtilsSecurityUsecase;
@@ -20,9 +19,6 @@ import net.sf.ahtutils.interfaces.rest.security.UtilsSecurityAction;
 import net.sf.ahtutils.model.interfaces.idm.UtilsUser;
 import net.sf.ahtutils.web.mbean.util.AbstractLogMessage;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 public class AbstractAdminSecurityViewBean <L extends UtilsLang,
 											D extends UtilsDescription,
 											C extends UtilsSecurityCategory<L,D,C,R,V,U,A,USER>,
@@ -31,33 +27,17 @@ public class AbstractAdminSecurityViewBean <L extends UtilsLang,
 											U extends UtilsSecurityUsecase<L,D,C,R,V,U,A,USER>,
 											A extends UtilsSecurityAction<L,D,C,R,V,U,A,USER>,
 											USER extends UtilsUser<L,D,C,R,V,U,A,USER>>
-					implements Serializable
+		extends AbstractAdminSecurityBean<L,D,C,R,V,U,A,USER>
+		implements Serializable
 {
 	private static final long serialVersionUID = 1L;
 	final static Logger logger = LoggerFactory.getLogger(AbstractAdminSecurityViewBean.class);
-	
-	protected UtilsSecurityFacade fSecurity;
-	
-	private EjbLangFactory<L> efLang;
-	private EjbDescriptionFactory<D> efDescription;
-	private EjbSecurityActionFactory<L,D,C,R,V,U,A,USER> efAction;
-	
-	private Class<C> cCategory;
-	private Class<V> cView;
-	private Class<A> cAction;
-	
-	private List<C> categories;
-	public List<C> getCategories() {return categories;}
-	
+
 	private List<V> views;
 	public List<V> getViews(){return views;}
 	
 	private List<A> actions;
 	public List<A> getActions(){return actions;}
-
-	private C category;
-	public void setCategory(C category) {this.category = category;}
-	public C getCategory() {return category;}
 	
 	private V view;
 	public V getView(){return view;}
@@ -67,28 +47,16 @@ public class AbstractAdminSecurityViewBean <L extends UtilsLang,
 	public A getAction(){return action;}
 	public void setAction(A action) {this.action = action;}
 	
-	private String[] langs;
-	
 	public void initSuper(final Class<L> cLang, final Class<D> cDescription, final Class<C> cCategory, final Class<R> cRole, final Class<V> cView, final Class<U> cUsecase, final Class<A> cAction, final Class<USER> cUser, String[] langs)
 	{
-		this.cCategory=cCategory;
-		this.cView=cView;
-		this.cAction=cAction;
-		this.langs=langs;
-		
-		efLang = new EjbLangFactory<L>(cLang);
-		efDescription = new EjbDescriptionFactory<D>(cDescription);
-		efAction = EjbSecurityActionFactory.factory(cLang,cDescription,cCategory,cRole,cView,cUsecase,cAction,cUser);
-		
-		reloadCategories();
+		categoryType = UtilsSecurityCategory.Type.usecase;
+		initSecuritySuper(cLang,cDescription,cCategory,cRole,cView,cUsecase,cAction,cUser,langs);		
 	}
 	
 	// SELECT
 	public void selectCategory() throws UtilsNotFoundException
 	{
-		logger.info(AbstractLogMessage.selectEntity(category));
-		category = efLang.persistMissingLangs(fSecurity,langs,category);
-		category = efDescription.persistMissingLangs(fSecurity,langs,category);
+		super.selectCategory();
 		reloadViews();
 		view=null;
 		action=null;
@@ -109,10 +77,6 @@ public class AbstractAdminSecurityViewBean <L extends UtilsLang,
 	}
 	
 	//RELOAD
-	private void reloadCategories()
-	{
-		categories = fSecurity.allForType(cCategory,UtilsSecurityCategory.Type.view.toString());
-	}
 	private void reloadViews() throws UtilsNotFoundException
 	{
 		views = fSecurity.allForCategory(cView,cCategory,category.getCode());

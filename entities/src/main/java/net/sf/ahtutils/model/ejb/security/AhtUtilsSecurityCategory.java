@@ -17,12 +17,12 @@ import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotNull;
 
 import net.sf.ahtutils.interfaces.model.security.UtilsSecurityCategory;
+import net.sf.ahtutils.interfaces.model.with.code.EjbWithCode;
 import net.sf.ahtutils.model.ejb.status.AhtUtilsDescription;
 import net.sf.ahtutils.model.ejb.status.AhtUtilsLang;
 import net.sf.ahtutils.model.ejb.user.AhtUtilsUser;
 import net.sf.ahtutils.model.interfaces.crud.EjbPersistable;
 import net.sf.ahtutils.model.interfaces.crud.EjbRemoveable;
-import net.sf.ahtutils.model.interfaces.with.EjbWithCode;
 import net.sf.ahtutils.model.qualifier.EjbErNode;
 
 @Entity
@@ -51,9 +51,9 @@ public class AhtUtilsSecurityCategory implements Serializable, EjbWithCode,EjbRe
 	@Override public String getType() {return type;}
 	@Override public void setType(String type) {this.type = type;}
 	
-	private Integer position;
-	@Override public Integer getPosition() {return position;}
-	@Override public void setPosition(Integer position) {this.position = position;}
+	private int position;
+	@Override public int getPosition() {return position;}
+	@Override public void setPosition(int position) {this.position = position;}
 	
 	@OneToMany(cascade = CascadeType.ALL, fetch=FetchType.EAGER)
 	@MapKey(name = "lkey")

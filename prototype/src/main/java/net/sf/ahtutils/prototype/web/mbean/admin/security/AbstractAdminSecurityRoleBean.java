@@ -34,17 +34,10 @@ public class AbstractAdminSecurityRoleBean <L extends UtilsLang,
 {
 	private static final long serialVersionUID = 1L;
 	final static Logger logger = LoggerFactory.getLogger(AbstractAdminSecurityRoleBean.class);
-		
-	private List<C> categories;
-	public List<C> getCategories() {return categories;}
-	
+			
 	private List<R> roles;
 	public List<R> getRoles(){return roles;}
 
-	private C category;
-	public void setCategory(C category) {this.category = category;}
-	public C getCategory() {return category;}
-	
 	private R role;
 	public R getRole(){return role;}
 	public void setRole(R role) {this.role = role;}
@@ -53,19 +46,18 @@ public class AbstractAdminSecurityRoleBean <L extends UtilsLang,
 	
 	public void initSuper(final Class<L> cLang, final Class<D> cDescription, final Class<C> cCategory, final Class<R> cRole, final Class<V> cView, final Class<U> cUsecase, final Class<A> cAction, final Class<USER> cUser, String[] langs)
 	{
+		categoryType = UtilsSecurityCategory.Type.role;
 		initSecuritySuper(cLang,cDescription,cCategory,cRole,cView,cUsecase,cAction,cUser,langs);
+		
 		opViews = fSecurity.all(cView);
 		opActions = new ArrayList<A>();
 		opUsecases = fSecurity.all(cUsecase);
-		reloadCategories();
 	}
 	
 	// SELECT
 	public void selectCategory() throws UtilsNotFoundException
 	{
-		logger.trace(AbstractLogMessage.selectEntity(category));
-		category = efLang.persistMissingLangs(fSecurity,langs,category);
-		category = efDescription.persistMissingLangs(fSecurity,langs,category);
+		super.selectCategory();
 		reloadRoles();
 		role=null;
 	}
@@ -94,10 +86,6 @@ public class AbstractAdminSecurityRoleBean <L extends UtilsLang,
 	}
 	
 	//RELOAD
-	private void reloadCategories()
-	{
-		categories = fSecurity.allForType(cCategory,UtilsSecurityCategory.Type.role.toString());
-	}
 	private void reloadRoles() throws UtilsNotFoundException
 	{
 		roles = fSecurity.allForCategory(cRole,cCategory,category.getCode());

@@ -6,10 +6,10 @@ import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.ConverterException;
 
-import net.sf.ahtutils.model.interfaces.with.EjbWithCode;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import net.sf.ahtutils.interfaces.model.with.code.EjbWithCode;
 
 public abstract class AbstractEjbCodeConverter <I extends EjbWithCode> implements Converter
 {    
