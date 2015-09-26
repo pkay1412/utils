@@ -22,10 +22,9 @@ import net.sf.ahtutils.doc.ofx.menu.OfxMenuTreeFactory;
 import net.sf.ahtutils.doc.ofx.security.list.OfxSecurityCategoryListFactory;
 import net.sf.ahtutils.doc.ofx.security.section.OfxSecurityRolesSectionFactory;
 import net.sf.ahtutils.doc.ofx.security.section.OfxSecurityUsecasesSectionFactory;
-import net.sf.ahtutils.doc.ofx.security.table.OfxViewTableFactory;
+import net.sf.ahtutils.doc.ofx.security.section.OfxSecurityViewsSectionFactory;
 import net.sf.ahtutils.exception.processing.UtilsConfigurationException;
 import net.sf.ahtutils.xml.access.Access;
-import net.sf.ahtutils.xml.access.Category;
 import net.sf.ahtutils.xml.navigation.Menu;
 import net.sf.ahtutils.xml.security.Security;
 import net.sf.ahtutils.xml.status.Translations;
@@ -44,6 +43,7 @@ public class LatexSecurityWriter extends AbstractDocumentationLatexWriter
 	private OfxSecurityCategoryListFactory ofSecurityCategoryList;
 	private OfxSecurityUsecasesSectionFactory ofUsecases;
 	private OfxSecurityRolesSectionFactory ofRoles;
+	private OfxSecurityViewsSectionFactory ofViews;
 	
 	private List<String> headerKeysViews;
 	
@@ -57,33 +57,13 @@ public class LatexSecurityWriter extends AbstractDocumentationLatexWriter
 		ofSecurityCategoryList = new OfxSecurityCategoryListFactory(config,langs,translations,cmm,dsm);
 		ofUsecases = new OfxSecurityUsecasesSectionFactory(config,langs,translations);
 		ofRoles = new OfxSecurityRolesSectionFactory(config,langs,translations);
+		ofViews = new OfxSecurityViewsSectionFactory(config,langs,translations);
 		
 		headerKeysViews = new ArrayList<String>();
 		headerKeysViews.add("auSecurityTableViewName");
 		headerKeysViews.add("auSecurityTableViewDescription");
 	}
-	
-	public void createViewTabs(String xmlFile) throws UtilsConfigurationException
-	{
-		logger.info("Creating view tables from "+xmlFile+" to LaTex");
-		try
-		{
-			Access access = JaxbUtil.loadJAXB(xmlFile, Access.class);
-			for(Category category : access.getCategory())
-			{
-				for(String lang : langs)
-				{
-					File f = new File(baseLatexDir,lang+"/"+dirTabs+"/views-"+category.getCode()+".tex");
-					OfxViewTableFactory fOfx = new OfxViewTableFactory(config,lang,translations);
-					String content = fOfx.buildLatexViewTable(category,headerKeysViews);
-					StringIO.writeTxt(f, content);
-				}
-			}
-		}
-		catch (FileNotFoundException e) {throw new UtilsConfigurationException(e.getMessage());}
-		catch (OfxAuthoringException e) {throw new UtilsConfigurationException(e.getMessage());}
-	}
-	
+		
 	public void writeMenuTrees(String xmlMenu, String xmlViews) throws UtilsConfigurationException
 	{
 		try
@@ -162,5 +142,11 @@ public class LatexSecurityWriter extends AbstractDocumentationLatexWriter
 	{
 		Section section = ofRoles.build(security);
 		ofxMlw.section(2,"/admin/security/actual/roles",section);
+	}
+	
+	public void views(Access security) throws UtilsConfigurationException, OfxAuthoringException, OfxConfigurationException, IOException
+	{
+		Section section = ofViews.build(security);
+		ofxMlw.section(2,"/admin/security/actual/views",section);
 	}
 }

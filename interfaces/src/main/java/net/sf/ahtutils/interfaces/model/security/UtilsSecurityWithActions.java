@@ -1,13 +1,13 @@
-package net.sf.ahtutils.model.interfaces.security;
+package net.sf.ahtutils.interfaces.model.security;
 
 import java.util.List;
 
 import net.sf.ahtutils.interfaces.model.status.UtilsDescription;
 import net.sf.ahtutils.interfaces.model.status.UtilsLang;
+import net.sf.ahtutils.interfaces.rest.security.UtilsSecurityAction;
 import net.sf.ahtutils.model.interfaces.idm.UtilsUser;
-import net.sf.ahtutils.model.interfaces.with.EjbWithId;
 
-public interface UtilsSecurityWithViews<L extends UtilsLang,
+public interface UtilsSecurityWithActions<L extends UtilsLang,
 						 		   D extends UtilsDescription, 
 						 		   C extends UtilsSecurityCategory<L,D,C,R,V,U,A,USER>,
 						 		   R extends UtilsSecurityRole<L,D,C,R,V,U,A,USER>,
@@ -15,8 +15,7 @@ public interface UtilsSecurityWithViews<L extends UtilsLang,
 						 		   U extends UtilsSecurityUsecase<L,D,C,R,V,U,A,USER>,
 						 		   A extends UtilsSecurityAction<L,D,C,R,V,U,A,USER>,
 						 		   USER extends UtilsUser<L,D,C,R,V,U,A,USER>>
-				extends EjbWithId
 {
-	public List<V> getViews();
-	public void setViews(List<V> views);
+	public List<A> getActions();
+	public void setActions(List<A> actions);
 }

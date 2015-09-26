@@ -1,7 +1,8 @@
-package net.sf.ahtutils.model.interfaces.security;
+package net.sf.ahtutils.interfaces.model.security;
 
 import net.sf.ahtutils.interfaces.model.status.UtilsDescription;
 import net.sf.ahtutils.interfaces.model.status.UtilsLang;
+import net.sf.ahtutils.interfaces.rest.security.UtilsSecurityAction;
 import net.sf.ahtutils.model.interfaces.idm.UtilsUser;
 import net.sf.ahtutils.model.interfaces.with.EjbWithId;
 

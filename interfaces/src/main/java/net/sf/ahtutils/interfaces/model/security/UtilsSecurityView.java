@@ -1,15 +1,15 @@
-package net.sf.ahtutils.model.interfaces.security;
+package net.sf.ahtutils.interfaces.model.security;
 
 import net.sf.ahtutils.interfaces.model.behaviour.EjbSaveable;
 import net.sf.ahtutils.interfaces.model.status.UtilsDescription;
 import net.sf.ahtutils.interfaces.model.status.UtilsLang;
-import net.sf.ahtutils.model.interfaces.crud.EjbRemoveable;
+import net.sf.ahtutils.interfaces.rest.security.UtilsSecurityAction;
 import net.sf.ahtutils.model.interfaces.idm.UtilsUser;
 import net.sf.ahtutils.model.interfaces.with.EjbWithCode;
 import net.sf.ahtutils.model.interfaces.with.EjbWithDescription;
 import net.sf.ahtutils.model.interfaces.with.EjbWithLang;
 
-public interface UtilsSecurityAction<L extends UtilsLang,
+public interface UtilsSecurityView<L extends UtilsLang,
 								   D extends UtilsDescription,
 								   C extends UtilsSecurityCategory<L,D,C,R,V,U,A,USER>,
 								   R extends UtilsSecurityRole<L,D,C,R,V,U,A,USER>,
@@ -17,8 +17,10 @@ public interface UtilsSecurityAction<L extends UtilsLang,
 								   U extends UtilsSecurityUsecase<L,D,C,R,V,U,A,USER>,
 								   A extends UtilsSecurityAction<L,D,C,R,V,U,A,USER>,
 								   USER extends UtilsUser<L,D,C,R,V,U,A,USER>>
-			extends EjbWithCode,EjbWithLang<L>,EjbWithDescription<D>,EjbSaveable,EjbRemoveable
+			extends EjbWithCode,EjbWithLang<L>,EjbWithDescription<D>,EjbSaveable,
+					UtilsSecurityWithCategory<L,D,C,R,V,U,A,USER>,
+					UtilsSecurityWithActions<L,D,C,R,V,U,A,USER>
 {
-	public V getView();
-	public void setView(V view);
+	public static final String extractId = "securityViews";
+	
 }

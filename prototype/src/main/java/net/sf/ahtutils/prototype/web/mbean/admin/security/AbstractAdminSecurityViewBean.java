@@ -10,14 +10,14 @@ import net.sf.ahtutils.exception.ejb.UtilsNotFoundException;
 import net.sf.ahtutils.factory.ejb.status.EjbDescriptionFactory;
 import net.sf.ahtutils.factory.ejb.status.EjbLangFactory;
 import net.sf.ahtutils.interfaces.facade.UtilsSecurityFacade;
+import net.sf.ahtutils.interfaces.model.security.UtilsSecurityCategory;
+import net.sf.ahtutils.interfaces.model.security.UtilsSecurityRole;
+import net.sf.ahtutils.interfaces.model.security.UtilsSecurityUsecase;
+import net.sf.ahtutils.interfaces.model.security.UtilsSecurityView;
 import net.sf.ahtutils.interfaces.model.status.UtilsDescription;
 import net.sf.ahtutils.interfaces.model.status.UtilsLang;
+import net.sf.ahtutils.interfaces.rest.security.UtilsSecurityAction;
 import net.sf.ahtutils.model.interfaces.idm.UtilsUser;
-import net.sf.ahtutils.model.interfaces.security.UtilsSecurityAction;
-import net.sf.ahtutils.model.interfaces.security.UtilsSecurityCategory;
-import net.sf.ahtutils.model.interfaces.security.UtilsSecurityRole;
-import net.sf.ahtutils.model.interfaces.security.UtilsSecurityUsecase;
-import net.sf.ahtutils.model.interfaces.security.UtilsSecurityView;
 import net.sf.ahtutils.web.mbean.util.AbstractLogMessage;
 
 import org.slf4j.Logger;
@@ -135,6 +135,7 @@ public class AbstractAdminSecurityViewBean <L extends UtilsLang,
 	public void saveView() throws UtilsConstraintViolationException, UtilsLockingException, UtilsNotFoundException
 	{
 		logger.info(AbstractLogMessage.saveEntity(view));
+		view.setCategory(fSecurity.find(cCategory, view.getCategory()));
 		view = fSecurity.save(view);
 		reloadViews();
 	}
