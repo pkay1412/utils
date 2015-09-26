@@ -20,6 +20,7 @@ import org.slf4j.LoggerFactory;
 import net.sf.ahtutils.doc.UtilsDocumentation;
 import net.sf.ahtutils.doc.ofx.menu.OfxMenuTreeFactory;
 import net.sf.ahtutils.doc.ofx.security.list.OfxSecurityCategoryListFactory;
+import net.sf.ahtutils.doc.ofx.security.section.OfxSecurityRolesSectionFactory;
 import net.sf.ahtutils.doc.ofx.security.section.OfxSecurityUsecasesSectionFactory;
 import net.sf.ahtutils.doc.ofx.security.table.OfxRoleTableFactory;
 import net.sf.ahtutils.doc.ofx.security.table.OfxViewTableFactory;
@@ -43,6 +44,7 @@ public class LatexSecurityWriter extends AbstractDocumentationLatexWriter
 		
 	private OfxSecurityCategoryListFactory ofSecurityCategoryList;
 	private OfxSecurityUsecasesSectionFactory ofUsecases;
+	private OfxSecurityRolesSectionFactory ofRoles;
 	
 	private List<String> headerKeysViews;
 	
@@ -55,6 +57,7 @@ public class LatexSecurityWriter extends AbstractDocumentationLatexWriter
 		
 		ofSecurityCategoryList = new OfxSecurityCategoryListFactory(config,langs,translations,cmm,dsm);
 		ofUsecases = new OfxSecurityUsecasesSectionFactory(config,langs,translations);
+		ofRoles = new OfxSecurityRolesSectionFactory(config,langs,translations);
 		
 		headerKeysViews = new ArrayList<String>();
 		headerKeysViews.add("auSecurityTableViewName");
@@ -199,6 +202,11 @@ public class LatexSecurityWriter extends AbstractDocumentationLatexWriter
 	{
 		Section section = ofUsecases.build(security);
 		ofxMlw.section(2,"/admin/security/actual/usecases",section);
-		
+	}
+	
+	public void roles(Security security) throws UtilsConfigurationException, OfxAuthoringException, OfxConfigurationException, IOException
+	{
+		Section section = ofRoles.build(security);
+		ofxMlw.section(2,"/admin/security/actual/roles",section);
 	}
 }

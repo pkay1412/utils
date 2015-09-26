@@ -21,7 +21,7 @@ public class UtilsLatexAdminDocumentationBuilder extends AbstractLatexDocumentat
 	
 	public static enum BackupCode {bPostgres}
 	
-	public static enum SecurityCode {sConceptIntroduction,secViews,secUsecases,secRoles,sActualUsecases}
+	public static enum SecurityCode {sConceptIntroduction,secViews,secUsecases,secRoles,sActualUsecases,sActualRoles}
 							 
 	public static enum InstallationCode {instIntroduction,instDebian,instJava,instJboss,instPostGis,instMySql,instMaven}
 	public static enum InstallationArchitecture {debian,debianSqueeze,debianWheezy,debianJessie,debianRaspberry,devJava7FX}
@@ -51,7 +51,8 @@ public class UtilsLatexAdminDocumentationBuilder extends AbstractLatexDocumentat
 		addConfig(SecurityCode.secViews.toString(),"ofx.aht-utils/administration/security/settings/views.xml","admin/security/settings/views");
 		addConfig(SecurityCode.secUsecases.toString(),"ofx.aht-utils/administration/security/settings/usecases.xml","admin/security/settings/usecases");
 		addConfig(SecurityCode.secRoles.toString(),"ofx.aht-utils/administration/security/settings/roles.xml","admin/security/settings/roles");
-		addConfig(SecurityCode.sActualUsecases.toString(),"ofx.aht-utils/administration/security/actual/usecases.xml","admin/security/include/actualk/roles");
+		addConfig(SecurityCode.sActualRoles.toString(),"ofx.aht-utils/administration/security/actual/roles.xml");
+		addConfig(SecurityCode.sActualUsecases.toString(),"ofx.aht-utils/administration/security/actual/usecases.xml");
 				
 		//Maintenance
 		addConfig(MaintenanceCode.mLoggingIntroduction.toString(),"ofx.aht-utils/administration/logging/introduction.xml","admin/system/logging/introduction");
