@@ -56,18 +56,21 @@ public class AbstractLatexDocumentationBuilder extends AbstractDocumentationLate
 		logger.error("Method applyConfigCodes() needs to be @Override");
 	}
 	
+	protected void addConfig(String code, String source){addConfig(code,source,null);}
 	protected void addConfig(String code, String source, String destination)
 	{
 		config.addProperty(code, source);
-		dstFiles.put(code, destination);
+		if(destination!=null){dstFiles.put(code, destination);}
 	}
+	
+	public <E extends Enum<E>> String getOfxResource(E code){return config.getString(code.toString());}
 	
 	protected void render(String code) throws UtilsConfigurationException, OfxConfigurationException{render(1,code);}
 	protected void render(int lvl, String code) throws UtilsConfigurationException, OfxConfigurationException{render(lvl,code,null);}
 	protected void render(String code,String classifier[]) throws UtilsConfigurationException, OfxConfigurationException{render(1,code,classifier);}
 	
-	public  <E extends Enum<E>> void renderE(int lvl, E code) throws UtilsConfigurationException, OfxConfigurationException{render(lvl,code.toString(),null);}
-	public  <E extends Enum<E>> void renderE(int lvl, E code, String classifier[]) throws UtilsConfigurationException, OfxConfigurationException{render(lvl,code.toString(),classifier);}
+	public <E extends Enum<E>> void renderE(int lvl, E code) throws UtilsConfigurationException, OfxConfigurationException{render(lvl,code.toString(),null);}
+	public <E extends Enum<E>> void renderE(int lvl, E code, String classifier[]) throws UtilsConfigurationException, OfxConfigurationException{render(lvl,code.toString(),classifier);}
 	protected void render(int lvl, String code,String classifier[]) throws UtilsConfigurationException, OfxConfigurationException
 	{
 		try

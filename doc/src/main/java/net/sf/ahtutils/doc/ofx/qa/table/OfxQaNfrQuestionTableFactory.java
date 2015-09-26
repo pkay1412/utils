@@ -32,7 +32,7 @@ import net.sf.exlp.exception.ExlpXpathNotUniqueException;
 
 public class OfxQaNfrQuestionTableFactory extends AbstractUtilsOfxDocumentationFactory
 {
-	final static Logger logger = LoggerFactory.getLogger(OfxQaFrSummaryTableFactory.class);
+	final static Logger logger = LoggerFactory.getLogger(OfxQaNfrQuestionTableFactory.class);
 	
 	private List<String> headerKeys;
 	

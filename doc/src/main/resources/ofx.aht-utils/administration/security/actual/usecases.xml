@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ofx:section xmlns:ofx="http://www.openfuxml.org"
+			 xmlns:l="http://www.openfuxml.org/list"
+			 xmlns:text="http://www.openfuxml.org/text"
+			 xmlns:media="http://www.openfuxml.org/media"
+			 xmlns:layout="http://www.openfuxml.org/layout"
+			 container="true">
+	
+	<ofx:paragraph>
+		All defined use cases in the system apply to categories which reflect the main menu structure of the system.
+		The use cases reflect daily work processes with the system and combine the access right to several pages and/or
+		the right to perform actions in a page. The detailed information of each use case in the categories summarized below are
+		described in the following sections.
+	</ofx:paragraph>
+	
+</ofx:section>

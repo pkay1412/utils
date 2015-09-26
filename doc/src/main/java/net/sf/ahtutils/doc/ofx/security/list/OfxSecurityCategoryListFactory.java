@@ -6,10 +6,10 @@ import java.io.StringWriter;
 import org.apache.commons.configuration.Configuration;
 import org.openfuxml.content.list.Item;
 import org.openfuxml.content.list.List;
-import org.openfuxml.content.list.Type;
 import org.openfuxml.content.ofx.Comment;
 import org.openfuxml.content.ofx.Paragraph;
 import org.openfuxml.exception.OfxAuthoringException;
+import org.openfuxml.factory.xml.list.OfxListFactory;
 import org.openfuxml.factory.xml.list.OfxListItemFactory;
 import org.openfuxml.factory.xml.ofx.content.XmlCommentFactory;
 import org.openfuxml.interfaces.DefaultSettingsManager;
@@ -79,7 +79,7 @@ public class OfxSecurityCategoryListFactory extends AbstractUtilsOfxDocumentatio
 		Comment comment = XmlCommentFactory.build();
 		OfxCommentBuilder.doNotModify(comment);
 		
-		List list = createList();
+		List list = OfxListFactory.unordered();
 		list.setComment(comment);
 		
 		for(Category category : lRc)
@@ -97,8 +97,8 @@ public class OfxSecurityCategoryListFactory extends AbstractUtilsOfxDocumentatio
 		Comment comment = XmlCommentFactory.build();
 		OfxCommentBuilder.doNotModify(comment);
 		
-		List list = createList();
-		list.setComment(comment);
+		List list = OfxListFactory.unordered();
+//		list.setComment(comment);
 		
 		for(net.sf.ahtutils.xml.security.Category category : categories)
 		{
@@ -108,50 +108,7 @@ public class OfxSecurityCategoryListFactory extends AbstractUtilsOfxDocumentatio
 		return list;
 	}
 	
-	private List createList()
-	{
-		Type type = new Type();
-		type.setOrdering("unordered");
-		
-		List list = new List();
-		list.setType(type);
-		
-		return list;
-	}
-	
-	private Item createItem(Category category) throws ExlpXpathNotFoundException, ExlpXpathNotUniqueException
-	{
-		String description,text;
-		
-		try
-		{
-			if(langs.length>1){logger.warn("Incorrect Assignment");}
-			Lang l = StatusXpath.getLang(category.getLangs(), langs[0]);
-			description = l.getTranslation();
-		}
-		catch (ExlpXpathNotFoundException e){description = e.getMessage();}
-		catch (ExlpXpathNotUniqueException e){description = e.getMessage();}
-		
-		try
-		{
-			if(langs.length>1){logger.warn("Incorrect Assignment");}
-			Description d = StatusXpath.getDescription(category.getDescriptions(), langs[0]);
-			text = d.getValue();
-		}
-		catch (ExlpXpathNotFoundException e){text = e.getMessage();}
-		catch (ExlpXpathNotUniqueException e){text = e.getMessage();}		
-		
-		Paragraph p = new Paragraph();
-		p.getContent().add(text);
-		
-		Item item = new Item();
-		item.setName(description);
-		item.getContent().add(p);
-		
-		return item;
-	}
-	
-	private Item createItem1(net.sf.ahtutils.xml.security.Category category) throws ExlpXpathNotFoundException, ExlpXpathNotUniqueException
+	@Deprecated private Item createItem(Category category) throws ExlpXpathNotFoundException, ExlpXpathNotUniqueException
 	{
 		String description,text;
 		

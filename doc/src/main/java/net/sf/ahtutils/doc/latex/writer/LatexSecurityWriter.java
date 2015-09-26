@@ -2,19 +2,25 @@ package net.sf.ahtutils.doc.latex.writer;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.commons.configuration.Configuration;
 import org.openfuxml.content.graph.Node;
+import org.openfuxml.content.ofx.Section;
 import org.openfuxml.exception.OfxAuthoringException;
+import org.openfuxml.exception.OfxConfigurationException;
 import org.openfuxml.interfaces.DefaultSettingsManager;
 import org.openfuxml.interfaces.media.CrossMediaManager;
+import org.openfuxml.renderer.latex.OfxMultiLangLatexWriter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import net.sf.ahtutils.doc.UtilsDocumentation;
 import net.sf.ahtutils.doc.ofx.menu.OfxMenuTreeFactory;
 import net.sf.ahtutils.doc.ofx.security.list.OfxSecurityCategoryListFactory;
+import net.sf.ahtutils.doc.ofx.security.section.OfxSecurityUsecasesSectionFactory;
 import net.sf.ahtutils.doc.ofx.security.table.OfxRoleTableFactory;
 import net.sf.ahtutils.doc.ofx.security.table.OfxViewTableFactory;
 import net.sf.ahtutils.exception.processing.UtilsConfigurationException;
@@ -30,10 +36,13 @@ public class LatexSecurityWriter extends AbstractDocumentationLatexWriter
 {	
 	final static Logger logger = LoggerFactory.getLogger(LatexSecurityWriter.class);
 	
+	private OfxMultiLangLatexWriter ofxMlw;
+	
 	private final static String dirTabs = "tab/security";
 	private final static String dirDescriptions = "description/security";
 		
 	private OfxSecurityCategoryListFactory ofSecurityCategoryList;
+	private OfxSecurityUsecasesSectionFactory ofUsecases;
 	
 	private List<String> headerKeysViews;
 	
@@ -41,7 +50,11 @@ public class LatexSecurityWriter extends AbstractDocumentationLatexWriter
 	{
 		super(config,translations,langs,cmm,dsm);
 		
+		File baseDir = new File(config.getString(UtilsDocumentation.keyBaseLatexDir));
+		ofxMlw = new OfxMultiLangLatexWriter(baseDir,langs,cmm,dsm);
+		
 		ofSecurityCategoryList = new OfxSecurityCategoryListFactory(config,langs,translations,cmm,dsm);
+		ofUsecases = new OfxSecurityUsecasesSectionFactory(config,langs,translations);
 		
 		headerKeysViews = new ArrayList<String>();
 		headerKeysViews.add("auSecurityTableViewName");
@@ -180,5 +193,12 @@ public class LatexSecurityWriter extends AbstractDocumentationLatexWriter
 			catch (FileNotFoundException e) {throw new UtilsConfigurationException(e.getMessage());}
 			catch (OfxAuthoringException e) {throw new UtilsConfigurationException(e.getMessage());}
 		}
+	}
+	
+	public void usecases(Security security) throws UtilsConfigurationException, OfxAuthoringException, OfxConfigurationException, IOException
+	{
+		Section section = ofUsecases.build(security);
+		ofxMlw.section(2,"/admin/security/actual/usecases",section);
+		
 	}
 }

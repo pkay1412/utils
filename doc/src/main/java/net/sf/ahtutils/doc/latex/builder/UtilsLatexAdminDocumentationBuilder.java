@@ -21,7 +21,7 @@ public class UtilsLatexAdminDocumentationBuilder extends AbstractLatexDocumentat
 	
 	public static enum BackupCode {bPostgres}
 	
-	public static enum SecurityCode {sConceptIntroduction,secViews,secUsecases,secRoles}
+	public static enum SecurityCode {sConceptIntroduction,secViews,secUsecases,secRoles,sActualUsecases}
 							 
 	public static enum InstallationCode {instIntroduction,instDebian,instJava,instJboss,instPostGis,instMySql,instMaven}
 	public static enum InstallationArchitecture {debian,debianSqueeze,debianWheezy,debianJessie,debianRaspberry,devJava7FX}
@@ -47,10 +47,11 @@ public class UtilsLatexAdminDocumentationBuilder extends AbstractLatexDocumentat
 	@Override protected void applyConfigCodes()
 	{
 		//Security
-		addConfig(SecurityCode.sConceptIntroduction.toString(),"ofx.aht-utils/administration/security/introduction.xml","admin/security/introduction");
-		addConfig(SecurityCode.secViews.toString(),"ofx.aht-utils/administration/security/views.xml","admin/security/views");
-		addConfig(SecurityCode.secUsecases.toString(),"ofx.aht-utils/administration/security/usecases.xml","admin/security/usecases");
-		addConfig(SecurityCode.secRoles.toString(),"ofx.aht-utils/administration/security/roles.xml","admin/security/roles");
+		addConfig(SecurityCode.sConceptIntroduction.toString(),"ofx.aht-utils/administration/security/concept/introduction.xml","admin/security/concept/introduction");
+		addConfig(SecurityCode.secViews.toString(),"ofx.aht-utils/administration/security/settings/views.xml","admin/security/settings/views");
+		addConfig(SecurityCode.secUsecases.toString(),"ofx.aht-utils/administration/security/settings/usecases.xml","admin/security/settings/usecases");
+		addConfig(SecurityCode.secRoles.toString(),"ofx.aht-utils/administration/security/settings/roles.xml","admin/security/settings/roles");
+		addConfig(SecurityCode.sActualUsecases.toString(),"ofx.aht-utils/administration/security/actual/usecases.xml","admin/security/include/actualk/roles");
 				
 		//Maintenance
 		addConfig(MaintenanceCode.mLoggingIntroduction.toString(),"ofx.aht-utils/administration/logging/introduction.xml","admin/system/logging/introduction");
