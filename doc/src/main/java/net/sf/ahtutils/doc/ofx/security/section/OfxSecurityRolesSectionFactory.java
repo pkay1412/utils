@@ -17,7 +17,7 @@ import net.sf.ahtutils.doc.DocumentationCommentBuilder;
 import net.sf.ahtutils.doc.latex.builder.UtilsLatexAdminDocumentationBuilder;
 import net.sf.ahtutils.doc.ofx.AbstractUtilsOfxDocumentationFactory;
 import net.sf.ahtutils.doc.ofx.security.list.OfxSecurityCategoryListFactory;
-import net.sf.ahtutils.doc.ofx.security.table.OfxSecurityUsecaseTableFactory;
+import net.sf.ahtutils.doc.ofx.security.table.OfxSecurityRoleTableFactory;
 import net.sf.ahtutils.doc.ofx.util.OfxMultiLangFactory;
 import net.sf.ahtutils.xml.security.Category;
 import net.sf.ahtutils.xml.security.Security;
@@ -29,14 +29,14 @@ public class OfxSecurityRolesSectionFactory extends AbstractUtilsOfxDocumentatio
 	final static Logger logger = LoggerFactory.getLogger(OfxSecurityRolesSectionFactory.class);
 
 	private OfxSecurityCategoryListFactory ofSecurityCategoryList;
-	private OfxSecurityUsecaseTableFactory ofSecurityUsecaseTable;
+	private OfxSecurityRoleTableFactory ofSecurityRoleTable;
 	private UtilsLatexAdminDocumentationBuilder adminDocBuilder;
 		
 	public OfxSecurityRolesSectionFactory(Configuration config, String[] langs, Translations translations)
 	{
 		super(config,langs,translations);
 		ofSecurityCategoryList = new OfxSecurityCategoryListFactory(config,langs,translations,null,null);
-		ofSecurityUsecaseTable = new OfxSecurityUsecaseTableFactory(config,langs,translations);
+		ofSecurityRoleTable = new OfxSecurityRoleTableFactory(config,langs,translations);
 		
 		adminDocBuilder = new UtilsLatexAdminDocumentationBuilder(config,translations,langs,null,null);
 	}
@@ -79,8 +79,8 @@ public class OfxSecurityRolesSectionFactory extends AbstractUtilsOfxDocumentatio
 		Section section = XmlSectionFactory.build();
 		section.getContent().add(OfxMultiLangFactory.title(langs, category.getLangs()));
 		
-//		section.getContent().addAll(OfxMultiLangFactory.paragraph(langs, category.getDescriptions()));
-//		section.getContent().add(ofSecurityUsecaseTable.build(category));
+		section.getContent().addAll(OfxMultiLangFactory.paragraph(langs, category.getDescriptions()));
+		section.getContent().add(ofSecurityRoleTable.build(category));
 		return section;
 	}
 }

@@ -22,7 +22,6 @@ import net.sf.ahtutils.doc.ofx.menu.OfxMenuTreeFactory;
 import net.sf.ahtutils.doc.ofx.security.list.OfxSecurityCategoryListFactory;
 import net.sf.ahtutils.doc.ofx.security.section.OfxSecurityRolesSectionFactory;
 import net.sf.ahtutils.doc.ofx.security.section.OfxSecurityUsecasesSectionFactory;
-import net.sf.ahtutils.doc.ofx.security.table.OfxRoleTableFactory;
 import net.sf.ahtutils.doc.ofx.security.table.OfxViewTableFactory;
 import net.sf.ahtutils.exception.processing.UtilsConfigurationException;
 import net.sf.ahtutils.xml.access.Access;
@@ -106,52 +105,7 @@ public class LatexSecurityWriter extends AbstractDocumentationLatexWriter
 		catch (FileNotFoundException e) {throw new UtilsConfigurationException(e.getMessage());}
 		catch (OfxAuthoringException e) {throw new UtilsConfigurationException(e.getMessage());}
 	}
-
-	@Deprecated
-	public void createRoleTabs(String xmlFile) throws UtilsConfigurationException
-	{
-		logger.info("Creating view tables from "+xmlFile+" to LaTex");
-		String[] headerKeysRoles = {"auSecurityTableRoleName","auSecurityTableRoleDescription"};
-		try
-		{
-			Access access = JaxbUtil.loadJAXB(xmlFile, Access.class);
-			for(Category category : access.getCategory())
-			{
-				for(String lang : langs)
-				{
-					File f = new File(baseLatexDir,lang+"/"+dirTabs+"/role-"+category.getCode()+".tex");
-					OfxRoleTableFactory fOfx = new OfxRoleTableFactory(config,lang,translations);
-					String content = fOfx.saveDescription(category,headerKeysRoles);
-					StringIO.writeTxt(f, content);
-				}
-			}
-		}
-		catch (FileNotFoundException e) {throw new UtilsConfigurationException(e.getMessage());}
-		catch (OfxAuthoringException e) {throw new UtilsConfigurationException(e.getMessage());}
-	}
-	
-	public void createRoleTabsSecurity(String xmlFile) throws UtilsConfigurationException
-	{
-		logger.info("Creating view tables from "+xmlFile+" to LaTex");
-		String[] headerKeysRoles = {"auSecurityTableRoleName","auSecurityTableRoleDescription"};
-		try
-		{
-			Security access = JaxbUtil.loadJAXB(xmlFile, Security.class);
-			for(net.sf.ahtutils.xml.security.Category category : access.getCategory())
-			{
-				for(String lang : langs)
-				{
-					File f = new File(baseLatexDir,lang+"/"+dirTabs+"/role-"+category.getCode()+".tex");
-					OfxRoleTableFactory fOfx = new OfxRoleTableFactory(config,lang,translations);
-					String content = fOfx.saveDescription(category,headerKeysRoles);
-					StringIO.writeTxt(f, content);
-				}
-			}
-		}
-		catch (FileNotFoundException e) {throw new UtilsConfigurationException(e.getMessage());}
-		catch (OfxAuthoringException e) {throw new UtilsConfigurationException(e.getMessage());}
-	}
-	
+		
 	@Deprecated
 	public void writeCategoryDescriptionsOld(String xmlFile, String extractId) throws UtilsConfigurationException
 	{
