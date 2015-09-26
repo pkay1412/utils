@@ -14,9 +14,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import net.sf.ahtutils.doc.ofx.menu.OfxMenuTreeFactory;
-import net.sf.ahtutils.doc.ofx.security.OfxCategoryListFactory;
-import net.sf.ahtutils.doc.ofx.security.OfxRoleTableFactory;
-import net.sf.ahtutils.doc.ofx.security.OfxViewTableFactory;
+import net.sf.ahtutils.doc.ofx.security.list.OfxSecurityCategoryListFactory;
+import net.sf.ahtutils.doc.ofx.security.table.OfxRoleTableFactory;
+import net.sf.ahtutils.doc.ofx.security.table.OfxViewTableFactory;
 import net.sf.ahtutils.exception.processing.UtilsConfigurationException;
 import net.sf.ahtutils.xml.access.Access;
 import net.sf.ahtutils.xml.access.Category;
@@ -33,11 +33,15 @@ public class LatexSecurityWriter extends AbstractDocumentationLatexWriter
 	private final static String dirTabs = "tab/security";
 	private final static String dirDescriptions = "description/security";
 		
+	private OfxSecurityCategoryListFactory ofSecurityCategoryList;
+	
 	private List<String> headerKeysViews;
 	
 	public LatexSecurityWriter(Configuration config, Translations translations,String[] langs, CrossMediaManager cmm, DefaultSettingsManager dsm)
 	{
 		super(config,translations,langs,cmm,dsm);
+		
+		ofSecurityCategoryList = new OfxSecurityCategoryListFactory(config,langs,translations,cmm,dsm);
 		
 		headerKeysViews = new ArrayList<String>();
 		headerKeysViews.add("auSecurityTableViewName");
@@ -144,7 +148,7 @@ public class LatexSecurityWriter extends AbstractDocumentationLatexWriter
 			{
 				logger.debug("Converting "+xmlFile+" to LaTex ("+f.getAbsolutePath());
 				Access access = JaxbUtil.loadJAXB(xmlFile, Access.class);
-				OfxCategoryListFactory latexFactory = new OfxCategoryListFactory(config,lang,translations,cmm,dsm);
+				OfxSecurityCategoryListFactory latexFactory = new OfxSecurityCategoryListFactory(config,lang,translations,cmm,dsm);
 				String content = latexFactory.saveDescription(access.getCategory());
 				StringIO.writeTxt(f, content);
 			}
@@ -153,18 +157,23 @@ public class LatexSecurityWriter extends AbstractDocumentationLatexWriter
 		}
 	}
 	
-	public void writeCategoryDescriptions(String xmlFile, String extractId) throws UtilsConfigurationException
+	public void categoryList(String xmlFile, String extractId) throws UtilsConfigurationException, FileNotFoundException
 	{
 		logger.info("Creating descriptions from "+xmlFile+" to LaTex");
+		
+		Security security = JaxbUtil.loadJAXB(xmlFile, Security.class);
+		org.openfuxml.content.list.List list = ofSecurityCategoryList.list(security.getCategory());
+		JaxbUtil.info(list);
+		
 		for(String lang : langs)
 		{
 			File f = new File(baseLatexDir,lang+"/"+dirDescriptions+"/"+extractId+".tex");
 			
 			try
 			{
-				logger.debug("Converting "+xmlFile+" to LaTex ("+f.getAbsolutePath());
+				logger.info("Converting "+xmlFile+" to LaTex ("+f.getAbsolutePath());
 				Security access = JaxbUtil.loadJAXB(xmlFile, Security.class);
-				OfxCategoryListFactory latexFactory = new OfxCategoryListFactory(config,lang,translations,cmm,dsm);
+				OfxSecurityCategoryListFactory latexFactory = new OfxSecurityCategoryListFactory(config,lang,translations,cmm,dsm);
 				String content = latexFactory.saveDescriptionSec(access.getCategory());
 				StringIO.writeTxt(f, content);
 			}

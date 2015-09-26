@@ -1,4 +1,4 @@
-package net.sf.ahtutils.doc.ofx.qa.test;
+package net.sf.ahtutils.doc.ofx.qa.table;
 
 import net.sf.ahtutils.doc.ofx.AbstractUtilsOfxDocumentationFactory;
 import net.sf.ahtutils.xml.qa.Test;
@@ -28,15 +28,15 @@ import org.openfuxml.trancoder.html.HtmlTranscoder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class OfxTableQaTestFactory extends AbstractUtilsOfxDocumentationFactory
+public class OfxQaFrTableFactory extends AbstractUtilsOfxDocumentationFactory
 {
-	final static Logger logger = LoggerFactory.getLogger(OfxTableQaTestFactory.class);
+	final static Logger logger = LoggerFactory.getLogger(OfxQaFrTableFactory.class);
 	
-	public OfxTableQaTestFactory(Configuration config, String lang, Translations translations)
+	public OfxQaFrTableFactory(Configuration config, String lang, Translations translations)
 	{
 		this(config,new String[] {lang},translations);
 	}
-	public OfxTableQaTestFactory(Configuration config, String[] langs, Translations translations)
+	public OfxQaFrTableFactory(Configuration config, String[] langs, Translations translations)
 	{
 		super(config,langs,translations);
 	}

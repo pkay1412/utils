@@ -18,10 +18,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import net.sf.ahtutils.doc.UtilsDocumentation;
-import net.sf.ahtutils.doc.ofx.qa.OfxQaInputSectionFactory;
-import net.sf.ahtutils.doc.ofx.qa.OfxQaGroupSectionFactory;
-import net.sf.ahtutils.doc.ofx.qa.OfxQaFrSectionFactory;
-import net.sf.ahtutils.doc.ofx.qa.OfxQaNfrSectionFactory;
+import net.sf.ahtutils.doc.ofx.qa.section.OfxQaFrSectionFactory;
+import net.sf.ahtutils.doc.ofx.qa.section.OfxQaGroupSectionFactory;
+import net.sf.ahtutils.doc.ofx.qa.section.OfxQaInputSectionFactory;
+import net.sf.ahtutils.doc.ofx.qa.section.OfxQaNfrSectionFactory;
 import net.sf.ahtutils.doc.ofx.qa.table.OfxQaAgreementTableFactory;
 import net.sf.ahtutils.doc.ofx.qa.table.OfxQaRoleTableFactory;
 import net.sf.ahtutils.doc.ofx.qa.table.OfxQaFrSummaryTableFactory;

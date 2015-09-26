@@ -1,16 +1,7 @@
-package net.sf.ahtutils.doc.ofx.security;
+package net.sf.ahtutils.doc.ofx.security.list;
 
 import java.io.IOException;
 import java.io.StringWriter;
-
-import net.sf.ahtutils.doc.ofx.AbstractUtilsOfxDocumentationFactory;
-import net.sf.ahtutils.xml.access.Category;
-import net.sf.ahtutils.xml.status.Description;
-import net.sf.ahtutils.xml.status.Lang;
-import net.sf.ahtutils.xml.status.Translations;
-import net.sf.ahtutils.xml.xpath.StatusXpath;
-import net.sf.exlp.exception.ExlpXpathNotFoundException;
-import net.sf.exlp.exception.ExlpXpathNotUniqueException;
 
 import org.apache.commons.configuration.Configuration;
 import org.openfuxml.content.list.Item;
@@ -19,6 +10,7 @@ import org.openfuxml.content.list.Type;
 import org.openfuxml.content.ofx.Comment;
 import org.openfuxml.content.ofx.Paragraph;
 import org.openfuxml.exception.OfxAuthoringException;
+import org.openfuxml.factory.xml.list.OfxListItemFactory;
 import org.openfuxml.factory.xml.ofx.content.XmlCommentFactory;
 import org.openfuxml.interfaces.DefaultSettingsManager;
 import org.openfuxml.interfaces.media.CrossMediaManager;
@@ -28,31 +20,40 @@ import org.openfuxml.util.OfxCommentBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class OfxCategoryListFactory extends AbstractUtilsOfxDocumentationFactory
+import net.sf.ahtutils.doc.ofx.AbstractUtilsOfxDocumentationFactory;
+import net.sf.ahtutils.doc.ofx.util.OfxMultiLangFactory;
+import net.sf.ahtutils.xml.access.Category;
+import net.sf.ahtutils.xml.status.Description;
+import net.sf.ahtutils.xml.status.Lang;
+import net.sf.ahtutils.xml.status.Translations;
+import net.sf.ahtutils.xml.xpath.StatusXpath;
+import net.sf.exlp.exception.ExlpXpathNotFoundException;
+import net.sf.exlp.exception.ExlpXpathNotUniqueException;
+
+public class OfxSecurityCategoryListFactory extends AbstractUtilsOfxDocumentationFactory
 {
-	final static Logger logger = LoggerFactory.getLogger(OfxCategoryListFactory.class);
+	final static Logger logger = LoggerFactory.getLogger(OfxSecurityCategoryListFactory.class);
 	
 	private CrossMediaManager cmm;
 	private DefaultSettingsManager dsm;
 	
-	public OfxCategoryListFactory(Configuration config, String lang, Translations translations,CrossMediaManager cmm,DefaultSettingsManager dsm)
+	public OfxSecurityCategoryListFactory(Configuration config, String lang, Translations translations,CrossMediaManager cmm,DefaultSettingsManager dsm)
 	{
 		this(config,new String[] {lang},translations,cmm,dsm);
 	}
-	public OfxCategoryListFactory(Configuration config,String[] langs, Translations translations,CrossMediaManager cmm,DefaultSettingsManager dsm)
+	public OfxSecurityCategoryListFactory(Configuration config,String[] langs, Translations translations,CrossMediaManager cmm,DefaultSettingsManager dsm)
 	{
 		super(config,langs,translations);
 		this.cmm=cmm;
 		this.dsm=dsm;
 	}
 	
-	@Deprecated
-	public String saveDescription(java.util.List<Category> lRc) throws OfxAuthoringException
+	@Deprecated public String saveDescription(java.util.List<Category> categories) throws OfxAuthoringException
 	{
 		try
 		{
 			LatexListRenderer renderer = new LatexListRenderer(cmm,dsm,false);
-			renderer.render(create(lRc),new LatexSectionRenderer(cmm,dsm,0,null));
+			renderer.render(create(categories),new LatexSectionRenderer(cmm,dsm,0,null));
 			StringWriter sw = new StringWriter();
 			renderer.write(sw);
 			return sw.toString();
@@ -60,12 +61,12 @@ public class OfxCategoryListFactory extends AbstractUtilsOfxDocumentationFactory
 		catch (IOException e) {throw new OfxAuthoringException(e.getMessage());}
 	}
 	
-	public String saveDescriptionSec(java.util.List<net.sf.ahtutils.xml.security.Category> lRc) throws OfxAuthoringException
+	public String saveDescriptionSec(java.util.List<net.sf.ahtutils.xml.security.Category> categories) throws OfxAuthoringException
 	{
 		try
 		{
 			LatexListRenderer renderer = new LatexListRenderer(cmm,dsm,false);
-			renderer.render(createSecurity(lRc),new LatexSectionRenderer(cmm,dsm,0,null));
+			renderer.render(list(categories),new LatexSectionRenderer(cmm,dsm,0,null));
 			StringWriter sw = new StringWriter();
 			renderer.write(sw);
 			return sw.toString();
@@ -73,7 +74,7 @@ public class OfxCategoryListFactory extends AbstractUtilsOfxDocumentationFactory
 		catch (IOException e) {throw new OfxAuthoringException(e.getMessage());}
 	}
 	
-	public List create(java.util.List<Category> lRc)
+	@Deprecated public List create(java.util.List<Category> lRc)
 	{
 		Comment comment = XmlCommentFactory.build();
 		OfxCommentBuilder.doNotModify(comment);
@@ -91,7 +92,7 @@ public class OfxCategoryListFactory extends AbstractUtilsOfxDocumentationFactory
 		return list;
 	}
 	
-	public List createSecurity(java.util.List<net.sf.ahtutils.xml.security.Category> lRc)
+	public List list(java.util.List<net.sf.ahtutils.xml.security.Category> categories)
 	{
 		Comment comment = XmlCommentFactory.build();
 		OfxCommentBuilder.doNotModify(comment);
@@ -99,11 +100,9 @@ public class OfxCategoryListFactory extends AbstractUtilsOfxDocumentationFactory
 		List list = createList();
 		list.setComment(comment);
 		
-		for(net.sf.ahtutils.xml.security.Category category : lRc)
+		for(net.sf.ahtutils.xml.security.Category category : categories)
 		{
-			try {list.getItem().add(createItem(category));}
-			catch (ExlpXpathNotFoundException e) {e.printStackTrace();}
-			catch (ExlpXpathNotUniqueException e) {e.printStackTrace();}
+			list.getItem().add(OfxListItemFactory.build(OfxMultiLangFactory.paragraph(langs, category.getLangs())));
 		}
 		
 		return list;
@@ -112,7 +111,7 @@ public class OfxCategoryListFactory extends AbstractUtilsOfxDocumentationFactory
 	private List createList()
 	{
 		Type type = new Type();
-		type.setDescription(true);
+		type.setOrdering("unordered");
 		
 		List list = new List();
 		list.setType(type);
@@ -152,7 +151,7 @@ public class OfxCategoryListFactory extends AbstractUtilsOfxDocumentationFactory
 		return item;
 	}
 	
-	private Item createItem(net.sf.ahtutils.xml.security.Category category) throws ExlpXpathNotFoundException, ExlpXpathNotUniqueException
+	private Item createItem1(net.sf.ahtutils.xml.security.Category category) throws ExlpXpathNotFoundException, ExlpXpathNotUniqueException
 	{
 		String description,text;
 		

@@ -1,11 +1,11 @@
-package net.sf.ahtutils.doc.ofx.qa;
+package net.sf.ahtutils.doc.ofx.qa.section;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import net.sf.ahtutils.doc.ofx.AbstractUtilsOfxDocumentationFactory;
 import net.sf.ahtutils.doc.ofx.qa.table.OfxQaFrResultTableFactory;
-import net.sf.ahtutils.doc.ofx.qa.test.OfxTableQaTestFactory;
+import net.sf.ahtutils.doc.ofx.qa.table.OfxQaFrTableFactory;
 import net.sf.ahtutils.xml.aht.Aht;
 import net.sf.ahtutils.xml.qa.Category;
 import net.sf.ahtutils.xml.qa.Expected;
@@ -35,7 +35,7 @@ public class OfxQaFrSectionFactory extends AbstractUtilsOfxDocumentationFactory
 {
 	final static Logger logger = LoggerFactory.getLogger(OfxQaFrSectionFactory.class);
 
-	private OfxTableQaTestFactory fOfxTableTest;
+	private OfxQaFrTableFactory fOfxTableTest;
 	private OfxQaFrResultTableFactory fOfxTableTestResult;
 	
 	private Aht conditions;
@@ -47,7 +47,7 @@ public class OfxQaFrSectionFactory extends AbstractUtilsOfxDocumentationFactory
 	public OfxQaFrSectionFactory(Configuration config, String[] langs, Translations translations)
 	{
 		super(config,langs,translations);
-		fOfxTableTest = new OfxTableQaTestFactory(config,langs,translations);
+		fOfxTableTest = new OfxQaFrTableFactory(config,langs,translations);
 		fOfxTableTestResult = new OfxQaFrResultTableFactory(config,langs,translations);
 	}
 	

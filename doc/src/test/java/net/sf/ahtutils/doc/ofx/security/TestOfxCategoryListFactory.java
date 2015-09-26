@@ -5,6 +5,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import net.sf.ahtutils.doc.ofx.security.list.OfxSecurityCategoryListFactory;
 import net.sf.ahtutils.test.AhtUtilsDocBootstrap;
 import net.sf.ahtutils.xml.access.Category;
 import net.sf.ahtutils.xml.access.TestXmlCategory;
@@ -34,7 +35,7 @@ public class TestOfxCategoryListFactory extends AbstractOfxSecurityFactoryTest
 	private static Configuration config;
 	private static Translations translations;
 	
-	private OfxCategoryListFactory factory;
+	private OfxSecurityCategoryListFactory factory;
 	
 	private final String lang ="de";
 	private Category rc1;
@@ -61,7 +62,7 @@ public class TestOfxCategoryListFactory extends AbstractOfxSecurityFactoryTest
 		super.initOfx();
 		
 		parentSection = new LatexSectionRenderer(cmm,dsm,0,null);
-		factory = new OfxCategoryListFactory(config,lang,translations,cmm,dsm);
+		factory = new OfxSecurityCategoryListFactory(config,lang,translations,cmm,dsm);
 		list = new ArrayList<Category>();
 		rc1 = createCategory(1);list.add(rc1);
 	}

@@ -1,4 +1,4 @@
-package net.sf.ahtutils.doc.ofx.qa;
+package net.sf.ahtutils.doc.ofx.qa.section;
 
 import java.io.Serializable;
 import java.util.ArrayList;

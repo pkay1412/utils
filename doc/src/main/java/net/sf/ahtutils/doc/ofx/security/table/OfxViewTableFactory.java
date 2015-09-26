@@ -1,4 +1,4 @@
-package net.sf.ahtutils.doc.ofx.security;
+package net.sf.ahtutils.doc.ofx.security.table;
 
 import java.io.IOException;
 import java.io.StringWriter;

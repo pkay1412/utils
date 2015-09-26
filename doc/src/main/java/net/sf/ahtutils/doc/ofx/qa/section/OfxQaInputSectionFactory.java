@@ -1,4 +1,4 @@
-package net.sf.ahtutils.doc.ofx.qa;
+package net.sf.ahtutils.doc.ofx.qa.section;
 
 import org.apache.commons.configuration.Configuration;
 import org.apache.commons.io.FilenameUtils;

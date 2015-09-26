@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import net.sf.ahtutils.doc.ofx.security.table.OfxViewTableFactory;
 import net.sf.ahtutils.test.AhtUtilsDocBootstrap;
 import net.sf.ahtutils.xml.access.TestXmlView;
 import net.sf.ahtutils.xml.access.View;
