@@ -28,4 +28,26 @@
             <xsd:attribute name="since" type="xsd:dateTime"/>
         </xsd:complexType>
     </xsd:element>
+    <xsd:element name="constraints">
+		<xsd:complexType>
+			<xsd:sequence>
+                <xsd:element ref="sys:constraintScope" maxOccurs="unbounded"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="constraintScope">
+		<xsd:complexType>
+			<xsd:sequence>
+                <xsd:element ref="sys:constraint" maxOccurs="unbounded"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="constraint">
+		<xsd:complexType>
+			<xsd:sequence>
+                <xsd:element ref="us:type" maxOccurs="1"/>
+            </xsd:sequence>
+            <xsd:attribute name="since" type="xsd:dateTime"/>
+        </xsd:complexType>
+    </xsd:element>
 </xsd:schema>

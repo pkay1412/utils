@@ -53,4 +53,28 @@ public class ObjectFactory {
         return new Request();
     }
 
+    /**
+     * Create an instance of {@link Constraints }
+     * 
+     */
+    public Constraints createConstraints() {
+        return new Constraints();
+    }
+
+    /**
+     * Create an instance of {@link ConstraintScope }
+     * 
+     */
+    public ConstraintScope createConstraintScope() {
+        return new ConstraintScope();
+    }
+
+    /**
+     * Create an instance of {@link Constraint }
+     * 
+     */
+    public Constraint createConstraint() {
+        return new Constraint();
+    }
+
 }

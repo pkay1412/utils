@@ -9,9 +9,15 @@ import org.junit.BeforeClass;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public abstract class AbstractXmlTest extends AbstractAhtUtilsXmlTest
+public abstract class AbstractXmlTest <T extends Object> extends AbstractAhtUtilsXmlTest<T>
 {
 	final static Logger logger = LoggerFactory.getLogger(AbstractXmlTest.class);
+	
+	public AbstractXmlTest(){this(null,null);}
+	public AbstractXmlTest(Class<T> cXml,String xmlDirSuffix)
+	{
+		super(cXml,xmlDirSuffix);
+	}
 	
 	@BeforeClass
     public static void initLogger()
