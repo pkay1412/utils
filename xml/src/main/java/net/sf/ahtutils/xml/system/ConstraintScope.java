@@ -29,6 +29,7 @@ import net.sf.ahtutils.xml.status.Langs;
  *         &lt;element ref="{http://ahtutils.aht-group.com/system}constraint" maxOccurs="unbounded"/&gt;
  *       &lt;/sequence&gt;
  *       &lt;attribute name="id" type="{http://www.w3.org/2001/XMLSchema}long" /&gt;
+ *       &lt;attribute name="category" type="{http://www.w3.org/2001/XMLSchema}string" /&gt;
  *       &lt;attribute name="code" type="{http://www.w3.org/2001/XMLSchema}string" /&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -57,6 +58,8 @@ public class ConstraintScope
     protected List<Constraint> constraint;
     @XmlAttribute(name = "id")
     protected Long id;
+    @XmlAttribute(name = "category")
+    protected String category;
     @XmlAttribute(name = "code")
     protected String code;
 
@@ -183,6 +186,34 @@ public class ConstraintScope
 
     public void unsetId() {
         this.id = null;
+    }
+
+    /**
+     * Gets the value of the category property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getCategory() {
+        return category;
+    }
+
+    /**
+     * Sets the value of the category property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setCategory(String value) {
+        this.category = value;
+    }
+
+    public boolean isSetCategory() {
+        return (this.category!= null);
     }
 
     /**

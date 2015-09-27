@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <aht:aht xmlns:us="http://ahtutils.aht-group.com/status" xmlns:aht="http://ahtutils.aht-group.com">
-    <us:status code="dbNn" position="1">
+    <us:status code="notNull" position="1">
         <us:langs>
             <us:lang key="de" translation="Not Null"/>
             <us:lang key="fr" translation="Not Null"/>

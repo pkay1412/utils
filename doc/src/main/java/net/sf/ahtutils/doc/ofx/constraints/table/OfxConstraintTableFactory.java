@@ -1,0 +1,118 @@
+package net.sf.ahtutils.doc.ofx.constraints.table;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.apache.commons.configuration.Configuration;
+import org.openfuxml.content.ofx.Comment;
+import org.openfuxml.content.table.Body;
+import org.openfuxml.content.table.Columns;
+import org.openfuxml.content.table.Content;
+import org.openfuxml.content.table.Head;
+import org.openfuxml.content.table.Row;
+import org.openfuxml.content.table.Specification;
+import org.openfuxml.content.table.Table;
+import org.openfuxml.exception.OfxAuthoringException;
+import org.openfuxml.factory.xml.layout.XmlFloatFactory;
+import org.openfuxml.factory.xml.ofx.content.XmlCommentFactory;
+import org.openfuxml.factory.xml.table.OfxCellFactory;
+import org.openfuxml.factory.xml.table.OfxColumnFactory;
+import org.openfuxml.util.OfxCommentBuilder;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import net.sf.ahtutils.doc.DocumentationCommentBuilder;
+import net.sf.ahtutils.doc.UtilsDocumentation;
+import net.sf.ahtutils.doc.ofx.AbstractUtilsOfxDocumentationFactory;
+import net.sf.ahtutils.doc.ofx.util.OfxMultiLangFactory;
+import net.sf.ahtutils.xml.aht.Aht;
+import net.sf.ahtutils.xml.status.Translations;
+import net.sf.ahtutils.xml.system.Constraint;
+import net.sf.ahtutils.xml.system.ConstraintScope;
+
+public class OfxConstraintTableFactory extends AbstractUtilsOfxDocumentationFactory
+{
+	final static Logger logger = LoggerFactory.getLogger(OfxConstraintTableFactory.class);
+	private static String keyCaptionPrefix = "auTableQmAgreement";
+	
+	private List<String> headerKeys;
+	
+	@SuppressWarnings("unused")
+	private String imagePathPrefix;
+	public void setImagePathPrefix(String imagePathPrefix) {this.imagePathPrefix = imagePathPrefix;}
+	
+	private Aht constraintTypes;
+	
+	public OfxConstraintTableFactory(Configuration config, String lang, Translations translations)
+	{
+		this(config,new String[] {lang},translations);
+	}
+	public OfxConstraintTableFactory(Configuration config, String[] langs, Translations translations)
+	{
+		super(config,langs,translations);
+		
+		headerKeys = new ArrayList<String>();
+		headerKeys.add("auTableConstraintType");
+		headerKeys.add("auTableConstraintAttribute");
+	}
+	
+	public Table build(ConstraintScope scope) throws OfxAuthoringException
+	{
+		Table table = new Table();
+		table.setId("table.constraints."+scope.getCategory()+"."+scope.getCode());
+		table.setSpecification(createSpecifications());
+		
+		table.setTitle(OfxMultiLangFactory.title(langs,scope.getLangs()));
+		
+		Comment comment = XmlCommentFactory.build();
+		OfxCommentBuilder.fixedId(comment, table.getId());
+		DocumentationCommentBuilder.translationKeys(comment,config,UtilsDocumentation.keyTranslationFile);
+		DocumentationCommentBuilder.tableHeaders(comment,headerKeys);
+		DocumentationCommentBuilder.tableKey(comment,keyCaptionPrefix,"Table Caption Prefix");
+		OfxCommentBuilder.doNotModify(comment);
+		table.setComment(comment);
+		
+		table.setContent(createContent(scope));
+		
+		return table;
+	}
+	
+	private Specification createSpecifications()
+	{
+		Columns cols = new Columns();
+		cols.getColumn().add(OfxColumnFactory.flex(20,true));
+		cols.getColumn().add(OfxColumnFactory.flex(80));
+			
+		Specification specification = new Specification();
+		specification.setColumns(cols);
+		specification.setFloat(XmlFloatFactory.build(false));
+		
+		return specification;
+	}
+	
+	private Content createContent(ConstraintScope scope)
+	{
+		Head head = new Head();
+		head.getRow().add(createHeaderRow(headerKeys));
+		
+		Body body = new Body();
+		for(Constraint c : scope.getConstraint())
+		{
+			body.getRow().add(createRow(c));
+		}
+		
+		Content content = new Content();
+		content.getBody().add(body);
+		content.setHead(head);
+		
+		return content;
+	}
+	
+	private Row createRow(Constraint c)
+	{
+		Row row = new Row();
+		row.getCell().add(OfxMultiLangFactory.cell(langs, c.getType().getCode(), constraintTypes));
+		row.getCell().add(OfxCellFactory.createParagraphCell(""));
+		return row;
+	}	
+}
