@@ -49,7 +49,7 @@ public class AbstractAdminSecurityViewBean <L extends UtilsLang,
 	
 	public void initSuper(final Class<L> cLang, final Class<D> cDescription, final Class<C> cCategory, final Class<R> cRole, final Class<V> cView, final Class<U> cUsecase, final Class<A> cAction, final Class<USER> cUser, String[] langs)
 	{
-		categoryType = UtilsSecurityCategory.Type.usecase;
+		categoryType = UtilsSecurityCategory.Type.view;
 		initSecuritySuper(cLang,cDescription,cCategory,cRole,cView,cUsecase,cAction,cUser,langs);		
 	}
 	

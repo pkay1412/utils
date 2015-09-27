@@ -21,13 +21,13 @@ import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotNull;
 
+import net.sf.ahtutils.interfaces.model.crud.EjbPersistable;
+import net.sf.ahtutils.interfaces.model.crud.EjbRemoveable;
 import net.sf.ahtutils.interfaces.model.security.UtilsSecurityRole;
 import net.sf.ahtutils.interfaces.model.with.code.EjbWithCode;
 import net.sf.ahtutils.model.ejb.status.AhtUtilsDescription;
 import net.sf.ahtutils.model.ejb.status.AhtUtilsLang;
 import net.sf.ahtutils.model.ejb.user.AhtUtilsUser;
-import net.sf.ahtutils.model.interfaces.crud.EjbPersistable;
-import net.sf.ahtutils.model.interfaces.crud.EjbRemoveable;
 import net.sf.ahtutils.model.qualifier.EjbErNode;
 
 @Entity
@@ -44,12 +44,22 @@ public class AhtUtilsSecurityRole implements EjbWithCode,Serializable,EjbRemovea
 	
 	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long id;
+	public long getId() {return id;}
+	public void setId(long id) {this.id = id;}
 	
 	@NotNull @ManyToOne
 	private AhtUtilsSecurityCategory category;
+	public AhtUtilsSecurityCategory getCategory() {return category;}
+	public void setCategory(AhtUtilsSecurityCategory category) {this.category = category;}
 	
 	@NotNull
 	private String code;
+	public String getCode() {return code;}
+	public void setCode(String code) {this.code = code;}
+	
+	private int position;
+	@Override public int getPosition() {return position;}
+	@Override public void setPosition(int position) {this.position = position;}
 	
 	@OneToMany(cascade = CascadeType.ALL, fetch=FetchType.EAGER)
 	@MapKey(name = "lkey")
@@ -78,14 +88,11 @@ public class AhtUtilsSecurityRole implements EjbWithCode,Serializable,EjbRemovea
 	
 	//******************************************************************************
 	
-	public long getId() {return id;}
-	public void setId(long id) {this.id = id;}
+
 	
-	public AhtUtilsSecurityCategory getCategory() {return category;}
-	public void setCategory(AhtUtilsSecurityCategory category) {this.category = category;}
+
 	
-	public String getCode() {return code;}
-	public void setCode(String code) {this.code = code;}
+
 		
 	public List<AhtUtilsSecurityView> getViews() {if(views==null){views = new ArrayList<AhtUtilsSecurityView>();}return views;}
 	public void setViews(List<AhtUtilsSecurityView> views) {this.views = views;}

@@ -1,6 +1,6 @@
 package net.sf.ahtutils.factory.ejb.util;
 
-import net.sf.ahtutils.model.interfaces.UtilsProperty;
+import net.sf.ahtutils.interfaces.model.util.UtilsProperty;
 import net.sf.ahtutils.xml.utils.Property;
 
 import org.slf4j.Logger;

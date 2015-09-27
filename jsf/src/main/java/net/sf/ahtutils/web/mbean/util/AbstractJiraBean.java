@@ -7,7 +7,7 @@ import java.util.Map;
 import net.sf.ahtutils.controller.interfaces.mbean.JiraConfig;
 import net.sf.ahtutils.exception.ejb.UtilsNotFoundException;
 import net.sf.ahtutils.interfaces.facade.UtilsFacade;
-import net.sf.ahtutils.model.interfaces.UtilsProperty;
+import net.sf.ahtutils.interfaces.model.util.UtilsProperty;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

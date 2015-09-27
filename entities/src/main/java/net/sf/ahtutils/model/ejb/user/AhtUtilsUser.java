@@ -17,6 +17,8 @@ import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotNull;
 
+import net.sf.ahtutils.interfaces.model.crud.EjbPersistable;
+import net.sf.ahtutils.interfaces.model.crud.EjbRemoveable;
 import net.sf.ahtutils.model.ejb.security.AhtUtilsSecurityAction;
 import net.sf.ahtutils.model.ejb.security.AhtUtilsSecurityCategory;
 import net.sf.ahtutils.model.ejb.security.AhtUtilsSecurityRole;
@@ -24,8 +26,6 @@ import net.sf.ahtutils.model.ejb.security.AhtUtilsSecurityUsecase;
 import net.sf.ahtutils.model.ejb.security.AhtUtilsSecurityView;
 import net.sf.ahtutils.model.ejb.status.AhtUtilsDescription;
 import net.sf.ahtutils.model.ejb.status.AhtUtilsLang;
-import net.sf.ahtutils.model.interfaces.crud.EjbPersistable;
-import net.sf.ahtutils.model.interfaces.crud.EjbRemoveable;
 import net.sf.ahtutils.model.interfaces.idm.UtilsUser;
 import net.sf.ahtutils.model.interfaces.with.EjbWithId;
 import net.sf.ahtutils.model.qualifier.EjbErNode;

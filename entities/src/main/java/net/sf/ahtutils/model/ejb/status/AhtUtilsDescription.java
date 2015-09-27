@@ -11,8 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
+import net.sf.ahtutils.interfaces.model.crud.EjbRemoveable;
 import net.sf.ahtutils.interfaces.model.status.UtilsDescription;
-import net.sf.ahtutils.model.interfaces.crud.EjbRemoveable;
 
 @Entity
 @Table(name = "UtilsLang")

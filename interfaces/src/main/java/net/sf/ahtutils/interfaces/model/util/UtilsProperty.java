@@ -1,4 +1,4 @@
-package net.sf.ahtutils.model.interfaces;
+package net.sf.ahtutils.interfaces.model.util;
 
 import net.sf.ahtutils.interfaces.model.behaviour.EjbSaveable;
 
