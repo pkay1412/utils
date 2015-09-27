@@ -27,6 +27,8 @@ public class LatexStatusWriter extends AbstractDocumentationLatexWriter
 {	
 	final static Logger logger = LoggerFactory.getLogger(LatexStatusWriter.class);
 	
+	public static String systemConstraintsType = "db.aht-utils/system/constraints/type.xml";
+	
 	private OfxMultiLangLatexWriter ofxMlw;
 	private UtilsDbXmlSeedUtil seedUtil;
 	

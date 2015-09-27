@@ -37,7 +37,6 @@ public class LatexSecurityWriter extends AbstractDocumentationLatexWriter
 	
 	private OfxMultiLangLatexWriter ofxMlw;
 	
-	private final static String dirTabs = "tab/security";
 	private final static String dirDescriptions = "description/security";
 		
 	private OfxSecurityCategoryListFactory ofSecurityCategoryList;

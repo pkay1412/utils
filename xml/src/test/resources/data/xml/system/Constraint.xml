@@ -1,2 +1,4 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<sys:constraint xmlns:s="http://ahtutils.aht-group.com/status" xmlns:sec="http://ahtutils.aht-group.com/security" xmlns:sys="http://ahtutils.aht-group.com/system"/>
+<sys:constraint xmlns:s="http://ahtutils.aht-group.com/status" xmlns:sec="http://ahtutils.aht-group.com/security" xmlns:sys="http://ahtutils.aht-group.com/system">
+    <s:type id="123" key="myKey" code="myCode" group="myGroup" label="myLabel" visible="true" image="test/green.png" position="1"/>
+</sys:constraint>
