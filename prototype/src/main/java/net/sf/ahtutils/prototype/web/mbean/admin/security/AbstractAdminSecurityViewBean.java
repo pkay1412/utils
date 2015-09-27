@@ -126,4 +126,16 @@ public class AbstractAdminSecurityViewBean <L extends UtilsLang,
 		fSecurity.rm(action);
 		action=null;
 	}
+	
+	protected void reorderViews() throws UtilsConstraintViolationException, UtilsLockingException
+	{
+		logger.info("updateOrder "+views.size());
+		int i=1;
+		for(V v : views)
+		{
+			v.setPosition(i);
+			fSecurity.update(v);
+			i++;
+		}
+	}
 }

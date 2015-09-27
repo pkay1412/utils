@@ -157,4 +157,17 @@ public class AbstractAdminSecurityUsecaseBean <L extends UtilsLang,
 			selectUsecase();
 		}
 	}
+	
+	//Order
+	protected void reorderUsecases() throws UtilsConstraintViolationException, UtilsLockingException
+	{
+		logger.info("updateOrder "+usecases.size());
+		int i=1;
+		for(U u : usecases)
+		{
+			u.setPosition(i);
+			fSecurity.update(u);
+			i++;
+		}
+	}
 }

@@ -199,4 +199,17 @@ public class AbstractAdminSecurityRoleBean <L extends UtilsLang,
 			selectRole();
 		}
 	}
+	
+	//Order
+	protected void reorderRoles() throws UtilsConstraintViolationException, UtilsLockingException
+	{
+		logger.info("updateOrder "+roles.size());
+		int i=1;
+		for(R r : roles)
+		{
+			r.setPosition(i);
+			fSecurity.update(r);
+			i++;
+		}
+	}
 }

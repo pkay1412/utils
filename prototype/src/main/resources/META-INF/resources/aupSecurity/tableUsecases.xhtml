@@ -15,7 +15,7 @@
 	</composite:interface>
 	
 	<composite:implementation>
-		<p:dataTable var="u" value="#{cc.attrs.bean.usecases}"
+		<p:dataTable var="u" value="#{cc.attrs.bean.usecases}" draggableRows="true"
 			rendered="#{not empty cc.attrs.bean.category}"
 			selection="#{cc.attrs.bean.usecase}" selectionMode="single" rowKey="#{u.id}">
 			<f:facet name="header">
@@ -23,7 +23,11 @@
 					<aht:icon type="add" listener="#{cc.attrs.bean.addUsecase()}" update="#{cc.attrs.update}"/>
 				</aht:pfDataTableHeader>
 			</f:facet>
-			<p:ajax event="rowSelect" update="#{cc.attrs.update}" listener="#{cc.attrs.bean.selectUsecase}"/>  
+			<p:ajax event="rowSelect" update="#{cc.attrs.update}" listener="#{cc.attrs.bean.selectUsecase}"/>
+			<p:ajax event="rowReorder" listener="#{cc.attrs.bean.reorderUsecases()}" update="@form"/>
+			<p:column>  
+				<h:outputText value="#{u.position}" />  
+            </p:column>
             <p:column headerText="#{msg.aupSecurityUsecase}">  
 				<h:outputText value="#{u.name[userBean.localeCode].lang}" />  
             </p:column>
