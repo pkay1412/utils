@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<sys:constraintAttribute xmlns:s="http://ahtutils.aht-group.com/status" xmlns:sys="http://ahtutils.aht-group.com/system" class="java.lang.String" attribute="myAttribute" type="Date"/>

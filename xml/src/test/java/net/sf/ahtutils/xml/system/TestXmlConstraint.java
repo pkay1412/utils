@@ -20,6 +20,7 @@ public class TestXmlConstraint extends AbstractXmlSystemTest<Constraint>
     	if(withChilds)
     	{
     		xml.setType(TestXmlType.create(false));
+    		xml.getConstraintAttribute().add(TestXmlConstraintAttribute.create(false));xml.getConstraintAttribute().add(TestXmlConstraintAttribute.create(false));
     	}
     	
     	return xml;

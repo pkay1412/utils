@@ -32,6 +32,7 @@
 		<xsd:complexType>
 			<xsd:sequence>
                 <xsd:element ref="sys:constraintScope" maxOccurs="unbounded"/>
+                <xsd:element ref="sys:constraintAttribute" maxOccurs="unbounded"/>
             </xsd:sequence>
         </xsd:complexType>
     </xsd:element>
@@ -51,8 +52,21 @@
 		<xsd:complexType>
 			<xsd:sequence>
                 <xsd:element ref="us:type" maxOccurs="1"/>
+                <xsd:element ref="us:langs" maxOccurs="1"/>
+				<xsd:element ref="us:descriptions" maxOccurs="1"/>
+                <xsd:element ref="sys:constraintAttribute" maxOccurs="unbounded"/>
             </xsd:sequence>
             <xsd:attribute name="since" type="xsd:dateTime"/>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="constraintAttribute">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="us:langs" maxOccurs="1"/>
+				<xsd:element ref="us:descriptions" maxOccurs="1"/>
+            </xsd:sequence>
+            <xsd:attribute name="class" type="xsd:string"/>
+            <xsd:attribute name="attribute" type="xsd:string"/>
         </xsd:complexType>
     </xsd:element>
 </xsd:schema>

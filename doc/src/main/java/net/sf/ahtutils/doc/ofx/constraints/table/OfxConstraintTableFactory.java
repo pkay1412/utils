@@ -42,18 +42,16 @@ public class OfxConstraintTableFactory extends AbstractUtilsOfxDocumentationFact
 	public void setImagePathPrefix(String imagePathPrefix) {this.imagePathPrefix = imagePathPrefix;}
 	
 	private Aht constraintTypes;
+	public void setConstraintTypes(Aht constraintTypes) {this.constraintTypes = constraintTypes;}
 	
-	public OfxConstraintTableFactory(Configuration config, String lang, Translations translations)
-	{
-		this(config,new String[] {lang},translations);
-	}
 	public OfxConstraintTableFactory(Configuration config, String[] langs, Translations translations)
 	{
 		super(config,langs,translations);
 		
 		headerKeys = new ArrayList<String>();
 		headerKeys.add("auTableConstraintType");
-		headerKeys.add("auTableConstraintAttribute");
+//		headerKeys.add("auTableConstraintAttribute");
+		headerKeys.add("auTableConstraintDescription");
 	}
 	
 	public Table build(ConstraintScope scope) throws OfxAuthoringException
@@ -81,7 +79,8 @@ public class OfxConstraintTableFactory extends AbstractUtilsOfxDocumentationFact
 	{
 		Columns cols = new Columns();
 		cols.getColumn().add(OfxColumnFactory.flex(20,true));
-		cols.getColumn().add(OfxColumnFactory.flex(80));
+//		cols.getColumn().add(OfxColumnFactory.flex(20,true));
+		cols.getColumn().add(OfxColumnFactory.flex(60));
 			
 		Specification specification = new Specification();
 		specification.setColumns(cols);
@@ -112,7 +111,8 @@ public class OfxConstraintTableFactory extends AbstractUtilsOfxDocumentationFact
 	{
 		Row row = new Row();
 		row.getCell().add(OfxMultiLangFactory.cell(langs, c.getType().getCode(), constraintTypes));
-		row.getCell().add(OfxCellFactory.createParagraphCell(""));
+//		row.getCell().add(OfxCellFactory.createParagraphCell(""));
+		row.getCell().add(OfxMultiLangFactory.cell(langs, c.getDescriptions()));
 		return row;
 	}	
 }
