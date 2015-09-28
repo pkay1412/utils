@@ -77,4 +77,12 @@ public class ObjectFactory {
         return new Constraint();
     }
 
+    /**
+     * Create an instance of {@link ConstraintAttribute }
+     * 
+     */
+    public ConstraintAttribute createConstraintAttribute() {
+        return new ConstraintAttribute();
+    }
+
 }

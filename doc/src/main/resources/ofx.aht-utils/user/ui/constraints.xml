@@ -9,9 +9,42 @@
 	<ofx:title lang="en">Constraints and Validity Checks</ofx:title>
 	
 	<ofx:paragraph lang="en">
-		Constraints and Validity Checks
+		The aspect of plausibility checks and data constrains is fundamental in software development.
+		In this information system the mechanisms to ensure the validation and consistence of data are technically realized on different levels.
+	</ofx:paragraph>
+	
+	<l:list>
+	    <l:type ordering="unordered"/>
+	    
+	    <l:item>
+	    	<ofx:paragraph lang="en">
+				The <text:emphasis italic="true">data integrity constraints</text:emphasis> are located on database level and enforce the referential integrity of data.
+				E.g. it's not allowed to delete an object which is used somewhere else.
+			</ofx:paragraph>
+	    </l:item>
+	    <l:item>
+	    	<ofx:paragraph lang="en">
+				The <text:emphasis italic="true">data type constraints</text:emphasis> are located in the business logic and ensure that the entered data types are correct.
+				The system is checking e.g. that a amount is a decimal number and not a text string.
+			</ofx:paragraph>
+	    </l:item>
+	    <l:item>
+	    	<ofx:paragraph lang="en">
+				 The  <text:emphasis italic="true">plausibility checks</text:emphasis>
+				 (e.g. that a national ID needs to start with 1 and requires 16 digits or that a real start date should never be prior to the planned start date)
+				 are located at the application logic.
+			</ofx:paragraph>
+	    </l:item>
+	</l:list>
+	
+	<ofx:paragraph lang="en">
+		In all cases, the user interface will inform the end-user, if plausibility checks fail or any constraint might be violated. 
+		The constraints are documented in this manual to enhance the understanding of the user for the internal processes of the system.
+		All of these constraints result in a set of different constraint types relevant for the user, the different types are summarized
 		in Table <ofx:reference target="table.status.system.constraints.type"/>.
 	</ofx:paragraph>
+	
+
 	
 	<ofx:include lang="en">en/table/status/system/constraints/type</ofx:include>
 	

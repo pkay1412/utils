@@ -3,10 +3,8 @@ package net.sf.ahtutils.doc.latex.writer;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.List;
 
 import org.apache.commons.configuration.Configuration;
-import org.apache.commons.io.FilenameUtils;
 import org.openfuxml.content.ofx.Section;
 import org.openfuxml.exception.OfxAuthoringException;
 import org.openfuxml.exception.OfxConfigurationException;
@@ -18,6 +16,7 @@ import org.slf4j.LoggerFactory;
 
 import net.sf.ahtutils.doc.UtilsDocumentation;
 import net.sf.ahtutils.doc.ofx.constraints.section.OfxConstraintScopeSectionFactory;
+import net.sf.ahtutils.xml.aht.Aht;
 import net.sf.ahtutils.xml.status.Translations;
 import net.sf.ahtutils.xml.system.ConstraintScope;
 import net.sf.ahtutils.xml.system.Constraints;
@@ -31,8 +30,6 @@ public class LatexConstraintWriter extends AbstractDocumentationLatexWriter
 		
 	private OfxConstraintScopeSectionFactory ofConstraint;
 	
-	private List<String> headerKeysViews;
-	
 	public LatexConstraintWriter(Configuration config, Translations translations,String[] langs, CrossMediaManager cmm, DefaultSettingsManager dsm)
 	{
 		super(config,translations,langs,cmm,dsm);
@@ -41,6 +38,8 @@ public class LatexConstraintWriter extends AbstractDocumentationLatexWriter
 		ofxMlw = new OfxMultiLangLatexWriter(baseDir,langs,cmm,dsm);
 		
 		ofConstraint = new OfxConstraintScopeSectionFactory(config,langs,translations);
+		try{ofConstraint.setConstraintTypes(JaxbUtil.loadJAXB(LatexStatusWriter.systemConstraintsType, Aht.class));}
+		catch (FileNotFoundException e) {e.printStackTrace();}
 		
 	}
 	

@@ -2,4 +2,6 @@
 <sys:constraints xmlns:s="http://ahtutils.aht-group.com/status" xmlns:sec="http://ahtutils.aht-group.com/security" xmlns:sys="http://ahtutils.aht-group.com/system">
     <sys:constraintScope id="123" category="myCategory" code="myCode"/>
     <sys:constraintScope id="123" category="myCategory" code="myCode"/>
+    <sys:constraintAttribute class="java.lang.String" attribute="myAttribute" type="Date"/>
+    <sys:constraintAttribute class="java.lang.String" attribute="myAttribute" type="Date"/>
 </sys:constraints>

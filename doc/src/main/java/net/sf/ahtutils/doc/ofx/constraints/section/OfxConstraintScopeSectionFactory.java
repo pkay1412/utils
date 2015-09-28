@@ -17,6 +17,7 @@ import org.slf4j.LoggerFactory;
 import net.sf.ahtutils.doc.ofx.AbstractUtilsOfxDocumentationFactory;
 import net.sf.ahtutils.doc.ofx.constraints.table.OfxConstraintTableFactory;
 import net.sf.ahtutils.doc.ofx.util.OfxMultiLangFactory;
+import net.sf.ahtutils.xml.aht.Aht;
 import net.sf.ahtutils.xml.status.Translations;
 import net.sf.ahtutils.xml.system.ConstraintScope;
 
@@ -26,6 +27,8 @@ public class OfxConstraintScopeSectionFactory extends AbstractUtilsOfxDocumentat
 
 	private OfxConstraintTableFactory ofTable;
 		
+	public void setConstraintTypes(Aht constraintTypes) {ofTable.setConstraintTypes(constraintTypes);}
+	
 	public OfxConstraintScopeSectionFactory(Configuration config, String[] langs, Translations translations)
 	{
 		super(config,langs,translations);

@@ -18,8 +18,8 @@ public class TestXmlConstraints extends AbstractXmlSystemTest<Constraints>
 
     	if(withChilds)
     	{
-    		xml.getConstraintScope().add(TestXmlConstraintScope.create(false));
-    		xml.getConstraintScope().add(TestXmlConstraintScope.create(false));
+    		xml.getConstraintScope().add(TestXmlConstraintScope.create(false));xml.getConstraintScope().add(TestXmlConstraintScope.create(false));
+    		xml.getConstraintAttribute().add(TestXmlConstraintAttribute.create(false));xml.getConstraintAttribute().add(TestXmlConstraintAttribute.create(false));
     	}
     	
     	return xml;

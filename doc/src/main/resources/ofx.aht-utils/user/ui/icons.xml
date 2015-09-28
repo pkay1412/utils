@@ -6,13 +6,13 @@
 			 xmlns:text="http://www.openfuxml.org/text"
 			 xmlns:l="http://www.openfuxml.org/list"
 		id="section.user.ui.icons">
-	<ofx:title lang="en">Icons</ofx:title>
+	<ofx:title lang="en">Symbols and Meanings</ofx:title>
 	
 	<ofx:paragraph lang="en">
-		A computer icon is a pictogram displayed on a computer screen in order to help users navigate a computer system or mobile device.
-		A common understanding for icons are,
-		that "good icons should be more like road signs than illustrations,
-		easily comprehensible, and not cluttered with extraneous detail".
+		Besides buttons, Icons are used as an instrument of user interaction with the system.
+		In the following, these symbols and their meaning in different contexts is explained.
+		For most of the icons, you can move your mouse to the icon and when you just leave the 
+		mouse pointer there for a second, an information about the meaning of the icon is shown.
 	</ofx:paragraph>
 	
 	<ofx:section id="section.user.ui.icons.general">
