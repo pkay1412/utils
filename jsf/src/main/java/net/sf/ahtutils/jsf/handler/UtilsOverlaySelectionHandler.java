@@ -22,6 +22,7 @@ public class UtilsOverlaySelectionHandler <T extends EjbWithId>
 	public T getSelection() {return selection;}
 	public void setSelection(T selection) {this.selection = selection;}
 
+	//All available entities for Selection
 	private List<T> available;
 	public List<T> getAvailable() {return available;}
 	public void setAvailable(List<T> available) {this.available = available;}
@@ -35,9 +36,26 @@ public class UtilsOverlaySelectionHandler <T extends EjbWithId>
 		this.bean=bean;
     }
 
-    public void selectListener() throws UtilsLockingException, UtilsConstraintViolationException
+    public void selectOverlay() throws UtilsLockingException, UtilsConstraintViolationException
+    {
+    	jsfErrors();
+    	bean.opSelect(selection);
+    }
+    
+    public void selectUi() throws UtilsLockingException, UtilsConstraintViolationException
+    {
+    	logger.warn("selectUi");
+    }
+    
+    public void removeListener() throws UtilsLockingException, UtilsConstraintViolationException
+    {
+    	jsfErrors();
+    	logger.warn("removeListener");
+    	bean.opRemove(selection);
+    }
+    
+    private void jsfErrors()
     {
     	if(selection==null){logger.warn("The selection parameter is null, is the JSF component inside a form?");}
-    	bean.opSelect(selection);
     }
 }

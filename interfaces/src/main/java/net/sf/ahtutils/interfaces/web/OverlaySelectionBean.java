@@ -7,4 +7,5 @@ import net.sf.ahtutils.model.interfaces.with.EjbWithId;
 public interface OverlaySelectionBean <T extends EjbWithId>
 {
 	void opSelect(T t) throws UtilsConstraintViolationException, UtilsLockingException;
+	void opRemove(T t) throws UtilsConstraintViolationException, UtilsLockingException;
 }

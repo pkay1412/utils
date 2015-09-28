@@ -12,12 +12,6 @@
             <s:lang key="en" translation="User"/>
         </s:langs>
     </s:translation>
-	<s:translation key="aupName">
-		<s:langs>
-			<s:lang key="fr" translation="Name"/>
-			<s:lang key="en" translation="Name"/>
-		</s:langs>
-	</s:translation>
     <s:translation key="aupFirstName">
 		<s:langs>
 			<s:lang key="fr" translation="First Name"/>
