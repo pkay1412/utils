@@ -6,10 +6,13 @@ import java.util.List;
 import org.openfuxml.content.ofx.Paragraph;
 import org.openfuxml.content.ofx.Title;
 import org.openfuxml.content.table.Cell;
+import org.openfuxml.exception.OfxAuthoringException;
 import org.openfuxml.factory.xml.ofx.content.structure.XmlParagraphFactory;
 import org.openfuxml.factory.xml.ofx.content.text.XmlTitleFactory;
 import org.openfuxml.factory.xml.table.OfxCellFactory;
 import org.openfuxml.factory.xml.text.OfxTextFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import net.sf.ahtutils.xml.aht.Aht;
 import net.sf.ahtutils.xml.status.Description;
@@ -23,6 +26,8 @@ import net.sf.exlp.exception.ExlpXpathNotUniqueException;
 
 public class OfxMultiLangFactory
 {	
+	final static Logger logger = LoggerFactory.getLogger(OfxMultiLangFactory.class);
+	
 	public static Title title(String[] keys, Langs langs)
 	{
 		Title title = XmlTitleFactory.build();
@@ -64,7 +69,7 @@ public class OfxMultiLangFactory
 		return cell;
 	}
 	
-	public static Cell cell(String[] keys, Descriptions descriptions)
+	public static Cell cell(String[] keys, Descriptions descriptions) throws OfxAuthoringException
 	{
 		Cell cell = OfxCellFactory.build();
 		cell.getContent().addAll(paragraph(keys,descriptions));
@@ -92,7 +97,7 @@ public class OfxMultiLangFactory
 		return paragraphs;
 	}
 	
-	public static List<Paragraph> paragraph(String[] keys, Descriptions descriptions)
+	public static List<Paragraph> paragraph(String[] keys, Descriptions descriptions) throws OfxAuthoringException
 	{
 		List<Paragraph> paragraphs = new ArrayList<Paragraph>();
 		
@@ -105,8 +110,8 @@ public class OfxMultiLangFactory
 				Description d = StatusXpath.getDescription(descriptions, key);
 				text = d.getValue();
 			}
-			catch (ExlpXpathNotFoundException e) {e.printStackTrace();}
-			catch (ExlpXpathNotUniqueException e) {e.printStackTrace();}
+			catch (ExlpXpathNotFoundException e) {throw new OfxAuthoringException(e.getMessage());}
+			catch (ExlpXpathNotUniqueException e) {throw new OfxAuthoringException(e.getMessage());}
 			p.getContent().add(text);
 			paragraphs.add(p);
 		}

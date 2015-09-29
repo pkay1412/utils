@@ -15,7 +15,6 @@ import org.openfuxml.content.table.Table;
 import org.openfuxml.exception.OfxAuthoringException;
 import org.openfuxml.factory.xml.layout.XmlFloatFactory;
 import org.openfuxml.factory.xml.ofx.content.XmlCommentFactory;
-import org.openfuxml.factory.xml.table.OfxCellFactory;
 import org.openfuxml.factory.xml.table.OfxColumnFactory;
 import org.openfuxml.util.OfxCommentBuilder;
 import org.slf4j.Logger;
@@ -89,7 +88,7 @@ public class OfxConstraintTableFactory extends AbstractUtilsOfxDocumentationFact
 		return specification;
 	}
 	
-	private Content createContent(ConstraintScope scope)
+	private Content createContent(ConstraintScope scope) throws OfxAuthoringException
 	{
 		Head head = new Head();
 		head.getRow().add(createHeaderRow(headerKeys));
@@ -107,7 +106,7 @@ public class OfxConstraintTableFactory extends AbstractUtilsOfxDocumentationFact
 		return content;
 	}
 	
-	private Row createRow(Constraint c)
+	private Row createRow(Constraint c) throws OfxAuthoringException
 	{
 		Row row = new Row();
 		row.getCell().add(OfxMultiLangFactory.cell(langs, c.getType().getCode(), constraintTypes));

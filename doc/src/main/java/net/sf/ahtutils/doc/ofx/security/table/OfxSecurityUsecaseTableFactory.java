@@ -63,7 +63,7 @@ public class OfxSecurityUsecaseTableFactory extends AbstractUtilsOfxDocumentatio
 		return spec;
 	}
 	
-	private Content createContent(Usecases usecases)
+	private Content createContent(Usecases usecases) throws OfxAuthoringException
 	{
 		Head head = new Head();
 		head.getRow().add(createHeaderRow(headerKeys));
@@ -81,7 +81,7 @@ public class OfxSecurityUsecaseTableFactory extends AbstractUtilsOfxDocumentatio
 		return content;
 	}
 	
-	private Row createRow(Usecase uc)
+	private Row createRow(Usecase uc) throws OfxAuthoringException
 	{
 		Row row = new Row();
 		

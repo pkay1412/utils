@@ -43,25 +43,27 @@ public class LatexConstraintWriter extends AbstractDocumentationLatexWriter
 		
 	}
 	
-	public void constraints(String artifact) throws FileNotFoundException
+	public void constraints(String artifact) throws OfxAuthoringException, OfxConfigurationException, IOException
 	{
 		Constraints index = JaxbUtil.loadJAXB("constraints."+artifact+"/index.xml", Constraints.class);
-		
-		JaxbUtil.info(index);
-	}
-	
-	public void constraints(Constraints constraints) throws OfxAuthoringException, OfxConfigurationException, IOException
-	{
-		for(ConstraintScope scope : constraints.getConstraintScope())
+		for(ConstraintScope scope : index.getConstraintScope())
 		{
-			scope.setCategory("finance");
-			scope(scope); 
+			Constraints c = JaxbUtil.loadJAXB("constraints."+artifact+"/"+scope.getCategory()+".xml", Constraints.class);
+			for(ConstraintScope s : c.getConstraintScope())
+			{
+				s.setCategory(scope.getCategory());
+				scope(s);
+			}
 		}
 	}
 	
-	public void scope(ConstraintScope scope) throws OfxAuthoringException, OfxConfigurationException, IOException 
+	public void scope(ConstraintScope scope) throws OfxConfigurationException, IOException, OfxAuthoringException 
 	{
-		Section section = ofConstraint.build(scope);
-		ofxMlw.section(2,"/system/constraints/"+scope.getCategory()+"/"+scope.getCode(),section);
+		try
+		{
+			Section section = ofConstraint.build(scope);
+			ofxMlw.section(2,"/system/constraints/"+scope.getCategory()+"/"+scope.getCode(),section);
+		}
+		catch (OfxAuthoringException e){throw new OfxAuthoringException(e.getMessage()+" -- "+ConstraintScope.class.getSimpleName()+" "+scope.getCategory()+"."+scope.getCode());}
 	}
 }

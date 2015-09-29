@@ -63,7 +63,7 @@ final static Logger logger = LoggerFactory.getLogger(OfxSecurityUsecaseTableFact
 		return spec;
 	}
 	
-	private Content createContent(Views views)
+	private Content createContent(Views views) throws OfxAuthoringException
 	{
 		Head head = new Head();
 		head.getRow().add(createHeaderRow(headerKeys));
@@ -81,7 +81,7 @@ final static Logger logger = LoggerFactory.getLogger(OfxSecurityUsecaseTableFact
 		return content;
 	}
 	
-	private Row createRow(View view)
+	private Row createRow(View view) throws OfxAuthoringException
 	{
 		Row row = new Row();
 		
