@@ -9,13 +9,11 @@
 	<ofx:title lang="en">File Export</ofx:title>
 	
 	<ofx:paragraph lang="en">
-		The system is able to export data in different file formats. The export is started by
-		clicking the appropriate icon. The the system will generate the desired file and directly
-		start a download in the browser. The behavior on how this is handled on the client side
-		depends on the browser and personal settings of the user for his browser.
-		A common behavior is to store the file in the 
-		<text:emphasis italic="true">Downloads</text:emphasis> folder or to directly
-		open it.
+		In some situations, the system will present you with the option to download content
+		as a <text:emphasis bold="true">Microsoft Excel</text:emphasis> file or a PDF report.
+		When you click the icons below, the file will be created from the content and your
+		browser will most likely prompt you to open or save it (or choose an option itself depending on
+		your browser settings).
 	</ofx:paragraph>
 
 	
@@ -92,4 +90,9 @@
  -->	        </table:body>
     	</table:content>
 	</table:table>
+	
+	<ofx:paragraph lang="en">
+		WARNING! Since the generation of the files can take longer (depending on the amount of data processed),
+		please wait until the file is presented. Do not start another export before the first one is completed.
+	</ofx:paragraph>
 </ofx:section>
