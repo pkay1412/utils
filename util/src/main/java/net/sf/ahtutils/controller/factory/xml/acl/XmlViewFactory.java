@@ -37,7 +37,7 @@ public class XmlViewFactory
 		View getUsecase(U usecase)
 	{
 		View xml = new View();
-		
+//		if(q.isSetIndex()){xml.setIndex(usecase.g);
 		if(q.isSetCode()){xml.setCode(usecase.getCode());}
 		
 		if(q.isSetLangs())

@@ -88,6 +88,7 @@ public class UtilsQaFacadeBean <L extends UtilsLang,
 		test = em.find(cQat, test.getId());
 		test.getDiscussions().size();
 		test.getResults().size();
+		test.getGroups().size();
 		return test;
 	}
 	
