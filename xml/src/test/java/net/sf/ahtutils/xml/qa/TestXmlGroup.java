@@ -1,31 +1,19 @@
 package net.sf.ahtutils.xml.qa;
 
-import java.io.FileNotFoundException;
-
-import net.sf.ahtutils.test.UtilsXmlTestBootstrap;
-import net.sf.ahtutils.xml.security.TestXmlStaff;
-import net.sf.exlp.util.xml.JaxbUtil;
-
-import org.junit.BeforeClass;
-import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class TestXmlGroup extends AbstractXmlQaTest
+import net.sf.ahtutils.test.UtilsXmlTestBootstrap;
+import net.sf.ahtutils.xml.security.TestXmlStaff;
+
+public class TestXmlGroup extends AbstractXmlQaTest<Group>
 {
 	final static Logger logger = LoggerFactory.getLogger(TestXmlGroup.class);
 	
-	@BeforeClass public static void initFiles(){setXmlFile(dirSuffix,Group.class);}
+	public TestXmlGroup(){super(Group.class);}
+	public static Group create(boolean withChildren){return (new TestXmlGroup()).build(withChildren);} 
     
-    @Test
-    public void xml() throws FileNotFoundException
-    {
-    	Group actual = create(true);
-    	Group expected = JaxbUtil.loadJAXB(fXml.getAbsolutePath(), Group.class);
-    	assertJaxbEquals(expected, actual);
-    }  
-    
-    public static Group create(boolean withChilds)
+    public Group build(boolean withChilds)
     {
     	Group xml = new Group();
     	xml.setId(123);
@@ -40,16 +28,11 @@ public class TestXmlGroup extends AbstractXmlQaTest
     	
     	return xml;
     }
-    
-    public void save() {save(create(true),fXml);}
 	
 	public static void main(String[] args)
     {
-		UtilsXmlTestBootstrap.init();
-			
-		TestXmlGroup.initJaxb();
-		TestXmlGroup.initFiles();	
+		UtilsXmlTestBootstrap.init();	
 		TestXmlGroup test = new TestXmlGroup();
-		test.save();
+		test.saveReferenceXml();
     }
 }

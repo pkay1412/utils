@@ -1,30 +1,18 @@
 package net.sf.ahtutils.xml.qa;
 
-import java.io.FileNotFoundException;
-
-import net.sf.ahtutils.test.UtilsXmlTestBootstrap;
-import net.sf.exlp.util.xml.JaxbUtil;
-
-import org.junit.BeforeClass;
-import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class TestXmlResults extends AbstractXmlQaTest
+import net.sf.ahtutils.test.UtilsXmlTestBootstrap;
+
+public class TestXmlResults extends AbstractXmlQaTest<Results>
 {
 	final static Logger logger = LoggerFactory.getLogger(TestXmlResults.class);
 	
-	@BeforeClass public static void initFiles(){setXmlFile(dirSuffix,Results.class);}
+	public TestXmlResults(){super(Results.class);}
+	public static Results create(boolean withChildren){return (new TestXmlResults()).build(withChildren);}  
     
-    @Test
-    public void xml() throws FileNotFoundException
-    {
-    	Results actual = create(true);
-    	Results expected = JaxbUtil.loadJAXB(fXml.getAbsolutePath(), Results.class);
-    	assertJaxbEquals(expected, actual);
-    }  
-    
-    public static Results create(boolean withChilds)
+    public Results build(boolean withChilds)
     {
     	Results xml = new Results();
     	
@@ -35,16 +23,11 @@ public class TestXmlResults extends AbstractXmlQaTest
     	
     	return xml;
     }
-    
-    public void save() {save(create(true),fXml);}
 	
 	public static void main(String[] args)
     {
 		UtilsXmlTestBootstrap.init();
-			
-		TestXmlResults.initJaxb();
-		TestXmlResults.initFiles();	
 		TestXmlResults test = new TestXmlResults();
-		test.save();
+		test.saveReferenceXml();
     }
 }

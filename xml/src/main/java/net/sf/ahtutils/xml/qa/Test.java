@@ -31,10 +31,12 @@ import net.sf.ahtutils.xml.status.Status;
  *         &lt;element ref="{http://ahtutils.aht-group.com/qa}expected"/&gt;
  *         &lt;element ref="{http://ahtutils.aht-group.com/qa}results"/&gt;
  *         &lt;element ref="{http://ahtutils.aht-group.com/qa}info"/&gt;
+ *         &lt;element ref="{http://ahtutils.aht-group.com/qa}groups"/&gt;
  *       &lt;/sequence&gt;
  *       &lt;attribute name="id" type="{http://www.w3.org/2001/XMLSchema}long" /&gt;
  *       &lt;attribute name="name" type="{http://www.w3.org/2001/XMLSchema}string" /&gt;
  *       &lt;attribute name="code" type="{http://www.w3.org/2001/XMLSchema}string" /&gt;
+ *       &lt;attribute name="duration" type="{http://www.w3.org/2001/XMLSchema}int" /&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
@@ -52,7 +54,8 @@ import net.sf.ahtutils.xml.status.Status;
     "steps",
     "expected",
     "results",
-    "info"
+    "info",
+    "groups"
 })
 @XmlRootElement(name = "test")
 public class Test
@@ -78,12 +81,16 @@ public class Test
     protected Results results;
     @XmlElement(required = true)
     protected Info info;
+    @XmlElement(required = true)
+    protected Groups groups;
     @XmlAttribute(name = "id")
     protected Long id;
     @XmlAttribute(name = "name")
     protected String name;
     @XmlAttribute(name = "code")
     protected String code;
+    @XmlAttribute(name = "duration")
+    protected Integer duration;
 
     /**
      * Gets the value of the status property.
@@ -338,6 +345,34 @@ public class Test
     }
 
     /**
+     * Gets the value of the groups property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Groups }
+     *     
+     */
+    public Groups getGroups() {
+        return groups;
+    }
+
+    /**
+     * Sets the value of the groups property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Groups }
+     *     
+     */
+    public void setGroups(Groups value) {
+        this.groups = value;
+    }
+
+    public boolean isSetGroups() {
+        return (this.groups!= null);
+    }
+
+    /**
      * Gets the value of the id property.
      * 
      * @return
@@ -423,6 +458,38 @@ public class Test
 
     public boolean isSetCode() {
         return (this.code!= null);
+    }
+
+    /**
+     * Gets the value of the duration property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Integer }
+     *     
+     */
+    public int getDuration() {
+        return duration;
+    }
+
+    /**
+     * Sets the value of the duration property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Integer }
+     *     
+     */
+    public void setDuration(int value) {
+        this.duration = value;
+    }
+
+    public boolean isSetDuration() {
+        return (this.duration!= null);
+    }
+
+    public void unsetDuration() {
+        this.duration = null;
     }
 
 }

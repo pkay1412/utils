@@ -1,65 +1,50 @@
 package net.sf.ahtutils.xml.qa;
 
-import java.io.FileNotFoundException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import net.sf.ahtutils.test.UtilsXmlTestBootstrap;
 import net.sf.ahtutils.xml.status.TestXmlStatement;
 import net.sf.ahtutils.xml.status.TestXmlStatus;
-import net.sf.exlp.util.xml.JaxbUtil;
 
-import org.junit.BeforeClass;
-import org.junit.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-public class TestXmlTest extends AbstractXmlQaTest
+public class TestXmlTest extends AbstractXmlQaTest<net.sf.ahtutils.xml.qa.Test>
 {
 	final static Logger logger = LoggerFactory.getLogger(net.sf.ahtutils.xml.qa.Test.class);
 	
-	@BeforeClass public static void initFiles(){setXmlFile(dirSuffix,net.sf.ahtutils.xml.qa.Test.class);}
+	public TestXmlTest(){super(net.sf.ahtutils.xml.qa.Test.class);}
+	public static net.sf.ahtutils.xml.qa.Test create(boolean withChildren){return (new TestXmlTest()).build(withChildren);}   
     
-    @Test
-    public void xml() throws FileNotFoundException
-    {
-    	net.sf.ahtutils.xml.qa.Test actual = create(true);
-    	net.sf.ahtutils.xml.qa.Test expected = JaxbUtil.loadJAXB(fXml.getAbsolutePath(), net.sf.ahtutils.xml.qa.Test.class);
-    	assertJaxbEquals(expected, actual);
-    }  
-    
-    public static net.sf.ahtutils.xml.qa.Test create(boolean withChilds)
+    public net.sf.ahtutils.xml.qa.Test build(boolean withChilds)
     {
     	net.sf.ahtutils.xml.qa.Test xml = new net.sf.ahtutils.xml.qa.Test();
     	xml.setId(123);
     	xml.setCode("myCode");
     	xml.setName("myName");
+    	xml.setDuration(120);
     	
     	if(withChilds)
     	{
     		xml.setStatus(TestXmlStatus.create(false));
     		xml.setStatement(TestXmlStatement.create(false));
     		
-    		xml.setReference(TestXmlReference.create());
-    		xml.setDescription(TestXmlDescription.create());
-    		xml.setPreCondition(TestXmlPreCondition.create());
-    		xml.setSteps(TestXmlSteps.create());
-    		xml.setExpected(TestXmlExpected.create());
+    		xml.setReference(TestXmlReference.create(false));
+    		xml.setDescription(TestXmlDescription.create(false));
+    		xml.setPreCondition(TestXmlPreCondition.create(false));
+    		xml.setSteps(TestXmlSteps.create(false));
+    		xml.setExpected(TestXmlExpected.create(false));
     		
     		xml.setResults(TestXmlResults.create(false));
     		xml.setInfo(TestXmlInfo.create(false));
+    		xml.setGroups(TestXmlGroups.create(false));
     	}
     	
     	return xml;
     }
-    
-    public void save() {save(create(true),fXml);}
 	
 	public static void main(String[] args)
     {
-		UtilsXmlTestBootstrap.init();
-			
-		TestXmlTest.initJaxb();
-		TestXmlTest.initFiles();	
+		UtilsXmlTestBootstrap.init();	
 		TestXmlTest test = new TestXmlTest();
-		test.save();
+		test.saveReferenceXml();
     }
 }

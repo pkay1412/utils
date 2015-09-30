@@ -118,22 +118,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Qa }
-     * 
-     */
-    public Qa createQa() {
-        return new Qa();
-    }
-
-    /**
-     * Create an instance of {@link Category }
-     * 
-     */
-    public Category createCategory() {
-        return new Category();
-    }
-
-    /**
      * Create an instance of {@link Groups }
      * 
      */
@@ -147,6 +131,22 @@ public class ObjectFactory {
      */
     public Group createGroup() {
         return new Group();
+    }
+
+    /**
+     * Create an instance of {@link Qa }
+     * 
+     */
+    public Qa createQa() {
+        return new Qa();
+    }
+
+    /**
+     * Create an instance of {@link Category }
+     * 
+     */
+    public Category createCategory() {
+        return new Category();
     }
 
 }

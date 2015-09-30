@@ -62,10 +62,12 @@
                 <xsd:element ref="qa:expected" maxOccurs="1"/>
                 <xsd:element ref="qa:results" maxOccurs="1"/>
                 <xsd:element ref="qa:info" maxOccurs="1"/>
+                <xsd:element ref="qa:groups" maxOccurs="1"/>
             </xsd:sequence>
             <xsd:attribute name="id" type="xsd:long"/>
             <xsd:attribute name="name" type="xsd:string"/>
             <xsd:attribute name="code" type="xsd:string"/>
+             <xsd:attribute name="duration" type="xsd:int"/>
         </xsd:complexType>
     </xsd:element>
     <xsd:element name="reference">

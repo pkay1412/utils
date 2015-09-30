@@ -1,16 +1,17 @@
 package net.sf.ahtutils.xml.aht;
 
-import java.io.File;
-
-import net.sf.ahtutils.test.AbstractXmlTest;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public abstract class AbstractXmlAhtTest extends AbstractXmlTest
+import net.sf.ahtutils.test.AbstractXmlTest;
+import net.sf.ahtutils.xml.system.AbstractXmlSystemTest;
+
+public abstract class AbstractXmlAhtTest <T extends Object> extends AbstractXmlTest<T> 
 {
-	final static Logger logger = LoggerFactory.getLogger(AbstractXmlAhtTest.class);
+	final static Logger logger = LoggerFactory.getLogger(AbstractXmlSystemTest.class);
 	
-	protected static final String rootDir = "src/test/resources/data/xml/aht";
-	protected static File fXml;
+	public AbstractXmlAhtTest(Class<T> cXml)
+	{
+		super(cXml,"aht");
+	}
 }

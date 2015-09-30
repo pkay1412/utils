@@ -1,38 +1,21 @@
 package net.sf.ahtutils.xml.aht;
 
-import java.io.File;
-import java.io.FileNotFoundException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import net.sf.ahtutils.test.UtilsXmlTestBootstrap;
 import net.sf.ahtutils.xml.finance.TestXmlCurrency;
 import net.sf.ahtutils.xml.security.TestXmlUser;
 import net.sf.ahtutils.xml.status.TestXmlStatus;
-import net.sf.exlp.util.xml.JaxbUtil;
 
-import org.junit.BeforeClass;
-import org.junit.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-public class TestXmlAht extends AbstractXmlAhtTest
+public class TestXmlAht extends AbstractXmlAhtTest<Aht>
 {
 	final static Logger logger = LoggerFactory.getLogger(TestXmlAht.class);
 	
-	@BeforeClass
-	public static void initFiles()
-	{
-		fXml = new File(rootDir,Aht.class.getSimpleName()+".xml");
-	}
+	public TestXmlAht(){super(Aht.class);}
+	public static Aht create(boolean withChildren){return (new TestXmlAht()).build(withChildren);} 
     
-    @Test
-    public void xml() throws FileNotFoundException
-    {
-    	Aht actual = create(true);
-    	Aht expected = JaxbUtil.loadJAXB(fXml.getAbsolutePath(), Aht.class);
-    	assertJaxbEquals(expected, actual);
-    }  
-    
-    public static Aht create(boolean withChilds)
+    public Aht build(boolean withChilds)
     {
     	Aht xml = new Aht();
         	
@@ -45,16 +28,11 @@ public class TestXmlAht extends AbstractXmlAhtTest
     	
     	return xml;
     }
-    
-    public void save() {save(create(true),fXml);}
 	
 	public static void main(String[] args)
     {
 		UtilsXmlTestBootstrap.init();
-			
-		TestXmlAht.initJaxb();
-		TestXmlAht.initFiles();	
 		TestXmlAht test = new TestXmlAht();
-		test.save();
+		test.saveReferenceXml();
     }
 }

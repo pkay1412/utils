@@ -1,7 +1,7 @@
 package net.sf.ahtutils.xml.aht;
 
-import java.io.File;
-import java.io.FileNotFoundException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import net.sf.ahtutils.test.UtilsXmlTestBootstrap;
 import net.sf.ahtutils.xml.access.TestXmlRole;
@@ -18,32 +18,15 @@ import net.sf.ahtutils.xml.survey.TestXmlTemplate;
 import net.sf.ahtutils.xml.survey.TestXmlTemplates;
 import net.sf.ahtutils.xml.utils.TestXmlTrafficLight;
 import net.sf.ahtutils.xml.utils.TestXmlTrafficLights;
-import net.sf.exlp.util.xml.JaxbUtil;
 
-import org.junit.BeforeClass;
-import org.junit.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-public class TestXmlQuery extends AbstractXmlAhtTest
+public class TestXmlQuery extends AbstractXmlAhtTest<Query>
 {
 	final static Logger logger = LoggerFactory.getLogger(TestXmlQuery.class);
 	
-	@BeforeClass
-	public static void initFiles()
-	{
-		fXml = new File(rootDir,"query.xml");
-	}
+	public TestXmlQuery(){super(Query.class);}
+	public static Query create(boolean withChildren){return (new TestXmlQuery()).build(withChildren);}  
     
-    @Test
-    public void xml() throws FileNotFoundException
-    {
-    	Query actual = create(true);
-    	Query expected = JaxbUtil.loadJAXB(fXml.getAbsolutePath(), Query.class);
-    	assertJaxbEquals(expected, actual);
-    }  
-    
-    public static Query create(boolean withChilds)
+    public Query build(boolean withChilds)
     {
     	Query xml = new Query();
     	xml.setLang("myLang");
@@ -72,16 +55,11 @@ public class TestXmlQuery extends AbstractXmlAhtTest
     	
     	return xml;
     }
-    
-    public void save() {save(create(true),fXml);}
 	
 	public static void main(String[] args)
     {
 		UtilsXmlTestBootstrap.init();
-			
-		TestXmlQuery.initJaxb();
-		TestXmlQuery.initFiles();	
 		TestXmlQuery test = new TestXmlQuery();
-		test.save();
+		test.saveReferenceXml();
     }
 }

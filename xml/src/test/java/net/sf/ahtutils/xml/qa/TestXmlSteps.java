@@ -1,30 +1,18 @@
 package net.sf.ahtutils.xml.qa;
 
-import java.io.FileNotFoundException;
-
-import net.sf.ahtutils.test.UtilsXmlTestBootstrap;
-import net.sf.exlp.util.xml.JaxbUtil;
-
-import org.junit.BeforeClass;
-import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class TestXmlSteps extends AbstractXmlQaTest
+import net.sf.ahtutils.test.UtilsXmlTestBootstrap;
+
+public class TestXmlSteps extends AbstractXmlQaTest<Steps>
 {
 	final static Logger logger = LoggerFactory.getLogger(net.sf.ahtutils.xml.qa.Test.class);
 	
-	@BeforeClass public static void initFiles(){setXmlFile(dirSuffix,Steps.class);}
+	public TestXmlSteps(){super(Steps.class);}
+	public static Steps create(boolean withChildren){return (new TestXmlSteps()).build(withChildren);}  
     
-    @Test
-    public void xml() throws FileNotFoundException
-    {
-    	Steps actual = create();
-    	Steps expected = JaxbUtil.loadJAXB(fXml.getAbsolutePath(), Steps.class);
-    	assertJaxbEquals(expected, actual);
-    }  
-    
-    public static Steps create()
+    public Steps build(boolean withChilds)
     {
     	Steps xml = new Steps();
     	
@@ -32,16 +20,11 @@ public class TestXmlSteps extends AbstractXmlQaTest
     	
     	return xml;
     }
-    
-    public void save() {save(create(),fXml);}
 	
 	public static void main(String[] args)
     {
 		UtilsXmlTestBootstrap.init();
-			
-		TestXmlSteps.initJaxb();
-		TestXmlSteps.initFiles();	
 		TestXmlSteps test = new TestXmlSteps();
-		test.save();
+		test.saveReferenceXml();
     }
 }

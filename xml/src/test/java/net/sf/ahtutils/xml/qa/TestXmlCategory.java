@@ -1,30 +1,18 @@
 package net.sf.ahtutils.xml.qa;
 
-import java.io.FileNotFoundException;
-
-import net.sf.ahtutils.test.UtilsXmlTestBootstrap;
-import net.sf.exlp.util.xml.JaxbUtil;
-
-import org.junit.BeforeClass;
-import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class TestXmlCategory extends AbstractXmlQaTest
+import net.sf.ahtutils.test.UtilsXmlTestBootstrap;
+
+public class TestXmlCategory extends AbstractXmlQaTest<Category>
 {
 	final static Logger logger = LoggerFactory.getLogger(TestXmlCategory.class);
 	
-	@BeforeClass public static void initFiles(){setXmlFile(dirSuffix,Category.class);}
+	public TestXmlCategory(){super(Category.class);}
+	public static Category create(boolean withChildren){return (new TestXmlCategory()).build(withChildren);}
     
-    @Test
-    public void xml() throws FileNotFoundException
-    {
-    	Category actual = create(true);
-    	Category expected = JaxbUtil.loadJAXB(fXml.getAbsolutePath(), Category.class);
-    	assertJaxbEquals(expected, actual);
-    }  
-    
-    public static Category create(boolean withChilds)
+    public Category build(boolean withChilds)
     {
     	Category xml = new Category();
     	xml.setId(123);
@@ -39,16 +27,11 @@ public class TestXmlCategory extends AbstractXmlQaTest
     	
     	return xml;
     }
-    
-    public void save() {save(create(true),fXml);}
-	
+
 	public static void main(String[] args)
     {
 		UtilsXmlTestBootstrap.init();
-			
-		TestXmlCategory.initJaxb();
-		TestXmlCategory.initFiles();	
 		TestXmlCategory test = new TestXmlCategory();
-		test.save();
+		test.saveReferenceXml();
     }
 }
