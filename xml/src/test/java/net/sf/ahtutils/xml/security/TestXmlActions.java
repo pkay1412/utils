@@ -1,30 +1,18 @@
 package net.sf.ahtutils.xml.security;
 
-import java.io.FileNotFoundException;
-
-import net.sf.ahtutils.test.UtilsXmlTestBootstrap;
-import net.sf.exlp.util.xml.JaxbUtil;
-
-import org.junit.BeforeClass;
-import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class TestXmlActions extends AbstractXmlSecurityTest
+import net.sf.ahtutils.test.UtilsXmlTestBootstrap;
+
+public class TestXmlActions extends AbstractXmlSecurityTest<Actions>
 {
 	final static Logger logger = LoggerFactory.getLogger(TestXmlActions.class);
 	
-	@BeforeClass public static void initFiles() {setXmlFile(dirSuffix,Actions.class);}
+	public TestXmlActions(){super(Actions.class);}
+	public static Actions create(boolean withChildren){return (new TestXmlActions()).build(withChildren);}
     
-    @Test
-    public void testXml() throws FileNotFoundException
-    {
-    	Actions actual = create(true);
-    	Actions expected = JaxbUtil.loadJAXB(fXml.getAbsolutePath(), Actions.class);
-    	assertJaxbEquals(expected, actual);
-    }
-    
-    public static Actions create(boolean withChilds)
+    public Actions build(boolean withChilds)
     {
     	Actions xml = new Actions();
     	
@@ -41,9 +29,7 @@ public class TestXmlActions extends AbstractXmlSecurityTest
 	public static void main(String[] args)
     {
 		UtilsXmlTestBootstrap.init();
-			
-		TestXmlActions.initFiles();	
 		TestXmlActions test = new TestXmlActions();
-		test.save();
+		test.saveReferenceXml();
     }
 }

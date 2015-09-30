@@ -26,6 +26,7 @@ import net.sf.ahtutils.xml.status.Langs;
  *         &lt;element ref="{http://ahtutils.aht-group.com/status}langs"/&gt;
  *       &lt;/sequence&gt;
  *       &lt;attribute name="id" type="{http://www.w3.org/2001/XMLSchema}long" /&gt;
+ *       &lt;attribute name="index" type="{http://www.w3.org/2001/XMLSchema}int" /&gt;
  *       &lt;attribute name="code" type="{http://www.w3.org/2001/XMLSchema}string" /&gt;
  *       &lt;attribute name="label" type="{http://www.w3.org/2001/XMLSchema}string" /&gt;
  *     &lt;/restriction&gt;
@@ -52,6 +53,8 @@ public class View
     protected Langs langs;
     @XmlAttribute(name = "id")
     protected Long id;
+    @XmlAttribute(name = "index")
+    protected Integer index;
     @XmlAttribute(name = "code")
     protected String code;
     @XmlAttribute(name = "label")
@@ -143,6 +146,38 @@ public class View
 
     public void unsetId() {
         this.id = null;
+    }
+
+    /**
+     * Gets the value of the index property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Integer }
+     *     
+     */
+    public int getIndex() {
+        return index;
+    }
+
+    /**
+     * Sets the value of the index property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Integer }
+     *     
+     */
+    public void setIndex(int value) {
+        this.index = value;
+    }
+
+    public boolean isSetIndex() {
+        return (this.index!= null);
+    }
+
+    public void unsetIndex() {
+        this.index = null;
     }
 
     /**

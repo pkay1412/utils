@@ -1,14 +1,17 @@
 package net.sf.ahtutils.xml.security;
 
-import net.sf.ahtutils.test.AbstractXmlTest;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public abstract class AbstractXmlSecurityTest extends AbstractXmlTest
+import net.sf.ahtutils.test.AbstractXmlTest;
+import net.sf.ahtutils.xml.system.AbstractXmlSystemTest;
+
+public abstract class AbstractXmlSecurityTest <T extends Object> extends AbstractXmlTest<T> 
 {
-	final static Logger logger = LoggerFactory.getLogger(AbstractXmlSecurityTest.class);
+	final static Logger logger = LoggerFactory.getLogger(AbstractXmlSystemTest.class);
 	
-	protected static final String rootDir = "src/test/resources/data/xml/security";
-	protected static final String dirSuffix = "security";
+	public AbstractXmlSecurityTest(Class<T> cXml)
+	{
+		super(cXml,"security");
+	}
 }

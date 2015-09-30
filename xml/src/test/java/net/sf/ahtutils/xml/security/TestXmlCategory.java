@@ -1,36 +1,25 @@
 package net.sf.ahtutils.xml.security;
 
-import java.io.FileNotFoundException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import net.sf.ahtutils.test.UtilsXmlTestBootstrap;
 import net.sf.ahtutils.xml.access.TestXmlViews;
 import net.sf.ahtutils.xml.status.TestXmlDescriptions;
 import net.sf.ahtutils.xml.status.TestXmlLangs;
-import net.sf.exlp.util.xml.JaxbUtil;
 
-import org.junit.BeforeClass;
-import org.junit.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-public class TestXmlCategory extends AbstractXmlSecurityTest
+public class TestXmlCategory extends AbstractXmlSecurityTest<Category>
 {
 	final static Logger logger = LoggerFactory.getLogger(TestXmlCategory.class);
 	
-	@BeforeClass public static void initFiles() {setXmlFile(dirSuffix,Category.class);}
+	public TestXmlCategory(){super(Category.class);}
+	public static Category create(boolean withChildren){return (new TestXmlCategory()).build(withChildren);}
     
-    @Test
-    public void xml() throws FileNotFoundException
-    {
-    	Category test = create(true);
-    	Category ref = JaxbUtil.loadJAXB(fXml.getAbsolutePath(), Category.class);
-    	assertJaxbEquals(ref, test);
-    }
-    
-    public static Category create(boolean withChilds)
+    public Category build(boolean withChilds)
     {
     	Category xml = new Category();
     	xml.setIndex(1);
+    	xml.setIndex(456);
     	xml.setCode("myCode");
     	xml.setLabel("myLabel");
     	
@@ -47,16 +36,11 @@ public class TestXmlCategory extends AbstractXmlSecurityTest
     	
     	return xml;
     }
-    
-    public void save() {save(create(true),fXml);}
 	
 	public static void main(String[] args)
     {
 		UtilsXmlTestBootstrap.init();
-			
-		TestXmlCategory.initJaxb();
-		TestXmlCategory.initFiles();	
 		TestXmlCategory test = new TestXmlCategory();
-		test.save();
+		test.saveReferenceXml();
     }
 }

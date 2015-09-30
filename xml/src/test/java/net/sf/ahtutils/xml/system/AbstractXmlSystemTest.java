@@ -13,5 +13,4 @@ public abstract class AbstractXmlSystemTest <T extends Object> extends AbstractX
 	{
 		super(cXml,"system");
 	}
-    protected static final String dirSuffix = "system";
 }

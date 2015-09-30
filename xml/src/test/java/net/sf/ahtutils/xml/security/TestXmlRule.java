@@ -1,30 +1,18 @@
 package net.sf.ahtutils.xml.security;
 
-import java.io.FileNotFoundException;
-
-import net.sf.ahtutils.test.UtilsXmlTestBootstrap;
-import net.sf.exlp.util.xml.JaxbUtil;
-
-import org.junit.BeforeClass;
-import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class TestXmlRule extends AbstractXmlSecurityTest
+import net.sf.ahtutils.test.UtilsXmlTestBootstrap;
+
+public class TestXmlRule extends AbstractXmlSecurityTest<Rule>
 {
 	final static Logger logger = LoggerFactory.getLogger(TestXmlRule.class);
 	
-	@BeforeClass public static void initFiles() {setXmlFile(dirSuffix,Rule.class);}
+	public TestXmlRule(){super(Rule.class);}
+	public static Rule create(boolean withChildren){return (new TestXmlRule()).build(withChildren);}
     
-    @Test
-    public void xml() throws FileNotFoundException
-    {
-    	Rule test = create();
-    	Rule ref = (Rule)JaxbUtil.loadJAXB(fXml.getAbsolutePath(), Rule.class);
-    	assertJaxbEquals(ref, test);
-    }
-    
-    public static Rule create()
+    public Rule build(boolean withChilds)
     {
     	Rule xml = new Rule();
     	
@@ -38,16 +26,11 @@ public class TestXmlRule extends AbstractXmlSecurityTest
     	
     	return xml;
     }
-    
-    public void save() {save(create(),fXml);}
 	
 	public static void main(String[] args)
     {
 		UtilsXmlTestBootstrap.init();
-			
-		TestXmlRule.initJaxb();
-		TestXmlRule.initFiles();	
 		TestXmlRule test = new TestXmlRule();
-		test.save();
+		test.saveReferenceXml();
     }
 }

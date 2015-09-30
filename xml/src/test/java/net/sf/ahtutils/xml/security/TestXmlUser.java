@@ -1,30 +1,18 @@
 package net.sf.ahtutils.xml.security;
 
-import java.io.FileNotFoundException;
-
-import net.sf.ahtutils.test.UtilsXmlTestBootstrap;
-import net.sf.exlp.util.xml.JaxbUtil;
-
-import org.junit.BeforeClass;
-import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class TestXmlUser extends AbstractXmlSecurityTest
+import net.sf.ahtutils.test.UtilsXmlTestBootstrap;
+
+public class TestXmlUser extends AbstractXmlSecurityTest<User>
 {
 	final static Logger logger = LoggerFactory.getLogger(TestXmlUser.class);
 	
-	@BeforeClass public static void initFiles() {setXmlFile(dirSuffix,User.class);}
+	public TestXmlUser(){super(User.class);}
+	public static User create(boolean withChildren){return (new TestXmlUser()).build(withChildren);}
     
-    @Test
-    public void xml() throws FileNotFoundException
-    {
-    	User actual = create(true);
-    	User expected = JaxbUtil.loadJAXB(fXml.getAbsolutePath(), User.class);
-    	assertJaxbEquals(expected, actual);
-    }
-    
-    public static User create(boolean withChilds)
+    public User build(boolean withChilds)
     {
     	User xml = new User();
     	xml.setFirstName("myFirst");
@@ -37,15 +25,11 @@ public class TestXmlUser extends AbstractXmlSecurityTest
     	}
     	return xml;
     }
-    
-    public void save() {save(create(true),fXml);}
 	
 	public static void main(String[] args)
     {
 		UtilsXmlTestBootstrap.init();
-			
-		TestXmlUser.initFiles();
 		TestXmlUser test = new TestXmlUser();
-		test.save();
+		test.saveReferenceXml();
     }
 }

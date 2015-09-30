@@ -33,8 +33,8 @@ import net.sf.ahtutils.xml.status.Langs;
  *         &lt;element ref="{http://ahtutils.aht-group.com/access}views"/&gt;
  *         &lt;element ref="{http://ahtutils.aht-group.com/security}staffs" maxOccurs="unbounded"/&gt;
  *       &lt;/sequence&gt;
- *       &lt;attribute name="code" type="{http://www.w3.org/2001/XMLSchema}string" /&gt;
  *       &lt;attribute name="index" type="{http://www.w3.org/2001/XMLSchema}int" /&gt;
+ *       &lt;attribute name="code" type="{http://www.w3.org/2001/XMLSchema}string" /&gt;
  *       &lt;attribute name="label" type="{http://www.w3.org/2001/XMLSchema}string" /&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -73,10 +73,10 @@ public class Category
     protected Views views;
     @XmlElement(required = true)
     protected List<Staffs> staffs;
-    @XmlAttribute(name = "code")
-    protected String code;
     @XmlAttribute(name = "index")
     protected Integer index;
+    @XmlAttribute(name = "code")
+    protected String code;
     @XmlAttribute(name = "label")
     protected String label;
 
@@ -286,34 +286,6 @@ public class Category
     }
 
     /**
-     * Gets the value of the code property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getCode() {
-        return code;
-    }
-
-    /**
-     * Sets the value of the code property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setCode(String value) {
-        this.code = value;
-    }
-
-    public boolean isSetCode() {
-        return (this.code!= null);
-    }
-
-    /**
      * Gets the value of the index property.
      * 
      * @return
@@ -343,6 +315,34 @@ public class Category
 
     public void unsetIndex() {
         this.index = null;
+    }
+
+    /**
+     * Gets the value of the code property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getCode() {
+        return code;
+    }
+
+    /**
+     * Sets the value of the code property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setCode(String value) {
+        this.code = value;
+    }
+
+    public boolean isSetCode() {
+        return (this.code!= null);
     }
 
     /**
