@@ -84,7 +84,7 @@ public class OfxXlsDefinitionFactory extends AbstractUtilsOfxDocumentationFactor
 		return specification;
 	}
 	
-	private Content createContent(XlsSheet sheet)
+	private Content createContent(XlsSheet sheet) throws OfxAuthoringException
 	{
 		Head head = new Head();
 		head.getRow().add(createHeaderRow(headerKeys));
@@ -102,7 +102,7 @@ public class OfxXlsDefinitionFactory extends AbstractUtilsOfxDocumentationFactor
 		return content;
 	}
 	
-	private Row createRow(XlsColumn xlsColumn)
+	private Row createRow(XlsColumn xlsColumn) throws OfxAuthoringException
 	{
 		Row row = new Row();
 		
