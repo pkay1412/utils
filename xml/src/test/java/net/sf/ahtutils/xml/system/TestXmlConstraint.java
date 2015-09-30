@@ -4,6 +4,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import net.sf.ahtutils.test.UtilsXmlTestBootstrap;
+import net.sf.ahtutils.xml.status.TestXmlDescriptions;
+import net.sf.ahtutils.xml.status.TestXmlLangs;
 import net.sf.ahtutils.xml.status.TestXmlType;
 
 public class TestXmlConstraint extends AbstractXmlSystemTest<Constraint>
@@ -20,6 +22,8 @@ public class TestXmlConstraint extends AbstractXmlSystemTest<Constraint>
     	if(withChilds)
     	{
     		xml.setType(TestXmlType.create(false));
+    		xml.setLangs(TestXmlLangs.create(false));
+    		xml.setDescriptions(TestXmlDescriptions.create(false));
     		xml.getConstraintAttribute().add(TestXmlConstraintAttribute.create(false));xml.getConstraintAttribute().add(TestXmlConstraintAttribute.create(false));
     	}
     	

@@ -36,6 +36,15 @@
             </xsd:sequence>
         </xsd:complexType>
     </xsd:element>
+    <xsd:element name="release">
+		<xsd:complexType>
+			<xsd:sequence>
+                <xsd:element ref="us:descriptions" maxOccurs="1"/>
+            </xsd:sequence>
+            <xsd:attribute name="version" type="xsd:string"/>
+            <xsd:attribute name="date" type="xsd:date"/>
+        </xsd:complexType>
+    </xsd:element>
     <xsd:element name="constraintScope">
 		<xsd:complexType>
 			<xsd:sequence>

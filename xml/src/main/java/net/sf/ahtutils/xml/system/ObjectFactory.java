@@ -85,4 +85,12 @@ public class ObjectFactory {
         return new ConstraintAttribute();
     }
 
+    /**
+     * Create an instance of {@link Release }
+     * 
+     */
+    public Release createRelease() {
+        return new Release();
+    }
+
 }
