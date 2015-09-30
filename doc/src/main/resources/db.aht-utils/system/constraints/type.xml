@@ -12,7 +12,37 @@
             <us:description key="en">This constraint is enforced by the database and requires an non-empty attribute.</us:description>
         </us:descriptions>
     </us:status>
-    <us:status code="dateSequence" position="2">
+    <us:status code="selectOne" position="2">
+        <us:langs>
+            <us:lang key="de" translation="Auswahl"/>
+            <us:lang key="fr" translation="Selection"/>
+            <us:lang key="en" translation="Selection"/>
+        </us:langs>
+        <us:descriptions>
+            <us:description key="de">Selection</us:description>
+            <us:description key="fr">Selection</us:description>
+            <us:description key="en">
+            	This constraint is similar to a not-empty constraint, but the user interface ensures that
+            	the reference is set by providing a pull-down menu.
+            </us:description>
+        </us:descriptions>
+    </us:status>
+	<us:status code="manyToOne" position="3">
+        <us:langs>
+            <us:lang key="de" translation="Reference"/>
+            <us:lang key="fr" translation="Reference"/>
+            <us:lang key="en" translation="Reference"/>
+        </us:langs>
+        <us:descriptions>
+            <us:description key="de">Selection</us:description>
+            <us:description key="fr">Selection</us:description>
+            <us:description key="en">
+            	This constraint is technically a not-empty constraint, but the system is handling
+            	the reference internally.
+            </us:description>
+        </us:descriptions>
+    </us:status>
+    <us:status code="dateSequence" position="4">
         <us:langs>
             <us:lang key="de" translation="Date Sequence"/>
             <us:lang key="fr" translation="Date Sequence"/>
