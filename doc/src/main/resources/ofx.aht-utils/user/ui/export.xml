@@ -91,8 +91,12 @@
     	</table:content>
 	</table:table>
 	
-	<ofx:paragraph lang="en">
-		WARNING! Since the generation of the files can take longer (depending on the amount of data processed),
-		please wait until the file is presented. Do not start another export before the first one is completed.
-	</ofx:paragraph>
+	<ofx:highlight>
+		<ofx:paragraph>
+			<ofx:marginalia><ofx:paragraph><text:symbol code="faExclamationTriangle"/></ofx:paragraph></ofx:marginalia>
+			Since the generation of the files can take longer (depending on the amount of data processed),
+			please wait until the file is presented. Do not start another export before the first one is completed.
+		</ofx:paragraph>
+	</ofx:highlight>
+	
 </ofx:section>
