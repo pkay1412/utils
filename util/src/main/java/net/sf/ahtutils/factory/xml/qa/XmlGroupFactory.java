@@ -69,4 +69,10 @@ QAUS extends UtilsStatus<QAUS,L,D>>
 		return xml;
 	}
 	
+	public static Group build(String name)
+	{
+		Group xml = new Group();
+		xml.setName(name);
+		return xml;
+	}
 }

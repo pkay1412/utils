@@ -4,6 +4,8 @@ import java.util.Date;
 import java.util.Hashtable;
 import java.util.Map;
 
+import net.sf.ahtutils.factory.xml.qa.XmlGroupFactory;
+import net.sf.ahtutils.factory.xml.qa.XmlGroupsFactory;
 import net.sf.ahtutils.factory.xml.qa.XmlResultFactory;
 import net.sf.ahtutils.factory.xml.status.XmlStatementFactory;
 import net.sf.ahtutils.factory.xml.status.XmlStatusFactory;
@@ -57,10 +59,14 @@ public class QaQuery
 		info.setStatus(XmlStatusFactory.create(""));
 		
 		Test xml = test();
+		xml.setDuration(0);
 		xml.setResults(new Results());
 		xml.getResults().getResult().add(result());
 		xml.setInfo(info);
 		
+		
+		xml.setGroups(XmlGroupsFactory.build());
+		xml.getGroups().getGroup().add(XmlGroupFactory.build(""));
 		
 		return xml;
 	}

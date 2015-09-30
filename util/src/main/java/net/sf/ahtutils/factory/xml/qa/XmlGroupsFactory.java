@@ -49,6 +49,29 @@ QAUS extends UtilsStatus<QAUS,L,D>>
 {
 	final static Logger logger = LoggerFactory.getLogger(XmlGroupsFactory.class);
 		
+	private Groups q;
+	
+	public XmlGroupsFactory(Groups q)
+	{
+		this.q=q;
+	}
+	
+	public Groups build(QAT test)
+	{
+		Groups xml = new Groups();
+		
+		if(q.isSetGroup() && test.getGroups()!=null)
+		{
+			XmlGroupFactory<L,D,C,R,V,U,A,USER,STAFF,GROUP,QA,QAC,QAT,QAU,QAR,QAS,QATD,QATI,QATC,QATS,QARS,QAUS> f = new XmlGroupFactory<L,D,C,R,V,U,A,USER,STAFF,GROUP,QA,QAC,QAT,QAU,QAR,QAS,QATD,QATI,QATC,QATS,QARS,QAUS>(q.getGroup().get(0));
+			for(GROUP g : test.getGroups())
+			{
+				xml.getGroup().add(f.build(g));
+			}
+		}
+		
+		return xml;
+	}
+	
 	public static Groups build()
 	{
 		Groups xml = new Groups();

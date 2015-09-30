@@ -72,6 +72,11 @@ QAUS extends UtilsStatus<QAUS,L,D>>
 		if(q.isSetId()){xml.setId(test.getId());}
 		if(q.isSetCode()){xml.setCode(test.getCode());}
 		if(q.isSetName()){xml.setName(test.getName());}
+		if(q.isSetDuration())
+		{
+			if(test.getDuration()!=null){xml.setDuration(test.getDuration());}
+			else{xml.setDuration(0);}
+		}
 
 		if(q.isSetReference() && test.getReference()!=null){xml.setReference(XmlReferenceFactory.build(test.getReference()));}
 		if(q.isSetDescription() && test.getDescription()!=null){xml.setDescription(XmlDescriptionFactory.build(test.getDescription()));}
@@ -101,6 +106,12 @@ QAUS extends UtilsStatus<QAUS,L,D>>
 		{
 			XmlInfoFactory<L,D,C,R,V,U,A,USER,STAFF,GROUP,QA,QAC,QAT,QAU,QAR,QAS,QATD,QATI,QATC,QATS,QARS,QAUS> f = new XmlInfoFactory<L,D,C,R,V,U,A,USER,STAFF,GROUP,QA,QAC,QAT,QAU,QAR,QAS,QATD,QATI,QATC,QATS,QARS,QAUS>(q.getInfo());
 			xml.setInfo(f.build(test.getInfo()));
+		}
+		
+		if(q.isSetGroups())
+		{
+			XmlGroupsFactory<L,D,C,R,V,U,A,USER,STAFF,GROUP,QA,QAC,QAT,QAU,QAR,QAS,QATD,QATI,QATC,QATS,QARS,QAUS> f = new XmlGroupsFactory<L,D,C,R,V,U,A,USER,STAFF,GROUP,QA,QAC,QAT,QAU,QAR,QAS,QATD,QATI,QATC,QATS,QARS,QAUS>(q.getGroups());
+			xml.setGroups(f.build(test));
 		}
 		
 		return xml;
