@@ -1,14 +1,5 @@
 package net.sf.ahtutils.doc.ofx.qa.table;
 
-import net.sf.ahtutils.doc.ofx.AbstractUtilsOfxDocumentationFactory;
-import net.sf.ahtutils.xml.qa.Test;
-import net.sf.ahtutils.xml.status.Lang;
-import net.sf.ahtutils.xml.status.Translations;
-import net.sf.ahtutils.xml.xpath.StatusXpath;
-import net.sf.exlp.exception.ExlpXpathNotFoundException;
-import net.sf.exlp.exception.ExlpXpathNotUniqueException;
-import net.sf.exlp.util.xml.JaxbUtil;
-
 import org.apache.commons.configuration.Configuration;
 import org.openfuxml.content.table.Body;
 import org.openfuxml.content.table.Cell;
@@ -27,6 +18,17 @@ import org.openfuxml.factory.xml.table.OfxColumnFactory;
 import org.openfuxml.trancoder.html.HtmlTranscoder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import net.sf.ahtutils.doc.ofx.AbstractUtilsOfxDocumentationFactory;
+import net.sf.ahtutils.xml.qa.Group;
+import net.sf.ahtutils.xml.qa.Groups;
+import net.sf.ahtutils.xml.qa.Test;
+import net.sf.ahtutils.xml.status.Lang;
+import net.sf.ahtutils.xml.status.Translations;
+import net.sf.ahtutils.xml.xpath.StatusXpath;
+import net.sf.exlp.exception.ExlpXpathNotFoundException;
+import net.sf.exlp.exception.ExlpXpathNotUniqueException;
+import net.sf.exlp.util.xml.JaxbUtil;
 
 public class OfxQaFrTableFactory extends AbstractUtilsOfxDocumentationFactory
 {
@@ -93,6 +95,8 @@ public class OfxQaFrTableFactory extends AbstractUtilsOfxDocumentationFactory
 		body.getRow().add(buildReference(test));
 		body.getRow().add(buildPreCondition(test));
 		body.getRow().add(buildSteps(test));
+		body.getRow().add(buildDuration(test));
+		if(test.isSetGroups() && test.getGroups().isSetGroup()){body.getRow().add(buildGroups(test.getGroups()));}
 		
 		Content content = new Content();
 		content.getBody().add(body);
@@ -121,6 +125,30 @@ public class OfxQaFrTableFactory extends AbstractUtilsOfxDocumentationFactory
 		{
 			row.getCell().add(OfxCellFactory.createParagraphCell(""));
 		}
+		return row;
+	}
+	
+	private Row buildDuration(Test test)
+	{
+		Row row = new Row();
+		row.getCell().add(OfxCellFactory.createParagraphCell("Duration"));
+		row.getCell().add(OfxCellFactory.createParagraphCell(test.getDuration()+" minutes"));
+		return row;
+	}
+	
+	private Row buildGroups(Groups groups)
+	{
+		Row row = new Row();
+		row.getCell().add(OfxCellFactory.createParagraphCell("Groups"));
+		
+		StringBuffer sb = new StringBuffer();
+		for(Group g : groups.getGroup())
+		{
+			sb.append(g.getName()+", ");
+		}
+		if(sb.length()>0){sb = new StringBuffer(sb.substring(0, sb.length()-2));}
+		
+		row.getCell().add(OfxCellFactory.createParagraphCell(sb.toString()));
 		return row;
 	}
 	

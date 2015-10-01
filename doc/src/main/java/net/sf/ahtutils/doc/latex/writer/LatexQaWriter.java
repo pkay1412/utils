@@ -54,9 +54,8 @@ public class LatexQaWriter
 	
 	private boolean withResponsible,withOrganisation;
 	
-	private String imagePathPrefix;
-	public String getImagePathPrefix() {return imagePathPrefix;}
-	public void setImagePathPrefix(String imagePathPrefix) {this.imagePathPrefix = imagePathPrefix;}
+
+	
 
 	public LatexQaWriter(Configuration config, Translations translations, String[] langs, CrossMediaManager cmm, DefaultSettingsManager dsm)
 	{
@@ -69,13 +68,19 @@ public class LatexQaWriter
 		ofFr = new OfxQaFrSectionFactory(config,langs,translations);
 		ofFrSummary = new OfxQaFrSummaryTableFactory(config,langs,translations);
 		ofQaStaff = new OfxQaStaffTableFactory(config,langs,translations);
-		ofAgreements = new OfxQaAgreementTableFactory(config,langs,translations);ofAgreements.setImagePathPrefix(imagePathPrefix);
+		ofAgreements = new OfxQaAgreementTableFactory(config,langs,translations);
 		ofGroup = new OfxQaGroupSectionFactory(config,langs,translations);
-		ofStatus = new OfxStatusTableFactory(config, langs, translations);ofStatus.setImagePathPrefix(imagePathPrefix);
+		ofStatus = new OfxStatusTableFactory(config, langs, translations);
 		
-		imagePathPrefix = null;
 		withResponsible = false;
 		withOrganisation = false;
+	}
+	
+	public void setImagePathPrefix(String imagePathPrefix)
+	{
+		ofAgreements.setImagePathPrefix(imagePathPrefix);
+		ofStatus.setImagePathPrefix(imagePathPrefix);
+		ofFrSummary.setImagePathPrefix(imagePathPrefix);
 	}
 	
 	private List<String> buildHeaderKeys()
@@ -140,8 +145,6 @@ public class LatexQaWriter
 	
 	public void frSummary(Category c,Aht testConditions,Aht resultStatus,String lang) throws OfxAuthoringException, IOException
 	{
-		
-		ofFrSummary.setImagePathPrefix(imagePathPrefix);
 		Table table = ofFrSummary.build(c,testConditions,resultStatus);		
 		ofxMlw.table("qa/summary/fr/"+c.getCode(), table);
 	}
