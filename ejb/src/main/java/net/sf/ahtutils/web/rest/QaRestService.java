@@ -4,6 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import net.sf.ahtutils.exception.ejb.UtilsNotFoundException;
+import net.sf.ahtutils.factory.xml.qa.XmlCategoryFactory;
 import net.sf.ahtutils.factory.xml.qa.XmlGroupFactory;
 import net.sf.ahtutils.factory.xml.qa.XmlGroupsFactory;
 import net.sf.ahtutils.factory.xml.security.XmlStaffFactory;
@@ -62,29 +63,27 @@ public class QaRestService <L extends UtilsLang,
 	final static Logger logger = LoggerFactory.getLogger(QaRestService.class);
 	
 	private UtilsQaFacade<L,D,C,R,V,U,A,USER,STAFF,GROUP,QA,QAC,QAT,QAU,QAR,QAS,QATD,QATI,QATC,QATS,QARS,QAUS> fQa;
-	
-	@SuppressWarnings("unused")
-	private final Class<L> cL;
-	@SuppressWarnings("unused")
-	private final Class<D> cD;
-	
+		
 	private final Class<GROUP> cGroup;
 	private final Class<QA> cQa;
 	
 	private XmlStaffFactory<L,D,C,R,V,U,A,USER,STAFF,QA> xfStaff;
 	private XmlGroupFactory<L,D,C,R,V,U,A,USER,STAFF,GROUP,QA,QAC,QAT,QAU,QAR,QAS,QATD,QATI,QATC,QATS,QARS,QAUS> xfGroup;
+	private XmlCategoryFactory<L,D,C,R,V,U,A,USER,STAFF,GROUP,QA,QAC,QAT,QAU,QAR,QAS,QATD,QATI,QATC,QATS,QARS,QAUS> xfCategory;
+	private XmlCategoryFactory<L,D,C,R,V,U,A,USER,STAFF,GROUP,QA,QAC,QAT,QAU,QAR,QAS,QATD,QATI,QATC,QATS,QARS,QAUS> xfFrDuration;
 	
-	
-	private QaRestService(UtilsQaFacade<L,D,C,R,V,U,A,USER,STAFF,GROUP,QA,QAC,QAT,QAU,QAR,QAS,QATD,QATI,QATC,QATS,QARS,QAUS> fQa, final Class<L> cL, final Class<D> cD,final Class<GROUP> cGroup,final Class<QA> cQa)
+	private QaRestService(UtilsQaFacade<L,D,C,R,V,U,A,USER,STAFF,GROUP,QA,QAC,QAT,QAU,QAR,QAS,QATD,QATI,QATC,QATS,QARS,QAUS> fQa, final Class<L> cL, final Class<D> cD,final Class<GROUP> cGroup,final Class<QA> cQa,final Class<QAC> cQAC,final Class<QAT> cQAT)
 	{
 		this.fQa=fQa;
-		this.cL=cL;
-		this.cD=cD;
 		this.cGroup=cGroup;
 		this.cQa=cQa;
 		
 		xfStaff = new XmlStaffFactory<L,D,C,R,V,U,A,USER,STAFF,QA>(QaQuery.staff());
-		xfGroup = new XmlGroupFactory<L,D,C,R,V,U,A,USER,STAFF,GROUP,QA,QAC,QAT,QAU,QAR,QAS,QATD,QATI,QATC,QATS,QARS,QAUS>(null);
+		xfGroup = new XmlGroupFactory<L,D,C,R,V,U,A,USER,STAFF,GROUP,QA,QAC,QAT,QAU,QAR,QAS,QATD,QATI,QATC,QATS,QARS,QAUS>(QaQuery.group());
+		xfCategory = new XmlCategoryFactory<L,D,C,R,V,U,A,USER,STAFF,GROUP,QA,QAC,QAT,QAU,QAR,QAS,QATD,QATI,QATC,QATS,QARS,QAUS>(QaQuery.category());
+		xfFrDuration = new XmlCategoryFactory<L,D,C,R,V,U,A,USER,STAFF,GROUP,QA,QAC,QAT,QAU,QAR,QAS,QATD,QATI,QATC,QATS,QARS,QAUS>(QaQuery.frDuration());
+		
+		xfFrDuration.lazyLoader(fQa,cQAC,cQAT);
 	}
 	
 	public static <L extends UtilsLang,
@@ -110,9 +109,9 @@ public class QaRestService <L extends UtilsLang,
 					QARS extends UtilsStatus<QARS,L,D>,
 					QAUS extends UtilsStatus<QAUS,L,D>>
 		QaRestService<L,D,C,R,V,U,A,USER,STAFF,GROUP,QA,QAC,QAT,QAU,QAR,QAS,QATD,QATI,QATC,QATS,QARS,QAUS>
-			factory(UtilsQaFacade<L,D,C,R,V,U,A,USER,STAFF,GROUP,QA,QAC,QAT,QAU,QAR,QAS,QATD,QATI,QATC,QATS,QARS,QAUS> fQa,final Class<L> cL,final Class<D> cD,final Class<GROUP> cGroup,final Class<QA> cQa)
+			factory(UtilsQaFacade<L,D,C,R,V,U,A,USER,STAFF,GROUP,QA,QAC,QAT,QAU,QAR,QAS,QATD,QATI,QATC,QATS,QARS,QAUS> fQa,final Class<L> cL,final Class<D> cD,final Class<GROUP> cGroup,final Class<QA> cQa,final Class<QAC> cQAC,final Class<QAT> cQAT)
 	{
-		return new QaRestService<L,D,C,R,V,U,A,USER,STAFF,GROUP,QA,QAC,QAT,QAU,QAR,QAS,QATD,QATI,QATC,QATS,QARS,QAUS>(fQa,cL,cD,cGroup,cQa);
+		return new QaRestService<L,D,C,R,V,U,A,USER,STAFF,GROUP,QA,QAC,QAT,QAU,QAR,QAS,QATD,QATI,QATC,QATS,QARS,QAUS>(fQa,cL,cD,cGroup,cQa,cQAC,cQAT);
 	}
 
 	public Qa qaGroups(long qaId)
@@ -143,5 +142,39 @@ public class QaRestService <L extends UtilsLang,
 		}
 		catch (UtilsNotFoundException e) {e.printStackTrace();}	
 		return qa;
-	}	
+	}
+	
+	public Qa qaCategories(long qaId)
+	{
+		Qa qa = new Qa();
+		try
+		{
+			QA eQa = fQa.find(cQa, qaId);
+			eQa = fQa.load(cQa,eQa);
+			
+			for(QAC category : eQa.getCategories())
+			{
+				qa.getCategory().add(xfCategory.build(category));
+			}
+		}
+		catch (UtilsNotFoundException e) {e.printStackTrace();}	
+		return qa;
+	}
+	
+	public Qa qaFrDurations(long qaId)
+	{
+		Qa qa = new Qa();
+		try
+		{
+			QA eQa = fQa.find(cQa, qaId);
+			eQa = fQa.load(cQa,eQa);
+			
+			for(QAC category : eQa.getCategories())
+			{
+				qa.getCategory().add(xfFrDuration.build(category));
+			}
+		}
+		catch (UtilsNotFoundException e) {e.printStackTrace();}	
+		return qa;
+	}
 }

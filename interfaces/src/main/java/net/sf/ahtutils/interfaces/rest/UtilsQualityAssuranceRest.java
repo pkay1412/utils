@@ -43,6 +43,10 @@ public interface UtilsQualityAssuranceRest
 	@Produces(MediaType.APPLICATION_XML)
 	Qa qaCategories(@PathParam("id") long qaId);
 	
+	@GET @Path("/fr/durations/{id:[0-9]*}")
+	@Produces(MediaType.APPLICATION_XML)
+	Qa qaFrDurations(@PathParam("id") long qaId);
+	
 	@GET @Path("/survey/{id:[0-9]*}")
 	@Produces(MediaType.APPLICATION_XML)
 	Qa qaSurvey(@PathParam("id") long qaId);

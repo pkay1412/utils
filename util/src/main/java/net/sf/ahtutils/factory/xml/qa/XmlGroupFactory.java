@@ -49,7 +49,6 @@ QAUS extends UtilsStatus<QAUS,L,D>>
 {
 	final static Logger logger = LoggerFactory.getLogger(XmlGroupFactory.class);
 		
-	@SuppressWarnings("unused")
 	private Group q;
 	
 	public XmlGroupFactory(Group q)
@@ -60,11 +59,10 @@ QAUS extends UtilsStatus<QAUS,L,D>>
 	public Group build(GROUP group)
 	{
 		Group xml = new Group();
-		xml.setId(group.getId());
+		if(q.isSetId()){xml.setId(group.getId());}
 		
-		xml.setName(group.getName());
-		xml.setDescription(net.sf.ahtutils.factory.xml.status.XmlDescriptionFactory.build(group.getDescription()));
-		
+		if(q.isSetName()){xml.setName(group.getName());}
+		if(q.isSetDescription()){xml.setDescription(net.sf.ahtutils.factory.xml.status.XmlDescriptionFactory.build(group.getDescription()));}
 		
 		return xml;
 	}

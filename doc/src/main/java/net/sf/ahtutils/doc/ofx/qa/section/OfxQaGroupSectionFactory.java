@@ -34,6 +34,7 @@ public class OfxQaGroupSectionFactory extends AbstractUtilsOfxDocumentationFacto
 	public Section build(Groups groups) throws OfxAuthoringException
 	{
 		Section section = XmlSectionFactory.build();
+		section.setContainer(true);
 		section.getContent().add(XmlTitleFactory.build("Test Groups"));
 		
 		Comment comment = XmlCommentFactory.build();

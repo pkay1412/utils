@@ -1,0 +1,82 @@
+package net.sf.ahtutils.doc.ofx.qa.section;
+
+import java.util.List;
+
+import org.apache.commons.configuration.Configuration;
+import org.openfuxml.content.ofx.Comment;
+import org.openfuxml.content.ofx.Section;
+import org.openfuxml.exception.OfxAuthoringException;
+import org.openfuxml.factory.xml.ofx.content.XmlCommentFactory;
+import org.openfuxml.factory.xml.ofx.content.structure.XmlSectionFactory;
+import org.openfuxml.factory.xml.ofx.content.text.XmlTitleFactory;
+import org.openfuxml.util.OfxCommentBuilder;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import net.sf.ahtutils.doc.ofx.AbstractUtilsOfxDocumentationFactory;
+import net.sf.ahtutils.doc.ofx.qa.table.OfxQaFrDurationGroupTable;
+import net.sf.ahtutils.doc.ofx.qa.table.OfxQaFrDurationSummaryTable;
+import net.sf.ahtutils.doc.ofx.qa.table.OfxQaFrDurationTable;
+import net.sf.ahtutils.xml.qa.Category;
+import net.sf.ahtutils.xml.qa.Groups;
+import net.sf.ahtutils.xml.status.Translations;
+
+public class OfxQaDurationSectionFactory extends AbstractUtilsOfxDocumentationFactory
+{
+	final static Logger logger = LoggerFactory.getLogger(OfxQaDurationSectionFactory.class);
+
+	private OfxQaFrDurationSummaryTable ofSummary;
+	private OfxQaFrDurationTable ofDuration;
+	private OfxQaFrDurationGroupTable ofGroup;
+	
+	public OfxQaDurationSectionFactory(Configuration config, String[] langs, Translations translations)
+	{
+		super(config,langs,translations);
+		ofSummary = new OfxQaFrDurationSummaryTable(config,langs,translations);
+		ofDuration = new OfxQaFrDurationTable(config,langs,translations);
+		ofGroup = new OfxQaFrDurationGroupTable(config,langs,translations);
+	}
+	
+	public Section build(List<Category> categories,Groups groups) throws OfxAuthoringException
+	{
+		Section section = XmlSectionFactory.build();
+		section.setId("section.qa.durations");
+		section.setContainer(false);
+		section.getContent().add(XmlTitleFactory.build("Test Durations"));
+		
+		Comment comment = XmlCommentFactory.build();
+		OfxCommentBuilder.doNotModify(comment);
+		section.getContent().add(comment);
+		
+		section.getContent().add(ofSummary.build(categories));
+		section.getContent().add(durationsGroups(categories,groups));
+		section.getContent().add(durationsFrCategories(categories));
+		
+		return section;
+	}
+	
+	private Section durationsFrCategories(List<Category> categories) throws OfxAuthoringException
+	{
+		Section section = XmlSectionFactory.build();
+		section.setId("section.qa.durations.fr");
+		section.setContainer(false);
+		section.getContent().add(XmlTitleFactory.build("Detailed durations for FR Categories"));
+		
+		for(Category category : categories)
+		{
+			section.getContent().add(ofDuration.build(category));
+		}
+		return section;
+	}
+	
+	private Section durationsGroups(List<Category> categories,Groups groups) throws OfxAuthoringException
+	{
+		Section section = XmlSectionFactory.build();
+		section.setId("section.qa.durations.groups");
+		section.setContainer(false);
+		section.getContent().add(XmlTitleFactory.build("Test Durations for QA Groups"));
+		
+		section.getContent().add(ofGroup.build(categories,groups));
+		return section;
+	}
+}

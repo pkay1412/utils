@@ -2,6 +2,7 @@ package net.sf.ahtutils.factory.xml.qa;
 
 import net.sf.ahtutils.factory.xml.status.XmlStatementFactory;
 import net.sf.ahtutils.factory.xml.status.XmlStatusFactory;
+import net.sf.ahtutils.interfaces.facade.UtilsQaFacade;
 import net.sf.ahtutils.interfaces.model.qa.UtilsQaCategory;
 import net.sf.ahtutils.interfaces.model.qa.UtilsQaGroup;
 import net.sf.ahtutils.interfaces.model.qa.UtilsQaResult;
@@ -53,6 +54,14 @@ QAUS extends UtilsStatus<QAUS,L,D>>
 		
 	private Test q;
 	
+	private Class<QAT> cQAT;
+	private UtilsQaFacade<L,D,C,R,V,U,A,USER,STAFF,GROUP,QA,QAC,QAT,QAU,QAR,QAS,QATD,QATI,QATC,QATS,QARS,QAUS> fQa;
+	public void lazyLoader(UtilsQaFacade<L,D,C,R,V,U,A,USER,STAFF,GROUP,QA,QAC,QAT,QAU,QAR,QAS,QATD,QATI,QATC,QATS,QARS,QAUS> fQa,Class<QAT> cQAT)
+	{
+		this.fQa=fQa;
+		this.cQAT=cQAT;
+	}
+	
 	public XmlTestFactory(Test q)
 	{
 		this.q=q;
@@ -67,6 +76,8 @@ QAUS extends UtilsStatus<QAUS,L,D>>
 	
 	public Test build(QAT test)
 	{
+		if(fQa!=null){test = fQa.load(cQAT, test);}
+		
 		Test xml = new Test();
 		
 		if(q.isSetId()){xml.setId(test.getId());}

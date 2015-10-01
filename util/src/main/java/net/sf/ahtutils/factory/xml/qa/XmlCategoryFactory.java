@@ -1,5 +1,6 @@
 package net.sf.ahtutils.factory.xml.qa;
 
+import net.sf.ahtutils.interfaces.facade.UtilsQaFacade;
 import net.sf.ahtutils.interfaces.model.qa.UtilsQaCategory;
 import net.sf.ahtutils.interfaces.model.qa.UtilsQaGroup;
 import net.sf.ahtutils.interfaces.model.qa.UtilsQaResult;
@@ -56,13 +57,35 @@ QAUS extends UtilsStatus<QAUS,L,D>>
 		this.q=q;
 	}
 	
+	private Class<QAC> cQAC;
+	private Class<QAT> cQAT;
+	private UtilsQaFacade<L,D,C,R,V,U,A,USER,STAFF,GROUP,QA,QAC,QAT,QAU,QAR,QAS,QATD,QATI,QATC,QATS,QARS,QAUS> fQa;
+	public void lazyLoader(UtilsQaFacade<L,D,C,R,V,U,A,USER,STAFF,GROUP,QA,QAC,QAT,QAU,QAR,QAS,QATD,QATI,QATC,QATS,QARS,QAUS> fQa,Class<QAC> cQAC, Class<QAT> cQAT)
+	{
+		this.fQa=fQa;
+		this.cQAC=cQAC;
+		this.cQAT=cQAT;
+	}
+	
 	public Category build(QAC category)
 	{
+		if(fQa!=null){category = fQa.load(cQAC, category);}
+		
 		Category xml = new Category();
 		
 		if(q.isSetId()){xml.setId(category.getId());}
 		if(q.isSetCode()){xml.setCode(category.getCode());}
 		if(q.isSetName()){xml.setName(category.getName());}
+		
+		if(q.isSetTest())
+		{
+			XmlTestFactory<L,D,C,R,V,U,A,USER,STAFF,GROUP,QA,QAC,QAT,QAU,QAR,QAS,QATD,QATI,QATC,QATS,QARS,QAUS> f = new XmlTestFactory<L,D,C,R,V,U,A,USER,STAFF,GROUP,QA,QAC,QAT,QAU,QAR,QAS,QATD,QATI,QATC,QATS,QARS,QAUS>(q.getTest().get(0));
+			f.lazyLoader(fQa, cQAT);
+			for(QAT test : category.getTests())
+			{
+				xml.getTest().add(f.build(test));
+			}
+		}
 		
 		return xml;
 	}

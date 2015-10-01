@@ -18,13 +18,14 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import net.sf.ahtutils.doc.UtilsDocumentation;
+import net.sf.ahtutils.doc.ofx.qa.section.OfxQaDurationSectionFactory;
 import net.sf.ahtutils.doc.ofx.qa.section.OfxQaFrSectionFactory;
 import net.sf.ahtutils.doc.ofx.qa.section.OfxQaGroupSectionFactory;
 import net.sf.ahtutils.doc.ofx.qa.section.OfxQaInputSectionFactory;
 import net.sf.ahtutils.doc.ofx.qa.section.OfxQaNfrSectionFactory;
 import net.sf.ahtutils.doc.ofx.qa.table.OfxQaAgreementTableFactory;
-import net.sf.ahtutils.doc.ofx.qa.table.OfxQaRoleTableFactory;
 import net.sf.ahtutils.doc.ofx.qa.table.OfxQaFrSummaryTableFactory;
+import net.sf.ahtutils.doc.ofx.qa.table.OfxQaRoleTableFactory;
 import net.sf.ahtutils.doc.ofx.qa.table.OfxQaStaffTableFactory;
 import net.sf.ahtutils.doc.ofx.status.OfxStatusTableFactory;
 import net.sf.ahtutils.doc.ofx.status.OfxStatusTableFactory.Code;
@@ -50,13 +51,11 @@ public class LatexQaWriter
 	private OfxQaStaffTableFactory ofQaStaff;
 	private OfxQaAgreementTableFactory ofAgreements;
 	private OfxQaGroupSectionFactory ofGroup;
+	private OfxQaDurationSectionFactory ofDuration;
 	private OfxStatusTableFactory ofStatus;
 	
 	private boolean withResponsible,withOrganisation;
 	
-
-	
-
 	public LatexQaWriter(Configuration config, Translations translations, String[] langs, CrossMediaManager cmm, DefaultSettingsManager dsm)
 	{
 		File baseDir = new File(config.getString(UtilsDocumentation.keyBaseLatexDir));
@@ -70,6 +69,7 @@ public class LatexQaWriter
 		ofQaStaff = new OfxQaStaffTableFactory(config,langs,translations);
 		ofAgreements = new OfxQaAgreementTableFactory(config,langs,translations);
 		ofGroup = new OfxQaGroupSectionFactory(config,langs,translations);
+		ofDuration = new OfxQaDurationSectionFactory(config,langs,translations);
 		ofStatus = new OfxStatusTableFactory(config, langs, translations);
 		
 		withResponsible = false;
@@ -126,16 +126,22 @@ public class LatexQaWriter
 		ofxMlw.section(1, "qa/groups",ofGroup.build(qa.getGroups()));
 	}
 	
+	public void durations(Qa qa,Qa qaGroups) throws OfxAuthoringException, IOException, OfxConfigurationException
+	{
+		ofxMlw.section(1, "qa/durations",ofDuration.build(qa.getCategory(),qaGroups.getGroups()));
+	}
+	
 	public void writeQaAgreement(Category c,Aht testStatus) throws OfxAuthoringException, IOException
 	{
 		ofxMlw.table("qa/agreement/fr/"+c.getCode(), ofAgreements.build(c,testStatus));
 	}
 			
-	public void writeQaCategoriesInputs(Qa qa) throws OfxAuthoringException, IOException, OfxConfigurationException
+	public void writeQaInputContainer(Qa qa) throws OfxAuthoringException, IOException, OfxConfigurationException
 	{
 		ofxMlw.section(1,"/qa/fr",ofContainerInput.build(qa,"/section/qa/fr"));
 		ofxMlw.section(1,"/qa/agreements",ofContainerInput.build(qa,"/table/qa/agreement/fr"));
 		ofxMlw.section(1,"/qa/summary",ofContainerInput.build(qa,"/table/qa/summary/fr"));
+		ofxMlw.section(1,"/qa/duration",ofContainerInput.build(qa,"/table/qa/summary/fr"));
 	}
 		
 	public void writeQaFr(Category category) throws OfxAuthoringException, IOException, OfxConfigurationException

@@ -7,6 +7,7 @@ import java.util.Map;
 import net.sf.ahtutils.factory.xml.qa.XmlGroupFactory;
 import net.sf.ahtutils.factory.xml.qa.XmlGroupsFactory;
 import net.sf.ahtutils.factory.xml.qa.XmlResultFactory;
+import net.sf.ahtutils.factory.xml.status.XmlDescriptionFactory;
 import net.sf.ahtutils.factory.xml.status.XmlStatementFactory;
 import net.sf.ahtutils.factory.xml.status.XmlStatusFactory;
 import net.sf.ahtutils.util.query.SecurityQuery;
@@ -15,6 +16,8 @@ import net.sf.ahtutils.xml.qa.Category;
 import net.sf.ahtutils.xml.qa.Comment;
 import net.sf.ahtutils.xml.qa.Description;
 import net.sf.ahtutils.xml.qa.Expected;
+import net.sf.ahtutils.xml.qa.Group;
+import net.sf.ahtutils.xml.qa.Groups;
 import net.sf.ahtutils.xml.qa.Info;
 import net.sf.ahtutils.xml.qa.PreCondition;
 import net.sf.ahtutils.xml.qa.Reference;
@@ -110,6 +113,34 @@ public class QaQuery
 		xml.setId(0);
 		xml.setCode("");
 		xml.setName("");
+		return xml;
+	}
+	
+	public static Group group()
+	{
+		Group xml = new Group();
+		xml.setId(0);
+		xml.setName("");
+		xml.setDescription(XmlDescriptionFactory.build(""));
+		return xml;
+	}
+	
+	public static Category frDuration()
+	{
+		Group g = new Group();
+		g.setId(0);
+		
+		Groups groups = new Groups();
+		groups.getGroup().add(g);
+		
+		Test test = new Test();
+		test.setCode("");
+		test.setName("");
+		test.setDuration(0);
+		test.setGroups(groups);
+		
+		Category xml = category();
+		xml.getTest().add(test);
 		return xml;
 	}
 	
