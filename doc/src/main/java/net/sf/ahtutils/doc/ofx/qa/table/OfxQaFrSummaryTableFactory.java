@@ -153,7 +153,17 @@ public class OfxQaFrSummaryTableFactory extends AbstractUtilsOfxDocumentationFac
 			
 			row.getCell().add(OfxCellFactory.createParagraphCell(test.getCode()));
 			row.getCell().add(OfxCellFactory.createParagraphCell(test.getName()));
-			row.getCell().add(OfxCellFactory.image(OfxStatusImageFactory.build(imagePathPrefix,StatusXpath.getStatus(testConditions.getStatus(), test.getInfo().getStatus().getCode()))));
+			
+			if(test.isSetInfo() && test.getInfo().isSetStatus())
+			{
+				row.getCell().add(OfxCellFactory.image(OfxStatusImageFactory.build(imagePathPrefix,StatusXpath.getStatus(testConditions.getStatus(), test.getInfo().getStatus().getCode()))));
+			}
+			else
+			{
+				row.getCell().add(OfxCellFactory.createParagraphCell(""));
+			}
+			
+			
 			row.getCell().add(cellClient);
 		}
 		catch (ExlpXpathNotFoundException e) {e.printStackTrace();}

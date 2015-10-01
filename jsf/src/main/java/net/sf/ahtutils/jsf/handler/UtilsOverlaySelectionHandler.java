@@ -40,6 +40,7 @@ public class UtilsOverlaySelectionHandler <T extends EjbWithId>
     {
     	jsfErrors();
     	bean.opSelect(selection);
+    	selection=null;
     }
     
     public void selectUi() throws UtilsLockingException, UtilsConstraintViolationException
@@ -52,6 +53,7 @@ public class UtilsOverlaySelectionHandler <T extends EjbWithId>
     	jsfErrors();
     	logger.warn("removeListener");
     	bean.opRemove(selection);
+    	selection=null;
     }
     
     private void jsfErrors()

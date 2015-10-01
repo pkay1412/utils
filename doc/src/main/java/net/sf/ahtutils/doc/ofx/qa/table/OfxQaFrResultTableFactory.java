@@ -48,7 +48,7 @@ public class OfxQaFrResultTableFactory extends AbstractUtilsOfxDocumentationFact
 		df = SimpleDateFormat.getDateInstance();
 	}
 	
-	public Table buildTestTable(Test test) throws OfxAuthoringException
+	public Table build(Test test) throws OfxAuthoringException
 	{
 		try
 		{

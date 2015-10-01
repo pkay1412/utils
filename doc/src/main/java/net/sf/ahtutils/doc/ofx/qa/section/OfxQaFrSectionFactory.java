@@ -3,6 +3,19 @@ package net.sf.ahtutils.doc.ofx.qa.section;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.commons.configuration.Configuration;
+import org.openfuxml.content.ofx.Comment;
+import org.openfuxml.content.ofx.Paragraph;
+import org.openfuxml.content.ofx.Section;
+import org.openfuxml.exception.OfxAuthoringException;
+import org.openfuxml.factory.xml.ofx.content.XmlCommentFactory;
+import org.openfuxml.factory.xml.ofx.content.structure.XmlParagraphFactory;
+import org.openfuxml.factory.xml.ofx.content.structure.XmlSectionFactory;
+import org.openfuxml.factory.xml.ofx.content.text.XmlTitleFactory;
+import org.openfuxml.util.OfxCommentBuilder;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import net.sf.ahtutils.doc.ofx.AbstractUtilsOfxDocumentationFactory;
 import net.sf.ahtutils.doc.ofx.qa.table.OfxQaFrResultTableFactory;
 import net.sf.ahtutils.doc.ofx.qa.table.OfxQaFrTableFactory;
@@ -18,19 +31,6 @@ import net.sf.ahtutils.xml.xpath.StatusXpath;
 import net.sf.exlp.exception.ExlpXpathNotFoundException;
 import net.sf.exlp.exception.ExlpXpathNotUniqueException;
 
-import org.apache.commons.configuration.Configuration;
-import org.openfuxml.content.ofx.Comment;
-import org.openfuxml.content.ofx.Paragraph;
-import org.openfuxml.content.ofx.Section;
-import org.openfuxml.exception.OfxAuthoringException;
-import org.openfuxml.factory.xml.ofx.content.XmlCommentFactory;
-import org.openfuxml.factory.xml.ofx.content.structure.XmlParagraphFactory;
-import org.openfuxml.factory.xml.ofx.content.structure.XmlSectionFactory;
-import org.openfuxml.factory.xml.ofx.content.text.XmlTitleFactory;
-import org.openfuxml.util.OfxCommentBuilder;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 public class OfxQaFrSectionFactory extends AbstractUtilsOfxDocumentationFactory
 {
 	final static Logger logger = LoggerFactory.getLogger(OfxQaFrSectionFactory.class);
@@ -38,7 +38,7 @@ public class OfxQaFrSectionFactory extends AbstractUtilsOfxDocumentationFactory
 	private OfxQaFrTableFactory fOfxTableTest;
 	private OfxQaFrResultTableFactory fOfxTableTestResult;
 	
-	private Aht conditions;
+	private Aht conditions;public void setTestConditions(Aht conditions){this.conditions=conditions;}
 	
 	public OfxQaFrSectionFactory(Configuration config, String lang, Translations translations)
 	{
@@ -50,8 +50,6 @@ public class OfxQaFrSectionFactory extends AbstractUtilsOfxDocumentationFactory
 		fOfxTableTest = new OfxQaFrTableFactory(config,langs,translations);
 		fOfxTableTestResult = new OfxQaFrResultTableFactory(config,langs,translations);
 	}
-	
-	public void setTestConditions(Aht conditions){this.conditions=conditions;}
 	
 	public Section build(Category category) throws OfxAuthoringException
 	{
@@ -65,13 +63,13 @@ public class OfxQaFrSectionFactory extends AbstractUtilsOfxDocumentationFactory
 		
 		for(Test test : category.getTest())
 		{
-			section.getContent().add(buildSectionForTest(test));
+			section.getContent().add(buildFrTestSection(test));
 		}
 		
 		return section;
 	}
 	
-	private Section buildSectionForTest(Test test) throws OfxAuthoringException
+	private Section buildFrTestSection(Test test) throws OfxAuthoringException
 	{
 		Section section = XmlSectionFactory.build();
 		section.getContent().add(XmlTitleFactory.build(test.getName()));
@@ -89,7 +87,10 @@ public class OfxQaFrSectionFactory extends AbstractUtilsOfxDocumentationFactory
 		if(test.isSetExpected()){section.getContent().addAll(expectedParagraph(test.getExpected()));}
 		if(test.isSetInfo()){section.getContent().addAll(infoParagraph(test.getInfo()));}
 		
-		section.getContent().add(fOfxTableTestResult.buildTestTable(test));
+		if(test.isSetResults() && test.getResults().isSetResult())
+		{
+			section.getContent().add(fOfxTableTestResult.build(test));
+		}
 		
 		return section;
 	}
