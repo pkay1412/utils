@@ -14,9 +14,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import net.sf.ahtutils.doc.ofx.AbstractUtilsOfxDocumentationFactory;
-import net.sf.ahtutils.doc.ofx.qa.table.OfxQaFrDurationGroupTable;
-import net.sf.ahtutils.doc.ofx.qa.table.OfxQaFrDurationSummaryTable;
-import net.sf.ahtutils.doc.ofx.qa.table.OfxQaFrDurationTable;
+import net.sf.ahtutils.doc.ofx.qa.table.OfxQaDurationGroupTable;
+import net.sf.ahtutils.doc.ofx.qa.table.OfxQaDurationFrSummaryTable;
+import net.sf.ahtutils.doc.ofx.qa.table.OfxQaDurationFrCategoryTable;
 import net.sf.ahtutils.xml.qa.Category;
 import net.sf.ahtutils.xml.qa.Groups;
 import net.sf.ahtutils.xml.status.Translations;
@@ -25,16 +25,16 @@ public class OfxQaDurationSectionFactory extends AbstractUtilsOfxDocumentationFa
 {
 	final static Logger logger = LoggerFactory.getLogger(OfxQaDurationSectionFactory.class);
 
-	private OfxQaFrDurationSummaryTable ofSummary;
-	private OfxQaFrDurationTable ofDuration;
-	private OfxQaFrDurationGroupTable ofGroup;
+	private OfxQaDurationFrSummaryTable ofSummary;
+	private OfxQaDurationFrCategoryTable ofDuration;
+	private OfxQaDurationGroupTable ofGroup;
 	
 	public OfxQaDurationSectionFactory(Configuration config, String[] langs, Translations translations)
 	{
 		super(config,langs,translations);
-		ofSummary = new OfxQaFrDurationSummaryTable(config,langs,translations);
-		ofDuration = new OfxQaFrDurationTable(config,langs,translations);
-		ofGroup = new OfxQaFrDurationGroupTable(config,langs,translations);
+		ofSummary = new OfxQaDurationFrSummaryTable(config,langs,translations);
+		ofDuration = new OfxQaDurationFrCategoryTable(config,langs,translations);
+		ofGroup = new OfxQaDurationGroupTable(config,langs,translations);
 	}
 	
 	public Section build(List<Category> categories,Groups groups) throws OfxAuthoringException

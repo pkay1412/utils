@@ -33,14 +33,14 @@ import net.sf.exlp.exception.ExlpXpathNotFoundException;
 import net.sf.exlp.exception.ExlpXpathNotUniqueException;
 import net.sf.exlp.util.xml.JaxbUtil;
 
-public class OfxQaFrDurationSummaryTable extends AbstractUtilsOfxDocumentationFactory
+public class OfxQaDurationFrCategoryTable extends AbstractUtilsOfxDocumentationFactory
 {
 	final static Logger logger = LoggerFactory.getLogger(OfxQaNfrQuestionTableFactory.class);
-	private static String keyCaptionPrefix = "auTableQmAgreement";
+	private static String keyCaptionPrefix = "auTableQaSummaryDuration";
 	
 	private List<String> headerKeys;
 	
-	public OfxQaFrDurationSummaryTable(Configuration config, String[] langs, Translations translations)
+	public OfxQaDurationFrCategoryTable(Configuration config, String[] langs, Translations translations)
 	{
 		super(config,langs,translations);
 		
@@ -50,12 +50,12 @@ public class OfxQaFrDurationSummaryTable extends AbstractUtilsOfxDocumentationFa
 		headerKeys.add("auTableQaTestDuration");
 	}
 	
-	public Table build(List<Category> categories) throws OfxAuthoringException
+	public Table build(Category category) throws OfxAuthoringException
 	{
 		try
 		{	
 			Table table = new Table();
-			table.setId("table.qa.duration.summary");
+			table.setId("table.qa.duration.fr."+category.getCode());
 			
 			Comment comment = XmlCommentFactory.build();
 			OfxCommentBuilder.fixedId(comment, table.getId());
@@ -65,9 +65,9 @@ public class OfxQaFrDurationSummaryTable extends AbstractUtilsOfxDocumentationFa
 			OfxCommentBuilder.doNotModify(comment);
 			table.setComment(comment);
 			
-			table.setTitle(OfxMultiLangFactory.title(langs, StatusXpath.getTranslation(translations, "auTableQaSummaryDuration").getLangs()));
+			table.setTitle(OfxMultiLangFactory.title(langs, StatusXpath.getTranslation(translations, keyCaptionPrefix).getLangs(),null," "+category.getName()));
 			table.setSpecification(createSpecifications());
-			table.setContent(createContent(categories));
+			table.setContent(createContent(category));
 				
 			return table;
 		}
@@ -78,8 +78,8 @@ public class OfxQaFrDurationSummaryTable extends AbstractUtilsOfxDocumentationFa
 	private Specification createSpecifications()
 	{
 		Columns cols = new Columns();
-		cols.getColumn().add(OfxColumnFactory.flex(20,true));
-		cols.getColumn().add(OfxColumnFactory.flex(70,false));
+		cols.getColumn().add(OfxColumnFactory.flex(10,true));
+		cols.getColumn().add(OfxColumnFactory.flex(80,false));
 		cols.getColumn().add(OfxColumnFactory.flex(10,true));
 		
 		Specification specification = new Specification();
@@ -89,15 +89,15 @@ public class OfxQaFrDurationSummaryTable extends AbstractUtilsOfxDocumentationFa
 		return specification;
 	}
 	
-	private Content createContent(List<Category> categories)
+	private Content createContent(Category category)
 	{
 		Head head = new Head();
 		head.getRow().add(createHeaderRow(headerKeys));
 		
 		Body body = new Body();
-		for(Category c : categories)
+		for(Test t : category.getTest())
 		{
-			body.getRow().add(createRow(c));
+			body.getRow().add(createRow(t));
 		}
 		
 		Content content = new Content();
@@ -107,26 +107,14 @@ public class OfxQaFrDurationSummaryTable extends AbstractUtilsOfxDocumentationFa
 		return content;
 	}
 	
-	private Row createRow(Category category)
+	private Row createRow(Test test)
 	{
 		Row row = new Row();
-		JaxbUtil.trace(category);
-		row.getCell().add(OfxCellFactory.createParagraphCell(category.getCode()));
-		row.getCell().add(OfxCellFactory.createParagraphCell(category.getName()));
-		
-		int duration = totalDuration(category);
-		row.getCell().add(OfxCellFactory.createParagraphCell(""+duration));
+		JaxbUtil.trace(test);
+		row.getCell().add(OfxCellFactory.createParagraphCell(test.getCode()));
+		row.getCell().add(OfxCellFactory.createParagraphCell(test.getName()));
+		row.getCell().add(OfxCellFactory.createParagraphCell(""+test.getDuration()));
 		
 		return row;
-	}
-	
-	private int totalDuration(Category category)
-	{
-		int total=0;
-		for(Test t : category.getTest())
-		{
-			total=total+t.getDuration();
-		}
-		return total;
 	}
 }

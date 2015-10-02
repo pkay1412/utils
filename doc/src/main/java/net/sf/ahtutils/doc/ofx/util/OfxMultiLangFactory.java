@@ -28,23 +28,24 @@ public class OfxMultiLangFactory
 {	
 	final static Logger logger = LoggerFactory.getLogger(OfxMultiLangFactory.class);
 	
-	public static Title title(String[] keys, Langs langs){return title(keys,langs,null,null);}
+	public static Title title(String[] keys, Langs langs) throws OfxAuthoringException{return title(keys,langs,null,null);}
 	
-	public static Title title(String[] keys, Langs langs, String prefix, String suffix)
+	public static Title title(String[] keys, Langs langs, String prefix, String suffix) throws OfxAuthoringException
 	{
 		Title title = XmlTitleFactory.build();
 		for(String key : keys)
 		{
-			String text = "!!!No-Translation!!!";
+			StringBuffer sb = new StringBuffer();
+			if(prefix!=null){sb.append(prefix);}
 			try
 			{
 				Lang lCaption = StatusXpath.getLang(langs,key);
-				text = lCaption.getTranslation();
+				sb.append(lCaption.getTranslation());
 			}
-			catch (ExlpXpathNotFoundException e) {e.printStackTrace();}
-			catch (ExlpXpathNotUniqueException e) {e.printStackTrace();}
-			
-			title.getContent().add(OfxTextFactory.build(key,text));
+			catch (ExlpXpathNotFoundException e) {throw new OfxAuthoringException(e.getMessage());}
+			catch (ExlpXpathNotUniqueException e) {throw new OfxAuthoringException(e.getMessage());}
+			if(suffix!=null){sb.append(suffix);}
+			title.getContent().add(OfxTextFactory.build(key,sb.toString()));
 		}
 		return title;
 	}

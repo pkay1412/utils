@@ -26,8 +26,6 @@ import net.sf.ahtutils.doc.UtilsDocumentation;
 import net.sf.ahtutils.doc.ofx.AbstractUtilsOfxDocumentationFactory;
 import net.sf.ahtutils.doc.ofx.util.OfxMultiLangFactory;
 import net.sf.ahtutils.xml.qa.Category;
-import net.sf.ahtutils.xml.qa.Group;
-import net.sf.ahtutils.xml.qa.Groups;
 import net.sf.ahtutils.xml.qa.Test;
 import net.sf.ahtutils.xml.status.Translations;
 import net.sf.ahtutils.xml.xpath.StatusXpath;
@@ -35,40 +33,41 @@ import net.sf.exlp.exception.ExlpXpathNotFoundException;
 import net.sf.exlp.exception.ExlpXpathNotUniqueException;
 import net.sf.exlp.util.xml.JaxbUtil;
 
-public class OfxQaFrDurationGroupTable extends AbstractUtilsOfxDocumentationFactory
+public class OfxQaDurationFrSummaryTable extends AbstractUtilsOfxDocumentationFactory
 {
 	final static Logger logger = LoggerFactory.getLogger(OfxQaNfrQuestionTableFactory.class);
-	private static String keyCaptionPrefix = "auTableQaDurationGroup";
+	private static String keyCaptionPrefix = "auTableQaSummaryDuration";
 	
 	private List<String> headerKeys;
 	
-	public OfxQaFrDurationGroupTable(Configuration config, String[] langs, Translations translations)
+	public OfxQaDurationFrSummaryTable(Configuration config, String[] langs, Translations translations)
 	{
 		super(config,langs,translations);
 		
 		headerKeys = new ArrayList<String>();
-		headerKeys.add("auTableQaGroup");
-		headerKeys.add("auTableQaTestQuantity");
+		headerKeys.add("auTableQaTestCode");
+		headerKeys.add("auTableQaTestCase");
 		headerKeys.add("auTableQaTestDuration");
 	}
 	
-	public Table build(List<Category> categories,Groups groups) throws OfxAuthoringException
+	public Table build(List<Category> categories) throws OfxAuthoringException
 	{
 		try
 		{	
 			Table table = new Table();
-			table.setId("table.qa.duration.group");
+			table.setId("table.qa.duration.summary");
 			
 			Comment comment = XmlCommentFactory.build();
 			OfxCommentBuilder.fixedId(comment, table.getId());
 			DocumentationCommentBuilder.translationKeys(comment,config,UtilsDocumentation.keyTranslationFile);
 			DocumentationCommentBuilder.tableHeaders(comment,headerKeys);
 			DocumentationCommentBuilder.tableKey(comment,keyCaptionPrefix,"Table Caption Prefix");
+			OfxCommentBuilder.doNotModify(comment);
 			table.setComment(comment);
 			
 			table.setTitle(OfxMultiLangFactory.title(langs, StatusXpath.getTranslation(translations, keyCaptionPrefix).getLangs()));
 			table.setSpecification(createSpecifications());
-			table.setContent(createContent(categories,groups));
+			table.setContent(createContent(categories));
 				
 			return table;
 		}
@@ -79,9 +78,9 @@ public class OfxQaFrDurationGroupTable extends AbstractUtilsOfxDocumentationFact
 	private Specification createSpecifications()
 	{
 		Columns cols = new Columns();
+		cols.getColumn().add(OfxColumnFactory.flex(20,true));
 		cols.getColumn().add(OfxColumnFactory.flex(70,false));
-		cols.getColumn().add(OfxColumnFactory.flex(15,true));
-		cols.getColumn().add(OfxColumnFactory.flex(15,true));
+		cols.getColumn().add(OfxColumnFactory.flex(10,true));
 		
 		Specification specification = new Specification();
 		specification.setColumns(cols);
@@ -90,15 +89,15 @@ public class OfxQaFrDurationGroupTable extends AbstractUtilsOfxDocumentationFact
 		return specification;
 	}
 	
-	private Content createContent(List<Category> categories,Groups groups)
+	private Content createContent(List<Category> categories)
 	{
 		Head head = new Head();
 		head.getRow().add(createHeaderRow(headerKeys));
 		
 		Body body = new Body();
-		for(Group g : groups.getGroup())
+		for(Category c : categories)
 		{
-			body.getRow().add(createRow(categories,g));
+			body.getRow().add(createRow(c));
 		}
 		
 		Content content = new Content();
@@ -108,40 +107,26 @@ public class OfxQaFrDurationGroupTable extends AbstractUtilsOfxDocumentationFact
 		return content;
 	}
 	
-	private Row createRow(List<Category> categories,Group group)
+	private Row createRow(Category category)
 	{
 		Row row = new Row();
-		JaxbUtil.trace(group);
-		row.getCell().add(OfxCellFactory.createParagraphCell(group.getName()));		
+		JaxbUtil.trace(category);
+		row.getCell().add(OfxCellFactory.createParagraphCell(category.getCode()));
+		row.getCell().add(OfxCellFactory.createParagraphCell(category.getName()));
 		
-		int[] total = getSumForGroup(categories,group);
-		row.getCell().add(OfxCellFactory.createParagraphCell(""+total[0]));
-		row.getCell().add(OfxCellFactory.createParagraphCell(""+total[1]));
+		int duration = totalDuration(category);
+		row.getCell().add(OfxCellFactory.createParagraphCell(""+duration));
 		
 		return row;
 	}
 	
-	private int[] getSumForGroup(List<Category> categories,Group group)
+	private int totalDuration(Category category)
 	{
-		int duration=0;
-		int counter = 0;
-		for(Category c : categories)
+		int total=0;
+		for(Test t : category.getTest())
 		{
-			for(Test t : c.getTest())
-			{
-				if(t.isSetGroups())
-				{
-					for(Group g : t.getGroups().getGroup())
-					{
-						if(group.getId()==g.getId())
-						{
-							counter++;
-							duration=duration+t.getDuration();
-						}
-					}
-				}
-			}
+			total=total+t.getDuration();
 		}
-		return new int[]{counter,duration};
+		return total;
 	}
 }
