@@ -65,7 +65,7 @@ public class OfxQaFrDurationTable extends AbstractUtilsOfxDocumentationFactory
 			OfxCommentBuilder.doNotModify(comment);
 			table.setComment(comment);
 			
-			table.setTitle(OfxMultiLangFactory.title(langs, StatusXpath.getTranslation(translations, "auTableQaSummaryDuration").getLangs()));
+			table.setTitle(OfxMultiLangFactory.title(langs, StatusXpath.getTranslation(translations, "auTableQaSummaryDuration").getLangs(),null," "+category.getName()));
 			table.setSpecification(createSpecifications());
 			table.setContent(createContent(category));
 				

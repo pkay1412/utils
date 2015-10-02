@@ -27,6 +27,7 @@ import net.sf.ahtutils.doc.DocumentationCommentBuilder;
 import net.sf.ahtutils.doc.UtilsDocumentation;
 import net.sf.ahtutils.doc.ofx.AbstractUtilsOfxDocumentationFactory;
 import net.sf.ahtutils.doc.ofx.util.OfxMultiLangFactory;
+import net.sf.ahtutils.xml.qa.Group;
 import net.sf.ahtutils.xml.security.Staff;
 import net.sf.ahtutils.xml.status.Translations;
 import net.sf.ahtutils.xml.xpath.StatusXpath;
@@ -76,14 +77,14 @@ public class OfxQaStaffTableFactory extends AbstractUtilsOfxDocumentationFactory
 		catch (ExlpXpathNotUniqueException e) {throw new OfxAuthoringException(e.getMessage());}
 	}
 	
-	public Table group(List<Staff> staffs) throws OfxAuthoringException
+	public Table group(Group group) throws OfxAuthoringException
 	{
 		try
 		{
 			Table table = new Table();
 			table.setSpecification(createSpecifications());
-			table.setId("table.qa.group.X");
-			table.setTitle(OfxMultiLangFactory.title(langs,StatusXpath.getTranslation(translations, keyCaptionGroup).getLangs()));
+			table.setId("table.qa.group."+group.getId());
+			table.setTitle(OfxMultiLangFactory.title(langs,StatusXpath.getTranslation(translations, keyCaptionGroup).getLangs(),null,": "+group.getName()));
 			
 			Comment comment = XmlCommentFactory.build();
 			OfxCommentBuilder.fixedId(comment, table.getId());
@@ -92,7 +93,7 @@ public class OfxQaStaffTableFactory extends AbstractUtilsOfxDocumentationFactory
 			DocumentationCommentBuilder.tableKey(comment,keyCaptionGroup,"Table Caption Prefix");
 			table.setComment(comment);
 			
-			table.setContent(createContent(staffs));
+			table.setContent(createContent(group.getStaff()));
 			
 			return table;
 		}

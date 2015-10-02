@@ -57,7 +57,7 @@ public class OfxQaGroupSectionFactory extends AbstractUtilsOfxDocumentationFacto
 		section.getContent().add(group.getDescription().getValue());
 		section.getContent().add(XmlParagraphFactory.text(group.getDescription().getValue()));
 
-		section.getContent().add(ofStaff.group(group.getStaff()));
+		section.getContent().add(ofStaff.group(group));
 		
 		return section;
 	}

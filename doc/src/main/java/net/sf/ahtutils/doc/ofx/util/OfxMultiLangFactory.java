@@ -28,7 +28,9 @@ public class OfxMultiLangFactory
 {	
 	final static Logger logger = LoggerFactory.getLogger(OfxMultiLangFactory.class);
 	
-	public static Title title(String[] keys, Langs langs)
+	public static Title title(String[] keys, Langs langs){return title(keys,langs,null,null);}
+	
+	public static Title title(String[] keys, Langs langs, String prefix, String suffix)
 	{
 		Title title = XmlTitleFactory.build();
 		for(String key : keys)

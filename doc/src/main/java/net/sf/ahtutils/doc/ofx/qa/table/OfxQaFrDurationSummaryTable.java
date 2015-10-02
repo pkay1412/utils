@@ -78,8 +78,8 @@ public class OfxQaFrDurationSummaryTable extends AbstractUtilsOfxDocumentationFa
 	private Specification createSpecifications()
 	{
 		Columns cols = new Columns();
-		cols.getColumn().add(OfxColumnFactory.flex(10,true));
-		cols.getColumn().add(OfxColumnFactory.flex(80,false));
+		cols.getColumn().add(OfxColumnFactory.flex(20,true));
+		cols.getColumn().add(OfxColumnFactory.flex(70,false));
 		cols.getColumn().add(OfxColumnFactory.flex(10,true));
 		
 		Specification specification = new Specification();

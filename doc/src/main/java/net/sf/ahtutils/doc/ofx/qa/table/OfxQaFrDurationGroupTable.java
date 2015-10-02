@@ -48,6 +48,7 @@ public class OfxQaFrDurationGroupTable extends AbstractUtilsOfxDocumentationFact
 		
 		headerKeys = new ArrayList<String>();
 		headerKeys.add("auTableQaGroup");
+		headerKeys.add("auTableQaTestQuantity");
 		headerKeys.add("auTableQaTestDuration");
 	}
 	
@@ -78,8 +79,9 @@ public class OfxQaFrDurationGroupTable extends AbstractUtilsOfxDocumentationFact
 	private Specification createSpecifications()
 	{
 		Columns cols = new Columns();
-		cols.getColumn().add(OfxColumnFactory.flex(80,false));
-		cols.getColumn().add(OfxColumnFactory.flex(10,true));
+		cols.getColumn().add(OfxColumnFactory.flex(70,false));
+		cols.getColumn().add(OfxColumnFactory.flex(15,true));
+		cols.getColumn().add(OfxColumnFactory.flex(15,true));
 		
 		Specification specification = new Specification();
 		specification.setColumns(cols);
@@ -112,15 +114,17 @@ public class OfxQaFrDurationGroupTable extends AbstractUtilsOfxDocumentationFact
 		JaxbUtil.trace(group);
 		row.getCell().add(OfxCellFactory.createParagraphCell(group.getName()));		
 		
-		int duration = getSumForGroup(categories,group);
-		row.getCell().add(OfxCellFactory.createParagraphCell(""+duration));
+		int[] total = getSumForGroup(categories,group);
+		row.getCell().add(OfxCellFactory.createParagraphCell(""+total[0]));
+		row.getCell().add(OfxCellFactory.createParagraphCell(""+total[1]));
 		
 		return row;
 	}
 	
-	private int getSumForGroup(List<Category> categories,Group group)
+	private int[] getSumForGroup(List<Category> categories,Group group)
 	{
-		int i=0;
+		int duration=0;
+		int counter = 0;
 		for(Category c : categories)
 		{
 			for(Test t : c.getTest())
@@ -129,11 +133,15 @@ public class OfxQaFrDurationGroupTable extends AbstractUtilsOfxDocumentationFact
 				{
 					for(Group g : t.getGroups().getGroup())
 					{
-						if(group.getId()==g.getId()){i=i+t.getDuration();}
+						if(group.getId()==g.getId())
+						{
+							counter++;
+							duration=duration+t.getDuration();
+						}
 					}
 				}
 			}
 		}
-		return i;
+		return new int[]{counter,duration};
 	}
 }
