@@ -25,6 +25,7 @@ import net.sf.ahtutils.doc.DocumentationCommentBuilder;
 import net.sf.ahtutils.doc.UtilsDocumentation;
 import net.sf.ahtutils.doc.ofx.AbstractUtilsOfxDocumentationFactory;
 import net.sf.ahtutils.doc.ofx.util.OfxMultiLangFactory;
+import net.sf.ahtutils.factory.txt.TxtPeriodFactory;
 import net.sf.ahtutils.xml.qa.Category;
 import net.sf.ahtutils.xml.qa.Group;
 import net.sf.ahtutils.xml.qa.Groups;
@@ -40,6 +41,7 @@ public class OfxQaDurationGroupTable extends AbstractUtilsOfxDocumentationFactor
 	final static Logger logger = LoggerFactory.getLogger(OfxQaNfrQuestionTableFactory.class);
 	private static String keyCaptionPrefix = "auTableQaDurationGroup";
 	
+	private TxtPeriodFactory tfPeriod;
 	private List<String> headerKeys;
 	
 	public OfxQaDurationGroupTable(Configuration config, String[] langs, Translations translations)
@@ -50,6 +52,8 @@ public class OfxQaDurationGroupTable extends AbstractUtilsOfxDocumentationFactor
 		headerKeys.add("auTableQaGroup");
 		headerKeys.add("auTableQaTestQuantity");
 		headerKeys.add("auTableQaTestDuration");
+		
+		 tfPeriod = new TxtPeriodFactory();
 	}
 	
 	public Table build(List<Category> categories,Groups groups) throws OfxAuthoringException
@@ -79,9 +83,9 @@ public class OfxQaDurationGroupTable extends AbstractUtilsOfxDocumentationFactor
 	private Specification createSpecifications()
 	{
 		Columns cols = new Columns();
-		cols.getColumn().add(OfxColumnFactory.flex(70,false));
+		cols.getColumn().add(OfxColumnFactory.flex(45,false));
 		cols.getColumn().add(OfxColumnFactory.flex(15,true));
-		cols.getColumn().add(OfxColumnFactory.flex(15,true));
+		cols.getColumn().add(OfxColumnFactory.flex(40,true));
 		
 		Specification specification = new Specification();
 		specification.setColumns(cols);
@@ -116,7 +120,7 @@ public class OfxQaDurationGroupTable extends AbstractUtilsOfxDocumentationFactor
 		
 		int[] total = getSumForGroup(categories,group);
 		row.getCell().add(OfxCellFactory.createParagraphCell(""+total[0]));
-		row.getCell().add(OfxCellFactory.createParagraphCell(""+total[1]));
+		row.getCell().add(OfxCellFactory.createParagraphCell(""+tfPeriod.debug(total[1])));
 		
 		return row;
 	}

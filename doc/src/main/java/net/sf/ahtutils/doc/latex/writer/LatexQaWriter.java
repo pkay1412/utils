@@ -141,7 +141,6 @@ public class LatexQaWriter
 		ofxMlw.section(1,"/qa/fr",ofContainerInput.build(qa,"/section/qa/fr"));
 		ofxMlw.section(1,"/qa/agreements",ofContainerInput.build(qa,"/table/qa/agreement/fr"));
 		ofxMlw.section(1,"/qa/summary",ofContainerInput.build(qa,"/table/qa/summary/fr"));
-		ofxMlw.section(1,"/qa/duration",ofContainerInput.build(qa,"/table/qa/summary/fr"));
 	}
 		
 	public void writeQaFr(Category category) throws OfxAuthoringException, IOException, OfxConfigurationException
