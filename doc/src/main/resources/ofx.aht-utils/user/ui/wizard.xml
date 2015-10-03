@@ -10,16 +10,13 @@
 	
 	<ofx:paragraph lang="en">
 		<ofx:marginalia>
-			<ofx:paragraph>T</ofx:paragraph>
+			<media:image>
+        		<layout:width unit="percentage">100</layout:width>
+        		<media:media src="svg.aht-utils/icon/ui/wizard/wizard.svg" dst="icon/ui/wizard/wizard"/>
+    		</media:image>
 		</ofx:marginalia>The wizard ....
 		
 	</ofx:paragraph>
-	
-	<media:image>
-        <layout:height unit="em">1.0</layout:height>
-        <media:media src="svg.aht-utils/icon/ui/wizard/wizard.svg" dst="icon/ui/wizard/wizard"/>
-    </media:image>
-
 	
 	
 	
