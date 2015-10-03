@@ -246,6 +246,18 @@
 	                    <ofx:paragraph>Indicates, that the actual element is selected.</ofx:paragraph>
 	                </table:cell>
 	            </table:row>
+	            <table:row>
+	                <table:cell>
+	                    <media:image>
+	                        <layout:height unit="em">1.0</layout:height>
+	                        <media:media src="svg.aht-utils/icon/ui/wizard/wand.svg" dst="icon/ui/wizard/wand"/>
+	                    </media:image>
+	                </table:cell>
+	                <table:cell><ofx:paragraph>Wizard</ofx:paragraph></table:cell>
+	                <table:cell>
+	                    <ofx:paragraph>Wizard ....</ofx:paragraph>
+	                </table:cell>
+	            </table:row>
 	        </table:body>
     	</table:content>
 	</table:table>

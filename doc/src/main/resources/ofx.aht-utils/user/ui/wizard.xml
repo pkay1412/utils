@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ofx:section xmlns:ofx="http://www.openfuxml.org"
+			 xmlns:media="http://www.openfuxml.org/media"
+			 xmlns:table="http://www.openfuxml.org/table"
+			 xmlns:layout="http://www.openfuxml.org/layout"
+			 xmlns:text="http://www.openfuxml.org/text"
+			 xmlns:l="http://www.openfuxml.org/list"
+		id="section.user.ui.wizard">
+	<ofx:title lang="en">Wizard</ofx:title>
+	
+	<ofx:paragraph lang="en">
+		<ofx:marginalia>
+			<ofx:paragraph>T</ofx:paragraph>
+		</ofx:marginalia>The wizard ....
+		
+	</ofx:paragraph>
+	
+	<media:image>
+        <layout:height unit="em">1.0</layout:height>
+        <media:media src="svg.aht-utils/icon/ui/wizard/wizard.svg" dst="icon/ui/wizard/wizard"/>
+    </media:image>
+
+	
+	
+	
+</ofx:section>

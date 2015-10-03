@@ -18,7 +18,7 @@ public class UtilsLatexUserDocumentationBuilder extends AbstractLatexDocumentati
 	public static final String cfgKeyErSvg = "doc.image.admin.development.er";
 	
 	
-	public static enum Code {uiInterface,uiIcons,uiExport,uiRevision,uiApprovals,uiConstraints}
+	public static enum Code {uiInterface,uiIcons,uiExport,uiRevision,uiApprovals,uiConstraints,uiWizard}
 		
 	public UtilsLatexUserDocumentationBuilder(Configuration config, Translations translations,String[] langs, CrossMediaManager cmm,DefaultSettingsManager dsm)
 	{
@@ -38,6 +38,7 @@ public class UtilsLatexUserDocumentationBuilder extends AbstractLatexDocumentati
 		addConfig(Code.uiRevision.toString(),"ofx.aht-utils/user/ui/revisions.xml","user/ui/revisions");
 		addConfig(Code.uiApprovals.toString(),"ofx.aht-utils/user/ui/approval.xml","user/ui/approval");
 		addConfig(Code.uiConstraints.toString(),"ofx.aht-utils/user/ui/constraints.xml","user/ui/constraints");
+		addConfig(Code.uiWizard.toString(),"ofx.aht-utils/user/ui/wizard.xml","user/ui/wizard");
 	}
 
 	public void render(Code code) throws UtilsConfigurationException, OfxConfigurationException{render(1,code);}
