@@ -123,13 +123,13 @@ public class UtilsQaFacadeBean <L extends UtilsLang,
 		return q.getResultList();
 	}
 	 
-	 public List<QAT> fQaTests(Class<QAT> clTest, Class<QAC> clCategory, List<QAC> categories)
-	 {
-		 return this.allForOrParents(clTest, ParentPredicate.createFromList(clCategory, "category", categories));
-	 }
-	@Override
-	public List<GROUP> fQaGroups(Class<GROUP> cGroup, QA qa)
+	public List<QAT> fQaTests(Class<QAT> clTest, Class<QAC> clCategory, List<QAC> categories)
 	{
-		return this.allForParent(cGroup, "qa", qa);
+		 return this.allForOrParents(clTest, ParentPredicate.createFromList(clCategory, "category", categories));
+	}
+	
+	@Override public List<GROUP> fQaGroups(Class<GROUP> cGroup, QA qa)
+	{
+		return this.allOrderedParent(cGroup, "position", true, "qa", qa);
 	}
 }

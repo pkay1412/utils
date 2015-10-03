@@ -1,4 +1,4 @@
-package net.sf.ahtutils.jsf.handler;
+package net.sf.ahtutils.jsf.handler.crud;
 
 import java.util.List;
 
@@ -8,14 +8,14 @@ import org.slf4j.LoggerFactory;
 import net.sf.ahtutils.exception.ejb.UtilsConstraintViolationException;
 import net.sf.ahtutils.exception.ejb.UtilsLockingException;
 import net.sf.ahtutils.interfaces.facade.UtilsFacade;
-import net.sf.ahtutils.interfaces.model.crud.EjbCrudWithParent;
+import net.sf.ahtutils.interfaces.model.crud.EjbPositionCrudWithParent;
 import net.sf.ahtutils.interfaces.web.CrudHandlerBean;
 import net.sf.ahtutils.model.interfaces.with.EjbWithId;
 import net.sf.ahtutils.web.mbean.util.AbstractLogMessage;
 
-public class UtilsCrudHandlerParent <T extends EjbCrudWithParent, P extends EjbWithId>
+public class UtilsCrudHandlerPositionParent <T extends EjbPositionCrudWithParent, P extends EjbWithId>
 {	
-	final static Logger logger = LoggerFactory.getLogger(UtilsCrudHandlerParent.class);
+	final static Logger logger = LoggerFactory.getLogger(UtilsCrudHandlerPositionParent.class);
 	
 	private CrudHandlerBean<T> bean;
 	private UtilsFacade fUtils;
@@ -24,7 +24,7 @@ public class UtilsCrudHandlerParent <T extends EjbCrudWithParent, P extends EjbW
 	
 	private T prototype;
 	
-	public UtilsCrudHandlerParent(CrudHandlerBean<T> bean, UtilsFacade fUtils, Class<T> cT)
+	public UtilsCrudHandlerPositionParent(CrudHandlerBean<T> bean, UtilsFacade fUtils, Class<T> cT)
 	{
 		this.bean=bean;
 		this.fUtils=fUtils;
@@ -40,7 +40,7 @@ public class UtilsCrudHandlerParent <T extends EjbCrudWithParent, P extends EjbW
 
 	public void reloadList()
 	{
-		list = fUtils.allForParent(cT, prototype.resolveParentAttribute(), parent);
+		list = fUtils.allOrderedParent(cT, "position", true, prototype.resolveParentAttribute(), parent);
 	}
 	
 	public void add()
