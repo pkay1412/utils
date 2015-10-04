@@ -23,6 +23,7 @@ import net.sf.ahtutils.doc.ofx.qa.section.OfxQaFrSectionFactory;
 import net.sf.ahtutils.doc.ofx.qa.section.OfxQaGroupSectionFactory;
 import net.sf.ahtutils.doc.ofx.qa.section.OfxQaInputSectionFactory;
 import net.sf.ahtutils.doc.ofx.qa.section.OfxQaNfrSectionFactory;
+import net.sf.ahtutils.doc.ofx.qa.section.OfxQaScheduleSectionFactory;
 import net.sf.ahtutils.doc.ofx.qa.table.OfxQaAgreementTableFactory;
 import net.sf.ahtutils.doc.ofx.qa.table.OfxQaFrSummaryTableFactory;
 import net.sf.ahtutils.doc.ofx.qa.table.OfxQaRoleTableFactory;
@@ -51,6 +52,7 @@ public class LatexQaWriter
 	private OfxQaStaffTableFactory ofQaStaff;
 	private OfxQaAgreementTableFactory ofAgreements;
 	private OfxQaGroupSectionFactory ofGroup;
+	private OfxQaScheduleSectionFactory ofSchedule;
 	private OfxQaDurationSectionFactory ofDuration;
 	private OfxStatusTableFactory ofStatus;
 	
@@ -69,6 +71,7 @@ public class LatexQaWriter
 		ofQaStaff = new OfxQaStaffTableFactory(config,langs,translations);
 		ofAgreements = new OfxQaAgreementTableFactory(config,langs,translations);
 		ofGroup = new OfxQaGroupSectionFactory(config,langs,translations);
+		ofSchedule = new OfxQaScheduleSectionFactory(config,langs,translations);
 		ofDuration = new OfxQaDurationSectionFactory(config,langs,translations);
 		ofStatus = new OfxStatusTableFactory(config, langs, translations);
 		
@@ -129,6 +132,7 @@ public class LatexQaWriter
 	public void durations(Qa qa,Qa qaGroups) throws OfxAuthoringException, IOException, OfxConfigurationException
 	{
 		ofxMlw.section(1, "qa/durations",ofDuration.build(qa.getCategory(),qaGroups.getGroups()));
+		ofxMlw.section(1, "qa/schedule",ofSchedule.build(qaGroups.getGroups()));
 	}
 	
 	public void writeQaAgreement(Category c,Aht testStatus) throws OfxAuthoringException, IOException

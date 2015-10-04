@@ -39,6 +39,10 @@ public interface UtilsQualityAssuranceRest
 	@Produces(MediaType.APPLICATION_XML)
 	Qa qaGroups(@PathParam("id") long qaId);
 	
+	@GET @Path("/schedule/{id:[0-9]*}")
+	@Produces(MediaType.APPLICATION_XML)
+	Qa qaSchedule(@PathParam("id") long qaId);
+	
 	@GET @Path("/categories/{id:[0-9]*}")
 	@Produces(MediaType.APPLICATION_XML)
 	Qa qaCategories(@PathParam("id") long qaId);

@@ -147,6 +147,36 @@ public class QaRestService <L extends UtilsLang,
 		return qa;
 	}
 	
+	public Qa qaSchedule(long qaId)
+	{
+		logger.info("Building QA Groups for QA="+qaId);
+		Qa qa = new Qa();
+		qa.setGroups(XmlGroupsFactory.build());
+		try
+		{
+			QA eQa = fQa.find(cQa, qaId);
+			
+			for(GROUP group : fQa.fQaGroups(cGroup,eQa))
+			{
+				group = fQa.load(cGroup, group);
+				Group xGroup = xfGroup.build(group);
+				for(STAFF staff : group.getStaffs())
+				{
+					Staff xStaff = xfStaff.build(staff);
+					
+					if(staff.getDepartment()!=null){xStaff.setType(XmlTypeFactory.buildLabel(null,staff.getDepartment()));}
+					if(staff.getStakeholder()!=null){xStaff.setStatus(XmlStatusFactory.buildLabel(null,staff.getStakeholder().getCode()));}
+					if(staff.getResponsibilities()!=null){xStaff.setResponsible(XmlResponsibleFactory.buildLabel(null,staff.getResponsibilities()));}
+					xGroup.getStaff().add(xStaff);
+				}
+						
+				qa.getGroups().getGroup().add(xGroup);
+			}
+		}
+		catch (UtilsNotFoundException e) {e.printStackTrace();}	
+		return qa;
+	}
+	
 	public Qa qaCategories(long qaId)
 	{
 		Qa qa = new Qa();
