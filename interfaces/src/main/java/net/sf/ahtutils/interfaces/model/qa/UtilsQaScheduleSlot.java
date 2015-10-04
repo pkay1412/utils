@@ -13,7 +13,6 @@ import net.sf.ahtutils.interfaces.model.status.UtilsStatus;
 import net.sf.ahtutils.interfaces.rest.security.UtilsSecurityAction;
 import net.sf.ahtutils.model.interfaces.idm.UtilsUser;
 import net.sf.ahtutils.model.interfaces.with.EjbWithId;
-import net.sf.ahtutils.model.interfaces.with.EjbWithName;
 
 public interface UtilsQaScheduleSlot<L extends UtilsLang,
 D extends UtilsDescription,
@@ -39,10 +38,10 @@ QATC extends UtilsStatus<QATC,L,D>,
 QATS extends UtilsStatus<QATS,L,D>,
 QARS extends UtilsStatus<QARS,L,D>,
 QAUS extends UtilsStatus<QAUS,L,D>>
-			extends EjbWithId,EjbWithName,EjbWithDateRange
+			extends EjbWithId,EjbWithDateRange
 {
-	QA getQa();
-	void setQa(QA qa);
+	QASD getSchedule();
+	void setSchedule(QASD schedule);
 	
 	List<GROUP> getGroups();
 	void setGroups(List<GROUP> groups);

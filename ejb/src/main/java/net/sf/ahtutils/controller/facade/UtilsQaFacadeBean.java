@@ -87,13 +87,20 @@ public class UtilsQaFacadeBean <L extends UtilsLang,
 		return category;
 	}
 	
-	public QAT load(Class<QAT> cQat, QAT test)
+	@Override public QAT load(Class<QAT> cQat, QAT test)
 	{		
 		test = em.find(cQat, test.getId());
 		test.getDiscussions().size();
 		test.getResults().size();
 		test.getGroups().size();
 		return test;
+	}
+	
+	@Override public QASD load(Class<QASD> cSchedule, QASD schedule)
+	{		
+		schedule = em.find(cSchedule, schedule.getId());
+		schedule.getSlots().size();
+		return schedule;
 	}
 	
 	@Override public QASS load(Class<QASS> cSlot, QASS slot)
