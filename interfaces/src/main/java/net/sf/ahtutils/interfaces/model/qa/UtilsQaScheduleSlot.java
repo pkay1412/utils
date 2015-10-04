@@ -1,19 +1,6 @@
-package net.sf.ahtutils.factory.xml.qa;
+package net.sf.ahtutils.interfaces.model.qa;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import net.sf.ahtutils.interfaces.model.qa.UtilsQaCategory;
-import net.sf.ahtutils.interfaces.model.qa.UtilsQaGroup;
-import net.sf.ahtutils.interfaces.model.qa.UtilsQaResult;
-import net.sf.ahtutils.interfaces.model.qa.UtilsQaScheduleSlot;
-import net.sf.ahtutils.interfaces.model.qa.UtilsQaStaff;
-import net.sf.ahtutils.interfaces.model.qa.UtilsQaStakeholder;
-import net.sf.ahtutils.interfaces.model.qa.UtilsQaTest;
-import net.sf.ahtutils.interfaces.model.qa.UtilsQaTestDiscussion;
-import net.sf.ahtutils.interfaces.model.qa.UtilsQaTestInfo;
-import net.sf.ahtutils.interfaces.model.qa.UtilsQaUsability;
-import net.sf.ahtutils.interfaces.model.qa.UtilsQualityAssurarance;
+import net.sf.ahtutils.interfaces.model.date.EjbWithDateRange;
 import net.sf.ahtutils.interfaces.model.security.UtilsSecurityCategory;
 import net.sf.ahtutils.interfaces.model.security.UtilsSecurityRole;
 import net.sf.ahtutils.interfaces.model.security.UtilsSecurityUsecase;
@@ -23,9 +10,10 @@ import net.sf.ahtutils.interfaces.model.status.UtilsLang;
 import net.sf.ahtutils.interfaces.model.status.UtilsStatus;
 import net.sf.ahtutils.interfaces.rest.security.UtilsSecurityAction;
 import net.sf.ahtutils.model.interfaces.idm.UtilsUser;
-import net.sf.ahtutils.xml.qa.Group;
+import net.sf.ahtutils.model.interfaces.with.EjbWithId;
+import net.sf.ahtutils.model.interfaces.with.EjbWithName;
 
-public class XmlGroupFactory<L extends UtilsLang,
+public interface UtilsQaScheduleSlot<L extends UtilsLang,
 D extends UtilsDescription,
 C extends UtilsSecurityCategory<L,D,C,R,V,U,A,USER>,
 R extends UtilsSecurityRole<L,D,C,R,V,U,A,USER>,
@@ -48,31 +36,8 @@ QATC extends UtilsStatus<QATC,L,D>,
 QATS extends UtilsStatus<QATS,L,D>,
 QARS extends UtilsStatus<QARS,L,D>,
 QAUS extends UtilsStatus<QAUS,L,D>>
+			extends EjbWithId,EjbWithName,EjbWithDateRange
 {
-	final static Logger logger = LoggerFactory.getLogger(XmlGroupFactory.class);
-		
-	private Group q;
-	
-	public XmlGroupFactory(Group q)
-	{
-		this.q=q;
-	}
-	
-	public Group build(GROUP group)
-	{
-		Group xml = new Group();
-		if(q.isSetId()){xml.setId(group.getId());}
-		
-		if(q.isSetName()){xml.setName(group.getName());}
-		if(q.isSetDescription()){xml.setDescription(net.sf.ahtutils.factory.xml.status.XmlDescriptionFactory.build(group.getDescription()));}
-		
-		return xml;
-	}
-	
-	public static Group build(String name)
-	{
-		Group xml = new Group();
-		xml.setName(name);
-		return xml;
-	}
+	QA getQa();
+	void setQa(QA qa);
 }
