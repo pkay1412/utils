@@ -1,17 +1,5 @@
-package net.sf.ahtutils.factory.xml.qa;
+package net.sf.ahtutils.interfaces.model.qa;
 
-import net.sf.ahtutils.interfaces.model.qa.UtilsQaCategory;
-import net.sf.ahtutils.interfaces.model.qa.UtilsQaGroup;
-import net.sf.ahtutils.interfaces.model.qa.UtilsQaResult;
-import net.sf.ahtutils.interfaces.model.qa.UtilsQaSchedule;
-import net.sf.ahtutils.interfaces.model.qa.UtilsQaScheduleSlot;
-import net.sf.ahtutils.interfaces.model.qa.UtilsQaStaff;
-import net.sf.ahtutils.interfaces.model.qa.UtilsQaStakeholder;
-import net.sf.ahtutils.interfaces.model.qa.UtilsQaTest;
-import net.sf.ahtutils.interfaces.model.qa.UtilsQaTestDiscussion;
-import net.sf.ahtutils.interfaces.model.qa.UtilsQaTestInfo;
-import net.sf.ahtutils.interfaces.model.qa.UtilsQaUsability;
-import net.sf.ahtutils.interfaces.model.qa.UtilsQualityAssurarance;
 import net.sf.ahtutils.interfaces.model.security.UtilsSecurityCategory;
 import net.sf.ahtutils.interfaces.model.security.UtilsSecurityRole;
 import net.sf.ahtutils.interfaces.model.security.UtilsSecurityUsecase;
@@ -21,12 +9,10 @@ import net.sf.ahtutils.interfaces.model.status.UtilsLang;
 import net.sf.ahtutils.interfaces.model.status.UtilsStatus;
 import net.sf.ahtutils.interfaces.rest.security.UtilsSecurityAction;
 import net.sf.ahtutils.model.interfaces.idm.UtilsUser;
-import net.sf.ahtutils.xml.qa.Qa;
+import net.sf.ahtutils.model.interfaces.with.EjbWithId;
+import net.sf.ahtutils.model.interfaces.with.EjbWithName;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-public class XmlQaFactory<L extends UtilsLang,
+public interface UtilsQaSchedule<L extends UtilsLang,
 D extends UtilsDescription,
 C extends UtilsSecurityCategory<L,D,C,R,V,U,A,USER>,
 R extends UtilsSecurityRole<L,D,C,R,V,U,A,USER>,
@@ -50,21 +36,10 @@ QATC extends UtilsStatus<QATC,L,D>,
 QATS extends UtilsStatus<QATS,L,D>,
 QARS extends UtilsStatus<QARS,L,D>,
 QAUS extends UtilsStatus<QAUS,L,D>>
+			extends EjbWithId,EjbWithName
 {
-	final static Logger logger = LoggerFactory.getLogger(XmlQaFactory.class);
-		
-	@SuppressWarnings("unused")
-	private Qa q;
+	QA getQa();
+	void setQa(QA qa);
 	
-	public XmlQaFactory(Qa q)
-	{
-		this.q=q;
-	}
-	
-	public static Qa build()
-	{
-		Qa xml = new Qa();
 
-		return xml;
-	}
 }
