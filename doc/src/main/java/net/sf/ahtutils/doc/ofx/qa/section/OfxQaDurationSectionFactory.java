@@ -1,5 +1,6 @@
 package net.sf.ahtutils.doc.ofx.qa.section;
 
+import java.io.FileNotFoundException;
 import java.util.List;
 
 import org.apache.commons.configuration.Configuration;
@@ -13,6 +14,7 @@ import org.openfuxml.util.OfxCommentBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import net.sf.ahtutils.doc.latex.builder.UtilsLatexQaDocumentationBuilder;
 import net.sf.ahtutils.doc.ofx.AbstractUtilsOfxDocumentationFactory;
 import net.sf.ahtutils.doc.ofx.qa.table.OfxQaDurationGroupTable;
 import net.sf.ahtutils.doc.ofx.qa.table.OfxQaDurationFrSummaryTable;
@@ -20,6 +22,7 @@ import net.sf.ahtutils.doc.ofx.qa.table.OfxQaDurationFrCategoryTable;
 import net.sf.ahtutils.xml.qa.Category;
 import net.sf.ahtutils.xml.qa.Groups;
 import net.sf.ahtutils.xml.status.Translations;
+import net.sf.exlp.util.xml.JaxbUtil;
 
 public class OfxQaDurationSectionFactory extends AbstractUtilsOfxDocumentationFactory
 {
@@ -48,11 +51,29 @@ public class OfxQaDurationSectionFactory extends AbstractUtilsOfxDocumentationFa
 		OfxCommentBuilder.doNotModify(comment);
 		section.getContent().add(comment);
 		
+		section.getContent().add(introduction());
+		
 		section.getContent().add(ofSummary.build(categories));
 		section.getContent().add(durationsGroups(categories,groups));
 		section.getContent().add(durationsFrCategories(categories));
 		
 		return section;
+	}
+	
+	private Section introduction() throws OfxAuthoringException
+	{
+		Section section;
+		try
+		{
+			section = JaxbUtil.loadJAXB(UtilsLatexQaDocumentationBuilder.rsrcDuration, Section.class);
+			
+			Comment comment = XmlCommentFactory.build();
+			OfxCommentBuilder.doNotModify(comment);
+			section.getContent().add(comment);
+			
+			return section;
+		}
+		catch (FileNotFoundException e) {throw new OfxAuthoringException(e.getMessage());}
 	}
 	
 	private Section durationsFrCategories(List<Category> categories) throws OfxAuthoringException
