@@ -1,5 +1,7 @@
 package net.sf.ahtutils.interfaces.model.qa;
 
+import java.util.List;
+
 import net.sf.ahtutils.interfaces.model.date.EjbWithDateRange;
 import net.sf.ahtutils.interfaces.model.security.UtilsSecurityCategory;
 import net.sf.ahtutils.interfaces.model.security.UtilsSecurityRole;
@@ -40,4 +42,7 @@ QAUS extends UtilsStatus<QAUS,L,D>>
 {
 	QA getQa();
 	void setQa(QA qa);
+	
+	List<GROUP> getGroups();
+	void setGroups(List<GROUP> groups);
 }

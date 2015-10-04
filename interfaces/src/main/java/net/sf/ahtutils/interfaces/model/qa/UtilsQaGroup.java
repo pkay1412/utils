@@ -50,4 +50,7 @@ QAUS extends UtilsStatus<QAUS,L,D>>
 	
 	List<STAFF> getStaffs();
 	void setStaffs(List<STAFF> staffs);
+	
+	List<QASS> getSlots();
+	void setSlots(List<QASS> slots);
 }

@@ -94,10 +94,18 @@ public class UtilsQaFacadeBean <L extends UtilsLang,
 		return test;
 	}
 	
+	@Override public QASS load(Class<QASS> cSlot, QASS slot)
+	{		
+		slot = em.find(cSlot, slot.getId());
+		slot.getGroups().size();
+		return slot;
+	}
+	
 	@Override public GROUP load(Class<GROUP> cGroup, GROUP group)
 	{		
 		group = em.find(cGroup, group.getId());
 		group.getStaffs().size();
+		group.getSlots().size();
 		return group;
 	}
 	
