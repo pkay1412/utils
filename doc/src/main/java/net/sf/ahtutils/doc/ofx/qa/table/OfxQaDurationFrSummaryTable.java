@@ -25,6 +25,7 @@ import net.sf.ahtutils.doc.DocumentationCommentBuilder;
 import net.sf.ahtutils.doc.UtilsDocumentation;
 import net.sf.ahtutils.doc.ofx.AbstractUtilsOfxDocumentationFactory;
 import net.sf.ahtutils.doc.ofx.util.OfxMultiLangFactory;
+import net.sf.ahtutils.factory.txt.TxtPeriodFactory;
 import net.sf.ahtutils.xml.qa.Category;
 import net.sf.ahtutils.xml.qa.Test;
 import net.sf.ahtutils.xml.status.Translations;
@@ -38,11 +39,13 @@ public class OfxQaDurationFrSummaryTable extends AbstractUtilsOfxDocumentationFa
 	final static Logger logger = LoggerFactory.getLogger(OfxQaNfrQuestionTableFactory.class);
 	private static String keyCaptionPrefix = "auTableQaSummaryDuration";
 	
+	private TxtPeriodFactory tfPeriod;
 	private List<String> headerKeys;
 	
 	public OfxQaDurationFrSummaryTable(Configuration config, String[] langs, Translations translations)
 	{
 		super(config,langs,translations);
+		tfPeriod = new TxtPeriodFactory();
 		
 		headerKeys = new ArrayList<String>();
 		headerKeys.add("auTableQaTestCode");
@@ -79,8 +82,8 @@ public class OfxQaDurationFrSummaryTable extends AbstractUtilsOfxDocumentationFa
 	{
 		Columns cols = new Columns();
 		cols.getColumn().add(OfxColumnFactory.flex(20,true));
-		cols.getColumn().add(OfxColumnFactory.flex(70,false));
-		cols.getColumn().add(OfxColumnFactory.flex(10,true));
+		cols.getColumn().add(OfxColumnFactory.flex(60,false));
+		cols.getColumn().add(OfxColumnFactory.flex(20,true));
 		
 		Specification specification = new Specification();
 		specification.setColumns(cols);
@@ -115,7 +118,7 @@ public class OfxQaDurationFrSummaryTable extends AbstractUtilsOfxDocumentationFa
 		row.getCell().add(OfxCellFactory.createParagraphCell(category.getName()));
 		
 		int duration = totalDuration(category);
-		row.getCell().add(OfxCellFactory.createParagraphCell(""+duration));
+		row.getCell().add(OfxCellFactory.createParagraphCell(tfPeriod.debug(duration)));
 		
 		return row;
 	}

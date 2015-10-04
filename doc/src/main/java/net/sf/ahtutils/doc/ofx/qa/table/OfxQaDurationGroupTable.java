@@ -47,13 +47,12 @@ public class OfxQaDurationGroupTable extends AbstractUtilsOfxDocumentationFactor
 	public OfxQaDurationGroupTable(Configuration config, String[] langs, Translations translations)
 	{
 		super(config,langs,translations);
+		tfPeriod = new TxtPeriodFactory();
 		
 		headerKeys = new ArrayList<String>();
 		headerKeys.add("auTableQaGroup");
 		headerKeys.add("auTableQaTestQuantity");
 		headerKeys.add("auTableQaTestDuration");
-		
-		 tfPeriod = new TxtPeriodFactory();
 	}
 	
 	public Table build(List<Category> categories,Groups groups) throws OfxAuthoringException

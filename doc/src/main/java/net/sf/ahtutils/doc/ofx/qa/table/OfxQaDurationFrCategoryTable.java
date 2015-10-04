@@ -25,6 +25,7 @@ import net.sf.ahtutils.doc.DocumentationCommentBuilder;
 import net.sf.ahtutils.doc.UtilsDocumentation;
 import net.sf.ahtutils.doc.ofx.AbstractUtilsOfxDocumentationFactory;
 import net.sf.ahtutils.doc.ofx.util.OfxMultiLangFactory;
+import net.sf.ahtutils.factory.txt.TxtPeriodFactory;
 import net.sf.ahtutils.xml.qa.Category;
 import net.sf.ahtutils.xml.qa.Test;
 import net.sf.ahtutils.xml.status.Translations;
@@ -38,11 +39,13 @@ public class OfxQaDurationFrCategoryTable extends AbstractUtilsOfxDocumentationF
 	final static Logger logger = LoggerFactory.getLogger(OfxQaNfrQuestionTableFactory.class);
 	private static String keyCaptionPrefix = "auTableQaSummaryDuration";
 	
+	private TxtPeriodFactory tfPeriod;
 	private List<String> headerKeys;
 	
 	public OfxQaDurationFrCategoryTable(Configuration config, String[] langs, Translations translations)
 	{
 		super(config,langs,translations);
+		tfPeriod = new TxtPeriodFactory();
 		
 		headerKeys = new ArrayList<String>();
 		headerKeys.add("auTableQaTestCode");
@@ -78,9 +81,9 @@ public class OfxQaDurationFrCategoryTable extends AbstractUtilsOfxDocumentationF
 	private Specification createSpecifications()
 	{
 		Columns cols = new Columns();
-		cols.getColumn().add(OfxColumnFactory.flex(10,true));
-		cols.getColumn().add(OfxColumnFactory.flex(80,false));
-		cols.getColumn().add(OfxColumnFactory.flex(10,true));
+		cols.getColumn().add(OfxColumnFactory.flex(15,true));
+		cols.getColumn().add(OfxColumnFactory.flex(65,false));
+		cols.getColumn().add(OfxColumnFactory.flex(20,true));
 		
 		Specification specification = new Specification();
 		specification.setColumns(cols);
@@ -113,7 +116,7 @@ public class OfxQaDurationFrCategoryTable extends AbstractUtilsOfxDocumentationF
 		JaxbUtil.trace(test);
 		row.getCell().add(OfxCellFactory.createParagraphCell(test.getCode()));
 		row.getCell().add(OfxCellFactory.createParagraphCell(test.getName()));
-		row.getCell().add(OfxCellFactory.createParagraphCell(""+test.getDuration()));
+		row.getCell().add(OfxCellFactory.createParagraphCell(tfPeriod.debug(test.getDuration())));
 		
 		return row;
 	}

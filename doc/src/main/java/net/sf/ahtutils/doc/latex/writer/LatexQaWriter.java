@@ -123,7 +123,7 @@ public class LatexQaWriter
 	
 	public void groups(Qa qa) throws OfxAuthoringException, IOException, OfxConfigurationException
 	{
-		ofxMlw.section(1, "qa/groups",ofGroup.build(qa.getGroups()));
+		ofxMlw.section(2, "qa/groups",ofGroup.build(qa.getGroups()));
 	}
 	
 	public void durations(Qa qa,Qa qaGroups) throws OfxAuthoringException, IOException, OfxConfigurationException
