@@ -1,6 +1,5 @@
 package net.sf.ahtutils.util.reflection;
 
-import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 
@@ -61,35 +60,40 @@ public class ReflectionsUtil {
 	 * @param expression  .-separated fields (eg. person.name.lastName)
 	 * @return The parent Object now including the value to be set
 	 */
-	 public static Object resolveExpression(Object parent, String expression) throws Exception
-	 {
-             logger.trace("Resolving " +expression + " on " +parent.toString());
-             if (expression.contains("."))
-             {
-                 int elements = expression.split("\\.").length;
-                 logger.trace("Still resolving " +elements);
-                 String pathToProperty = expression.substring(0, expression.indexOf("."));
-                 logger.trace("Path to Property " +pathToProperty);
-                 String getter         = "get" +(pathToProperty.substring(0, 1).toUpperCase() + pathToProperty.substring(1));
-                 logger.trace("Getter: " +getter);
-                 Object nextObject = simpleInvokeMethod(getter,
-					      new Object[] { },
-					      parent.getClass(),
-					      parent);
-                 return resolveExpression(nextObject, expression.substring(expression.indexOf(".")+1, expression.length()));
-
-
-             }
-             else
-             {
-                 String methodName = "get" +(expression.substring(0, 1).toUpperCase() + expression.substring(1));
-                 logger.trace("Requesting value by invoking " +methodName + "()");
-                 return simpleInvokeMethod(methodName,
-					      new Object[] { },
-					      parent.getClass(),
-					      parent);
-             }
-	 }
+	public static Object resolveExpression(Object parent, String expression) throws Exception
+	{
+		if(parent != null)
+		{
+//			 logger.trace("Resolving " +expression + " on " +parent.toString());
+			if (expression.contains("."))
+			{
+				int elements = expression.split("\\.").length;
+				logger.trace("Still resolving " +elements);
+				String pathToProperty = expression.substring(0, expression.indexOf("."));
+				logger.trace("Path to Property " +pathToProperty);
+				String getter         = "get" +(pathToProperty.substring(0, 1).toUpperCase() + pathToProperty.substring(1));
+				logger.trace("Getter: " +getter);
+				Object nextObject = simpleInvokeMethod(getter,
+						new Object[] { },
+						parent.getClass(),
+						parent);
+				return resolveExpression(nextObject, expression.substring(expression.indexOf(".")+1, expression.length()));
+			}
+			else
+			{
+				String methodName = "get" +(expression.substring(0, 1).toUpperCase() + expression.substring(1));
+				logger.trace("Requesting value by invoking " +methodName + "()");
+				return simpleInvokeMethod(methodName,
+						new Object[] { },
+						parent.getClass(),
+						parent);
+			}
+		}
+		else
+		{
+			return null;
+		}
+	}
 
 	 /**
 		 * Invoke a method on a given object

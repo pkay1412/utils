@@ -15,7 +15,7 @@ public class TestConstraintsChecker
     int test;
     Status ru;
 
-    @Test //@Ignore
+    @Test @Ignore
     public void testNull() throws Exception {
         ru = new Status();
         Assert.assertFalse(ConstraintsChecker.notNull(ru, "image"));
@@ -27,5 +27,4 @@ public class TestConstraintsChecker
         ru.setPosition(1337);
         Assert.assertTrue(ConstraintsChecker.notNull(ru, "position"));
     }
-
 }
