@@ -1,4 +1,4 @@
-package net.sf.ahtutils.interfaces.web;
+package net.sf.ahtutils.interfaces.web.crud;
 
 import net.sf.ahtutils.model.interfaces.with.EjbWithId;
 

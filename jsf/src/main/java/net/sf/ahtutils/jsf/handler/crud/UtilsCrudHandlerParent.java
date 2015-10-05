@@ -9,7 +9,9 @@ import net.sf.ahtutils.exception.ejb.UtilsConstraintViolationException;
 import net.sf.ahtutils.exception.ejb.UtilsLockingException;
 import net.sf.ahtutils.interfaces.facade.UtilsFacade;
 import net.sf.ahtutils.interfaces.model.crud.EjbCrudWithParent;
-import net.sf.ahtutils.interfaces.web.CrudHandlerBean;
+import net.sf.ahtutils.interfaces.web.crud.CrudHandler1Bean;
+import net.sf.ahtutils.interfaces.web.crud.CrudHandler2Bean;
+import net.sf.ahtutils.interfaces.web.crud.CrudHandlerBean;
 import net.sf.ahtutils.model.interfaces.with.EjbWithId;
 import net.sf.ahtutils.web.mbean.util.AbstractLogMessage;
 
@@ -18,6 +20,9 @@ public class UtilsCrudHandlerParent <T extends EjbCrudWithParent, P extends EjbW
 	final static Logger logger = LoggerFactory.getLogger(UtilsCrudHandlerParent.class);
 	
 	private CrudHandlerBean<T> bean;
+	private CrudHandler1Bean<T> bean1;
+	private CrudHandler2Bean<T> bean2;
+	
 	private UtilsFacade fUtils;
 	
 	private final Class<T> cT;
@@ -26,7 +31,24 @@ public class UtilsCrudHandlerParent <T extends EjbCrudWithParent, P extends EjbW
 	
 	public UtilsCrudHandlerParent(CrudHandlerBean<T> bean, UtilsFacade fUtils, Class<T> cT)
 	{
+		this(fUtils,cT);
 		this.bean=bean;
+	}
+	
+	public UtilsCrudHandlerParent(CrudHandler1Bean<T> bean1, UtilsFacade fUtils, Class<T> cT)
+	{
+		this(fUtils,cT);
+		this.bean1=bean1;
+	}
+	
+	public UtilsCrudHandlerParent(CrudHandler2Bean<T> bean2, UtilsFacade fUtils, Class<T> cT)
+	{
+		this(fUtils,cT);
+		this.bean2=bean2;
+	}
+	
+	private UtilsCrudHandlerParent(UtilsFacade fUtils, Class<T> cT)
+	{
 		this.fUtils=fUtils;
 		this.cT=cT;
 		
@@ -46,18 +68,26 @@ public class UtilsCrudHandlerParent <T extends EjbCrudWithParent, P extends EjbW
 	public void add()
 	{
 		logger.info(AbstractLogMessage.addEntity(cT));
-		entity = bean.crudBuild(cT);
+		if(bean!=null){entity = bean.crudBuild(cT);}
+		else if(bean1!=null){entity = bean1.crud1Build(cT);}
+		else if(bean2!=null){entity = bean2.crud2Build(cT);}
+		else {logger.warn("No Bean available!!");}
 	}
 	
 	public void select()
 	{
 		logger.info(AbstractLogMessage.selectEntity(entity));
-		bean.crudSelect();
+		if(bean!=null){bean.crudSelect();}
+		else if(bean1!=null){bean1.crud1Select();}
+		else if(bean2!=null){bean2.crud2Select();}
+		else {logger.warn("No Bean available!!");}
 	}
 	
 	public void save() throws UtilsConstraintViolationException, UtilsLockingException
 	{
-		entity = bean.crudUpdate(entity);
+		if(bean!=null){entity = bean.crudUpdate(entity);}
+		else if(bean1!=null){entity = bean1.crud1Update(entity);}
+		else if(bean2!=null){entity = bean2.crud2Update(entity);}
 		entity = fUtils.save(entity);
 		reloadList();
 	}

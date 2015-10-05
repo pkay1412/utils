@@ -9,7 +9,7 @@ import net.sf.ahtutils.exception.ejb.UtilsConstraintViolationException;
 import net.sf.ahtutils.exception.ejb.UtilsLockingException;
 import net.sf.ahtutils.interfaces.facade.UtilsFacade;
 import net.sf.ahtutils.interfaces.model.crud.EjbPositionCrudWithParent;
-import net.sf.ahtutils.interfaces.web.CrudHandlerBean;
+import net.sf.ahtutils.interfaces.web.crud.CrudHandlerBean;
 import net.sf.ahtutils.model.interfaces.with.EjbWithId;
 import net.sf.ahtutils.web.mbean.util.AbstractLogMessage;
 

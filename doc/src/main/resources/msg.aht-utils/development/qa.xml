@@ -14,14 +14,21 @@
     		<s:lang key="fr" translation="URL"/>
     	</s:langs>
     </s:translation>
-	<s:translation key="aupQaGroup">
+	<s:translation key="aupQaGroups">
     	<s:langs>
     		<s:lang key="de" translation="Group"/>
     		<s:lang key="en" translation="Group"/>
     		<s:lang key="fr" translation="Group"/>
     	</s:langs>
     </s:translation>
-        <s:translation key="aupQaOrganisation">
+    	<s:translation key="aupQaGroups">
+    	<s:langs>
+    		<s:lang key="de" translation="QA Groups"/>
+    		<s:lang key="en" translation="QA Groups"/>
+    		<s:lang key="fr" translation="QA Groups"/>
+    	</s:langs>
+    </s:translation>
+	<s:translation key="aupQaOrganisation">
     	<s:langs>
     		<s:lang key="de" translation="Organisation"/>
     		<s:lang key="en" translation="Organisation"/>
@@ -31,6 +38,34 @@
     	<s:langs>
     		<s:lang key="de" translation="Department"/>
     		<s:lang key="en" translation="Department"/>
+    	</s:langs>
+    </s:translation>
+	<s:translation key="aupQaSchedules">
+    	<s:langs>
+    		<s:lang key="de" translation="Schedules"/>
+    		<s:lang key="en" translation="Schedules"/>
+    		<s:lang key="fr" translation="Schedules"/>
+    	</s:langs>
+    </s:translation>
+	<s:translation key="aupQaSchedule">
+    	<s:langs>
+    		<s:lang key="de" translation="Schedule"/>
+    		<s:lang key="en" translation="Schedule"/>
+    		<s:lang key="fr" translation="Schedule"/>
+    	</s:langs>
+    </s:translation>
+	<s:translation key="aupQaScheduleSessions">
+    	<s:langs>
+    		<s:lang key="de" translation="Sessions"/>
+    		<s:lang key="en" translation="Sessions"/>
+    		<s:lang key="fr" translation="Sessions"/>
+    	</s:langs>
+    </s:translation>
+	<s:translation key="aupQaScheduleSession">
+    	<s:langs>
+    		<s:lang key="de" translation="Session"/>
+    		<s:lang key="en" translation="Session"/>
+    		<s:lang key="fr" translation="Session"/>
     	</s:langs>
     </s:translation>
 </s:translations>

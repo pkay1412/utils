@@ -374,12 +374,11 @@ public class UtilsFacadeBean implements UtilsFacade
 		Root<T> from = cQ.from(cl);
 		
 		Path<Object> p1Path = from.get(p1Name);
-		
-		Expression<Date> eOrder = from.get(by);
+		Path<Object> pOrder = from.get(by);
 		
 		CriteriaQuery<T> select = cQ.select(from);
-		if(ascending){select.orderBy(cB.asc(eOrder));}
-		else{select.orderBy(cB.desc(eOrder));}
+		if(ascending){select.orderBy(cB.asc(pOrder));}
+		else{select.orderBy(cB.desc(pOrder));}
 		select.where(cB.equal(p1Path, p1.getId()));
 		
 		return em.createQuery(select).getResultList();

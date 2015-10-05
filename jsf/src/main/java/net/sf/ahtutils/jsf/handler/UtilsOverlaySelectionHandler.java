@@ -60,4 +60,10 @@ public class UtilsOverlaySelectionHandler <T extends EjbWithId>
     {
     	if(selection==null){logger.warn("The selection parameter is null, is the JSF component inside a form?");}
     }
+    
+    public void clear()
+    {
+    	selection=null;
+    	if(subset!=null){subset.clear();}
+    }
 }
