@@ -2,6 +2,7 @@ package net.sf.ahtutils.controller.factory.xml.acl;
 
 import net.sf.ahtutils.factory.xml.status.XmlDescriptionsFactory;
 import net.sf.ahtutils.factory.xml.status.XmlLangsFactory;
+import net.sf.ahtutils.interfaces.model.security.UtilsSecurityAction;
 import net.sf.ahtutils.interfaces.model.security.UtilsSecurityCategory;
 import net.sf.ahtutils.interfaces.model.security.UtilsSecurityRole;
 import net.sf.ahtutils.interfaces.model.security.UtilsSecurityUsecase;
@@ -9,7 +10,6 @@ import net.sf.ahtutils.interfaces.model.security.UtilsSecurityView;
 import net.sf.ahtutils.interfaces.model.security.UtilsStaff;
 import net.sf.ahtutils.interfaces.model.status.UtilsDescription;
 import net.sf.ahtutils.interfaces.model.status.UtilsLang;
-import net.sf.ahtutils.interfaces.rest.security.UtilsSecurityAction;
 import net.sf.ahtutils.model.interfaces.acl.UtilsAclCategoryUsecase;
 import net.sf.ahtutils.model.interfaces.acl.UtilsAclView;
 import net.sf.ahtutils.model.interfaces.idm.UtilsUser;

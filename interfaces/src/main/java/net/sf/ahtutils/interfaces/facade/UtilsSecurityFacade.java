@@ -3,6 +3,7 @@ package net.sf.ahtutils.interfaces.facade;
 import java.util.List;
 
 import net.sf.ahtutils.exception.ejb.UtilsNotFoundException;
+import net.sf.ahtutils.interfaces.model.security.UtilsSecurityAction;
 import net.sf.ahtutils.interfaces.model.security.UtilsSecurityCategory;
 import net.sf.ahtutils.interfaces.model.security.UtilsSecurityRole;
 import net.sf.ahtutils.interfaces.model.security.UtilsSecurityUsecase;
@@ -12,7 +13,6 @@ import net.sf.ahtutils.interfaces.model.security.UtilsStaff;
 import net.sf.ahtutils.interfaces.model.security.UtilsStaffPool;
 import net.sf.ahtutils.interfaces.model.status.UtilsDescription;
 import net.sf.ahtutils.interfaces.model.status.UtilsLang;
-import net.sf.ahtutils.interfaces.rest.security.UtilsSecurityAction;
 import net.sf.ahtutils.model.interfaces.idm.UtilsUser;
 import net.sf.ahtutils.model.interfaces.with.EjbWithId;
 

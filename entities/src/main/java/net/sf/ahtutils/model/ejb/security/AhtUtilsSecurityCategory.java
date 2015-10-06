@@ -51,6 +51,10 @@ public class AhtUtilsSecurityCategory implements Serializable, EjbWithCode,EjbRe
 	@Override public String getType() {return type;}
 	@Override public void setType(String type) {this.type = type;}
 	
+	private boolean visible;
+	@Override public boolean isVisible() {return visible;}
+	@Override public void setVisible(boolean visible) {this.visible = visible;}
+
 	private int position;
 	@Override public int getPosition() {return position;}
 	@Override public void setPosition(int position) {this.position = position;}
