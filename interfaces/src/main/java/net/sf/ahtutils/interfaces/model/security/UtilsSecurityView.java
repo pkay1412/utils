@@ -25,4 +25,21 @@ public interface UtilsSecurityView<L extends UtilsLang,
 {
 	public static final String extractId = "securityViews";
 	
+	public Boolean getAccessPublic();
+	public void setAccessPublic(Boolean accessPublic);
+	
+	public Boolean getAccessLogin();
+	public void setAccessLogin(Boolean accessLogin);
+	
+	public String getPackageName();
+	public void setPackageName(String packageName);
+	
+	public String getViewPattern();
+	public void setViewPattern(String viewPattern);
+	
+	public String getUrlMapping();
+	public void setUrlMapping(String urlMapping);
+	
+	public String getUrlBase();
+	public void setUrlBase(String urlBase);
 }
