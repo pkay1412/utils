@@ -12,6 +12,7 @@ import net.sf.ahtutils.factory.xml.security.XmlViewFactory;
 import net.sf.ahtutils.factory.xml.security.XmlViewsFactory;
 import net.sf.ahtutils.xml.access.View;
 import net.sf.ahtutils.xml.aht.Query;
+import net.sf.ahtutils.xml.navigation.Navigation;
 import net.sf.ahtutils.xml.security.Category;
 import net.sf.ahtutils.xml.security.Role;
 import net.sf.ahtutils.xml.security.Staff;
@@ -117,13 +118,20 @@ public class SecurityQuery
 		return xml;
 	}
 	
-	public static View exView()
+	public static View exViewOld()
 	{
 		View xml = new View();
 		xml.setIndex(0);
 		xml.setCode("");
 		xml.setLangs(StatusQuery.langs());
 		xml.setDescriptions(StatusQuery.descriptions());
+		
+		xml.setPublic(true);
+		xml.setOnlyLoginRequired(true);
+		
+		xml.setNavigation(new Navigation());
+		xml.getNavigation().setPackage("");
+	
 		
 		return xml;
 	}

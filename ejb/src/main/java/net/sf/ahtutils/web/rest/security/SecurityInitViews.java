@@ -115,6 +115,26 @@ public class SecurityInitViews <L extends UtilsLang,
 			ebj.setName(ejbLangFactory.getLangMap(view.getLangs()));
 			ebj.setDescription(ejbDescriptionFactory.create(view.getDescriptions()));
 			ebj.setCategory(category);
+			
+			ebj.setAccessLogin(null);if(view.isSetOnlyLoginRequired()){ebj.setAccessLogin(view.isOnlyLoginRequired());}
+			ebj.setAccessPublic(null);if(view.isSetPublic()){ebj.setAccessPublic(view.isPublic());}
+			
+			ebj.setPackageName(null);
+			ebj.setViewPattern(null);
+			ebj.setUrlBase(null);
+			ebj.setUrlMapping(null);
+			
+			if(view.isSetNavigation())
+			{
+				if(view.getNavigation().isSetPackage()){ebj.setPackageName(view.getNavigation().getPackage());}
+				if(view.getNavigation().isSetViewPattern()){ebj.setViewPattern(view.getNavigation().getViewPattern().getValue());}
+				if(view.getNavigation().isSetUrlMapping())
+				{
+					ebj.setUrlMapping(view.getNavigation().getUrlMapping().getValue());
+					if(view.getNavigation().getUrlMapping().isSetUrl()){ebj.setUrlBase(view.getNavigation().getUrlMapping().getUrl());}
+				}
+			}			
+			
 			ebj=fSecurity.update(ebj);
 
 			logger.trace("Actions: "+view.getCode()+" "+view.isSetActions());
