@@ -23,7 +23,7 @@ public class TestTxtPeriodFactory extends AbstractAhtUtilsTest
     @Test
     public void hours()
     {	
-    	String expected = "Now Testing: TestTxtDataUpdateFactory";
+//    	String expected = "Now Testing: TestTxtDataUpdateFactory";
     	String actual = tfPeriod.debug(3125);
     	logger.debug(actual);
 //    	Assert.assertEquals(expected, actual);

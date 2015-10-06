@@ -2,6 +2,6 @@
 <sec:roles xmlns:sec="http://ahtutils.aht-group.com/security" xmlns:s="http://ahtutils.aht-group.com/status" type="myType">
     <sec:roles type="myType"/>
     <sec:roles type="myType"/>
-    <sec:role id="123" index="456" code="myCode" label="myLabel"/>
-    <sec:role id="123" index="456" code="myCode" label="myLabel"/>
+    <sec:role id="123" code="myCode" position="1" visible="true" label="myLabel"/>
+    <sec:role id="123" code="myCode" position="1" visible="true" label="myLabel"/>
 </sec:roles>

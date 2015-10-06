@@ -52,6 +52,8 @@ public class XmlRoleFactory<L extends UtilsLang,
 		Role xml = new Role();
 		if(q.isSetId()){xml.setId(role.getId());}
 		if(q.isSetCode()){xml.setCode(role.getCode());}
+		if(q.isSetPosition()){xml.setPosition(role.getPosition());}
+		if(q.isSetVisible()){xml.setVisible(role.isVisible());}
 		
 		if(q.isSetLangs())
 		{

@@ -103,10 +103,11 @@ public class SecurityQuery
 	public static Category exCategory()
 	{
 		Category xml = new Category();
-		xml.setIndex(0);
+		xml.setPosition(0);
 		xml.setCode("");
 		xml.setLangs(StatusQuery.langs());
 		xml.setDescriptions(StatusQuery.descriptions());
+		xml.setVisible(true);
 		return xml;
 	}
 	
@@ -121,8 +122,9 @@ public class SecurityQuery
 	public static View exViewOld()
 	{
 		View xml = new View();
-		xml.setIndex(0);
 		xml.setCode("");
+		xml.setPosition(0);
+		xml.setVisible(true);
 		xml.setLangs(StatusQuery.langs());
 		xml.setDescriptions(StatusQuery.descriptions());
 		
@@ -139,7 +141,8 @@ public class SecurityQuery
 	public static Role exRole()
 	{
 		Role xml = new Role();
-		xml.setIndex(0);
+		xml.setPosition(0);
+		xml.setVisible(true);
 		xml.setCode("");
 		xml.setLangs(StatusQuery.langs());
 		xml.setDescriptions(StatusQuery.descriptions());
@@ -173,8 +176,9 @@ public class SecurityQuery
 		net.sf.ahtutils.xml.security.View view = new net.sf.ahtutils.xml.security.View();view.setCode("");
 		
 		Usecase xml = new Usecase();
-		xml.setIndex(0);
 		xml.setCode("");
+		xml.setPosition(0);
+		xml.setVisible(true);
 		xml.setLangs(StatusQuery.langs());
 		xml.setDescriptions(StatusQuery.descriptions());
 		xml.setActions(XmlActionsFactory.build());xml.getActions().getAction().add(action);

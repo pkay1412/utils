@@ -26,8 +26,9 @@ import net.sf.ahtutils.xml.status.Langs;
  *         &lt;element ref="{http://ahtutils.aht-group.com/status}langs"/&gt;
  *       &lt;/sequence&gt;
  *       &lt;attribute name="id" type="{http://www.w3.org/2001/XMLSchema}long" /&gt;
- *       &lt;attribute name="index" type="{http://www.w3.org/2001/XMLSchema}int" /&gt;
  *       &lt;attribute name="code" type="{http://www.w3.org/2001/XMLSchema}string" /&gt;
+ *       &lt;attribute name="position" type="{http://www.w3.org/2001/XMLSchema}int" /&gt;
+ *       &lt;attribute name="visible" type="{http://www.w3.org/2001/XMLSchema}boolean" /&gt;
  *       &lt;attribute name="label" type="{http://www.w3.org/2001/XMLSchema}string" /&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -53,10 +54,12 @@ public class Action
     protected Langs langs;
     @XmlAttribute(name = "id")
     protected Long id;
-    @XmlAttribute(name = "index")
-    protected Integer index;
     @XmlAttribute(name = "code")
     protected String code;
+    @XmlAttribute(name = "position")
+    protected Integer position;
+    @XmlAttribute(name = "visible")
+    protected Boolean visible;
     @XmlAttribute(name = "label")
     protected String label;
 
@@ -149,38 +152,6 @@ public class Action
     }
 
     /**
-     * Gets the value of the index property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Integer }
-     *     
-     */
-    public int getIndex() {
-        return index;
-    }
-
-    /**
-     * Sets the value of the index property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Integer }
-     *     
-     */
-    public void setIndex(int value) {
-        this.index = value;
-    }
-
-    public boolean isSetIndex() {
-        return (this.index!= null);
-    }
-
-    public void unsetIndex() {
-        this.index = null;
-    }
-
-    /**
      * Gets the value of the code property.
      * 
      * @return
@@ -206,6 +177,70 @@ public class Action
 
     public boolean isSetCode() {
         return (this.code!= null);
+    }
+
+    /**
+     * Gets the value of the position property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Integer }
+     *     
+     */
+    public int getPosition() {
+        return position;
+    }
+
+    /**
+     * Sets the value of the position property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Integer }
+     *     
+     */
+    public void setPosition(int value) {
+        this.position = value;
+    }
+
+    public boolean isSetPosition() {
+        return (this.position!= null);
+    }
+
+    public void unsetPosition() {
+        this.position = null;
+    }
+
+    /**
+     * Gets the value of the visible property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Boolean }
+     *     
+     */
+    public boolean isVisible() {
+        return visible;
+    }
+
+    /**
+     * Sets the value of the visible property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Boolean }
+     *     
+     */
+    public void setVisible(boolean value) {
+        this.visible = value;
+    }
+
+    public boolean isSetVisible() {
+        return (this.visible!= null);
+    }
+
+    public void unsetVisible() {
+        this.visible = null;
     }
 
     /**

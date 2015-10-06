@@ -1,5 +1,8 @@
 package net.sf.ahtutils.web.rest.security;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import net.sf.ahtutils.db.ejb.AhtDbEjbUpdater;
 import net.sf.ahtutils.exception.ejb.UtilsConstraintViolationException;
 import net.sf.ahtutils.exception.ejb.UtilsLockingException;
@@ -21,9 +24,6 @@ import net.sf.ahtutils.xml.access.Action;
 import net.sf.ahtutils.xml.access.Category;
 import net.sf.ahtutils.xml.access.View;
 import net.sf.ahtutils.xml.sync.DataUpdate;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 public class SecurityInitViews <L extends UtilsLang,
  								D extends UtilsDescription, 
@@ -87,23 +87,23 @@ public class SecurityInitViews <L extends UtilsLang,
 		}
 	}
 	
-	private void iuView(C category, View view) throws UtilsConfigurationException
+	@Deprecated private void iuView(C category, View view) throws UtilsConfigurationException
 	{
-		V ebj;
+		V ejb;
 		try
 		{
-			ebj = fSecurity.fByCode(cV,view.getCode());
-			ejbLangFactory.rmLang(fSecurity,ebj);
-			ejbDescriptionFactory.rmDescription(fSecurity,ebj);
+			ejb = fSecurity.fByCode(cV,view.getCode());
+			ejbLangFactory.rmLang(fSecurity,ejb);
+			ejbDescriptionFactory.rmDescription(fSecurity,ejb);
 		}
 		catch (UtilsNotFoundException e)
 		{
 			try
 			{
-				ebj = cV.newInstance();
-				ebj.setCategory(category);
-				ebj.setCode(view.getCode());
-				ebj = fSecurity.persist(ebj);
+				ejb = cV.newInstance();
+				ejb.setCategory(category);
+				ejb.setCode(view.getCode());
+				ejb = fSecurity.persist(ejb);
 			}
 			catch (InstantiationException e2) {throw new UtilsConfigurationException(e2.getMessage());}
 			catch (IllegalAccessException e2) {throw new UtilsConfigurationException(e2.getMessage());}
@@ -112,30 +112,36 @@ public class SecurityInitViews <L extends UtilsLang,
 		
 		try
 		{
-			ebj.setName(ejbLangFactory.getLangMap(view.getLangs()));
-			ebj.setDescription(ejbDescriptionFactory.create(view.getDescriptions()));
-			ebj.setCategory(category);
+			if(view.isSetVisible()){ejb.setVisible(view.isVisible());}else{ejb.setVisible(true);}
+			if(view.isSetPosition()){ejb.setPosition(view.getPosition());}else{ejb.setPosition(0);}
 			
-			ebj.setAccessLogin(null);if(view.isSetOnlyLoginRequired()){ebj.setAccessLogin(view.isOnlyLoginRequired());}
-			ebj.setAccessPublic(null);if(view.isSetPublic()){ebj.setAccessPublic(view.isPublic());}
+			ejb.setName(ejbLangFactory.getLangMap(view.getLangs()));
+			ejb.setDescription(ejbDescriptionFactory.create(view.getDescriptions()));
+			ejb.setCategory(category);
 			
-			ebj.setPackageName(null);
-			ebj.setViewPattern(null);
-			ebj.setUrlBase(null);
-			ebj.setUrlMapping(null);
+			ejb.setAccessLogin(null);
+			ejb.setAccessPublic(null);
+			
+			ejb.setPackageName(null);
+			ejb.setViewPattern(null);
+			ejb.setUrlBase(null);
+			ejb.setUrlMapping(null);
+			
+			if(view.isSetOnlyLoginRequired()){ejb.setAccessLogin(view.isOnlyLoginRequired());}
+			if(view.isSetPublic()){ejb.setAccessPublic(view.isPublic());}
 			
 			if(view.isSetNavigation())
 			{
-				if(view.getNavigation().isSetPackage()){ebj.setPackageName(view.getNavigation().getPackage());}
-				if(view.getNavigation().isSetViewPattern()){ebj.setViewPattern(view.getNavigation().getViewPattern().getValue());}
+				if(view.getNavigation().isSetPackage()){ejb.setPackageName(view.getNavigation().getPackage());}
+				if(view.getNavigation().isSetViewPattern()){ejb.setViewPattern(view.getNavigation().getViewPattern().getValue());}
 				if(view.getNavigation().isSetUrlMapping())
 				{
-					ebj.setUrlMapping(view.getNavigation().getUrlMapping().getValue());
-					if(view.getNavigation().getUrlMapping().isSetUrl()){ebj.setUrlBase(view.getNavigation().getUrlMapping().getUrl());}
+					ejb.setUrlMapping(view.getNavigation().getUrlMapping().getValue());
+					if(view.getNavigation().getUrlMapping().isSetUrl()){ejb.setUrlBase(view.getNavigation().getUrlMapping().getUrl());}
 				}
-			}			
+			}
 			
-			ebj=fSecurity.update(ebj);
+			ejb=fSecurity.update(ejb);
 
 			logger.trace("Actions: "+view.getCode()+" "+view.isSetActions());
 			if(view.isSetActions() && view.getActions().isSetAction())
@@ -143,7 +149,7 @@ public class SecurityInitViews <L extends UtilsLang,
 				for(Action action : view.getActions().getAction())
 				{
 					updateAction.actualAdd(action.getCode());
-					iuAction(ebj, action);
+					iuAction(ejb, action);
 				}
 			}
 		}
@@ -151,7 +157,7 @@ public class SecurityInitViews <L extends UtilsLang,
 		catch (UtilsLockingException e) {logger.error("",e);}
 	}
 	
-	private void iuAction(V ejbView, Action action) throws UtilsConfigurationException
+	@Deprecated private void iuAction(V ejbView, Action action) throws UtilsConfigurationException
 	{
 		A ebj;
 		try
@@ -176,6 +182,9 @@ public class SecurityInitViews <L extends UtilsLang,
 		
 		try
 		{
+			ebj.setVisible(true);
+			ebj.setPosition(0);
+			
 			ebj.setName(ejbLangFactory.getLangMap(action.getLangs()));
 			ebj.setDescription(ejbDescriptionFactory.create(action.getDescriptions()));
 			ebj.setView(ejbView);

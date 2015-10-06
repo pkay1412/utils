@@ -17,7 +17,7 @@ public class TestXmlUrlMapping extends AbstractXmlNavigationTest
 	@BeforeClass
 	public static void initFiles()
 	{
-		setXmlFile(dirSuffix, "urlMapping");
+		setXmlFile(dirSuffix, "xurlMapping");
 	}
     
     @Test
