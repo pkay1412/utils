@@ -43,13 +43,25 @@ public class AhtUtilsSecurityView implements EjbWithCode,Serializable,EjbRemovea
 	
 	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long id;
+	public long getId() {return id;}
+	public void setId(long id) {this.id = id;}
 	
 	@NotNull @ManyToOne
 	private AhtUtilsSecurityCategory category;
+	public AhtUtilsSecurityCategory getCategory() {return category;}
+	public void setCategory(AhtUtilsSecurityCategory category) {this.category = category;}
 	
 	@NotNull
 	private String code;
+	public String getCode() {return code;}
+	public void setCode(String code) {this.code = code;}
 	
+	@Override public String resolveParentAttribute() {return "category";}
+	
+	private boolean visible;
+	@Override public boolean isVisible() {return visible;}
+	@Override public void setVisible(boolean visible) {this.visible = visible;}
+
 	private int position;
 	@Override public int getPosition() {return position;}
 	@Override public void setPosition(int position) {this.position = position;}
@@ -68,27 +80,12 @@ public class AhtUtilsSecurityView implements EjbWithCode,Serializable,EjbRemovea
 	
 	@OneToMany(fetch=FetchType.EAGER, mappedBy="view")
 	private List<AhtUtilsSecurityAction> actions;
-	
-	//******************************************************************************
-	
-	public long getId() {return id;}
-	public void setId(long id) {this.id = id;}
-	
-	public AhtUtilsSecurityCategory getCategory() {return category;}
-	public void setCategory(AhtUtilsSecurityCategory category) {this.category = category;}
-	
-	public String getCode() {return code;}
-	public void setCode(String code) {this.code = code;}
-	
 	public List<AhtUtilsSecurityAction> getActions() {if(actions==null){actions=new ArrayList<AhtUtilsSecurityAction>();}return actions;}
 	public void setActions(List<AhtUtilsSecurityAction> actions) {this.actions = actions;}
 	
-	//******************************************************************************
 	
 	public boolean equals(Object object)
 	{
-        return (object instanceof AhtUtilsSecurityView)
-             ? id == ((AhtUtilsSecurityView) object).getId()
-             : (object == this);
+        return (object instanceof AhtUtilsSecurityView) ? id == ((AhtUtilsSecurityView) object).getId() : (object == this);
     }
 }

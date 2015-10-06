@@ -5,7 +5,7 @@ import net.sf.ahtutils.interfaces.model.status.UtilsDescription;
 import net.sf.ahtutils.interfaces.model.status.UtilsLang;
 import net.sf.ahtutils.interfaces.model.with.code.EjbWithTypeCode;
 import net.sf.ahtutils.interfaces.model.with.position.EjbWithPositionType;
-import net.sf.ahtutils.interfaces.rest.security.UtilsSecurityAction;
+import net.sf.ahtutils.interfaces.model.with.position.EjbWithPositionVisible;
 import net.sf.ahtutils.model.interfaces.idm.UtilsUser;
 import net.sf.ahtutils.model.interfaces.with.EjbWithDescription;
 import net.sf.ahtutils.model.interfaces.with.EjbWithId;
@@ -19,7 +19,8 @@ public interface UtilsSecurityCategory<L extends UtilsLang,
 									   U extends UtilsSecurityUsecase<L,D,C,R,V,U,A,USER>,
 									   A extends UtilsSecurityAction<L,D,C,R,V,U,A,USER>,
 									   USER extends UtilsUser<L,D,C,R,V,U,A,USER>>
-			extends EjbWithId,EjbWithTypeCode,EjbWithPositionType,EjbWithLang<L>,EjbWithDescription<D>,EjbSaveable
+			extends EjbWithId,EjbWithTypeCode,EjbWithPositionType,EjbWithLang<L>,EjbWithDescription<D>,EjbSaveable,
+				EjbWithPositionVisible
 {
 	public static enum Type {role,view,usecase}
 }

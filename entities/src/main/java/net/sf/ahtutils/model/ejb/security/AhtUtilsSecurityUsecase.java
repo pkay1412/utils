@@ -42,13 +42,25 @@ public class AhtUtilsSecurityUsecase implements EjbWithCode,Serializable,EjbRemo
 	
 	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long id;
+	public long getId() {return id;}
+	public void setId(long id) {this.id = id;}
 	
 	@NotNull @ManyToOne
 	private AhtUtilsSecurityCategory category;
+	public AhtUtilsSecurityCategory getCategory() {return category;}
+	public void setCategory(AhtUtilsSecurityCategory category) {this.category = category;}
 	
 	@NotNull
 	private String code;
+	public String getCode() {return code;}
+	public void setCode(String code) {this.code = code;}
 	
+	@Override public String resolveParentAttribute() {return "category";}
+	
+	private boolean visible;
+	@Override public boolean isVisible() {return visible;}
+	@Override public void setVisible(boolean visible) {this.visible = visible;}
+
 	private int position;
 	@Override public int getPosition() {return position;}
 	@Override public void setPosition(int position) {this.position = position;}
@@ -67,37 +79,17 @@ public class AhtUtilsSecurityUsecase implements EjbWithCode,Serializable,EjbRemo
 	
 	@ManyToMany(fetch=FetchType.EAGER)
 	private List<AhtUtilsSecurityAction> actions;
-	
-	@ManyToMany(fetch=FetchType.EAGER)
-	private List<AhtUtilsSecurityView> views;
-	
-	//******************************************************************************
-	
-	public long getId() {return id;}
-	public void setId(long id) {this.id = id;}
-	
-	public AhtUtilsSecurityCategory getCategory() {return category;}
-	public void setCategory(AhtUtilsSecurityCategory category) {this.category = category;}
-	
-	public String getCode() {return code;}
-	public void setCode(String code) {this.code = code;}
-	
-
-	
-
-	
-	public List<AhtUtilsSecurityView> getViews() {if(views==null){views = new ArrayList<AhtUtilsSecurityView>();}return views;}
-	public void setViews(List<AhtUtilsSecurityView> views) {this.views = views;}
-	
 	public List<AhtUtilsSecurityAction> getActions() {if(actions==null){actions = new ArrayList<AhtUtilsSecurityAction>();}return actions;}
 	public void setActions(List<AhtUtilsSecurityAction> actions) {this.actions = actions;}
 	
-	//******************************************************************************
+	@ManyToMany(fetch=FetchType.EAGER)
+	private List<AhtUtilsSecurityView> views;
+	public List<AhtUtilsSecurityView> getViews() {if(views==null){views = new ArrayList<AhtUtilsSecurityView>();}return views;}
+	public void setViews(List<AhtUtilsSecurityView> views) {this.views = views;}
+	
 	
 	public boolean equals(Object object)
 	{
-        return (object instanceof AhtUtilsSecurityUsecase)
-             ? id == ((AhtUtilsSecurityUsecase) object).getId()
-             : (object == this);
+        return (object instanceof AhtUtilsSecurityUsecase) ? id == ((AhtUtilsSecurityUsecase) object).getId() : (object == this);
     }
 }

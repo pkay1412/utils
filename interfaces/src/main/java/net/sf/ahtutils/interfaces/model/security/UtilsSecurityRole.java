@@ -6,9 +6,9 @@ import net.sf.ahtutils.interfaces.model.behaviour.EjbSaveable;
 import net.sf.ahtutils.interfaces.model.crud.EjbRemoveable;
 import net.sf.ahtutils.interfaces.model.status.UtilsDescription;
 import net.sf.ahtutils.interfaces.model.status.UtilsLang;
+import net.sf.ahtutils.interfaces.model.with.EjbWithParent;
 import net.sf.ahtutils.interfaces.model.with.code.EjbWithCode;
-import net.sf.ahtutils.interfaces.model.with.position.EjbWithPosition;
-import net.sf.ahtutils.interfaces.rest.security.UtilsSecurityAction;
+import net.sf.ahtutils.interfaces.model.with.position.EjbWithPositionVisible;
 import net.sf.ahtutils.model.interfaces.idm.UtilsUser;
 import net.sf.ahtutils.model.interfaces.with.EjbWithDescription;
 import net.sf.ahtutils.model.interfaces.with.EjbWithLang;
@@ -21,7 +21,7 @@ public interface UtilsSecurityRole<L extends UtilsLang,
 						 		   U extends UtilsSecurityUsecase<L,D,C,R,V,U,A,USER>,
 						 		   A extends UtilsSecurityAction<L,D,C,R,V,U,A,USER>,
 						 		   USER extends UtilsUser<L,D,C,R,V,U,A,USER>>
-			extends EjbWithCode,EjbSaveable,EjbRemoveable,EjbWithPosition,
+			extends EjbWithCode,EjbSaveable,EjbRemoveable,EjbWithPositionVisible,EjbWithParent,
 					EjbWithLang<L>,EjbWithDescription<D>,
 					UtilsSecurityWithCategory<L,D,C,R,V,U,A,USER>,
 					UtilsSecurityWithViews<L,D,C,R,V,U,A,USER>,
