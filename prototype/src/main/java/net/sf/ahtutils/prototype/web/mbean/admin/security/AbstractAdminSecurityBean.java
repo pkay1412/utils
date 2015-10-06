@@ -3,6 +3,9 @@ package net.sf.ahtutils.prototype.web.mbean.admin.security;
 import java.io.Serializable;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import net.sf.ahtutils.controller.factory.ejb.security.EjbSecurityActionFactory;
 import net.sf.ahtutils.controller.factory.ejb.security.EjbSecurityCategoryFactory;
 import net.sf.ahtutils.controller.factory.ejb.security.EjbSecurityRoleFactory;
@@ -22,9 +25,6 @@ import net.sf.ahtutils.interfaces.model.status.UtilsDescription;
 import net.sf.ahtutils.interfaces.model.status.UtilsLang;
 import net.sf.ahtutils.model.interfaces.idm.UtilsUser;
 import net.sf.ahtutils.web.mbean.util.AbstractLogMessage;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 public class AbstractAdminSecurityBean <L extends UtilsLang,
 											D extends UtilsDescription,
@@ -146,7 +146,7 @@ public class AbstractAdminSecurityBean <L extends UtilsLang,
 	protected void reloadCategories()
 	{
 		logger.info("reloadCategories");
-		categories = fSecurity.allOrderedPosition(cCategory,categoryType);
+		categories = fSecurity.allOrderedPositionVisible(cCategory,categoryType);
 	}
 	
 	protected void reorderCategories() throws UtilsConstraintViolationException, UtilsLockingException

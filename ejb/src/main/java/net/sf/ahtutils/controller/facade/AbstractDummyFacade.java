@@ -4,6 +4,9 @@ import java.util.Date;
 import java.util.List;
 import java.util.Set;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import net.sf.ahtutils.controller.util.ParentPredicate;
 import net.sf.ahtutils.exception.ejb.UtilsConstraintViolationException;
 import net.sf.ahtutils.exception.ejb.UtilsLockingException;
@@ -25,22 +28,20 @@ import net.sf.ahtutils.interfaces.model.status.UtilsLang;
 import net.sf.ahtutils.interfaces.model.util.UtilsProperty;
 import net.sf.ahtutils.interfaces.model.with.EjbWithEmail;
 import net.sf.ahtutils.interfaces.model.with.EjbWithNr;
-import net.sf.ahtutils.interfaces.model.with.EjbWithParent;
 import net.sf.ahtutils.interfaces.model.with.code.EjbWithCode;
 import net.sf.ahtutils.interfaces.model.with.code.EjbWithNonUniqueCode;
 import net.sf.ahtutils.interfaces.model.with.code.EjbWithType;
 import net.sf.ahtutils.interfaces.model.with.code.EjbWithTypeCode;
 import net.sf.ahtutils.interfaces.model.with.position.EjbWithPosition;
 import net.sf.ahtutils.interfaces.model.with.position.EjbWithPositionType;
+import net.sf.ahtutils.interfaces.model.with.position.EjbWithPositionTypeVisible;
 import net.sf.ahtutils.interfaces.model.with.position.EjbWithPositionVisible;
+import net.sf.ahtutils.interfaces.model.with.position.EjbWithPositionVisibleParent;
 import net.sf.ahtutils.model.interfaces.idm.UtilsUser;
 import net.sf.ahtutils.model.interfaces.with.EjbWithId;
 import net.sf.ahtutils.model.interfaces.with.EjbWithName;
 import net.sf.ahtutils.model.interfaces.with.EjbWithRecord;
 import net.sf.ahtutils.model.interfaces.with.EjbWithValidFrom;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 public class AbstractDummyFacade implements UtilsFacade
 {
@@ -458,8 +459,15 @@ public class AbstractDummyFacade implements UtilsFacade
 	}
 
 	@Override
-	public <T extends EjbWithPositionVisible, P extends EjbWithParent> List<T> allOrderedPositionVisibleParent2(
+	public <T extends EjbWithPositionVisibleParent, P extends EjbWithId> List<T> allOrderedPositionVisibleParent2(
 			Class<T> cl, P parent) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public <T extends EjbWithPositionTypeVisible, E extends Enum<E>> List<T> allOrderedPositionVisible(Class<T> type,
+			E enu) {
 		// TODO Auto-generated method stub
 		return null;
 	}

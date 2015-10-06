@@ -47,7 +47,9 @@ import net.sf.ahtutils.interfaces.model.with.code.EjbWithType;
 import net.sf.ahtutils.interfaces.model.with.code.EjbWithTypeCode;
 import net.sf.ahtutils.interfaces.model.with.position.EjbWithPosition;
 import net.sf.ahtutils.interfaces.model.with.position.EjbWithPositionType;
+import net.sf.ahtutils.interfaces.model.with.position.EjbWithPositionTypeVisible;
 import net.sf.ahtutils.interfaces.model.with.position.EjbWithPositionVisible;
+import net.sf.ahtutils.interfaces.model.with.position.EjbWithPositionVisibleParent;
 import net.sf.ahtutils.model.interfaces.idm.UtilsUser;
 import net.sf.ahtutils.model.interfaces.with.EjbWithId;
 import net.sf.ahtutils.model.interfaces.with.EjbWithName;
@@ -420,6 +422,23 @@ public class UtilsFacadeBean implements UtilsFacade
 		
 		return em.createQuery(select).getResultList();
 	}
+	
+	@Override public <T extends EjbWithPositionTypeVisible, E extends Enum<E>> List<T> allOrderedPositionVisible(Class<T> cT, E enu)
+	{
+		CriteriaBuilder cb = em.getCriteriaBuilder();
+		CriteriaQuery<T> criteriaQuery = cb.createQuery(cT);
+		Root<T> from = criteriaQuery.from(cT);
+		
+		Path<Boolean> pathVisible = from.get("visible");
+		Path<String> pathType = from.get("type");
+		Expression<Integer> eOrder = from.get("position");
+		
+		CriteriaQuery<T> select = criteriaQuery.select(from);
+		select.orderBy(cb.asc(eOrder));
+		select.where(cb.and(cb.equal(pathType, enu.toString()),cb.equal(pathVisible, true)));
+		
+		return em.createQuery(select).getResultList();
+	}
 		
 	@Override
 	public <T extends EjbWithPositionVisible> List<T> allOrderedPositionVisible(Class<T> cl)
@@ -454,22 +473,34 @@ public class UtilsFacadeBean implements UtilsFacade
 		return em.createQuery(select).getResultList();
 	}
 	
-	@Override public <T extends EjbWithPositionVisible, P extends EjbWithParent> List<T> allOrderedPositionVisibleParent2(Class<T> cl, P parent)
+	@Override public <T extends EjbWithPositionVisibleParent, P extends EjbWithId> List<T> allOrderedPositionVisibleParent2(Class<T> cl, P parent)
 	{
+		T prototype = null;
+		try {
+			prototype = cl.newInstance();
+		} catch (InstantiationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		CriteriaBuilder cB = em.getCriteriaBuilder();
 		CriteriaQuery<T> cQ = cB.createQuery(cl);
 		Root<T> from = cQ.from(cl);
 		
-		Path<Object> p1Path = from.get("parent");
+
+		Path<Object> p1Path = from.get(prototype.resolveParentAttribute());
+		Path<Boolean> pathVisible = from.get("visible");
 		Expression<Date> eOrder = from.get("position");
 		
 		CriteriaQuery<T> select = cQ.select(from);
 		select.orderBy(cB.asc(eOrder));
-		select.where(cB.equal(p1Path, parent.getId()));
+		select.where(cB.and(cB.equal(p1Path, parent.getId()),cB.equal(pathVisible, true)));
 		
 		return em.createQuery(select).getResultList();
 	}
-		
 	
 	@Override public <T extends EjbRemoveable> void rm(T o) throws UtilsConstraintViolationException {rmProtected(o);}
 	
