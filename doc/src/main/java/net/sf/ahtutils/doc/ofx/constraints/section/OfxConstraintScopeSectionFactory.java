@@ -8,7 +8,6 @@ import org.openfuxml.content.table.Table;
 import org.openfuxml.exception.OfxAuthoringException;
 import org.openfuxml.factory.xml.ofx.OfxReferenceFactory;
 import org.openfuxml.factory.xml.ofx.content.XmlCommentFactory;
-import org.openfuxml.factory.xml.ofx.content.structure.XmlParagraphFactory;
 import org.openfuxml.factory.xml.ofx.content.structure.XmlSectionFactory;
 import org.openfuxml.util.OfxCommentBuilder;
 import org.slf4j.Logger;
@@ -44,12 +43,10 @@ public class OfxConstraintScopeSectionFactory extends AbstractUtilsOfxDocumentat
 		OfxCommentBuilder.doNotModify(comment);
 		section.getContent().add(comment);
 		
-		section.getContent().addAll(OfxMultiLangFactory.paragraph(langs, scope.getDescriptions()));
-		
 		Table table = ofTable.build(scope);
 		
-		Paragraph p = XmlParagraphFactory.build();
-		p.getContent().add("All constraints are summarized in Table ");
+		Paragraph p = OfxMultiLangFactory.paragraph(langs, scope.getDescriptions()).get(0);
+		p.getContent().add(" All constraints are summarized in Table ");
 		p.getContent().add(OfxReferenceFactory.build(table.getId()));
 		p.getContent().add(".");
 		

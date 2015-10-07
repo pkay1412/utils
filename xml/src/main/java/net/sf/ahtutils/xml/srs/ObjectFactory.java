@@ -1,5 +1,5 @@
 
-package net.sf.ahtutils.xml.text;
+package net.sf.ahtutils.xml.srs;
 
 import javax.xml.bind.annotation.XmlRegistry;
 
@@ -7,7 +7,7 @@ import javax.xml.bind.annotation.XmlRegistry;
 /**
  * This object contains factory methods for each 
  * Java content interface and Java element interface 
- * generated in the net.sf.ahtutils.xml.text package. 
+ * generated in the net.sf.ahtutils.xml.srs package. 
  * <p>An ObjectFactory allows you to programatically 
  * construct new instances of the Java representation 
  * for XML content. The Java representation of XML 
@@ -23,42 +23,34 @@ public class ObjectFactory {
 
 
     /**
-     * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: net.sf.ahtutils.xml.text
+     * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: net.sf.ahtutils.xml.srs
      * 
      */
     public ObjectFactory() {
     }
 
     /**
-     * Create an instance of {@link Remark }
+     * Create an instance of {@link Srs }
      * 
      */
-    public Remark createRemark() {
-        return new Remark();
+    public Srs createSrs() {
+        return new Srs();
     }
 
     /**
-     * Create an instance of {@link Question }
+     * Create an instance of {@link FrGroup }
      * 
      */
-    public Question createQuestion() {
-        return new Question();
+    public FrGroup createFrGroup() {
+        return new FrGroup();
     }
 
     /**
-     * Create an instance of {@link Description }
+     * Create an instance of {@link Fr }
      * 
      */
-    public Description createDescription() {
-        return new Description();
-    }
-
-    /**
-     * Create an instance of {@link Hint }
-     * 
-     */
-    public Hint createHint() {
-        return new Hint();
+    public Fr createFr() {
+        return new Fr();
     }
 
 }

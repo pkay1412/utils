@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<srs:fr xmlns:text="http://ahtutils.aht-group.com/text" xmlns:srs="http://ahtutils.aht-group.com/srs" id="123" name="myName" code="myCode">
+    <text:description version="1" key="myKey">myValue</text:description>
+    <text:remark version="1" key="myKey">myValue</text:remark>
+</srs:fr>
