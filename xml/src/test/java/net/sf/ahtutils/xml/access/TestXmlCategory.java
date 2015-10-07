@@ -36,7 +36,7 @@ public class TestXmlCategory extends AbstractXmlAccessTest
     {
     	Category xml = new Category();
     	xml.setCode("myCode");
-    	xml.setIndex(1);
+    	xml.setPosition(1);
     	
     	if(withChilds)
     	{

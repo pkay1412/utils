@@ -149,6 +149,10 @@ public class AbstractSecurityInit <L extends UtilsLang,
 			{
 				ejbCategory.setName(ejbLangFactory.getLangMap(category.getLangs()));
 				ejbCategory.setDescription(ejbDescriptionFactory.create(category.getDescriptions()));
+				
+				if(category.isSetVisible()){ejbCategory.setVisible(category.isVisible());}else{ejbCategory.setVisible(true);}
+				if(category.isSetPosition()){ejbCategory.setPosition(category.getPosition());}else{ejbCategory.setPosition(0);}
+				
 				ejbCategory=(C)fSecurity.update(ejbCategory);
 				logger.trace("Proceeding with childs");
 				iuChilds(ejbCategory,category);
@@ -197,6 +201,10 @@ public class AbstractSecurityInit <L extends UtilsLang,
 			{
 				ejbCategory.setName(ejbLangFactory.getLangMap(category.getLangs()));
 				ejbCategory.setDescription(ejbDescriptionFactory.create(category.getDescriptions()));
+				
+				if(category.isSetVisible()){ejbCategory.setVisible(category.isVisible());}else{ejbCategory.setVisible(true);}
+				if(category.isSetPosition()){ejbCategory.setPosition(category.getPosition());}else{ejbCategory.setPosition(0);}
+				
 				ejbCategory=(C)fSecurity.update(ejbCategory);
 				iuChilds(ejbCategory,category);
 			}

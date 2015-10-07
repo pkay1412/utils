@@ -37,8 +37,9 @@ public class XmlUsecaseFactory <L extends UtilsLang,
 	public Usecase build(U usecase)
 	{
 		Usecase xml = new Usecase();
-		if(q.isSetIndex()){xml.setIndex(usecase.getPosition());}
 		if(q.isSetCode()){xml.setCode(usecase.getCode());}
+		if(q.isSetPosition()){xml.setPosition(usecase.getPosition());}
+		if(q.isSetVisible()){xml.setVisible(usecase.isVisible());}
 		
 		if(q.isSetLangs())
 		{

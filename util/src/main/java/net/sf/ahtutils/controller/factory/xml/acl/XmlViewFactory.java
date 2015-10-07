@@ -74,6 +74,9 @@ public class XmlViewFactory
 			xml.setDescriptions(f.create(view.getDescription()));
 		}
 		
+		if(q.isSetPublic() && view.getAccessPublic()!=null){xml.setPublic(view.getAccessPublic());}
+		if(q.isSetOnlyLoginRequired() && view.getAccessLogin()!=null){xml.setOnlyLoginRequired(view.getAccessLogin());}
+		
 		return xml;
 	}
 	

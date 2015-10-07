@@ -18,8 +18,8 @@ public class TestXmlCategory extends AbstractXmlSecurityTest<Category>
     public Category build(boolean withChilds)
     {
     	Category xml = new Category();
-    	xml.setIndex(1);
-    	xml.setIndex(456);
+    	xml.setPosition(1);
+    	xml.setVisible(true);
     	xml.setCode("myCode");
     	xml.setLabel("myLabel");
     	

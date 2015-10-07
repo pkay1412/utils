@@ -17,7 +17,7 @@ public class TestXmlNavigation extends AbstractXmlNavigationTest
 	@BeforeClass
 	public static void initFiles()
 	{
-		setXmlFile(dirSuffix, "navigation");
+		setXmlFile(dirSuffix, "xnavigation");
 	}
     
     @Test

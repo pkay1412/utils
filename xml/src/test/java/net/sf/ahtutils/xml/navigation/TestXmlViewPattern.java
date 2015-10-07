@@ -17,7 +17,7 @@ public class TestXmlViewPattern extends AbstractXmlNavigationTest
 	@BeforeClass
 	public static void initFiles()
 	{
-		setXmlFile(dirSuffix, "viewPattern");
+		setXmlFile(dirSuffix, "xviewPattern");
 	}
     
     @Test

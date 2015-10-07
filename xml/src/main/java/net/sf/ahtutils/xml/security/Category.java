@@ -33,9 +33,10 @@ import net.sf.ahtutils.xml.status.Langs;
  *         &lt;element ref="{http://ahtutils.aht-group.com/access}views"/&gt;
  *         &lt;element ref="{http://ahtutils.aht-group.com/security}staffs" maxOccurs="unbounded"/&gt;
  *       &lt;/sequence&gt;
- *       &lt;attribute name="index" type="{http://www.w3.org/2001/XMLSchema}int" /&gt;
  *       &lt;attribute name="code" type="{http://www.w3.org/2001/XMLSchema}string" /&gt;
  *       &lt;attribute name="label" type="{http://www.w3.org/2001/XMLSchema}string" /&gt;
+ *       &lt;attribute name="position" type="{http://www.w3.org/2001/XMLSchema}int" /&gt;
+ *       &lt;attribute name="visible" type="{http://www.w3.org/2001/XMLSchema}boolean" /&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
@@ -73,12 +74,14 @@ public class Category
     protected Views views;
     @XmlElement(required = true)
     protected List<Staffs> staffs;
-    @XmlAttribute(name = "index")
-    protected Integer index;
     @XmlAttribute(name = "code")
     protected String code;
     @XmlAttribute(name = "label")
     protected String label;
+    @XmlAttribute(name = "position")
+    protected Integer position;
+    @XmlAttribute(name = "visible")
+    protected Boolean visible;
 
     /**
      * Gets the value of the langs property.
@@ -286,38 +289,6 @@ public class Category
     }
 
     /**
-     * Gets the value of the index property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Integer }
-     *     
-     */
-    public int getIndex() {
-        return index;
-    }
-
-    /**
-     * Sets the value of the index property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Integer }
-     *     
-     */
-    public void setIndex(int value) {
-        this.index = value;
-    }
-
-    public boolean isSetIndex() {
-        return (this.index!= null);
-    }
-
-    public void unsetIndex() {
-        this.index = null;
-    }
-
-    /**
      * Gets the value of the code property.
      * 
      * @return
@@ -371,6 +342,70 @@ public class Category
 
     public boolean isSetLabel() {
         return (this.label!= null);
+    }
+
+    /**
+     * Gets the value of the position property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Integer }
+     *     
+     */
+    public int getPosition() {
+        return position;
+    }
+
+    /**
+     * Sets the value of the position property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Integer }
+     *     
+     */
+    public void setPosition(int value) {
+        this.position = value;
+    }
+
+    public boolean isSetPosition() {
+        return (this.position!= null);
+    }
+
+    public void unsetPosition() {
+        this.position = null;
+    }
+
+    /**
+     * Gets the value of the visible property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Boolean }
+     *     
+     */
+    public boolean isVisible() {
+        return visible;
+    }
+
+    /**
+     * Sets the value of the visible property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Boolean }
+     *     
+     */
+    public void setVisible(boolean value) {
+        this.visible = value;
+    }
+
+    public boolean isSetVisible() {
+        return (this.visible!= null);
+    }
+
+    public void unsetVisible() {
+        this.visible = null;
     }
 
 }

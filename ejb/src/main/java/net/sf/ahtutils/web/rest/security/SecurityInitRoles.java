@@ -82,21 +82,21 @@ public class SecurityInitRoles <L extends UtilsLang,
 	
 	private void iuRole(C category, net.sf.ahtutils.xml.security.Role role) throws UtilsConfigurationException
 	{
-		R aclRole;
+		R ejb;
 		try
 		{
-			aclRole = fSecurity.fByCode(cR,role.getCode());
-			ejbLangFactory.rmLang(fSecurity,aclRole);
-			ejbDescriptionFactory.rmDescription(fSecurity,aclRole);
+			ejb = fSecurity.fByCode(cR,role.getCode());
+			ejbLangFactory.rmLang(fSecurity,ejb);
+			ejbDescriptionFactory.rmDescription(fSecurity,ejb);
 		}
 		catch (UtilsNotFoundException e)
 		{
 			try
 			{
-				aclRole = cR.newInstance();
-				aclRole.setCategory(category);
-				aclRole.setCode(role.getCode());
-				aclRole = fSecurity.persist(aclRole);				
+				ejb = cR.newInstance();
+				ejb.setCategory(category);
+				ejb.setCode(role.getCode());
+				ejb = fSecurity.persist(ejb);				
 			}
 			catch (InstantiationException e2) {throw new UtilsConfigurationException(e2.getMessage());}
 			catch (IllegalAccessException e2) {throw new UtilsConfigurationException(e2.getMessage());}
@@ -105,14 +105,17 @@ public class SecurityInitRoles <L extends UtilsLang,
 		
 		try
 		{
-			aclRole.setName(ejbLangFactory.getLangMap(role.getLangs()));
-			aclRole.setDescription(ejbDescriptionFactory.create(role.getDescriptions()));
-			aclRole.setCategory(category);
-			aclRole=fSecurity.update(aclRole);
+			if(role.isSetVisible()){ejb.setVisible(role.isVisible());}else{ejb.setVisible(true);}
+			if(role.isSetPosition()){ejb.setPosition(role.getPosition());}else{ejb.setPosition(0);}
+			
+			ejb.setName(ejbLangFactory.getLangMap(role.getLangs()));
+			ejb.setDescription(ejbDescriptionFactory.create(role.getDescriptions()));
+			ejb.setCategory(category);
+			ejb=fSecurity.update(ejb);
 
-			aclRole = iuListViewsSecurity(aclRole, role.getViews());
-			aclRole = iuListActions(aclRole, role.getActions());
-			aclRole = iuUsecasesForRole(aclRole, role.getUsecases());
+			ejb = iuListViewsSecurity(ejb, role.getViews());
+			ejb = iuListActions(ejb, role.getActions());
+			ejb = iuUsecasesForRole(ejb, role.getUsecases());
 		}
 		catch (UtilsConstraintViolationException e) {logger.error("",e);}
 		catch (UtilsNotFoundException e) {throw new UtilsConfigurationException(e.getMessage());}

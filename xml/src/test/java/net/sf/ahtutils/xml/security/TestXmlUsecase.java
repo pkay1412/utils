@@ -18,7 +18,8 @@ public class TestXmlUsecase extends AbstractXmlSecurityTest<Usecase>
     {
     	Usecase xml = new Usecase();
     	xml.setId(123);
-    	xml.setIndex(456);
+    	xml.setPosition(1);
+    	xml.setVisible(true);
     	xml.setCode("myCode");
     	xml.setLabel("myLabel");
     	

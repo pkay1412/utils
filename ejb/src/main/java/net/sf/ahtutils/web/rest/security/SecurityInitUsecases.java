@@ -108,6 +108,9 @@ public class SecurityInitUsecases <L extends UtilsLang,
 		
 		try
 		{
+			if(usecase.isSetVisible()){ebj.setVisible(usecase.isVisible());}else{ebj.setVisible(true);}
+			if(usecase.isSetPosition()){ebj.setPosition(usecase.getPosition());}else{ebj.setPosition(0);}
+			
 			ebj.setName(ejbLangFactory.getLangMap(usecase.getLangs()));
 			ebj.setDescription(ejbDescriptionFactory.create(usecase.getDescriptions()));
 			ebj.setCategory(category);

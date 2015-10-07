@@ -18,7 +18,8 @@ public class TestXmlView extends AbstractXmlSecurityTest<View>
     {
     	View xml = new View();
     	xml.setId(123);
-    	xml.setIndex(456);
+    	xml.setPosition(1);
+    	xml.setVisible(true);
     	xml.setCode("myCode");
     	xml.setLabel("myLabel");
     	

@@ -39,7 +39,9 @@
                 <xsd:element ref="a:usecases" maxOccurs="1"/>
             </xsd:sequence>
             <xsd:attribute name="code" type="xsd:string"/>
-            <xsd:attribute name="index" type="xsd:int"/>
+            <xsd:attribute name="label" type="xsd:string"/>
+            <xsd:attribute name="position" type="xsd:int"/>
+            <xsd:attribute name="visible" type="xsd:boolean"/>
         </xsd:complexType>
     </xsd:element>
     <xsd:element name="roleAutoAssign">
@@ -98,11 +100,12 @@
                 <xsd:element ref="n:navigation" maxOccurs="1"/>
             </xsd:sequence>
             <xsd:attribute name="code" type="xsd:string"/>
-            <xsd:attribute name="index" type="xsd:int"/>
             <xsd:attribute name="public" type="xsd:boolean"/>
             <xsd:attribute name="onlyLoginRequired" type="xsd:boolean"/>
             <xsd:attribute name="urlParameter" type="xsd:string"/>
             <xsd:attribute name="label" type="xsd:string"/>
+            <xsd:attribute name="position" type="xsd:int"/>
+            <xsd:attribute name="visible" type="xsd:boolean"/>
         </xsd:complexType>
     </xsd:element>
     <xsd:element name="roles">

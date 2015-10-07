@@ -69,23 +69,46 @@ public class AhtUtilsSecurityView implements EjbWithCode,Serializable,EjbRemovea
 	@OneToMany(cascade = CascadeType.ALL, fetch=FetchType.EAGER)
 	@MapKey(name = "lkey")
 	private Map<String, AhtUtilsLang> name;
-	public Map<String, AhtUtilsLang> getName() {return name;}
-	public void setName(Map<String, AhtUtilsLang> name) {this.name = name;}
+	@Override public Map<String, AhtUtilsLang> getName() {return name;}
+	@Override public void setName(Map<String, AhtUtilsLang> name) {this.name = name;}
 	
 	@OneToMany(cascade = CascadeType.ALL, fetch=FetchType.EAGER)
 	@MapKey(name = "lkey")
 	private Map<String, AhtUtilsDescription> description;
-	public Map<String, AhtUtilsDescription> getDescription() {return description;}
-	public void setDescription(Map<String, AhtUtilsDescription> description) {this.description = description;}
+	@Override public Map<String, AhtUtilsDescription> getDescription() {return description;}
+	@Override public void setDescription(Map<String, AhtUtilsDescription> description) {this.description = description;}
 	
 	@OneToMany(fetch=FetchType.EAGER, mappedBy="view")
 	private List<AhtUtilsSecurityAction> actions;
-	public List<AhtUtilsSecurityAction> getActions() {if(actions==null){actions=new ArrayList<AhtUtilsSecurityAction>();}return actions;}
-	public void setActions(List<AhtUtilsSecurityAction> actions) {this.actions = actions;}
+	@Override public List<AhtUtilsSecurityAction> getActions() {if(actions==null){actions=new ArrayList<AhtUtilsSecurityAction>();}return actions;}
+	@Override public void setActions(List<AhtUtilsSecurityAction> actions) {this.actions = actions;}
 	
+	private Boolean accessPublic;
+	@Override public Boolean getAccessPublic() {return accessPublic;}
+	@Override public void setAccessPublic(Boolean accessPublic) {this.accessPublic = accessPublic;}
+	
+	private Boolean accessLogin;
+	@Override public Boolean getAccessLogin() {return accessLogin;}
+	@Override public void setAccessLogin(Boolean accessLogin) {this.accessLogin = accessLogin;}
+	
+	private String packageName;
+	@Override public String getPackageName() {return packageName;}
+	@Override public void setPackageName(String packageName) {this.packageName = packageName;}
+	
+	private String viewPattern;
+	@Override public String getViewPattern() {return viewPattern;}
+	@Override public void setViewPattern(String viewPattern) {this.viewPattern = viewPattern;}
+	
+	private String urlMapping;
+	@Override public String getUrlMapping() {return urlMapping;}
+	@Override public void setUrlMapping(String urlMapping) {this.urlMapping = urlMapping;}
+	
+	private String urlBase;
+	@Override public String getUrlBase() {return urlBase;}
+	@Override public void setUrlBase(String urlBase) {this.urlBase = urlBase;}
 	
 	public boolean equals(Object object)
 	{
         return (object instanceof AhtUtilsSecurityView) ? id == ((AhtUtilsSecurityView) object).getId() : (object == this);
-    }
+    }	
 }

@@ -33,8 +33,9 @@ public class XmlCategoryFactory <L extends UtilsLang,D extends UtilsDescription,
 	public net.sf.ahtutils.xml.security.Category build(C category)
 	{
 		Category xml = new Category();
-		if(q.isSetIndex()){xml.setIndex(category.getPosition());}
 		if(q.isSetCode()){xml.setCode(category.getCode());}
+		if(q.isSetPosition()){xml.setPosition(category.getPosition());}
+		if(q.isSetVisible()){xml.setVisible(category.isVisible());}
 		
 		if(q.isSetLangs())
 		{

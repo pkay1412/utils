@@ -37,12 +37,13 @@ public class XmlActionFactory <L extends UtilsLang,
 	{
 		this.qAcl=qAcl;
 	}
-	
 
 	public net.sf.ahtutils.xml.security.Action build(A action)
 	{
 		Action xml = new Action();
 		if(q.isSetCode()){xml.setCode(action.getCode());}
+		if(q.isSetPosition()){xml.setPosition(action.getPosition());}
+		if(q.isSetVisible()){xml.setVisible(action.isVisible());}
 		
 		if(q.isSetLangs())
 		{

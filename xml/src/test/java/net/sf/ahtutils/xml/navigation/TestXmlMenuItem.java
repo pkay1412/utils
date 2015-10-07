@@ -20,7 +20,7 @@ public class TestXmlMenuItem extends AbstractXmlNavigationTest
 	@BeforeClass
 	public static void initFiles()
 	{
-		setXmlFile(dirSuffix, "menuItem");
+		setXmlFile(dirSuffix, "xmenuItem");
 	}
     
     @Test

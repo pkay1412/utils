@@ -118,7 +118,8 @@ public class UtilsSecurityFacadeBean extends UtilsFacadeBean implements UtilsSec
 		else if(clWc.getSimpleName().contains("View")){type=UtilsSecurityCategory.Type.view.toString();}
 		
 		C category = this.fByTypeCode(clC, type, code);
-		return this.allForParent(clWc, "category", category);
+		
+		return this.allOrderedPositionVisibleParent2(clWc,category);
 	}	
 	
 	@Override
