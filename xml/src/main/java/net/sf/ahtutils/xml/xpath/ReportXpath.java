@@ -11,6 +11,8 @@ import net.sf.ahtutils.xml.report.Report;
 import net.sf.ahtutils.xml.report.Reports;
 import net.sf.ahtutils.xml.report.Template;
 import net.sf.ahtutils.xml.report.Templates;
+import net.sf.ahtutils.xml.report.XlsDefinition;
+import net.sf.ahtutils.xml.report.XlsWorkbook;
 import net.sf.exlp.exception.ExlpXpathNotFoundException;
 import net.sf.exlp.exception.ExlpXpathNotUniqueException;
 import net.sf.exlp.util.xml.JDomUtil;
@@ -110,5 +112,15 @@ public class ReportXpath
 		eInfo = JDomUtil.setNameSpaceRecursive(eInfo, AhtUtilsNsPrefixMapper.nsReport);
 		Info info = JDomUtil.toJaxb(eInfo, Info.class);
 		return info;
+	}
+	
+	@SuppressWarnings("unchecked")
+	public static synchronized XlsWorkbook getWorkbook(XlsDefinition definition, String code) throws ExlpXpathNotFoundException, ExlpXpathNotUniqueException
+	{
+		JXPathContext context = JXPathContext.newContext(definition);
+		List<XlsWorkbook> listResult = (List<XlsWorkbook>)context.selectNodes("//xlsWorkbook[@code='" +code +"']");
+		if(listResult.size()==0){throw new ExlpXpathNotFoundException("No "+XlsWorkbook.class.getSimpleName()+" for code="+code);}
+		else if(listResult.size()>1){throw new ExlpXpathNotUniqueException("Multiple "+XlsWorkbook.class.getSimpleName()+" for code="+code);}
+		return listResult.get(0);
 	}
 }
