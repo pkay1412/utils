@@ -51,7 +51,19 @@
         <us:descriptions>
             <us:description key="de">Symbol</us:description>
             <us:description key="fr">Symbol</us:description>
-            <us:description key="en">The first date needs to be before the second date</us:description>
+            <us:description key="en">The first date needs to be before the second date.</us:description>
+        </us:descriptions>
+    </us:status>
+    <us:status code="precondition" position="5">
+        <us:langs>
+            <us:lang key="de" translation="Vorbedingung"/>
+            <us:lang key="fr" translation="Precondition"/>
+            <us:lang key="en" translation="Precondition"/>
+        </us:langs>
+        <us:descriptions>
+            <us:description key="de">Vorbedingung</us:description>
+            <us:description key="fr">Precondition</us:description>
+            <us:description key="en">A specific precondition is checked before data are persisted.</us:description>
         </us:descriptions>
     </us:status>
 </aht:aht>

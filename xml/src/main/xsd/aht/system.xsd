@@ -65,6 +65,7 @@
 				<xsd:element ref="us:descriptions" maxOccurs="1"/>
                 <xsd:element ref="sys:constraintAttribute" maxOccurs="unbounded"/>
             </xsd:sequence>
+            <xsd:attribute name="code" type="xsd:string"/>
             <xsd:attribute name="since" type="xsd:dateTime"/>
         </xsd:complexType>
     </xsd:element>

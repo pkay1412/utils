@@ -2,6 +2,6 @@
 <sys:constraintScope xmlns:s="http://ahtutils.aht-group.com/status" xmlns:sec="http://ahtutils.aht-group.com/security" xmlns:sys="http://ahtutils.aht-group.com/system" id="123" category="myCategory" code="myCode">
     <s:langs/>
     <s:descriptions/>
-    <sys:constraint/>
-    <sys:constraint/>
+    <sys:constraint code="myCode"/>
+    <sys:constraint code="myCode"/>
 </sys:constraintScope>

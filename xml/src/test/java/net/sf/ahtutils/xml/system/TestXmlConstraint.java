@@ -18,7 +18,8 @@ public class TestXmlConstraint extends AbstractXmlSystemTest<Constraint>
     public Constraint build(boolean withChilds)
     {
     	Constraint xml = new Constraint();
-
+    	xml.setCode("myCode");
+    	
     	if(withChilds)
     	{
     		xml.setType(TestXmlType.create(false));

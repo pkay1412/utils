@@ -32,6 +32,7 @@ import net.sf.ahtutils.xml.status.Type;
  *         &lt;element ref="{http://ahtutils.aht-group.com/status}descriptions"/&gt;
  *         &lt;element ref="{http://ahtutils.aht-group.com/system}constraintAttribute" maxOccurs="unbounded"/&gt;
  *       &lt;/sequence&gt;
+ *       &lt;attribute name="code" type="{http://www.w3.org/2001/XMLSchema}string" /&gt;
  *       &lt;attribute name="since" type="{http://www.w3.org/2001/XMLSchema}dateTime" /&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -61,6 +62,8 @@ public class Constraint
     protected Descriptions descriptions;
     @XmlElement(required = true)
     protected List<ConstraintAttribute> constraintAttribute;
+    @XmlAttribute(name = "code")
+    protected String code;
     @XmlAttribute(name = "since")
     @XmlSchemaType(name = "dateTime")
     protected XMLGregorianCalendar since;
@@ -184,6 +187,34 @@ public class Constraint
 
     public void unsetConstraintAttribute() {
         this.constraintAttribute = null;
+    }
+
+    /**
+     * Gets the value of the code property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getCode() {
+        return code;
+    }
+
+    /**
+     * Sets the value of the code property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setCode(String value) {
+        this.code = value;
+    }
+
+    public boolean isSetCode() {
+        return (this.code!= null);
     }
 
     /**
