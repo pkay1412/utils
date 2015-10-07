@@ -17,9 +17,9 @@ If you run a java class which is using this mechanism for the first, time a warn
 	</ofx:listing>
 	
 		<ofx:paragraph lang="en" version="1">
-		<io:dir code="meis">
-        <io:file code="client" name="/change/me"/>
-    </io:dir>
+		-io:dir code="meis"-
+        	-io:file code="client" name="/change/me"/-
+    	-/io:dir-
 	</ofx:paragraph>
 	
 	<ofx:paragraph lang="en" version="1">

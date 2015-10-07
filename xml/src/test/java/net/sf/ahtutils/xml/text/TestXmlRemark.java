@@ -1,31 +1,18 @@
 package net.sf.ahtutils.xml.text;
 
-import java.io.FileNotFoundException;
-
-import net.sf.ahtutils.test.UtilsXmlTestBootstrap;
-import net.sf.exlp.util.xml.JaxbUtil;
-
-import org.junit.BeforeClass;
-import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class TestXmlRemark extends AbstractXmlTextTest
+import net.sf.ahtutils.test.UtilsXmlTestBootstrap;
+
+public class TestXmlRemark extends AbstractXmlTextTest<Remark>
 {
 	final static Logger logger = LoggerFactory.getLogger(TestXmlRemark.class);
 	
-	@BeforeClass public static void initFiles(){setXmlFile(dirSuffix,Remark.class);}
+	public TestXmlRemark(){super(Remark.class);}
+	public static Remark create(boolean withChildren){return (new TestXmlRemark()).build(withChildren);}
     
-    @Test
-    public void testXml() throws FileNotFoundException
-    {
-    	Remark actual = create();
-    	Remark expected = JaxbUtil.loadJAXB(fXml.getAbsolutePath(), Remark.class);
-    	assertJaxbEquals(expected, actual);
-    }
-    
-    private static Remark create(){return create(true);}
-    public static Remark create(boolean withChilds){return create(withChilds,"myKey","myValue");}
+    public Remark build(boolean withChilds){return create(withChilds,"myKey","myValue");}
     public static Remark create(boolean withChilds, String key, String description)
     {
     	Remark xml = new Remark();
@@ -34,15 +21,11 @@ public class TestXmlRemark extends AbstractXmlTextTest
     	xml.setValue(description);
     	return xml;
     }
-    
-    public void save() {save(create(),fXml);}
 	
 	public static void main(String[] args)
     {
 		UtilsXmlTestBootstrap.init();
-			
-		TestXmlRemark.initFiles();	
 		TestXmlRemark test = new TestXmlRemark();
-		test.save();
+		test.saveReferenceXml();
     }
 }
