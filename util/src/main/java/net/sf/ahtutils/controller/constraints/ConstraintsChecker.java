@@ -5,7 +5,8 @@ import net.sf.ahtutils.xml.system.Constraint;
 import net.sf.ahtutils.xml.system.ConstraintAttribute;
 import net.sf.ahtutils.xml.system.ConstraintScope;
 
-public class ConstraintsChecker {
+public class ConstraintsChecker
+{
     public static boolean notNull(Object object, String attribute) throws Exception
     {
         return ReflectionsUtil.simpleInvokeMethod(("get" + attribute.substring(0, 1).toUpperCase() + attribute.substring(1)),
