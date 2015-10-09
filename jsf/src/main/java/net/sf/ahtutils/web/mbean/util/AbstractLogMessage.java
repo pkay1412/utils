@@ -23,14 +23,34 @@ public class AbstractLogMessage <L extends UtilsLang,D extends UtilsDescription,
 	private static final long serialVersionUID = 1L;
 	
 	public static String postConstruct(){return "@PostConstruct";}
+	
 	public static String postConstruct(ProcessingTimeTracker ptt)
 	{
-		ptt.stop();
-		return "@PostConstruct in "+ptt.toTotalTime();
+		StringBuffer sb = new StringBuffer();
+		sb.append(postConstruct());
+		sb.append(ptt(ptt));
+		return sb.toString();
 	}
 	
 	public static <L extends UtilsLang,D extends UtilsDescription,C extends UtilsSecurityCategory<L,D,C,R,V,U,A,USER>,R extends UtilsSecurityRole<L,D,C,R,V,U,A,USER>,V extends UtilsSecurityView<L,D,C,R,V,U,A,USER>,U extends UtilsSecurityUsecase<L,D,C,R,V,U,A,USER>,A extends UtilsSecurityAction<L,D,C,R,V,U,A,USER>,USER extends UtilsUser<L,D,C,R,V,U,A,USER>>
-		String postConstruct(USER user){return postConstruct(user, null);}
+		String postConstruct(USER user)
+	{
+		StringBuffer sb = new StringBuffer();
+		sb.append(postConstruct());
+		sb.append(user(user));
+		return sb.toString();
+	}
+	
+	public static <L extends UtilsLang,D extends UtilsDescription,C extends UtilsSecurityCategory<L,D,C,R,V,U,A,USER>,R extends UtilsSecurityRole<L,D,C,R,V,U,A,USER>,V extends UtilsSecurityView<L,D,C,R,V,U,A,USER>,U extends UtilsSecurityUsecase<L,D,C,R,V,U,A,USER>,A extends UtilsSecurityAction<L,D,C,R,V,U,A,USER>,USER extends UtilsUser<L,D,C,R,V,U,A,USER>>
+		String postConstruct(ProcessingTimeTracker ptt, USER user)
+	{
+		StringBuffer sb = new StringBuffer();
+		sb.append(postConstruct());
+		sb.append(ptt(ptt));
+		sb.append(user(user));
+		return sb.toString();
+	}
+	
     public static <L extends UtilsLang,D extends UtilsDescription,C extends UtilsSecurityCategory<L,D,C,R,V,U,A,USER>,R extends UtilsSecurityRole<L,D,C,R,V,U,A,USER>,V extends UtilsSecurityView<L,D,C,R,V,U,A,USER>,U extends UtilsSecurityUsecase<L,D,C,R,V,U,A,USER>,A extends UtilsSecurityAction<L,D,C,R,V,U,A,USER>,USER extends UtilsUser<L,D,C,R,V,U,A,USER>>
 		String postConstruct(USER user, long urlCode){return postConstruct(user, ""+urlCode);}
 	public static <L extends UtilsLang,D extends UtilsDescription,C extends UtilsSecurityCategory<L,D,C,R,V,U,A,USER>,R extends UtilsSecurityRole<L,D,C,R,V,U,A,USER>,V extends UtilsSecurityView<L,D,C,R,V,U,A,USER>,U extends UtilsSecurityUsecase<L,D,C,R,V,U,A,USER>,A extends UtilsSecurityAction<L,D,C,R,V,U,A,USER>,USER extends UtilsUser<L,D,C,R,V,U,A,USER>>
@@ -40,6 +60,25 @@ public class AbstractLogMessage <L extends UtilsLang,D extends UtilsDescription,
 		sb.append("@PostConstruct");
 		if(user!=null){sb.append(" {").append(user.toString()).append("}");}
 		if(urlCode!=null){sb.append(" urlCode:").append(urlCode);}
+		return sb.toString();
+	}
+	
+	public static <L extends UtilsLang,D extends UtilsDescription,C extends UtilsSecurityCategory<L,D,C,R,V,U,A,USER>,R extends UtilsSecurityRole<L,D,C,R,V,U,A,USER>,V extends UtilsSecurityView<L,D,C,R,V,U,A,USER>,U extends UtilsSecurityUsecase<L,D,C,R,V,U,A,USER>,A extends UtilsSecurityAction<L,D,C,R,V,U,A,USER>,USER extends UtilsUser<L,D,C,R,V,U,A,USER>>
+		String user(USER user)
+	{
+		StringBuffer sb = new StringBuffer();
+		sb.append(" [");
+		if(user==null){sb.append("---");}
+		else{sb.append(user.toString());}
+		sb.append("]");
+		return sb.toString();
+	}
+	
+	public static String ptt(ProcessingTimeTracker ptt)
+	{
+		ptt.stop();
+		StringBuffer sb = new StringBuffer();
+		sb.append(" in "+ptt.toTotalTime());
 		return sb.toString();
 	}
 	
