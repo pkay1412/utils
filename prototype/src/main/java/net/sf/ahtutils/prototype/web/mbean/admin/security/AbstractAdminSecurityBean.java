@@ -39,7 +39,7 @@ public class AbstractAdminSecurityBean <L extends UtilsLang,
 	private static final long serialVersionUID = 1L;
 	final static Logger logger = LoggerFactory.getLogger(AbstractAdminSecurityBean.class);
 	
-	protected UtilsSecurityFacade fSecurity;
+	protected UtilsSecurityFacade<L,D,C,R,V,U,A,USER> fSecurity;
 	protected UtilsSecurityCategory.Type categoryType;
 	
 	protected EjbLangFactory<L> efLang;

@@ -80,7 +80,7 @@ public class UtilsIdentityFactory <I extends UtilsIdentity<L,D,C,R,V,U,A,USER>,
 		return new UtilsIdentityFactory<I,L,D,C,R,V,U,A,USER>(clIdentity,clLang,clDescription,clCategory,clRole,clView,clUsecase,clAction,clUser);
 	}
 
-	public I create(UtilsSecurityFacade fSecurity, USER user)
+	public I create(UtilsSecurityFacade<L,D,C,R,V,U,A,USER> fSecurity, USER user)
 	{		
 		I identity = null;
 		

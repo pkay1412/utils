@@ -22,7 +22,14 @@ import net.sf.ahtutils.interfaces.model.status.UtilsLang;
 import net.sf.ahtutils.model.interfaces.idm.UtilsUser;
 import net.sf.ahtutils.model.interfaces.with.EjbWithId;
 
-public class UtilsSecurityFacadeBean extends UtilsFacadeBean implements UtilsSecurityFacade
+public class UtilsSecurityFacadeBean<L extends UtilsLang,
+D extends UtilsDescription,
+C extends UtilsSecurityCategory<L,D,C,R,V,U,A,USER>,
+R extends UtilsSecurityRole<L,D,C,R,V,U,A,USER>,
+V extends UtilsSecurityView<L,D,C,R,V,U,A,USER>,
+U extends UtilsSecurityUsecase<L,D,C,R,V,U,A,USER>,
+A extends UtilsSecurityAction<L,D,C,R,V,U,A,USER>,
+USER extends UtilsUser<L,D,C,R,V,U,A,USER>> extends UtilsFacadeBean implements UtilsSecurityFacade<L,D,C,R,V,U,A,USER>
 {	
 	public UtilsSecurityFacadeBean(EntityManager em)
 	{
@@ -30,7 +37,7 @@ public class UtilsSecurityFacadeBean extends UtilsFacadeBean implements UtilsSec
 	}
 
 	@Override
-	public <L extends UtilsLang, D extends UtilsDescription, C extends UtilsSecurityCategory<L,D,C,R,V,U,A,USER>, R extends UtilsSecurityRole<L,D,C,R,V,U,A,USER>, V extends UtilsSecurityView<L,D,C,R,V,U,A,USER>, U extends UtilsSecurityUsecase<L,D,C,R,V,U,A,USER>, A extends UtilsSecurityAction<L,D,C,R,V,U,A,USER>, USER extends UtilsUser<L,D,C,R,V,U,A,USER>>
+	public 
 		R load(Class<R> cRole, R role)
 	{
 		role = em.find(cRole, role.getId());
@@ -39,7 +46,7 @@ public class UtilsSecurityFacadeBean extends UtilsFacadeBean implements UtilsSec
 	}
 	
 	@Override
-	public <L extends UtilsLang, D extends UtilsDescription, C extends UtilsSecurityCategory<L, D, C, R, V, U, A, USER>, R extends UtilsSecurityRole<L, D, C, R, V, U, A, USER>, V extends UtilsSecurityView<L, D, C, R, V, U, A, USER>, U extends UtilsSecurityUsecase<L, D, C, R, V, U, A, USER>, A extends UtilsSecurityAction<L, D, C, R, V, U, A, USER>, USER extends UtilsUser<L, D, C, R, V, U, A, USER>>
+	public 
 		V load(Class<V> cView, V view)
 	{
 		view = em.find(cView, view.getId());
@@ -48,7 +55,7 @@ public class UtilsSecurityFacadeBean extends UtilsFacadeBean implements UtilsSec
 	}
 	
 	@Override
-	public <L extends UtilsLang, D extends UtilsDescription, C extends UtilsSecurityCategory<L,D,C,R,V,U,A,USER>, R extends UtilsSecurityRole<L,D,C,R,V,U,A,USER>, V extends UtilsSecurityView<L,D,C,R,V,U,A,USER>, U extends UtilsSecurityUsecase<L,D,C,R,V,U,A,USER>, A extends UtilsSecurityAction<L,D,C,R,V,U,A,USER>,USER extends UtilsUser<L,D,C,R,V,U,A,USER>>
+	public 
 		List<V>	allViewsForUser(Class<USER> clUser, USER user)
 	{
 		user = em.find(clUser, user.getId());
@@ -71,7 +78,7 @@ public class UtilsSecurityFacadeBean extends UtilsFacadeBean implements UtilsSec
 	}
 	
 	@Override
-	public <L extends UtilsLang, D extends UtilsDescription, C extends UtilsSecurityCategory<L, D, C, R, V, U, A, USER>, R extends UtilsSecurityRole<L, D, C, R, V, U, A, USER>, V extends UtilsSecurityView<L, D, C, R, V, U, A, USER>, U extends UtilsSecurityUsecase<L, D, C, R, V, U, A, USER>, A extends UtilsSecurityAction<L, D, C, R, V, U, A, USER>, USER extends UtilsUser<L, D, C, R, V, U, A, USER>>
+	public 
 		List<A> allActionsForUser(Class<USER> clUser, USER user)
 	{
 		user = em.find(clUser, user.getId());
@@ -94,7 +101,7 @@ public class UtilsSecurityFacadeBean extends UtilsFacadeBean implements UtilsSec
 	}
 	
 	@Override
-	public <L extends UtilsLang, D extends UtilsDescription, C extends UtilsSecurityCategory<L,D,C,R,V,U,A,USER>, R extends UtilsSecurityRole<L,D,C,R,V,U,A,USER>, V extends UtilsSecurityView<L,D,C,R,V,U,A,USER>, U extends UtilsSecurityUsecase<L,D,C,R,V,U,A,USER>, A extends UtilsSecurityAction<L,D,C,R,V,U,A,USER>,USER extends UtilsUser<L,D,C,R,V,U,A,USER>>
+	public 
 		List<R>	allRolesForUser(Class<USER> clUser, USER user)
 	{
 		user = em.find(clUser, user.getId());
@@ -102,7 +109,7 @@ public class UtilsSecurityFacadeBean extends UtilsFacadeBean implements UtilsSec
 	}
 	
 	@Override
-	public <WC extends UtilsSecurityWithCategory<L,D,C,R,V,U,A,USER>, L extends UtilsLang, D extends UtilsDescription, C extends UtilsSecurityCategory<L,D,C,R,V,U,A,USER>, R extends UtilsSecurityRole<L,D,C,R,V,U,A,USER>, V extends UtilsSecurityView<L,D,C,R,V,U,A,USER>, U extends UtilsSecurityUsecase<L,D,C,R,V,U,A,USER>, A extends UtilsSecurityAction<L,D,C,R,V,U,A,USER>, USER extends UtilsUser<L,D,C,R,V,U,A,USER>>
+	public <WC extends UtilsSecurityWithCategory<L,D,C,R,V,U,A,USER>>
 		List<WC> allForCategory(Class<WC> clWc, Class<C> clC, String code) throws UtilsNotFoundException
 	{
 
@@ -123,51 +130,51 @@ public class UtilsSecurityFacadeBean extends UtilsFacadeBean implements UtilsSec
 	}	
 	
 	@Override
-	public <L extends UtilsLang, D extends UtilsDescription, C extends UtilsSecurityCategory<L,D,C,R,V,U,A,USER>, R extends UtilsSecurityRole<L,D,C,R,V,U,A,USER>, V extends UtilsSecurityView<L,D,C,R,V,U,A,USER>, U extends UtilsSecurityUsecase<L,D,C,R,V,U,A,USER>, A extends UtilsSecurityAction<L,D,C,R,V,U,A,USER>, S extends UtilsStaffPool<L,D,C,R,V,U,A,P,E,USER>, P extends EjbWithId, E extends EjbWithId,USER extends UtilsUser<L,D,C,R,V,U,A,USER>>
+	public <S extends UtilsStaffPool<L,D,C,R,V,U,A,P,E,USER>, P extends EjbWithId, E extends EjbWithId>
 		List<S>	fStaffPool(Class<S> clStaff, P pool)
 	{return allForParent(clStaff, "pool", pool);}
 	
 	
 	// STAFF
 	@Override
-	public <L extends UtilsLang, D extends UtilsDescription, C extends UtilsSecurityCategory<L, D, C, R, V, U, A, USER>, R extends UtilsSecurityRole<L, D, C, R, V, U, A, USER>, V extends UtilsSecurityView<L, D, C, R, V, U, A, USER>, U extends UtilsSecurityUsecase<L, D, C, R, V, U, A, USER>, A extends UtilsSecurityAction<L, D, C, R, V, U, A, USER>, S extends UtilsStaff<L,D,C,R,V,U,A,USER,DOMAIN>, USER extends UtilsUser<L, D, C, R, V, U, A, USER>, DOMAIN extends EjbWithId>
+	public < S extends UtilsStaff<L,D,C,R,V,U,A,USER,DOMAIN>, DOMAIN extends EjbWithId>
 		List<S> fStaff(Class<S> clStaff, USER user)
 	{return allForParent(clStaff, "user", user);}
 	
 	@Override
-	public <L extends UtilsLang, D extends UtilsDescription, C extends UtilsSecurityCategory<L, D, C, R, V, U, A, USER>, R extends UtilsSecurityRole<L, D, C, R, V, U, A, USER>, V extends UtilsSecurityView<L, D, C, R, V, U, A, USER>, U extends UtilsSecurityUsecase<L, D, C, R, V, U, A, USER>, A extends UtilsSecurityAction<L, D, C, R, V, U, A, USER>, S extends UtilsStaff<L,D,C,R,V,U,A,USER,DOMAIN>, USER extends UtilsUser<L, D, C, R, V, U, A, USER>, DOMAIN extends EjbWithId>
+	public <S extends UtilsStaff<L,D,C,R,V,U,A,USER,DOMAIN>,  DOMAIN extends EjbWithId>
 		List<S> fStaff(Class<S> clStaff, R role)
 	{return allForParent(clStaff, "role", role);}
 	
 	@Override
-	public <L extends UtilsLang, D extends UtilsDescription, C extends UtilsSecurityCategory<L, D, C, R, V, U, A, USER>, R extends UtilsSecurityRole<L, D, C, R, V, U, A, USER>, V extends UtilsSecurityView<L, D, C, R, V, U, A, USER>, U extends UtilsSecurityUsecase<L, D, C, R, V, U, A, USER>, A extends UtilsSecurityAction<L, D, C, R, V, U, A, USER>, S extends UtilsStaff<L,D,C,R,V,U,A,USER,DOMAIN>, USER extends UtilsUser<L, D, C, R, V, U, A, USER>, DOMAIN extends EjbWithId>
+	public < S extends UtilsStaff<L,D,C,R,V,U,A,USER,DOMAIN>,  DOMAIN extends EjbWithId>
 		List<S> fStaff(Class<S> clStaff, DOMAIN domain)
 	{return allForParent(clStaff, "domain", domain);}
 	
 	@Override
-	public <L extends UtilsLang, D extends UtilsDescription, C extends UtilsSecurityCategory<L, D, C, R, V, U, A, USER>, R extends UtilsSecurityRole<L, D, C, R, V, U, A, USER>, V extends UtilsSecurityView<L, D, C, R, V, U, A, USER>, U extends UtilsSecurityUsecase<L, D, C, R, V, U, A, USER>, A extends UtilsSecurityAction<L, D, C, R, V, U, A, USER>, S extends UtilsStaff<L,D,C,R,V,U,A,USER,DOMAIN>, USER extends UtilsUser<L, D, C, R, V, U, A, USER>, DOMAIN extends EjbWithId>
+	public < S extends UtilsStaff<L,D,C,R,V,U,A,USER,DOMAIN>,  DOMAIN extends EjbWithId>
 		List<S> fStaff(Class<S> clStaff, USER user, R role)
 	{return allForParent(clStaff, "user", user, "role",role);}
 	
 	@Override
-	public <L extends UtilsLang, D extends UtilsDescription, C extends UtilsSecurityCategory<L, D, C, R, V, U, A, USER>, R extends UtilsSecurityRole<L, D, C, R, V, U, A, USER>, V extends UtilsSecurityView<L, D, C, R, V, U, A, USER>, U extends UtilsSecurityUsecase<L, D, C, R, V, U, A, USER>, A extends UtilsSecurityAction<L, D, C, R, V, U, A, USER>, S extends UtilsStaff<L,D,C,R,V,U,A,USER,DOMAIN>, USER extends UtilsUser<L, D, C, R, V, U, A, USER>, DOMAIN extends EjbWithId>
+	public < S extends UtilsStaff<L,D,C,R,V,U,A,USER,DOMAIN>,  DOMAIN extends EjbWithId>
 		List<S> fStaff(Class<S> clStaff, USER user, DOMAIN domain)
 	{return allForParent(clStaff, "user", user, "domain",domain);}
 	
 	@Override
-	public <L extends UtilsLang, D extends UtilsDescription, C extends UtilsSecurityCategory<L, D, C, R, V, U, A, USER>, R extends UtilsSecurityRole<L, D, C, R, V, U, A, USER>, V extends UtilsSecurityView<L, D, C, R, V, U, A, USER>, U extends UtilsSecurityUsecase<L, D, C, R, V, U, A, USER>, A extends UtilsSecurityAction<L, D, C, R, V, U, A, USER>, S extends UtilsStaff<L,D,C,R,V,U,A,USER,DOMAIN>, USER extends UtilsUser<L, D, C, R, V, U, A, USER>, DOMAIN extends EjbWithId>
+	public < S extends UtilsStaff<L,D,C,R,V,U,A,USER,DOMAIN>,  DOMAIN extends EjbWithId>
 		List<S> fStaff(Class<S> clStaff, R role, DOMAIN domain)
 	{return allForParent(clStaff, "role", role, "domain",domain);}
 	
 	@Override
-	public <L extends UtilsLang, D extends UtilsDescription, C extends UtilsSecurityCategory<L, D, C, R, V, U, A, USER>, R extends UtilsSecurityRole<L, D, C, R, V, U, A, USER>, V extends UtilsSecurityView<L, D, C, R, V, U, A, USER>, U extends UtilsSecurityUsecase<L, D, C, R, V, U, A, USER>, A extends UtilsSecurityAction<L, D, C, R, V, U, A, USER>, S extends UtilsStaff<L,D,C,R,V,U,A,USER,DOMAIN>, USER extends UtilsUser<L, D, C, R, V, U, A, USER>, DOMAIN extends EjbWithId>
+	public < S extends UtilsStaff<L,D,C,R,V,U,A,USER,DOMAIN>,  DOMAIN extends EjbWithId>
 		S fStaff(Class<S> clStaff, USER user, R role, DOMAIN domain) throws UtilsNotFoundException
 	{
 		return oneForParents(clStaff,"user",user,"role",role,"domain",domain);
 	}
 	
 	@Override
-	public <L extends UtilsLang, D extends UtilsDescription, C extends UtilsSecurityCategory<L, D, C, R, V, U, A, USER>, R extends UtilsSecurityRole<L, D, C, R, V, U, A, USER>, V extends UtilsSecurityView<L, D, C, R, V, U, A, USER>, U extends UtilsSecurityUsecase<L, D, C, R, V, U, A, USER>, A extends UtilsSecurityAction<L, D, C, R, V, U, A, USER>, USER extends UtilsUser<L, D, C, R, V, U, A, USER>>
+	public 
 		void grantRole(Class<USER> clUser, Class<R> clRole, USER user, R role, boolean grant)
 	{
 		logger.trace("grantRole u:"+user.toString()+" r:"+role.toString()+" grand:"+grant);
@@ -178,7 +185,7 @@ public class UtilsSecurityFacadeBean extends UtilsFacadeBean implements UtilsSec
 		em.merge(user);
 	}
 	
-	private <L extends UtilsLang, D extends UtilsDescription, C extends UtilsSecurityCategory<L, D, C, R, V, U, A, USER>, R extends UtilsSecurityRole<L, D, C, R, V, U, A, USER>, V extends UtilsSecurityView<L, D, C, R, V, U, A, USER>, U extends UtilsSecurityUsecase<L, D, C, R, V, U, A, USER>, A extends UtilsSecurityAction<L, D, C, R, V, U, A, USER>, USER extends UtilsUser<L, D, C, R, V, U, A, USER>>
+	private 
 	void addRole(Class<USER> clUser, Class<R> clRole, USER user, R role)
 	{
 		logger.trace("addRole u:"+user.toString()+" r:"+role.toString());
@@ -187,7 +194,7 @@ public class UtilsSecurityFacadeBean extends UtilsFacadeBean implements UtilsSec
 		user = em.merge(user);
 	}
 	
-	private <L extends UtilsLang, D extends UtilsDescription, C extends UtilsSecurityCategory<L, D, C, R, V, U, A, USER>, R extends UtilsSecurityRole<L, D, C, R, V, U, A, USER>, V extends UtilsSecurityView<L, D, C, R, V, U, A, USER>, U extends UtilsSecurityUsecase<L, D, C, R, V, U, A, USER>, A extends UtilsSecurityAction<L, D, C, R, V, U, A, USER>, USER extends UtilsUser<L, D, C, R, V, U, A, USER>>
+	private 
 	void rmRole(Class<USER> clUser, Class<R> clRole, USER user, R role)
 	{
 		if(user.getRoles().contains(role)){user.getRoles().remove(role);}
@@ -197,7 +204,7 @@ public class UtilsSecurityFacadeBean extends UtilsFacadeBean implements UtilsSec
 	}
 
 	@Override
-	public <L extends UtilsLang, D extends UtilsDescription, C extends UtilsSecurityCategory<L, D, C, R, V, U, A, USER>, R extends UtilsSecurityRole<L, D, C, R, V, U, A, USER>, V extends UtilsSecurityView<L, D, C, R, V, U, A, USER>, U extends UtilsSecurityUsecase<L, D, C, R, V, U, A, USER>, A extends UtilsSecurityAction<L, D, C, R, V, U, A, USER>, USER extends UtilsUser<L, D, C, R, V, U, A, USER>>
+	public 
 	boolean hasRole(Class<USER> clUser, Class<R> clRole, USER user, R role)
 	{
 		if(user==null || role==null){return false;}

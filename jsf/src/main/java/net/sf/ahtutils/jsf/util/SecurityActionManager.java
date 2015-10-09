@@ -38,14 +38,14 @@ public class SecurityActionManager <L extends UtilsLang,
 		   A extends UtilsSecurityAction<L,D,C,R,V,U,A,USER>,
 		   USER extends UtilsUser<L,D,C,R,V,U,A,USER>>
 		SecurityActionManager<L,D,C,R,V,U,A,USER>
-		factory(UtilsSecurityFacade fSecurity,final Class<V> cView, String viewId, UtilsIdentity<L,D,C,R,V,U,A,USER> identity) throws UtilsNotFoundException
+		factory(UtilsSecurityFacade<L,D,C,R,V,U,A,USER> fSecurity,final Class<V> cView, String viewId, UtilsIdentity<L,D,C,R,V,U,A,USER> identity) throws UtilsNotFoundException
 	{
 		return new SecurityActionManager<L,D,C,R,V,U,A,USER>(fSecurity,cView,viewId,identity);
 	}
 	
 	private Map<String,Boolean> allowed;
 	
-	public SecurityActionManager(UtilsSecurityFacade fSecurity, final Class<V> cView, String viewId, UtilsIdentity<L,D,C,R,V,U,A,USER> identity) throws UtilsNotFoundException
+	public SecurityActionManager(UtilsSecurityFacade<L,D,C,R,V,U,A,USER> fSecurity, final Class<V> cView, String viewId, UtilsIdentity<L,D,C,R,V,U,A,USER> identity) throws UtilsNotFoundException
 	{
 		allowed = new Hashtable<String,Boolean>();
 		V view = fSecurity.fByCode(cView,viewId);

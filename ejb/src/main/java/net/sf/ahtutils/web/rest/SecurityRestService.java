@@ -42,7 +42,7 @@ public class SecurityRestService <L extends UtilsLang,D extends UtilsDescription
 {
 	final static Logger logger = LoggerFactory.getLogger(SecurityRestService.class);
 	
-	private UtilsSecurityFacade fSecurity;
+	private UtilsSecurityFacade<L,D,C,R,V,U,A,USER> fSecurity;
 	
 	private final Class<C> cCategory;
 	private final Class<R> cRole;
@@ -57,7 +57,7 @@ public class SecurityRestService <L extends UtilsLang,D extends UtilsDescription
 	private XmlActionFactory<L,D,C,R,V,U,A,USER> fAction;
 	private XmlUsecaseFactory<L,D,C,R,V,U,A,USER> fUsecase;
 	
-	private SecurityRestService(UtilsSecurityFacade fSecurity,final Class<L> cL,final Class<D> cD,final Class<C> cCategory,final Class<V> cView,final Class<R> cRole,final Class<U> cUsecase,final Class<A> cAction,final Class<USER> cUser)
+	private SecurityRestService(UtilsSecurityFacade<L,D,C,R,V,U,A,USER> fSecurity,final Class<L> cL,final Class<D> cD,final Class<C> cCategory,final Class<V> cView,final Class<R> cRole,final Class<U> cUsecase,final Class<A> cAction,final Class<USER> cUser)
 	{
 		this.fSecurity=fSecurity;
 		this.cCategory=cCategory;
@@ -99,7 +99,7 @@ public class SecurityRestService <L extends UtilsLang,D extends UtilsDescription
 	{
 		Security xml = XmlSecurityFactory.build();
 				
-		for(C category : fSecurity.all(cCategory))
+		for(C category : fSecurity.allOrderedPosition(cCategory))
 		{
 			if(category.getType().equals(UtilsSecurityCategory.Type.view.toString()))
 			{
