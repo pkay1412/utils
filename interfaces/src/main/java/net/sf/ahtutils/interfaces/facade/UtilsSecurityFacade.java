@@ -28,61 +28,23 @@ USER extends UtilsUser<L,D,C,R,V,U,A,USER>>
 {	
 	
 	R load(Class<R> cRole, R role);
-
-		V load(Class<V> cView, V view);
-
-		List<V> allViewsForUser(Class<USER> clUser, USER user);
-
-		List<R> allRolesForUser(Class<USER> clUser, USER user);
-
-		List<A> allActionsForUser(Class<USER> clUser, USER user);
+	V load(Class<V> cView, V view);
+	List<V> allViewsForUser(Class<USER> clUser, USER user);
+	List<R> allRolesForUser(Class<USER> clUser, USER user);
+	List<A> allActionsForUser(Class<USER> clUser, USER user);
 	
-	<WC extends UtilsSecurityWithCategory<L,D,C,R,V,U,A,USER>>
-		List<WC> allForCategory(Class<WC> clWc, Class<C> clC, String catCode) throws UtilsNotFoundException;
+	void grantRole(Class<USER> clUser, Class<R> clRole, USER user, R role, boolean grant);
+	boolean hasRole(Class<USER> clUser, Class<R> clRole, USER user, R role);
 	
-
-		void grantRole(Class<USER> clUser, Class<R> clRole, USER user, R role, boolean grant);
+	<WC extends UtilsSecurityWithCategory<L,D,C,R,V,U,A,USER>> List<WC> allForCategory(Class<WC> clWc, Class<C> clC, String catCode) throws UtilsNotFoundException;
 	
-
-		boolean hasRole(Class<USER> clUser, Class<R> clRole, USER user, R role);
+	<S extends UtilsStaffPool<L,D,C,R,V,U,A,P,E,USER>, P extends EjbWithId, E extends EjbWithId> List<S> fStaffPool(Class<S> clStaff, P pool);
 	
-	<
-	S extends UtilsStaffPool<L,D,C,R,V,U,A,P,E,USER>,
-	P extends EjbWithId,
-	E extends EjbWithId
->
-		List<S> fStaffPool(Class<S> clStaff, P pool);
-	
-
-	<S extends UtilsStaff<L,D,C,R,V,U,A,USER,DOMAIN>,
-	DOMAIN extends EjbWithId>
-		List<S> fStaff(Class<S> clStaff, USER user);
-	
-	<
-	S extends UtilsStaff<L,D,C,R,V,U,A,USER,DOMAIN>,
-	DOMAIN extends EjbWithId>
-		List<S> fStaff(Class<S> clStaff, R role);
-	
-	<
-	S extends UtilsStaff<L,D,C,R,V,U,A,USER,DOMAIN>,
-	DOMAIN extends EjbWithId>
-		List<S> fStaff(Class<S> clStaff, DOMAIN domain);
-
-	<
-	S extends UtilsStaff<L,D,C,R,V,U,A,USER,DOMAIN>,
-	DOMAIN extends EjbWithId>
-		List<S> fStaff(Class<S> clStaff, USER user, R role);
-	
-	<
-	S extends UtilsStaff<L,D,C,R,V,U,A,USER,DOMAIN>,
-	DOMAIN extends EjbWithId>
-		List<S> fStaff(Class<S> clStaff, USER user, DOMAIN domain);
-	
-	<
-	S extends UtilsStaff<L,D,C,R,V,U,A,USER,DOMAIN>,
-	DOMAIN extends EjbWithId>
-		List<S> fStaff(Class<S> clStaff, R role, DOMAIN domain);
-	
-	<S extends UtilsStaff<L,D,C,R,V,U,A,USER,DOMAIN>,DOMAIN extends EjbWithId>
-	S fStaff(Class<S> clStaff, USER user, R role, DOMAIN domain) throws UtilsNotFoundException;
+	<S extends UtilsStaff<L,D,C,R,V,U,A,USER,DOMAIN>, DOMAIN extends EjbWithId> List<S> fStaffU(Class<S> clStaff, USER user);
+	<S extends UtilsStaff<L,D,C,R,V,U,A,USER,DOMAIN>, DOMAIN extends EjbWithId> List<S> fStaffR(Class<S> clStaff, R role);
+	<S extends UtilsStaff<L,D,C,R,V,U,A,USER,DOMAIN>, DOMAIN extends EjbWithId> List<S> fStaffD(Class<S> clStaff, DOMAIN domain);
+	<S extends UtilsStaff<L,D,C,R,V,U,A,USER,DOMAIN>, DOMAIN extends EjbWithId> List<S> fStaffUR(Class<S> clStaff, USER user, R role);
+	<S extends UtilsStaff<L,D,C,R,V,U,A,USER,DOMAIN>, DOMAIN extends EjbWithId> List<S> fStaffUD(Class<S> clStaff, USER user, DOMAIN domain);
+	<S extends UtilsStaff<L,D,C,R,V,U,A,USER,DOMAIN>, DOMAIN extends EjbWithId> List<S> fStaffRD(Class<S> clStaff, R role, DOMAIN domain);
+	<S extends UtilsStaff<L,D,C,R,V,U,A,USER,DOMAIN>, DOMAIN extends EjbWithId> S fStaff(Class<S> clStaff, USER user, R role, DOMAIN domain) throws UtilsNotFoundException;
 }

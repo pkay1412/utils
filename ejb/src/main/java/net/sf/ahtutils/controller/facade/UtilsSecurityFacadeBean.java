@@ -138,32 +138,32 @@ USER extends UtilsUser<L,D,C,R,V,U,A,USER>> extends UtilsFacadeBean implements U
 	// STAFF
 	@Override
 	public < S extends UtilsStaff<L,D,C,R,V,U,A,USER,DOMAIN>, DOMAIN extends EjbWithId>
-		List<S> fStaff(Class<S> clStaff, USER user)
+		List<S> fStaffU(Class<S> clStaff, USER user)
 	{return allForParent(clStaff, "user", user);}
 	
 	@Override
 	public <S extends UtilsStaff<L,D,C,R,V,U,A,USER,DOMAIN>,  DOMAIN extends EjbWithId>
-		List<S> fStaff(Class<S> clStaff, R role)
+		List<S> fStaffR(Class<S> clStaff, R role)
 	{return allForParent(clStaff, "role", role);}
 	
 	@Override
 	public < S extends UtilsStaff<L,D,C,R,V,U,A,USER,DOMAIN>,  DOMAIN extends EjbWithId>
-		List<S> fStaff(Class<S> clStaff, DOMAIN domain)
+		List<S> fStaffD(Class<S> clStaff, DOMAIN domain)
 	{return allForParent(clStaff, "domain", domain);}
 	
 	@Override
 	public < S extends UtilsStaff<L,D,C,R,V,U,A,USER,DOMAIN>,  DOMAIN extends EjbWithId>
-		List<S> fStaff(Class<S> clStaff, USER user, R role)
+		List<S> fStaffUR(Class<S> clStaff, USER user, R role)
 	{return allForParent(clStaff, "user", user, "role",role);}
 	
 	@Override
 	public < S extends UtilsStaff<L,D,C,R,V,U,A,USER,DOMAIN>,  DOMAIN extends EjbWithId>
-		List<S> fStaff(Class<S> clStaff, USER user, DOMAIN domain)
+		List<S> fStaffUD(Class<S> clStaff, USER user, DOMAIN domain)
 	{return allForParent(clStaff, "user", user, "domain",domain);}
 	
 	@Override
 	public < S extends UtilsStaff<L,D,C,R,V,U,A,USER,DOMAIN>,  DOMAIN extends EjbWithId>
-		List<S> fStaff(Class<S> clStaff, R role, DOMAIN domain)
+		List<S> fStaffRD(Class<S> clStaff, R role, DOMAIN domain)
 	{return allForParent(clStaff, "role", role, "domain",domain);}
 	
 	@Override
