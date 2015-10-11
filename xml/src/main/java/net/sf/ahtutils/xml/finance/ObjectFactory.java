@@ -61,4 +61,12 @@ public class ObjectFactory {
         return new Time();
     }
 
+    /**
+     * Create an instance of {@link Counter }
+     * 
+     */
+    public Counter createCounter() {
+        return new Counter();
+    }
+
 }

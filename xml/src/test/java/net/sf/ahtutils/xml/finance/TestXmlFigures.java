@@ -16,7 +16,7 @@ public class TestXmlFigures extends AbstractXmlFinanceTest
 {
 	final static Logger logger = LoggerFactory.getLogger(TestXmlFigures.class);
 	
-	@BeforeClass public static void initFiles(){setXmlFile(dirSuffix,"figures");}
+	@BeforeClass public static void initFiles(){setXmlFile(dirSuffix,"xfigures");}
     
     @Test
     public void xml() throws FileNotFoundException
@@ -38,6 +38,8 @@ public class TestXmlFigures extends AbstractXmlFinanceTest
     		xml.getTime().add(TestXmlTime.create(false));xml.getTime().add(TestXmlTime.create(false));
     		
     		xml.getRemark().add(TestXmlRemark.create(false));xml.getRemark().add(TestXmlRemark.create(false));
+    		
+    		xml.getCounter().add(TestXmlCounter.create(false));xml.getCounter().add(TestXmlCounter.create(false));
     	}
     	    	
     	return xml;

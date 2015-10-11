@@ -26,6 +26,7 @@ import net.sf.ahtutils.xml.text.Remark;
  *         &lt;element ref="{http://ahtutils.aht-group.com/text}remark" maxOccurs="unbounded"/&gt;
  *         &lt;element ref="{http://ahtutils.aht-group.com/finance}finance" maxOccurs="unbounded"/&gt;
  *         &lt;element ref="{http://ahtutils.aht-group.com/finance}time" maxOccurs="unbounded"/&gt;
+ *         &lt;element ref="{http://ahtutils.aht-group.com/finance}counter" maxOccurs="unbounded"/&gt;
  *       &lt;/sequence&gt;
  *       &lt;attribute name="id" type="{http://www.w3.org/2001/XMLSchema}long" /&gt;
  *     &lt;/restriction&gt;
@@ -39,7 +40,8 @@ import net.sf.ahtutils.xml.text.Remark;
 @XmlType(name = "", propOrder = {
     "remark",
     "finance",
-    "time"
+    "time",
+    "counter"
 })
 @XmlRootElement(name = "figures")
 public class Figures
@@ -53,6 +55,8 @@ public class Figures
     protected List<Finance> finance;
     @XmlElement(required = true)
     protected List<Time> time;
+    @XmlElement(required = true)
+    protected List<Counter> counter;
     @XmlAttribute(name = "id")
     protected Long id;
 
@@ -165,6 +169,43 @@ public class Figures
 
     public void unsetTime() {
         this.time = null;
+    }
+
+    /**
+     * Gets the value of the counter property.
+     * 
+     * <p>
+     * This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the counter property.
+     * 
+     * <p>
+     * For example, to add a new item, do as follows:
+     * <pre>
+     *    getCounter().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link Counter }
+     * 
+     * 
+     */
+    public List<Counter> getCounter() {
+        if (counter == null) {
+            counter = new ArrayList<Counter>();
+        }
+        return this.counter;
+    }
+
+    public boolean isSetCounter() {
+        return ((this.counter!= null)&&(!this.counter.isEmpty()));
+    }
+
+    public void unsetCounter() {
+        this.counter = null;
     }
 
     /**
