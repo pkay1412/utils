@@ -19,6 +19,7 @@ import net.sf.exlp.shell.cmd.ShellCmdChmod;
 import net.sf.exlp.shell.os.OsArchitectureUtil;
 import net.sf.exlp.shell.os.OsBashFile;
 import net.sf.exlp.shell.spawn.Spawn;
+import net.sf.exlp.util.io.resourceloader.MultiResourceLoader;
 import net.sf.exlp.util.io.txt.ExlpTxtWriter;
 import net.sf.exlp.xml.config.Parameter;
 import net.sf.exlp.xml.config.Parameters;
@@ -37,6 +38,8 @@ public class AbstractDatabaseShell
 	
 	protected String dbSchema;
 	
+	protected MultiResourceLoader mrl;
+	
 	protected List<String> tables; public List<String> getTables(){return tables;}
 	
 	protected ExlpTxtWriter txtWriter;
@@ -50,6 +53,8 @@ public class AbstractDatabaseShell
 		this.config=config;
 		this.operation=operation;
 		this.xmlConfig=xmlConfig;
+		
+		mrl = new MultiResourceLoader();
 		
 		configurationParamter = XmlParametersFactory.build();
 		

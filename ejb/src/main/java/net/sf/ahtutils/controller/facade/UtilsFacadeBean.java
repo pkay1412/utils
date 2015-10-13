@@ -40,7 +40,6 @@ import net.sf.ahtutils.interfaces.model.status.UtilsLang;
 import net.sf.ahtutils.interfaces.model.util.UtilsProperty;
 import net.sf.ahtutils.interfaces.model.with.EjbWithEmail;
 import net.sf.ahtutils.interfaces.model.with.EjbWithNr;
-import net.sf.ahtutils.interfaces.model.with.EjbWithParent;
 import net.sf.ahtutils.interfaces.model.with.code.EjbWithCode;
 import net.sf.ahtutils.interfaces.model.with.code.EjbWithNonUniqueCode;
 import net.sf.ahtutils.interfaces.model.with.code.EjbWithType;

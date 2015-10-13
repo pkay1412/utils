@@ -1,6 +1,8 @@
 package net.sf.ahtutils.db.shell.postgres;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.util.List;
 import java.util.NoSuchElementException;
 
@@ -81,7 +83,18 @@ public class PostgresRestore extends AbstractPostgresShell implements UtilsDbShe
 		for(Element e : elementList)
 		{
 			if(e.getName().equals(getElementAfterLastDot(UtilsDbShell.restroreSequence))){restoreSequence(e.getText());}
-		}		
+		}
+		
+		
+		try
+		{
+			InputStream is = mrl.searchIs("resourcename");
+		} catch (FileNotFoundException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
+		
 		super.cmdPost();
 	}
 	
