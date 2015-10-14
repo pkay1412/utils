@@ -79,9 +79,9 @@
 	</s:translation>
 	<s:translation key="aupGraphicColor">
 		<s:langs>
-			<s:lang key="de" translation="Color"/>
-			<s:lang key="en" translation="Color"/>
-			<s:lang key="fr" translation="Color"/>
+			<s:lang key="de" translation="Farbe"/>
+			<s:lang key="en" translation="Colour"/>
+			<s:lang key="fr" translation="Couleur"/>
 		</s:langs>
 	</s:translation>
 	<s:translation key="aupGraphicPreview">

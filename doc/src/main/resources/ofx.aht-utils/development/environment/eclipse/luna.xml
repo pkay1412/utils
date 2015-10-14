@@ -12,7 +12,7 @@
 		
 		<text:emphasis style="typewriter">www.eclipse.org/downloads</text:emphasis>		
 		After finishing your download unpack Eclipse Luna to your installation path.
-		For example <text:emphasis style="typewriter">C: program files eclipse</text:emphasis>
+		For example <text:emphasis style="typewriter">C:\program files\eclipse</text:emphasis>
 		The next step is to define your workspace. You need a unique one (e.g. workspaceLuna), if
 		you are using multiple versions of eclipse.
 	</ofx:paragraph>

@@ -25,10 +25,10 @@
 		There is a huge variety of installation methods to choose from.
 		A very convenient one is using the minimum installation CD. 
 		You can download the disk image for your architecture (mostly i386 for older 32-bit machines 
-		and amd64 for newer 64-bit CPUs like Intel Core processors and above) from http://www.debian.org/distrib/netinst. 
+		and amd64 for newer 64-bit CPUs like Intel Core processors and above) from <text:emphasis bold="true">http://www.debian.org/distrib/netinst</text:emphasis>.
 		Then the image needs to be written to a CD or DVD recordable.
 		The Ubuntu project offers HowTos for all common operating systems like Microsoft Windows, Apple Mac OS X and Linux 
-		on how to actually burn this image to the disk at https://help.ubuntu.com/community/BurningIsoHowto.
+		on how to actually burn this image to the disk at <text:emphasis bold="true">https://help.ubuntu.com/community/BurningIsoHowto</text:emphasis>.
 		Once the CD or DVD is prepared, the computer needs to be booted from the optical disk drive and the (non-graphical) installer 
 		should be selected from the boot screen.
 		The Debian installer then guides you through the complete setup process. 
@@ -57,8 +57,8 @@
 		<ofx:title lang="en">Sudo</ofx:title>
 		
 		<ofx:paragraph lang="en" version="1">
-			 sudo  is a program for Unix-like computer operating systems that allows users to run
-			 programs with the security privileges of another user (normally the superuser, or root).
+			 sudo  is a programme for Unix-like computer operating systems that allows users to run
+			 programmes with the security privileges of another user (normally the superuser, or root).
 			 Its name is a concatenation of "su" (substitute user) and "do", or take action.
 		</ofx:paragraph>
 		

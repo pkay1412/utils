@@ -17,14 +17,14 @@
 	<translation key="aupTrafficLightColorBackground">
 		<langs>
 			<lang key="de" translation="Hintergrundfarbe" />
-			<lang key="en" translation="Background Color" />
+			<lang key="en" translation="Background Colour" />
 			<lang key="fr" translation="Clé" />
 		</langs>
 	</translation>
 	<translation key="aupTrafficLightColorText">
 		<langs>
 			<lang key="de" translation="Textfarbe" />
-			<lang key="en" translation="Text Color" />
+			<lang key="en" translation="Text Colour" />
 			<lang key="fr" translation="Clé" />
 		</langs>
 	</translation>	

@@ -79,7 +79,7 @@
 	            </t:row>
 	            <t:row>
 	            	<t:cell><ofx:paragraph><text:emphasis style="typewriter">-p 2234</text:emphasis></ofx:paragraph></t:cell>
-	                <t:cell><ofx:paragraph>Connects to a specifc port, e.g. 2234.</ofx:paragraph></t:cell>
+	                <t:cell><ofx:paragraph>Connects to a specific port, e.g. 2234.</ofx:paragraph></t:cell>
 	            </t:row>
 	        </t:body>
 	    </t:content>

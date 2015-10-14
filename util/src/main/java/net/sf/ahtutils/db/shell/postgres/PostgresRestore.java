@@ -1,8 +1,6 @@
 package net.sf.ahtutils.db.shell.postgres;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.InputStream;
+import java.io.*;
 import java.util.List;
 import java.util.NoSuchElementException;
 
@@ -84,16 +82,33 @@ public class PostgresRestore extends AbstractPostgresShell implements UtilsDbShe
 		{
 			if(e.getName().equals(getElementAfterLastDot(UtilsDbShell.restroreSequence))){restoreSequence(e.getText());}
 		}
-		
-		
-		try
+		for(Element e : elementList )
 		{
-			InputStream is = mrl.searchIs("resourcename");
-		} catch (FileNotFoundException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
+			if(e.getName().equals(getElementAfterLastDot("db.tables.restore.file")))
+			{
+				try
+				{
+					InputStream is = mrl.searchIs(e.getText());
+					BufferedReader br = new BufferedReader(new InputStreamReader(is));
+
+					String input = br.readLine();
+					while(input != null)
+					{
+						if(!input.equals(""))
+						{
+							restoreIndex(input);
+						}
+						input = br.readLine();
+					}
+				} catch (FileNotFoundException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch(IOException e1)
+				{
+					e1.printStackTrace();
+				}
+			}
 		}
-		
 		
 		super.cmdPost();
 	}
@@ -157,6 +172,20 @@ public class PostgresRestore extends AbstractPostgresShell implements UtilsDbShe
 		sb.append(" -d ").append(pDbName.getValue());
 		sb.append(" -c \"").append("SELECT setval('"+seq+"', (SELECT MAX(id) FROM "+table+"));").append("\"");
 		
+		if(!pwdSet){setPwd(pDbPwd.getValue());}
+		super.addLine(sb.toString());
+		return sb.toString();
+	}
+
+	public String restoreIndex(String seq) throws ExlpUnsupportedOsException
+	{
+		StringBuilder sb = new StringBuilder();
+		sb.append(pDbShell.getValue());
+		sb.append(" -h ").append(pDbHost.getValue());
+		sb.append(" -U ").append(pDbUser.getValue());
+		sb.append(" -d ").append(pDbName.getValue());
+		sb.append(" -c \"").append(seq).append("\"");
+
 		if(!pwdSet){setPwd(pDbPwd.getValue());}
 		super.addLine(sb.toString());
 		return sb.toString();

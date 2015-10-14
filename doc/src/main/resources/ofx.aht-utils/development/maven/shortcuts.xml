@@ -10,7 +10,7 @@
 			
 	<ofx:paragraph lang="en">
 		In development environments several commands need to be executed regularly. To save time in typing, several shortcuts of the most used commands
-		are summarized in Table <ofx:reference target="table.admin.development.maven.shortcuts"/>.
+		are summarised in Table <ofx:reference target="table.admin.development.maven.shortcuts"/>.
 	</ofx:paragraph>
 		
 	<t:table id="table.admin.development.maven.shortcuts">	
