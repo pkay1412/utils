@@ -43,10 +43,10 @@
 	   		
 	   		<l:item>
 	    		<ofx:paragraph lang="en">
-	    			<text:emphasis bold="true">Synchronize with Repository:</text:emphasis>
+	    			<text:emphasis bold="true">Synchronise with Repository:</text:emphasis>
 	    		</ofx:paragraph>
 	    		<ofx:paragraph lang="en">
-	    			The Synchronize with Repository view shows all changes between local project version and server version. 
+	    			The Synchronise with Repository view shows all changes between local project version and server version.
 	    			You have the opportunities to update/commit all changes or to revert conflicted files.
 	    		</ofx:paragraph>
 	   		</l:item>
@@ -66,7 +66,7 @@
 	    			<text:emphasis bold="true">Update all incoming changes:</text:emphasis>
 	    		</ofx:paragraph>
 	    		<ofx:paragraph lang="en">
-	    			During the update process, users receive commited changes to their local working copy.
+	    			During the update process, users receive committed changes to their local working copy.
 	    		</ofx:paragraph>
 	   		</l:item>
 	</l:list>

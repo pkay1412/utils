@@ -7,7 +7,7 @@
 			 id="section.admin.security.introduction">
 	
 	<ofx:paragraph lang="de">
-		Dieses Informationssystem implemen ein <text:emphasis italic="true">mehrstufiges Sicherheitskonzept</text:emphasis>, dass den Seitenzugriff sowie
+		Dieses Informationssystem implementiert ein <text:emphasis italic="true">mehrstufiges Sicherheitskonzept</text:emphasis>, dass den Seitenzugriff sowie
 		den Zugriff auf Informationen, und die Möglichkeit Benutzeraktionen durchzuführen, steuert.
 	</ofx:paragraph>
 	<ofx:paragraph lang="en">
@@ -26,7 +26,7 @@
 	    </l:item>
 	    <l:item name="Views" lang="en" version="2" id="section.admin.security.introduction.list.views">
 	    	<ofx:paragraph>
-				A view is a single web page of the system. Examples for a view is the welcome page or the administrator page.
+				A view is a single web page of the system. Examples for a view are the welcome page or the administrator page.
 				Views are implemented and defined by the <text:emphasis italic="true">System Developers</text:emphasis>.
 				The <text:emphasis italic="true">System Administrators</text:emphasis> are not able to add new
 				views to the system, but are able to change the names and descriptions
@@ -120,13 +120,13 @@
 		with business processes (also represented in the page flow) and derived from functional and non-functional requirements and
 		has corresponding visual elements like buttons, filters or tables. Additionally to the elements itself the
 		<text:emphasis italic="true">content</text:emphasis> (e.g. of tables) can be different based on different access rights.
-		The <text:emphasis bold="true">Use Cases</text:emphasis> are a convinient way to aggregate different
+		The <text:emphasis bold="true">Use Cases</text:emphasis> are a convenient way to aggregate different
 		<text:emphasis bold="true">Views</text:emphasis> and <text:emphasis bold="true">Actions</text:emphasis> and assign
 		them to a <text:emphasis bold="true">Role</text:emphasis>
 	</ofx:paragraph>
 		
 	<ofx:paragraph lang="en">
-		This illustrates that the definiton of the security concept is mainly done by the
+		This illustrates that the definition of the security concept is mainly done by the
 		<text:emphasis italic="true">Developers</text:emphasis>,
 		to achieve a user-friendly and both flexible system.
 		The <text:emphasis italic="true">Administrator</text:emphasis> has to deal with the assignment of

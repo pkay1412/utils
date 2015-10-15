@@ -12,7 +12,7 @@
 		The process is modeled as components (entities) that are linked with each other by relationships that
 		express the dependencies and requirements between them, such as: one building may be divided into zero or
 		more apartments, but one apartment can only be located in one building. Entities may have various properties
-		(attributes) that characterize them. Diagrams created to represent these entities, attributes, and relationships
+		(attributes) that characterise them. Diagrams created to represent these entities, attributes, and relationships
 		graphically are called entity–relationship diagrams.
 	</ofx:paragraph>
 	

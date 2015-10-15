@@ -5,6 +5,8 @@ import net.sf.ahtutils.xml.system.Constraint;
 import net.sf.ahtutils.xml.system.ConstraintAttribute;
 import net.sf.ahtutils.xml.system.ConstraintScope;
 
+import java.util.Date;
+
 public class ConstraintsChecker {
 	public static boolean notNull(Object object, String attribute) throws Exception
 	{
@@ -31,4 +33,11 @@ public class ConstraintsChecker {
 		}
 		return null;
 	}
+
+//	// returns true if the start Date is before the end Date
+//	public static boolean dateSequence(Object object, String attribute) throws Exception
+//	{
+//		return ((Date)ReflectionsUtil.resolveExpression(object, attribute + "Start"))
+//							.compareTo(((Date)ReflectionsUtil.resolveExpression(object, attribute + "Start"))) < 0;
+//	}
 }

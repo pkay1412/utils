@@ -12,7 +12,7 @@
 		
 		<ofx:paragraph lang="en">
 			The recommended minimum requirements for the prototype setup
-			are summarized in the following table. All instances can be installed on a single
+			are summarised in the following table. All instances can be installed on a single
 			server.
 		</ofx:paragraph>
 		
@@ -71,7 +71,7 @@
 		
 		<ofx:paragraph lang="en">
 			The recommended minimum requirements for the production system
-			are summarized in the following table.
+			are summarised in the following table.
 		</ofx:paragraph>
 		<ofx:paragraph lang="en">
 			There are multiple servers required for security aspects and best performance.

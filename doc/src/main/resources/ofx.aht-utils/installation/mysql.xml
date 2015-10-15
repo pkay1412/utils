@@ -91,7 +91,7 @@ launchctl load ~/Library/LaunchAgents/homebrew.mxcl.mysql.plist</ofx:raw>
 		</ofx:paragraph>
 		<ofx:paragraph lang="en">
 			The password can be choosen randomly, but of course must be entered in all following
-			configurations with regard to MySQL databse.
+			configurations with regard to MySQL database.
 		</ofx:paragraph>
 	</ofx:section>
 </ofx:section>

@@ -40,7 +40,7 @@
 	<ofx:paragraph lang="en">
 		In all cases, the user interface will inform the end-user, if plausibility checks fail or any constraint might be violated. 
 		The constraints are documented in this manual to enhance the understanding of the user for the internal processes of the system.
-		All of these constraints result in a set of different constraint types relevant for the user, the different types are summarized
+		All of these constraints result in a set of different constraint types relevant for the user, the different types are summarised
 		in Table <ofx:reference target="table.status.system.constraints.type"/>.
 	</ofx:paragraph>
 	

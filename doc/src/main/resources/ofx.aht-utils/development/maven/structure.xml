@@ -20,7 +20,7 @@
 	    
 	    <l:item>
 	    	<ofx:paragraph lang="en">
-				The <text:emphasis italic="true">client</text:emphasis> contains several executeables to directly connect
+				The <text:emphasis italic="true">client</text:emphasis> contains several executables to directly connect
 				to the application server.
 			</ofx:paragraph>
 	    </l:item>

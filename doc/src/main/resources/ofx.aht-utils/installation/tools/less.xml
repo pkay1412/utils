@@ -8,7 +8,7 @@
 	<ofx:title lang="en">Less</ofx:title>
 			
 	<ofx:paragraph lang="en" version="1">
-		 The terminal pager program less is used to view (but not change) the contents of a text file one
+		 The terminal pager programme less is used to view (but not change) the contents of a text file one
 		 screen at a time. It is similar to more, but has the extended capability of allowing both forward
 		 and backward navigation through the file.
 		 Unlike most Unix text editors/viewers, less does not need to read the entire file before starting,

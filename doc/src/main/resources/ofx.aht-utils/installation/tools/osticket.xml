@@ -67,7 +67,7 @@
 			<ofx:title lang="en">Configuration</ofx:title>
 			
 			<ofx:paragraph lang="en" version="1">
-				In addition to the prerequirements, osticket needs some preconfiguration before the installation:
+				In addition to the pre-requirements, osticket needs some pre-configuration before the installation:
 				
 				Go to your osticket installation destination and execute the following lines.
 				<ofx:listing>
@@ -82,7 +82,7 @@
 						<ofx:raw>ln -s var/www/osticket x.x.x/upload var/www/tickets</ofx:raw>
 				</ofx:listing>
 				
-				After these steps, osticket is available and ready for the installation under following adress:
+				After these steps, osticket is available and ready for the installation under following address:
 				
 				<ofx:listing>
 						<ofx:raw>xxx.xxx.xxx.xxx/tickets</ofx:raw>

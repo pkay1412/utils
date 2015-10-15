@@ -69,7 +69,7 @@
 	   	</l:list>
 	   		
 		<ofx:paragraph lang="en" version="1">				
-			Network Time Protocol (NTP) is a networking protocol for clock synchronization between computer systems. 
+			Network Time Protocol (NTP) is a networking protocol for clock synchronisation between computer systems.
 			It may fail, if no Internet connection is established.		
 		</ofx:paragraph>
 		
@@ -130,7 +130,7 @@
 			
 			<ofx:paragraph lang="en" version="1">
 				All available software packages can be de-selected. This ensures that the installation will only have a minimal
-				number of packages and modules available. This minimizes the risks of errors or faulty configurations and 
+				number of packages and modules available. This minimises the risks of errors or faulty configurations and
 				facilitates future upgrade procedures. Press TAB and select <text:emphasis style="typewriter">CONTINUE</text:emphasis>. 
 				All necessary packages will be installed manually.
 			</ofx:paragraph>
@@ -165,7 +165,7 @@
 			<ofx:title lang="en">Apply Updates</ofx:title>
 		
 			<ofx:paragraph lang="en" version="1">
-				The installation of the most recent version of all packages should be verfied, especially after
+				The installation of the most recent version of all packages should be verified, especially after
 				installation of the system from a CD or DVD image.
 				As root user execute the following command:
 			</ofx:paragraph>

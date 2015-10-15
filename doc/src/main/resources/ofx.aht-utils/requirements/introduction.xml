@@ -22,7 +22,7 @@
 	    </l:item>
 	    
 	    <!-- Admin -->
-	    <l:item name="System Admnistrator" lang="en" classifier="reqAdmin">
+	    <l:item name="System Administrator" lang="en" classifier="reqAdmin">
 	    	<ofx:paragraph>
 				The administrator
 			</ofx:paragraph>
