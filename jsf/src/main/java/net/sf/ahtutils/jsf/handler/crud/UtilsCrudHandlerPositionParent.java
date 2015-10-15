@@ -52,7 +52,7 @@ public class UtilsCrudHandlerPositionParent <T extends EjbPositionCrudWithParent
 	public void select()
 	{
 		logger.info(AbstractLogMessage.selectEntity(entity));
-		bean.crudSelect();
+		bean.crudNotifySelect(entity);
 	}
 	
 	public void save() throws UtilsConstraintViolationException, UtilsLockingException

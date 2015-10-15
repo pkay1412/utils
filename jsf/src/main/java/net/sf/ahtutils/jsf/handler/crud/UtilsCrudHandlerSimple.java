@@ -52,7 +52,7 @@ public class UtilsCrudHandlerSimple <T extends EjbCrud>
 	public void select()
 	{
 		logger.info(AbstractLogMessage.selectEntity(entity));
-		if(bean!=null){bean.crudSelect();}
+		if(bean!=null){bean.crudNotifySelect(entity);}
 		else {logger.warn("No Bean available!!");}
 	}
 	

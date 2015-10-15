@@ -77,7 +77,7 @@ public class UtilsCrudHandlerParent <T extends EjbCrudWithParent, P extends EjbW
 	public void select()
 	{
 		logger.info(AbstractLogMessage.selectEntity(entity));
-		if(bean!=null){bean.crudSelect();}
+		if(bean!=null){bean.crudNotifySelect(entity);}
 		else if(bean1!=null){bean1.crud1Select();}
 		else if(bean2!=null){bean2.crud2Select();}
 		else {logger.warn("No Bean available!!");}
