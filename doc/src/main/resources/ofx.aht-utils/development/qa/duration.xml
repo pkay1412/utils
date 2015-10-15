@@ -46,7 +46,7 @@
 	</l:list>
 	
 	<ofx:paragraph lang="en">
-		The total duration for each category of functional requirements is summarized in
+		The total duration for each category of functional requirements is summarised in
 		<ofx:reference target="table.qa.duration.summary"/>.
 	</ofx:paragraph>
 	

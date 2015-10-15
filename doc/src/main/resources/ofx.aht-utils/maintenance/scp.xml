@@ -49,7 +49,7 @@
 	</l:list>
 	
 	<ofx:paragraph lang="en" version="1">
-		Some optional parameter of SCP are summarized in Table
+		Some optional parameter of SCP are summarised in Table
 		<ofx:reference target="table.admin.maintenance.scp.parameter"/>.
 	</ofx:paragraph>
 

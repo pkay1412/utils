@@ -46,7 +46,7 @@ public class OfxConstraintScopeSectionFactory extends AbstractUtilsOfxDocumentat
 		Table table = ofTable.build(scope);
 		
 		Paragraph p = OfxMultiLangFactory.paragraph(langs, scope.getDescriptions()).get(0);
-		p.getContent().add(" All constraints are summarized in Table ");
+		p.getContent().add(" All constraints are summarised in Table ");
 		p.getContent().add(OfxReferenceFactory.build(table.getId()));
 		p.getContent().add(".");
 		
