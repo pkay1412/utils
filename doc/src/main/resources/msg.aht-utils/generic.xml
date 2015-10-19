@@ -68,11 +68,25 @@
 			<s:lang key="fr" translation="Toolbox"/>
 		</s:langs>
 	</s:translation>
-		<s:translation key="aupChecksum">
+	<s:translation key="aupChecksum">
 		<s:langs>
 			<s:lang key="de" translation="Prüfsumme"/>
 			<s:lang key="en" translation="Checksum"/>
 			<s:lang key="fr" translation="Checksum"/>
+		</s:langs>
+	</s:translation>
+	<s:translation key="aupAttribute">
+		<s:langs>
+			<s:lang key="de" translation="Atribut"/>
+			<s:lang key="en" translation="Atribute"/>
+			<s:lang key="fr" translation="Atribute"/>
+		</s:langs>
+	</s:translation>
+	<s:translation key="aupValue">
+		<s:langs>
+			<s:lang key="de" translation="Wert"/>
+			<s:lang key="en" translation="Value"/>
+			<s:lang key="fr" translation="Value"/>
 		</s:langs>
 	</s:translation>
 </s:translations>
