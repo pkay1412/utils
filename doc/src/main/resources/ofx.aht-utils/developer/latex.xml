@@ -73,7 +73,7 @@
             Because we are utilizing the Apache Maven system, we follow its common directory structure. The latex content is places in:
             <text:emphasis style="italic" allignment="center">src -> main -> latex</text:emphasis>
         </ofx:paragraph>
-        <ofx:paragraph lang="en"version="1">
+        <ofx:paragraph lang="en" version="1">
             So our source (src) files, that are not used for testing (test) but to produce our documents (main) are stored in the latex folder instead of for example java or in case of other files resources.
 
             Now to create documents, you need to create a folder for every document with a  .tex file in it that has the same name. That file marks the begin of the document, that can be splitted in separate .tex files for For example, if you want to create a user and an admin handbook, you might create:
@@ -153,6 +153,7 @@
         <text:emphasis allignment="center"> public static String glossaryWeb = "ofx.aht-utils/editorial/glossary/web.xml";</text:emphasis>
 
     </ofx:paragraph>
+    <ofx:title lang="en">Latex Installation</ofx:title>
 	<ofx:paragraph lang="en" version="1">
 		The installation steps depend on the operating system.
 	</ofx:paragraph>
