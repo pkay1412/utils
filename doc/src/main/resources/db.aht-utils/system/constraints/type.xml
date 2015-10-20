@@ -54,6 +54,18 @@
             <us:description key="en">The first date needs to be before the second date.</us:description>
         </us:descriptions>
     </us:status>
+        <us:status code="beforeCurrentDate" position="4">
+        <us:langs>
+            <us:lang key="de" translation="Datum"/>
+            <us:lang key="fr" translation="Date"/>
+            <us:lang key="en" translation="Date Before"/>
+        </us:langs>
+        <us:descriptions>
+            <us:description key="de">Symbol</us:description>
+            <us:description key="fr">Symbol</us:description>
+            <us:description key="en">The entered date needs to be prior to the current date.</us:description>
+        </us:descriptions>
+    </us:status>
     <us:status code="precondition" position="5">
         <us:langs>
             <us:lang key="de" translation="Vorbedingung"/>
@@ -64,6 +76,18 @@
             <us:description key="de">Vorbedingung</us:description>
             <us:description key="fr">Precondition</us:description>
             <us:description key="en">A specific precondition is checked before data are persisted.</us:description>
+        </us:descriptions>
+    </us:status>
+	<us:status code="rmIntegrity" position="5">
+        <us:langs>
+            <us:lang key="de" translation="Integrität"/>
+            <us:lang key="fr" translation="Precondition"/>
+            <us:lang key="en" translation="Integrity"/>
+        </us:langs>
+        <us:descriptions>
+            <us:description key="de">Vorbedingung</us:description>
+            <us:description key="fr">Precondition</us:description>
+            <us:description key="en">The element can not deleted if it's still in use somewhere else. This would violate the referential integrity and the system is preventing such violations.</us:description>
         </us:descriptions>
     </us:status>
 </aht:aht>

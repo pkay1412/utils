@@ -21,7 +21,21 @@
     		<s:lang key="fr" translation="Group"/>
     	</s:langs>
     </s:translation>
-    	<s:translation key="aupQaGroups">
+    <s:translation key="aupQaTestDuration">
+    	<s:langs>
+    		<s:lang key="de" translation="Duration"/>
+    		<s:lang key="en" translation="Duration"/>
+    		<s:lang key="fr" translation="Duration"/>
+    	</s:langs>
+    </s:translation>
+	<s:translation key="aupQaTestWeight">
+    	<s:langs>
+    		<s:lang key="de" translation="Weight"/>
+    		<s:lang key="en" translation="Weight"/>
+    		<s:lang key="fr" translation="Weight"/>
+    	</s:langs>
+    </s:translation>
+	<s:translation key="aupQaGroups">
     	<s:langs>
     		<s:lang key="de" translation="QA Groups"/>
     		<s:lang key="en" translation="QA Groups"/>

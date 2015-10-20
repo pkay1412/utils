@@ -15,6 +15,7 @@ public class AbstractUtilsOfxSettingsManager extends AbstractDefaultSettingsMana
 	{
 		initListingSql();
 		initListingShell();
+		initListingXml();
 	}
 	
 	private void initListingSql()
@@ -37,4 +38,13 @@ public class AbstractUtilsOfxSettingsManager extends AbstractDefaultSettingsMana
 		this.addSetting(Listing.class.getName(), xml.getSetting(), xml);
 	}
 
+	private void initListingXml()
+	{
+		Listing xml = new Listing();
+		xml.setSetting("xml");
+		xml.setCodeLang("XML");
+		xml.setNumbering(true);
+		xml.setLinebreak(true);
+		this.addSetting(Listing.class.getName(), xml.getSetting(), xml);
+	}
 }
