@@ -4,13 +4,161 @@
 	id="section.developer.latex">
 	
 	<ofx:title lang="en">Latex</ofx:title>
-		
+    <ofx:section>
+        <ofx:title lang="en">Why not Word?</ofx:title>
+        <ofx:paragraph lang="en" version="1">
+            And why do we start here? Because most people who get in touch with these kind of procedure to produce handbooks and manuals, are asking this question. For good reason, since:
+        </ofx:paragraph>
+        <ofx:list>
+            <ofx:type ordering="unordered"/>
+            <ofx:item>
+                Most people are familiar with Word
+            </ofx:item>
+            <ofx:item>
+                Word is installed on most machines and if not, there are other free options like LibreOffice that can read and write (both with limitations) Word files
+            </ofx:item>
+        </ofx:list>
+        <ofx:paragraph lang="en" version="1">
+            All true agreed. But there are some things that Word cannot do:
+        </ofx:paragraph>
+        <ofx:list>
+            <ofx:type ordering="unordered"/>
+            <ofx:item>
+                Connect to a versioning server (apart from Microsoft solutions) to edit and store versions of content on a remote server.
+            </ofx:item>
+            <ofx:item>
+                Produce high quality PDF files that are rendered just as they would be typeset
+            </ofx:item>
+            <ofx:item>Include dynamic content from running instances of an information system (like the MEIS) and print them into the manual or handbook. For instance listing all available status options for projects.
+            Or giving an example or even a complete reference of all available targeting rules in the selection of who is eligible of receiving aid in the context of social protection.
+            </ofx:item>
+        </ofx:list>
+        <ofx:paragraph lang="en" version="1">
+            Furthermore, the procedure can make use of external content e.g. constantly updated installation guides for Linux environments, that are used as a basis if installing software like the MEIS.
+            So even if Word is much easier at first sight, dynamic handbooks are raising a lot of benefits on the long run. And though we now begin to explain how it works.
+        </ofx:paragraph>
+    </ofx:section>
+    <ofx:section>
+        <ofx:title lang="en">Version Control</ofx:title>
+        <ofx:paragraph lang="en" version="1">
+            In most implementations of version control, the version control system (VCS) is handling all changes to the set of files (that includes newly created files, modified content, deleted files, etc.) you want to work with on a server. Users must authenticate to get access to the files (besides security issues, this is important to track who changed what) and can then download the recent version to their own machine.
+            Now changes can be made and uploaded as well as changes of other users can be downloaded and integrated in the local copy. This is called synchronisation. In case of modifications that are conflicting, the conflict is solved by accepting, rejecting and merging the changes by hand.
+            Typical VCS are the concurrent versioning system CVS, its successor the subversion system (SVN) and the popular git versioning system (GIT), that is following a more sophisticated approach to versioning.
+            We recommend SVN, since it is more elaborated then CVS, but still easier to understand than GIT. For further information please refer to the given tutorial or ask your system administrator that is in charge of the versioning system.
+        </ofx:paragraph>
+    </ofx:section>
+    <ofx:section>
+        <ofx:title lang="en">Produce high-quality print products (utilizing LaTex)</ofx:title>
+        <ofx:paragraph lang="en" version="1">
+            The LaTex system is an extended version of the TeX typesetting system of Donald E. Knuth. It is an abbreviation of Lamport Tex, which is originated in the creator of LaTex, Leslie Lamport.
+            In LaTex you are defining the way your text should look like and then take this definition to really render the final document e.g. as a PDF file.
+            In most environments you do not see a live preview of your document, but a more programmatical view to your text. But when producing the document, most people are impressed of the quality it inherits. Many rules of typesetting are implemented in the LaTex system and ensure a good result. Still, there needs to be fine tuning in the context of imags for example. The basic rule is: LaTex looks good – Word is easy. But LaTex is definitely worth it.
+        </ofx:paragraph>
+    </ofx:section>
+    <ofx:section>
+        <ofx:title lang="en">Automation of Production (via Maven Built System)</ofx:title>
+        <ofx:paragraph lang="en" version="1">
+            In Software development, in most cases a lot of tasks need to be fulfilled in order to create a software package from all the source code, image files and more. To automate this, built systems are available, of which Apache Maven is the most commonly used in Java development. It is able to be customized arbitrarily because it supports self-written plugins.
+            In the context of DynamicHandbooks, Maven is preparing everything and finally calls all the LaTex steps to produce our high-quality PDF file.
+            For the end user, it is just calling one command and all the magic in the background is executed:
+            <text:emphasis style="bold" allignment="center">mvn clean latex:latex</text:emphasis>
+
+            This deletes all formally produced documents and then launches the production process.
+        </ofx:paragraph>
+    </ofx:section>
+    <ofx:section>
+        <ofx:title lang="en">Folders and Files</ofx:title>
+        <ofx:paragraph lang="en" version="1">
+            The following instructions and information is using the MEIS user manual as an example. Other projects might differ, but the mechanisms stay the same.
+            Because we are utilizing the Apache Maven system, we follow its common directory structure. The latex content is places in:
+            <text:emphasis style="italic" allignment="center">src -> main -> latex</text:emphasis>
+        </ofx:paragraph>
+        <ofx:paragraph lang="en"version="1">
+            So our source (src) files, that are not used for testing (test) but to produce our documents (main) are stored in the latex folder instead of for example java or in case of other files resources.
+
+            Now to create documents, you need to create a folder for every document with a  .tex file in it that has the same name. That file marks the begin of the document, that can be splitted in separate .tex files for For example, if you want to create a user and an admin handbook, you might create:
+            <text:emphasis style="italic" allignment="center">src -> main -> latex -> user -> user.tex</text:emphasis> and
+            <text:emphasis style="italic" allignment="center">src -> main -> latex -> admin -> admin.tex</text:emphasis>
+        </ofx:paragraph>
+        <ofx:paragraph lang="en" version="1">
+            Additionally, you can create a directory that holds common resources like text fragments, logos etc. This directory needs to be named common:
+            <text:emphasis style="italic" allignment="center">src -> main -> latex -> common</text:emphasis>
+            All files in common can be referenced using the LaTex \input command. If the given file is not found in the directory where it is called, the system tries to find it in common instead.
+            Please remark, that these special files are always taken from tex subdirectory of common, If not given elsewhere:
+        </ofx:paragraph>
+        <ofx:list>
+            <ofx:type ordering="unodered"/>
+            <ofx:item>
+                colors.tex
+            </ofx:item>
+            <ofx:item>
+                macros.tex
+            </ofx:item>
+            <ofx:item>
+                packages.tex
+            </ofx:item>
+            <ofx:item>
+                variables.tex
+            </ofx:item>
+        </ofx:list>
+        <ofx:paragraph lang="en" version="1">
+            This is done, because thinking of a documentation project for one scope, this defines the overall design for all separate documents.
+
+            For the MEIS please note that some tex files are automatically generated from other sources (like mentioned in the chapter above). These files are marked with a special begin (a header) that looks like the following. Please do not change them. If changes are needed, the template file is given in the Declaration (see below).
+
+            % ******************************************************
+            % Rendering a Section with: LatexSectionRenderer
+            % Source file: ofx.aht-utils/installation/java.xml
+            % The following ofx classifiers are used: debian, debianWheezy, devJava7FX
+            %
+            % Do not modify this auto-generated file, it will be overwritten without warning!
+
+        </ofx:paragraph>
+    </ofx:section>
+    <ofx:section>
+        <ofx:title lang="en">Collect Common Content at Central Locations</ofx:title>
+        <ofx:paragraph lang="en" version="1">
+            As indicated before, some things that are the same for all handbooks are defined not in the concrete projects documentation project, but in <text:emphasis style="bold">AHT-Utils</text:emphasis> or in <text:emphasis style="bold"> OpenFuXML (ofx)</text:emphasis>.
+            For the declaration of:
+            <text:emphasis style="bold" allignment="center">… go to</text:emphasis>
+            <text:emphasis style="bold">Packages/		ofx/coresrc/</text:emphasis>main/resources/tex.ofx-core/packages.tex
+            <text:emphasis style="bold">Colors			ahtutils/doc/</text:emphasis>src/main/resources/tex.aht-utils/colors.tex
+            <text:emphasis style="bold">Glossary		ahtutils/doc/src/</text:emphasis>main/resources/ofx.aht-utils/editorial/glossary/web.xml
+        </ofx:paragraph>
+    </ofx:section>
+    <ofx:section>
+        <ofx:title lang="en">Generate Dynamic Content</ofx:title>
+        <ofx:paragraph lang="en" version="1">
+            In order to generate the dynamic content, please open the <text:emphasis style="bold">MeisLatexDocumentation</text:emphasis> class located in the <text:emphasis style="bold">rw.gov.loda.meis.client.doc</text:emphasis> package of the MEIS <text:emphasis style="bold">client</text:emphasis> module (since it needs to connect to the server to include some dynamic content, thats the place to be).
+            The <text:emphasis style="bold">Subsystem()</text:emphasis> method is there to generate things like:
+        </ofx:paragraph>
+        <ofx:list>
+            <ofx:type ordering="unodered"/>
+            <ofx:item>
+                acronyms.tex
+            </ofx:item>
+            <ofx:item>
+                glossary.tex
+            </ofx:item>
+        </ofx:list>
+    </ofx:section>
+    <ofx:paragraph lang="en" version="1">
+        You can compose the set of XML files for these  like this:
+
+        GlossaryMerger gm = new GlossaryMerger();
+        <text:emphasis allignment="center"> gm.addResource(UtilsLatexDefinitionBuilder.glossaryWeb);</text:emphasis>
+        <text:emphasis allignment="center"> ofxWriter.glossary(gm.getGlossary());</text:emphasis>
+
+        The location is given by the String that is expressed as a static String in <text:emphasis style="bold">UtilsLatexDefinitionBuilder</text:emphasis> class in this case, pointing to the global one mentioned above (since it it located in <text:emphasis italic="true">src/main/resources</text:emphasis>)
+        <text:emphasis allignment="center"> public static String glossaryWeb = "ofx.aht-utils/editorial/glossary/web.xml";</text:emphasis>
+
+    </ofx:paragraph>
 	<ofx:paragraph lang="en" version="1">
 		The installation steps depend on the operating system.
 	</ofx:paragraph>
 	
 	<ofx:paragraph lang="en" version="1">
-		For Debian based operating systems, e.g. Ubuntu, the package <text:emphasis italic="true">TeX Live</text:emphasis> is provided
+		For Debian based operating systems, e.g. Ubuntu, the package <text:emphasis style="italic">TeX Live</text:emphasis> is provided
 		and can be installed with:
 	</ofx:paragraph>
 	
