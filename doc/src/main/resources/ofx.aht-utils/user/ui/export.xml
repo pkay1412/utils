@@ -9,11 +9,11 @@
 	<ofx:title lang="en">File Export</ofx:title>
 	
 	<ofx:paragraph lang="en">
-		In some situations, the system will present you with the option to download content
-		as a <text:emphasis bold="true">Microsoft Excel</text:emphasis> file or a PDF report.
-		When you click the icons below, the file will be created from the content and your
-		browser will most likely prompt you to open or save it (or choose an option itself depending on
+		In some situations, the <text:emphasis bold="true">MEIS</text:emphasis> allows the user to export data into a file. Two different types are available, a file for <text:emphasis bold="true">Microsoft Excel</text:emphasis> or as PDF report.
+        Therefore, you must simply click on the respective icon and your
+		browser will most likely ask you to open or save (or choose an option itself depending on
 		your browser settings).
+        Table <ofx:reference target="table.user.ui.export.file"/> summarises these export options.
 	</ofx:paragraph>
 
 	
@@ -44,7 +44,7 @@
 	                </table:cell>
 	                <table:cell><ofx:paragraph>XLS</ofx:paragraph></table:cell>
 	                <table:cell>
-	                    <ofx:paragraph>Binary file format called Excel Binary File Format (.XLS), used by Microsoft Excel.</ofx:paragraph>
+	                    <ofx:paragraph>Binary file format called Excel Binary File Format (.XLS), used by <text:emphasis bold="true"> Microsoft Excel.</text:emphasis></ofx:paragraph>
 	                </table:cell>
 	            </table:row>
 	            <table:row>
@@ -94,7 +94,7 @@
 	<ofx:highlight>
 		<ofx:paragraph>
 			<ofx:marginalia><ofx:paragraph><text:symbol code="faExclamationTriangle"/></ofx:paragraph></ofx:marginalia>
-			Since the generation of the files can take longer (depending on the amount of data processed),
+			Please note: The generation of xls and pdf files can take longer (depending on the amount of data processed). Hence,
 			please wait until the file is presented. Do not start another export before the first one is completed.
 		</ofx:paragraph>
 	</ofx:highlight>

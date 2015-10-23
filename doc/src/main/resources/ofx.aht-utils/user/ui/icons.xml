@@ -10,17 +10,16 @@
 	
 	<ofx:paragraph lang="en">
 		Besides buttons, Icons are used as an instrument of user interaction with the system.
-		In the following, these symbols and their meaning in different contexts is explained.
-		For most of the icons, you can move your mouse to the icon and when you just leave the 
-		mouse pointer there for a second, an information about the meaning of the icon is shown.
+		In the following, these icons and their meaning in different contexts is explained.
+        In most cases a more detailed information regarding the meaning of the icon appears, if you let your mouse rest for a few seconds on the icon.
 	</ofx:paragraph>
 	
 	<ofx:section id="section.user.ui.icons.general">
 		<ofx:title lang="en">General</ofx:title>
 		
 		<ofx:paragraph lang="en">
-			Icons are part of the graphical user interface and the user can activate them using a mouse.
-			Their placement on the screen, also in relation to other icons, may provide further information to the user about their usage.
+			Icons are part of the graphical user interface and the user can activate them by clicking on the icon.
+			Table <ofx:reference target="table.user.ui.icons"/> gives a general overview of the existing icons.
 		</ofx:paragraph>
 	
 	<table:table  id="table.user.ui.icons">
@@ -229,9 +228,9 @@
 	                        <media:media src="svg.aht-utils/icon/ui/favorite.svg" dst="icon/ui/favorite"/>
 	                    </media:image>
 	                </table:cell>
-	                <table:cell><ofx:paragraph>Favorite</ofx:paragraph></table:cell>
+	                <table:cell><ofx:paragraph>Favourite</ofx:paragraph></table:cell>
 	                <table:cell>
-	                    <ofx:paragraph>Indicates, that the actual element is marked as a favorite item.</ofx:paragraph>
+	                    <ofx:paragraph>Indicates, that the actual element is marked as a favourite item.</ofx:paragraph>
 	                </table:cell>
 	            </table:row>
 	            <table:row>
