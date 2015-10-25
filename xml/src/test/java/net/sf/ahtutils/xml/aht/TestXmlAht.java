@@ -13,7 +13,7 @@ public class TestXmlAht extends AbstractXmlAhtTest<Aht>
 	final static Logger logger = LoggerFactory.getLogger(TestXmlAht.class);
 	
 	public TestXmlAht(){super(Aht.class);}
-	public static Aht create(boolean withChildren){return (new TestXmlAht()).build(withChildren);} 
+	public static Aht create(boolean withChildren){return (new TestXmlAht()).build(withChildren);}
     
     public Aht build(boolean withChilds)
     {

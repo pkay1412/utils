@@ -18,7 +18,7 @@ public class TestSeed extends AbstractXmlDbseedTest
 	@BeforeClass
 	public static void initFiles()
 	{
-		fXml = new File(rootDir,"seed.xml");
+		fXml = new File(rootDir,"xseed.xml");
 	}
     
     @Test

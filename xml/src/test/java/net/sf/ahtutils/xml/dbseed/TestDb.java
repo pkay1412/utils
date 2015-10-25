@@ -18,7 +18,7 @@ public class TestDb extends AbstractXmlDbseedTest
 	@BeforeClass
 	public static void initFiles()
 	{
-		fXml = new File(rootDir,"db.xml");
+		fXml = new File(rootDir,"xdb.xml");
 	}
     
     @Test

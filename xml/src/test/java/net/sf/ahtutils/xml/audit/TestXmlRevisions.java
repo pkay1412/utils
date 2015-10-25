@@ -1,31 +1,18 @@
 package net.sf.ahtutils.xml.audit;
 
-import java.io.FileNotFoundException;
-
-import org.junit.BeforeClass;
-import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import net.sf.ahtutils.test.UtilsXmlTestBootstrap;
-import net.sf.exlp.util.DateUtil;
-import net.sf.exlp.util.xml.JaxbUtil;
 
-public class TestXmlRevisions extends AbstractXmlAuditTest
+public class TestXmlRevisions extends AbstractXmlAuditTest<Revisions>
 {
 	final static Logger logger = LoggerFactory.getLogger(TestXmlRevisions.class);
 	
-	@BeforeClass public static void initFiles(){setXmlFile(dirSuffix,Revisions.class);}
+	public TestXmlRevisions(){super(Revisions.class);}
+	public static Revisions create(boolean withChildren){return (new TestXmlRevisions()).build(withChildren);}
     
-    @Test
-    public void xml() throws FileNotFoundException
-    {
-    	Revisions actual = create(true);
-    	Revisions expected = JaxbUtil.loadJAXB(fXml.getAbsolutePath(), Revisions.class);
-    	assertJaxbEquals(expected, actual);
-    }  
-    
-    public static Revisions create(boolean withChilds)
+    public Revisions build(boolean withChilds)
     {
     	Revisions xml = new Revisions();
     	
@@ -37,17 +24,11 @@ public class TestXmlRevisions extends AbstractXmlAuditTest
     	
     	return xml;
     }
-    
-    public void save() {save(create(true),fXml);}
 	
 	public static void main(String[] args)
     {
 		UtilsXmlTestBootstrap.init();
-		DateUtil.ignoreTimeZone=true;
-		
-		TestXmlRevisions.initJaxb();
-		TestXmlRevisions.initFiles();	
 		TestXmlRevisions test = new TestXmlRevisions();
-		test.save();
+		test.saveReferenceXml();
     }
 }
