@@ -9,12 +9,11 @@ public class XmlNavigationFactory
 {
 	final static Logger logger = LoggerFactory.getLogger(XmlNavigationFactory.class);
 		
+	@SuppressWarnings("unused")
 	private Navigation q;
 	
 	public XmlNavigationFactory(Navigation q)
 	{
 		this.q=q;
 	}
-	
-	
 }

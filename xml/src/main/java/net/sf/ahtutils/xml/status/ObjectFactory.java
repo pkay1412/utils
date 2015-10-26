@@ -421,4 +421,20 @@ public class ObjectFactory {
         return new Level();
     }
 
+    /**
+     * Create an instance of {@link Action }
+     * 
+     */
+    public Action createAction() {
+        return new Action();
+    }
+
+    /**
+     * Create an instance of {@link Process }
+     * 
+     */
+    public Process createProcess() {
+        return new Process();
+    }
+
 }
