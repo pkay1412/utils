@@ -5,7 +5,7 @@
 			 xmlns:layout="http://www.openfuxml.org/layout"
 			 xmlns:text="http://www.openfuxml.org/text"
 			 xmlns:l="http://www.openfuxml.org/list"
-		id="section.user.ui.icons">
+		id="section.user.ui.revisions">
 	<ofx:title lang="en">Revisions</ofx:title>
 	
 	<ofx:paragraph lang="en">
@@ -14,7 +14,7 @@
         Table <ofx:reference target="table.user.ui.icons"/> explains the symbols used in the context of revisions.
 	</ofx:paragraph>
 	
-	<table:table  id="table.user.ui.icons">
+	<table:table  id="table.user.ui.revisions">
 	    <ofx:title lang="en">Icons for Revision History</ofx:title>
 	    <table:specification>
 	        <table:columns>
