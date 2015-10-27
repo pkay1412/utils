@@ -50,10 +50,5 @@
 		</ofx:paragraph>
 		
 	</ofx:section>
-	
-	<ofx:section>
-		<ofx:title lang="en">Restore</ofx:title>
-		
-	</ofx:section>
 		
 </ofx:section>

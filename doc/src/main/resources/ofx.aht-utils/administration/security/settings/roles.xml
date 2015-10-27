@@ -10,8 +10,8 @@
 	<ofx:paragraph>
 	The Roles administration page describes the function of a single person in this system and grants permissions to them.
 	Roles are divided into specific categories and you get a list of the existing roles per category.
-	It is possible to edit separate views, actions and use-cases for each user by clicking on the green add button located at the top of each rule-type.
-	After changing rights and permissions for a user, save the new role configuration. 
+	It is possible to add separate views, actions and use-cases for each role by clicking on the green add button located at the top of each rule-type.
+	After changing rights and permissions for a role, save the new role configuration. 
 	These changes takes effect after the edited user is relogging to the system.
 	</ofx:paragraph>
 	

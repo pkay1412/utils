@@ -62,17 +62,13 @@
 		
 		<ofx:paragraph lang="en">
 			By default the postgresql installation only accepts connections from the localhost.
-			In pg_hba.conf
+			If remote access is required, the pg_hba.conf must be configurated as follows:
 		</ofx:paragraph>
 		
 		<ofx:listing>
 				<ofx:raw># TYPE  DATABASE        USER            ADDRESS                 METHOD
 host    all             all             10.0.0.0/24             md5</ofx:raw>
 		</ofx:listing>
-		
-		<ofx:paragraph lang="en">
-			In postgresql.conf.
-		</ofx:paragraph>
 		
 		<ofx:listing>
 				<ofx:raw>		<ofx:listing>

@@ -5,11 +5,11 @@
 			xmlns:media="http://www.openfuxml.org/media"
 			xmlns:layout="http://www.openfuxml.org/layout"
 			id="section.admin.development.er">
-	<ofx:title lang="en">Entity Relationship Model</ofx:title>
+	<ofx:title lang="en">Data Structure</ofx:title>
 	
 	<ofx:paragraph lang="en">
-		An entity-relationship model is a systematic way of describing and defining a business process.
-		The process is modeled as components (entities) that are linked with each other by relationships that
+		An entity-relationship model is a systematic way of describing and defining the data structure of an information system.
+		It presents components (entities) that are linked with each other by relationships that
 		express the dependencies and requirements between them, such as: one building may be divided into zero or
 		more apartments, but one apartment can only be located in one building. Entities may have various properties
 		(attributes) that characterise them. Diagrams created to represent these entities, attributes, and relationships
