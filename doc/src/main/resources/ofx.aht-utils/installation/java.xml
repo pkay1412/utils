@@ -35,10 +35,12 @@
 	
 		<ofx:paragraph lang="en">
 			Get the 64 bit version of Java JDK (jdk-7u79-linux-x64.tar.gz) from
+			
 			http://www.oracle.com/technetwork/java/javase/downloads/index.html
 		</ofx:paragraph>
 		<ofx:paragraph lang="de">
 			Das Java JDK (jdk-7u79-linux-x64.tar.gz) in der 64 bit version kann hier heruntergelanden werden
+			
 			herunterladen http://www.oracle.com/technetwork/java/javase/downloads/index.html
 		</ofx:paragraph>
 	 
@@ -85,7 +87,7 @@ sudo update-alternatives --install /usr/bin/java java /opt/ejre1.7.0_21/bin/java
 sudo update-alternatives --set java /opt/ejre1.7.0_21/bin/java</ofx:raw>
 		</ofx:listing>
 	</ofx:section>
-	
+	<!--
 	<ofx:section transparent="false" classifier="devJava7FX">
 		<ofx:title lang="en">JavaFX (Developer)</ofx:title>
 		
@@ -100,7 +102,7 @@ sudo update-alternatives --set java /opt/ejre1.7.0_21/bin/java</ofx:raw>
 				<ofx:raw>mvn com.zenjava:javafx-maven-plugin:2.0:fix-classpath</ofx:raw>
 			</ofx:listing>
 		</ofx:section>
-		
+	-->	
 		<ofx:section classifier="do-not-print">
 			<ofx:title lang="en">Test</ofx:title>
 			<ofx:paragraph lang="en">

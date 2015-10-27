@@ -8,7 +8,7 @@
 	<ofx:title lang="en">Views and Actions</ofx:title>
 		
 	<ofx:paragraph>
-		Every view is divided into several categories to achieve a better overview.
+		Every view is assigned to a single category to achieve a better overview.
 		Choose a category and select the view you want to edit. The entries (Name/Description) on the right side are the editable items of the
 		actual selected view. 
 		Every linked action is provided by the developers and not editable by the MEIS system administrator. If you want to save

@@ -12,8 +12,7 @@
 	
 	<ofx:paragraph lang="en">
 		If parts of the stored data are mistakenly deleted by users or administrators, this usually feels
-		like a disaster, but is not part of a disaster recovery procedure. Issues like this are handled
-		as a general restore procedure.
+		like a disaster, but is not part of a disaster recovery procedure.
 	</ofx:paragraph>
 	
 	
