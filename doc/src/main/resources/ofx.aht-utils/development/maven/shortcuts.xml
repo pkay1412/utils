@@ -9,8 +9,8 @@
 	<ofx:title lang="en">Maven Shortcuts</ofx:title>
 			
 	<ofx:paragraph lang="en">
-		In development environments several commands need to be executed regularly. To save time in typing, several shortcuts of the most used commands
-		are summarised in Table <ofx:reference target="table.admin.development.maven.shortcuts"/>.
+		In development environments several commands need to be executed regularly. To save time typing, several shortcuts of the most used commands
+		are provided in Table <ofx:reference target="table.admin.development.maven.shortcuts"/>.
 	</ofx:paragraph>
 		
 	<t:table id="table.admin.development.maven.shortcuts">	
@@ -66,11 +66,11 @@
 	</t:table>
 	
 	<ofx:paragraph lang="en">
-		The additional parameter <text:emphasis style="typewriter">-Pram</text:emphasis>
+		The additional parametre <text:emphasis style="typewriter">-Pram</text:emphasis>
 		(directly after <text:emphasis style="typewriter">mvn</text:emphasis>)
-		is optional and can be used if a ramdisk is configured. In this case,
-		all temporary files are stored only in memory.
-		On some environments the additional parameter <text:emphasis style="typewriter">-Djava.awt.headless=true</text:emphasis> prevents that applications on the screen loose the focus
+		is optional and can be used if one configures a ramdisk. In this case,
+		all temporary files are stored in memory only.
+		In some environments the additional parametre <text:emphasis style="typewriter">-Djava.awt.headless=true</text:emphasis> prevents that applications on the screen lose focus
 		for the windows-less java commands.
 	</ofx:paragraph>
 	
