@@ -312,14 +312,21 @@ fi</ofx:raw>
 			<ofx:title lang="en">Start JBoss as a Service</ofx:title>
 			
 			<ofx:paragraph lang="en" version="1">
-					xxx
+                            This paragraph describes how to set up a Linux service to start and stop your JBoss Application Server.
+                            The advantage of a Linux service is that it will run no matter which user is logged onto the machine. 
+                            You can also configure the service to start automatically if the system is rebooted.
+                            Perform the following commands to start with the service installation.
 			</ofx:paragraph>
 			
 			<ofx:listing setting="shell" external="listing/admin/installation/jboss/service/preparation.txt"/>
 
 			
 			<ofx:paragraph lang="en" version="1">
-					xxx
+                            The next step is to configure the service with the shown script below. 
+                            Copy this script to your clipboard and past it into the VI terminal and save your configuration.
+                            Verify your installation with of the JBoss Application Server by starting and stopping it
+                            (monitor this events with the log terminal).
+                            Use the commands "/etc/init.d/jboss {start|stop|log}" to perform this test.
 			</ofx:paragraph>
 			
 			<ofx:listing setting="shell" external="listing/admin/installation/jboss/service/etcInitD.txt"/>
