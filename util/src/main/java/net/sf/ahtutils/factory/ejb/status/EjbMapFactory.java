@@ -7,18 +7,16 @@ import java.util.Map;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import net.sf.ahtutils.interfaces.model.status.UtilsDescription;
-import net.sf.ahtutils.interfaces.model.status.UtilsLang;
-import net.sf.ahtutils.interfaces.model.status.UtilsStatus;
+import net.sf.ahtutils.interfaces.model.with.code.EjbWithCode;
 
 public class EjbMapFactory
 {
 	final static Logger logger = LoggerFactory.getLogger(EjbMapFactory.class);
 	    
-    public static <S extends UtilsStatus<S,L,D>, L extends UtilsLang, D extends UtilsDescription> Map<String,S> byCode(List<S> list)
+    public static <T extends EjbWithCode> Map<String,T> byCode(List<T> list)
     {
-    	Map<String,S> map = new Hashtable<String,S>();
-    	for(S s : list)
+    	Map<String,T> map = new Hashtable<String,T>();
+    	for(T s : list)
     	{
     		map.put(s.getCode(), s);
     	}
