@@ -1,20 +1,21 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <ofx:section xmlns:ofx="http://www.openfuxml.org"
 			xmlns:l="http://www.openfuxml.org/list"
+            xmlns:text="http://www.openfuxml.org/text"
 			xmlns:layout="http://www.openfuxml.org/layout"
 			xmlns:t="http://www.openfuxml.org/table"
 			id="section.admin.webservice.introduction">
 	
 	<ofx:paragraph lang="en">
-		A Web service is a method of communication between two electronic devices over a network.
-		It is a software function provided at a network address over the Web with the service always on
+		A web service is a method of communication between two electronic devices over a network.
+		It is a software function provided at a network address over the web with the service always on
 		as in the concept of utility computing.
-		The W3C defines a Web service generally as a software system designed to support interoperable
+		The <text:emphasis bold="true">W3C</text:emphasis> defines a web service generally as a software system designed to support interoperable
 		machine-to-machine interaction over a network.
 	</ofx:paragraph>
 
 	<ofx:paragraph lang="en">
-		The W3C Web Services Architecture Working Group has identified two major classes of Web services:
+		The <text:emphasis bold="true">W3C Web Services Architecture Working Group</text:emphasis> has identified two major classes of web services:
 	</ofx:paragraph>
 
 	<l:list>
@@ -22,18 +23,18 @@
 	    
 	    <l:item>
 	    	<ofx:paragraph lang="en">
-				REST-compliant Web services, in which the primary purpose of the service is to manipulate
-				representations of Web resources using a uniform set of state less operations.
+				REST-compliant web services, in which the primary purpose of the service is to manipulate
+				representations of web resources using a uniform set of state less operations.
 			</ofx:paragraph>
 	    </l:item>
 	    <l:item>
 	    	<ofx:paragraph lang="en">
-				Arbitrary Web services, in which the service may expose an arbitrary set of operations.
-				The Web service has an interface described in a machine-processable format (specifically WSDL).
+				Arbitrary web services, in which the service may expose an arbitrary set of operations.
+				The web service has an interface described in a machine-processable format (specifically WSDL).
 				Other systems interact with the Web service in a manner prescribed by its description using
 				SOAP (Simple Object Access Protocol) messages,
 				typically conveyed using HTTP with an XML serialisation in conjunction with other
-				Web-related standards.
+				web-related standards.
 			</ofx:paragraph>
 	    </l:item>
 	</l:list>
