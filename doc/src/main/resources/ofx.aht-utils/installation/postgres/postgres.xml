@@ -9,14 +9,13 @@
 		with an emphasis on extensibility and standards-compliance.
 	</ofx:paragraph>	
 	<ofx:paragraph lang="en" >
-		As a database server, its primary function is to store data, securely and supporting best practices,
-		and retrieve it later, as requested by other software applications, be it those on the same computer
+		As a database server, its primary function is to store data, securely in line with best practices to retrieve it later, as requested by other software applications, be it those on the same computer
 		or those running on another computer across a network (including the Internet).
 	</ofx:paragraph>
 	<ofx:paragraph lang="en" >
 		It can handle workloads ranging from small single-machine applications to large Internet-facing applications
 		with many concurrent users.
-		Recent versions also provide replication of the database itself for security and scalability.
+		Recent versions also allow for replication of the database itself in order to ensure security and scalability.
 	</ofx:paragraph>
 	
 	<ofx:section>
@@ -36,7 +35,7 @@
 		<ofx:paragraph lang="en" classifier="debianWheezy">
 			The following example creates a template, which can be re-used for creating other
 			spatially-enabled databases.
-			The following commands need to be executed as user
+			The following commands need to be executed as the user
 			<text:emphasis italic="true">postgres</text:emphasis>:
 		</ofx:paragraph>
 		<ofx:listing classifier="debianWheezy" setting="sql" external="listing/admin/db/postgres/template/debian/wheezy.sql"/>
@@ -50,8 +49,8 @@
 		<ofx:listing classifier="osxYosemite" external="listing/admin/db/postgres/create/osx/yosemite.sql"/>
 		
 		<ofx:paragraph lang="en">
-			If the system will be updated and the database will be dropped and then created again,
-			there are no logged users for the database allowed. The following command lists all users and terminates their connection
+			If the system is updated and the database is dropped and then created again,
+			no logged users are allowed for the database. The following command lists all users and terminates their connection
 			to the database.
 		</ofx:paragraph>
 		<ofx:listing classifier="debianWheezy" setting="sql" external="listing/admin/db/postgres/terminate/debian/wheezy.sql"/>
