@@ -10,15 +10,15 @@
 	<ofx:paragraph lang="en">
         This chapter contains the basic ideas and concepts everyone need
         to work with <text:emphasis bold="true">MEIS</text:emphasis> comfortably.
-        At the beginning we give an overview of the functionalities of <text:emphasis bold="true">MEIS</text:emphasis>. This includes a quick tour through the elements of the screen and how to login to the system. To log in is mandatory for accessing most of the <text:emphasis bold="true">MEIS</text:emphasis> functionalities.
+        At the beginning we give an overview of the functionalities of <text:emphasis bold="true">MEIS</text:emphasis>. This includes a quick tour through the elements of the screen and how to \gls{c4} to the system. To log in is mandatory for accessing most of the <text:emphasis bold="true">MEIS</text:emphasis> functionalities.
         Next topic is the navigation concept. The <text:emphasis bold="true">MEIS</text:emphasis> is offering a wide range of functionalities for different user groups. Hereby, we have to ensure that the navigation through the <text:emphasis bold="true">MEIS</text:emphasis> remains easy to understand and simple to handle.
         Hereafter we give an introduction to the general usage of input fields and tables.
         After being familiar with all the basics of the <text:emphasis bold="true">MEIS</text:emphasis>, the different sections such as <text:emphasis italic="true">Project</text:emphasis>, <text:emphasis italic="true"> Program</text:emphasis>, <text:emphasis italic="true"> Social Protection</text:emphasis> or <text:emphasis italic="true">Repotrs</text:emphasis> are described in detail.
         Hereby, every user shall focus on his/her own use cases when it comes to the different sections. For instance, if you are not in charge of <text:emphasis italic="true">Social Protection</text:emphasis>, you can skip this part.
 
-        In general, the <text:emphasis bold="true">MEIS</text:emphasis> is web-based, so you will use it through a web browser.
+        In general, the <text:emphasis bold="true">MEIS</text:emphasis> is web-based, so you will use it through a \gls{c2}.
         Nevertheless, the <text:emphasis bold="true">MEIS</text:emphasis>'s use is quite different from standard web pages. The <text:emphasis bold="true">MEIS</text:emphasis> is what is called a
-        <text:emphasis italic="true">Rich Internet Application</text:emphasis>. In short,  <text:emphasis bold="true">MEIS</text:emphasis> is rather similar to <text:emphasis bold="true">Google Mail</text:emphasis> than to common web pages of newspapers.
+        <text:emphasis italic="true">\gls{c3}</text:emphasis>. In short,  <text:emphasis bold="true">MEIS</text:emphasis> is rather similar to <text:emphasis bold="true">Google Mail</text:emphasis> than to common web pages of newspapers.
     </ofx:paragraph>
     <ofx:highlight>
         <ofx:paragraph>

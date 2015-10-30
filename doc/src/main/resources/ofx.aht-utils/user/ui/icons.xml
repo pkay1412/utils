@@ -51,7 +51,7 @@
 	                    <ofx:paragraph>Info</ofx:paragraph>
 	                </table:cell>
 	                <table:cell>
-	                    <ofx:paragraph>Shows tooltips and useful advises</ofx:paragraph>
+	                    <ofx:paragraph>Shows \gls{c6}s and useful advises</ofx:paragraph>
 	                </table:cell>
 	            </table:row>
 	            <table:row>
@@ -179,7 +179,7 @@
 	                    <ofx:paragraph>Help</ofx:paragraph>
 	                </table:cell>
 	                <table:cell>
-	                    <ofx:paragraph>The user is forwarded to the help desk</ofx:paragraph>
+	                    <ofx:paragraph>The user is forwarded to the \gls{c7}</ofx:paragraph>
 	                </table:cell>
 	            </table:row>
 <!--	            <table:row>

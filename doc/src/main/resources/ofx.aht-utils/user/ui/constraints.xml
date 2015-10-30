@@ -18,14 +18,14 @@
 	    
 	    <l:item>
 	    	<ofx:paragraph lang="en">
-				The <text:emphasis italic="true">data integrity constraints</text:emphasis> are located on database level and enforce the referential integrity of data.
+				The <text:emphasis italic="true">\gls{c16} \gls{c14}</text:emphasis> are located on database level and enforce the \gls{c17}.
 				E.g. it's not allowed to delete an object which is used somewhere else.
 			</ofx:paragraph>
 	    </l:item>
 	    <l:item>
 	    	<ofx:paragraph lang="en">
-				The <text:emphasis italic="true">data type constraints</text:emphasis> are located in the business logic and ensure that the entered data types are correct.
-				The system is checking e.g. that a amount is a decimal number and not a text string.
+				The <text:emphasis italic="true">data type constraints</text:emphasis> are located in the \gls{c18} and ensure that the entered data types are correct.
+				The system is checking e.g. that a amount is a decimal number and not a \gls{c19}.
 			</ofx:paragraph>
 	    </l:item>
 	    <l:item>
@@ -38,7 +38,7 @@
 	</l:list>
 	
 	<ofx:paragraph lang="en">
-		In all cases, the user interface will inform the end-user, if plausibility checks fail or any constraint might be violated. 
+		In all cases, the user interface will inform the \gls{c13}, if plausibility checks fail or any constraint might be violated.
 		The constraints are documented in this manual to enhance the understanding of the user for the internal processes of the system.
 		All of these constraints result in a set of different constraint types relevant for the user, the different types are summarised
 		in Table <ofx:reference target="table.status.system.constraints.type"/>.
