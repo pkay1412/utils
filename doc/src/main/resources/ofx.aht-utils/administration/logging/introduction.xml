@@ -13,7 +13,7 @@
 		log messages are written to a single log file.
 	</ofx:paragraph>
 	
-	<t:table id="table.admin.system.logs.type">
+	<t:table id="table.admin.system.logs.level">
 	    <ofx:title>Logger Levels</ofx:title>
 	    <t:specification>
 	        <t:columns>

@@ -16,9 +16,9 @@
 			server.
 		</ofx:paragraph>
 		
-		<t:table id="table.admin.system.logs.type">
+		<t:table id="table.admin.requirements.hardware.speci.prototype">
 		
-		    <ofx:title lang="en" version="1">Hardware Specifications (Production System)</ofx:title>
+		    <ofx:title lang="en" version="1">Hardware Specifications (Prototype System)</ofx:title>
 		    
 		    <t:specification>
 		        <t:columns> 
@@ -77,7 +77,7 @@
 			There are multiple servers required for security aspects and best performance.
 		</ofx:paragraph>
 		
-		<t:table id="table.admin.system.logs.type">
+		<t:table id="table.admin.requirements.hardware.speci.product">
 		
 		    <ofx:title lang="en" version="1">Hardware Specifications (Production System)</ofx:title>
 		    

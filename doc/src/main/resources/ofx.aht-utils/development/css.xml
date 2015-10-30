@@ -4,8 +4,8 @@
 			xmlns:t="http://www.openfuxml.org/table"
 			xmlns:media="http://www.openfuxml.org/media"
 			xmlns:layout="http://www.openfuxml.org/layout"
-			id="section.admin.development.er">
-	<ofx:title lang="en">Entity Relationship Model</ofx:title>
+			id="section.admin.development.css">
+	<ofx:title lang="en">Cascading Style Sheets</ofx:title>
 	
 	<ofx:paragraph lang="en">
 		Cascading Style Sheets (CSS) is a style sheet language used for describing the look and formatting of a document written in a markup language.
