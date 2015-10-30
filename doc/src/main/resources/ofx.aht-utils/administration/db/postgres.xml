@@ -28,18 +28,18 @@
 			
 		<ofx:paragraph lang="en" >
 			The database dump is created by the <text:emphasis bold="true">pgdump</text:emphasis> command line tool.
-			To automate the process, the parameters of the tool are defined in a shell script which can be executed
+			To automate the process, the parametres of the tool are defined in a shell script which can be executed
 			manually or automatically by the cron daemon.
 		</ofx:paragraph>
 			
 		<ofx:listing classifier="debian" external="listing/admin/db/postgres/dump/debian/dump.sh"/>
 		
 		<ofx:paragraph lang="en" >
-			To perform regularly database backups the shell script has to be added to the cron daemon
+			To perform regular database backups the shell script has to be added to the cron daemon
 			to be executed automatically.
 			With the logged-in user <text:emphasis italic="true">postgres</text:emphasis>
 			the crontab can be edited by <text:emphasis italic="true">crontab -e</text:emphasis>.
-			The following entry is executing the database dump every hour:
+			The following entry executes the database dump every hour:
 		</ofx:paragraph>
 		
 		<ofx:listing classifier="debian" external="listing/admin/db/postgres/dump/debian/cron.tab"/>

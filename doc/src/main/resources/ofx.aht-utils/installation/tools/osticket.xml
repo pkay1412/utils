@@ -13,7 +13,7 @@
 		OS Ticket is an open source support ticket system with as many features and tools as most of the commercial support ticket systems.
 	</ofx:paragraph>
 	
-	<ofx:section id="section.admin.installation.osticket">
+	<ofx:section id="section.admin.installation.osticket.installation">
 	<ofx:title lang="en">Base Installation</ofx:title>
 	
 	<ofx:paragraph lang="en" version="1">After your Debian base installation, osticket needs some requirements</ofx:paragraph>
@@ -63,7 +63,7 @@
 	   	</l:list>				
 		</ofx:section>
 		
-		<ofx:section id="section.admin.installation.osticket">
+		<ofx:section id="section.admin.installation.osticket.config">
 			<ofx:title lang="en">Configuration</ofx:title>
 			
 			<ofx:paragraph lang="en" version="1">

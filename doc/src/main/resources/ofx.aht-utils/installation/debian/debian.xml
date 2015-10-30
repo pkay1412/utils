@@ -11,7 +11,7 @@
 	
 	<ofx:paragraph lang="en" version="1">
 		Debian is an operating system composed of free software mostly carrying the GNU General Public License.
-		The operating system is developed by an Internet collaboration of volunteers aligned with The Debian Project.
+		The operating system was developedthrough an online volunteer collaboration aligned with The Debian Project.
 	</ofx:paragraph>
 	
 	<ofx:paragraph lang="en" version="1">
@@ -26,10 +26,10 @@
 		A very convenient one is using the minimum installation CD. 
 		You can download the disk image for your architecture (mostly i386 for older 32-bit machines 
 		and amd64 for newer 64-bit CPUs like Intel Core processors and above) from <text:emphasis bold="true">http://www.debian.org/distrib/netinst</text:emphasis>.
-		Then the image needs to be written to a CD or DVD recordable.
+		Then the image needs to be written to a CD or DVD.
 		The Ubuntu project offers HowTos for all common operating systems like Microsoft Windows, Apple Mac OS X and Linux 
 		on how to actually burn this image to the disk at <text:emphasis bold="true">https://help.ubuntu.com/community/BurningIsoHowto</text:emphasis>.
-		Once the CD or DVD is prepared, the computer needs to be booted from the optical disk drive and the (non-graphical) installer 
+		Once the CD or DVD has been prepared, the computer needs to be booted from the optical disk drive and the (non-graphical) installer
 		should be selected from the boot screen.
 		The Debian installer then guides you through the complete setup process. 
 	</ofx:paragraph>

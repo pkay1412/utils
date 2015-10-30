@@ -8,11 +8,11 @@
 	<ofx:title lang="en">Roles</ofx:title>
 	
 	<ofx:paragraph>
-	The Roles administration page describes the function of a single person in this system and grants permissions to them.
-	Roles are divided into specific categories and you get a list of the existing roles per category.
-	It is possible to add separate views, actions and use-cases for each role by clicking on the green add button located at the top of each rule-type.
-	After changing rights and permissions for a role, save the new role configuration. 
-	These changes takes effect after the edited user is relogging to the system.
+	The <text:emphasis italic="true">roles</text:emphasis> administration page describes the function of a single person in this system and grants them permission.
+    <text:emphasis italic="true">Roles</text:emphasis> are divided into specific categories and you get a list of the existing <text:emphasis italic="true">roles</text:emphasis> per category.
+	It is possible to add separate <text:emphasis italic="true">views</text:emphasis>, <text:emphasis italic="true">actions</text:emphasis> and <text:emphasis italic="true">use cases</text:emphasis> for each <text:emphasis italic="true">role</text:emphasis> by clicking on the green add button located at the top of each rule-type.
+	After changing rights and permissions for a <text:emphasis italic="true">role</text:emphasis>, save the new <text:emphasis italic="true">role</text:emphasis> configuration.
+	These changes takes effect after the edited user logs in to the system.
 	</ofx:paragraph>
 	
 	<ofx:include lang="en">en/section/admin/security/include/roles</ofx:include>

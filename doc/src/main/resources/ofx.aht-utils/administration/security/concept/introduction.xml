@@ -41,8 +41,7 @@
 		</l:item>
 		<l:item name="Actions" lang="en" version="2" id="section.admin.security.introduction.list.actions">
 			<ofx:paragraph>
-				are always related to a single View and can be interpreted as user interactions. They can be permitted
-				generally for all users allowed to access the view, but it's also possible to restrict the
+				are always related to a single <text:emphasis italic="true">view</text:emphasis> and can be interpreted as user interactions. They can be used by all users allowed to access the <text:emphasis italic="true">view</text:emphasis>, but it is also possible to restrict the
 				action to specific user groups.
 				Actions are implemented and defined by the <text:emphasis italic="true">System Developers</text:emphasis>.
 				The <text:emphasis italic="true">System Administrators</text:emphasis> are not able to add new
@@ -61,7 +60,7 @@
 				are initially implemented by the <text:emphasis italic="true">System Developers</text:emphasis>,
 				but <text:emphasis italic="true">System Administrators</text:emphasis> have full access to this configuration
 				and are able to add, remove or modify use cases. Each use case contains
-				multiple views or actions. This reflects the requirement that a user usually needs access to multiple pages
+				multiple <text:emphasis italic="true">view</text:emphasis> or <text:emphasis italic="true">actions</text:emphasis>. This reflects the requirement that a user usually needs access to multiple pages
 				with several allowed user interactions to perform a complex use case.
 			</ofx:paragraph>
 	    </l:item>
@@ -91,13 +90,12 @@
 
 	<ofx:paragraph lang="en">
 		The management of
-		<text:emphasis bold="true">Roles</text:emphasis> or <text:emphasis bold="true">Use Cases</text:emphasis>
-		by the <text:emphasis italic="true">System Administrators</text:emphasis> needs to be rarely done. In most
+		<text:emphasis italic="true">Roles</text:emphasis> or <text:emphasis italic="true">Use Cases</text:emphasis>
+		by the <text:emphasis italic="true">System Administrators</text:emphasis> rarely needs to be done. In most
 		cases it is required if the business processes or organisation structure changes to reflect these changes in the
-		information system. The assignment of <text:emphasis bold="true">Roles</text:emphasis> to
-		<text:emphasis bold="true">Users</text:emphasis> is a daily work task for the
-		<text:emphasis italic="true">System Administrators</text:emphasis> at the same time
-		when adding new users to the system.
+		information system. The assignment of <text:emphasis italic="true">Roles</text:emphasis> to
+		<text:emphasis italic="true">Users</text:emphasis> is a daily work task for the
+		<text:emphasis italic="true">System Administrators</text:emphasis> as well as adding new users to the system.
 	</ofx:paragraph>
 
 	
@@ -107,7 +105,7 @@
 	</ofx:paragraph>
 	
 	<media:image id="image.admin.security.er">
-	    <ofx:title>Entity Relationship Diagram of Security Framework</ofx:title>
+	    <ofx:title>Entity Relationship Diagram of security framework</ofx:title>
 	    <layout:alignment horizontal="center"/>
 	    <layout:width unit="cm">6</layout:width>
 	    <media:media src="svg.aht-utils/administration/security/security-er.svg" dst="admin/security/er"/>
@@ -115,22 +113,22 @@
 	
 	<ofx:paragraph lang="en">
 		The implementation of pages (<text:emphasis bold="true">Views</text:emphasis>)
-		is done on basis of the functional requirements of the system by the developer.
-		The definition of restricted user interactions (<text:emphasis bold="true">Actions</text:emphasis>) is highly coupled
+		is done by the developer on the basis of the functional requirements of the system.
+		The definition of restricted user interactions (<text:emphasis italic="true">Actions</text:emphasis>) is tightly coupled
 		with business processes (also represented in the page flow) and derived from functional and non-functional requirements and
 		has corresponding visual elements like buttons, filters or tables. Additionally to the elements itself the
 		<text:emphasis italic="true">content</text:emphasis> (e.g. of tables) can be different based on different access rights.
-		The <text:emphasis bold="true">Use Cases</text:emphasis> are a convenient way to aggregate different
-		<text:emphasis bold="true">Views</text:emphasis> and <text:emphasis bold="true">Actions</text:emphasis> and assign
-		them to a <text:emphasis bold="true">Role</text:emphasis>
+		The <text:emphasis italic="true">Use Cases</text:emphasis> are a convenient way to aggregate different
+		<text:emphasis italic="true">Views</text:emphasis> and <text:emphasis italic="true">Actions</text:emphasis> and assign
+		them to a <text:emphasis italic="true">Role</text:emphasis>
 	</ofx:paragraph>
 		
 	<ofx:paragraph lang="en">
 		This illustrates that the definition of the security concept is mainly done by the
 		<text:emphasis italic="true">Developers</text:emphasis>,
-		to achieve a user-friendly and both flexible system.
-		The <text:emphasis italic="true">Administrator</text:emphasis> has to deal with the assignment of
-		<text:emphasis bold="true">Roles</text:emphasis> to <text:emphasis bold="true">User</text:emphasis>.
+		to create both a user-friendly and a flexible system.
+		The <text:emphasis italic="true">Administrator</text:emphasis> has to carry out the assignment of
+		<text:emphasis italic="true">Roles</text:emphasis> to the <text:emphasis italic="true">User</text:emphasis>.
 	</ofx:paragraph>
 	
 </ofx:section>

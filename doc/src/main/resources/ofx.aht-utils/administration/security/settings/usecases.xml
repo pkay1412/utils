@@ -8,11 +8,11 @@
 	<ofx:title lang="en">Use Cases</ofx:title>
 	
 	<ofx:paragraph>
-		The Use Cases area of the administrator page describes rules for views and actions combined in a group.
-		Every Use Case is assigned to a single category to create a better overview, like the "Views and Actions" page.
-		It is also possible to edit or change the names and descriptions for every Use Case level.
-		This site is set up hierarchically, from a Use Case name to the "Views and Actions", where you can add or remove single rules for each type.
-		If you want to add or remove a rule to an existing Use Case, simply press the green add button and select the required entry or 
+		The <text:emphasis italic="true">use cases</text:emphasis> area of the administrator page describes rules for views and actions combined in a group.
+		Every <text:emphasis italic="true">use case</text:emphasis> is assigned to a single category to create a better overview, like the <text:emphasis italic="true">Views and Actions</text:emphasis> page.
+		It is also possible to edit or change the names and descriptions for every <text:emphasis italic="true">use case</text:emphasis> level.
+		This site is set up hierarchically, from a <text:emphasis italic="true">use case</text:emphasis> name to the <text:emphasis italic="true">Views and Actions</text:emphasis>, where you can add or remove single rules for each type.
+		If you want to add or remove a rule to an existing <text:emphasis italic="true">use case</text:emphasis>, simply press the green add button and select the required entry or
 		click the red remove button to delete the selected item. These changes take effect without saving the rule.
 	</ofx:paragraph>
 	

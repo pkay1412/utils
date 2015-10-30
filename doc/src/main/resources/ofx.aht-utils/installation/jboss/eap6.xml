@@ -98,7 +98,7 @@ fi</ofx:raw>
 					necessary in this setup. This will be prevented by starting in 
 					<text:emphasis bold="true">headless</text:emphasis> mode.
 					To avoid debug outputs in a language different than English,
-					the language should be explicitly be set to
+					the language should explicitly be set to
 					<text:emphasis bold="true">en</text:emphasis>.
 				</ofx:paragraph>
 					<ofx:paragraph lang="de" version="1">
@@ -139,7 +139,7 @@ fi</ofx:raw>
 				<ofx:title lang="en">Network Connections</ofx:title>
 				
 				<ofx:paragraph lang="en" version="1">
-					The default configuration of JBoss is to only listen on connections originated from
+					The default configuration of JBoss is to only respond to connections coming from
 					<text:emphasis italic="true">localhost</text:emphasis>. To enable access from other systems, the settings for the
 					<text:emphasis italic="true">public interface</text:emphasis> have to be changed to
 					<text:emphasis style="typewriter">/standalone/configuration/standalone.conf</text:emphasis> in the
@@ -161,7 +161,7 @@ fi</ofx:raw>
 					All modules can be automatically installed by unpacking the provided archive
 					<text:emphasis style="typewriter">jboss-modules-tgz</text:emphasis> in the directory
 					<text:emphasis style="typewriter">/opt/jboss-eap-6.1/modules/system/layers/base</text:emphasis>.
-					The following subsections describe the differences to the original configuration files.
+					The following subsections describe the differences between these and the original configuration files.
 				</ofx:paragraph>
 				
 				<ofx:section classifier="postgis">
@@ -291,8 +291,8 @@ fi</ofx:raw>
 			<ofx:paragraph lang="en" version="1">
 					The application is deployed using the command line tool
 					<text:emphasis style="typewriter">/opt/jboss-eap-6.1/bin/jboss-cli.sh</text:emphasis>.
-					The easiest way is to start <text:emphasis style="typewriter">jboss-cli.sh</text:emphasis>
-					from the directoy where the file
+					The easiest way to do it is to start <text:emphasis style="typewriter">jboss-cli.sh</text:emphasis>
+					from the directory where the file
 					<text:emphasis style="typewriter">meis.ear</text:emphasis>
 					is located. Detailed instructions for deployment and undeployment are given in section 
 					<text:emphasis italic="true">System Maintenance</text:emphasis>.

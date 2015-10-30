@@ -16,9 +16,9 @@
 			server.
 		</ofx:paragraph>
 		
-		<t:table id="table.admin.system.logs.type">
+		<t:table id="table.admin.requirements.hardware.speci.prototype">
 		
-		    <ofx:title lang="en" version="1">Hardware Specifications (Production System)</ofx:title>
+		    <ofx:title lang="en" version="1">Hardware Specifications (Prototype System)</ofx:title>
 		    
 		    <t:specification>
 		        <t:columns> 
@@ -39,15 +39,15 @@
 		        </t:head>
 		        <t:body>
 		            <t:row>
-		                <t:cell><ofx:paragraph>RAM</ofx:paragraph></t:cell>
+		                <t:cell><ofx:paragraph>\acrshort{ram}</ofx:paragraph></t:cell>
 		                <t:cell><ofx:paragraph>4 GB</ofx:paragraph></t:cell>
 		            </t:row>
 		            <t:row>
-		                <t:cell><ofx:paragraph>CPU</ofx:paragraph></t:cell>
+		                <t:cell><ofx:paragraph>\acrshort{cpu}</ofx:paragraph></t:cell>
 		                <t:cell><ofx:paragraph>Core2 Duo, 2 GHz</ofx:paragraph></t:cell>
 		            </t:row>
 		            <t:row>
-		                <t:cell><ofx:paragraph>HDD</ofx:paragraph></t:cell>
+		                <t:cell><ofx:paragraph>\acrshort{hdd}</ofx:paragraph></t:cell>
 		                <t:cell><ofx:paragraph>400 GB</ofx:paragraph></t:cell>
 		            </t:row>
 		            <t:row>
@@ -55,7 +55,7 @@
 		                <t:cell><ofx:paragraph>Network adapter with one interface (100 Mbps)</ofx:paragraph></t:cell>
 		            </t:row>
 		            <t:row>
-		                <t:cell><ofx:paragraph>OS</ofx:paragraph></t:cell>
+		                <t:cell><ofx:paragraph>\acrshort{os}</ofx:paragraph></t:cell>
 		                <t:cell><ofx:paragraph>Linux Debian</ofx:paragraph></t:cell>
 		            </t:row>
 		        </t:body>
@@ -77,7 +77,7 @@
 			There are multiple servers required for security aspects and best performance.
 		</ofx:paragraph>
 		
-		<t:table id="table.admin.system.logs.type">
+		<t:table id="table.admin.requirements.hardware.speci.product">
 		
 		    <ofx:title lang="en" version="1">Hardware Specifications (Production System)</ofx:title>
 		    

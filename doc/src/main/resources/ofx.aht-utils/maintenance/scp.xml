@@ -49,12 +49,12 @@
 	</l:list>
 	
 	<ofx:paragraph lang="en" version="1">
-		Some optional parameter of SCP are summarised in Table
+		Some optional parametres of SCP are summarised in Table
 		<ofx:reference target="table.admin.maintenance.scp.parameter"/>.
 	</ofx:paragraph>
 
 	<t:table id="table.admin.maintenance.scp.parameter">	
-	    <ofx:title lang="en" version="1">Optional Parameters</ofx:title>
+	    <ofx:title lang="en" version="1">Optional Parametres</ofx:title>
 	    <t:specification>
 	        <t:columns> 
 	            <t:column><layout:width unit="percentage" flex="true" narrow="true">30.0</layout:width></t:column>
@@ -71,7 +71,7 @@
 	        <t:body>
 	            <t:row>
 	            	<t:cell><ofx:paragraph><text:emphasis style="typewriter">-r</text:emphasis></ofx:paragraph></t:cell>
-	                <t:cell><ofx:paragraph>Rekursive</ofx:paragraph></t:cell>
+	                <t:cell><ofx:paragraph>Recursive</ofx:paragraph></t:cell>
 	            </t:row>
 	            <t:row>
 	            	<t:cell><ofx:paragraph><text:emphasis style="typewriter">-C</text:emphasis></ofx:paragraph></t:cell>
