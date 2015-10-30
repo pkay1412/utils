@@ -103,11 +103,12 @@ public class SecurityQuery
 	public static Category exCategory()
 	{
 		Category xml = new Category();
-		xml.setPosition(0);
 		xml.setCode("");
+		xml.setPosition(0);
+		xml.setVisible(true);
 		xml.setLangs(StatusQuery.langs());
 		xml.setDescriptions(StatusQuery.descriptions());
-		xml.setVisible(true);
+		
 		return xml;
 	}
 	

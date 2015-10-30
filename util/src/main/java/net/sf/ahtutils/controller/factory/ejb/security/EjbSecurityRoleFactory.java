@@ -66,6 +66,7 @@ public class EjbSecurityRoleFactory <L extends UtilsLang,
 			ejb = clRole.newInstance();
 			ejb.setCategory(category);
 			ejb.setCode(code);
+			ejb.setVisible(true);
 		}
     	catch (InstantiationException e) {e.printStackTrace();}
     	catch (IllegalAccessException e) {e.printStackTrace();}

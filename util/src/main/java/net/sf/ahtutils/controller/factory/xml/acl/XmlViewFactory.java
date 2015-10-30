@@ -61,6 +61,8 @@ public class XmlViewFactory
 		View xml = new View();
 		
 		if(q.isSetCode()){xml.setCode(view.getCode());}
+		if(q.isSetPosition()){xml.setPosition(view.getPosition());}
+		if(q.isSetVisible()){xml.setVisible(view.isVisible());}
 		
 		if(q.isSetLangs())
 		{

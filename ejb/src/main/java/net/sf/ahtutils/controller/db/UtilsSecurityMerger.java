@@ -30,6 +30,8 @@ public class UtilsSecurityMerger
 				net.sf.ahtutils.xml.security.Category cRest = SecurityXpath.getCategory(securityRest,cFile.getCode());
 				cFile.setLangs(cRest.getLangs());
 				cFile.setDescriptions(cRest.getDescriptions());
+				cFile.setPosition(cRest.getPosition());
+				cFile.setVisible(cRest.isVisible());
 			}
 			catch (ExlpXpathNotFoundException e) {e.printStackTrace();}
 			catch (ExlpXpathNotUniqueException e) {e.printStackTrace();}
@@ -43,6 +45,8 @@ public class UtilsSecurityMerger
 						View vRest = SecurityXpath.getView(securityRest,vFile.getCode());
 						vFile.setLangs(vRest.getLangs());
 						vFile.setDescriptions(vRest.getDescriptions());
+						vFile.setPosition(vRest.getPosition());
+						vFile.setVisible(vRest.isVisible());
 						
 						vFile.setActions(vRest.getActions());
 					}
