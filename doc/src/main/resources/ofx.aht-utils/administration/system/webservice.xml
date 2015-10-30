@@ -30,10 +30,10 @@
 	    <l:item>
 	    	<ofx:paragraph lang="en">
 				Arbitrary web services, in which the service may expose an arbitrary set of operations.
-				The web service has an interface described in a machine-processable format (specifically WSDL).
+				The web service has an interface described in a machine-processable format (specifically \acrshort{wsdl}).
 				Other systems interact with the Web service in a manner prescribed by its description using
-				SOAP (Simple Object Access Protocol) messages,
-				typically conveyed using HTTP with an XML serialisation in conjunction with other
+				\acrshort{soap} (\acrlong{soap}) messages,
+				typically conveyed using \acr{http} with an XML serialisation in conjunction with other
 				web-related standards.
 			</ofx:paragraph>
 	    </l:item>
