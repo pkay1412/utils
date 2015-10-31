@@ -14,11 +14,14 @@ public class BucketSizeCounter
 	private String category;
 	private Map<String,Long> map;
 	
+	private long loop;
+	
 	public BucketSizeCounter(){this("Default Category");}
 	public BucketSizeCounter(String category)
 	{
 		this.category=category;
 		map = new Hashtable<String,Long>();
+		loop=0;
 	}
 	
 	public <E extends Enum<E>> void add(E event, long size){add(event.toString(),size);}
@@ -42,5 +45,15 @@ public class BucketSizeCounter
 		{
 			logger.info("\t"+key+": "+FileUtils.byteCountToDisplaySize(map.get(key)));
 		}
+	}
+	
+	public void debugLoop(int modulo)
+	{
+		loop++;
+		if(loop%modulo==0)
+		{
+			logger.info(category+": "+loop);
+		}
+		
 	}
 }
