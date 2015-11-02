@@ -58,6 +58,7 @@ public class XmlPhaseFactory
 				xml.setLabel(msg);
 			}
 		}
+		else if(q.isSetLabel() && lang==null){logger.warn("Should render label, but lang is null");}
 		
 		return xml;
 	}

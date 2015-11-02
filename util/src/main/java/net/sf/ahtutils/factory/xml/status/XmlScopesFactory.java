@@ -18,7 +18,7 @@ public class XmlScopesFactory
 	private Scopes q;
 	private String lang;
 	
-	public XmlScopesFactory(Scopes q, String lang)
+	public XmlScopesFactory(String lang,Scopes q)
 	{
 		this.q=q;
 		this.lang=lang;
@@ -38,7 +38,7 @@ public class XmlScopesFactory
 		{
 			if(ejbs!=null)
 			{
-				XmlScopeFactory f = new XmlScopeFactory(q.getScope().get(0),lang);
+				XmlScopeFactory f = new XmlScopeFactory(lang,q.getScope().get(0));
 				for(S s : ejbs)
 				{
 					xml.getScope().add(f.build(s));

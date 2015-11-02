@@ -15,8 +15,8 @@ public class XmlScopeFactory
 	private Scope q;
 	private String lang;
 	
-	public XmlScopeFactory(Scope q){this(q,null);}
-	public XmlScopeFactory(Scope q, String lang)
+	public XmlScopeFactory(Scope q){this(null,q);}
+	public XmlScopeFactory(String lang, Scope q)
 	{
 		this.q=q;
 		this.lang=lang;
