@@ -471,4 +471,10 @@ public class AbstractDummyFacade implements UtilsFacade
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public <T> List<T> all(Class<T> type, int limit) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

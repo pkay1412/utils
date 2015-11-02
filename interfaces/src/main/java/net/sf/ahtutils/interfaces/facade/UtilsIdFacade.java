@@ -10,6 +10,7 @@ import net.sf.ahtutils.model.interfaces.with.EjbWithId;
 public interface UtilsIdFacade
 {
 	<T extends Object> List<T> all(Class<T> type);
+	<T extends Object> List<T> all(Class<T> type, int maxResults);
 	<T extends Object> T find(Class<T> type, long id) throws UtilsNotFoundException;
 	<T extends EjbWithId> T find(Class<T> type, T t);
 	<T extends EjbWithId> List<T> find(Class<T> cl, List<Long> ids);

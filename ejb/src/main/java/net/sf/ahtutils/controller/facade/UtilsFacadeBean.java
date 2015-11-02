@@ -355,7 +355,8 @@ public class UtilsFacadeBean implements UtilsFacade
 		return result;
 	}
 	
-	public <T extends Object> List<T> all(Class<T> type)
+	@Override public <T extends Object> List<T> all(Class<T> type){return all(type,0);}
+	@Override public <T extends Object> List<T> all(Class<T> type, int maxResults)
 	{
 		CriteriaBuilder criteriaBuilder = em.getCriteriaBuilder();
 		CriteriaQuery<T> criteriaQuery = criteriaBuilder.createQuery(type);
@@ -364,12 +365,12 @@ public class UtilsFacadeBean implements UtilsFacade
 		CriteriaQuery<T> select = criteriaQuery.select(from);
 		
 		TypedQuery<T> typedQuery = em.createQuery(select);
+		if(maxResults>0){typedQuery.setMaxResults(maxResults);}
+		
 		return typedQuery.getResultList();
 	}
 	
-
-	@Override
-	public <T, I extends EjbWithId> List<T> allOrderedParent(Class<T> cl,String by, boolean ascending, String p1Name, I p1)
+	@Override public <T, I extends EjbWithId> List<T> allOrderedParent(Class<T> cl,String by, boolean ascending, String p1Name, I p1)
 	{
 		CriteriaBuilder cB = em.getCriteriaBuilder();
 		CriteriaQuery<T> cQ = cB.createQuery(cl);
@@ -386,8 +387,7 @@ public class UtilsFacadeBean implements UtilsFacade
 		return em.createQuery(select).getResultList();
 	}
 	
-	@Override
-	public <T extends EjbWithRecord, I extends EjbWithId> List<T> allOrderedParentRecordBetween(Class<T> cl, boolean ascending, String p1Name, I p1,Date fromRecord, Date toRecord)
+	@Override public <T extends EjbWithRecord, I extends EjbWithId> List<T> allOrderedParentRecordBetween(Class<T> cl, boolean ascending, String p1Name, I p1,Date fromRecord, Date toRecord)
 	{
 		CriteriaBuilder cB = em.getCriteriaBuilder();
 		CriteriaQuery<T> cQ = cB.createQuery(cl);

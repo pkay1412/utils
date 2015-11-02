@@ -94,7 +94,8 @@ public class AbstractUtilsFacadeBean implements UtilsFacade
 	protected <T extends Object> void rmProtected(T o) throws UtilsConstraintViolationException {fUtils.rmProtected(o);}
 	
 	// All
-	public <T extends Object> List<T> all(Class<T> type) {return fUtils.all(type);}
+	@Override public <T extends Object> List<T> all(Class<T> type) {return fUtils.all(type);}
+	@Override public <T extends Object> List<T> all(Class<T> type,int maxResults) {return fUtils.all(type,maxResults);}
 	public <T extends EjbWithType> List<T> allForType(Class<T> cl, String type) {return fUtils.allForType(cl, type);}
 	
 	// Ordering
