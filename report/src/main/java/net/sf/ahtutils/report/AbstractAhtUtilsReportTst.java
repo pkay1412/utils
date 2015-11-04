@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.util.Locale;
 
+import org.apache.commons.io.IOUtils;
 import org.junit.Assert;
 import org.junit.Before;
 import org.slf4j.Logger;
@@ -19,6 +20,7 @@ import com.itextpdf.text.pdf.parser.PdfReaderContentParser;
 import com.itextpdf.text.pdf.parser.SimpleTextExtractionStrategy;
 import com.itextpdf.text.pdf.parser.TextExtractionStrategy;
 
+import net.sf.ahtutils.interfaces.controller.report.UtilsXlsReport;
 import net.sf.ahtutils.report.exception.ReportException;
 import net.sf.ahtutils.xml.report.Info;
 import net.sf.ahtutils.xml.report.Report;
@@ -141,4 +143,9 @@ public class AbstractAhtUtilsReportTst
 	{
 		Assert.assertEquals("actual XML differes from expected XML",JaxbUtil.toString(expected),JaxbUtil.toString(actual));
 	}
+	
+	protected void outputXls(UtilsXlsReport report) throws FileNotFoundException, IOException, Exception
+    {
+    	IOUtils.copy(report.xlsStream(), new FileOutputStream(new File(fTarget,report.xlsFileName())));
+    }
 }
