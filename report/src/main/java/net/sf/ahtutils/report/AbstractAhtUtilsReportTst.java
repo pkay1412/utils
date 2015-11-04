@@ -11,6 +11,7 @@ import java.util.Locale;
 import org.apache.commons.io.IOUtils;
 import org.junit.Assert;
 import org.junit.Before;
+import org.junit.BeforeClass;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.w3c.dom.Document;
@@ -63,6 +64,21 @@ public class AbstractAhtUtilsReportTst
     protected static String loggerConfigFile;
     protected static String loggerConfigPath;
 	
+    @BeforeClass
+	public static void initTargetDirectory()
+	{
+		if(fTarget==null)
+		{
+			String dirTarget = System.getProperty("targetDir");
+			if(dirTarget==null){dirTarget="target";}
+			setfTarget(new File(dirTarget));
+			if(LoggerInit.isLog4jInited())
+			{
+				logger.debug("Using targeDir "+fTarget.getAbsolutePath());
+			}
+		}
+	}
+    
 	public static void initFile()
 	{
 		if(!LoggerInit.isLog4jInited()){initLogger();}
