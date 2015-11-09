@@ -38,7 +38,8 @@ public class XmlMailSender
 	private String smtpHost,smtpUser,smtpPassword;
 	private int smtpPort;
 	
-	private boolean tlsPwd,smtpDebug;
+	private boolean tlsPwd,plainPwd;
+	private boolean smtpDebug;
 	
 	private FreemarkerEngine fme;
 	private List<EmailAddress> alwaysBcc;
@@ -61,8 +62,14 @@ public class XmlMailSender
 		this.smtpPort=smtpPort;
 		alwaysBcc = new ArrayList<EmailAddress>();
 		overrideOnlyTo = null;
+		
 		tlsPwd = false;
+		plainPwd = false;
 		smtpDebug = false;
+		
+		smtpUser=null;
+		smtpPassword=null;
+		
 		nsMail = Namespace.getNamespace("http://ahtutils.aht-group.com/mail");
 	}
 	
@@ -71,6 +78,13 @@ public class XmlMailSender
 		this.smtpUser=smtpUser;
 		this.smtpPassword=smtpPassword;
 		tlsPwd = true;
+	}
+	
+	public void plainPasswordAuthentication(String smtpUser, String smtpPassword)
+	{
+		this.smtpUser=smtpUser;
+		this.smtpPassword=smtpPassword;
+		plainPwd = true;
 	}
 	
 	private Session buildSession()
@@ -87,6 +101,24 @@ public class XmlMailSender
 			props.put("mail.smtp.auth", "true");
 			props.put("mail.smtp.starttls.enable", "true");
 			props.put("mail.smtp.tls", "true");
+			props.put("mail.smtp.user", smtpUser);
+			props.put("mail.password", smtpPassword);
+			
+			Authenticator auth = new Authenticator()
+			{
+				@Override public PasswordAuthentication getPasswordAuthentication()
+				{
+					return new PasswordAuthentication(smtpUser,smtpPassword);
+				}
+			};
+			session = Session.getInstance(props, auth);
+		}
+		else if(plainPwd)
+		{
+			props.put("mail.transport.protocol","smtp");
+			props.put("mail.smtp.auth", "true");
+//			props.put("mail.smtp.starttls.enable", "true");
+//			props.put("mail.smtp.tls", "true");
 			props.put("mail.smtp.user", smtpUser);
 			props.put("mail.password", smtpPassword);
 			
@@ -221,4 +253,11 @@ public class XmlMailSender
 	}
 	
 	public void setSmtpDebug(boolean smtpDebug) {this.smtpDebug = smtpDebug;}
+	
+	public void debugSettings()
+	{
+		logger.info("Host: "+smtpHost);
+		logger.info("User: "+smtpUser);
+		logger.info("Pwd: "+smtpPassword);
+	}
 }
