@@ -323,7 +323,7 @@ fi</ofx:raw>
 			
 			<ofx:paragraph lang="en" version="1">
                             The next step is to configure the service with the shown script below. 
-                            Copy this script to your clipboard and past it into the VI terminal and save your configuration.
+                            Copy this script to your clipboard and past it into the \gls{c28} terminal and save your configuration.
                             Verify your installation with of the JBoss Application Server by starting and stopping it
                             (monitor this events with the log terminal).
                             Use the commands "/etc/init.d/jboss {start|stop|log}" to perform this test.

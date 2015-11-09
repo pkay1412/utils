@@ -35,8 +35,8 @@
 	
 		<ofx:paragraph lang="en">
 			Get the 64 bit version of Java JDK (jdk-7u79-linux-x64.tar.gz) from
-			
-			http://www.oracle.com/technetwork/java/javase/downloads/index.html
+
+            <text:emphasis style="typewriter">http://www.oracle.com/technetwork/java/javase/downloads/index.html</text:emphasis>
 		</ofx:paragraph>
 		<ofx:paragraph lang="de">
 			Das Java JDK (jdk-7u79-linux-x64.tar.gz) in der 64 bit version kann hier heruntergelanden werden

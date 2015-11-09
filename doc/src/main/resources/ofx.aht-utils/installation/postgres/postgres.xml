@@ -80,7 +80,7 @@ listen_addresses = '*'</ofx:raw>
 	
 	
 	<ofx:section>
-		<ofx:title lang="en">Database Optimization</ofx:title>
+		<ofx:title lang="en">Database Optimisation</ofx:title>
 		
 		<ofx:paragraph lang="en">
 			The owners of some pre-defined tables have to be changed to match the owner of the database:

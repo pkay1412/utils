@@ -9,13 +9,13 @@
 	<ofx:title lang="en">Secure Copy Protocol (SCP)</ofx:title>
 	
 	<ofx:paragraph lang="en" version="1">
-		The SCP protocol is a network protocol, which supports file transfers between hosts on a network.
+		The \acrshort{scp} is a network protocol, which supports file transfers between hosts on a network.
 		SCP uses Secure Shell (SSH) for data transfer and uses the same mechanisms for authentication,
 		thereby ensuring the authenticity and confidentiality of the data in transit.
 		A client can send (upload) files to a server,
 		optionally including their basic attributes (permissions, timestamps).
 		Clients can also request files or directories from a server (download).
-		SCP runs over TCP port 22 by default. Like RCP, there is no RFC that defines the specifics of the protocol.
+		SCP runs over \acrshort{tcp} port 22 by default. Like \acrshort{rcp}, there is no \acrshort{rfc} that defines the specifics of the protocol.
 	</ofx:paragraph>
 	
 	<ofx:paragraph lang="en" version="1">

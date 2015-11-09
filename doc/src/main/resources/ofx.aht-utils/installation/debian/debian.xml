@@ -25,10 +25,10 @@
 		There is a huge variety of installation methods to choose from.
 		A very convenient one is using the minimum installation CD. 
 		You can download the disk image for your architecture (mostly i386 for older 32-bit machines 
-		and amd64 for newer 64-bit CPUs like Intel Core processors and above) from <text:emphasis bold="true">http://www.debian.org/distrib/netinst</text:emphasis>.
+		and amd64 for newer 64-bit CPUs like Intel Core processors and above) from <text:emphasis style="typewriter">http://www.debian.org/distrib/netinst</text:emphasis>.
 		Then the image needs to be written to a CD or DVD.
-		The Ubuntu project offers HowTos for all common operating systems like Microsoft Windows, Apple Mac OS X and Linux 
-		on how to actually burn this image to the disk at <text:emphasis bold="true">https://help.ubuntu.com/community/BurningIsoHowto</text:emphasis>.
+		The Ubuntu project offers HowTos for all common operating systems like <text:emphasis bold="true">Microsoft Windows</text:emphasis>, <text:emphasis bold="true">Apple Mac OS X</text:emphasis> and <text:emphasis bold="true">Linux</text:emphasis>
+		on how to actually burn this image to the disk at <text:emphasis style="typewriter">https://help.ubuntu.com/community/BurningIsoHowto</text:emphasis>.
 		Once the CD or DVD has been prepared, the computer needs to be booted from the optical disk drive and the (non-graphical) installer
 		should be selected from the boot screen.
 		The Debian installer then guides you through the complete setup process. 

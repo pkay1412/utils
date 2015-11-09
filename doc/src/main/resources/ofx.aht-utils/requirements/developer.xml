@@ -11,7 +11,7 @@
 	    
 	    <l:item>
 	    	<ofx:paragraph lang="en">
-				Design and implementation of 3 Tier solutions using Java and JavaEE
+				Design and implementation of 3 Tier solutions using \textbf{Java} and \textbf{JavaEE}
 			</ofx:paragraph>
 	    </l:item>
 	    
@@ -23,25 +23,25 @@
 	    
 	   	<l:item>
 	    	<ofx:paragraph lang="en">
-				Good skills and experiences in Java
+				Good skills and experiences in \textbf{Java}
 			</ofx:paragraph>
 	    </l:item>
 	    
 	  	<l:item>
 	    	<ofx:paragraph lang="en">
-				Knowledge of Web Application Development using Java/JavaEE and JSF
+				Knowledge of Web Application Development using \textbf{Java/JavaEE} and \textbf{\acrshort{jsf}}
 			</ofx:paragraph>
 	    </l:item>
 	    
 	    <l:item>
 	    	<ofx:paragraph lang="en">
-				Knowledge of XML technology, e.g. JAXP, JAXB
+				Knowledge of XML technology, e.g. \textbf{\acrshort{jaxp}}, \textbf{\acrshort{jaxb}}
 			</ofx:paragraph>
 	    </l:item>
 	    
 	    <l:item>
 	    	<ofx:paragraph lang="en">
-				Knowledge of Jasper Reports
+				Knowledge of \textbf{Jasper} Reports
 			</ofx:paragraph>
 	    </l:item>
 	    

@@ -54,7 +54,7 @@
 	    
 	    <l:item>
 	    	<ofx:paragraph lang="en">
-				Install, configure and maintain applications such as MySQL, JBoss AS and/or GeoServer.
+				Install, configure and maintain applications such as\textbf{MySQL}, \textbf{JBoss AS} and/or \textbf{GeoServer}.
 			</ofx:paragraph>
 	    </l:item>
 	    
@@ -84,26 +84,26 @@
 	    
 	   	<l:item>
 	    	<ofx:paragraph lang="en">
-				Configure and maintain Microsoft Windows Server. 
+				Configure and maintain \textbf{Microsoft Windows Server}.
 			</ofx:paragraph>
 	    </l:item>
 	    
 	   	<l:item>
 	    	<ofx:paragraph lang="en">
-				Manage Microsoft Active Directory with users, groups and roles.
+				Manage \textbf{Microsoft Active Directory} with users, groups and roles.
 			</ofx:paragraph>
 	    </l:item>
 	    
 	    <l:item>
 	    	<ofx:paragraph lang="en">
-				Configure and maintain Microsoft Windows client version.
+				Configure and maintain \textbf{Microsoft Windows} client version.
 				Integration into Windows domain.
 			</ofx:paragraph>
 	    </l:item>
 	    
 	    <l:item>
 	    	<ofx:paragraph lang="en">
-				User support for Microsoft Windows and Microsoft Office.
+				User support for \textbf{Microsoft Windows} and \textbf{Microsoft Office}.
 			</ofx:paragraph>
 	    </l:item>
 	    
