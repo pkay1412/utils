@@ -218,7 +218,7 @@
 	                    <ofx:paragraph>New</ofx:paragraph>
 	                </table:cell>
 	                <table:cell>
-	                    <ofx:paragraph>Indicates that the element is new and currently not saved to the database.</ofx:paragraph>
+	                    <ofx:paragraph>Indicates that an element is new and currently not saved to the database.</ofx:paragraph>
 	                </table:cell>
 	            </table:row>
 	            
@@ -231,7 +231,7 @@
 	                </table:cell>
 	                <table:cell><ofx:paragraph>Favourite</ofx:paragraph></table:cell>
 	                <table:cell>
-	                    <ofx:paragraph>Indicates, that the current element is marked as a favourite item.</ofx:paragraph>
+	                    <ofx:paragraph>Indicates, that an current element has been marked as a favourite item.</ofx:paragraph>
 	                </table:cell>
 	            </table:row>
 	            <table:row>
@@ -243,7 +243,7 @@
 	                </table:cell>
 	                <table:cell><ofx:paragraph>Selection</ofx:paragraph></table:cell>
 	                <table:cell>
-	                    <ofx:paragraph>Indicates, that the current element is selected.</ofx:paragraph>
+	                    <ofx:paragraph>Indicates, that an current element has been selected.</ofx:paragraph>
 	                </table:cell>
 	            </table:row>
 	            <table:row>

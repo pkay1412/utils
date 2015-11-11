@@ -8,8 +8,8 @@
 		id="section.user.ui.approval.introduction" >
 	
 	<ofx:paragraph lang="en">
-		The process of approval is available by clicking a button in the respective panel.
-		Depending on the state of the actual approval process the button adopts one of three shapes as shown in Table
+		The approval process can be tracked by clicking on a button in a given panel.
+		Depending on the state of the approval process the button adopts one of three shapes shown in Table
 		<ofx:reference target="section.user.ui.buttons"/>.
 	</ofx:paragraph>
 	
