@@ -9,8 +9,9 @@
 	<ofx:title lang="en">Revisions</ofx:title>
 	
 	<ofx:paragraph lang="en">
-		All users will regularly carry out revisions. This will simply happen by <text:emphasis italic="true">adding</text:emphasis>, <text:emphasis italic="true">modifying</text:emphasis> or <text:emphasis italic="true">deleting</text:emphasis> data.
-		The <text:emphasis bold="true">MEIS</text:emphasis> will add a global revision number to all changes. The revision number is completed with a time stamp and the name of the user who has performed the action.
+        Revisions are changes to data objects in the system. This includes the <text:emphasis italic="true">creation</text:emphasis>, <text:emphasis italic="true">modification</text:emphasis> and <text:emphasis italic="true">deletion</text:emphasis> of these objects.
+        All of these changes are stored in the system with a global revision
+        number together with the time stamp and the user who has performed the action.
         Table <ofx:reference target="table.user.ui.icons"/> explains the symbols used in the context of revisions.
 	</ofx:paragraph>
 	
