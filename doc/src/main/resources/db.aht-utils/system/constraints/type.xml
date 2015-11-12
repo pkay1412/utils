@@ -75,7 +75,7 @@
         <us:descriptions>
             <us:description key="de">Vorbedingung</us:description>
             <us:description key="fr">Precondition</us:description>
-            <us:description key="en">A specific precondition is checked before data are saved.</us:description>
+            <us:description key="en">A specific precondition is checked before data is saved.</us:description>
         </us:descriptions>
     </us:status>
 	<us:status code="rmIntegrity" position="5">
@@ -87,7 +87,7 @@
         <us:descriptions>
             <us:description key="de">Vorbedingung</us:description>
             <us:description key="fr">Precondition</us:description>
-            <us:description key="en">The element cannot be deleted if it's still in use somewhere else. This would violate the referential integrity and the system prevents such violations.</us:description>
+            <us:description key="en">The item cannot be deleted if it's still in use somewhere else. This would violate the referential integrity and the system prevents such violations.</us:description>
         </us:descriptions>
     </us:status>
 </aht:aht>

@@ -28,7 +28,7 @@
 	    	<ofx:paragraph lang="en">
 				reset.css: The goal of a reset stylesheet is to reduce browser inconsistencies in things like default line heights, margins and font sizes of headings, and so on.
 				The reset styles given here are intentionally very generic.
-				There isn't any default color or background set for the body element, for example.
+				There isn't any default color or background set for the body, for example.
 			</ofx:paragraph>
 	    </l:item>
 	    

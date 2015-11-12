@@ -42,7 +42,7 @@
 	                </table:cell>
 	                <table:cell><ofx:paragraph>Revision</ofx:paragraph></table:cell>
 	                <table:cell>
-	                    <ofx:paragraph>Shows the latest revision of a selected item and toggles the revision list for this element.</ofx:paragraph>
+	                    <ofx:paragraph>Shows the latest revision of a selected item and toggles the revision list for it.</ofx:paragraph>
 	                </table:cell>
 	            </table:row>
 	            <table:row>

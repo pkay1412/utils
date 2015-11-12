@@ -116,7 +116,7 @@
 		is done by the developer on the basis of the functional requirements of the system.
 		The definition of restricted user interactions (<text:emphasis italic="true">Actions</text:emphasis>) is tightly coupled
 		with business processes (also represented in the page flow) and derived from functional and non-functional requirements and
-		has corresponding visual elements like buttons, filters or tables. Additionally to the elements itself the
+		has corresponding visual components like buttons, filters or tables. Additionally to the components itself the
 		<text:emphasis italic="true">content</text:emphasis> (e.g. of tables) can be different based on different access rights.
 		The <text:emphasis italic="true">Use Cases</text:emphasis> are a convenient way to aggregate different
 		<text:emphasis italic="true">Views</text:emphasis> and <text:emphasis italic="true">Actions</text:emphasis> and assign
