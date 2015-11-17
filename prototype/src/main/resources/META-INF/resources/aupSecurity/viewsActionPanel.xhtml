@@ -16,8 +16,8 @@
 	<composite:implementation>
 		<p:panel header="#{msg.aupSecurityAction}" styleClass="auPanelWithGrid">
 			<f:facet name="actions">
-				<aht:icon type="delete" listener="#{adminSecurityViewsBean.rmAction()}" update=":sActions"/>
-				<aht:icon type="save" listener="#{adminSecurityViewsBean.saveAction()}" update=":sActions"/>
+				<aht:icon type="delete" listener="#{adminSecurityViewsBean.rmAction()}" update=":sActions" tooltip="#{msg.ttDelete}"/>
+				<aht:icon type="save" listener="#{adminSecurityViewsBean.saveAction()}" update=":sActions" tooltip="#{msg.ttSave}"/>
 			</f:facet>
 			<h:panelGrid columns="2" columnClasses="col1,col2" styleClass="auCleanPanelGrid">
 				<p:outputLabel value="#{msg.aupSecurityCode}"/>

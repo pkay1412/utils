@@ -11,7 +11,9 @@
 	</composite:interface>
 
 	<composite:implementation>
-		<h:graphicImage rendered="#{not empty cc.attrs.value and cc.attrs.value}" name="12/ui/mark/check.png" library="ahtutilsGfx"/>
-		<h:graphicImage rendered="#{not empty cc.attrs.value and !cc.attrs.value}" name="12/ui/mark/x.png" library="ahtutilsGfx"/>
-	</composite:implementation>
+		<h:graphicImage id="check" rendered="#{not empty cc.attrs.value and cc.attrs.value}" name="12/ui/mark/check.png" library="ahtutilsGfx"/>
+        <p:tooltip for="check" value="#{msg.ttCheck}"/>
+		<h:graphicImage id="NotCheck" rendered="#{not empty cc.attrs.value and !cc.attrs.value}" name="12/ui/mark/x.png" library="ahtutilsGfx"/>
+        <p:tooltip for="NotCheck" value="#{msg.ttUnCheck}"/>
+    </composite:implementation>
 </html>

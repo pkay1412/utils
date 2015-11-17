@@ -17,7 +17,7 @@
 							selection="#{trafficLightsBean.trafficLight}" selectionMode="single" rowKey="#{trafficLight.id}">
 			<f:facet name="header">
 				<aht:pfDataTableHeader title="#{msg.aupTrafficLights}">
-					<aht:icon type="aupAdd" listener="#{trafficLightsBean.addTrafficLight()}" update=":sLight"/>
+					<aht:icon type="aupAdd" listener="#{trafficLightsBean.addTrafficLight()}" update=":sLight" tooltip="#{msg.ttNew}"/>
 				</aht:pfDataTableHeader>
 			</f:facet>
 			<p:ajax event="rowSelect" update=":sLight" listener="#{trafficLightsBean.selectTrafficLight()}"/>

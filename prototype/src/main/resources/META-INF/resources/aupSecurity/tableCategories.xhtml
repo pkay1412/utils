@@ -13,6 +13,7 @@
 		<composite:attribute name="bean" required="true"/>
 		<composite:attribute name="update" required="true"/>
 		<composite:attribute name="withAdd" required="false" default="false"/>
+        <composite:attribute name="tooltip" required="false" default="#{msg.ttNew}"/>
 	</composite:interface>
 	
 	<composite:implementation>
@@ -20,7 +21,7 @@
 			selection="#{cc.attrs.bean.category}" selectionMode="single" rowKey="#{c.id}">
 			<f:facet name="header">
 				<aht:pfDataTableHeader title="#{msg.aupSecurityCategories}">
-					<aht:icon rendered="#{cc.attrs.withAdd}" type="add" listener="#{cc.attrs.bean.addCategory()}" update="#{cc.attrs.update}"/>
+					<aht:icon rendered="#{cc.attrs.withAdd}" type="add" listener="#{cc.attrs.bean.addCategory()}" update="#{cc.attrs.update}" tooltip="#{cc.attrs.tooltip}"/>
 				</aht:pfDataTableHeader>
 			</f:facet>
 			<p:ajax event="rowReorder" listener="#{cc.attrs.bean.reorderCategories()}" update="@form"/>

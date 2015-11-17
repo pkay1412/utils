@@ -12,6 +12,7 @@
 	<composite:interface>
 		<composite:attribute name="bean" required="true"/>
 		<composite:attribute name="update" required="true"/>
+        <composite:attribute name="tooltip" required="false" default="#{msg.ttNew}"/>
 	</composite:interface>
 	
 	<composite:implementation>
@@ -20,7 +21,7 @@
 			selection="#{cc.attrs.bean.usecase}" selectionMode="single" rowKey="#{u.id}">
 			<f:facet name="header">
 				<aht:pfDataTableHeader title="#{msg.aupSecurityUsecases}">
-					<aht:icon type="add" listener="#{cc.attrs.bean.addUsecase()}" update="#{cc.attrs.update}"/>
+					<aht:icon type="add" listener="#{cc.attrs.bean.addUsecase()}" update="#{cc.attrs.update}" tooltip="#{cc.attrs.tooltip}"/>
 				</aht:pfDataTableHeader>
 			</f:facet>
 			<p:ajax event="rowSelect" update="#{cc.attrs.update}" listener="#{cc.attrs.bean.selectUsecase}"/>

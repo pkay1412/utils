@@ -72,4 +72,11 @@
     		<s:lang key="fr" translation="Delay"/>
     	</s:langs>
     </s:translation>
+    <s:translation key="aupDateTo">
+        <s:langs>
+            <s:lang key="de" translation="Bis"/>
+            <s:lang key="en" translation="To"/>
+            <s:lang key="fr" translation="To"/>
+        </s:langs>
+    </s:translation>
 </s:translations>

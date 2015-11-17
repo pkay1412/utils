@@ -18,7 +18,7 @@
 	          <f:facet name="header">
 	          	<aht:pfDataTableHeader title="#{msg[cc.attrs.bean.category.code]}">
 	          		<aht:icon rendered="#{cc.attrs.bean.allowAdditionalElements[cc.attrs.bean.category.id]}"
-	          					type="add" listener="#{cc.attrs.bean.add()}" update="#{cc.attrs.update}"/>
+	          					type="add" listener="#{cc.attrs.bean.add()}" update="#{cc.attrs.update}" tooltip="#{msg.ttNew}"/>
 	          	</aht:pfDataTableHeader>
 	          </f:facet>
 	          <p:ajax event="rowSelect" listener="#{cc.attrs.bean.selectStatus}" update="#{cc.attrs.update}"/>

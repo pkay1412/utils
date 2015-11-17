@@ -15,8 +15,8 @@
 		<p:panel header="#{msg.Details}" styleClass="auPanelWithGrid"
 							rendered="#{not empty trafficLightsBean.trafficLight}">
 							<f:facet name="actions">
-									<aht:icon type="aupSave" listener="#{trafficLightsBean.save()}" update=":grid"/>
-									<aht:icon type="aupDelete" ejb="#{trafficLightsBean.trafficLight}" listener="#{trafficLightsBean.rm()}" update=":grid"/>
+									<aht:icon type="aupSave" listener="#{trafficLightsBean.save()}" update=":grid" tooltip="#{msg.ttSave}"/>
+									<aht:icon type="aupDelete" ejb="#{trafficLightsBean.trafficLight}" listener="#{trafficLightsBean.rm()}" update=":grid" tooltip="#{msg.ttDelete}"/>
 									
 							</f:facet>
 							<p:panelGrid columns="2" columnClasses="col1, col2" >

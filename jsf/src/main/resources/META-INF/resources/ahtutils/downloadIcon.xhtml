@@ -12,13 +12,15 @@
 		<composite:attribute name="value"      required="true"/>
 		<composite:attribute name="type"       required="true"/>
 		<composite:attribute name="onclick"    required="false"/>
+        <composite:attribute name="tooltip"    required="false" default=""/>
 		
 	</composite:interface>
 
 	<composite:implementation>
-		<p:commandLink rendered="#{cc.attrs.disabled}" ajax="false" onclick="#{cc.attrs.onclick}" icon="ui-icon-arrowthick-1-s">
-			<h:graphicImage styleClass="#{cc.attrs.styleClass}" library="gfx" name="#{iconBean.icon12[cc.attrs.type]}"/>
+		<p:commandLink rendered="#{cc.attrs.disabled}" ajax="false" onclick="#{cc.attrs.onclick} PF('#{cc.clientId}-toolTip').hide();" icon="ui-icon-arrowthick-1-s">
+			<h:graphicImage id="downloadIcon" styleClass="#{cc.attrs.styleClass}" library="gfx" name="#{iconBean.icon12[cc.attrs.type]}"/>
 			<p:fileDownload value="#{cc.attrs.value}" />
+            <p:tooltip widgetVar="#{cc.clientId}-toolTip" for="downloadIcon" value="#{cc.attrs.tooltip}" />
 		</p:commandLink>
 	</composite:implementation>
 </html>
