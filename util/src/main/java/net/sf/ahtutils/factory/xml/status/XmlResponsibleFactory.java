@@ -1,12 +1,13 @@
 package net.sf.ahtutils.factory.xml.status;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import net.sf.ahtutils.interfaces.model.status.UtilsDescription;
 import net.sf.ahtutils.interfaces.model.status.UtilsLang;
 import net.sf.ahtutils.interfaces.model.status.UtilsStatus;
 import net.sf.ahtutils.xml.status.Responsible;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import net.sf.ahtutils.xml.status.Status;
 
 public class XmlResponsibleFactory
 {
@@ -75,6 +76,15 @@ public class XmlResponsibleFactory
 		Responsible xml = new Responsible();
 		xml.setCode(code);
 		xml.setLabel(label);
+		return xml;
+	}
+	
+	public static Responsible build(Status status)
+	{
+		Responsible xml = new Responsible();
+		xml.setCode(status.getCode());
+		xml.setDescriptions(status.getDescriptions());
+		xml.setLangs(status.getLangs());
 		return xml;
 	}
 }

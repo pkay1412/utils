@@ -7,6 +7,7 @@ import net.sf.ahtutils.interfaces.model.status.UtilsDescription;
 import net.sf.ahtutils.interfaces.model.status.UtilsLang;
 import net.sf.ahtutils.interfaces.model.status.UtilsStatus;
 import net.sf.ahtutils.xml.status.Phase;
+import net.sf.ahtutils.xml.status.Status;
 
 public class XmlPhaseFactory
 {
@@ -75,6 +76,15 @@ public class XmlPhaseFactory
 		Phase xml = new Phase();
 		xml.setCode(code);
 		xml.setLabel(label);
+		return xml;
+	}
+	
+	public static Phase build(Status status)
+	{
+		Phase xml = new Phase();
+		xml.setCode(status.getCode());
+		xml.setDescriptions(status.getDescriptions());
+		xml.setLangs(status.getLangs());
 		return xml;
 	}
 }
