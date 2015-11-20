@@ -6,6 +6,7 @@ import org.slf4j.LoggerFactory;
 import net.sf.ahtutils.interfaces.model.status.UtilsDescription;
 import net.sf.ahtutils.interfaces.model.status.UtilsLang;
 import net.sf.ahtutils.interfaces.model.status.UtilsStatus;
+import net.sf.ahtutils.xml.status.Status;
 import net.sf.ahtutils.xml.status.SubPhase;
 
 public class XmlSubPhaseFactory
@@ -74,6 +75,15 @@ public class XmlSubPhaseFactory
 		SubPhase xml = new SubPhase();
 		xml.setCode(code);
 		xml.setLabel(label);
+		return xml;
+	}
+	
+	public static SubPhase build(Status status)
+	{
+		SubPhase xml = new SubPhase();
+		xml.setCode(status.getCode());
+		xml.setDescriptions(status.getDescriptions());
+		xml.setLangs(status.getLangs());
 		return xml;
 	}
 }

@@ -31,7 +31,7 @@ public class UtilsMailTestBootstrap
 		ConfigLoader.add(configFile);
 		try
 		{
-			String cfn = ExlpCentralConfigPointer.getFile("ahtutils","mail.test").getAbsolutePath();
+			String cfn = ExlpCentralConfigPointer.getFile("utils","mail").getAbsolutePath();
 			ConfigLoader.add(cfn);
 			logger.info("Using additional config in: "+cfn );
 		}

@@ -24,12 +24,18 @@ public class CliSmtpMailSender
 	final static Logger logger = LoggerFactory.getLogger(CliSmtpMailSender.class);
 	
 	private String smtpHost,smtpUser,smtpPassword;
+	private String smtpFrom,smtpTo;
 	private int smtpPort;
 	
-	public CliSmtpMailSender(String smtpHost,int smtpPort)
+	private Session session;
+	
+	public CliSmtpMailSender(Configuration config)
 	{
-		this.smtpHost=smtpHost;
-		this.smtpPort=smtpPort;
+		this.smtpHost=config.getString(ConfigKey.netSmtpHost);
+		this.smtpPort=config.getInt(ConfigKey.netSmtpPort);
+		
+		smtpFrom = config.getString("net.smtp.test.from");
+		smtpTo = config.getString("net.smtp.test.to");
 	}
 	
 	public void authenticate(String smtpUser,String smtpPassword)
@@ -38,36 +44,49 @@ public class CliSmtpMailSender
 		this.smtpPassword=smtpPassword;
 	}
 	
-	public void send(String from, String to) throws MessagingException, UnsupportedEncodingException
+	public void plainSession()
 	{
 		Properties props = System.getProperties();
+        
+		props.put("mail.smtp.host", smtpHost);
+		props.put("mail.smtp.port", smtpPort);
          
-         props.put("mail.smtp.host", smtpHost);
-         props.put("mail.smtp.port", smtpPort);
+		props.put("mail.transport.protocol","smtp");
          
-         props.put("mail.transport.protocol","smtp");
-         props.put("mail.smtp.auth", "true");
-         props.put("mail.smtp.starttls.enable", "true");
-         props.put("mail.smtp.tls", "true");
-         props.put("mail.smtp.user", smtpUser);
-         props.put("mail.password", smtpPassword);
+		session = Session.getDefaultInstance(props); 
          
-         props.put("mail.debug","true");
- 
-         Authenticator auth = new Authenticator()
-         {
-             @Override public PasswordAuthentication getPasswordAuthentication()
-             {
-            	 return new PasswordAuthentication(smtpUser,smtpPassword);
-             }
-         };
-             
-        Session session = Session.getDefaultInstance(props, auth);
 		session.setDebug(true);
-		
+	}
+	
+	public void tlsSession()
+	{
+		Properties props = System.getProperties();
+		props.put("mail.smtp.auth", "true");
+        props.put("mail.smtp.starttls.enable", "true");
+        props.put("mail.smtp.tls", "true");
+        props.put("mail.smtp.user", smtpUser);
+        props.put("mail.password", smtpPassword);
+        
+        props.put("mail.debug","true");
+
+        Authenticator auth = new Authenticator()
+        {
+            @Override public PasswordAuthentication getPasswordAuthentication()
+            {
+           	 return new PasswordAuthentication(smtpUser,smtpPassword);
+            }
+        };
+            
+       session = Session.getDefaultInstance(props, auth);
+	}
+	
+	
+	
+	public void plain() throws MessagingException, UnsupportedEncodingException
+	{
 		MimeMessage msg = new MimeMessage(session);
-		msg.setFrom(new InternetAddress(from));
-		msg.setRecipient(RecipientType.TO, new InternetAddress(to));
+		msg.setFrom(new InternetAddress(smtpFrom));
+		msg.setRecipient(RecipientType.TO, new InternetAddress(smtpTo));
 		
 		msg.setSubject("It works!");
         msg.setText("body");
@@ -80,8 +99,12 @@ public class CliSmtpMailSender
 	{
 		Configuration config = UtilsMailTestBootstrap.init();
 
-		CliSmtpMailSender cli = new CliSmtpMailSender(config.getString(ConfigKey.netSmtpHost),config.getInt(ConfigKey.netSmtpPort));
-		cli.authenticate(config.getString(ConfigKey.netSmtpUser), config.getString(ConfigKey.netSmtpPwd));
-		cli.send(config.getString("net.smtp.test.from"),config.getString("net.smtp.test.to"));
+		CliSmtpMailSender cli = new CliSmtpMailSender(config);
+		cli.plainSession();
+//		cli.authenticate(config.getString(ConfigKey.netSmtpUser), config.getString(ConfigKey.netSmtpPwd));
+		for(int i=0;i<1;i++)
+		{
+			cli.plain();
+		}
 	}
 }
