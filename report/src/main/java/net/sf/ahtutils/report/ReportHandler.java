@@ -194,15 +194,18 @@ public class ReportHandler {
 		{
 			for (Media media : report.getMedia())
 			{
-				for (Jr jasperReport : media.getJr())
+				if (media.getType().equals("pdf"))
 				{
-					String filename     = jasperReport.getType() +jasperReport.getName() +".jrxml";
-					String fileLocation = "jrxml/" +report.getDir() +"/" +media.getType() +"/" +filename;
-					try {
-						mrl.searchIs(fileLocation);
-					} catch (FileNotFoundException e1) {
-						missingReports.add(fileLocation);
-						logger.warn("File not found!" +e1.getMessage());
+					for (Jr jasperReport : media.getJr())
+					{
+						String filename     = jasperReport.getType() +jasperReport.getName() +".jrxml";
+						String fileLocation = "jrxml/" +report.getDir() +"/" +media.getType() +"/" +filename;
+						try {
+							mrl.searchIs(fileLocation);
+						} catch (FileNotFoundException e1) {
+							missingReports.add(fileLocation);
+							logger.warn("File not found!" +e1.getMessage());
+						}
 					}
 				}
 			}

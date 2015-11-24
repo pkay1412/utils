@@ -135,37 +135,41 @@ public class ReportCompiler
  			logger.info("Report: "+report.getId() +" (" +report.getMedia().size() + " media outputs)");
  			for (Media media : report.getMedia())
  			{
- 				compiledCounter[1]++;
- 				logger.info("Compiling " +media.getJr().size() +" reports for output -" +media.getType() +"-");
- 				for (Jr jr : media.getJr())
- 				{
- 					compiledCounter[2]++;
- 					logger.info(jr.getName());
- 					//Compiling for left to right and right to left languages
- 					String jrxml  = reportRoot +"/" +"jrxml"  +"/" +report.getDir() +"/" + media.getType() + "/" + jr.getType() + jr.getName() +".jrxml";
- 					if(report.isSetLtr() && report.isLtr())
- 					{
-	 					String jasperLtr = targetDir +"/" +"jasper" +"/" +report.getDir() +"/" + media.getType() + "/ltr/" + jr.getType() + jr.getName() +".jasper";
-	 					logger.info("Compiling LTR " +jrxml +" to " +jasperLtr);
-	 					new File(targetDir +"/" +"jasper"  +"/" +report.getDir() +"/" + media.getType() + "/ltr/").mkdirs();
-	 					compileReport(jrxml, jasperLtr);
- 					}
- 					
- 					if(report.isSetRtl() && report.isRtl())
- 					{	
- 						String jasperRtl = targetDir +"/" +"jasper" +"/" +report.getDir() +"/" + media.getType() + "/rtl/" + jr.getType() + jr.getName() +".jasper";
- 						logger.info("Compiling RTL " +jrxml +" to " +jasperRtl);
- 	
- 	 					new File(targetDir +"/" +"jasper"  +"/" +report.getDir() +"/" + media.getType() + "/rtl/").mkdirs();
- 	 					InputStream in = null;
- 	 					try {
- 	 						in = ReportUtilRtl.LeftToRightConversion(jrxml);
- 	 					} catch (JDOMException e) {
- 	 						logger.error("Problem converting to right-to-left language.");
- 	 					}
- 	 					compileReport(in, jrxml, jasperRtl);
- 					}
- 				}
+				if (media.getType().equals("pdf"))
+				{
+					compiledCounter[1]++;
+					logger.info("Compiling " +media.getJr().size() +" reports for output -" +media.getType() +"-");
+					for (Jr jr : media.getJr())
+					{
+						compiledCounter[2]++;
+						logger.info(jr.getName());
+						//Compiling for left to right and right to left languages
+						String jrxml  = reportRoot +"/" +"jrxml"  +"/" +report.getDir() +"/" + media.getType() + "/" + jr.getType() + jr.getName() +".jrxml";
+						if(report.isSetLtr() && report.isLtr())
+						{
+							String jasperLtr = targetDir +"/" +"jasper" +"/" +report.getDir() +"/" + media.getType() + "/ltr/" + jr.getType() + jr.getName() +".jasper";
+							logger.info("Compiling LTR " +jrxml +" to " +jasperLtr);
+							new File(targetDir +"/" +"jasper"  +"/" +report.getDir() +"/" + media.getType() + "/ltr/").mkdirs();
+							compileReport(jrxml, jasperLtr);
+						}
+
+						if(report.isSetRtl() && report.isRtl())
+						{	
+							String jasperRtl = targetDir +"/" +"jasper" +"/" +report.getDir() +"/" + media.getType() + "/rtl/" + jr.getType() + jr.getName() +".jasper";
+							logger.info("Compiling RTL " +jrxml +" to " +jasperRtl);
+
+							new File(targetDir +"/" +"jasper"  +"/" +report.getDir() +"/" + media.getType() + "/rtl/").mkdirs();
+							InputStream in = null;
+							try {
+								in = ReportUtilRtl.LeftToRightConversion(jrxml);
+							} catch (JDOMException e) {
+								logger.error("Problem converting to right-to-left language.");
+							}
+							compileReport(in, jrxml, jasperRtl);
+						}
+					}
+				}
+ 				
  			}
  		}
  		return compiledCounter;
