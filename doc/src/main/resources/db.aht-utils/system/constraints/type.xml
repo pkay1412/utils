@@ -12,6 +12,18 @@
             <us:description key="en">This constraint is enforced by the database and requires a non-empty attribute.</us:description>
         </us:descriptions>
     </us:status>
+    <us:status code="unique" position="1">
+        <us:langs>
+            <us:lang key="de" translation="Unique"/>
+            <us:lang key="fr" translation="Unique"/>
+            <us:lang key="en" translation="Unique"/>
+        </us:langs>
+        <us:descriptions>
+            <us:description key="de">TBD</us:description>
+            <us:description key="fr">TBD</us:description>
+            <us:description key="en">The attribute needs to unique for all records.</us:description>
+        </us:descriptions>
+    </us:status>
     <us:status code="selectOne" position="2">
         <us:langs>
             <us:lang key="de" translation="Auswahl"/>

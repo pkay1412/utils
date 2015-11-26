@@ -7,8 +7,16 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
+import org.jgrapht.DirectedGraph;
+import org.jgrapht.alg.DijkstraShortestPath;
+import org.jgrapht.graph.DefaultDirectedGraph;
+import org.jgrapht.graph.DefaultEdge;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import net.sf.ahtutils.controller.factory.xml.navigation.XmlMenuItemFactory;
 import net.sf.ahtutils.exception.ejb.UtilsNotFoundException;
+import net.sf.ahtutils.exception.jsf.UtilsMenuException;
 import net.sf.ahtutils.monitor.ProcessingTimeTracker;
 import net.sf.ahtutils.web.mbean.util.AbstractLogMessage;
 import net.sf.ahtutils.xml.access.Access;
@@ -24,13 +32,6 @@ import net.sf.ahtutils.xml.xpath.NavigationXpath;
 import net.sf.exlp.exception.ExlpXpathNotFoundException;
 import net.sf.exlp.exception.ExlpXpathNotUniqueException;
 import net.sf.exlp.util.xml.JaxbUtil;
-
-import org.jgrapht.DirectedGraph;
-import org.jgrapht.alg.DijkstraShortestPath;
-import org.jgrapht.graph.DefaultDirectedGraph;
-import org.jgrapht.graph.DefaultEdge;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 public class MenuFactory
 {
@@ -404,25 +405,29 @@ public class MenuFactory
 			logger.info("subMenu "+code);
 			JaxbUtil.info(menu);
 		}
-		MenuItem result = new MenuItem();;
-		try
+		MenuItem result = new MenuItem();
+
+		if(code.equals(rootNode))
 		{
-			if(code.equals(rootNode))
+			result.getMenuItem().addAll(menu.getMenuItem());
+		}
+		else
+		{
+			MenuItem myMi = NavigationXpath.getMenuItemSilent(menu, code);
+			if(myMi!=null)
 			{
-				result.getMenuItem().addAll(menu.getMenuItem());
-			}
-			else
-			{
-				MenuItem myMi = NavigationXpath.getMenuItem(menu, code);
 				for(MenuItem miT : myMi.getMenuItem())
 				{
 					MenuItem mi = XmlMenuItemFactory.build(miT);
 					result.getMenuItem().add(mi);
 				}
 			}
+			else
+			{
+				throw new UtilsMenuException("No MenuItem for code:"+code);
+			}
+			
 		}
-		catch (ExlpXpathNotFoundException e) {result = new MenuItem();}
-		catch (ExlpXpathNotUniqueException e) {result = new MenuItem();}
 		return result;
 	}
 	
