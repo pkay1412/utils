@@ -16,7 +16,7 @@
 	</security>
 	<validation>
 		<check-valid-connection-sql>SELECT 1</check-valid-connection-sql>
-		<validate-on-match>false</validate-on-match>
+		<validate-on-match>true</validate-on-match>
 		<background-validation>false</background-validation>
 	</validation>
 </datasource>
