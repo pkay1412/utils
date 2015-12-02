@@ -5,7 +5,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Hashtable;
+import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 
@@ -13,13 +13,11 @@ import javax.imageio.ImageIO;
 
 import org.apache.commons.jxpath.JXPathContext;
 import org.jdom2.Namespace;
-import org.openfuxml.addon.chart.OfxChartRenderer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.w3c.dom.Document;
 
 import net.sf.ahtutils.report.exception.ReportException;
-import net.sf.ahtutils.xml.report.Info;
 import net.sf.ahtutils.xml.report.Jr;
 import net.sf.ahtutils.xml.report.Media;
 import net.sf.ahtutils.xml.report.Report;
@@ -128,8 +126,8 @@ public class ReportHandler {
 	/**
 	 * This class contains methods to work with the elements configured in reports.xml, resources.xml and templates.xml - Additional functionality needs to be implemented in dedicated classes (e.g. working with specific data XML files, report)
 	 * @param reports Reports object
-	 * @param reports Resources object
-	 * @param reports Templates object
+	 * @param resources Resources object
+	 * @param templates Templates object
 	 * @throws ReportException
 	 */
 	public ReportHandler(Reports reports, Resources resources,Templates templates) throws ReportException
@@ -142,7 +140,7 @@ public class ReportHandler {
 
 	/**
 	 * This class contains methods to work with the elements configured in reports.xml, resources.xml and templates.xml - Additional functionality needs to be implemented in dedicated classes (e.g. working with specific data XML files, report)
-	 * @param reportFile Name of the configuration file
+	 * @param reports
 	 * @throws ReportException
 	 */
 	public ReportHandler(Reports reports) throws ReportException
@@ -218,6 +216,11 @@ public class ReportHandler {
 	
 	/**
 	 * Get the master report associated with the given report. The JasperDesign object will be loaded from a .jrxml file. 
+	 * @param id
+	 * @param subreport
+	 * @param format
+	 * @param type
+	 * @return 
 	 * @throws ReportException
 	 */
 	public JasperDesign getReport(String id, String subreport, String format, String type) throws ReportException
@@ -236,8 +239,11 @@ public class ReportHandler {
 			}
 			
 		}
-		catch (ExlpXpathNotFoundException e) {e.printStackTrace();}
-		catch (ExlpXpathNotUniqueException e) {e.printStackTrace();}
+		 catch (ExlpXpathNotFoundException e1) {
+			throw new ReportException("XPath has not been found when trying to find report with id " +id +"! " +e1.getMessage());
+		} catch (ExlpXpathNotUniqueException e2) {
+			throw new ReportException("XPath search found non-unique results when trying to find report with id " +id +"! " +e2.getMessage());
+		}
 		
 		String reportDir = (String)JXPathContext.newContext(reports).getValue("report[@id='"+ id +"']/@dir");
 		String location = "jrxml/" +reportDir +"/" +format +"/" +type +jr.getName() +".jrxml";
@@ -256,6 +262,8 @@ public class ReportHandler {
 	
 	/**
 	 * Compile a JasperDesign to a JasperReport
+	 * @param jasperDesign
+	 * @return 
 	 * @throws ReportException
 	 */
 	@Deprecated
@@ -272,6 +280,11 @@ public class ReportHandler {
 	
 	/**
 	 * Compile a JasperDesign to a JasperReport
+	 * @param reportId
+	 * @param subreport
+	 * @param format
+	 * @param type
+	 * @return 
 	 * @throws ReportException
 	 */
 	public JasperReport getCompiledReport(String reportId, String subreport, String format, String type) throws ReportException
@@ -287,9 +300,9 @@ public class ReportHandler {
 					report = ReportXpath.getMr(reports, reportId, format);
 				}
 		} catch (ExlpXpathNotFoundException e1) {
-			e1.printStackTrace();
+			throw new ReportException("XPath has not been found when trying to find report with id " +reportId +"! " +e1.getMessage());
 		} catch (ExlpXpathNotUniqueException e1) {
-			e1.printStackTrace();
+			throw new ReportException("XPath search found non-unique results when trying to find report with id " +reportId +"! " +e1.getMessage());
 		}
 		String reportDir = (String)JXPathContext.newContext(reports).getValue("report[@id='"+ reportId +"']/@dir");
 		String location = "jasper/" +reportDir +"/" +format +"/ltr/"  +type +report.getName() +".jasper";
@@ -309,12 +322,14 @@ public class ReportHandler {
 	
 	/**
 	 * Get a Map of all standard parameters plus the given locale and the included data XML file 
-	 * @throws ReportException
+	 * @param doc
+	 * @param locale
+	 * @return 
 	 */
 	@Deprecated
 	public Map<String,Object> getParameterMap(Document doc, Locale locale)
 	{	
-		Map<String,Object> mapReportParameter = new Hashtable<String,Object>();
+		Map<String,Object> mapReportParameter = new HashMap<String,Object>();
 		
 		//Set standard parameters
 		mapReportParameter.put(JRXPathQueryExecuterFactory.PARAMETER_XML_DATA_DOCUMENT, doc);
@@ -343,11 +358,11 @@ public class ReportHandler {
                         if (res.getType().equals("template"))
                                 
 				{
-                                    JRTemplate style = null;
+                                    
 					try {
 						String templateLocation = "/resources/templates" +"/" +res.getValue().getValue();
 						logger.info("Including style template resource: " +templateLocation);
-						style = JRXmlTemplateLoader.load(mrl.searchIs(templateLocation));
+						JRTemplate style = JRXmlTemplateLoader.load(mrl.searchIs(templateLocation));
                                                 mapReportParameter.put(res.getName() +"-style", style);
                                         }
 					catch (FileNotFoundException e) {logger.error(e.getMessage());}
@@ -358,7 +373,7 @@ public class ReportHandler {
 		for (Object key : mapReportParameter.keySet())
 		{
 			String keyString = (String) key;
-			String valueString = mapReportParameter.get(key).toString();
+			String valueString = mapReportParameter.get(keyString).toString();
 			logger.info("Report Parameter: " +keyString +" = " +valueString);
 		}
 		return mapReportParameter;
@@ -366,11 +381,13 @@ public class ReportHandler {
 	
 	/**
 	 * Get a Map of all standard parameters plus the given locale and the included data XML file 
-	 * @throws ReportException
+	 * @param doc
+	 * @param locale
+	 * @return 
 	 */
 	public Map<String,Object> getParameterMapJDom(org.jdom2.Document doc, Locale locale)
 	{	
-		Map<String,Object> mapReportParameter = new Hashtable<String,Object>();
+		Map<String,Object> mapReportParameter = new HashMap<String,Object>();
 		
 		//Set standard parameters
 		mapReportParameter.put(JRXPathQueryExecuterFactory.XML_DATE_PATTERN, "yyyy-MM-dd");
@@ -388,24 +405,25 @@ public class ReportHandler {
 		org.jdom2.Element infoElement   = reportElement.getChild("info", Namespace.getNamespace("http://ahtutils.aht-group.com/report"));
 		if (infoElement!=null)
 		{
-			Info info = JDomUtil.toJaxb(infoElement, Info.class);
 			
-			OfxChartRenderer ofxRenderer = new OfxChartRenderer();
-			for (Media media : info.getMedia())
-			{
-				logger.warn("Chart module deactivated");
+			
+			logger.warn("Chart module deactivated");
+//			Info info = JDomUtil.toJaxb(infoElement, Info.class);
+//			OfxChartRenderer ofxRenderer = new OfxChartRenderer();
+//			for (Media media : info.getMedia())
+//			{
+//
 //				Chart chart          = media.getChart();
 //				JFreeChart jfreeChart = ofxRenderer.render(chart);
 //				BufferedImage chartImage = jfreeChart.createBufferedImage(320, 240);
 //				mapReportParameter.put(media.getCode(), chartImage);
-			}
+//			}		}
 		}
-	
 		//Add the data document
 		doc = JDomUtil.unsetNameSpace(doc);
 		Document docReport = JDomUtil.toW3CDocument(doc);
 		mapReportParameter.put(JRXPathQueryExecuterFactory.PARAMETER_XML_DATA_DOCUMENT, docReport);
-		ArrayList<JRTemplate> templates = new ArrayList<JRTemplate>();
+		ArrayList<JRTemplate> templateList = new ArrayList<JRTemplate>();
 		//Add all resources configured in resources.xml
 		for (Resource res : resources.getResource())
 		{
@@ -425,62 +443,46 @@ public class ReportHandler {
                         if (res.getType().equals("template"))
                                 
 				{
-                                    JRTemplate style = null;
+                                    
 					try {
 						String templateLocation = "/resources/templates" +"/" +res.getValue().getValue();
 						logger.info("Including style template resource: " +templateLocation);
-						style = (JRTemplate) JRXmlTemplateLoader.load(mrl.searchIs(templateLocation));
+						JRTemplate style = (JRTemplate) JRXmlTemplateLoader.load(mrl.searchIs(templateLocation));
                                                 mapReportParameter.put(res.getName() +"-style", style);
-                                                templates.add(style);
+                                                templateList.add(style);
                                         }
 					catch (FileNotFoundException e) {logger.error(e.getMessage());}
 					catch (IOException e) {logger.error(e.getMessage());}
 					
 				}
 		}
-                mapReportParameter.put("REPORT_TEMPLATES", templates);
+                mapReportParameter.put("REPORT_TEMPLATES", templateList);
 		for (Object key : mapReportParameter.keySet())
 		{
 			String keyString = (String) key;
-			String valueString = mapReportParameter.get(key).toString();
+			String valueString = mapReportParameter.get(keyString).toString();
 			logger.info("Report Parameter: " +keyString +" = " +valueString);
 		}
 		return mapReportParameter;
 	}
 	
+
 	/**
-	 * Get a Map of all standard parameters plus the given locale and the included data XML file 
+	 * Get a Map of all standard parameters plus the given locale and the included data XML file
+	 * @param reportId
+	 * @param format
+	 * @return
 	 * @throws ReportException
 	 */
 	public Map<String,Object> getSubreportsMap(String reportId, String format) throws ReportException
 	{	
-		Map<String,Object> mapReportParameter = new Hashtable<String,Object>();
+		Map<String,Object> mapReportParameter = new HashMap<String,Object>();
 		
-		Report  report  = (Report)JXPathContext.newContext(reports).getValue("report[id='" +reportId +"']");
 		ArrayList<Jr> results = ReportXpath.getSubreports(reports, reportId, format);
 		for (Jr jr : results)
 		{
-					// String location       = "jrxml/" +report.getDir() +"/" +format +"/sr" +jr.getName() +".jrxml";
-					// String locationJasper = "jasper/" +report.getDir() +"/" +format +"/ltr" +"/sr" +jr.getName() +".jasper";
-					// JasperDesign design;
-					
-					// Other methods in here are deprecated since only JASPER files are available in deployed web apps by default
-					JasperReport jreport = getCompiledReport(reportId, jr.getName(), format, "sr");
-					
-					/*
-					try {
-						jreport = (JasperReport)JRLoader.loadObject(mrl.searchIs(locationJasper));
-					} catch (FileNotFoundException e) {
-						// design = (JasperDesign)JRXmlLoader.load(mrl.searchIs(location));
-						throw new ReportException("Requested report design jrxml file for subreport " +jr.getName() +" of report " +reportId +" could not be found at " +location +"!");
-					} catch (JRException e) {
-						throw new ReportException("Internal JasperReports error when trying to load requested report design jrxml file for subreport " +jr.getName() +" of report " +reportId +": " +e.getMessage());
-					}
-					// jreport = getCompiledReport(design);
-					 
-					 */
-					
-					mapReportParameter.put("sr" +jr.getName(), jreport);
+			JasperReport jreport = getCompiledReport(reportId, jr.getName(), format, "sr");
+			mapReportParameter.put("sr" +jr.getName(), jreport);
 		}
 		return mapReportParameter;
 	}
@@ -505,7 +507,7 @@ public class ReportHandler {
 	
 	/**
 	 * Exports the given JasperPrint to an MS Excel xls sheet as ByteArrayOutputStream
-	 * @param JasperPrint to be exported
+	 * @param jPrint
 	 * @return
 	 * @throws ReportException
 	 */
@@ -534,7 +536,7 @@ public class ReportHandler {
 	
 	/**
 	 * Exports the given JasperPrint to an PDF format as ByteArrayOutputStream
-	 * @param JasperPrint to be exported
+	 * @param jPrint to be exported
 	 * @return
 	 * @throws ReportException
 	 */
