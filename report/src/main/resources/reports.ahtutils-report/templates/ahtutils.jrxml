@@ -50,7 +50,7 @@
 		<band height="13">
 			<textField>
 				<reportElement x="209" y="3" width="22" height="10"/>
-				<textElement textAlignment="Right" lineSpacing="Single">
+				<textElement textAlignment="Right">
 					<font fontName="SansSerif" size="8" isBold="true"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$V{PAGE_NUMBER} +"/"]]></textFieldExpression>
@@ -60,14 +60,14 @@
 				<box>
 					<topPen lineWidth="0.5"/>
 				</box>
-				<textElement textAlignment="Right" lineSpacing="Single">
+				<textElement textAlignment="Right">
 					<font fontName="SansSerif" size="8" isBold="false"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[javax.xml.bind.DatatypeConverter.parseDateTime($F{generated}).getTime()]]></textFieldExpression>
 			</textField>
 			<textField evaluationTime="Report">
 				<reportElement x="231" y="3" width="42" height="10"/>
-				<textElement lineSpacing="Single">
+				<textElement>
 					<font fontName="SansSerif" size="8" isBold="true"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
@@ -77,7 +77,7 @@
 				<box>
 					<topPen lineWidth="0.5"/>
 				</box>
-				<textElement lineSpacing="Single">
+				<textElement>
 					<font fontName="SansSerif" size="8" isBold="false"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{footer}]]></textFieldExpression>
