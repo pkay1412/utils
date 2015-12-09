@@ -5,25 +5,41 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import net.sf.exlp.util.xml.JaxbUtil;
-
 import org.apache.batik.transcoder.TranscoderException;
+import org.apache.commons.configuration.Configuration;
 import org.metachart.processor.graph.Graph2DotConverter;
 import org.metachart.xml.graph.Graph;
 import org.metachart.xml.graph.Node;
 import org.openfuxml.media.transcode.Svg2PdfTranscoder;
+import org.openfuxml.renderer.latex.OfxMultiLangLatexWriter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import net.sf.exlp.interfaces.util.ConfigKey;
+import net.sf.exlp.util.xml.JaxbUtil;
 
 public class AbstractErDiagram
 {
 	final static Logger logger = LoggerFactory.getLogger(AbstractErDiagram.class);
 	
+	protected File fTmp;
 	protected File fSrc,fDot,fSvg;
-	protected File dPdf;
+	protected File dPdf,dAtt;
 	
 	protected String packages;
 	protected String colorScheme;
+	
+	private Configuration config;
+	private OfxMultiLangLatexWriter ofxWriter;
+	
+	public AbstractErDiagram(Configuration config,OfxMultiLangLatexWriter ofxWriter)
+	{
+		this.config=config;
+		this.ofxWriter=ofxWriter;
+		
+		fTmp = new File(config.getString(ConfigKey.dirTmp));
+		logger.info("Using Tmp: "+fTmp);
+	}
 	
 	protected void create(String key) throws ClassNotFoundException, IOException, TranscoderException
 	{
@@ -35,6 +51,11 @@ public class AbstractErDiagram
 	
 	protected void buildSvg(String type, List<String> subset,File fDst, File fPdf) throws ClassNotFoundException, IOException, TranscoderException
 	{
+		ErAttributesProcessor eap = new ErAttributesProcessor(ofxWriter,config,fSrc);
+		eap.addPackages(packages);
+		
+		System.exit(-1);
+		
 		ErGraphProcessor egp = new ErGraphProcessor(fSrc);
 		egp.addPackages(packages,subset);
 		
