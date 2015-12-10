@@ -5,8 +5,6 @@ import net.sf.ahtutils.xml.system.Constraint;
 import net.sf.ahtutils.xml.system.ConstraintAttribute;
 import net.sf.ahtutils.xml.system.ConstraintScope;
 
-import java.util.Date;
-
 public class ConstraintsChecker {
 	public static boolean notNull(Object object, String attribute) throws Exception
 	{

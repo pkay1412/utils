@@ -225,14 +225,17 @@
     		<groupId>de.rrze</groupId>
     		<artifactId>jpwgen</artifactId>
     	</dependency>
-    	<dependency>
+    	
+    	
+<!--	28.11.2015 ... Trying to deactivate. Should only be required in report module -->
+		<dependency>
 			<groupId>org.apache.poi</groupId>
 			<artifactId>poi</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.poi</groupId>
 			<artifactId>poi-ooxml</artifactId>
-		</dependency>
+		</dependency>  
     	<dependency>
     		<groupId>net.sf.ahtutils</groupId>
     		<artifactId>ahtutils-test</artifactId>

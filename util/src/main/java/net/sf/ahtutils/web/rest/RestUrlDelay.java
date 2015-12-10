@@ -4,6 +4,8 @@ import org.apache.commons.configuration.Configuration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import net.sf.exlp.interfaces.util.ConfigKey;
+
 public class RestUrlDelay
 {
 	final static Logger logger = LoggerFactory.getLogger(RestUrlDelay.class);
@@ -20,6 +22,7 @@ public class RestUrlDelay
 		return url;
 	}
 	
+	public static String getUrl(Configuration config){return getUrl(config,ConfigKey.netRestUrl);}
 	public static String getUrl(Configuration config, String key)
 	{
 		String url = config.getString(key);
