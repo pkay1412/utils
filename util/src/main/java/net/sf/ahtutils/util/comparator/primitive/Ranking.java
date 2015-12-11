@@ -1,8 +1,9 @@
 package net.sf.ahtutils.util.comparator.primitive;
 
-import java.util.*;
-
-import com.google.common.primitives.Ints;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
 
 public class Ranking
 {
@@ -13,7 +14,10 @@ public class Ranking
 	
 	public int[] rank(int[] points)
 	{
-		List<Integer> tmp = rank(Ints.asList(points));
+		List<Integer> tmpPoints = new ArrayList<Integer>();
+		for(int i : points){tmpPoints.add(i);}
+		List<Integer> tmp = rank(tmpPoints);
+		
 		int[] result = new int[tmp.size()];
 		for(int i=0;i<tmp.size();i++){result[i]=tmp.get(i);}
 		return result;
