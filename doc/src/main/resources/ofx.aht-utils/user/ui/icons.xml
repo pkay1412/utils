@@ -9,17 +9,18 @@
 	<ofx:title lang="en">Symbols and Meanings</ofx:title>
 	
 	<ofx:paragraph lang="en">
-		Besides buttons, Icons are used as an instrument for user interaction with the system.
-		In the following, these icons and their meaning in different contexts is explained.
-        In most cases a more detailed information regarding the meaning of the icon appears, if you let your mouse rest for a few seconds on the icon.
+		Icons are used as an instrument for user interaction with the system.
+		These icons and their meaning will now be explained.
+        For most of the icons, you can move your mouse over the icon and if you leave the
+        mouse pointer for a second, information about the meaning of the icon will appear.
 	</ofx:paragraph>
 	
 	<ofx:section id="section.user.ui.icons.general">
 		<ofx:title lang="en">General</ofx:title>
 		
 		<ofx:paragraph lang="en">
-			Icons are part of the graphical user interface and the user can activate them using a mouse.
-            Their placement on the screen, also in relation to other icons, may provide the user further information about their usage.
+			Icons are part of the graphical user interface and users can activate them using a mouse.
+            Their placement on the screen - also in relation to other icons - may provide the user with further information about their usage.
 			Table <ofx:reference target="table.user.ui.icons"/> gives a general overview of the existing icons.
 		</ofx:paragraph>
 	
@@ -52,7 +53,7 @@
 	                    <ofx:paragraph>Info</ofx:paragraph>
 	                </table:cell>
 	                <table:cell>
-	                    <ofx:paragraph>Shows \gls{c6}s and useful advises</ofx:paragraph>
+	                    <ofx:paragraph>Shows \gls{c6}s and advises</ofx:paragraph>
 	                </table:cell>
 	            </table:row>
 	            <table:row>
@@ -64,7 +65,7 @@
 	                </table:cell>
 	                <table:cell><ofx:paragraph>Search</ofx:paragraph></table:cell>
 	                <table:cell>
-	                    <ofx:paragraph>Search through e.g. a table</ofx:paragraph>
+	                    <ofx:paragraph>Search through a table for example</ofx:paragraph>
 	                </table:cell>
 	            </table:row>
 	            <table:row>
@@ -92,7 +93,7 @@
 	                    <ofx:paragraph>Remove</ofx:paragraph>
 	                </table:cell>
 	                <table:cell>
-	                    <ofx:paragraph>Remove the current item from your table</ofx:paragraph>
+	                    <ofx:paragraph>Removes the current item from your table</ofx:paragraph>
 	                </table:cell>
 	            </table:row>
 <!--	            <table:row>
@@ -126,7 +127,7 @@
 	                </table:cell>
 	                <table:cell><ofx:paragraph>Save</ofx:paragraph></table:cell>
 	                <table:cell>
-	                    <ofx:paragraph>Save your current changes/modifications</ofx:paragraph>
+	                    <ofx:paragraph>Saves your current changes/modifications</ofx:paragraph>
 	                </table:cell>
 	            </table:row>
 	            <table:row>
@@ -152,7 +153,7 @@
 	                    <ofx:paragraph>Cancel</ofx:paragraph>
 	                </table:cell>
 	                <table:cell>
-	                    <ofx:paragraph>Abort your current process</ofx:paragraph>
+	                    <ofx:paragraph>Aborts your current process</ofx:paragraph>
 	                </table:cell>
 	            </table:row>
 	            <table:row>
@@ -166,7 +167,7 @@
 	                    <ofx:paragraph>Filter</ofx:paragraph>
 	                </table:cell>
 	                <table:cell>
-	                    <ofx:paragraph>Change the number of items shown by the system</ofx:paragraph>
+	                    <ofx:paragraph>Changes the number of items shown by the system</ofx:paragraph>
 	                </table:cell>
 	            </table:row>
  	            <table:row>
@@ -218,7 +219,7 @@
 	                    <ofx:paragraph>New</ofx:paragraph>
 	                </table:cell>
 	                <table:cell>
-	                    <ofx:paragraph>Indicates that an item is new and currently not saved to the database.</ofx:paragraph>
+	                    <ofx:paragraph>Indicates that an item is new and currently not been saved to the database.</ofx:paragraph>
 	                </table:cell>
 	            </table:row>
 	            
@@ -231,7 +232,7 @@
 	                </table:cell>
 	                <table:cell><ofx:paragraph>Favourite</ofx:paragraph></table:cell>
 	                <table:cell>
-	                    <ofx:paragraph>Indicates, that an current item has been marked as a favourite item.</ofx:paragraph>
+	                    <ofx:paragraph>Indicates that an item has been marked as a favourite item.</ofx:paragraph>
 	                </table:cell>
 	            </table:row>
 	            <table:row>
@@ -243,7 +244,7 @@
 	                </table:cell>
 	                <table:cell><ofx:paragraph>Selection</ofx:paragraph></table:cell>
 	                <table:cell>
-	                    <ofx:paragraph>Indicates, that an current item has been selected.</ofx:paragraph>
+	                    <ofx:paragraph>Indicates that an item has been selected.</ofx:paragraph>
 	                </table:cell>
 	            </table:row>
 	            <table:row>

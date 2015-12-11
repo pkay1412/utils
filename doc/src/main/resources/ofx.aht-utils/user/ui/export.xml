@@ -9,10 +9,10 @@
 	<ofx:title lang="en">File Export</ofx:title>
 	
 	<ofx:paragraph lang="en">
-		In some situations, the <text:emphasis bold="true">MEIS</text:emphasis> allows the user to export data into a file. Two different types are available, a file for <text:emphasis bold="true">Microsoft Excel</text:emphasis> or as PDF report.
-        Therefore, you must simply click on the respective icon and your
-		browser will most likely ask you to open or save (or choose an option itself depending on
-		your browser settings).
+        In some situations, \product\ shows you an XLS or PDF icon which allow you to export data to \textbf{Microsoft Excel} and generate a \gls{c9} report respectively.
+        You must simply click on the icon and your
+        browser will ask you whether you would like to open or save the file. Alternatively, it chooses an option itself depending on
+        your browser settings.
         Table <ofx:reference target="table.user.ui.export.file"/> summarises these export options.
 	</ofx:paragraph>
 
@@ -56,7 +56,7 @@
 	                </table:cell>
 	                <table:cell><ofx:paragraph>PDF</ofx:paragraph></table:cell>
 	                <table:cell>
-	                    <ofx:paragraph>File format called Portable Document Format (.\acrshort{pdf}) used to present documents.</ofx:paragraph>
+	                    <ofx:paragraph>File format called Portable Document Format (.\acrshort{pdf}) used for documents.</ofx:paragraph>
 	                </table:cell>
 	            </table:row>
 <!--	            <table:row>
@@ -95,7 +95,7 @@
 		<ofx:paragraph>
 			<ofx:marginalia><ofx:paragraph><text:symbol code="faExclamationTriangle"/></ofx:paragraph></ofx:marginalia>
 			Please note: The generation of files can take longer (depending on the amount of data processed). Hence,
-			please wait until the file has been presented. Do not start another export before the first one is completed.
+			please wait until the file has appeared. Do not start another export before the first has been completed.
 		</ofx:paragraph>
 	</ofx:highlight>
 	

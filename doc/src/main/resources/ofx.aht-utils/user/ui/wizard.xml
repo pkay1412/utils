@@ -15,13 +15,12 @@
         		<media:media src="svg.aht-utils/icon/ui/wizard/wizard.svg" dst="icon/ui/wizard/wizard"/>
     		</media:image>
 		</ofx:marginalia>
-        Sometimes the information system calculates suggestions how to solve a problem.
-        For example, it suggests how to spread payments to different budget lines.
-        Or to give another example, the system provides you with ideas which indicators
-        you might want to use for monitoring.
-        Whenever this \grqq <text:emphasis italic="true">magic</text:emphasis>\grqq happens, you are presented with the \iconUiMagicS symbol.
-        Now, in the manual the friendly wizard next to this paragraph indicates that such an
-        option is available and he will tell you how to work with the \iconUiMagicS in that case.
+        Sometimes the information system puts forward suggestions on how to solve a problem.
+        For example, it can suggest that one could spread payments across different budget lines or the types of indicators that could be used for monitoring.
+
+        Whenever this \grqq <text:emphasis italic="true">magic</text:emphasis>\grqq happens, you will see the \iconUiMagicS symbol.
+        When the friendly wizard next to this paragraph appears, it indicates that such an
+        option is available and he will tell you how to work with the \iconUiMagicS.
 		
 	</ofx:paragraph>
 	

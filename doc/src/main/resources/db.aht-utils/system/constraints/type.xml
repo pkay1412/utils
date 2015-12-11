@@ -111,7 +111,7 @@
         <us:descriptions>
             <us:description key="de">Vorbedingung</us:description>
             <us:description key="fr">Precondition</us:description>
-            <us:description key="en">The item cannot be deleted if it's still in use somewhere else. This would violate the referential integrity and the system prevents such violations.</us:description>
+            <us:description key="en">The item cannot be deleted if it is still in use somewhere else. This would violate the referential integrity and the system prevents such violations.</us:description>
         </us:descriptions>
     </us:status>
 </aht:aht>

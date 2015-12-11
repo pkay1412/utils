@@ -8,28 +8,22 @@
 		id="section.user.ui.interface">
 	
 	<ofx:paragraph lang="en">
-        The reading of this chapter is mandatory. It outlines the basic ideas and concepts you need
-        to know in order to work with \product\ comfortably.
-        We will start with an overview of \product. This includes a quick tour through the elements of the screen and the login to the system, which is mandatory for accessing most of \product\' functionalities.
-        The next stop is the navigation concept. \product\ is offers a wide range of functionalities for different user groups, but is still easy to navigate through.
-        This is followed by an introduction to the general usage of input fields, tables and so on.
-        After being familiarised with the basics, the different sections such as <text:emphasis italic="true">Project</text:emphasis>, <text:emphasis italic="true">Programme</text:emphasis>, <text:emphasis italic="true">Social Protection</text:emphasis> or <text:emphasis italic="true">Evaluation</text:emphasis> are described in detail.
-        While this first chapter about the basic use must be read, you can focus on your own use cases when it comes to the different sections. If you are not in charge of \textit{Social Protection}, so you do
-        not need to read that section to understand the part about Monitoring or Reporting. It will be stated at the introduction of each chapter if other sections may be interesting for you.
-
-        In general, <text:emphasis bold="true">MEIS</text:emphasis> is web-based, so you will use it through a \gls{c2}.
-        Nevertheless, <text:emphasis bold="true">MEIS</text:emphasis>' use is quite different from that of standard web pages. The <text:emphasis bold="true">MEIS</text:emphasis> is what a
-        <text:emphasis italic="true">\gls{c3}</text:emphasis>, which ia an application front-end presented as web pages which appears to be like a standard desktop application. SO, in other words, \product\
-        is more similar to <text:emphasis bold="true">Google Mail</text:emphasis> than to the web pages of newspapers.
+        This chapter is essential if you are to understand how to use \product\ as it explains the key components that make up the system.
+        This chapter begins by providing an overview of \product, including a quick tour through the screen and the log in.
+        Then, we will look at the different navigation types, the symbols used and the wizard. Finally, we will explain how filters are applied and how the status bar works.
+        \product\ is largely web-based so you will use it through a \gls{c2}.
+        Nevertheless, the use of \product\ is quite different to that of standard web pages. It is a
+        <text:emphasis italic="true">\gls{c3}</text:emphasis>, which is an application that is similar to a standard desktop application.
+        Therefore, \product\ looks more like <text:emphasis bold="true">Google Mail</text:emphasis> than the web pages of a newspaper.
     </ofx:paragraph>
     <ofx:highlight>
         <ofx:paragraph>
             <ofx:marginalia><ofx:paragraph><text:symbol code="faExclamationTriangle"/></ofx:paragraph></ofx:marginalia>
-            Note, because of the web-based nature of the system, the browser will ask the server for information.
-            for example, if you save a project the data will be sent to the server and there it will be stored in the central database. Because of that:
-            <text:emphasis bold="true">Do Not Perform Button Smashing!</text:emphasis>
+            Please note that the browser will exchange data with the server because of its web-based nature.
+            For example, if you save a project the data of the project will not be stored locally on your computer but sent to the server to be stored in the central database.
+            <text:emphasis bold="true">Please avoid <text:emphasis italic="true">Button Mashing</text:emphasis>!</text:emphasis>
             Please do not press a button multiple times while waiting for a system response.
-            Hitting the button once will trigger the function. In case the system does not respond immediately, the reason is most likely due to network problems.
+            Hitting the button once will trigger this function. If the system does not respond immediately it is most likely due to network problems.
         </ofx:paragraph>
     </ofx:highlight>
 
