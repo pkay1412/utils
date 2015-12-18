@@ -66,7 +66,6 @@ public class AbstractAdminSecurityUsecaseBean <L extends UtilsLang,
 	}
 	
 	//Reload
-
 	private void reloadUsecases() throws UtilsNotFoundException
 	{
 		logger.info("reloadUsecases");

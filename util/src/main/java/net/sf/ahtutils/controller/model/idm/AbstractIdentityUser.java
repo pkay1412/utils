@@ -23,12 +23,17 @@ public class AbstractIdentityUser <L extends UtilsLang,
 {
 	public static final long serialVersionUID=1;
 
-	private Map<String,Boolean> mapUsecases,mapViews,mapRoles,mapActions;
+	private Map<String,Boolean> mapUsecases,mapRoles,mapActions;
+	
+	private Map<String,Boolean> mapSystemViews; //Only systems views, domain views not included
+	
+	private Map<String,Boolean> mapViews;
 	
 	public AbstractIdentityUser()
 	{
 		mapUsecases = new Hashtable<String,Boolean>();
 		mapViews = new Hashtable<String,Boolean>();
+		mapSystemViews = new Hashtable<String,Boolean>();
 		mapRoles = new Hashtable<String,Boolean>();
 		mapActions = new Hashtable<String,Boolean>();
 	}
@@ -49,10 +54,13 @@ public class AbstractIdentityUser <L extends UtilsLang,
 	
 	public boolean hasView(String code)
 	{
-		if(mapViews.containsKey(code))
-		{
-			return mapViews.get(code);
-		}
+		if(mapViews.containsKey(code)){return mapViews.get(code);}
+		return false;
+	}
+	
+	public boolean hasSystemView(String code)
+	{
+		if(mapSystemViews.containsKey(code)){return mapSystemViews.get(code);}
 		return false;
 	}
 	
@@ -76,11 +84,16 @@ public class AbstractIdentityUser <L extends UtilsLang,
 	
 	public int sizeAllowedUsecases() {return mapUsecases.size();}
 	public int sizeAllowedViews() {return mapViews.size();}
+	public int sizeAllowedSystemViews() {return mapSystemViews.size();}
 	public int sizeAllowedRoles() {return mapRoles.size();}
 	public int sizeAllowedActions() {return mapActions.size();}
 	
 	public Map<String, Boolean> getMapUsecases() {return mapUsecases;}
-	public Map<String, Boolean> getMapViews() {return mapViews;}
+	
 	public Map<String, Boolean> getMapRoles() {return mapRoles;}
 	public Map<String, Boolean> getMapActions() {return mapActions;}
+	
+	public Map<String, Boolean> getMapViews() {return mapViews;}
+	public Map<String, Boolean> getMapSystemViews() {return mapSystemViews;}
+	public void setMapSystemViews(Map<String, Boolean> mapSystemViews) {this.mapSystemViews = mapSystemViews;}
 }
