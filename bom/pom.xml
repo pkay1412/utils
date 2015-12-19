@@ -282,22 +282,22 @@
 				<version>1.2</version>
 			</dependency>
 			
-			<!-- This should be removed -->
+			<!-- This should be removed 
 			<dependency>
 		         <groupId>org.richfaces</groupId>
 		         <artifactId>richfaces-bom</artifactId>
 		         <version>4.2.1.Final</version>
 		         <scope>import</scope>
 		         <type>pom</type>
-	     	</dependency> 
+	     	</dependency>  -->
 	     	
-	     	<!-- This is a replacement for richfaces-bom
-	     	<dependency>
-				<groupId>javax.el</groupId>
-				<artifactId>el-api</artifactId>
-				<version></version>
-			</dependency> 
-	     	-->
+	     	<!-- This is a replacement for richfaces-bom -->
+<dependency>
+	<groupId>javax.el</groupId>
+	<artifactId>javax.el-api</artifactId>
+	<version>2.2.5</version>
+</dependency>
+	     	
 	     	<dependency>
 				<groupId>javax.servlet</groupId>
 				<artifactId>javax.servlet-api</artifactId>
