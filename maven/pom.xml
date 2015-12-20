@@ -13,7 +13,83 @@
 	<packaging>maven-plugin</packaging>
 	<name>UTILS - Maven Plugins</name>
 	<url>http://sourceforge.net/projects/ahtutils</url>
-  
+	
+	<dependencyManagement>
+		<dependencies>      	         
+			<dependency>
+				<groupId>net.sf.ahtutils</groupId>
+				<artifactId>ahtutils-bom</artifactId>
+				<version>${project.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+	
+	<dependencies>
+		<dependency>
+			<groupId>org.apache.maven</groupId>
+			<artifactId>maven-plugin-api</artifactId>
+			<version>${maven-plugin-api.version}</version>
+	    </dependency>
+	    <dependency>
+		<groupId>org.apache.maven.plugin-tools</groupId>
+			<artifactId>maven-plugin-annotations</artifactId>
+			<version>3.4</version>
+			<scope>provided</scope>
+		</dependency>
+	    
+	   	<!-- XML -->
+		<dependency>
+   	   		<groupId>com.sun.xml.bind</groupId>
+   	   		<artifactId>jaxb-impl</artifactId>
+   	   		<scope>compile</scope>
+   	   	</dependency>
+	   
+<!-- 20.12.15 testing removal	   
+	    <dependency>
+			<groupId>org.apache.ant</groupId>
+			<artifactId>ant</artifactId>
+			<type>jar</type>
+			<scope>compile</scope>
+		</dependency>  -->
+		<dependency>
+    		<groupId>net.sf.exlp</groupId>
+    		<artifactId>exlp-util</artifactId>
+    		<type>jar</type>
+    		<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>net.sf.ahtutils</groupId>
+			<artifactId>ahtutils-util</artifactId>
+			<type>jar</type>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>net.sf.ahtutils</groupId>
+			<artifactId>ahtutils-report</artifactId>
+			<type>jar</type>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>joda-time</groupId>
+			<artifactId>joda-time</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.yahoo.platform.yui</groupId>
+			<artifactId>yuicompressor</artifactId>
+			<version>2.4.7</version>
+	    </dependency>
+	    
+	    <!-- TEST -->
+	   	<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<scope>test</scope>
+	    </dependency>
+	    
+	</dependencies>
+
 	<build>
 		<plugins>
 			<plugin>
@@ -37,7 +113,7 @@
 	              			<log>WARN</log>
 	              			<files>
 							  <param>exlp/maven/exlp-versions.xml</param>
-							  
+							  <param>${basedir}/src/main/resources/ahtutils/maven/ahtutils-versions.xml</param>
 							</files>
 							<saveTo>${basedir}/src/main/resources/ahtutils/maven/maven-versions.xml</saveTo>
 	              		</configuration>
@@ -93,76 +169,4 @@
 		</pluginManagement>
 	</build>
 	
-	<dependencyManagement>
-		<dependencies>      	         
-			<dependency>
-				<groupId>net.sf.ahtutils</groupId>
-				<artifactId>ahtutils-bom</artifactId>
-				<version>${project.version}</version>
-				<type>pom</type>
-				<scope>import</scope>
-			</dependency>
-		</dependencies>
-	</dependencyManagement>
-	
-	<dependencies>
-		<dependency>
-			<groupId>org.apache.maven</groupId>
-			<artifactId>maven-plugin-api</artifactId>
-			<version>${maven-plugin-api.version}</version>
-	    </dependency>
-	    <dependency>
-		<groupId>org.apache.maven.plugin-tools</groupId>
-			<artifactId>maven-plugin-annotations</artifactId>
-			<version>3.4</version>
-			<scope>provided</scope>
-		</dependency>
-	    
-	   	<!-- XML -->
-		<dependency>
-   	   		<groupId>com.sun.xml.bind</groupId>
-   	   		<artifactId>jaxb-impl</artifactId>
-   	   		<scope>compile</scope>
-   	   	</dependency>
-	    
-	    <dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<scope>test</scope>
-	    </dependency>
-	    <dependency>
-			<groupId>org.apache.ant</groupId>
-			<artifactId>ant</artifactId>
-			<type>jar</type>
-			<scope>compile</scope>
-		</dependency>
-		<dependency>
-    		<groupId>net.sf.exlp</groupId>
-    		<artifactId>exlp-util</artifactId>
-    		<type>jar</type>
-    		<scope>compile</scope>
-		</dependency>
-		<dependency>
-			<groupId>net.sf.ahtutils</groupId>
-			<artifactId>ahtutils-util</artifactId>
-			<type>jar</type>
-			<scope>compile</scope>
-		</dependency>
-		<dependency>
-			<groupId>net.sf.ahtutils</groupId>
-			<artifactId>ahtutils-report</artifactId>
-			<type>jar</type>
-			<scope>compile</scope>
-		</dependency>
-		<dependency>
-			<groupId>joda-time</groupId>
-			<artifactId>joda-time</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>com.yahoo.platform.yui</groupId>
-			<artifactId>yuicompressor</artifactId>
-			<version>2.4.7</version>
-	    </dependency>
-	</dependencies>
-
 </project>

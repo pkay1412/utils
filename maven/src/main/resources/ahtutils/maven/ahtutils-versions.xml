@@ -7,6 +7,7 @@
 		<rule groupId="com.sun.faces" comparisonMethod="maven">
 	      <ignoreVersions>
 	        <ignoreVersion>2.2.12-jbossorg-2</ignoreVersion>
+	        <ignoreVersion>2.2.12-jbossorg-1</ignoreVersion>
 	      </ignoreVersions>
 	    </rule>
 	</rules>

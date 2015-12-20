@@ -290,13 +290,12 @@
 		         <scope>import</scope>
 		         <type>pom</type>
 	     	</dependency>  -->
-	     	
 	     	<!-- This is a replacement for richfaces-bom -->
-<dependency>
-	<groupId>javax.el</groupId>
-	<artifactId>javax.el-api</artifactId>
-	<version>2.2.5</version>
-</dependency>
+			<dependency>
+				<groupId>javax.el</groupId>
+				<artifactId>javax.el-api</artifactId>
+				<version>2.2.5</version>
+			</dependency>
 	     	
 	     	<dependency>
 				<groupId>javax.servlet</groupId>
@@ -323,7 +322,7 @@
         	<dependency>
         		<groupId>xalan</groupId>
         		<artifactId>xalan</artifactId>
-        		<version>2.7.1</version>
+        		<version>2.7.2</version>
         	</dependency>
         	
         	<!-- JasperReports -->
@@ -347,11 +346,11 @@
         		<artifactId>ant</artifactId>
         		<version>1.9.4</version>
         	</dependency>
-		<dependency>
-                    <groupId>com.itextpdf</groupId>
-                    <artifactId>itextpdf</artifactId>
-                    <version>5.5.6</version>
-                </dependency>
+			<dependency>
+                <groupId>com.itextpdf</groupId>
+                <artifactId>itextpdf</artifactId>
+                <version>5.5.6</version>
+            </dependency>
         	
         	<!-- Utils -->
 			<dependency>
