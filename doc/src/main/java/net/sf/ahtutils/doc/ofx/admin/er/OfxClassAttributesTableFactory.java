@@ -35,6 +35,7 @@ public class OfxClassAttributesTableFactory extends AbstractUtilsOfxDocumentatio
 		super(config,langs,translations);
 	}
 	
+	@SuppressWarnings("unused")
 	public Table table(Class<?> c)
 	{
 		Annotation aClass = c.getAnnotation(EjbErAttributes.class);
