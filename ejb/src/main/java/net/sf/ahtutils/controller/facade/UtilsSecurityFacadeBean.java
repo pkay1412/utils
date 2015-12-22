@@ -87,9 +87,7 @@ USER extends UtilsUser<L,D,C,R,V,U,A,USER>> extends UtilsFacadeBean implements U
 		return new ArrayList<R>(roles.values());
 	}
 	
-	@Override
-	public 
-		List<A> allActionsForUser(Class<USER> clUser, USER user)
+	@Override public List<A> allActionsForUser(Class<USER> clUser, USER user)
 	{
 		user = em.find(clUser, user.getId());
 		Map<Long,A> actions = new HashMap<Long,A>();
@@ -235,16 +233,15 @@ USER extends UtilsUser<L,D,C,R,V,U,A,USER>> extends UtilsFacadeBean implements U
 		roles.addAll(view.getRoles());
 		
 //		logger.info(StringUtil.stars());
-		
-		
-//		for(U u : view.getUsecases())
+
+		for(U u : view.getUsecases())
 		{
-//			for(R role : u.getRoles())
+			for(R role : u.getRoles())
 			{
 //				logger.info("\t\tR"+role.toString());
-//				if(!roles.contains(role))
+				if(!roles.contains(role))
 				{
-//					roles.add(role);
+					roles.add(role);
 				}
 			}
 		}

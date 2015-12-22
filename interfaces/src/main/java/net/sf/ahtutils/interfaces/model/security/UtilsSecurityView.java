@@ -47,4 +47,7 @@ public interface UtilsSecurityView<L extends UtilsLang,
 	
 	public List<R> getRoles();
 	public void setRoles(List<R> roles);
+	
+	public List<U> getUsecases();
+	public void setUsecases(List<U> usecases);
 }

@@ -84,6 +84,11 @@ public class AhtUtilsSecurityView implements EjbWithCode,Serializable,EjbRemovea
 	@Override public List<AhtUtilsSecurityAction> getActions() {if(actions==null){actions=new ArrayList<AhtUtilsSecurityAction>();}return actions;}
 	@Override public void setActions(List<AhtUtilsSecurityAction> actions) {this.actions = actions;}
 	
+	@ManyToMany(fetch=FetchType.LAZY)
+	private List<AhtUtilsSecurityUsecase> usecases;
+	@Override public List<AhtUtilsSecurityUsecase> getUsecases() {if(usecases==null){usecases = new ArrayList<AhtUtilsSecurityUsecase>();}return usecases;}
+	@Override public void setUsecases(List<AhtUtilsSecurityUsecase> usecases) {this.usecases = usecases;}
+	
 	private Boolean accessPublic;
 	@Override public Boolean getAccessPublic() {return accessPublic;}
 	@Override public void setAccessPublic(Boolean accessPublic) {this.accessPublic = accessPublic;}

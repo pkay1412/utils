@@ -87,6 +87,11 @@ public class AhtUtilsSecurityUsecase implements EjbWithCode,Serializable,EjbRemo
 	public List<AhtUtilsSecurityView> getViews() {if(views==null){views = new ArrayList<AhtUtilsSecurityView>();}return views;}
 	public void setViews(List<AhtUtilsSecurityView> views) {this.views = views;}
 	
+	@ManyToMany(fetch=FetchType.LAZY)
+	private List<AhtUtilsSecurityRole> roles;
+	@Override public List<AhtUtilsSecurityRole> getRoles() {if(roles==null){roles = new ArrayList<AhtUtilsSecurityRole>();}return roles;}
+	@Override public void setRoles(List<AhtUtilsSecurityRole> roles) {this.roles = roles;}
+	
 	
 	public boolean equals(Object object)
 	{
