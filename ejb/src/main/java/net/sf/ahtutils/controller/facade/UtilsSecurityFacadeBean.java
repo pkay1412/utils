@@ -224,4 +224,44 @@ USER extends UtilsUser<L,D,C,R,V,U,A,USER>> extends UtilsFacadeBean implements U
 		}
 		return false;
 	}
+
+	@Override
+	public <S extends UtilsStaff<L, D, C, R, V, U, A, USER, DOMAIN>, DOMAIN extends EjbWithId> List<DOMAIN> fDomains(Class<V> cView, Class<S> cStaff, USER user, V view)
+	{
+		List<R> roles = new ArrayList<R>();
+		List<DOMAIN> result = new ArrayList<DOMAIN>();
+		
+		view = this.find(cView, view);
+		roles.addAll(view.getRoles());
+		
+//		logger.info(StringUtil.stars());
+		
+		
+//		for(U u : view.getUsecases())
+		{
+//			for(R role : u.getRoles())
+			{
+//				logger.info("\t\tR"+role.toString());
+//				if(!roles.contains(role))
+				{
+//					roles.add(role);
+				}
+			}
+		}
+		
+//		logger.info("Roles to check: "+roles.size());
+		
+		for(R role : roles)
+		{
+//			logger.info("\tR"+role.toString());
+			for(S staff : this.fStaffUR(cStaff, user, role))
+			{
+				if(!result.contains(staff.getDomain()))
+				{
+					result.add(staff.getDomain());
+				}
+			}
+		}
+		return result;
+	}
 }
