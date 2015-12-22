@@ -84,6 +84,13 @@ USER extends UtilsUser<L,D,C,R,V,U,A,USER>> extends UtilsFacadeBean implements U
 		{
 			if(!roles.containsKey(r.getId())){roles.put(r.getId(), r);}
 		}
+		for(U u : view.getUsecases())
+		{
+			for(R r : u.getRoles())
+			{
+				if(!roles.containsKey(r.getId())){roles.put(r.getId(), r);}
+			}
+		}
 		return new ArrayList<R>(roles.values());
 	}
 	
@@ -108,25 +115,23 @@ USER extends UtilsUser<L,D,C,R,V,U,A,USER>> extends UtilsFacadeBean implements U
 		return new ArrayList<A>(actions.values());
 	}
 	
-	@Override
-	public 
-		List<R>	allRolesForUser(Class<USER> clUser, USER user)
+	@Override public List<R> allRolesForUser(Class<USER> clUser, USER user)
 	{
 		user = em.find(clUser, user.getId());
 		return user.getRoles();
 	}
 	
-	@Override
-	public <WC extends UtilsSecurityWithCategory<L,D,C,R,V,U,A,USER>>
-		List<WC> allForCategory(Class<WC> clWc, Class<C> clC, String code) throws UtilsNotFoundException
+	@Override public <WC extends UtilsSecurityWithCategory<L,D,C,R,V,U,A,USER>> List<WC> allForCategory(Class<WC> clWc, Class<C> clC, String code) throws UtilsNotFoundException
 	{
-
-/*		logger.info(clWc.getName());
-		logger.info(UtilsSecurityRole.class.getSimpleName()+" ");
-		logger.info(UtilsSecurityRole.class.getSimpleName()+" "+clWc.isAssignableFrom(UtilsSecurityRole.class));
-		logger.info(UtilsSecurityView.class.getSimpleName()+" "+clWc.isAssignableFrom(UtilsSecurityView.class));
-		logger.info(UtilsSecurityUsecase.class.getSimpleName()+" "+clWc.isAssignableFrom(UtilsSecurityUsecase.class));
-*/		
+		if(logger.isTraceEnabled())
+		{
+			logger.info(clWc.getName());
+			logger.info(UtilsSecurityRole.class.getSimpleName()+" ");
+			logger.info(UtilsSecurityRole.class.getSimpleName()+" "+clWc.isAssignableFrom(UtilsSecurityRole.class));
+			logger.info(UtilsSecurityView.class.getSimpleName()+" "+clWc.isAssignableFrom(UtilsSecurityView.class));
+			logger.info(UtilsSecurityUsecase.class.getSimpleName()+" "+clWc.isAssignableFrom(UtilsSecurityUsecase.class));
+		}
+	
 		String type = null;
 		if(clWc.getSimpleName().contains("Usecase")){type=UtilsSecurityCategory.Type.usecase.toString();}
 		else if(clWc.getSimpleName().contains("Role")){type=UtilsSecurityCategory.Type.role.toString();}
@@ -170,20 +175,16 @@ USER extends UtilsUser<L,D,C,R,V,U,A,USER>> extends UtilsFacadeBean implements U
 	{return allForParent(clStaff, "user", user, "domain",domain);}
 	
 	@Override
-	public < S extends UtilsStaff<L,D,C,R,V,U,A,USER,DOMAIN>,  DOMAIN extends EjbWithId>
-		List<S> fStaffRD(Class<S> clStaff, R role, DOMAIN domain)
+	public < S extends UtilsStaff<L,D,C,R,V,U,A,USER,DOMAIN>,  DOMAIN extends EjbWithId> List<S> fStaffRD(Class<S> clStaff, R role, DOMAIN domain)
 	{return allForParent(clStaff, "role", role, "domain",domain);}
 	
 	@Override
-	public < S extends UtilsStaff<L,D,C,R,V,U,A,USER,DOMAIN>,  DOMAIN extends EjbWithId>
-		S fStaff(Class<S> clStaff, USER user, R role, DOMAIN domain) throws UtilsNotFoundException
+	public < S extends UtilsStaff<L,D,C,R,V,U,A,USER,DOMAIN>,  DOMAIN extends EjbWithId> S fStaff(Class<S> clStaff, USER user, R role, DOMAIN domain) throws UtilsNotFoundException
 	{
 		return oneForParents(clStaff,"user",user,"role",role,"domain",domain);
 	}
 	
-	@Override
-	public 
-		void grantRole(Class<USER> clUser, Class<R> clRole, USER user, R role, boolean grant)
+	@Override public void grantRole(Class<USER> clUser, Class<R> clRole, USER user, R role, boolean grant)
 	{
 		logger.trace("grantRole u:"+user.toString()+" r:"+role.toString()+" grand:"+grant);
 		user = em.find(clUser,user.getId());
