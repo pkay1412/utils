@@ -12,6 +12,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.MapKey;
 import javax.persistence.OneToMany;
@@ -106,6 +107,11 @@ public class AhtUtilsSecurityView implements EjbWithCode,Serializable,EjbRemovea
 	private String urlBase;
 	@Override public String getUrlBase() {return urlBase;}
 	@Override public void setUrlBase(String urlBase) {this.urlBase = urlBase;}
+	
+	@ManyToMany(fetch=FetchType.LAZY)
+	private List<AhtUtilsSecurityRole> roles;
+	@Override public List<AhtUtilsSecurityRole> getRoles() {if(roles==null){roles = new ArrayList<AhtUtilsSecurityRole>();}return roles;}
+	@Override public void setRoles(List<AhtUtilsSecurityRole> roles) {this.roles = roles;}
 	
 	public boolean equals(Object object)
 	{

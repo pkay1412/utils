@@ -72,23 +72,17 @@ USER extends UtilsUser<L,D,C,R,V,U,A,USER>> extends UtilsFacadeBean implements U
 	}
 	
 	@Override public List<R> rolesForView(Class<V> cView, V view)
-	{		
-		view = em.find(cView, view.getId());
-		Map<Long,R> roles = new HashMap<Long,R>();
-//		for(R r : view.getRoles())
-		{
-//			if(!roles.containsKey(r.getId())){roles.put(r.getId(), r);}
-		}
-		return new ArrayList<R>(roles.values());
+	{	
+		return rolesForView(cView,null,view,null);
 	}
 	
 	@Override public List<R> rolesForView(Class<V> cView, Class<USER> cUser, V view, USER user)
 	{		
 		view = em.find(cView, view.getId());
 		Map<Long,R> roles = new HashMap<Long,R>();
-//		for(R r : view.getRoles())
+		for(R r : view.getRoles())
 		{
-//			if(!roles.containsKey(r.getId())){roles.put(r.getId(), r);}
+			if(!roles.containsKey(r.getId())){roles.put(r.getId(), r);}
 		}
 		return new ArrayList<R>(roles.values());
 	}

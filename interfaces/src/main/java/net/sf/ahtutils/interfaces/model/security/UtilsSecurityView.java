@@ -1,5 +1,7 @@
 package net.sf.ahtutils.interfaces.model.security;
 
+import java.util.List;
+
 import net.sf.ahtutils.interfaces.model.behaviour.EjbSaveable;
 import net.sf.ahtutils.interfaces.model.status.UtilsDescription;
 import net.sf.ahtutils.interfaces.model.status.UtilsLang;
@@ -42,4 +44,7 @@ public interface UtilsSecurityView<L extends UtilsLang,
 	
 	public String getUrlBase();
 	public void setUrlBase(String urlBase);
+	
+	public List<R> getRoles();
+	public void setRoles(List<R> roles);
 }
