@@ -29,8 +29,10 @@ USER extends UtilsUser<L,D,C,R,V,U,A,USER>>
 	
 	R load(Class<R> cRole, R role);
 	V load(Class<V> cView, V view);
-	List<V> allViewsForUser(Class<USER> clUser, USER user);
-	List<R> allRolesForUser(Class<USER> clUser, USER user);
+	List<V> allViewsForUser(Class<USER> cUser, USER user);
+	List<R> allRolesForUser(Class<USER> cUser, USER user);
+	List<R> rolesForView(Class<V> cView, V view);
+	List<R> rolesForView(Class<V> cView, Class<USER> cUser, V view, USER user);
 	List<A> allActionsForUser(Class<USER> clUser, USER user);
 	
 	void grantRole(Class<USER> clUser, Class<R> clRole, USER user, R role, boolean grant);

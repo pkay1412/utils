@@ -25,7 +25,7 @@ public class PostgresRestore extends AbstractPostgresShell implements UtilsDbShe
     {
 		this(config,null);
     }
-	public PostgresRestore(Configuration config,Document xmlConfig)
+	public PostgresRestore(Configuration config, Document xmlConfig)
     {
 		super(config, UtilsDbShell.Operation.restore, xmlConfig);
 		pDbRestore = XmlParameterFactory.build(UtilsDbShell.cfgBinRestore, "Shell command for restore", false);

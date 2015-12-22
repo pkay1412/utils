@@ -36,27 +36,21 @@ USER extends UtilsUser<L,D,C,R,V,U,A,USER>> extends UtilsFacadeBean implements U
 		super(em);
 	}
 
-	@Override
-	public 
-		R load(Class<R> cRole, R role)
+	@Override public R load(Class<R> cRole, R role)
 	{
 		role = em.find(cRole, role.getId());
 		role.getUsers().size();
 		return role;
 	}
 	
-	@Override
-	public 
-		V load(Class<V> cView, V view)
+	@Override public V load(Class<V> cView, V view)
 	{
 		view = em.find(cView, view.getId());
 		view.getActions().size();
 		return view;
 	}
 	
-	@Override
-	public 
-		List<V>	allViewsForUser(Class<USER> clUser, USER user)
+	@Override public List<V> allViewsForUser(Class<USER> clUser, USER user)
 	{
 		user = em.find(clUser, user.getId());
 		Map<Long,V> views = new HashMap<Long,V>();
@@ -75,6 +69,28 @@ USER extends UtilsUser<L,D,C,R,V,U,A,USER>> extends UtilsFacadeBean implements U
 			}
 		}
 		return new ArrayList<V>(views.values());
+	}
+	
+	@Override public List<R> rolesForView(Class<V> cView, V view)
+	{		
+		view = em.find(cView, view.getId());
+		Map<Long,R> roles = new HashMap<Long,R>();
+//		for(R r : view.getRoles())
+		{
+//			if(!roles.containsKey(r.getId())){roles.put(r.getId(), r);}
+		}
+		return new ArrayList<R>(roles.values());
+	}
+	
+	@Override public List<R> rolesForView(Class<V> cView, Class<USER> cUser, V view, USER user)
+	{		
+		view = em.find(cView, view.getId());
+		Map<Long,R> roles = new HashMap<Long,R>();
+//		for(R r : view.getRoles())
+		{
+//			if(!roles.containsKey(r.getId())){roles.put(r.getId(), r);}
+		}
+		return new ArrayList<R>(roles.values());
 	}
 	
 	@Override
