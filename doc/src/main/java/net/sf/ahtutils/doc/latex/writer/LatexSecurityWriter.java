@@ -20,10 +20,12 @@ import org.slf4j.LoggerFactory;
 import net.sf.ahtutils.doc.UtilsDocumentation;
 import net.sf.ahtutils.doc.ofx.menu.OfxMenuTreeFactory;
 import net.sf.ahtutils.doc.ofx.security.list.OfxSecurityCategoryListFactory;
+import net.sf.ahtutils.doc.ofx.security.section.OfxSecurityPagesSectionFactory;
 import net.sf.ahtutils.doc.ofx.security.section.OfxSecurityRolesSectionFactory;
 import net.sf.ahtutils.doc.ofx.security.section.OfxSecurityUsecasesSectionFactory;
 import net.sf.ahtutils.doc.ofx.security.section.OfxSecurityViewsSectionFactory;
 import net.sf.ahtutils.exception.processing.UtilsConfigurationException;
+import net.sf.ahtutils.interfaces.rest.security.UtilsSecurityRestExport;
 import net.sf.ahtutils.xml.access.Access;
 import net.sf.ahtutils.xml.navigation.Menu;
 import net.sf.ahtutils.xml.security.Security;
@@ -43,9 +45,11 @@ public class LatexSecurityWriter extends AbstractDocumentationLatexWriter
 	private OfxSecurityUsecasesSectionFactory ofUsecases;
 	private OfxSecurityRolesSectionFactory ofRoles;
 	private OfxSecurityViewsSectionFactory ofViews;
+	private OfxSecurityPagesSectionFactory ofPages;
 	
 	private List<String> headerKeysViews;
 	
+	@Deprecated
 	public LatexSecurityWriter(Configuration config, Translations translations,String[] langs, CrossMediaManager cmm, DefaultSettingsManager dsm)
 	{
 		super(config,translations,langs,cmm,dsm);
@@ -53,10 +57,23 @@ public class LatexSecurityWriter extends AbstractDocumentationLatexWriter
 		File baseDir = new File(config.getString(UtilsDocumentation.keyBaseLatexDir));
 		ofxMlw = new OfxMultiLangLatexWriter(baseDir,langs,cmm,dsm);
 		
+		buildFactories();
+	}
+	
+	public LatexSecurityWriter(Configuration config, Translations translations,String[] langs, OfxMultiLangLatexWriter ofxMlw, CrossMediaManager cmm, DefaultSettingsManager dsm)
+	{
+		super(config,translations,langs,cmm,dsm);
+		this.ofxMlw=ofxMlw;
+		buildFactories();
+	}
+	
+	private void buildFactories()
+	{
 		ofSecurityCategoryList = new OfxSecurityCategoryListFactory(config,langs,translations,cmm,dsm);
 		ofUsecases = new OfxSecurityUsecasesSectionFactory(config,langs,translations);
 		ofRoles = new OfxSecurityRolesSectionFactory(config,langs,translations);
 		ofViews = new OfxSecurityViewsSectionFactory(config,langs,translations);
+		ofPages = new OfxSecurityPagesSectionFactory(config,langs,translations);
 		
 		headerKeysViews = new ArrayList<String>();
 		headerKeysViews.add("auSecurityTableViewName");
@@ -147,5 +164,31 @@ public class LatexSecurityWriter extends AbstractDocumentationLatexWriter
 	{
 		Section section = ofViews.build(security);
 		ofxMlw.section(2,"/admin/security/actual/views",section);
+	}
+	
+	public void pageActions(UtilsSecurityRestExport rest) throws OfxAuthoringException, OfxConfigurationException, IOException
+	{
+		Security security = rest.exportSecurityPageActions();
+//		JaxbUtil.info(security);System.exit(-1);
+		
+		for(net.sf.ahtutils.xml.security.Category category : security.getCategory())
+		{
+			for(net.sf.ahtutils.xml.access.View view : category.getViews().getView())
+			{
+				StringBuffer sb = new StringBuffer();
+				sb.append("/admin/security/actual/pages");
+				
+				for (String w : category.getCode().split("(?<!(^|[A-Z]))(?=[A-Z])|(?<!^)(?=[A-Z][a-z])"))
+				{
+					sb.append("/").append(w.toLowerCase());
+			    }
+
+				sb.append("/").append(view.getCode());
+				
+				Section section = ofPages.build(view);
+				ofxMlw.section(2,sb.toString(),section);
+			}
+		}
+		
 	}
 }

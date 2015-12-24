@@ -32,7 +32,9 @@ import net.sf.ahtutils.web.rest.security.AbstractSecurityInit;
 import net.sf.ahtutils.web.rest.security.SecurityInitViews;
 import net.sf.ahtutils.xml.access.Access;
 import net.sf.ahtutils.xml.access.View;
+import net.sf.ahtutils.xml.access.Views;
 import net.sf.ahtutils.xml.security.Role;
+import net.sf.ahtutils.xml.security.Roles;
 import net.sf.ahtutils.xml.security.Security;
 import net.sf.ahtutils.xml.security.Staffs;
 import net.sf.ahtutils.xml.sync.DataUpdate;
@@ -54,6 +56,7 @@ public class SecurityRestService <L extends UtilsLang,D extends UtilsDescription
 	private XmlCategoryFactory<L,D,C,R,V,U,A,USER> fCategory;
 	private XmlViewFactory xfView;
 	private XmlRoleFactory<L,D,C,R,V,U,A,USER> fRole;
+	private XmlRoleFactory<L,D,C,R,V,U,A,USER> fRoleDescription;
 	private XmlActionFactory<L,D,C,R,V,U,A,USER> fAction;
 	private XmlUsecaseFactory<L,D,C,R,V,U,A,USER> fUsecase;
 	
@@ -68,6 +71,7 @@ public class SecurityRestService <L extends UtilsLang,D extends UtilsDescription
 		fCategory = new XmlCategoryFactory<L,D,C,R,V,U,A,USER>(null,SecurityQuery.exCategory());
 		xfView = new XmlViewFactory(SecurityQuery.exViewOld(),null);
 		fRole = new XmlRoleFactory<L,D,C,R,V,U,A,USER>(SecurityQuery.exRole(),null);
+		fRoleDescription = new XmlRoleFactory<L,D,C,R,V,U,A,USER>(SecurityQuery.role(),null);
 		fAction = new XmlActionFactory<L,D,C,R,V,U,A,USER>(SecurityQuery.exActionAcl());
 		fUsecase = new XmlUsecaseFactory<L,D,C,R,V,U,A,USER>(SecurityQuery.exUsecase());
 		
@@ -76,7 +80,7 @@ public class SecurityRestService <L extends UtilsLang,D extends UtilsDescription
 	
 	public static <L extends UtilsLang,D extends UtilsDescription,C extends UtilsSecurityCategory<L,D,C,R,V,U,A,USER>,R extends UtilsSecurityRole<L,D,C,R,V,U,A,USER>,V extends UtilsSecurityView<L,D,C,R,V,U,A,USER>,U extends UtilsSecurityUsecase<L,D,C,R,V,U,A,USER>,A extends UtilsSecurityAction<L,D,C,R,V,U,A,USER>,USER extends UtilsUser<L,D,C,R,V,U,A,USER>>
 	SecurityRestService<L,D,C,R,V,U,A,USER>
-		factory(UtilsSecurityFacade fSecurity, final Class<L> cL,final Class<D> cD,final Class<C> cCategory, final Class<V> cView, final Class<R> cRole, final Class<U> cUsecase,final Class<A> cAction,final Class<USER> cUser)
+		factory(UtilsSecurityFacade<L,D,C,R,V,U,A,USER> fSecurity, final Class<L> cL,final Class<D> cD,final Class<C> cCategory, final Class<V> cView, final Class<R> cRole, final Class<U> cUsecase,final Class<A> cAction,final Class<USER> cUser)
 	{
 		return new SecurityRestService<L,D,C,R,V,U,A,USER>(fSecurity,cL,cD,cCategory,cView,cRole,cUsecase,cAction,cUser);
 	}
@@ -97,8 +101,7 @@ public class SecurityRestService <L extends UtilsLang,D extends UtilsDescription
 
 	@Override public Security exportSecurityViews()
 	{
-		Security xml = XmlSecurityFactory.build();
-				
+		Security xml = XmlSecurityFactory.build();		
 		for(C category : fSecurity.allOrderedPosition(cCategory))
 		{
 			if(category.getType().equals(UtilsSecurityCategory.Type.view.toString()))
@@ -130,7 +133,6 @@ public class SecurityRestService <L extends UtilsLang,D extends UtilsDescription
 	@Override public Security exportSecurityRoles()
 	{
 		Security xml = XmlSecurityFactory.build();
-
 		for(C category : fSecurity.all(cCategory))
 		{
 			if(category.getType().equals(UtilsSecurityCategory.Type.role.toString()))
@@ -180,4 +182,48 @@ public class SecurityRestService <L extends UtilsLang,D extends UtilsDescription
 	}
 	
 	public DataUpdate iuSecurityViews(Access views){return initViews.iuViews(views);}
+
+	@Override
+	public Security exportSecurityPageActions()
+	{
+		Security xml = XmlSecurityFactory.build();		
+		for(C category : fSecurity.allOrderedPosition(cCategory))
+		{
+			if(category.getType().equals(UtilsSecurityCategory.Type.view.toString()))
+			{
+				try
+				{
+					
+//					net.sf.ahtutils.xml.security.Views views = net.sf.ahtutils.factory.xml.security.XmlViewsFactory.build();
+					Views views = XmlViewsFactory.build();
+					
+					for(V view : fSecurity.allForCategory(cView, cCategory, category.getCode()))
+					{
+						view = fSecurity.load(cView,view);
+						View xView = xfView.build(view);
+						xView.setActions(XmlActionsFactory.create());
+						for(A action : view.getActions())
+						{
+							xView.getActions().getAction().add(fAction.create(action));
+						}
+						
+						Roles xRoles = XmlRolesFactory.build();
+						for(R role : fSecurity.rolesForView(cView, view))
+						{
+							xRoles.getRole().add(fRoleDescription.build(role));
+						}
+						xView.setRoles(xRoles);
+						
+						views.getView().add(xView);
+					}
+					
+					net.sf.ahtutils.xml.security.Category xCategory = fCategory.build(category);
+					xCategory.setViews(views);
+					xml.getCategory().add(xCategory);
+				}
+				catch (UtilsNotFoundException e) {e.printStackTrace();}
+			}
+		}		
+		return xml;
+	}
 }

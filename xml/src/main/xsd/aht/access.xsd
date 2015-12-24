@@ -2,9 +2,11 @@
 <xsd:schema targetNamespace="http://ahtutils.aht-group.com/access"
     xmlns:a="http://ahtutils.aht-group.com/access"
     xmlns:s="http://ahtutils.aht-group.com/status"
+    xmlns:sec="http://ahtutils.aht-group.com/security"
     xmlns:n="http://ahtutils.aht-group.com/navigation"
     xmlns:xsd="http://www.w3.org/2001/XMLSchema">
     <xsd:import namespace="http://ahtutils.aht-group.com/status" schemaLocation="status.xsd"/>
+    <xsd:import namespace="http://ahtutils.aht-group.com/security" schemaLocation="security.xsd"/>
     <xsd:import namespace="http://ahtutils.aht-group.com/navigation" schemaLocation="navigation.xsd"/>
     <xsd:element name="aclContainer">
         <xsd:complexType>
@@ -97,6 +99,7 @@
                 <xsd:element ref="s:descriptions" maxOccurs="1"/>
                 <xsd:element ref="s:langs" maxOccurs="1"/>
                 <xsd:element ref="a:actions" maxOccurs="1"/>
+                <xsd:element ref="sec:roles" maxOccurs="1"/>
                 <xsd:element ref="n:navigation" maxOccurs="1"/>
             </xsd:sequence>
             <xsd:attribute name="code" type="xsd:string"/>

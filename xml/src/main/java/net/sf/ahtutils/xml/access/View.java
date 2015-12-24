@@ -9,6 +9,7 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 import net.sf.ahtutils.xml.navigation.Navigation;
+import net.sf.ahtutils.xml.security.Roles;
 import net.sf.ahtutils.xml.status.Descriptions;
 import net.sf.ahtutils.xml.status.Langs;
 
@@ -26,6 +27,7 @@ import net.sf.ahtutils.xml.status.Langs;
  *         &lt;element ref="{http://ahtutils.aht-group.com/status}descriptions"/&gt;
  *         &lt;element ref="{http://ahtutils.aht-group.com/status}langs"/&gt;
  *         &lt;element ref="{http://ahtutils.aht-group.com/access}actions"/&gt;
+ *         &lt;element ref="{http://ahtutils.aht-group.com/security}roles"/&gt;
  *         &lt;element ref="{http://ahtutils.aht-group.com/navigation}navigation"/&gt;
  *       &lt;/sequence&gt;
  *       &lt;attribute name="code" type="{http://www.w3.org/2001/XMLSchema}string" /&gt;
@@ -47,6 +49,7 @@ import net.sf.ahtutils.xml.status.Langs;
     "descriptions",
     "langs",
     "actions",
+    "roles",
     "navigation"
 })
 @XmlRootElement(name = "view")
@@ -61,6 +64,8 @@ public class View
     protected Langs langs;
     @XmlElement(required = true)
     protected Actions actions;
+    @XmlElement(namespace = "http://ahtutils.aht-group.com/security", required = true)
+    protected Roles roles;
     @XmlElement(namespace = "http://ahtutils.aht-group.com/navigation", required = true)
     protected Navigation navigation;
     @XmlAttribute(name = "code")
@@ -160,6 +165,34 @@ public class View
 
     public boolean isSetActions() {
         return (this.actions!= null);
+    }
+
+    /**
+     * Gets the value of the roles property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Roles }
+     *     
+     */
+    public Roles getRoles() {
+        return roles;
+    }
+
+    /**
+     * Sets the value of the roles property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Roles }
+     *     
+     */
+    public void setRoles(Roles value) {
+        this.roles = value;
+    }
+
+    public boolean isSetRoles() {
+        return (this.roles!= null);
     }
 
     /**

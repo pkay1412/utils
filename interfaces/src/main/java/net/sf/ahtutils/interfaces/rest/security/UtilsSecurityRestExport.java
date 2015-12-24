@@ -20,4 +20,8 @@ public interface UtilsSecurityRestExport
 	@GET @Path("/security/usecases")
 	@Produces(MediaType.APPLICATION_XML)
 	Security exportSecurityUsecases();
+	
+	@GET @Path("/security/pages")
+	@Produces(MediaType.APPLICATION_XML)
+	Security exportSecurityPageActions();
 }
