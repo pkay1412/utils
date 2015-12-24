@@ -3,6 +3,7 @@ package net.sf.ahtutils.doc.ofx.util;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.openfuxml.content.layout.Font;
 import org.openfuxml.content.ofx.Paragraph;
 import org.openfuxml.content.ofx.Title;
 import org.openfuxml.content.table.Cell;
@@ -79,13 +80,16 @@ public class OfxMultiLangFactory
 		return cell;
 	}
 	
-	public static List<Paragraph> paragraph(String[] keys, Langs langs)
+	public static List<Paragraph> paragraph(String[] keys, Langs langs){return paragraph(keys,langs,null);}
+	
+	public static List<Paragraph> paragraph(String[] keys, Langs langs, Font font)
 	{
 		List<Paragraph> paragraphs = new ArrayList<Paragraph>();
 		
 		for(String key : keys)
 		{
 			Paragraph p = XmlParagraphFactory.build(key);
+			p.getContent().add(font);
 			String text = "!!!No-Translation!!!";
 			try
 			{

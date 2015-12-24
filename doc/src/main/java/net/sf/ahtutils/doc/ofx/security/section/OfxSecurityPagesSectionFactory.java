@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 import org.apache.commons.configuration.Configuration;
+import org.openfuxml.content.layout.Font;
 import org.openfuxml.content.list.Item;
 import org.openfuxml.content.list.List;
 import org.openfuxml.content.media.Image;
@@ -12,6 +13,7 @@ import org.openfuxml.content.ofx.Marginalia;
 import org.openfuxml.content.ofx.Paragraph;
 import org.openfuxml.content.ofx.Section;
 import org.openfuxml.exception.OfxAuthoringException;
+import org.openfuxml.factory.xml.layout.XmlFontFactory;
 import org.openfuxml.factory.xml.layout.XmlWidthFactory;
 import org.openfuxml.factory.xml.list.OfxListFactory;
 import org.openfuxml.factory.xml.list.OfxListItemFactory;
@@ -28,7 +30,6 @@ import org.slf4j.LoggerFactory;
 import net.sf.ahtutils.doc.ofx.AbstractUtilsOfxDocumentationFactory;
 import net.sf.ahtutils.doc.ofx.util.OfxMultiLangFactory;
 import net.sf.ahtutils.xml.security.Role;
-import net.sf.ahtutils.xml.security.Roles;
 import net.sf.ahtutils.xml.status.Description;
 import net.sf.ahtutils.xml.status.Lang;
 import net.sf.ahtutils.xml.status.Translations;
@@ -42,11 +43,13 @@ public class OfxSecurityPagesSectionFactory extends AbstractUtilsOfxDocumentatio
 	final static Logger logger = LoggerFactory.getLogger(OfxSecurityPagesSectionFactory.class);
 
 	private OfxEmphasisFactory ofxItalic;
+	private Font fMarginText;
 		
 	public OfxSecurityPagesSectionFactory(Configuration config, String[] langs, Translations translations)
 	{
 		super(config,langs,translations);
 		ofxItalic = new OfxEmphasisFactory(false,true);
+		fMarginText = XmlFontFactory.relative(-3);
 	}
 	
 	
@@ -59,7 +62,6 @@ public class OfxSecurityPagesSectionFactory extends AbstractUtilsOfxDocumentatio
 		OfxCommentBuilder.doNotModify(comment);
 		section.getContent().add(comment);
 		
-		
 		if(view.isSetDescriptions())
 		{
 			section.getContent().addAll(OfxMultiLangFactory.paragraph(langs, view.getDescriptions()));
@@ -67,7 +69,7 @@ public class OfxSecurityPagesSectionFactory extends AbstractUtilsOfxDocumentatio
 
 		if(view.isSetActions() && view.getActions().getAction().size()>0)
 		{
-			section.getContent().addAll(introductionAction(view.getRoles()));
+			section.getContent().addAll(introductionAction(view));
 			List list = OfxListFactory.unordered();
 			for(net.sf.ahtutils.xml.access.Action action : view.getActions().getAction())
 			{
@@ -104,11 +106,11 @@ public class OfxSecurityPagesSectionFactory extends AbstractUtilsOfxDocumentatio
 		return section;
 	}
 	
-	private java.util.List<Serializable> introductionAction(Roles roles)
+	private java.util.List<Serializable> introductionAction(net.sf.ahtutils.xml.access.View view)
 	{		
 		java.util.List<Serializable> list = new ArrayList<Serializable>();
 		
-		if(roles.getRole().size()>0)
+		if(view.getRoles().getRole().size()>0)
 		{
 			Marginalia m = XmlMarginaliaFactory.build();
 			
@@ -117,9 +119,28 @@ public class OfxSecurityPagesSectionFactory extends AbstractUtilsOfxDocumentatio
 			image.setMedia(XmlMediaFactory.build("svg.aht-utils/icon/ui/security/shield-red.svg", "icon/ui/security/shield-red"));
 			m.getContent().add(image);
 			
-			for(Role role : roles.getRole())
+			for(String lang : langs)
 			{
-				m.getContent().addAll(OfxMultiLangFactory.paragraph(langs, role.getLangs()));
+				Paragraph pRoles = XmlParagraphFactory.build(lang);
+				pRoles.getContent().add(fMarginText);
+				pRoles.getContent().add("Relevant roles for ");
+				
+				try
+				{
+					Lang l = StatusXpath.getLang(view.getLangs(), lang);
+					pRoles.getContent().add(ofxItalic.build(l.getTranslation()));
+					pRoles.getContent().add(":");
+				}
+				catch (ExlpXpathNotFoundException e) {e.printStackTrace();}
+				catch (ExlpXpathNotUniqueException e) {e.printStackTrace();}
+				
+				m.getContent().add(pRoles);
+			}
+			
+			
+			for(Role role : view.getRoles().getRole())
+			{
+				m.getContent().addAll(OfxMultiLangFactory.paragraph(langs, role.getLangs(), fMarginText));
 			}
 			list.add(m);
 		}
