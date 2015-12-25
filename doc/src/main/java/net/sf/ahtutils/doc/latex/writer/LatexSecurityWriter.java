@@ -148,22 +148,27 @@ public class LatexSecurityWriter extends AbstractDocumentationLatexWriter
 		}
 	}
 	
-	public void usecases(Security security) throws UtilsConfigurationException, OfxAuthoringException, OfxConfigurationException, IOException
+	public void usecases(int lvl, UtilsSecurityRestExport rest) throws OfxAuthoringException, OfxConfigurationException, IOException, UtilsConfigurationException {usecases(lvl,rest.exportSecurityUsecases());}
+	public void usecases(Security security) throws UtilsConfigurationException, OfxAuthoringException, OfxConfigurationException, IOException{usecases(2,security);}
+	public void usecases(int lvl,Security security) throws UtilsConfigurationException, OfxAuthoringException, OfxConfigurationException, IOException
 	{
 		Section section = ofUsecases.build(security);
-		ofxMlw.section(2,"/admin/security/actual/usecases",section);
+		ofxMlw.section(lvl,"/admin/security/actual/usecases",section);
 	}
 	
-	public void roles(Security security) throws UtilsConfigurationException, OfxAuthoringException, OfxConfigurationException, IOException
+	public void roles(int lvl, UtilsSecurityRestExport rest) throws OfxAuthoringException, OfxConfigurationException, IOException{roles(lvl,rest.exportSecurityRoles());}
+	public void roles(Security security) throws UtilsConfigurationException, OfxAuthoringException, OfxConfigurationException, IOException{roles(2,security);}
+	public void roles(int lvl, Security security) throws OfxAuthoringException, OfxConfigurationException, IOException
 	{
 		Section section = ofRoles.build(security);
-		ofxMlw.section(2,"/admin/security/actual/roles",section);
+		ofxMlw.section(lvl,"/admin/security/actual/roles",section);
 	}
 	
-	public void views(Access security) throws UtilsConfigurationException, OfxAuthoringException, OfxConfigurationException, IOException
+	public void views(Access security) throws UtilsConfigurationException, OfxAuthoringException, OfxConfigurationException, IOException{views(2,security);}
+	public void views(int lvl, Access security) throws UtilsConfigurationException, OfxAuthoringException, OfxConfigurationException, IOException
 	{
 		Section section = ofViews.build(security);
-		ofxMlw.section(2,"/admin/security/actual/views",section);
+		ofxMlw.section(lvl,"/admin/security/actual/views",section);
 	}
 	
 	public void pageActions(UtilsSecurityRestExport rest) throws OfxAuthoringException, OfxConfigurationException, IOException

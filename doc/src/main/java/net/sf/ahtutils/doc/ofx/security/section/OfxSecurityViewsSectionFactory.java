@@ -81,6 +81,26 @@ public class OfxSecurityViewsSectionFactory extends AbstractUtilsOfxDocumentatio
 		
 		section.getContent().addAll(OfxMultiLangFactory.paragraph(langs, category.getDescriptions()));
 		section.getContent().add(ofSecurityViewTable.build(category));
+		
+		if(category.isSetViews())
+		{
+			for(net.sf.ahtutils.xml.access.View view : category.getViews().getView())
+			{
+				if(view.isSetActions() && view.getActions().getAction().size()>0)
+				{
+					section.getContent().add(build(view));
+				}
+			}
+		}
+		
+		return section;
+	}
+	
+	private Section build(net.sf.ahtutils.xml.access.View view) throws OfxAuthoringException
+	{
+		Section section = XmlSectionFactory.build();
+		section.getContent().add(OfxMultiLangFactory.title(langs, view.getLangs()));
+		
 		return section;
 	}
 }
