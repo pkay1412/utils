@@ -15,8 +15,10 @@ import org.openfuxml.content.ofx.Paragraph;
 import org.openfuxml.content.ofx.Section;
 import org.openfuxml.exception.OfxAuthoringException;
 import org.openfuxml.factory.xml.layout.XmlBoxFactory;
+import org.openfuxml.factory.xml.layout.XmlColumnFactory;
 import org.openfuxml.factory.xml.layout.XmlContainerFactory;
 import org.openfuxml.factory.xml.layout.XmlFontFactory;
+import org.openfuxml.factory.xml.layout.XmlHeightFactory;
 import org.openfuxml.factory.xml.layout.XmlWidthFactory;
 import org.openfuxml.factory.xml.list.OfxListFactory;
 import org.openfuxml.factory.xml.list.OfxListItemFactory;
@@ -114,8 +116,9 @@ public class OfxSecurityPagesSectionFactory extends AbstractUtilsOfxDocumentatio
 		java.util.List<Serializable> content = new ArrayList<Serializable>();
 		
 		Paragraph p = new Paragraph();
-		p.getContent().add("There are different page specific action defined which require certain access right to be performed.");
-		p.getContent().add(" The actual roles and actions are summarzied in the status bar with the grants for the current user.");
+		p.getContent().add("There are several actions defined on this page, they require certain access rights (membership to a role) to be performed.");
+		p.getContent().add(" The security indicators on the status bar show your roles and allowed actions for this page.");
+		p.getContent().add(" The available actions are summarized here together with the relevant roles for this page affecting the allowed actions.");
 		content.add(p);
 		
 		if(view.getRoles().getRole().size()>0)
@@ -124,7 +127,7 @@ public class OfxSecurityPagesSectionFactory extends AbstractUtilsOfxDocumentatio
 			m.getContent().add(XmlBoxFactory.build());
 			
 			Image image = new Image();
-			image.setWidth(XmlWidthFactory.percentage(25));
+			image.setWidth(XmlWidthFactory.percentage(100));
 			image.setMedia(XmlMediaFactory.build("svg.aht-utils/icon/ui/security/shield-red.svg", "icon/ui/security/shield-red"));
 			
 			Container cTopText = XmlContainerFactory.build(fMarginText);
@@ -146,16 +149,12 @@ public class OfxSecurityPagesSectionFactory extends AbstractUtilsOfxDocumentatio
 				
 				cTopText.getContent().add(pRoles);
 			}
-			
-			Container cTop = XmlContainerFactory.build();
-			cTop.getContent().add(image);
-			cTop.getContent().add(cTopText);
-			
-			m.getContent().add(cTop);
+	
+			m.getContent().add(XmlColumnFactory.build(XmlWidthFactory.percentage(25),XmlHeightFactory.shift(-0.60),image));
+			m.getContent().add(XmlWidthFactory.percentage(5));
+			m.getContent().add(XmlColumnFactory.build(XmlWidthFactory.percentage(70),cTopText));
 			
 			Container cRoles = XmlContainerFactory.build(fMarginText);
-			
-			
 			for(Role role : view.getRoles().getRole())
 			{
 				cRoles.getContent().addAll(OfxMultiLangFactory.paragraph(langs, role.getLangs()));
