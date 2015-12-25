@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 import org.apache.commons.configuration.Configuration;
+import org.openfuxml.content.layout.Container;
 import org.openfuxml.content.layout.Font;
 import org.openfuxml.content.list.Item;
 import org.openfuxml.content.list.List;
@@ -13,6 +14,8 @@ import org.openfuxml.content.ofx.Marginalia;
 import org.openfuxml.content.ofx.Paragraph;
 import org.openfuxml.content.ofx.Section;
 import org.openfuxml.exception.OfxAuthoringException;
+import org.openfuxml.factory.xml.layout.XmlBoxFactory;
+import org.openfuxml.factory.xml.layout.XmlContainerFactory;
 import org.openfuxml.factory.xml.layout.XmlFontFactory;
 import org.openfuxml.factory.xml.layout.XmlWidthFactory;
 import org.openfuxml.factory.xml.list.OfxListFactory;
@@ -108,11 +111,17 @@ public class OfxSecurityPagesSectionFactory extends AbstractUtilsOfxDocumentatio
 	
 	private java.util.List<Serializable> introductionAction(net.sf.ahtutils.xml.access.View view)
 	{		
-		java.util.List<Serializable> list = new ArrayList<Serializable>();
+		java.util.List<Serializable> content = new ArrayList<Serializable>();
+		
+		Paragraph p = new Paragraph();
+		p.getContent().add("There are different page specific action defined which require certain access right to be performed.");
+		p.getContent().add(" The actual roles and actions are summarzied in the status bar with the grants for the current user.");
+		content.add(p);
 		
 		if(view.getRoles().getRole().size()>0)
 		{
 			Marginalia m = XmlMarginaliaFactory.build();
+			m.getContent().add(XmlBoxFactory.build());
 			
 			Image image = new Image();
 			image.setWidth(XmlWidthFactory.percentage(25));
@@ -123,7 +132,7 @@ public class OfxSecurityPagesSectionFactory extends AbstractUtilsOfxDocumentatio
 			{
 				Paragraph pRoles = XmlParagraphFactory.build(lang);
 				pRoles.getContent().add(fMarginText);
-				pRoles.getContent().add("Relevant roles for ");
+				pRoles.getContent().add("Roles for ");
 				
 				try
 				{
@@ -137,19 +146,18 @@ public class OfxSecurityPagesSectionFactory extends AbstractUtilsOfxDocumentatio
 				m.getContent().add(pRoles);
 			}
 			
+			Container c = XmlContainerFactory.build(fMarginText);
+			
 			
 			for(Role role : view.getRoles().getRole())
 			{
-				m.getContent().addAll(OfxMultiLangFactory.paragraph(langs, role.getLangs(), fMarginText));
+				c.getContent().addAll(OfxMultiLangFactory.paragraph(langs, role.getLangs()));
 			}
-			list.add(m);
+			m.getContent().add(c);
+			
+			content.add(m);
 		}
 		
-		Paragraph p = new Paragraph();
-		p.getContent().add("There are different page specific action defined which require certain access right to be performed.");
-		p.getContent().add(" The actual roles and actions are summarzied in the status bar with the grants for the current user.");
-		list.add(p);
-		
-		return list;
+		return content;
 	}
 }
