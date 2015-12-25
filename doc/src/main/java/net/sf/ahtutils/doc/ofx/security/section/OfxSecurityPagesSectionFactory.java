@@ -126,14 +126,15 @@ public class OfxSecurityPagesSectionFactory extends AbstractUtilsOfxDocumentatio
 			Image image = new Image();
 			image.setWidth(XmlWidthFactory.percentage(25));
 			image.setMedia(XmlMediaFactory.build("svg.aht-utils/icon/ui/security/shield-red.svg", "icon/ui/security/shield-red"));
-			m.getContent().add(image);
 			
+			Container cTopText = XmlContainerFactory.build(fMarginText);
 			for(String lang : langs)
 			{
-				Paragraph pRoles = XmlParagraphFactory.build(lang);
-				pRoles.getContent().add(fMarginText);
-				pRoles.getContent().add("Roles for ");
+				Paragraph pText = XmlParagraphFactory.build(lang);
+				pText.getContent().add("Roles for");
+				cTopText.getContent().add(pText);
 				
+				Paragraph pRoles = XmlParagraphFactory.build(lang);
 				try
 				{
 					Lang l = StatusXpath.getLang(view.getLangs(), lang);
@@ -143,17 +144,23 @@ public class OfxSecurityPagesSectionFactory extends AbstractUtilsOfxDocumentatio
 				catch (ExlpXpathNotFoundException e) {e.printStackTrace();}
 				catch (ExlpXpathNotUniqueException e) {e.printStackTrace();}
 				
-				m.getContent().add(pRoles);
+				cTopText.getContent().add(pRoles);
 			}
 			
-			Container c = XmlContainerFactory.build(fMarginText);
+			Container cTop = XmlContainerFactory.build();
+			cTop.getContent().add(image);
+			cTop.getContent().add(cTopText);
+			
+			m.getContent().add(cTop);
+			
+			Container cRoles = XmlContainerFactory.build(fMarginText);
 			
 			
 			for(Role role : view.getRoles().getRole())
 			{
-				c.getContent().addAll(OfxMultiLangFactory.paragraph(langs, role.getLangs()));
+				cRoles.getContent().addAll(OfxMultiLangFactory.paragraph(langs, role.getLangs()));
 			}
-			m.getContent().add(c);
+			m.getContent().add(cRoles);
 			
 			content.add(m);
 		}
