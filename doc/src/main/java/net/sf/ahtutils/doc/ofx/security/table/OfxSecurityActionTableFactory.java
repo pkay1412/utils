@@ -4,9 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.commons.configuration.Configuration;
-import org.openfuxml.content.ofx.Paragraph;
 import org.openfuxml.content.table.Body;
-import org.openfuxml.content.table.Cell;
 import org.openfuxml.content.table.Columns;
 import org.openfuxml.content.table.Content;
 import org.openfuxml.content.table.Head;
@@ -23,11 +21,8 @@ import org.slf4j.LoggerFactory;
 import net.sf.ahtutils.doc.ofx.AbstractUtilsOfxDocumentationFactory;
 import net.sf.ahtutils.doc.ofx.util.OfxMultiLangFactory;
 import net.sf.ahtutils.xml.access.Action;
-import net.sf.ahtutils.xml.security.Usecase;
+import net.sf.ahtutils.xml.security.Role;
 import net.sf.ahtutils.xml.status.Translations;
-import net.sf.ahtutils.xml.xpath.StatusXpath;
-import net.sf.exlp.exception.ExlpXpathNotFoundException;
-import net.sf.exlp.exception.ExlpXpathNotUniqueException;
 
 public class OfxSecurityActionTableFactory extends AbstractUtilsOfxDocumentationFactory
 {
@@ -109,9 +104,24 @@ public class OfxSecurityActionTableFactory extends AbstractUtilsOfxDocumentation
 		
 		if(view.isSetRoles())
 		{
+			for(Role role : view.getRoles().getRole())
+			{
+				boolean active = false;
+				if(action.isSetRoles())
+				{
+					for(Role r : action.getRoles().getRole())
+					{
+						if(role.getCode().equals(r.getCode())){active=true;}
+					}
+				}
+				
+				if(active){row.getCell().add(OfxCellFactory.createParagraphCell("X"));}
+				else {row.getCell().add(OfxCellFactory.createParagraphCell(""));}
+			}
+			
 			for(int i=1;i<=view.getRoles().getRole().size();i++)
 			{
-				row.getCell().add(OfxCellFactory.createParagraphCell("X"));
+				
 			}
 		}
 		

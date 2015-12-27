@@ -1,5 +1,7 @@
 package net.sf.ahtutils.web.rest;
 
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -50,6 +52,7 @@ public class SecurityRestService <L extends UtilsLang,D extends UtilsDescription
 	private final Class<R> cRole;
 	private final Class<V> cView;
 	private final Class<U> cUsecase;
+	private final Class<A> cAction;
 	
 	private SecurityInitViews<L,D,C,R,V,U,A,USER> initViews;
 	
@@ -57,6 +60,7 @@ public class SecurityRestService <L extends UtilsLang,D extends UtilsDescription
 	private XmlViewFactory xfView;
 	private XmlRoleFactory<L,D,C,R,V,U,A,USER> fRole;
 	private XmlRoleFactory<L,D,C,R,V,U,A,USER> fRoleDescription;
+	private XmlRoleFactory<L,D,C,R,V,U,A,USER> fRoleCode;
 	private XmlActionFactory<L,D,C,R,V,U,A,USER> fAction;
 	private XmlUsecaseFactory<L,D,C,R,V,U,A,USER> fUsecase;
 	
@@ -67,11 +71,13 @@ public class SecurityRestService <L extends UtilsLang,D extends UtilsDescription
 		this.cRole=cRole;
 		this.cView=cView;
 		this.cUsecase=cUsecase;
+		this.cAction=cAction;
 		
 		fCategory = new XmlCategoryFactory<L,D,C,R,V,U,A,USER>(null,SecurityQuery.exCategory());
 		xfView = new XmlViewFactory(SecurityQuery.exViewOld(),null);
 		fRole = new XmlRoleFactory<L,D,C,R,V,U,A,USER>(SecurityQuery.exRole(),null);
 		fRoleDescription = new XmlRoleFactory<L,D,C,R,V,U,A,USER>(SecurityQuery.role(),null);
+		fRoleCode = new XmlRoleFactory<L,D,C,R,V,U,A,USER>(XmlRoleFactory.build(""));
 		fAction = new XmlActionFactory<L,D,C,R,V,U,A,USER>(SecurityQuery.exActionAcl());
 		fUsecase = new XmlUsecaseFactory<L,D,C,R,V,U,A,USER>(SecurityQuery.exUsecase());
 		
@@ -117,7 +123,20 @@ public class SecurityRestService <L extends UtilsLang,D extends UtilsDescription
 						xView.setActions(XmlActionsFactory.create());
 						for(A action : view.getActions())
 						{
-							xView.getActions().getAction().add(fAction.create(action));
+							net.sf.ahtutils.xml.access.Action xAction = fAction.create(action);
+							
+							List<R> roles = fSecurity.rolesForAction(cAction, action);
+							if(roles.size()>0)
+							{
+								Roles xRoles = XmlRolesFactory.build();
+								for(R r : roles)
+								{
+									xRoles.getRole().add(fRoleCode.build(r));
+								}
+								xAction.setRoles(xRoles);
+							}
+							
+							xView.getActions().getAction().add(xAction);
 						}
 						
 						Roles xRoles = XmlRolesFactory.build();

@@ -1,6 +1,8 @@
 package net.sf.ahtutils.model.ejb.security;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import javax.persistence.CascadeType;
@@ -9,6 +11,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.MapKey;
 import javax.persistence.OneToMany;
@@ -73,7 +76,16 @@ public class AhtUtilsSecurityAction implements EjbWithCode,Serializable,EjbRemov
 	public Map<String, AhtUtilsDescription> getDescription() {return description;}
 	public void setDescription(Map<String, AhtUtilsDescription> description) {this.description = description;}
 	
-	// >>>>>>>>>>>>>>>>>>>>>>>>>>Methods<<<<<<<<<<<<<<<<<<<<<<<<<<<	
+	@ManyToMany(fetch=FetchType.LAZY)
+	private List<AhtUtilsSecurityRole> roles;
+	@Override public List<AhtUtilsSecurityRole> getRoles() {if(roles==null){roles = new ArrayList<AhtUtilsSecurityRole>();}return roles;}
+	@Override public void setRoles(List<AhtUtilsSecurityRole> roles) {this.roles = roles;}
+	
+	@ManyToMany(fetch=FetchType.LAZY)
+	private List<AhtUtilsSecurityUsecase> usecases;
+	@Override public List<AhtUtilsSecurityUsecase> getUsecases() {if(usecases==null){usecases = new ArrayList<AhtUtilsSecurityUsecase>();}return usecases;}
+	@Override public void setUsecases(List<AhtUtilsSecurityUsecase> usecases) {this.usecases = usecases;}
+
 	
 	public boolean equals(Object object)
 	{
