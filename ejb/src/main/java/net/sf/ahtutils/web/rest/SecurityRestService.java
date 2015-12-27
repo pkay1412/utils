@@ -119,6 +119,14 @@ public class SecurityRestService <L extends UtilsLang,D extends UtilsDescription
 						{
 							xView.getActions().getAction().add(fAction.create(action));
 						}
+						
+						Roles xRoles = XmlRolesFactory.build();
+						for(R role : fSecurity.rolesForView(cView, view))
+						{
+							xRoles.getRole().add(fRoleDescription.build(role));
+						}
+						xView.setRoles(xRoles);
+						
 						xmlCat.getViews().getView().add(xView);
 					}
 					

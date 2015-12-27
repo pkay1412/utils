@@ -164,8 +164,14 @@ public class LatexSecurityWriter extends AbstractDocumentationLatexWriter
 		ofxMlw.section(lvl,"/admin/security/actual/roles",section);
 	}
 	
+	public void views(int lvl, UtilsSecurityRestExport rest) throws OfxAuthoringException, OfxConfigurationException, IOException, UtilsConfigurationException{views(lvl,rest.exportSecurityViews());}
 	public void views(Access security) throws UtilsConfigurationException, OfxAuthoringException, OfxConfigurationException, IOException{views(2,security);}
 	public void views(int lvl, Access security) throws UtilsConfigurationException, OfxAuthoringException, OfxConfigurationException, IOException
+	{
+		Section section = ofViews.build(security);
+		ofxMlw.section(lvl,"/admin/security/actual/views",section);
+	}
+	public void views(int lvl, Security security) throws UtilsConfigurationException, OfxAuthoringException, OfxConfigurationException, IOException
 	{
 		Section section = ofViews.build(security);
 		ofxMlw.section(lvl,"/admin/security/actual/views",section);
