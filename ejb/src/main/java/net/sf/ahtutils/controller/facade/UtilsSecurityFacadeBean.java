@@ -94,6 +94,29 @@ USER extends UtilsUser<L,D,C,R,V,U,A,USER>> extends UtilsFacadeBean implements U
 		return new ArrayList<R>(roles.values());
 	}
 	
+	@Override public List<R> rolesForAction(Class<A> cAction, A action)
+	{	
+		return rolesForAction(cAction,null,action,null);
+	}
+	
+	@Override public List<R> rolesForAction(Class<A> cAction, Class<USER> cUser, A action, USER user)
+	{		
+//		view = em.find(cView, view.getId());
+		Map<Long,R> roles = new HashMap<Long,R>();
+/*		for(R r : view.getRoles())
+		{
+			if(!roles.containsKey(r.getId())){roles.put(r.getId(), r);}
+		}
+		for(U u : view.getUsecases())
+		{
+			for(R r : u.getRoles())
+			{
+				if(!roles.containsKey(r.getId())){roles.put(r.getId(), r);}
+			}
+		}
+*/		return new ArrayList<R>(roles.values());
+	}
+	
 	@Override public List<A> allActionsForUser(Class<USER> clUser, USER user)
 	{
 		user = em.find(clUser, user.getId());

@@ -30,9 +30,14 @@ public interface UtilsSecurityFacade <L extends UtilsLang,
 	R load(Class<R> cRole, R role);
 	V load(Class<V> cView, V view);
 	List<V> allViewsForUser(Class<USER> cUser, USER user);
+	
 	List<R> allRolesForUser(Class<USER> cUser, USER user);
 	List<R> rolesForView(Class<V> cView, V view);
 	List<R> rolesForView(Class<V> cView, Class<USER> cUser, V view, USER user);
+	List<R> rolesForAction(Class<A> cAction, A action);
+	List<R> rolesForAction(Class<A> cAction, Class<USER> cUser, A action, USER user);
+	
+	
 	List<A> allActionsForUser(Class<USER> clUser, USER user);
 	
 	void grantRole(Class<USER> clUser, Class<R> clRole, USER user, R role, boolean grant);

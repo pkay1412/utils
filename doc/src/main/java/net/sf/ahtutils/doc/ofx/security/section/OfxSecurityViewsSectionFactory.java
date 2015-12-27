@@ -240,8 +240,8 @@ public class OfxSecurityViewsSectionFactory extends AbstractUtilsOfxDocumentatio
 					sb.append(" "+StatusXpath.getLang(roles.get(i-1).getLangs(),key).getTranslation());
 					if(roles.size()>1)
 					{
-						if(i<roles.size()-2){sb.append(",");}
-						else if(i<roles.size()-1){sb.append(" and");}
+						if(i<roles.size()-1){sb.append(",");}
+						else if(i<roles.size()){sb.append(" and");}
 						else{sb.append(".");}
 					}
 				}
