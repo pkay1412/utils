@@ -26,4 +26,7 @@ public interface UtilsSecurityCategory<L extends UtilsLang,
 				EjbSaveable
 {
 	public static enum Type {role,view,usecase}
+	
+	public Boolean isDocumentation();
+	public void setDocumentation(Boolean documentation);
 }

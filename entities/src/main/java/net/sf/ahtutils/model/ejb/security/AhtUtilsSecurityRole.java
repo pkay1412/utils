@@ -62,6 +62,10 @@ public class AhtUtilsSecurityRole implements EjbWithCode,Serializable,EjbRemovea
 	private boolean visible;
 	@Override public boolean isVisible() {return visible;}
 	@Override public void setVisible(boolean visible) {this.visible = visible;}
+	
+	private Boolean documentation;
+	@Override public Boolean isDocumentation() {return documentation;}
+	@Override public void setDocumentation(Boolean documentation) {this.documentation = documentation;}
 
 	private int position;
 	@Override public int getPosition() {return position;}

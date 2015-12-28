@@ -59,6 +59,10 @@ public class AhtUtilsSecurityAction implements EjbWithCode,Serializable,EjbRemov
 	private boolean visible;
 	@Override public boolean isVisible() {return visible;}
 	@Override public void setVisible(boolean visible) {this.visible = visible;}
+	
+	private Boolean documentation;
+	@Override public Boolean isDocumentation() {return documentation;}
+	@Override public void setDocumentation(Boolean documentation) {this.documentation = documentation;}
 
 	private int position;
 	@Override public int getPosition() {return position;}
@@ -67,14 +71,14 @@ public class AhtUtilsSecurityAction implements EjbWithCode,Serializable,EjbRemov
 	@OneToMany(cascade = CascadeType.ALL, fetch=FetchType.EAGER)
 	@MapKey(name = "lkey")
 	private Map<String, AhtUtilsLang> name;
-	public Map<String, AhtUtilsLang> getName() {return name;}
-	public void setName(Map<String, AhtUtilsLang> name) {this.name = name;}
+	@Override public Map<String, AhtUtilsLang> getName() {return name;}
+	@Override public void setName(Map<String, AhtUtilsLang> name) {this.name = name;}
 	
 	@OneToMany(cascade = CascadeType.ALL, fetch=FetchType.EAGER)
 	@MapKey(name = "lkey")
 	private Map<String, AhtUtilsDescription> description;
-	public Map<String, AhtUtilsDescription> getDescription() {return description;}
-	public void setDescription(Map<String, AhtUtilsDescription> description) {this.description = description;}
+	@Override public Map<String, AhtUtilsDescription> getDescription() {return description;}
+	@Override public void setDescription(Map<String, AhtUtilsDescription> description) {this.description = description;}
 	
 	@ManyToMany(fetch=FetchType.LAZY)
 	private List<AhtUtilsSecurityRole> roles;

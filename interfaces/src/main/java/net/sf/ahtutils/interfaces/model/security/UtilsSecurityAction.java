@@ -32,4 +32,7 @@ public interface UtilsSecurityAction<L extends UtilsLang,
 	
 	public List<U> getUsecases();
 	public void setUsecases(List<U> usecases);
+	
+	public Boolean isDocumentation();
+	public void setDocumentation(Boolean documentation);
 }

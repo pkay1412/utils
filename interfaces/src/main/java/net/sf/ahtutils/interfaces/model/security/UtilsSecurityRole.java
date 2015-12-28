@@ -36,5 +36,6 @@ public interface UtilsSecurityRole<L extends UtilsLang,
 	List<USER> getUsers();
 	void setUsers(List<USER> users);
 	
-
+	public Boolean isDocumentation();
+	public void setDocumentation(Boolean documentation);
 }
