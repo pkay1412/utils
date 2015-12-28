@@ -21,10 +21,13 @@
 			<f:facet name="actions">
 				<aht:icon type="save" listener="#{cc.attrs.bean.saveCategory()}" update="#{cc.attrs.update}" tooltip="#{cc.attrs.tooltip}"/>
 			</f:facet>
-			<h:panelGrid columns="2" columnClasses="col1,col2" styleClass="auCleanPanelGrid">
+			<h:panelGrid columns="2" columnClasses="auPwg30,auPwg70" styleClass="auCleanPanelGrid">
 				<p:outputLabel value="#{msg.aupSecurityCode}"/>
 				<h:outputText rendered="#{!cc.attrs.withAdd}" value="#{cc.attrs.bean.category.code}"/>
 				<h:inputText rendered="#{cc.attrs.withAdd}" value="#{cc.attrs.bean.category.code}"/>
+				
+				<p:outputLabel rendered="#{cc.attrs.bean.showInvisibleCategories}" value="#{msg.aupSecurityVisible}"/>
+				<p:selectBooleanCheckbox rendered="#{cc.attrs.bean.showInvisibleCategories}" value="#{cc.attrs.bean.category.visible}"/>
 			</h:panelGrid>
 			<aht:tabTranslationEditor value="#{cc.attrs.bean.category}"
 					labelTranslation="#{msg.Name}" labelDescription="#{msg.Description}"

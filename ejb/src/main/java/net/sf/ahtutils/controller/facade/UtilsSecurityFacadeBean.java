@@ -162,7 +162,7 @@ USER extends UtilsUser<L,D,C,R,V,U,A,USER>> extends UtilsFacadeBean implements U
 		
 		C category = this.fByTypeCode(clC, type, code);
 		
-		return this.allOrderedPositionVisibleParent2(clWc,category);
+		return this.allOrderedPositionParent(clWc,category);
 	}	
 	
 	@Override

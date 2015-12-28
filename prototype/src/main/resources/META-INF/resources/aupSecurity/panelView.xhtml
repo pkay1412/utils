@@ -26,6 +26,9 @@
 				
 				<p:outputLabel value="#{msg.aupSecurityCode}"/>
 				<h:outputText value="#{adminSecurityViewsBean.view.code}"/>
+				
+				<p:outputLabel rendered="#{adminSecurityViewsBean.showInvisibleRecords}" value="#{msg.aupSecurityVisible}"/>
+				<p:selectBooleanCheckbox rendered="#{adminSecurityViewsBean.showInvisibleRecords}" value="#{adminSecurityViewsBean.view.visible}"/>
 			</h:panelGrid>
 			<aht:tabTranslationEditor value="#{adminSecurityViewsBean.view}"
 					labelTranslation="#{msg.Name}" labelDescription="#{msg.Description}"

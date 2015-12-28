@@ -60,6 +60,7 @@ public class OfxSecurityPagesSectionFactory extends AbstractUtilsOfxDocumentatio
 	
 	public Section build(net.sf.ahtutils.xml.access.View view) throws OfxAuthoringException
 	{
+		if(view.getCode().equals("programBudget")){JaxbUtil.trace(view);}
 		Section section = XmlSectionFactory.build();
 		section.setContainer(true);
 		
@@ -107,7 +108,7 @@ public class OfxSecurityPagesSectionFactory extends AbstractUtilsOfxDocumentatio
 			section.getContent().add(list);
 		}
 		
-		JaxbUtil.trace(section);
+		if(view.getCode().equals("programBudget")){JaxbUtil.trace(section);}
 		return section;
 	}
 	

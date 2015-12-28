@@ -45,10 +45,10 @@ import net.sf.ahtutils.interfaces.model.with.code.EjbWithNonUniqueCode;
 import net.sf.ahtutils.interfaces.model.with.code.EjbWithType;
 import net.sf.ahtutils.interfaces.model.with.code.EjbWithTypeCode;
 import net.sf.ahtutils.interfaces.model.with.position.EjbWithPosition;
+import net.sf.ahtutils.interfaces.model.with.position.EjbWithPositionParent;
 import net.sf.ahtutils.interfaces.model.with.position.EjbWithPositionType;
 import net.sf.ahtutils.interfaces.model.with.position.EjbWithPositionTypeVisible;
 import net.sf.ahtutils.interfaces.model.with.position.EjbWithPositionVisible;
-import net.sf.ahtutils.interfaces.model.with.position.EjbWithPositionVisibleParent;
 import net.sf.ahtutils.model.interfaces.idm.UtilsUser;
 import net.sf.ahtutils.model.interfaces.with.EjbWithId;
 import net.sf.ahtutils.model.interfaces.with.EjbWithName;
@@ -472,31 +472,26 @@ public class UtilsFacadeBean implements UtilsFacade
 		return em.createQuery(select).getResultList();
 	}
 	
-	@Override public <T extends EjbWithPositionVisibleParent, P extends EjbWithId> List<T> allOrderedPositionVisibleParent2(Class<T> cl, P parent)
+	@Override public <T extends EjbWithPositionParent, P extends EjbWithId> List<T> allOrderedPositionParent(Class<T> cl, P parent)
 	{
-		T prototype = null;
-		try {
-			prototype = cl.newInstance();
-		} catch (InstantiationException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IllegalAccessException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
 		CriteriaBuilder cB = em.getCriteriaBuilder();
 		CriteriaQuery<T> cQ = cB.createQuery(cl);
 		Root<T> from = cQ.from(cl);
 		
-
-		Path<Object> p1Path = from.get(prototype.resolveParentAttribute());
-		Path<Boolean> pathVisible = from.get("visible");
-		Expression<Date> eOrder = from.get("position");
-		
 		CriteriaQuery<T> select = cQ.select(from);
+		
+		
+		Expression<Date> eOrder = from.get("position");
 		select.orderBy(cB.asc(eOrder));
-		select.where(cB.and(cB.equal(p1Path, parent.getId()),cB.equal(pathVisible, true)));
+		
+		try
+		{
+			T prototype = cl.newInstance();
+			Path<Object> p1Path = from.get(prototype.resolveParentAttribute());
+			select.where(cB.equal(p1Path, parent.getId()));
+		}
+		catch (InstantiationException e) {e.printStackTrace();}
+		catch (IllegalAccessException e) {e.printStackTrace();}
 		
 		return em.createQuery(select).getResultList();
 	}

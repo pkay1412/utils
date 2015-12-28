@@ -55,6 +55,10 @@ public class AbstractAdminSecurityBean <L extends UtilsLang,
 	protected Class<U> cUsecase;
 	protected Class<A> cAction;
 	
+	//Handling for Invisible entries
+	protected boolean showInvisibleCategories; public boolean isShowInvisibleCategories() {return showInvisibleCategories;}
+	protected boolean showInvisibleRecords; public boolean isShowInvisibleRecords() {return showInvisibleRecords;}
+	
 	//Category
 	protected List<C> categories;
 	public List<C> getCategories() {return categories;}
@@ -115,6 +119,9 @@ public class AbstractAdminSecurityBean <L extends UtilsLang,
 	
 	public void initSecuritySuper(final Class<L> cLang, final Class<D> cDescription, final Class<C> cCategory, final Class<R> cRole, final Class<V> cView, final Class<U> cUsecase, final Class<A> cAction, final Class<USER> cUser, String[] langs)
 	{
+		showInvisibleCategories = true;
+		showInvisibleRecords = true;
+		
 		this.cCategory=cCategory;
 		this.cRole=cRole;
 		this.cUsecase=cUsecase;
@@ -146,7 +153,11 @@ public class AbstractAdminSecurityBean <L extends UtilsLang,
 	protected void reloadCategories()
 	{
 		logger.info("reloadCategories");
-		categories = fSecurity.allOrderedPositionVisible(cCategory,categoryType);
+		
+		if(showInvisibleCategories){categories = fSecurity.allOrderedPosition(cCategory,categoryType);}
+		else{categories = fSecurity.allOrderedPositionVisible(cCategory,categoryType);}
+				
+		
 	}
 	
 	protected void reorderCategories() throws UtilsConstraintViolationException, UtilsLockingException

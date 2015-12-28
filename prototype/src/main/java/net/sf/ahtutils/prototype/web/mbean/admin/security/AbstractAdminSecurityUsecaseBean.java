@@ -109,6 +109,7 @@ public class AbstractAdminSecurityUsecaseBean <L extends UtilsLang,
 	public void saveUsecase() throws UtilsConstraintViolationException, UtilsLockingException, UtilsNotFoundException
 	{
 		logger.info(AbstractLogMessage.saveEntity(usecase));
+		usecase.setCategory(fSecurity.find(cCategory, usecase.getCategory()));
 		usecase = fSecurity.save(usecase);
 		reloadUsecases();
 	}

@@ -200,6 +200,5 @@ public class LatexSecurityWriter extends AbstractDocumentationLatexWriter
 				ofxMlw.section(2,sb.toString(),section);
 			}
 		}
-		
 	}
 }

@@ -17,6 +17,7 @@ import net.sf.ahtutils.interfaces.model.status.UtilsLang;
 import net.sf.ahtutils.interfaces.model.status.UtilsStatusFixedCode;
 import net.sf.ahtutils.model.interfaces.idm.UtilsUser;
 import net.sf.ahtutils.web.mbean.util.AbstractLogMessage;
+import net.sf.exlp.util.io.StringUtil;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -52,6 +53,8 @@ public class AbstractAdminSecurityRoleBean <L extends UtilsLang,
 		opViews = fSecurity.all(cView);
 		opActions = new ArrayList<A>();
 		opUsecases = fSecurity.all(cUsecase);
+		
+		roles = new ArrayList<R>();
 	}
 	
 	// SELECT
@@ -88,8 +91,15 @@ public class AbstractAdminSecurityRoleBean <L extends UtilsLang,
 	//RELOAD
 	private void reloadRoles() throws UtilsNotFoundException
 	{
-		roles = fSecurity.allForCategory(cRole,cCategory,category.getCode());
-		logger.info("Reloaded "+roles.size());
+		roles.clear();
+		logger.info(StringUtil.stars());
+		for(R r : fSecurity.allForCategory(cRole,cCategory,category.getCode()))
+		{
+			logger.info("Role "+r.toString());
+			if(r.isVisible() | showInvisibleRecords){roles.add(r);}
+		}
+		
+		logger.info("Reloaded "+roles.size()+" (invisibleRecords:"+showInvisibleRecords+")");
 	}
 	private void reloadActions()
 	{
