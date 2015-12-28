@@ -28,6 +28,7 @@
             <xsd:attribute name="label" type="xsd:string"/>
             <xsd:attribute name="position" type="xsd:int"/>
             <xsd:attribute name="visible" type="xsd:boolean"/>
+            <xsd:attribute name="documentation" type="xsd:boolean"/>
         </xsd:complexType>
     </xsd:element>
     <xsd:element name="password">
@@ -72,6 +73,7 @@
             <xsd:attribute name="code" type="xsd:string"/>
 			<xsd:attribute name="position" type="xsd:int"/>
             <xsd:attribute name="visible" type="xsd:boolean"/>
+            <xsd:attribute name="documentation" type="xsd:boolean"/>
             <xsd:attribute name="label" type="xsd:string"/>
         </xsd:complexType>
     </xsd:element>
@@ -93,6 +95,7 @@
             <xsd:attribute name="code" type="xsd:string"/>
 			<xsd:attribute name="position" type="xsd:int"/>
             <xsd:attribute name="visible" type="xsd:boolean"/>
+            <xsd:attribute name="documentation" type="xsd:boolean"/>
             <xsd:attribute name="label" type="xsd:string"/>
         </xsd:complexType>
     </xsd:element>
@@ -137,6 +140,7 @@
             <xsd:attribute name="label" type="xsd:string"/>
 			<xsd:attribute name="position" type="xsd:int"/>
             <xsd:attribute name="visible" type="xsd:boolean"/>
+            <xsd:attribute name="documentation" type="xsd:boolean"/>
         </xsd:complexType>
     </xsd:element>
     
@@ -159,6 +163,7 @@
             <xsd:attribute name="code" type="xsd:string"/>
 			<xsd:attribute name="position" type="xsd:int"/>
             <xsd:attribute name="visible" type="xsd:boolean"/>
+            <xsd:attribute name="documentation" type="xsd:boolean"/>
             <xsd:attribute name="label" type="xsd:string"/>
         </xsd:complexType>
     </xsd:element>

@@ -20,6 +20,7 @@ public class TestXmlCategory extends AbstractXmlSecurityTest<Category>
     	Category xml = new Category();
     	xml.setPosition(1);
     	xml.setVisible(true);
+    	xml.setDocumentation(true);
     	xml.setCode("myCode");
     	xml.setLabel("myLabel");
     	

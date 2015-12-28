@@ -29,6 +29,7 @@ import net.sf.ahtutils.xml.status.Langs;
  *       &lt;/sequence&gt;
  *       &lt;attribute name="code" type="{http://www.w3.org/2001/XMLSchema}string" /&gt;
  *       &lt;attribute name="name" type="{http://www.w3.org/2001/XMLSchema}string" /&gt;
+ *       &lt;attribute name="documentation" type="{http://www.w3.org/2001/XMLSchema}boolean" /&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
@@ -58,6 +59,8 @@ public class Action
     protected String code;
     @XmlAttribute(name = "name")
     protected String name;
+    @XmlAttribute(name = "documentation")
+    protected Boolean documentation;
 
     /**
      * Gets the value of the descriptions property.
@@ -197,6 +200,38 @@ public class Action
 
     public boolean isSetName() {
         return (this.name!= null);
+    }
+
+    /**
+     * Gets the value of the documentation property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Boolean }
+     *     
+     */
+    public boolean isDocumentation() {
+        return documentation;
+    }
+
+    /**
+     * Sets the value of the documentation property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Boolean }
+     *     
+     */
+    public void setDocumentation(boolean value) {
+        this.documentation = value;
+    }
+
+    public boolean isSetDocumentation() {
+        return (this.documentation!= null);
+    }
+
+    public void unsetDocumentation() {
+        this.documentation = null;
     }
 
 }

@@ -31,6 +31,6 @@ public interface UtilsSecurityUsecase<L extends UtilsLang,
 	public List<R> getRoles();
 	public void setRoles(List<R> roles);
 	
-	public Boolean isDocumentation();
+	public Boolean getDocumentation();
 	public void setDocumentation(Boolean documentation);
 }

@@ -27,6 +27,6 @@ public interface UtilsSecurityCategory<L extends UtilsLang,
 {
 	public static enum Type {role,view,usecase}
 	
-	public Boolean isDocumentation();
+	public Boolean getDocumentation();
 	public void setDocumentation(Boolean documentation);
 }

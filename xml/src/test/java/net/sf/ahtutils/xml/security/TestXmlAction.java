@@ -20,6 +20,7 @@ public class TestXmlAction extends AbstractXmlSecurityTest<Action>
     	xml.setId(123);
     	xml.setPosition(1);
     	xml.setVisible(true);
+    	xml.setDocumentation(true);
     	xml.setCode("myCode");
     	xml.setLabel("myLabel");
     	

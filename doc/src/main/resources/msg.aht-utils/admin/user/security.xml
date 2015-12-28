@@ -87,4 +87,12 @@
     		<s:lang key="fr" translation="Visible"/>
     	</s:langs>
     </s:translation>
+        <s:translation key="aupSecurityIncludeInManual">
+    	<s:langs>
+    		<s:lang key="de" translation="Handbuch"/>
+    		<s:lang key="en" translation="Manual"/>
+    		<s:lang key="fr" translation="Manual"/>
+    	</s:langs>
+    </s:translation>
+    
 </s:translations>

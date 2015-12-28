@@ -58,6 +58,7 @@ public class AbstractAdminSecurityBean <L extends UtilsLang,
 	//Handling for Invisible entries
 	protected boolean showInvisibleCategories; public boolean isShowInvisibleCategories() {return showInvisibleCategories;}
 	protected boolean showInvisibleRecords; public boolean isShowInvisibleRecords() {return showInvisibleRecords;}
+	protected boolean showDocumentation; public boolean isShowDocumentation() {return showDocumentation;}
 	
 	//Category
 	protected List<C> categories;
@@ -121,6 +122,7 @@ public class AbstractAdminSecurityBean <L extends UtilsLang,
 	{
 		showInvisibleCategories = true;
 		showInvisibleRecords = true;
+		showDocumentation = true;
 		
 		this.cCategory=cCategory;
 		this.cRole=cRole;

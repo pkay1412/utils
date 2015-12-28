@@ -44,6 +44,7 @@
             <xsd:attribute name="label" type="xsd:string"/>
             <xsd:attribute name="position" type="xsd:int"/>
             <xsd:attribute name="visible" type="xsd:boolean"/>
+            <xsd:attribute name="documentation" type="xsd:boolean"/>
         </xsd:complexType>
     </xsd:element>
     <xsd:element name="roleAutoAssign">
@@ -109,6 +110,7 @@
             <xsd:attribute name="label" type="xsd:string"/>
             <xsd:attribute name="position" type="xsd:int"/>
             <xsd:attribute name="visible" type="xsd:boolean"/>
+            <xsd:attribute name="documentation" type="xsd:boolean"/>
         </xsd:complexType>
     </xsd:element>
     <xsd:element name="roles">
@@ -129,6 +131,7 @@
             </xsd:sequence>
             <xsd:attribute name="code" type="xsd:string"/>
             <xsd:attribute name="name" type="xsd:string"/>
+            <xsd:attribute name="documentation" type="xsd:boolean"/>
         </xsd:complexType>
     </xsd:element>
         <xsd:element name="usecases">
@@ -148,6 +151,7 @@
             </xsd:sequence>
             <xsd:attribute name="code" type="xsd:string"/>
             <xsd:attribute name="name" type="xsd:string"/>
+            <xsd:attribute name="documentation" type="xsd:boolean"/>
         </xsd:complexType>
     </xsd:element>
 	<xsd:element name="actions">
@@ -166,6 +170,7 @@
             </xsd:sequence>
             <xsd:attribute name="code" type="xsd:string"/>
             <xsd:attribute name="name" type="xsd:string"/>
+            <xsd:attribute name="documentation" type="xsd:boolean"/>
         </xsd:complexType>
     </xsd:element>
 </xsd:schema>

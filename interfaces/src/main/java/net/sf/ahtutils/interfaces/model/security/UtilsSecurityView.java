@@ -51,6 +51,6 @@ public interface UtilsSecurityView<L extends UtilsLang,
 	public List<U> getUsecases();
 	public void setUsecases(List<U> usecases);
 	
-	public Boolean isDocumentation();
+	public Boolean getDocumentation();
 	public void setDocumentation(Boolean documentation);
 }

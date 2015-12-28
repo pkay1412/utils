@@ -33,8 +33,11 @@
 				<h:outputText value="#{c.name[userBean.localeCode].lang}" />  
             </p:column>
             <p:column rendered="#{cc.attrs.bean.showInvisibleCategories}">  
-				<h:graphicImage rendered="#{c.visible}" name="#{iconBean.icon12['securityVisible']}" library="gfx"/>
-                <h:graphicImage rendered="#{not c.visible}" name="#{iconBean.icon12['securityInvisible']}" library="gfx"/>
+				<h:graphicImage rendered="#{c.visible}" name="#{iconBean.icon12['aupSecurityVisible']}" library="gfx"/>
+                <h:graphicImage rendered="#{not c.visible}" name="#{iconBean.icon12['aupSecurityInvisible']}" library="gfx"/>
+            </p:column>
+            <p:column rendered="#{cc.attrs.bean.showDocumentation}">  
+				<h:graphicImage rendered="#{c.documentation}" name="#{iconBean.icon12['aupSecurityDocumentation']}" library="gfx"/>
             </p:column>
        	</p:dataTable>
 	</composite:implementation>
