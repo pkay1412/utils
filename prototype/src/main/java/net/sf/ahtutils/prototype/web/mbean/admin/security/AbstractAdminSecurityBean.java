@@ -173,4 +173,6 @@ public class AbstractAdminSecurityBean <L extends UtilsLang,
 			i++;
 		}
 	}
+	
+	protected void categorySaved(){}
 }

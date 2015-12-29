@@ -237,7 +237,7 @@ public class OfxStatusTableFactory extends AbstractUtilsOfxDocumentationFactory
 		if(line)
 		{
 			Layout layout = XmlLayoutFactory.build();
-			layout.getLine().add(XmlLineFactory.buildTop());
+			layout.getLine().add(XmlLineFactory.top());
 			row.setLayout(layout);
 		}
 		

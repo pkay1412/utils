@@ -117,6 +117,7 @@ public class AbstractAdminSecurityRoleBean <L extends UtilsLang,
 		logger.info(AbstractLogMessage.saveEntity(category));
 		category = fSecurity.save(category);
 		reloadCategories();
+		categorySaved();
 	}
 
 

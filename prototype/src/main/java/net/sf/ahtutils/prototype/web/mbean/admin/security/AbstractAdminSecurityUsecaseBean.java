@@ -105,6 +105,7 @@ public class AbstractAdminSecurityUsecaseBean <L extends UtilsLang,
 		category = fSecurity.save(category);
 		reloadCategories();
 		reloadUsecases();
+		categorySaved();
 	}
 	public void saveUsecase() throws UtilsConstraintViolationException, UtilsLockingException, UtilsNotFoundException
 	{

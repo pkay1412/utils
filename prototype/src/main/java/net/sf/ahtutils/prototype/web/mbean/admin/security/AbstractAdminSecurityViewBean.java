@@ -96,6 +96,7 @@ public class AbstractAdminSecurityViewBean <L extends UtilsLang,
 		logger.info(AbstractLogMessage.saveEntity(category));
 		category = fSecurity.save(category);
 		reloadCategories();
+		categorySaved();
 	}
 	
 	public void saveView() throws UtilsConstraintViolationException, UtilsLockingException, UtilsNotFoundException
