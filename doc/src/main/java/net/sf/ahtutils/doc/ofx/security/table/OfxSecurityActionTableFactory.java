@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.commons.configuration.Configuration;
+import org.openfuxml.content.layout.Layout;
 import org.openfuxml.content.table.Body;
 import org.openfuxml.content.table.Columns;
 import org.openfuxml.content.table.Content;
@@ -13,6 +14,8 @@ import org.openfuxml.content.table.Specification;
 import org.openfuxml.content.table.Table;
 import org.openfuxml.exception.OfxAuthoringException;
 import org.openfuxml.factory.xml.layout.XmlFloatFactory;
+import org.openfuxml.factory.xml.ofx.layout.XmlLayoutFactory;
+import org.openfuxml.factory.xml.ofx.layout.XmlLineFactory;
 import org.openfuxml.factory.xml.table.OfxCellFactory;
 import org.openfuxml.factory.xml.table.OfxColumnFactory;
 import org.slf4j.Logger;
@@ -83,6 +86,7 @@ public class OfxSecurityActionTableFactory extends AbstractUtilsOfxDocumentation
 		}
 		
 		Body body = new Body();
+		body.getRow().add(page(view));
 		for(Action uc : view.getActions().getAction())
 		{
 			body.getRow().add(createRow(view,uc));
@@ -93,6 +97,28 @@ public class OfxSecurityActionTableFactory extends AbstractUtilsOfxDocumentation
 		content.setHead(head);
 		
 		return content;
+	}
+	
+	@SuppressWarnings("unused")
+	private Row page(net.sf.ahtutils.xml.access.View view) throws OfxAuthoringException
+	{
+		Row row = new Row();
+		
+		Layout layout = XmlLayoutFactory.build();
+		layout.getLine().add(XmlLineFactory.bottom());
+		row.setLayout(layout);
+		
+		row.getCell().add(OfxCellFactory.createParagraphCell("Page"));
+		row.getCell().add(OfxCellFactory.createParagraphCell("User is allowed to access the page."));
+		
+		if(view.isSetRoles())
+		{
+			for(Role role : view.getRoles().getRole())
+			{
+				row.getCell().add(OfxCellFactory.createParagraphCell("X"));
+			}
+		}
+		return row;
 	}
 	
 	private Row createRow(net.sf.ahtutils.xml.access.View view, Action action) throws OfxAuthoringException
@@ -117,11 +143,6 @@ public class OfxSecurityActionTableFactory extends AbstractUtilsOfxDocumentation
 				
 				if(active){row.getCell().add(OfxCellFactory.createParagraphCell("X"));}
 				else {row.getCell().add(OfxCellFactory.createParagraphCell(""));}
-			}
-			
-			for(int i=1;i<=view.getRoles().getRole().size();i++)
-			{
-				
 			}
 		}
 		
