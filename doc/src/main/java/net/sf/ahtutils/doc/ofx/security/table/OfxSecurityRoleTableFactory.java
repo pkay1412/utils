@@ -45,7 +45,7 @@ final static Logger logger = LoggerFactory.getLogger(OfxSecurityUsecaseTableFact
 //		table.setId("table.qa.nfr.questions."+section.getPosition());
 		table.setSpecification(createSpecifications());
 		
-		table.setTitle(OfxMultiLangFactory.title(langs, category.getLangs()));
+		table.setTitle(OfxMultiLangFactory.title(langs, category.getLangs(), "Roles in category:",null));
 			
 		table.setContent(createContent(category.getRoles()));
 		

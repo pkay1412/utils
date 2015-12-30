@@ -48,7 +48,7 @@ public class OfxSecurityActionTableFactory extends AbstractUtilsOfxDocumentation
 //		table.setId("table.qa.nfr.questions."+section.getPosition());
 		table.setSpecification(createSpecifications(view));
 		
-		table.setTitle(OfxMultiLangFactory.title(langs, view.getLangs()));
+		table.setTitle(OfxMultiLangFactory.title(langs, view.getLangs(),"Access rights for page:",null));
 			
 		table.setContent(createContent(view));
 		
