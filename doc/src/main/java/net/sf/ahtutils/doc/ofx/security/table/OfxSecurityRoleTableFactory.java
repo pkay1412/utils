@@ -71,7 +71,12 @@ final static Logger logger = LoggerFactory.getLogger(OfxSecurityUsecaseTableFact
 		Body body = new Body();
 		for(Role role : roles.getRole())
 		{
-			body.getRow().add(createRow(role));
+			if(!role.isSetDocumentation()){role.setDocumentation(false);}
+			if(role.isDocumentation())
+			{
+				body.getRow().add(createRow(role));
+			}
+			
 		}
 		
 		Content content = new Content();

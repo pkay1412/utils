@@ -106,6 +106,7 @@ public class SecurityQuery
 		xml.setCode("");
 		xml.setPosition(0);
 		xml.setVisible(true);
+		xml.setDocumentation(true);
 		xml.setLangs(StatusQuery.langs());
 		xml.setDescriptions(StatusQuery.descriptions());
 		
@@ -126,6 +127,7 @@ public class SecurityQuery
 		xml.setCode("");
 		xml.setPosition(0);
 		xml.setVisible(true);
+		xml.setDocumentation(true);
 		xml.setLangs(StatusQuery.langs());
 		xml.setDescriptions(StatusQuery.descriptions());
 		
@@ -144,6 +146,7 @@ public class SecurityQuery
 		Role xml = new Role();
 		xml.setPosition(0);
 		xml.setVisible(true);
+		xml.setDocumentation(true);
 		xml.setCode("");
 		xml.setLangs(StatusQuery.langs());
 		xml.setDescriptions(StatusQuery.descriptions());
@@ -180,6 +183,7 @@ public class SecurityQuery
 		xml.setCode("");
 		xml.setPosition(0);
 		xml.setVisible(true);
+		xml.setDocumentation(true);
 		xml.setLangs(StatusQuery.langs());
 		xml.setDescriptions(StatusQuery.descriptions());
 		xml.setActions(XmlActionsFactory.build());xml.getActions().getAction().add(action);

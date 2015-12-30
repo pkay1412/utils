@@ -7,11 +7,11 @@ import org.slf4j.LoggerFactory;
 
 import net.sf.ahtutils.controller.factory.xml.acl.XmlViewFactory;
 import net.sf.ahtutils.controller.factory.xml.acl.XmlViewsFactory;
-import net.sf.ahtutils.controller.factory.xml.security.XmlRoleFactory;
 import net.sf.ahtutils.exception.ejb.UtilsNotFoundException;
 import net.sf.ahtutils.factory.xml.security.XmlActionFactory;
 import net.sf.ahtutils.factory.xml.security.XmlActionsFactory;
 import net.sf.ahtutils.factory.xml.security.XmlCategoryFactory;
+import net.sf.ahtutils.factory.xml.security.XmlRoleFactory;
 import net.sf.ahtutils.factory.xml.security.XmlRolesFactory;
 import net.sf.ahtutils.factory.xml.security.XmlSecurityFactory;
 import net.sf.ahtutils.factory.xml.security.XmlStaffFactory;
@@ -160,7 +160,7 @@ public class SecurityRestService <L extends UtilsLang,D extends UtilsDescription
 	@Override public Security exportSecurityRoles()
 	{
 		Security xml = XmlSecurityFactory.build();
-		for(C category : fSecurity.all(cCategory))
+		for(C category : fSecurity.allOrderedPosition(cCategory))
 		{
 			if(category.getType().equals(UtilsSecurityCategory.Type.role.toString()))
 			{
@@ -188,7 +188,7 @@ public class SecurityRestService <L extends UtilsLang,D extends UtilsDescription
 	{
 		Security xml = XmlSecurityFactory.build();
 
-		for(C category : fSecurity.all(cCategory))
+		for(C category : fSecurity.allOrderedPosition(cCategory))
 		{
 			if(category.getType().equals(UtilsSecurityCategory.Type.usecase.toString()))
 			{
@@ -253,4 +253,11 @@ public class SecurityRestService <L extends UtilsLang,D extends UtilsDescription
 		}		
 		return xml;
 	}
+	
+    public static net.sf.ahtutils.xml.security.Role build(String code)
+    {
+    	net.sf.ahtutils.xml.security.Role role = new net.sf.ahtutils.xml.security.Role();
+    	role.setCode(code);
+    	return role;
+    }
 }

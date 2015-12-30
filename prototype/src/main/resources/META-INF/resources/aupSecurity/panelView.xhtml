@@ -10,7 +10,7 @@
 	xmlns:composite="http://java.sun.com/jsf/composite">
 	
 	<composite:interface>
-
+		<composite:attribute name="bean" required="false" default="#{adminSecurityViewsBean}"/>
 	</composite:interface>
 	
 	<composite:implementation>
@@ -29,6 +29,9 @@
 				
 				<p:outputLabel rendered="#{adminSecurityViewsBean.showInvisibleRecords}" value="#{msg.aupSecurityVisible}"/>
 				<p:selectBooleanCheckbox rendered="#{adminSecurityViewsBean.showInvisibleRecords}" value="#{adminSecurityViewsBean.view.visible}"/>
+				
+				<p:outputLabel rendered="#{cc.attrs.bean.showDocumentation}" value="#{msg.aupSecurityIncludeInManual}"/>
+				<p:selectBooleanCheckbox rendered="#{cc.attrs.bean.showDocumentation}" value="#{cc.attrs.bean.view.documentation}"/>
 			</h:panelGrid>
 			<aht:tabTranslationEditor value="#{adminSecurityViewsBean.view}"
 					labelTranslation="#{msg.Name}" labelDescription="#{msg.Description}"

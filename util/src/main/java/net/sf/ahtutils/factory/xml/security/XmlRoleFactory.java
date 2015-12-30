@@ -11,6 +11,7 @@ import net.sf.ahtutils.interfaces.model.status.UtilsDescription;
 import net.sf.ahtutils.interfaces.model.status.UtilsLang;
 import net.sf.ahtutils.model.interfaces.idm.UtilsUser;
 import net.sf.ahtutils.xml.security.Role;
+import net.sf.exlp.util.io.StringUtil;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -38,6 +39,11 @@ public class XmlRoleFactory<L extends UtilsLang,
 		this.lang=lang;
 		this.q=q;
 	}
+	public XmlRoleFactory(Role q,String lang)
+	{
+		this.lang=lang;
+		this.q=q;
+	}
 	
 	public static Role create(String code, String label)
 	{
@@ -49,11 +55,21 @@ public class XmlRoleFactory<L extends UtilsLang,
 	
 	public Role build(R role)
 	{
+    	if(logger.isTraceEnabled())
+    	{
+    		logger.info(StringUtil.stars());
+    		logger.info(role.toString());
+    		logger.info("Query: "+q.isSetDocumentation());
+    		logger.info("\t"+(role.getDocumentation()!=null));
+    		if(role.getDocumentation()!=null){logger.info("\t"+role.getDocumentation());}
+    	}
+		
 		Role xml = new Role();
 		if(q.isSetId()){xml.setId(role.getId());}
 		if(q.isSetCode()){xml.setCode(role.getCode());}
 		if(q.isSetPosition()){xml.setPosition(role.getPosition());}
 		if(q.isSetVisible()){xml.setVisible(role.isVisible());}
+		if(q.isSetDocumentation() && role.getDocumentation()!=null){xml.setDocumentation(role.getDocumentation());}
 		
 		if(q.isSetLangs())
 		{
@@ -91,6 +107,12 @@ public class XmlRoleFactory<L extends UtilsLang,
 		}
 			
 		return xml;
-		
 	}
+	
+    public static net.sf.ahtutils.xml.security.Role build(String code)
+    {
+    	net.sf.ahtutils.xml.security.Role role = new net.sf.ahtutils.xml.security.Role();
+    	role.setCode(code);
+    	return role;
+    }
 }

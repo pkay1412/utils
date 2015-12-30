@@ -20,7 +20,7 @@ import net.sf.ahtutils.web.mbean.util.AbstractLogMessage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class AbstractAdminSecurityUsecaseBean <L extends UtilsLang,
+public class AbstractAdminSecurityUsecasesBean <L extends UtilsLang,
 											D extends UtilsDescription,
 											C extends UtilsSecurityCategory<L,D,C,R,V,U,A,USER>,
 											R extends UtilsSecurityRole<L,D,C,R,V,U,A,USER>,
@@ -32,7 +32,7 @@ public class AbstractAdminSecurityUsecaseBean <L extends UtilsLang,
 		implements Serializable
 {
 	private static final long serialVersionUID = 1L;
-	final static Logger logger = LoggerFactory.getLogger(AbstractAdminSecurityUsecaseBean.class);
+	final static Logger logger = LoggerFactory.getLogger(AbstractAdminSecurityUsecasesBean.class);
 	
 	private List<U> usecases;
 	public List<U> getUsecases() {return usecases;}

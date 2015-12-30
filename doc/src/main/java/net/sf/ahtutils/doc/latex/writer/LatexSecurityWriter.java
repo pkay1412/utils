@@ -161,6 +161,7 @@ public class LatexSecurityWriter extends AbstractDocumentationLatexWriter
 	public void roles(int lvl, Security security) throws OfxAuthoringException, OfxConfigurationException, IOException
 	{
 		Section section = ofRoles.build(security);
+		JaxbUtil.info(security);
 		ofxMlw.section(lvl,"/admin/security/actual/roles",section);
 	}
 	
@@ -173,6 +174,7 @@ public class LatexSecurityWriter extends AbstractDocumentationLatexWriter
 	}
 	public void views(int lvl, Security security) throws UtilsConfigurationException, OfxAuthoringException, OfxConfigurationException, IOException
 	{
+		JaxbUtil.trace(security);
 		Section section = ofViews.build(security);
 		ofxMlw.section(lvl,"/admin/security/actual/views",section);
 	}

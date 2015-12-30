@@ -114,7 +114,11 @@ public class OfxSecurityViewsSectionFactory extends AbstractUtilsOfxDocumentatio
 		
 		for(net.sf.ahtutils.xml.security.Category category : security.getCategory())
 		{
-			section.getContent().add(build(category));
+			if(!category.isSetDocumentation()){category.setDocumentation(false);}
+			if(category.isDocumentation())
+			{
+				section.getContent().add(build(category));
+			}
 		}
 		
 		return section;
@@ -133,7 +137,8 @@ public class OfxSecurityViewsSectionFactory extends AbstractUtilsOfxDocumentatio
 		{
 			for(net.sf.ahtutils.xml.access.View view : category.getViews().getView())
 			{
-				if(view.isSetActions() && view.getActions().getAction().size()>0)
+				if(!view.isSetDocumentation()){view.setDocumentation(false);}
+				if(view.isDocumentation() && view.isSetActions() && view.getActions().getAction().size()>0)
 				{
 					section.getContent().add(build(category, view));
 				}
@@ -155,7 +160,8 @@ public class OfxSecurityViewsSectionFactory extends AbstractUtilsOfxDocumentatio
 		{
 			for(net.sf.ahtutils.xml.access.View view : category.getViews().getView())
 			{
-				if(view.isSetActions() && view.getActions().getAction().size()>0)
+				if(!view.isSetDocumentation()){view.setDocumentation(false);}
+				if(view.isDocumentation() && view.isSetActions() && view.getActions().getAction().size()>0)
 				{
 					section.getContent().add(build(category, view));
 				}

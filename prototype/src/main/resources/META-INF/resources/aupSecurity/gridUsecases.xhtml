@@ -12,23 +12,23 @@
 	xmlns:composite="http://java.sun.com/jsf/composite">
 	
 	<composite:interface>
-
+		<composite:attribute name="bean" required="false" default="#{adminSecurityUsecasesBean}"/>
 	</composite:interface>
 	
 	<composite:implementation>
 		<aup:grid>
 			<aht:row>
 				<aht:slot id="sCategories" width="3">
-					<h:form id="fCategories"><aupSec:tableCategories bean="#{adminSecurityUsecaseBean}" update=":#{cc.id}:sCategories :#{cc.id}:sUsecases :#{cc.id}:sUsecase" withAdd="true" tooltip="#{msg.ttNew}"/></h:form>
-					<h:form id="fCategory"><aupSec:panelCategory bean="#{adminSecurityUsecaseBean}" update=":#{cc.id}:sCategories :#{cc.id}:sUsecases :#{cc.id}:sUsecase" withAdd="true" tooltip="#{msg.ttSave}"/></h:form>
+					<h:form id="fCategories"><aupSec:tableCategories bean="#{cc.attrs.bean}" update=":#{cc.id}:sCategories :#{cc.id}:sUsecases :#{cc.id}:sUsecase" withAdd="true" tooltip="#{msg.ttNew}"/></h:form>
+					<h:form id="fCategory"><aupSec:panelCategory bean="#{cc.attrs.bean}" update=":#{cc.id}:sCategories :#{cc.id}:sUsecases :#{cc.id}:sUsecase" withAdd="true" tooltip="#{msg.ttSave}"/></h:form>
 				</aht:slot>
-				<aht:slot id="sUsecases" width="4" renderChildren="#{(not empty adminSecurityUsecaseBean.category) and (adminSecurityUsecaseBean.category.id gt 0)}">
-					<h:form id="fUsecases"><aupSec:tableUsecases bean="#{adminSecurityUsecaseBean}" update=":#{cc.id}:fUsecase :#{cc.id}:sUsecase"/></h:form>
-					<h:form id="fUsecase"><aupSec:panelUsecase rendered="#{not empty adminSecurityUsecaseBean.usecase}" bean="#{adminSecurityUsecaseBean}" update=":#{cc.id}:sUsecases :#{cc.id}:sUsecase"/></h:form>
+				<aht:slot id="sUsecases" width="4" renderChildren="#{(not empty cc.attrs.bean.category) and (cc.attrs.bean.category.id gt 0)}">
+					<h:form id="fUsecases"><aupSec:tableUsecases bean="#{cc.attrs.bean}" update=":#{cc.id}:fUsecase :#{cc.id}:sUsecase"/></h:form>
+					<h:form id="fUsecase"><aupSec:panelUsecase rendered="#{not empty cc.attrs.bean.usecase}" bean="#{cc.attrs.bean}" update=":#{cc.id}:sUsecases :#{cc.id}:sUsecase"/></h:form>
 				</aht:slot>
-				<aht:slot id="sUsecase" width="5" renderChildren="#{not empty adminSecurityUsecaseBean.usecase}">
-					<h:form id="fViews"><aupSec:addViews rendered="#{adminSecurityUsecaseBean.usecase.id gt 0}" bean="#{adminSecurityUsecaseBean}" update=":#{cc.id}:fViews :#{cc.id}:fAction" views="#{adminSecurityUsecaseBean.usecase.views}"/></h:form>
-					<h:form id="fAction"><aupSec:addActions rendered="#{adminSecurityUsecaseBean.usecase.id gt 0}" bean="#{adminSecurityUsecaseBean}" update=":#{cc.id}:fAction" actions="#{adminSecurityUsecaseBean.usecase.actions}"/></h:form>
+				<aht:slot id="sUsecase" width="5" renderChildren="#{not empty cc.attrs.bean.usecase}">
+					<h:form id="fViews"><aupSec:addViews rendered="#{cc.attrs.bean.usecase.id gt 0}" bean="#{cc.attrs.bean}" update=":#{cc.id}:fViews :#{cc.id}:fAction" views="#{cc.attrs.bean.usecase.views}"/></h:form>
+					<h:form id="fAction"><aupSec:addActions rendered="#{cc.attrs.bean.usecase.id gt 0}" bean="#{cc.attrs.bean}" update=":#{cc.id}:fAction" actions="#{cc.attrs.bean.usecase.actions}"/></h:form>
 				</aht:slot>
 			</aht:row>
 	    </aup:grid>

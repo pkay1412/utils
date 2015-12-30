@@ -68,7 +68,11 @@ public class OfxSecurityRolesSectionFactory extends AbstractUtilsOfxDocumentatio
 		
 		for(Category category : security.getCategory())
 		{
-			section.getContent().add(build(category));
+			if(!category.isSetDocumentation()){category.setDocumentation(false);}
+			if(category.isDocumentation())
+			{
+				section.getContent().add(build(category));
+			}
 		}
 		
 		return section;

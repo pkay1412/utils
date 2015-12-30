@@ -39,6 +39,7 @@ public class XmlViewFactory
 		View xml = new View();
 //		if(q.isSetIndex()){xml.setIndex(usecase.g);
 		if(q.isSetCode()){xml.setCode(usecase.getCode());}
+//		if(q.isSetDocumentation()){xml.setDocumentation(usecase.getDocumentation());}
 		
 		if(q.isSetLangs())
 		{
@@ -63,6 +64,7 @@ public class XmlViewFactory
 		if(q.isSetCode()){xml.setCode(view.getCode());}
 		if(q.isSetPosition()){xml.setPosition(view.getPosition());}
 		if(q.isSetVisible()){xml.setVisible(view.isVisible());}
+		if(q.isSetDocumentation() && view.getDocumentation()!=null){xml.setDocumentation(view.getDocumentation());}
 		
 		if(q.isSetLangs())
 		{

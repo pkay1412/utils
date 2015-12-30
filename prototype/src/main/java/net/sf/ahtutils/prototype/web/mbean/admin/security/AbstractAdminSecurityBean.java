@@ -23,6 +23,7 @@ import net.sf.ahtutils.interfaces.model.security.UtilsSecurityUsecase;
 import net.sf.ahtutils.interfaces.model.security.UtilsSecurityView;
 import net.sf.ahtutils.interfaces.model.status.UtilsDescription;
 import net.sf.ahtutils.interfaces.model.status.UtilsLang;
+import net.sf.ahtutils.interfaces.web.UtilsJsfSecurityHandler;
 import net.sf.ahtutils.model.interfaces.idm.UtilsUser;
 import net.sf.ahtutils.web.mbean.util.AbstractLogMessage;
 
@@ -54,12 +55,7 @@ public class AbstractAdminSecurityBean <L extends UtilsLang,
 	protected Class<V> cView;
 	protected Class<U> cUsecase;
 	protected Class<A> cAction;
-	
-	//Handling for Invisible entries
-	protected boolean showInvisibleCategories; public boolean isShowInvisibleCategories() {return showInvisibleCategories;}
-	protected boolean showInvisibleRecords; public boolean isShowInvisibleRecords() {return showInvisibleRecords;}
-	protected boolean showDocumentation; public boolean isShowDocumentation() {return showDocumentation;}
-	
+		
 	//Category
 	protected List<C> categories;
 	public List<C> getCategories() {return categories;}
@@ -175,4 +171,16 @@ public class AbstractAdminSecurityBean <L extends UtilsLang,
 	}
 	
 	protected void categorySaved(){}
+	
+	//Handling for Invisible entries
+	private boolean showInvisibleCategories; public boolean isShowInvisibleCategories() {return showInvisibleCategories;}
+	protected boolean showInvisibleRecords; public boolean isShowInvisibleRecords() {return showInvisibleRecords;}
+	protected boolean showDocumentation; public boolean isShowDocumentation() {return showDocumentation;}
+	
+	protected void updateSecurity(UtilsJsfSecurityHandler jsfSecurityHandler, String actionInvisible, String actionDocumentation)
+	{
+		showInvisibleCategories = jsfSecurityHandler.allow(actionInvisible);
+		showInvisibleRecords = jsfSecurityHandler.allow(actionInvisible);
+		showDocumentation = jsfSecurityHandler.allow(actionDocumentation);
+	}
 }
