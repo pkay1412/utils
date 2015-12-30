@@ -31,7 +31,6 @@
             </p:column>
             <p:column rendered="#{cc.attrs.bean.showDocumentation}">  
 				<h:graphicImage rendered="#{v.documentation}" name="#{iconBean.icon12['aupSecurityDocumentation']}" library="gfx"/>
-                <h:graphicImage rendered="#{not v.documentation}" name="#{iconBean.icon12['aupSecurityNoDocumentation']}" library="gfx"/>
             </p:column>
        	</p:dataTable>
 	</composite:implementation>

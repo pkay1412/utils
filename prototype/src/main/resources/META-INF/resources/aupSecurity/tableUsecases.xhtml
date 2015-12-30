@@ -36,6 +36,9 @@
 				<h:graphicImage rendered="#{u.visible}" name="#{iconBean.icon12['securityVisible']}" library="gfx"/>
                 <h:graphicImage rendered="#{not u.visible}" name="#{iconBean.icon12['securityInvisible']}" library="gfx"/>
             </p:column>
+			<p:column rendered="#{cc.attrs.bean.showDocumentation}">  
+				<h:graphicImage rendered="#{u.documentation}" name="#{iconBean.icon12['aupSecurityDocumentation']}" library="gfx"/>
+            </p:column>
        	</p:dataTable>
 	</composite:implementation>
 </html>

@@ -182,5 +182,12 @@ public class AbstractAdminSecurityBean <L extends UtilsLang,
 		showInvisibleCategories = jsfSecurityHandler.allow(actionInvisible);
 		showInvisibleRecords = jsfSecurityHandler.allow(actionInvisible);
 		showDocumentation = jsfSecurityHandler.allow(actionDocumentation);
+		
+		if(logger.isTraceEnabled())
+		{
+			logger.info(showInvisibleCategories+" showInvisibleCategories "+actionInvisible);
+			logger.info(showInvisibleRecords+" showInvisibleRecords "+actionInvisible);
+			logger.info(showDocumentation+" showInvisibleCategories "+actionDocumentation);
+		}
 	}
 }
