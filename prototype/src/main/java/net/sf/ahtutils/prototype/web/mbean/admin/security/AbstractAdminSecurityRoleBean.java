@@ -140,6 +140,7 @@ public class AbstractAdminSecurityRoleBean <L extends UtilsLang,
 	public void saveRole() throws UtilsConstraintViolationException, UtilsLockingException, UtilsNotFoundException
 	{
 		logger.info(AbstractLogMessage.saveEntity(role));
+		role.setCategory(fSecurity.find(cCategory, role.getCategory()));
 		role = fSecurity.save(role);
 		reloadRoles();
 		roleUpdatePerformed();
