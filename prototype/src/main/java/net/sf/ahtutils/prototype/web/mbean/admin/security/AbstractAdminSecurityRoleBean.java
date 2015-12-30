@@ -92,10 +92,10 @@ public class AbstractAdminSecurityRoleBean <L extends UtilsLang,
 	private void reloadRoles() throws UtilsNotFoundException
 	{
 		roles.clear();
-		logger.info(StringUtil.stars());
+		logger.trace(StringUtil.stars());
 		for(R r : fSecurity.allForCategory(cRole,cCategory,category.getCode()))
 		{
-			logger.info("Role "+r.toString());
+			logger.trace("Role "+r.toString());
 			if(r.isVisible() | showInvisibleRecords){roles.add(r);}
 		}
 		
