@@ -148,11 +148,12 @@ public class LatexSecurityWriter extends AbstractDocumentationLatexWriter
 		}
 	}
 	
-	public void usecases(int lvl, UtilsSecurityRestExport rest) throws OfxAuthoringException, OfxConfigurationException, IOException, UtilsConfigurationException {usecases(lvl,rest.exportSecurityUsecases());}
+	public void usecases(int lvl, UtilsSecurityRestExport rest) throws OfxAuthoringException, OfxConfigurationException, IOException, UtilsConfigurationException {usecases(lvl,rest.documentationSecurityUsecases());}
 	public void usecases(Security security) throws UtilsConfigurationException, OfxAuthoringException, OfxConfigurationException, IOException{usecases(2,security);}
-	public void usecases(int lvl,Security security) throws UtilsConfigurationException, OfxAuthoringException, OfxConfigurationException, IOException
+	public void usecases(int lvl, Security security) throws UtilsConfigurationException, OfxAuthoringException, OfxConfigurationException, IOException
 	{
 		Section section = ofUsecases.build(security);
+		JaxbUtil.trace(security);
 		ofxMlw.section(lvl,"/admin/security/actual/usecases",section);
 	}
 	
@@ -161,7 +162,7 @@ public class LatexSecurityWriter extends AbstractDocumentationLatexWriter
 	public void roles(int lvl, Security security) throws OfxAuthoringException, OfxConfigurationException, IOException
 	{
 		Section section = ofRoles.build(security);
-		JaxbUtil.info(security);
+		JaxbUtil.trace(security);
 		ofxMlw.section(lvl,"/admin/security/actual/roles",section);
 	}
 	
@@ -181,7 +182,7 @@ public class LatexSecurityWriter extends AbstractDocumentationLatexWriter
 	
 	public void pageActions(UtilsSecurityRestExport rest) throws OfxAuthoringException, OfxConfigurationException, IOException
 	{
-		Security security = rest.exportSecurityPageActions();
+		Security security = rest.documentationSecurityPageActions();
 //		JaxbUtil.info(security);System.exit(-1);
 		
 		for(net.sf.ahtutils.xml.security.Category category : security.getCategory())

@@ -141,6 +141,25 @@ public class SecurityQuery
 		return xml;
 	}
 	
+	public static net.sf.ahtutils.xml.security.View exView()
+	{
+		net.sf.ahtutils.xml.security.View xml = new net.sf.ahtutils.xml.security.View();
+		xml.setCode("");
+		xml.setPosition(0);
+		xml.setVisible(true);
+		xml.setDocumentation(true);
+		xml.setLangs(StatusQuery.langs());
+		xml.setDescriptions(StatusQuery.descriptions());
+		
+//		xml.setPublic(true);
+//		xml.setOnlyLoginRequired(true);
+		
+//		xml.setNavigation(new Navigation());
+//		xml.getNavigation().setPackage("");
+
+		return xml;
+	}
+	
 	public static Role exRole()
 	{
 		Role xml = new Role();
@@ -188,6 +207,30 @@ public class SecurityQuery
 		xml.setDescriptions(StatusQuery.descriptions());
 		xml.setActions(XmlActionsFactory.build());xml.getActions().getAction().add(action);
 		xml.setViews(XmlViewsFactory.build());xml.getViews().getView().add(view);
+		
+		return xml;
+	}
+	
+	public static Usecase docUsecase()
+	{
+		net.sf.ahtutils.xml.security.View viewCode = new net.sf.ahtutils.xml.security.View();
+		viewCode.setCode("");
+		
+		net.sf.ahtutils.xml.security.Action action = new net.sf.ahtutils.xml.security.Action();
+		action.setCode("");
+		action.setView(viewCode);
+		action.setLangs(StatusQuery.langs());
+		action.setDescriptions(StatusQuery.descriptions());
+		
+		Usecase xml = new Usecase();
+		xml.setCode("");
+		xml.setPosition(0);
+		xml.setVisible(true);
+		xml.setDocumentation(true);
+		xml.setLangs(StatusQuery.langs());
+		xml.setDescriptions(StatusQuery.descriptions());
+		xml.setActions(XmlActionsFactory.build());xml.getActions().getAction().add(action);
+		xml.setViews(XmlViewsFactory.build());xml.getViews().getView().add(SecurityQuery.exView());
 		
 		return xml;
 	}

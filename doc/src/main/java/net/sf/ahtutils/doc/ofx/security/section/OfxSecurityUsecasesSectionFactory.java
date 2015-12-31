@@ -21,6 +21,7 @@ import net.sf.ahtutils.doc.ofx.security.table.OfxSecurityUsecaseTableFactory;
 import net.sf.ahtutils.doc.ofx.util.OfxMultiLangFactory;
 import net.sf.ahtutils.xml.security.Category;
 import net.sf.ahtutils.xml.security.Security;
+import net.sf.ahtutils.xml.security.Usecase;
 import net.sf.ahtutils.xml.status.Translations;
 import net.sf.exlp.util.xml.JaxbUtil;
 
@@ -68,7 +69,11 @@ public class OfxSecurityUsecasesSectionFactory extends AbstractUtilsOfxDocumenta
 		
 		for(Category category : security.getCategory())
 		{
-			section.getContent().add(build(category));
+			if(!category.isSetDocumentation()){category.setDocumentation(false);}
+			if(category.isDocumentation())
+			{
+				section.getContent().add(build(category));
+			}
 		}
 		
 		return section;
@@ -80,7 +85,29 @@ public class OfxSecurityUsecasesSectionFactory extends AbstractUtilsOfxDocumenta
 		section.getContent().add(OfxMultiLangFactory.title(langs, category.getLangs()));
 		
 		section.getContent().addAll(OfxMultiLangFactory.paragraph(langs, category.getDescriptions()));
-		section.getContent().add(ofSecurityUsecaseTable.build(category));
+		
+		if(category.isSetUsecases())
+		{
+			for(Usecase u : category.getUsecases().getUsecase())
+			{
+				if(!u.isSetDocumentation()){u.setDocumentation(false);}
+				if(u.isDocumentation())
+				{
+					section.getContent().add(build(u));
+				}
+			}
+		}
+		return section;
+	}
+	
+	private Section build(Usecase usecase) throws OfxAuthoringException
+	{
+		Section section = XmlSectionFactory.build();
+		section.getContent().add(OfxMultiLangFactory.title(langs, usecase.getLangs()));
+		section.getContent().addAll(OfxMultiLangFactory.paragraph(langs, usecase.getDescriptions()));
+		
+		section.getContent().add(ofSecurityUsecaseTable.build(usecase));
+		
 		return section;
 	}
 }

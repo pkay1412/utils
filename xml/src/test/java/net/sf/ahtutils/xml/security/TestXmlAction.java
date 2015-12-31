@@ -28,7 +28,7 @@ public class TestXmlAction extends AbstractXmlSecurityTest<Action>
     	{
     		xml.setLangs(TestXmlLangs.create(false));
     		xml.setDescriptions(TestXmlDescriptions.create(false));
-
+    		xml.setView(TestXmlView.create(false));
     	}
     	return xml;
     }

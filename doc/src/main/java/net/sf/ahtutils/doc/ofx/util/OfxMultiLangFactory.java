@@ -66,16 +66,21 @@ public class OfxMultiLangFactory
 		return OfxCellFactory.createParagraphCell(code);
 	}
 	
-	public static Cell cell(String[] keys, Langs langs)
+	public static Cell cell(String[] keys, Langs langs){return cell(keys,langs,null);}
+
+	public static Cell cell(String[] keys, Langs langs, Font font)
 	{
 		Cell cell = OfxCellFactory.build();
+		if(font!=null){cell.getContent().add(font);}
 		cell.getContent().addAll(paragraph(keys,langs));
 		return cell;
 	}
 	
-	public static Cell cell(String[] keys, Descriptions descriptions) throws OfxAuthoringException
+	public static Cell cell(String[] keys, Descriptions descriptions) throws OfxAuthoringException {return cell(keys,descriptions,null);}
+	public static Cell cell(String[] keys, Descriptions descriptions, Font font) throws OfxAuthoringException
 	{
 		Cell cell = OfxCellFactory.build();
+		if(font!=null){cell.getContent().add(font);}
 		cell.getContent().addAll(paragraph(keys,descriptions));
 		return cell;
 	}

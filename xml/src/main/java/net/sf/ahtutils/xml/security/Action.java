@@ -24,6 +24,7 @@ import net.sf.ahtutils.xml.status.Langs;
  *       &lt;sequence&gt;
  *         &lt;element ref="{http://ahtutils.aht-group.com/status}descriptions"/&gt;
  *         &lt;element ref="{http://ahtutils.aht-group.com/status}langs"/&gt;
+ *         &lt;element ref="{http://ahtutils.aht-group.com/security}view"/&gt;
  *       &lt;/sequence&gt;
  *       &lt;attribute name="id" type="{http://www.w3.org/2001/XMLSchema}long" /&gt;
  *       &lt;attribute name="code" type="{http://www.w3.org/2001/XMLSchema}string" /&gt;
@@ -41,7 +42,8 @@ import net.sf.ahtutils.xml.status.Langs;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
     "descriptions",
-    "langs"
+    "langs",
+    "view"
 })
 @XmlRootElement(name = "action")
 public class Action
@@ -53,6 +55,8 @@ public class Action
     protected Descriptions descriptions;
     @XmlElement(namespace = "http://ahtutils.aht-group.com/status", required = true)
     protected Langs langs;
+    @XmlElement(required = true)
+    protected View view;
     @XmlAttribute(name = "id")
     protected Long id;
     @XmlAttribute(name = "code")
@@ -120,6 +124,34 @@ public class Action
 
     public boolean isSetLangs() {
         return (this.langs!= null);
+    }
+
+    /**
+     * Gets the value of the view property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link View }
+     *     
+     */
+    public View getView() {
+        return view;
+    }
+
+    /**
+     * Sets the value of the view property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link View }
+     *     
+     */
+    public void setView(View value) {
+        this.view = value;
+    }
+
+    public boolean isSetView() {
+        return (this.view!= null);
     }
 
     /**
