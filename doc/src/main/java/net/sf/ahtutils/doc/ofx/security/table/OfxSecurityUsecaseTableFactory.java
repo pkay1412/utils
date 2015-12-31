@@ -83,6 +83,7 @@ public class OfxSecurityUsecaseTableFactory extends AbstractUtilsOfxDocumentatio
 		head.getRow().add(createHeaderRow(headerKeys));
 		
 		Body body = new Body();
+		body.setLayout(XmlLayoutFactory.build(font));
 		if(usecase.isSetViews())
 		{
 			for(int i=0;i<usecase.getViews().getView().size();i++)
@@ -119,15 +120,15 @@ public class OfxSecurityUsecaseTableFactory extends AbstractUtilsOfxDocumentatio
 					Row row = new Row();
 					if(firstAction)
 					{
-						row.getCell().add(OfxMultiLangFactory.cell(langs, view.getLangs(),font));
+						row.getCell().add(OfxMultiLangFactory.cell(langs, view.getLangs()));
 						firstAction=false;
 					}
 					else
 					{
 						row.getCell().add(OfxCellFactory.createParagraphCell(""));
 					}
-					row.getCell().add(OfxMultiLangFactory.cell(langs, action.getLangs(), font));
-					row.getCell().add(OfxMultiLangFactory.cell(langs, action.getDescriptions(), font));
+					row.getCell().add(OfxMultiLangFactory.cell(langs, action.getLangs()));
+					row.getCell().add(OfxMultiLangFactory.cell(langs, action.getDescriptions()));
 					rows.add(row);
 					matchedAction=true;
 				}
@@ -148,7 +149,7 @@ public class OfxSecurityUsecaseTableFactory extends AbstractUtilsOfxDocumentatio
 	private Row viewOnly(View view)
 	{
 		Row row = new Row();
-		row.getCell().add(OfxMultiLangFactory.cell(langs, view.getLangs(),font));
+		row.getCell().add(OfxMultiLangFactory.cell(langs, view.getLangs()));
 		row.getCell().add(OfxCellFactory.createParagraphCell(""));
 		row.getCell().add(OfxCellFactory.createParagraphCell(""));
 		return row;
