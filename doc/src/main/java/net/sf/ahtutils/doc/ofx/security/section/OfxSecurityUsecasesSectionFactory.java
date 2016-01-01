@@ -105,9 +105,7 @@ public class OfxSecurityUsecasesSectionFactory extends AbstractUtilsOfxDocumenta
 		Section section = XmlSectionFactory.build();
 		section.getContent().add(OfxMultiLangFactory.title(langs, usecase.getLangs()));
 		section.getContent().addAll(OfxMultiLangFactory.paragraph(langs, usecase.getDescriptions()));
-		
 		section.getContent().add(ofSecurityUsecaseTable.build(usecase));
-		
 		return section;
 	}
 }

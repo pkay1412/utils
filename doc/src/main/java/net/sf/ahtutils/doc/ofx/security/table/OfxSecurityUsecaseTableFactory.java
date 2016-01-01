@@ -29,7 +29,6 @@ import net.sf.ahtutils.xml.security.Action;
 import net.sf.ahtutils.xml.security.Usecase;
 import net.sf.ahtutils.xml.security.View;
 import net.sf.ahtutils.xml.status.Translations;
-import net.sf.exlp.util.xml.JaxbUtil;
 
 public class OfxSecurityUsecaseTableFactory extends AbstractUtilsOfxDocumentationFactory
 {
@@ -60,7 +59,7 @@ public class OfxSecurityUsecaseTableFactory extends AbstractUtilsOfxDocumentatio
 			
 		table.setContent(createContent(usecase));
 		
-		if(usecase.getCode().equals("programs.Management")){JaxbUtil.info(table);}
+//		if(usecase.getCode().equals("programs.Management")){JaxbUtil.info(table);}
 		
 		return table;
 	}

@@ -21,6 +21,7 @@ import net.sf.ahtutils.xml.status.Descriptions;
 import net.sf.ahtutils.xml.status.Lang;
 import net.sf.ahtutils.xml.status.Langs;
 import net.sf.ahtutils.xml.status.Status;
+import net.sf.ahtutils.xml.status.Translations;
 import net.sf.ahtutils.xml.xpath.StatusXpath;
 import net.sf.exlp.exception.ExlpXpathNotFoundException;
 import net.sf.exlp.exception.ExlpXpathNotUniqueException;
@@ -29,8 +30,24 @@ public class OfxMultiLangFactory
 {	
 	final static Logger logger = LoggerFactory.getLogger(OfxMultiLangFactory.class);
 	
-	public static Title title(String[] keys, Langs langs) throws OfxAuthoringException{return title(keys,langs,null,null);}
 	
+	public static Title title(String[] keys, Translations translations, String captionKey) throws OfxAuthoringException
+	{
+		Title title = XmlTitleFactory.build();
+		for(String lang : keys)
+		{
+			try
+			{
+				Lang lCaption = StatusXpath.getLang(translations, captionKey, lang);
+				title.getContent().add(OfxTextFactory.build(lang,lCaption.getTranslation()));
+			}
+			catch (ExlpXpathNotFoundException e) {throw new OfxAuthoringException(e.getMessage());}
+			catch (ExlpXpathNotUniqueException e) {throw new OfxAuthoringException(e.getMessage());}
+		}
+		return title;
+	}
+	
+	public static Title title(String[] keys, Langs langs) throws OfxAuthoringException{return title(keys,langs,null,null);}
 	public static Title title(String[] keys, Langs langs, String prefix, String suffix) throws OfxAuthoringException
 	{
 		Title title = XmlTitleFactory.build();

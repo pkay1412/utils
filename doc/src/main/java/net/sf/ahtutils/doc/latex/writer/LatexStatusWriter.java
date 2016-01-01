@@ -54,11 +54,12 @@ public class LatexStatusWriter extends AbstractDocumentationLatexWriter
 		catch (FileNotFoundException e) {throw new UtilsConfigurationException(e.getMessage());}
 	}
 	
+	
 	public void buildStatusTable(String seedKeyStatus) throws UtilsConfigurationException
 	{
 		buildStatusTable(seedKeyStatus, 10,30,40);
 	}
-	
+		
 	public void table(boolean withIcon,Aht ahtStatus,String texName) throws UtilsConfigurationException
 	{
 		this.withIcon=withIcon;
@@ -130,5 +131,49 @@ public class LatexStatusWriter extends AbstractDocumentationLatexWriter
 		}
 		catch (OfxAuthoringException e) {throw new UtilsConfigurationException(e.getMessage());}
 		catch (IOException e) {throw new UtilsConfigurationException(e.getMessage());}
+	}
+	
+	//**************************************************************************************************
+	
+	private Aht statusList,statusParentList;
+	private String texName;
+	
+	public void table2(String keyStatus) throws UtilsConfigurationException {table2(keyStatus,OfxStatusTableFactory.Code.name,OfxStatusTableFactory.Code.description);}
+	public void table2(String keyStatus, OfxStatusTableFactory.Code... columns) throws UtilsConfigurationException
+	{
+		try
+		{
+			loadFile(keyStatus);
+			
+			logger.info(texName);
+			OfxStatusTableFactory fOfx = new OfxStatusTableFactory(config,langs,translations);
+			fOfx.setColumns(columns);
+			Table table = fOfx.build(texName.replaceAll("/", "."), statusList,statusParentList);
+			JaxbUtil.trace(table);
+			ofxMlw.table("/status/"+texName, table);
+			
+		}
+		catch (OfxAuthoringException e)
+		{
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	private void loadFile(String keyStatus) throws UtilsConfigurationException{loadFile(keyStatus,null);}
+	private void loadFile(String keyStatus, String keyParent) throws UtilsConfigurationException
+	{
+		try
+		{
+			statusList = JaxbUtil.loadJAXB(seedUtil.getExtractName(keyStatus), Aht.class);
+			if(keyParent!=null){statusParentList = JaxbUtil.loadJAXB(seedUtil.getExtractName(keyParent), Aht.class);}
+			else{statusParentList=null;}
+			texName = seedUtil.getContentName(keyStatus);
+			texName = texName.substring(0, texName.indexOf(".xml"));
+		}
+		catch (FileNotFoundException e) {throw new UtilsConfigurationException(e.getMessage());}
+		catch (UtilsConfigurationException e) {throw new UtilsConfigurationException(e.getMessage());}
 	}
 }
