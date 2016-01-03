@@ -157,9 +157,9 @@ public class LatexSecurityWriter extends AbstractDocumentationLatexWriter
 		ofxMlw.section(lvl,"/admin/security/actual/usecases",section);
 	}
 	
-	public void roles(int lvl, UtilsSecurityRestExport rest) throws OfxAuthoringException, OfxConfigurationException, IOException{roles(lvl,rest.exportSecurityRoles());}
+	public void roles(int lvl, UtilsSecurityRestExport rest) throws OfxAuthoringException, OfxConfigurationException, IOException, UtilsConfigurationException{roles(lvl,rest.exportSecurityRoles());}
 	public void roles(Security security) throws UtilsConfigurationException, OfxAuthoringException, OfxConfigurationException, IOException{roles(2,security);}
-	public void roles(int lvl, Security security) throws OfxAuthoringException, OfxConfigurationException, IOException
+	public void roles(int lvl, Security security) throws OfxAuthoringException, OfxConfigurationException, IOException, UtilsConfigurationException
 	{
 		Section section = ofRoles.build(security);
 		JaxbUtil.trace(security);

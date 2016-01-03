@@ -19,6 +19,7 @@ import net.sf.ahtutils.doc.ofx.AbstractUtilsOfxDocumentationFactory;
 import net.sf.ahtutils.doc.ofx.security.list.OfxSecurityCategoryListFactory;
 import net.sf.ahtutils.doc.ofx.security.table.OfxSecurityRoleTableFactory;
 import net.sf.ahtutils.doc.ofx.util.OfxMultiLangFactory;
+import net.sf.ahtutils.exception.processing.UtilsConfigurationException;
 import net.sf.ahtutils.xml.security.Category;
 import net.sf.ahtutils.xml.security.Security;
 import net.sf.ahtutils.xml.status.Translations;
@@ -42,7 +43,7 @@ public class OfxSecurityRolesSectionFactory extends AbstractUtilsOfxDocumentatio
 	}
 	
 	
-	public Section build(Security security) throws OfxAuthoringException
+	public Section build(Security security) throws OfxAuthoringException, UtilsConfigurationException
 	{
 		Section section = XmlSectionFactory.build();
 		section.getContent().add(XmlTitleFactory.build("Roles"));

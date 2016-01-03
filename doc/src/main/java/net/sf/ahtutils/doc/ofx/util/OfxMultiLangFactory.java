@@ -47,6 +47,22 @@ public class OfxMultiLangFactory
 		return title;
 	}
 	
+	public static Cell cell(String[] keys, Translations translations, String key) throws OfxAuthoringException
+	{
+		Cell cell = OfxCellFactory.build();
+		for(String lang : keys)
+		{
+			try
+			{
+				Lang lCaption = StatusXpath.getLang(translations, key, lang);
+				cell.getContent().add(XmlParagraphFactory.build(lang,lCaption.getTranslation()));
+			}
+			catch (ExlpXpathNotFoundException e) {throw new OfxAuthoringException(e.getMessage());}
+			catch (ExlpXpathNotUniqueException e) {throw new OfxAuthoringException(e.getMessage());}
+		}
+		return cell;
+	}
+	
 	public static Title title(String[] keys, Langs langs) throws OfxAuthoringException{return title(keys,langs,null,null);}
 	public static Title title(String[] keys, Langs langs, String prefix, String suffix) throws OfxAuthoringException
 	{

@@ -3,26 +3,26 @@ package net.sf.ahtutils.doc;
 import java.util.List;
 import java.util.Map;
 
-import net.sf.ahtutils.doc.ofx.status.OfxStatusTableFactory.Code;
-
 import org.apache.commons.configuration.Configuration;
 import org.openfuxml.content.ofx.Comment;
-import org.openfuxml.exception.OfxAuthoringException;
 import org.openfuxml.factory.xml.ofx.content.XmlRawFactory;
 import org.openfuxml.util.OfxCommentBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import net.sf.ahtutils.doc.ofx.status.OfxStatusTableFactory.Code;
+import net.sf.ahtutils.exception.processing.UtilsConfigurationException;
+
 public class DocumentationCommentBuilder
 {
 	final static Logger logger = LoggerFactory.getLogger(DocumentationCommentBuilder.class);
 	
-	public static void translationKeys(Comment comment, Configuration config, String key) throws OfxAuthoringException
+	public static void translationKeys(Comment comment, Configuration config, String key) throws UtilsConfigurationException
 	{
 		configKeyReference(comment, config, key, "Translation Keys are defined in");
 	}
 	
-	public static void configKeyReference(Comment comment, Configuration config, String key, String description) throws OfxAuthoringException
+	public static void configKeyReference(Comment comment, Configuration config, String key, String description) throws UtilsConfigurationException
 	{
 		if(config.containsKey(key))
 		{
@@ -30,7 +30,7 @@ public class DocumentationCommentBuilder
 		}
 		else
 		{
-			throw new OfxAuthoringException("Cannot find key:"+key+" in config");
+			throw new UtilsConfigurationException("Cannot find key:"+key+" in config");
 		}
 	}
 	

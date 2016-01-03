@@ -58,7 +58,7 @@ public class LatexQaWriter
 	
 	private boolean withResponsible,withOrganisation;
 	
-	public LatexQaWriter(Configuration config, Translations translations, String[] langs, CrossMediaManager cmm, DefaultSettingsManager dsm)
+	public LatexQaWriter(Configuration config, Translations translations, String[] langs, CrossMediaManager cmm, DefaultSettingsManager dsm) throws UtilsConfigurationException
 	{
 		File baseDir = new File(config.getString(UtilsDocumentation.keyBaseLatexDir));
 		ofxMlw = new OfxMultiLangLatexWriter(baseDir,langs,cmm,dsm);
@@ -98,7 +98,7 @@ public class LatexQaWriter
 		return keys;
 	}
 
-	public void writeQaRoles(net.sf.ahtutils.xml.security.Category securityCategory) throws OfxAuthoringException, IOException
+	public void writeQaRoles(net.sf.ahtutils.xml.security.Category securityCategory) throws OfxAuthoringException, IOException, UtilsConfigurationException
 	{
 		Table table = ofRoles.build(securityCategory, buildHeaderKeys());
 		ofxMlw.table("qa/roles", table, "table");
@@ -114,7 +114,7 @@ public class LatexQaWriter
 		ofxMlw.table("qa/status/"+file, table, "table");
 	}
 	
-	public void team(Qa qa,boolean withResponsible, boolean withOrganisation) throws OfxAuthoringException, IOException
+	public void team(Qa qa,boolean withResponsible, boolean withOrganisation) throws OfxAuthoringException, IOException, UtilsConfigurationException
 	{
 		setWithResponsible(withResponsible);
 		setWithOrganisation(withOrganisation);
@@ -124,18 +124,18 @@ public class LatexQaWriter
 		ofxMlw.table("qa/team", table, "table");
 	}
 	
-	public void groups(Qa qa) throws OfxAuthoringException, IOException, OfxConfigurationException
+	public void groups(Qa qa) throws OfxAuthoringException, IOException, OfxConfigurationException, UtilsConfigurationException
 	{
 		ofxMlw.section(2, "qa/groups",ofGroup.build(qa.getGroups()));
 	}
 	
-	public void durations(Qa qa,Qa qaGroups) throws OfxAuthoringException, IOException, OfxConfigurationException
+	public void durations(Qa qa,Qa qaGroups) throws OfxAuthoringException, IOException, OfxConfigurationException, UtilsConfigurationException
 	{
 		ofxMlw.section(1, "qa/durations",ofDuration.build(qa.getCategory(),qaGroups.getGroups()));
 		ofxMlw.section(1, "qa/schedule",ofSchedule.build(qaGroups.getGroups()));
 	}
 	
-	public void writeQaAgreement(Category c,Aht testStatus) throws OfxAuthoringException, IOException
+	public void writeQaAgreement(Category c,Aht testStatus) throws OfxAuthoringException, IOException, UtilsConfigurationException
 	{
 		ofxMlw.table("qa/agreement/fr/"+c.getCode(), ofAgreements.build(c,testStatus));
 	}
@@ -152,7 +152,7 @@ public class LatexQaWriter
 		ofxMlw.section(2,"/qa/fr/"+category.getCode(),ofFr.build(category));
 	}
 	
-	public void frSummary(Category c,Aht testConditions,Aht resultStatus,String lang) throws OfxAuthoringException, IOException
+	public void frSummary(Category c,Aht testConditions,Aht resultStatus,String lang) throws OfxAuthoringException, IOException, UtilsConfigurationException
 	{
 		Table table = ofFrSummary.build(c,testConditions,resultStatus);		
 		ofxMlw.table("qa/summary/fr/"+c.getCode(), table);

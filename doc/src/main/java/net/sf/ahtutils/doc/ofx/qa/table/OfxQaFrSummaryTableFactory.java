@@ -28,6 +28,7 @@ import net.sf.ahtutils.doc.DocumentationCommentBuilder;
 import net.sf.ahtutils.doc.UtilsDocumentation;
 import net.sf.ahtutils.doc.ofx.AbstractUtilsOfxDocumentationFactory;
 import net.sf.ahtutils.doc.ofx.status.OfxStatusImageFactory;
+import net.sf.ahtutils.exception.processing.UtilsConfigurationException;
 import net.sf.ahtutils.xml.aht.Aht;
 import net.sf.ahtutils.xml.qa.Category;
 import net.sf.ahtutils.xml.qa.Result;
@@ -66,7 +67,7 @@ public class OfxQaFrSummaryTableFactory extends AbstractUtilsOfxDocumentationFac
 		headerKeys.add("auTableQaTestCase");
 	}
 	
-	public Table build(Category category,Aht testConditions,Aht resultStatus) throws OfxAuthoringException
+	public Table build(Category category,Aht testConditions,Aht resultStatus) throws OfxAuthoringException, UtilsConfigurationException
 	{
 		this.testConditions=testConditions;
 		this.resultStatus=resultStatus;

@@ -14,6 +14,7 @@ import org.slf4j.LoggerFactory;
 
 import net.sf.ahtutils.doc.ofx.AbstractUtilsOfxDocumentationFactory;
 import net.sf.ahtutils.doc.ofx.qa.table.OfxQaStaffTableFactory;
+import net.sf.ahtutils.exception.processing.UtilsConfigurationException;
 import net.sf.ahtutils.xml.qa.Group;
 import net.sf.ahtutils.xml.qa.Groups;
 import net.sf.ahtutils.xml.status.Translations;
@@ -31,7 +32,7 @@ public class OfxQaGroupSectionFactory extends AbstractUtilsOfxDocumentationFacto
 		ofStaff.setColumns(OfxQaStaffTableFactory.ColumCode.organisationDepartment,OfxQaStaffTableFactory.ColumCode.name,OfxQaStaffTableFactory.ColumCode.responsibility);
 	}
 	
-	public Section build(Groups groups) throws OfxAuthoringException
+	public Section build(Groups groups) throws OfxAuthoringException, UtilsConfigurationException
 	{
 		Section section = XmlSectionFactory.build();
 		section.setContainer(true);
@@ -49,7 +50,7 @@ public class OfxQaGroupSectionFactory extends AbstractUtilsOfxDocumentationFacto
 		return section;
 	}
 	
-	private Section build(Group group) throws OfxAuthoringException
+	private Section build(Group group) throws OfxAuthoringException, UtilsConfigurationException
 	{
 		Section section = XmlSectionFactory.build();
 		section.getContent().add(XmlTitleFactory.build(group.getName()));

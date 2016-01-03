@@ -24,6 +24,7 @@ import net.sf.ahtutils.doc.DocumentationCommentBuilder;
 import net.sf.ahtutils.doc.UtilsDocumentation;
 import net.sf.ahtutils.doc.ofx.AbstractUtilsOfxDocumentationFactory;
 import net.sf.ahtutils.doc.ofx.util.OfxMultiLangFactory;
+import net.sf.ahtutils.exception.processing.UtilsConfigurationException;
 import net.sf.ahtutils.xml.aht.Aht;
 import net.sf.ahtutils.xml.status.Translations;
 import net.sf.ahtutils.xml.system.Constraint;
@@ -53,7 +54,7 @@ public class OfxConstraintTableFactory extends AbstractUtilsOfxDocumentationFact
 		headerKeys.add("auTableConstraintDescription");
 	}
 	
-	public Table build(ConstraintScope scope) throws OfxAuthoringException
+	public Table build(ConstraintScope scope) throws OfxAuthoringException, UtilsConfigurationException
 	{
 		Table table = new Table();
 		table.setId("table.constraints."+scope.getCategory()+"."+scope.getCode());

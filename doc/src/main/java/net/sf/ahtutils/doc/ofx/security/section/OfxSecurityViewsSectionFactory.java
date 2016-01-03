@@ -26,6 +26,7 @@ import net.sf.ahtutils.doc.ofx.security.list.OfxSecurityCategoryListFactory;
 import net.sf.ahtutils.doc.ofx.security.table.OfxSecurityActionTableFactory;
 import net.sf.ahtutils.doc.ofx.security.table.OfxSecurityViewTableFactory;
 import net.sf.ahtutils.doc.ofx.util.OfxMultiLangFactory;
+import net.sf.ahtutils.exception.processing.UtilsConfigurationException;
 import net.sf.ahtutils.xml.access.Access;
 import net.sf.ahtutils.xml.security.Role;
 import net.sf.ahtutils.xml.security.Security;
@@ -56,7 +57,7 @@ public class OfxSecurityViewsSectionFactory extends AbstractUtilsOfxDocumentatio
 	
 	
 	@Deprecated
-	public Section build(Access security) throws OfxAuthoringException
+	public Section build(Access security) throws OfxAuthoringException, UtilsConfigurationException
 	{
 		Section section = XmlSectionFactory.build();
 		section.getContent().add(XmlTitleFactory.build("Views & Actions"));
@@ -88,7 +89,7 @@ public class OfxSecurityViewsSectionFactory extends AbstractUtilsOfxDocumentatio
 		return section;
 	}
 	
-	public Section build(Security security) throws OfxAuthoringException
+	public Section build(Security security) throws OfxAuthoringException, UtilsConfigurationException
 	{
 		Section section = XmlSectionFactory.build();
 		section.getContent().add(XmlTitleFactory.build("Views & Actions"));

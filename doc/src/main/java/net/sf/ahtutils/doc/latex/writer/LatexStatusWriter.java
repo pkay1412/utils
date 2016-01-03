@@ -12,6 +12,7 @@ import net.sf.ahtutils.exception.processing.UtilsConfigurationException;
 import net.sf.ahtutils.xml.aht.Aht;
 import net.sf.ahtutils.xml.dbseed.Db;
 import net.sf.ahtutils.xml.status.Translations;
+import net.sf.exlp.util.io.StringUtil;
 import net.sf.exlp.util.xml.JaxbUtil;
 
 import org.apache.commons.configuration.Configuration;
@@ -126,7 +127,7 @@ public class LatexStatusWriter extends AbstractDocumentationLatexWriter
 			if(ahtParents!=null){fOfx.activateParents(ahtParents);}
 			fOfx.renderColumn(Code.icon, withIcon);
 			
-			Table table = fOfx.buildLatexTable(texName.replaceAll("/", "."),athStatus);
+			Table table = fOfx.buildLatexTable(StringUtil.dash2Dot(texName),athStatus);
 			ofxMlw.table("/status/"+texName, table);
 		}
 		catch (OfxAuthoringException e) {throw new UtilsConfigurationException(e.getMessage());}
@@ -138,17 +139,41 @@ public class LatexStatusWriter extends AbstractDocumentationLatexWriter
 	private Aht statusList,statusParentList;
 	private String texName;
 	
-	public void table2(String keyStatus) throws UtilsConfigurationException {table2(keyStatus,OfxStatusTableFactory.Code.name,OfxStatusTableFactory.Code.description);}
+	public void table2(String keyStatus) throws UtilsConfigurationException
+	{
+		loadFile(keyStatus,null);
+		table3(OfxStatusTableFactory.Code.name,OfxStatusTableFactory.Code.description);
+	}
 	public void table2(String keyStatus, OfxStatusTableFactory.Code... columns) throws UtilsConfigurationException
+	{
+		loadFile(keyStatus,null);
+		table3(columns);
+	}
+	
+	public void table2(String keyStatus,String keyParent) throws UtilsConfigurationException
+	{
+		loadFile(keyStatus,keyParent);
+		table3(OfxStatusTableFactory.Code.parent,OfxStatusTableFactory.Code.name,OfxStatusTableFactory.Code.description);
+	}
+	public void table2(String keyStatus,String keyParent, OfxStatusTableFactory.Code... columns) throws UtilsConfigurationException
+	{
+		loadFile(keyStatus,keyParent);
+		table3(columns);
+	}
+	
+	private void table3(OfxStatusTableFactory.Code... columns) throws UtilsConfigurationException
 	{
 		try
 		{
-			loadFile(keyStatus);
-			
 			logger.info(texName);
 			OfxStatusTableFactory fOfx = new OfxStatusTableFactory(config,langs,translations);
+			fOfx.setParentKey(texName);
 			fOfx.setColumns(columns);
-			Table table = fOfx.build(texName.replaceAll("/", "."), statusList,statusParentList);
+			fOfx.setListStatus(statusList);
+			fOfx.setListParent(statusParentList);
+			
+			Table table = fOfx.build(StringUtil.dash2Dot(texName));
+		
 			JaxbUtil.trace(table);
 			ofxMlw.table("/status/"+texName, table);
 			
@@ -162,7 +187,6 @@ public class LatexStatusWriter extends AbstractDocumentationLatexWriter
 		}
 	}
 	
-	private void loadFile(String keyStatus) throws UtilsConfigurationException{loadFile(keyStatus,null);}
 	private void loadFile(String keyStatus, String keyParent) throws UtilsConfigurationException
 	{
 		try

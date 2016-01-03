@@ -82,7 +82,7 @@ public class AbstractLatexDocumentationBuilder extends AbstractDocumentationLate
 		catch (IOException e) {throw new UtilsConfigurationException(e.getMessage());}
 	}
 	
-	protected void renderSection(int lvl,String code, String classifier[]) throws OfxAuthoringException, IOException, OfxConfigurationException
+	protected void renderSection(int lvl,String code, String classifier[]) throws OfxAuthoringException, IOException, OfxConfigurationException, UtilsConfigurationException
 	{
 		logger.trace("Rendering "+Section.class.getSimpleName()+": "+code);
 		

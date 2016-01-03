@@ -19,6 +19,7 @@ import net.sf.ahtutils.doc.ofx.AbstractUtilsOfxDocumentationFactory;
 import net.sf.ahtutils.doc.ofx.security.list.OfxSecurityCategoryListFactory;
 import net.sf.ahtutils.doc.ofx.security.table.OfxSecurityUsecaseTableFactory;
 import net.sf.ahtutils.doc.ofx.util.OfxMultiLangFactory;
+import net.sf.ahtutils.exception.processing.UtilsConfigurationException;
 import net.sf.ahtutils.xml.security.Category;
 import net.sf.ahtutils.xml.security.Security;
 import net.sf.ahtutils.xml.security.Usecase;
@@ -43,7 +44,7 @@ public class OfxSecurityUsecasesSectionFactory extends AbstractUtilsOfxDocumenta
 	}
 	
 	
-	public Section build(Security security) throws OfxAuthoringException
+	public Section build(Security security) throws OfxAuthoringException, UtilsConfigurationException
 	{
 		Section section = XmlSectionFactory.build();
 		section.getContent().add(XmlTitleFactory.build("Use Cases"));
