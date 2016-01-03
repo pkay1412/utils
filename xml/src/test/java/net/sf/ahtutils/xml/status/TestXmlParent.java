@@ -34,6 +34,7 @@ public class TestXmlParent extends AbstractXmlStatusTest
     	Parent xml = new Parent();
     	xml.setId(123);
     	xml.setCode("myCode");
+    	xml.setPosition(2);
     	
     	if(withChilds)
     	{

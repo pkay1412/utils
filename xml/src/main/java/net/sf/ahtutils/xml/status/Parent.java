@@ -20,6 +20,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;attribute name="id" type="{http://www.w3.org/2001/XMLSchema}long" /&gt;
  *       &lt;attribute name="code" type="{http://www.w3.org/2001/XMLSchema}string" /&gt;
+ *       &lt;attribute name="position" type="{http://www.w3.org/2001/XMLSchema}int" /&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
@@ -39,6 +40,8 @@ public class Parent
     protected Long id;
     @XmlAttribute(name = "code")
     protected String code;
+    @XmlAttribute(name = "position")
+    protected Integer position;
 
     /**
      * Gets the value of the id property.
@@ -98,6 +101,38 @@ public class Parent
 
     public boolean isSetCode() {
         return (this.code!= null);
+    }
+
+    /**
+     * Gets the value of the position property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Integer }
+     *     
+     */
+    public int getPosition() {
+        return position;
+    }
+
+    /**
+     * Sets the value of the position property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Integer }
+     *     
+     */
+    public void setPosition(int value) {
+        this.position = value;
+    }
+
+    public boolean isSetPosition() {
+        return (this.position!= null);
+    }
+
+    public void unsetPosition() {
+        this.position = null;
     }
 
 }

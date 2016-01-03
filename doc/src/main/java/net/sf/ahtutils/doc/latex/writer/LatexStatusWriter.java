@@ -56,18 +56,18 @@ public class LatexStatusWriter extends AbstractDocumentationLatexWriter
 	}
 	
 	
-	public void buildStatusTable(String seedKeyStatus) throws UtilsConfigurationException
+	@Deprecated public void buildStatusTable(String seedKeyStatus) throws UtilsConfigurationException
 	{
 		buildStatusTable(seedKeyStatus, 10,30,40);
 	}
 		
-	public void table(boolean withIcon,Aht ahtStatus,String texName) throws UtilsConfigurationException
+	@Deprecated public void table(boolean withIcon,Aht ahtStatus,String texName) throws UtilsConfigurationException
 	{
 		this.withIcon=withIcon;
 		if(withIcon){table(ahtStatus,null,texName,15,10,30,40);}
 		else{table(ahtStatus,null,texName,10,30,40);}
 	}
-	public void table(boolean withIcon,String seedKey) throws UtilsConfigurationException
+	@Deprecated public void table(boolean withIcon,String seedKey) throws UtilsConfigurationException
 	{
 		this.withIcon=withIcon;
 		this.seedKey=seedKey;
@@ -75,7 +75,7 @@ public class LatexStatusWriter extends AbstractDocumentationLatexWriter
 		table(15,10,30,40);
 	}
 	
-	public void buildStatusTable(String seedKey, String seedKeyParent) throws UtilsConfigurationException
+	@Deprecated public void buildStatusTable(String seedKey, String seedKeyParent) throws UtilsConfigurationException
 	{
 		this.withIcon=false;
 		this.seedKey=seedKey;
@@ -83,7 +83,7 @@ public class LatexStatusWriter extends AbstractDocumentationLatexWriter
 		table(15,10,30,40);
 	}
 	
-	public void buildStatusTable(String seedKey, int... colWidths) throws UtilsConfigurationException
+	@Deprecated public void buildStatusTable(String seedKey, int... colWidths) throws UtilsConfigurationException
 	{
 		this.withIcon=false;
 		this.seedKey=seedKey;
@@ -91,7 +91,7 @@ public class LatexStatusWriter extends AbstractDocumentationLatexWriter
 		table(colWidths);
 	}
 	
-	public void buildStatusTable(String seedKey, String seedKeyParent, int... colWidths) throws UtilsConfigurationException
+	@Deprecated public void buildStatusTable(String seedKey, String seedKeyParent, int... colWidths) throws UtilsConfigurationException
 	{
 		this.withIcon=false;
 		this.seedKey=seedKey;
@@ -99,7 +99,7 @@ public class LatexStatusWriter extends AbstractDocumentationLatexWriter
 		table(colWidths);
 	}
 	
-	private void table(int... colWidths) throws UtilsConfigurationException
+	@Deprecated private void table(int... colWidths) throws UtilsConfigurationException
 	{	
 		Aht athStatus;
 		Aht ahtParents = null;
@@ -117,7 +117,7 @@ public class LatexStatusWriter extends AbstractDocumentationLatexWriter
 		catch (FileNotFoundException e) {throw new UtilsConfigurationException(e.getMessage());}
 	}
 	
-	private void table(Aht athStatus, Aht ahtParents, String texName, int... colWidths) throws UtilsConfigurationException
+	@Deprecated private void table(Aht athStatus, Aht ahtParents, String texName, int... colWidths) throws UtilsConfigurationException
 	{	
 		try
 		{
@@ -143,6 +143,11 @@ public class LatexStatusWriter extends AbstractDocumentationLatexWriter
 	{
 		loadFile(keyStatus,null);
 		table3(OfxStatusTableFactory.Code.name,OfxStatusTableFactory.Code.description);
+	}
+	public void icon(String keyStatus) throws UtilsConfigurationException
+	{
+		loadFile(keyStatus,null);
+		table3(OfxStatusTableFactory.Code.icon,OfxStatusTableFactory.Code.name,OfxStatusTableFactory.Code.description);
 	}
 	public void table2(String keyStatus, OfxStatusTableFactory.Code... columns) throws UtilsConfigurationException
 	{

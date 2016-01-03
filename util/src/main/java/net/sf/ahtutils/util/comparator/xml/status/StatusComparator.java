@@ -34,7 +34,7 @@ public class StatusComparator
 			  if(a.isSetGroup() && b.isSetGroup()){ctb.append(a.getGroup(), b.getGroup());}
 			  if(a.isSetParent() && b.isSetParent())
 			  {
-//				  if(a.getParent().isSetPosition() && b.getParent().isSetPosition()){ctb.append(a.getParent().getPosition(),b.getParent().getPosition());}
+				  if(a.getParent().isSetPosition() && b.getParent().isSetPosition()){ctb.append(a.getParent().getPosition(),b.getParent().getPosition());}
 				  if(a.getParent().isSetCode() && b.getParent().isSetCode()){ctb.append(a.getParent().getCode(),b.getParent().getCode());}
 			  }
 			  if(a.isSetPosition() && b.isSetPosition()){ctb.append(a.getPosition(), b.getPosition());}

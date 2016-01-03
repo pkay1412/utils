@@ -21,7 +21,6 @@ import org.openfuxml.content.table.Row;
 import org.openfuxml.content.table.Specification;
 import org.openfuxml.content.table.Table;
 import org.openfuxml.exception.OfxAuthoringException;
-import org.openfuxml.exception.OfxConfigurationException;
 import org.openfuxml.factory.xml.layout.XmlAlignmentFactory;
 import org.openfuxml.factory.xml.ofx.content.XmlCommentFactory;
 import org.openfuxml.factory.xml.ofx.content.text.XmlTitleFactory;
@@ -34,7 +33,6 @@ import org.openfuxml.util.OfxCommentBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import net.sf.ahtutils.controller.util.query.StatusQuery;
 import net.sf.ahtutils.doc.DocumentationCommentBuilder;
 import net.sf.ahtutils.doc.UtilsDocumentation;
 import net.sf.ahtutils.doc.ofx.AbstractUtilsOfxDocumentationFactory;
@@ -355,6 +353,9 @@ public class OfxStatusTableFactory extends AbstractUtilsOfxDocumentationFactory
 	private Specification specs;
 	private Head head;
 	
+	private String previousParentCode = "-1";
+	private boolean firstRow = true;
+	
 	public Table build(String id) throws OfxAuthoringException
 	{
 		String captionKey = buildCaptionKey(id);
@@ -388,6 +389,7 @@ public class OfxStatusTableFactory extends AbstractUtilsOfxDocumentationFactory
 		for(Status status : listStatus.getStatus())
 		{
 			body.getRow().add(row(status));
+			firstRow=false;
 		}
 		
 		Content content = new Content();
@@ -404,16 +406,32 @@ public class OfxStatusTableFactory extends AbstractUtilsOfxDocumentationFactory
 		{
 			if(code.equals(Code.parent))
 			{
-				try {
-					Status sParent = StatusXpath.getStatus(listParent.getStatus(),status.getParent().getCode());
-					row.getCell().add(OfxMultiLangFactory.cell(langs, sParent.getLangs()));
-				} catch (ExlpXpathNotFoundException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				} catch (ExlpXpathNotUniqueException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
+				String actualParentcode = status.getParent().getCode();
+				
+				logger.trace(StringUtil.stars());
+				logger.trace("Previous: "+previousParentCode);
+				logger.trace("Actual: "+actualParentcode);
+				
+				if(previousParentCode.equals(actualParentcode))
+				{
+					row.getCell().add(OfxCellFactory.createParagraphCell(""));
 				}
+				else
+				{
+					if(!firstRow)
+					{
+						row.setLayout(XmlLayoutFactory.build());
+						row.getLayout().getLine().add(XmlLineFactory.top());
+					}
+					try
+					{
+						Status sParent = StatusXpath.getStatus(listParent.getStatus(),actualParentcode);
+						row.getCell().add(OfxMultiLangFactory.cell(langs, sParent.getLangs()));
+					}
+					catch (ExlpXpathNotFoundException e) {e.printStackTrace();}
+					catch (ExlpXpathNotUniqueException e) {e.printStackTrace();}
+				}
+				previousParentCode = actualParentcode;
 			}
 			else if(code.equals(Code.icon))
 			{
