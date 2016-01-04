@@ -8,6 +8,7 @@ import java.util.Map;
 
 import org.apache.commons.configuration.Configuration;
 import org.openfuxml.content.ofx.Comment;
+import org.openfuxml.content.ofx.Paragraph;
 import org.openfuxml.content.ofx.Section;
 import org.openfuxml.content.ofx.Title;
 import org.openfuxml.content.table.Table;
@@ -27,6 +28,7 @@ import net.sf.ahtutils.xml.aht.Aht;
 import net.sf.ahtutils.xml.security.Staff;
 import net.sf.ahtutils.xml.status.Translations;
 import net.sf.ahtutils.xml.survey.Answer;
+import net.sf.ahtutils.xml.survey.Question;
 import net.sf.ahtutils.xml.survey.Survey;
 import net.sf.exlp.util.xml.JaxbUtil;
 
@@ -88,7 +90,11 @@ public class OfxQaNfrSectionFactory extends AbstractUtilsOfxDocumentationFactory
 		xml.getContent().add(XmlTitleFactory.build(section.getDescription().getValue()));
 		
 		if(section.isSetRemark()){xml.getContent().add(XmlParagraphFactory.text(section.getRemark().getValue()));}
-		if(section.isSetQuestion()){xml.getContent().add(ofxTableQuestions.build(section));}
+		if(section.isSetQuestion())
+		{
+			xml.getContent().add(ofxTableQuestions.build(section));
+			xml.getContent().addAll(questionRemarks(section));
+		}
 		
 		Table table = ofxTableAnswers.build(section,mapAnswers,staff);
 		JaxbUtil.trace(table);
@@ -113,5 +119,23 @@ public class OfxQaNfrSectionFactory extends AbstractUtilsOfxDocumentationFactory
 			logger.trace(sId+" "+qId);
 		}
 		return map;
+	}
+	
+	private List<Paragraph> questionRemarks(net.sf.ahtutils.xml.survey.Section section)
+	{
+		List<Paragraph> list = new ArrayList<Paragraph>();
+		
+		for(Question q : section.getQuestion())
+		{
+			if(q.isSetRemark() && q.getRemark().isSetValue() && q.getRemark().getValue().trim().length()>0)
+			{
+				StringBuffer sb = new StringBuffer();
+				sb.append(" (").append(q.getPosition()).append(") ");
+				sb.append(q.getRemark().getValue());
+				list.add(XmlParagraphFactory.text(sb.toString()));
+			}
+		}
+		
+		return list;
 	}
 }

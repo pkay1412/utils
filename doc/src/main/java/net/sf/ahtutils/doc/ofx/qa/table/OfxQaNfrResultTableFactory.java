@@ -145,7 +145,7 @@ public class OfxQaNfrResultTableFactory extends AbstractUtilsOfxDocumentationFac
 	
 	private Row buildRow(net.sf.ahtutils.xml.survey.Section section, Map<Long,Answer> mapAnswers, Staff staff)
 	{
-		JaxbUtil.info(staff);
+		JaxbUtil.trace(staff);
 		Row row = new Row();
 		
 		row.getCell().add(OfxCellFactory.createParagraphCell(staff.getUser().getLastName()));
