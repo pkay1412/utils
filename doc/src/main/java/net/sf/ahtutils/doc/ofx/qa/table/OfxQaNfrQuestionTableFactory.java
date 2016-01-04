@@ -95,7 +95,10 @@ public class OfxQaNfrQuestionTableFactory extends AbstractUtilsOfxDocumentationF
 		Body body = new Body();
 		for(Question q : section.getQuestion())
 		{
-			body.getRow().add(createRow(q));
+			if(q.isVisible())
+			{
+				body.getRow().add(createRow(q));
+			}
 		}
 		
 		Content content = new Content();

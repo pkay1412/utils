@@ -34,6 +34,7 @@ public class XmlQuestionFactory<L extends UtilsLang,D extends UtilsDescription,S
 		Question xml = new Question();
 		if(q.isSetId()){xml.setId(ejb.getId());}
 		if(q.isSetPosition()){xml.setPosition(ejb.getPosition());}
+		if(q.isSetVisible()){xml.setVisible(ejb.isVisible());}
 		if(q.isSetCode()){xml.setCode(ejb.getCode());}
 		if(q.isSetTopic()){xml.setTopic(ejb.getTopic());}
 		

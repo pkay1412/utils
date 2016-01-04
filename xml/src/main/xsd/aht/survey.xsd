@@ -48,6 +48,7 @@
             </xsd:sequence>
             <xsd:attribute name="id" type="xsd:long"/>
             <xsd:attribute name="position" type="xsd:int"/>
+            <xsd:attribute name="visible" type="xsd:boolean"/>
             <xsd:attribute name="code" type="xsd:string"/>
             <xsd:attribute name="topic" type="xsd:string"/>
         </xsd:complexType>

@@ -127,8 +127,10 @@ public class OfxQaNfrSectionFactory extends AbstractUtilsOfxDocumentationFactory
 		
 		for(Question q : section.getQuestion())
 		{
+			
 			if(q.isSetRemark() && q.getRemark().isSetValue() && q.getRemark().getValue().trim().length()>0)
 			{
+				JaxbUtil.info(q);
 				StringBuffer sb = new StringBuffer();
 				sb.append(" (").append(q.getPosition()).append(") ");
 				sb.append(q.getRemark().getValue());

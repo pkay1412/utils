@@ -35,6 +35,13 @@
     		<s:lang key="fr" translation="Weight"/>
     	</s:langs>
     </s:translation>
+	<s:translation key="aupQaTestVisible">
+    	<s:langs>
+    		<s:lang key="de" translation="Sichtbar"/>
+    		<s:lang key="en" translation="Visible"/>
+    		<s:lang key="fr" translation="Visible"/>
+    	</s:langs>
+    </s:translation>
 	<s:translation key="aupQaGroups">
     	<s:langs>
     		<s:lang key="de" translation="QA Groups"/>

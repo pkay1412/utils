@@ -82,6 +82,7 @@ public class SurveyQuery
 		Question xml = new Question();
 		xml.setId(0);
 		xml.setPosition(0);
+		xml.setVisible(true);
 		xml.setCode("");
 		xml.setTopic("");
 		xml.setUnit(XmlUnitFactory.build(""));

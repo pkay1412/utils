@@ -4,6 +4,6 @@
     <text:remark version="1" key="myKey">myValue</text:remark>
     <survey:section id="123" position="2" code="myCode"/>
     <survey:section id="123" position="2" code="myCode"/>
-    <survey:question id="123" position="2" code="myCode" topic="myTopic"/>
-    <survey:question id="123" position="2" code="myCode" topic="myTopic"/>
+    <survey:question id="123" position="2" visible="true" code="myCode" topic="myTopic"/>
+    <survey:question id="123" position="2" visible="true" code="myCode" topic="myTopic"/>
 </survey:section>

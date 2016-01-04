@@ -78,7 +78,10 @@ public class OfxQaNfrResultTableFactory extends AbstractUtilsOfxDocumentationFac
 		for(Question q : section.getQuestion())
 		{
 			JaxbUtil.trace(q);
-			cols.getColumn().add(OfxColumnFactory.flex(10,true));
+			if(q.isVisible())
+			{
+				cols.getColumn().add(OfxColumnFactory.flex(10,true));
+			}
 		}
 		
 		Specification specification = new Specification();
@@ -95,7 +98,10 @@ public class OfxQaNfrResultTableFactory extends AbstractUtilsOfxDocumentationFac
 		row.getCell().add(OfxCellFactory.createParagraphCell("User"));
 		for(Question q : section.getQuestion())
 		{
-			row.getCell().add(OfxCellFactory.createParagraphCell(q.getPosition()));
+			if(q.isVisible())
+			{
+				row.getCell().add(OfxCellFactory.createParagraphCell(q.getPosition()));
+			}
 		}
 		return row;
 	}
@@ -151,19 +157,22 @@ public class OfxQaNfrResultTableFactory extends AbstractUtilsOfxDocumentationFac
 		row.getCell().add(OfxCellFactory.createParagraphCell(staff.getUser().getLastName()));
 		for(Question q : section.getQuestion())
 		{
-			if(mapAnswers.containsKey(q.getId()))
+			if(q.isVisible())
 			{
-				Answer answer = mapAnswers.get(q.getId());
-				
-				if(answer.isSetValueBoolean())
+				if(mapAnswers.containsKey(q.getId()))
 				{
-					if(answer.isValueBoolean()){row.getCell().add(OfxCellFactory.image(image("check")));}
-					else{row.getCell().add(OfxCellFactory.image(image("cross")));}
+					Answer answer = mapAnswers.get(q.getId());
+					
+					if(answer.isSetValueBoolean())
+					{
+						if(answer.isValueBoolean()){row.getCell().add(OfxCellFactory.image(image("check")));}
+						else{row.getCell().add(OfxCellFactory.image(image("cross")));}
+					}
 				}
-			}
-			else
-			{
-				row.getCell().add(OfxCellFactory.createParagraphCell(""));
+				else
+				{
+					row.getCell().add(OfxCellFactory.createParagraphCell(""));
+				}
 			}
 		}
 		return row;
@@ -171,7 +180,7 @@ public class OfxQaNfrResultTableFactory extends AbstractUtilsOfxDocumentationFac
 	
 	public Image image(String name)
 	{
-		String imageName = "/icon/mark/"+name;
+		String imageName = "icon/mark/"+name;
 
 		StringBuffer sb = new StringBuffer();
 		sb.append(imagePathPrefix).append("/");
