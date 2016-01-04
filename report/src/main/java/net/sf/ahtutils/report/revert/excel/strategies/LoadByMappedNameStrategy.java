@@ -19,7 +19,7 @@ public class LoadByMappedNameStrategy implements ImportStrategy {
 	public void setTempPropertyStore(Hashtable<String, Object> tempPropertyStore) {this.tempPropertyStore = tempPropertyStore;}
 
 	@Override
-	public Object handleObject(Object object, String parameterClass) {
+	public Object handleObject(Object object, String parameterClass, String property) {
 		String code          = object.toString();
 		Class<?>  lutClass   = null;
     	Object lookupEntity  = null;
