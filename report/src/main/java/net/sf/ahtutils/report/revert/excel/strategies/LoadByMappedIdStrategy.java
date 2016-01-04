@@ -19,7 +19,7 @@ public class LoadByMappedIdStrategy implements ImportStrategy {
 	public void setTempPropertyStore(Hashtable<String, Object> tempPropertyStore) {this.tempPropertyStore = tempPropertyStore;}
 
 	@Override
-	public Object handleObject(Object object, String parameterClass) {
+	public Object handleObject(Object object, String parameterClass, String property) {
 		Number number        = (Number) object;
 		Long id              = new Long(number.longValue());
 		Class<?>  lutClass   = null;

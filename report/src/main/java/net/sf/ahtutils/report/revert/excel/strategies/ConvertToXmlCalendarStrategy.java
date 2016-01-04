@@ -25,7 +25,7 @@ public class ConvertToXmlCalendarStrategy implements ImportStrategy {
 	public void setTempPropertyStore(Hashtable<String, Object> tempPropertyStore) {this.tempPropertyStore = tempPropertyStore;}
 
 	@Override
-	public Object handleObject(Object object, String parameterClass) {
+	public Object handleObject(Object object, String parameterClass, String property) {
 		GregorianCalendar c           = new GregorianCalendar();
 		XMLGregorianCalendar calendar = null;
 		

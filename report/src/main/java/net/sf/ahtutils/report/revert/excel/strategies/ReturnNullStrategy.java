@@ -7,7 +7,7 @@ import net.sf.ahtutils.report.revert.excel.ImportStrategy;
 
 public class ReturnNullStrategy implements ImportStrategy {
 
-	public Object handleObject(Object object, String parameterClass) {
+	public Object handleObject(Object object, String parameterClass, String property) {
 		return null;
 	}
 
