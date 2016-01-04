@@ -16,6 +16,7 @@ import org.slf4j.LoggerFactory;
 
 import net.sf.ahtutils.doc.UtilsDocumentation;
 import net.sf.ahtutils.doc.ofx.constraints.section.OfxConstraintScopeSectionFactory;
+import net.sf.ahtutils.exception.processing.UtilsConfigurationException;
 import net.sf.ahtutils.xml.aht.Aht;
 import net.sf.ahtutils.xml.status.Translations;
 import net.sf.ahtutils.xml.system.ConstraintScope;
@@ -43,7 +44,7 @@ public class LatexConstraintWriter extends AbstractDocumentationLatexWriter
 		
 	}
 	
-	public void constraints(String artifact) throws OfxAuthoringException, OfxConfigurationException, IOException
+	public void constraints(String artifact) throws OfxAuthoringException, OfxConfigurationException, IOException, UtilsConfigurationException
 	{
 		Constraints index = JaxbUtil.loadJAXB("constraints."+artifact+"/index.xml", Constraints.class);
 		for(ConstraintScope scope : index.getConstraintScope())
@@ -57,7 +58,7 @@ public class LatexConstraintWriter extends AbstractDocumentationLatexWriter
 		}
 	}
 	
-	public void scope(ConstraintScope scope) throws OfxConfigurationException, IOException, OfxAuthoringException 
+	public void scope(ConstraintScope scope) throws IOException, OfxAuthoringException, UtilsConfigurationException, OfxConfigurationException 
 	{
 		try
 		{

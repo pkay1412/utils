@@ -13,29 +13,6 @@
     <packaging>jar</packaging>
     <name>UTILS - XML</name>
     
-	<build>
-		<plugins>
-			<plugin>
-  				<groupId>org.apache.maven.plugins</groupId>
-  				<artifactId>maven-jar-plugin</artifactId>
-				<executions>
-  					<execution>
-    					<goals>
-       						<goal>test-jar</goal>
-    					</goals>
-  					</execution>
-				</executions>
-			</plugin>
-			<plugin>
-		        <groupId>org.codehaus.mojo</groupId>
-		        <artifactId>versions-maven-plugin</artifactId>
-		        <configuration>
-					<rulesUri>file://${basedir}/../doc/src/main/resources/listing.aht-utils/development/maven-versions.xml</rulesUri>
-		        </configuration>
-			</plugin>
-		</plugins>
-	</build>
-	
 	<dependencyManagement>
 		<dependencies>      	         
 			<dependency>
@@ -156,4 +133,27 @@
 			<scope>provided</scope>
 		</dependency>
 	</dependencies>
+	
+		<build>
+		<plugins>
+			<plugin>
+  				<groupId>org.apache.maven.plugins</groupId>
+  				<artifactId>maven-jar-plugin</artifactId>
+				<executions>
+  					<execution>
+    					<goals>
+       						<goal>test-jar</goal>
+    					</goals>
+  					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+		        <groupId>org.codehaus.mojo</groupId>
+		        <artifactId>versions-maven-plugin</artifactId>
+		        <configuration>
+					<rulesUri>${maven.ignore}</rulesUri>
+		        </configuration>
+			</plugin>
+		</plugins>
+	</build>
 </project>

@@ -40,6 +40,7 @@ public class XmlViewFactory <L extends UtilsLang,
 		if(q.isSetCode()){xml.setCode(view.getCode());}
 		if(q.isSetPosition()){xml.setPosition(view.getPosition());}
 		if(q.isSetVisible()){xml.setVisible(view.isVisible());}
+		if(q.isSetDocumentation() && view.getDocumentation()!=null){xml.setDocumentation(view.getDocumentation());}
 		
 		if(q.isSetLangs())
 		{

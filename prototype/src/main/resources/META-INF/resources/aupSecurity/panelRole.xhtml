@@ -22,9 +22,20 @@
 				<aht:icon type="delete" rendered="#{!cc.attrs.bean.denyRemove}" listener="#{cc.attrs.bean.rmRole()}" update="#{cc.attrs.update}" tooltip="#{msg.ttDelete}"/>
 			</f:facet>
 			<h:panelGrid columns="2" columnClasses="col1,col2" styleClass="auCleanPanelGrid">
+				<p:outputLabel value="#{msg.aupSecurityCategory}"/>
+				<p:selectOneMenu value="#{cc.attrs.bean.role.category}" effect="fade" >
+					<f:selectItems value="#{cc.attrs.bean.categories}" var="c" itemLabel="#{c.name[userBean.localeCode].lang}" itemValue="#{c}"/>
+				</p:selectOneMenu>
+				
 				<p:outputLabel value="#{msg.aupSecurityCode}"/>
 				<h:inputText rendered="#{!cc.attrs.bean.denyRemove}" value="#{cc.attrs.bean.role.code}"/>
 				<h:outputText rendered="#{cc.attrs.bean.denyRemove}" value="#{cc.attrs.bean.role.code}"/>
+				
+				<p:outputLabel rendered="#{cc.attrs.bean.showInvisibleRecords}" value="#{msg.aupSecurityVisible}"/>
+				<p:selectBooleanCheckbox rendered="#{cc.attrs.bean.showInvisibleRecords}" value="#{cc.attrs.bean.role.visible}"/>
+				
+				<p:outputLabel rendered="#{cc.attrs.bean.showDocumentation}" value="#{msg.aupSecurityIncludeInManual}"/>
+				<p:selectBooleanCheckbox rendered="#{cc.attrs.bean.showDocumentation}" value="#{cc.attrs.bean.role.documentation}"/>
 			</h:panelGrid>
 			<aht:tabTranslationEditor value="#{cc.attrs.bean.role}"
 					labelTranslation="#{msg.Name}" labelDescription="#{msg.Description}"

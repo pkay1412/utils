@@ -36,27 +36,21 @@ USER extends UtilsUser<L,D,C,R,V,U,A,USER>> extends UtilsFacadeBean implements U
 		super(em);
 	}
 
-	@Override
-	public 
-		R load(Class<R> cRole, R role)
+	@Override public R load(Class<R> cRole, R role)
 	{
 		role = em.find(cRole, role.getId());
 		role.getUsers().size();
 		return role;
 	}
 	
-	@Override
-	public 
-		V load(Class<V> cView, V view)
+	@Override public V load(Class<V> cView, V view)
 	{
 		view = em.find(cView, view.getId());
 		view.getActions().size();
 		return view;
 	}
 	
-	@Override
-	public 
-		List<V>	allViewsForUser(Class<USER> clUser, USER user)
+	@Override public List<V> allViewsForUser(Class<USER> clUser, USER user)
 	{
 		user = em.find(clUser, user.getId());
 		Map<Long,V> views = new HashMap<Long,V>();
@@ -77,9 +71,53 @@ USER extends UtilsUser<L,D,C,R,V,U,A,USER>> extends UtilsFacadeBean implements U
 		return new ArrayList<V>(views.values());
 	}
 	
-	@Override
-	public 
-		List<A> allActionsForUser(Class<USER> clUser, USER user)
+	@Override public List<R> rolesForView(Class<V> cView, V view)
+	{	
+		return rolesForView(cView,null,view,null);
+	}
+	
+	@Override public List<R> rolesForView(Class<V> cView, Class<USER> cUser, V view, USER user)
+	{		
+		view = em.find(cView, view.getId());
+		Map<Long,R> roles = new HashMap<Long,R>();
+		for(R r : view.getRoles())
+		{
+			if(!roles.containsKey(r.getId())){roles.put(r.getId(), r);}
+		}
+		for(U u : view.getUsecases())
+		{
+			for(R r : u.getRoles())
+			{
+				if(!roles.containsKey(r.getId())){roles.put(r.getId(), r);}
+			}
+		}
+		return new ArrayList<R>(roles.values());
+	}
+	
+	@Override public List<R> rolesForAction(Class<A> cAction, A action)
+	{	
+		return rolesForAction(cAction,null,action,null);
+	}
+	
+	@Override public List<R> rolesForAction(Class<A> cAction, Class<USER> cUser, A action, USER user)
+	{		
+		action = em.find(cAction, action.getId());
+		Map<Long,R> roles = new HashMap<Long,R>();
+		for(R r : action.getRoles())
+		{
+			if(!roles.containsKey(r.getId())){roles.put(r.getId(), r);}
+		}
+		for(U u : action.getUsecases())
+		{
+			for(R r : u.getRoles())
+			{
+				if(!roles.containsKey(r.getId())){roles.put(r.getId(), r);}
+			}
+		}
+		return new ArrayList<R>(roles.values());
+	}
+	
+	@Override public List<A> allActionsForUser(Class<USER> clUser, USER user)
 	{
 		user = em.find(clUser, user.getId());
 		Map<Long,A> actions = new HashMap<Long,A>();
@@ -100,25 +138,23 @@ USER extends UtilsUser<L,D,C,R,V,U,A,USER>> extends UtilsFacadeBean implements U
 		return new ArrayList<A>(actions.values());
 	}
 	
-	@Override
-	public 
-		List<R>	allRolesForUser(Class<USER> clUser, USER user)
+	@Override public List<R> allRolesForUser(Class<USER> clUser, USER user)
 	{
 		user = em.find(clUser, user.getId());
 		return user.getRoles();
 	}
 	
-	@Override
-	public <WC extends UtilsSecurityWithCategory<L,D,C,R,V,U,A,USER>>
-		List<WC> allForCategory(Class<WC> clWc, Class<C> clC, String code) throws UtilsNotFoundException
+	@Override public <WC extends UtilsSecurityWithCategory<L,D,C,R,V,U,A,USER>> List<WC> allForCategory(Class<WC> clWc, Class<C> clC, String code) throws UtilsNotFoundException
 	{
-
-/*		logger.info(clWc.getName());
-		logger.info(UtilsSecurityRole.class.getSimpleName()+" ");
-		logger.info(UtilsSecurityRole.class.getSimpleName()+" "+clWc.isAssignableFrom(UtilsSecurityRole.class));
-		logger.info(UtilsSecurityView.class.getSimpleName()+" "+clWc.isAssignableFrom(UtilsSecurityView.class));
-		logger.info(UtilsSecurityUsecase.class.getSimpleName()+" "+clWc.isAssignableFrom(UtilsSecurityUsecase.class));
-*/		
+		if(logger.isTraceEnabled())
+		{
+			logger.info(clWc.getName());
+			logger.info(UtilsSecurityRole.class.getSimpleName()+" ");
+			logger.info(UtilsSecurityRole.class.getSimpleName()+" "+clWc.isAssignableFrom(UtilsSecurityRole.class));
+			logger.info(UtilsSecurityView.class.getSimpleName()+" "+clWc.isAssignableFrom(UtilsSecurityView.class));
+			logger.info(UtilsSecurityUsecase.class.getSimpleName()+" "+clWc.isAssignableFrom(UtilsSecurityUsecase.class));
+		}
+	
 		String type = null;
 		if(clWc.getSimpleName().contains("Usecase")){type=UtilsSecurityCategory.Type.usecase.toString();}
 		else if(clWc.getSimpleName().contains("Role")){type=UtilsSecurityCategory.Type.role.toString();}
@@ -126,7 +162,7 @@ USER extends UtilsUser<L,D,C,R,V,U,A,USER>> extends UtilsFacadeBean implements U
 		
 		C category = this.fByTypeCode(clC, type, code);
 		
-		return this.allOrderedPositionVisibleParent2(clWc,category);
+		return this.allOrderedPositionParent(clWc,category);
 	}	
 	
 	@Override
@@ -162,20 +198,16 @@ USER extends UtilsUser<L,D,C,R,V,U,A,USER>> extends UtilsFacadeBean implements U
 	{return allForParent(clStaff, "user", user, "domain",domain);}
 	
 	@Override
-	public < S extends UtilsStaff<L,D,C,R,V,U,A,USER,DOMAIN>,  DOMAIN extends EjbWithId>
-		List<S> fStaffRD(Class<S> clStaff, R role, DOMAIN domain)
+	public < S extends UtilsStaff<L,D,C,R,V,U,A,USER,DOMAIN>,  DOMAIN extends EjbWithId> List<S> fStaffRD(Class<S> clStaff, R role, DOMAIN domain)
 	{return allForParent(clStaff, "role", role, "domain",domain);}
 	
 	@Override
-	public < S extends UtilsStaff<L,D,C,R,V,U,A,USER,DOMAIN>,  DOMAIN extends EjbWithId>
-		S fStaff(Class<S> clStaff, USER user, R role, DOMAIN domain) throws UtilsNotFoundException
+	public < S extends UtilsStaff<L,D,C,R,V,U,A,USER,DOMAIN>,  DOMAIN extends EjbWithId> S fStaff(Class<S> clStaff, USER user, R role, DOMAIN domain) throws UtilsNotFoundException
 	{
 		return oneForParents(clStaff,"user",user,"role",role,"domain",domain);
 	}
 	
-	@Override
-	public 
-		void grantRole(Class<USER> clUser, Class<R> clRole, USER user, R role, boolean grant)
+	@Override public void grantRole(Class<USER> clUser, Class<R> clRole, USER user, R role, boolean grant)
 	{
 		logger.trace("grantRole u:"+user.toString()+" r:"+role.toString()+" grand:"+grant);
 		user = em.find(clUser,user.getId());
@@ -213,5 +245,44 @@ USER extends UtilsUser<L,D,C,R,V,U,A,USER>> extends UtilsFacadeBean implements U
 			if(r.getId() == role.getId()){return true;}
 		}
 		return false;
+	}
+
+	@Override
+	public <S extends UtilsStaff<L, D, C, R, V, U, A, USER, DOMAIN>, DOMAIN extends EjbWithId> List<DOMAIN> fDomains(Class<V> cView, Class<S> cStaff, USER user, V view)
+	{
+		List<R> roles = new ArrayList<R>();
+		List<DOMAIN> result = new ArrayList<DOMAIN>();
+		
+		view = this.find(cView, view);
+		roles.addAll(view.getRoles());
+		
+//		logger.info(StringUtil.stars());
+
+		for(U u : view.getUsecases())
+		{
+			for(R role : u.getRoles())
+			{
+//				logger.info("\t\tR"+role.toString());
+				if(!roles.contains(role))
+				{
+					roles.add(role);
+				}
+			}
+		}
+		
+//		logger.info("Roles to check: "+roles.size());
+		
+		for(R role : roles)
+		{
+//			logger.info("\tR"+role.toString());
+			for(S staff : this.fStaffUR(cStaff, user, role))
+			{
+				if(!result.contains(staff.getDomain()))
+				{
+					result.add(staff.getDomain());
+				}
+			}
+		}
+		return result;
 	}
 }

@@ -17,6 +17,7 @@ import org.slf4j.LoggerFactory;
 import net.sf.ahtutils.doc.latex.builder.UtilsLatexQaDocumentationBuilder;
 import net.sf.ahtutils.doc.ofx.AbstractUtilsOfxDocumentationFactory;
 import net.sf.ahtutils.doc.ofx.qa.table.OfxQaDurationGroupTable;
+import net.sf.ahtutils.exception.processing.UtilsConfigurationException;
 import net.sf.ahtutils.doc.ofx.qa.table.OfxQaDurationFrSummaryTable;
 import net.sf.ahtutils.doc.ofx.qa.table.OfxQaDurationFrCategoryTable;
 import net.sf.ahtutils.xml.qa.Category;
@@ -40,7 +41,7 @@ public class OfxQaDurationSectionFactory extends AbstractUtilsOfxDocumentationFa
 		ofGroup = new OfxQaDurationGroupTable(config,langs,translations);
 	}
 	
-	public Section build(List<Category> categories,Groups groups) throws OfxAuthoringException
+	public Section build(List<Category> categories,Groups groups) throws OfxAuthoringException, UtilsConfigurationException
 	{
 		Section section = XmlSectionFactory.build();
 		section.setId("section.qa.durations");
@@ -76,7 +77,7 @@ public class OfxQaDurationSectionFactory extends AbstractUtilsOfxDocumentationFa
 		catch (FileNotFoundException e) {throw new OfxAuthoringException(e.getMessage());}
 	}
 	
-	private Section durationsFrCategories(List<Category> categories) throws OfxAuthoringException
+	private Section durationsFrCategories(List<Category> categories) throws OfxAuthoringException, UtilsConfigurationException
 	{
 		Section section = XmlSectionFactory.build();
 		section.setId("section.qa.durations.fr");
@@ -90,7 +91,7 @@ public class OfxQaDurationSectionFactory extends AbstractUtilsOfxDocumentationFa
 		return section;
 	}
 	
-	private Section durationsGroups(List<Category> categories,Groups groups) throws OfxAuthoringException
+	private Section durationsGroups(List<Category> categories,Groups groups) throws OfxAuthoringException, UtilsConfigurationException
 	{
 		Section section = XmlSectionFactory.build();
 		section.setId("section.qa.durations.groups");

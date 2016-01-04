@@ -30,8 +30,8 @@
    	   				<groupId>commons-logging</groupId>
    	   			</exclusion>
    	   			<exclusion>
-   	   				<artifactId>httpclient</artifactId>
    	   				<groupId>org.apache.httpcomponents</groupId>
+   	   				<artifactId>httpclient</artifactId>
    	   			</exclusion>
    	   			<exclusion>
    	   				<artifactId>log4j</artifactId>
@@ -187,7 +187,7 @@
 		        <groupId>org.codehaus.mojo</groupId>
 		        <artifactId>versions-maven-plugin</artifactId>
 		        <configuration>
-					<rulesUri>file://${basedir}/../doc/src/main/resources/listing.aht-utils/development/maven-versions.xml</rulesUri>
+					<rulesUri>${maven.ignore}</rulesUri>
 		        </configuration>
 			</plugin>
         </plugins>

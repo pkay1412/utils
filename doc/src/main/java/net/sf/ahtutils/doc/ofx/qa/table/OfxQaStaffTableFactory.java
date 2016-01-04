@@ -27,6 +27,7 @@ import net.sf.ahtutils.doc.DocumentationCommentBuilder;
 import net.sf.ahtutils.doc.UtilsDocumentation;
 import net.sf.ahtutils.doc.ofx.AbstractUtilsOfxDocumentationFactory;
 import net.sf.ahtutils.doc.ofx.util.OfxMultiLangFactory;
+import net.sf.ahtutils.exception.processing.UtilsConfigurationException;
 import net.sf.ahtutils.xml.qa.Group;
 import net.sf.ahtutils.xml.security.Staff;
 import net.sf.ahtutils.xml.status.Translations;
@@ -52,7 +53,7 @@ public class OfxQaStaffTableFactory extends AbstractUtilsOfxDocumentationFactory
 		super(config,langs,translations);
 	}
 	
-	public Table team(List<Staff> staffs) throws OfxAuthoringException
+	public Table team(List<Staff> staffs) throws OfxAuthoringException, UtilsConfigurationException
 	{
 		try
 		{
@@ -77,7 +78,7 @@ public class OfxQaStaffTableFactory extends AbstractUtilsOfxDocumentationFactory
 		catch (ExlpXpathNotUniqueException e) {throw new OfxAuthoringException(e.getMessage());}
 	}
 	
-	public Table group(Group group) throws OfxAuthoringException
+	public Table group(Group group) throws OfxAuthoringException, UtilsConfigurationException
 	{
 		try
 		{

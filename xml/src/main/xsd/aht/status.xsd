@@ -38,9 +38,9 @@
         <xsd:complexType>
             <xsd:attribute name="id" type="xsd:long"/>
             <xsd:attribute name="code" type="xsd:string"/>
+            <xsd:attribute name="position" type="xsd:int"/>
         </xsd:complexType>
     </xsd:element>
-    
     <xsd:element name="tracked">
         <xsd:complexType>
         	<xsd:sequence>

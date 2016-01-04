@@ -46,6 +46,7 @@ public class StatusQuery
 		Parent parent = new Parent();
 		parent.setId(0);
 		parent.setCode("");
+		parent.setPosition(0);
 		
 		Status xml = new Status();
 		xml.setCode("");

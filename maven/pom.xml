@@ -13,49 +13,6 @@
 	<packaging>maven-plugin</packaging>
 	<name>UTILS - Maven Plugins</name>
 	<url>http://sourceforge.net/projects/ahtutils</url>
-  
-	<build>
-		<plugins>
-			<plugin>
-		        <groupId>org.codehaus.mojo</groupId>
-		        <artifactId>versions-maven-plugin</artifactId>
-		        <configuration>
-					<rulesUri>file://${basedir}/../doc/src/main/resources/listing.aht-utils/development/maven-versions.xml</rulesUri>
-		        </configuration>
-			</plugin>
-		</plugins>
-		<pluginManagement>
-			<plugins>
-				<!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build itself.-->
-				<plugin>
-					<groupId>org.eclipse.m2e</groupId>
-					<artifactId>lifecycle-mapping</artifactId>
-					<version>1.0.0</version>
-					<configuration>
-						<lifecycleMappingMetadata>
-							<pluginExecutions>
-								<pluginExecution>
-									<pluginExecutionFilter>
-										<groupId>org.apache.maven.plugins</groupId>
-										<artifactId>maven-plugin-plugin</artifactId>
-										<versionRange>
-											[2.9,)
-										</versionRange>
-										<goals>
-											<goal>descriptor</goal>
-										</goals>
-									</pluginExecutionFilter>
-									<action>
-										<ignore></ignore>
-									</action>
-								</pluginExecution>
-							</pluginExecutions>
-						</lifecycleMappingMetadata>
-					</configuration>
-				</plugin>
-			</plugins>
-		</pluginManagement>
-	</build>
 	
 	<dependencyManagement>
 		<dependencies>      	         
@@ -88,18 +45,14 @@
    	   		<artifactId>jaxb-impl</artifactId>
    	   		<scope>compile</scope>
    	   	</dependency>
-	    
-	    <dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<scope>test</scope>
-	    </dependency>
+	   
+<!-- 20.12.15 testing removal	   
 	    <dependency>
 			<groupId>org.apache.ant</groupId>
 			<artifactId>ant</artifactId>
 			<type>jar</type>
 			<scope>compile</scope>
-		</dependency>
+		</dependency>  -->
 		<dependency>
     		<groupId>net.sf.exlp</groupId>
     		<artifactId>exlp-util</artifactId>
@@ -127,6 +80,93 @@
 			<artifactId>yuicompressor</artifactId>
 			<version>2.4.7</version>
 	    </dependency>
+	    
+	    <!-- TEST -->
+	   	<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<scope>test</scope>
+	    </dependency>
+	    
 	</dependencies>
 
+	<build>
+		<plugins>
+			<plugin>
+		        <groupId>org.codehaus.mojo</groupId>
+		        <artifactId>versions-maven-plugin</artifactId>
+		        <configuration>
+					<rulesUri>${maven.ignore}</rulesUri>
+		        </configuration>
+			</plugin>
+			<plugin>
+				<groupId>net.sf.exlp</groupId>
+				<artifactId>exlp-maven</artifactId>
+				<executions>
+ 					<execution>
+						<id>create-view-identifier</id>
+						<phase>process-resources</phase> 
+						<goals>
+							<goal>mvnVersionIgnore</goal>
+						</goals>
+						<configuration>
+	              			<log>WARN</log>
+	              			<files>
+							  <param>exlp/maven/exlp-versions.xml</param>
+							  <param>${basedir}/src/main/resources/ahtutils/maven/ahtutils-versions.xml</param>
+							</files>
+							<saveTo>${basedir}/src/main/resources/ahtutils/maven/maven-versions.xml</saveTo>
+	              		</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+		<pluginManagement>
+			<plugins>
+				<!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build itself.-->
+				<plugin>
+					<groupId>org.eclipse.m2e</groupId>
+					<artifactId>lifecycle-mapping</artifactId>
+					<version>1.0.0</version>
+					<configuration>
+						<lifecycleMappingMetadata>
+							<pluginExecutions>
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>org.apache.maven.plugins</groupId>
+										<artifactId>maven-plugin-plugin</artifactId>
+										<versionRange>
+											[2.9,)
+										</versionRange>
+										<goals>
+											<goal>descriptor</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<ignore></ignore>
+									</action>
+								</pluginExecution>
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>net.sf.exlp</groupId>
+										<artifactId>exlp-maven</artifactId>
+										<versionRange>
+											[0.1,)
+										</versionRange>
+										<goals>
+											<goal>mvnVersionIgnore</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<ignore></ignore>
+									</action>
+								</pluginExecution>
+							</pluginExecutions>
+						</lifecycleMappingMetadata>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+	
 </project>

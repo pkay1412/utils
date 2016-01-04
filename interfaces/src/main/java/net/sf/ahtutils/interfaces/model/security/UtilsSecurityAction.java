@@ -1,5 +1,7 @@
 package net.sf.ahtutils.interfaces.model.security;
 
+import java.util.List;
+
 import net.sf.ahtutils.interfaces.model.behaviour.EjbSaveable;
 import net.sf.ahtutils.interfaces.model.crud.EjbRemoveable;
 import net.sf.ahtutils.interfaces.model.status.UtilsDescription;
@@ -24,4 +26,13 @@ public interface UtilsSecurityAction<L extends UtilsLang,
 {
 	public V getView();
 	public void setView(V view);
+	
+	public List<R> getRoles();
+	public void setRoles(List<R> roles);
+	
+	public List<U> getUsecases();
+	public void setUsecases(List<U> usecases);
+	
+	public Boolean getDocumentation();
+	public void setDocumentation(Boolean documentation);
 }

@@ -36,6 +36,7 @@ public class XmlCategoryFactory <L extends UtilsLang,D extends UtilsDescription,
 		if(q.isSetCode()){xml.setCode(category.getCode());}
 		if(q.isSetPosition()){xml.setPosition(category.getPosition());}
 		if(q.isSetVisible()){xml.setVisible(category.isVisible());}
+		if(q.isSetDocumentation() && category.getDocumentation()!=null){xml.setDocumentation(category.getDocumentation());}
 		
 		if(q.isSetLangs())
 		{

@@ -5,6 +5,7 @@ import java.util.List;
 import net.sf.ahtutils.doc.DocumentationCommentBuilder;
 import net.sf.ahtutils.doc.UtilsDocumentation;
 import net.sf.ahtutils.doc.ofx.AbstractUtilsOfxDocumentationFactory;
+import net.sf.ahtutils.exception.processing.UtilsConfigurationException;
 import net.sf.ahtutils.xml.security.Category;
 import net.sf.ahtutils.xml.security.Role;
 import net.sf.ahtutils.xml.status.Translations;
@@ -46,7 +47,7 @@ public class OfxQaRoleTableFactory extends AbstractUtilsOfxDocumentationFactory
 		super(config,langs,translations);
 	}
 	
-	public Table build(Category category, List<String> headerKeys) throws OfxAuthoringException
+	public Table build(Category category, List<String> headerKeys) throws OfxAuthoringException, UtilsConfigurationException
 	{
 		try
 		{

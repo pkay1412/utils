@@ -19,7 +19,6 @@ import org.slf4j.LoggerFactory;
 
 import net.sf.ahtutils.doc.ofx.AbstractUtilsOfxDocumentationFactory;
 import net.sf.ahtutils.doc.ofx.util.OfxMultiLangFactory;
-import net.sf.ahtutils.xml.access.Category;
 import net.sf.ahtutils.xml.access.View;
 import net.sf.ahtutils.xml.access.Views;
 import net.sf.ahtutils.xml.status.Translations;
@@ -39,7 +38,21 @@ final static Logger logger = LoggerFactory.getLogger(OfxSecurityUsecaseTableFact
 		headerKeys.add("auTableHeadSecurityUsecaseDescription");
 	}
 	
-	public Table build(Category category) throws OfxAuthoringException
+	@Deprecated
+	public Table build(net.sf.ahtutils.xml.access.Category category) throws OfxAuthoringException
+	{
+		Table table = new Table();
+//		table.setId("table.qa.nfr.questions."+section.getPosition());
+		table.setSpecification(createSpecifications());
+		
+		table.setTitle(OfxMultiLangFactory.title(langs, category.getLangs()));
+			
+		table.setContent(createContent(category.getViews()));
+		
+		return table;
+	}
+	
+	public Table build(net.sf.ahtutils.xml.security.Category category) throws OfxAuthoringException
 	{
 		Table table = new Table();
 //		table.setId("table.qa.nfr.questions."+section.getPosition());

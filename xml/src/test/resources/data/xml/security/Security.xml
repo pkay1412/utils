@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <sec:security xmlns:s="http://ahtutils.aht-group.com/status" xmlns:sec="http://ahtutils.aht-group.com/security" xmlns:acl="http://ahtutils.aht-group.com/access" xmlns:ns4="http://ahtutils.aht-group.com/navigation">
-    <sec:category code="myCode" label="myLabel" position="1" visible="true"/>
-    <sec:category code="myCode" label="myLabel" position="1" visible="true"/>
+    <sec:category code="myCode" label="myLabel" position="1" visible="true" documentation="true"/>
+    <sec:category code="myCode" label="myLabel" position="1" visible="true" documentation="true"/>
 </sec:security>

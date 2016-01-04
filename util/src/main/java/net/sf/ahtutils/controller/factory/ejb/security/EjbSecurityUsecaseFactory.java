@@ -66,6 +66,8 @@ public class EjbSecurityUsecaseFactory <L extends UtilsLang,
 			ejb = clUsecase.newInstance();
 			ejb.setCategory(category);
 			ejb.setCode(code);
+			ejb.setPosition(0);
+			ejb.setVisible(true);
 		}
     	catch (InstantiationException e) {e.printStackTrace();}
     	catch (IllegalAccessException e) {e.printStackTrace();}

@@ -9,6 +9,7 @@ import net.sf.ahtutils.test.AbstractUtilsDocTest;
 import net.sf.ahtutils.test.AhtUtilsDocBootstrap;
 import net.sf.exlp.util.io.resourceloader.MultiResourceLoader;
 
+@SuppressWarnings("unused")
 public class TestLatexDevelopmentDocumentationBuilder extends AbstractUtilsDocTest
 {
 	final static Logger logger = LoggerFactory.getLogger(TestLatexDevelopmentDocumentationBuilder.class);

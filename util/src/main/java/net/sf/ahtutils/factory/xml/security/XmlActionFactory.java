@@ -56,6 +56,13 @@ public class XmlActionFactory <L extends UtilsLang,
 			XmlDescriptionsFactory<D> f = new XmlDescriptionsFactory<D>(q.getDescriptions());
 			xml.setDescriptions(f.create(action.getDescription()));
 		}
+		
+		if(q.isSetView())
+		{
+			XmlViewFactory<L,D,C,R,V,U,A,USER> f = new XmlViewFactory<L,D,C,R,V,U,A,USER>(q.getView());
+			xml.setView(f.build(action.getView()));
+		}
+		
 		return xml;
 	}
 	

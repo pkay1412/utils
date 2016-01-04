@@ -54,7 +54,7 @@ public class TestOfxStatusTableFactory extends AbstractOfxStatusFactoryTest
 	}
 	
 	@Before
-	public void init()
+	public void init() throws UtilsConfigurationException
 	{			
 		super.initOfx();
 		Status status = new Status();

@@ -60,6 +60,10 @@ public class AhtUtilsSecurityUsecase implements EjbWithCode,Serializable,EjbRemo
 	private boolean visible;
 	@Override public boolean isVisible() {return visible;}
 	@Override public void setVisible(boolean visible) {this.visible = visible;}
+	
+	private Boolean documentation;
+	@Override public Boolean getDocumentation() {return documentation;}
+	@Override public void setDocumentation(Boolean documentation) {this.documentation = documentation;}
 
 	private int position;
 	@Override public int getPosition() {return position;}
@@ -86,6 +90,11 @@ public class AhtUtilsSecurityUsecase implements EjbWithCode,Serializable,EjbRemo
 	private List<AhtUtilsSecurityView> views;
 	public List<AhtUtilsSecurityView> getViews() {if(views==null){views = new ArrayList<AhtUtilsSecurityView>();}return views;}
 	public void setViews(List<AhtUtilsSecurityView> views) {this.views = views;}
+	
+	@ManyToMany(fetch=FetchType.LAZY)
+	private List<AhtUtilsSecurityRole> roles;
+	@Override public List<AhtUtilsSecurityRole> getRoles() {if(roles==null){roles = new ArrayList<AhtUtilsSecurityRole>();}return roles;}
+	@Override public void setRoles(List<AhtUtilsSecurityRole> roles) {this.roles = roles;}
 	
 	
 	public boolean equals(Object object)

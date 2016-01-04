@@ -54,6 +54,10 @@ public class AhtUtilsSecurityCategory implements Serializable, EjbWithCode,EjbRe
 	private boolean visible;
 	@Override public boolean isVisible() {return visible;}
 	@Override public void setVisible(boolean visible) {this.visible = visible;}
+	
+	private Boolean documentation;
+	@Override public Boolean getDocumentation() {return documentation;}
+	@Override public void setDocumentation(Boolean documentation) {this.documentation = documentation;}
 
 	private int position;
 	@Override public int getPosition() {return position;}

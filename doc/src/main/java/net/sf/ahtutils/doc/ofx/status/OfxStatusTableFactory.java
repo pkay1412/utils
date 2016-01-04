@@ -1,6 +1,9 @@
 package net.sf.ahtutils.doc.ofx.status;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Hashtable;
+import java.util.List;
 import java.util.Map;
 
 import org.apache.commons.configuration.Configuration;
@@ -33,6 +36,7 @@ import org.slf4j.LoggerFactory;
 import net.sf.ahtutils.doc.DocumentationCommentBuilder;
 import net.sf.ahtutils.doc.UtilsDocumentation;
 import net.sf.ahtutils.doc.ofx.AbstractUtilsOfxDocumentationFactory;
+import net.sf.ahtutils.doc.ofx.util.OfxMultiLangFactory;
 import net.sf.ahtutils.exception.processing.UtilsConfigurationException;
 import net.sf.ahtutils.xml.aht.Aht;
 import net.sf.ahtutils.xml.status.Lang;
@@ -41,6 +45,8 @@ import net.sf.ahtutils.xml.status.Translations;
 import net.sf.ahtutils.xml.xpath.StatusXpath;
 import net.sf.exlp.exception.ExlpXpathNotFoundException;
 import net.sf.exlp.exception.ExlpXpathNotUniqueException;
+import net.sf.exlp.util.io.StringUtil;
+import net.sf.exlp.util.xml.JaxbUtil;
 
 public class OfxStatusTableFactory extends AbstractUtilsOfxDocumentationFactory
 {
@@ -50,6 +56,7 @@ public class OfxStatusTableFactory extends AbstractUtilsOfxDocumentationFactory
 	
 	public static final String translationKeyName = "auStatusTableName";
 	public static final String translationKeyDescription = "auStatusTableDescription";
+	public static final String translationKeyParent = "auStatusTableParent";
 	
 	private static String keyCaption = "auTableStatusCaption";
 	
@@ -68,13 +75,17 @@ public class OfxStatusTableFactory extends AbstractUtilsOfxDocumentationFactory
 	
 	private Aht xmlP;
 
-	public OfxStatusTableFactory(Configuration config, String lang, Translations translations)
+	public OfxStatusTableFactory(Configuration config, String lang, Translations translations) throws UtilsConfigurationException
 	{
 		this(config,new String[] {lang},translations);
 	}
-	public OfxStatusTableFactory(Configuration config, String[] langs, Translations translations)
+	public OfxStatusTableFactory(Configuration config, String[] langs, Translations translations) throws UtilsConfigurationException
 	{
 		super(config,langs,translations);
+		
+		comment = XmlCommentFactory.build();
+		DocumentationCommentBuilder.translationKeys(comment,config,UtilsDocumentation.keyTranslationFile);
+		
 		imagePathPrefix = config.getString("doc.ofx.imagePathPrefix");
 		customColWidths=false;
 		
@@ -93,31 +104,19 @@ public class OfxStatusTableFactory extends AbstractUtilsOfxDocumentationFactory
 		headers.put(Code.description, translationKeyDescription);
 	}
 	
+	@Deprecated
 	public void activateParents(Aht parents)
 	{
 		renderColumn.put(Code.parent, true);
 		xmlP = parents;
 	}
 	
+	@Deprecated
 	public Table buildLatexTable(String id, Aht xmlStatus) throws OfxAuthoringException, UtilsConfigurationException
 	{
 		try
 		{	
-			String captionKey = id;
-			
-			while(captionKey.indexOf(".")>0)
-			{
-				int index = captionKey.indexOf(".");
-				captionKey = captionKey.substring(0,index)+captionKey.substring(index+1, index+2).toUpperCase()+captionKey.substring(index+2, captionKey.length());
-			}
-			captionKey = captionKey.substring(0, 1).toUpperCase()+captionKey.substring(1, captionKey.length());
-			
-			if(renderColumn.get(Code.parent))
-			{
-				headers.put(Code.parent, headers.get(Code.parent)+""+captionKey);
-			}
-			
-			captionKey = keyCaption+captionKey;
+			String captionKey = buildCaptionKey(id);
 			id = "table.status."+id;
 			
 			Comment comment = XmlCommentFactory.build();
@@ -145,6 +144,7 @@ public class OfxStatusTableFactory extends AbstractUtilsOfxDocumentationFactory
 		catch (ExlpXpathNotUniqueException e) {throw new OfxAuthoringException(e.getMessage());}
 	}
 	
+	@Deprecated
 	public Table toOfx(Aht xmlStatus) throws UtilsConfigurationException
 	{
 		Table table = null;
@@ -161,6 +161,7 @@ public class OfxStatusTableFactory extends AbstractUtilsOfxDocumentationFactory
 		return table;
 	}
 	
+	@Deprecated
 	private Head buildHead()
 	{
 		Row row = new Row();
@@ -200,6 +201,7 @@ public class OfxStatusTableFactory extends AbstractUtilsOfxDocumentationFactory
 		return head;
 	}
 	
+	@Deprecated
 	private Content createContent(Aht xmlStatus) throws ExlpXpathNotFoundException, ExlpXpathNotUniqueException, UtilsConfigurationException
 	{
 		Body body = new Body();
@@ -230,6 +232,7 @@ public class OfxStatusTableFactory extends AbstractUtilsOfxDocumentationFactory
 		return content;
 	}
 	
+	@Deprecated
 	private Row createRow(Status status, String parentString, boolean line) throws ExlpXpathNotFoundException, ExlpXpathNotUniqueException
 	{		
 		Row row = new Row();
@@ -237,7 +240,7 @@ public class OfxStatusTableFactory extends AbstractUtilsOfxDocumentationFactory
 		if(line)
 		{
 			Layout layout = XmlLayoutFactory.build();
-			layout.getLine().add(XmlLineFactory.buildTop());
+			layout.getLine().add(XmlLineFactory.top());
 			row.setLayout(layout);
 		}
 		
@@ -271,6 +274,7 @@ public class OfxStatusTableFactory extends AbstractUtilsOfxDocumentationFactory
 		return row;
 	}
 	
+	@Deprecated
 	private Specification createSpecifications() throws UtilsConfigurationException
 	{
 		logger.trace("customColWidths: "+customColWidths);
@@ -327,16 +331,213 @@ public class OfxStatusTableFactory extends AbstractUtilsOfxDocumentationFactory
 		return specification;
 	}
 	
-	public void setColWidths(int[] colWidths)
+	@Deprecated public void setColWidths(int[] colWidths)
 	{
 		customColWidths=true;
 		this.colWidths = colWidths;
 	}
 	
-	public void renderColumn(Code code, boolean render){renderColumn(code,render,null);}
-	public void renderColumn(Code code, boolean render,Column definition)
+	@Deprecated public void renderColumn(Code code, boolean render){renderColumn(code,render,null);}
+	@Deprecated public void renderColumn(Code code, boolean render,Column definition)
 	{
 		renderColumn.put(code, render);
 		if(definition!=null){columnDefinition.put(code, definition);}
+	}
+	
+	private Aht listStatus; public void setListStatus(Aht listStatus) {this.listStatus = listStatus;}
+	private Aht listParent; public void setListParent(Aht listParent) {this.listParent = listParent;}
+	private String parentKey; public void setParentKey(String parentKey) {this.parentKey = parentKey;}
+
+	private List<OfxStatusTableFactory.Code> columns;
+	private Comment comment;
+	private Specification specs;
+	private Head head;
+	
+	private String previousParentCode = "-1";
+	private boolean firstRow = true;
+	
+	public Table build(String id) throws OfxAuthoringException
+	{
+		String captionKey = buildCaptionKey(id);
+		id = "table.status."+id;
+		
+		DocumentationCommentBuilder.tableKey(comment,captionKey,"Table Caption");
+		OfxCommentBuilder.fixedId(comment, id);
+		OfxCommentBuilder.doNotModify(comment);
+		
+		Table table = toOfx();
+		table.setId(id);
+		table.setComment(comment);
+		table.setTitle(OfxMultiLangFactory.title(langs, translations, captionKey));
+		
+		return table;
+	}
+	
+	private Table toOfx() throws OfxAuthoringException
+	{
+		Table table = new Table();
+		table.setSpecification(specs);
+		table.setContent(createContent());
+		table.getContent().setHead(head);
+		
+		return table;
+	}
+	
+	private Content createContent() throws OfxAuthoringException
+	{
+		Body body = new Body();
+		for(Status status : listStatus.getStatus())
+		{
+			body.getRow().add(row(status));
+			firstRow=false;
+		}
+		
+		Content content = new Content();
+		content.getBody().add(body);
+		
+		return content;
+	}
+	
+	private Row row(Status status) throws OfxAuthoringException
+	{		
+		Row row = new Row();
+		
+		for(OfxStatusTableFactory.Code code : columns)
+		{
+			if(code.equals(Code.parent))
+			{
+				String actualParentcode = status.getParent().getCode();
+				
+				logger.trace(StringUtil.stars());
+				logger.trace("Previous: "+previousParentCode);
+				logger.trace("Actual: "+actualParentcode);
+				
+				if(previousParentCode.equals(actualParentcode))
+				{
+					row.getCell().add(OfxCellFactory.createParagraphCell(""));
+				}
+				else
+				{
+					if(!firstRow)
+					{
+						row.setLayout(XmlLayoutFactory.build());
+						row.getLayout().getLine().add(XmlLineFactory.top());
+					}
+					try
+					{
+						Status sParent = StatusXpath.getStatus(listParent.getStatus(),actualParentcode);
+						row.getCell().add(OfxMultiLangFactory.cell(langs, sParent.getLangs()));
+					}
+					catch (ExlpXpathNotFoundException e) {e.printStackTrace();}
+					catch (ExlpXpathNotUniqueException e) {e.printStackTrace();}
+				}
+				previousParentCode = actualParentcode;
+			}
+			else if(code.equals(Code.icon))
+			{
+				row.getCell().add(OfxCellFactory.image(OfxStatusImageFactory.build(imagePathPrefix,status)));
+			}
+			else if(code.equals(Code.code))
+			{
+				row.getCell().add(OfxCellFactory.createParagraphCell(status.getCode()));
+			}
+			else if(code.equals(Code.name))
+			{
+				row.getCell().add(OfxMultiLangFactory.cell(langs, status.getLangs()));
+			}
+			else if(code.equals(Code.description))
+			{
+				row.getCell().add(OfxMultiLangFactory.cell(langs, status.getDescriptions()));
+			}
+		}		
+		return row;
+	}
+		
+	public void setColumns(OfxStatusTableFactory.Code... columns) throws OfxAuthoringException
+	{		
+		this.columns = new ArrayList<OfxStatusTableFactory.Code>(Arrays.asList(columns));
+	
+		OfxStatusTableFactory.Code narrowColumn = calcNarrowColumn();
+		specs = new Specification();
+		specs.setColumns(new Columns());
+		
+		head = new Head();
+		head.getRow().add(new Row());
+		
+		String headerKey=null;
+		int headerNr=1;
+		for(OfxStatusTableFactory.Code code : columns)
+		{
+			if(code.equals(Code.parent))
+			{
+				headerKey = "auStatusTableParent"+StringUtil.dash2Camel(parentKey);
+				head.getRow().get(0).getCell().add(OfxMultiLangFactory.cell(langs, translations, headerKey));
+				specs.getColumns().getColumn().add(OfxColumnFactory.flex(20,code.equals(narrowColumn)));
+			}
+			else if(code.equals(Code.icon))
+			{
+				headerKey = null;
+				head.getRow().get(0).getCell().add(OfxCellFactory.build());
+				specs.getColumns().getColumn().add(OfxColumnFactory.build(XmlAlignmentFactory.Horizontal.center));
+			}
+			else if(code.equals(Code.code))
+			{
+				headerKey = "auStatusTableCode";
+				head.getRow().get(0).getCell().add(OfxMultiLangFactory.cell(langs, translations, headerKey));
+				specs.getColumns().getColumn().add(OfxColumnFactory.flex(10,code.equals(narrowColumn)));
+			}
+			else if(code.equals(Code.name))
+			{
+				headerKey = "auStatusTableName";
+				head.getRow().get(0).getCell().add(OfxMultiLangFactory.cell(langs, translations, headerKey));
+				specs.getColumns().getColumn().add(OfxColumnFactory.flex(30,code.equals(narrowColumn)));
+			}
+			else if(code.equals(Code.description))
+			{
+				headerKey = "auStatusTableDescription";
+				head.getRow().get(0).getCell().add(OfxMultiLangFactory.cell(langs, translations, headerKey));
+				specs.getColumns().getColumn().add(OfxColumnFactory.flex(60,code.equals(narrowColumn)));
+			}
+			if(headerKey!=null){DocumentationCommentBuilder.tableKey(comment,headerKey,"Table Header ("+headerNr+")");}
+			headerNr++;
+		}
+		JaxbUtil.trace(specs);
+	}
+	
+	private OfxStatusTableFactory.Code calcNarrowColumn() throws OfxAuthoringException
+	{
+		boolean cParent = false;
+		boolean cCode = false;
+		boolean cName = false;
+		boolean cDescription = false;
+		for(OfxStatusTableFactory.Code code : columns)
+		{
+			if(code.equals(Code.parent)){cParent=true;}
+			else if(code.equals(Code.code)){cCode=true;}
+			else if(code.equals(Code.name)){cName=true;}
+			else if(code.equals(Code.description)){cDescription=true;}
+		}
+		
+		if     ( cCode &&  cName && !cDescription){return Code.code;}
+		else if(!cCode &&  cName &&  cDescription){return Code.name;}
+		else {throw new OfxAuthoringException("Unknown narrow calculation");}
+	}
+	
+	private String buildCaptionKey(String id)
+	{
+		String captionKey = id;
+		
+		while(captionKey.indexOf(".")>0)
+		{
+			int index = captionKey.indexOf(".");
+			captionKey = captionKey.substring(0,index)+captionKey.substring(index+1, index+2).toUpperCase()+captionKey.substring(index+2, captionKey.length());
+		}
+		captionKey = captionKey.substring(0, 1).toUpperCase()+captionKey.substring(1, captionKey.length());
+		
+		if(renderColumn.get(Code.parent))
+		{
+			headers.put(Code.parent, headers.get(Code.parent)+""+captionKey);
+		}
+		return keyCaption+captionKey;
 	}
 }

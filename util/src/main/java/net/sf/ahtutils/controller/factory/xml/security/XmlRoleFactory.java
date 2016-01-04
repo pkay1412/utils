@@ -1,5 +1,8 @@
 package net.sf.ahtutils.controller.factory.xml.security;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import net.sf.ahtutils.factory.xml.security.XmlActionsFactory;
 import net.sf.ahtutils.factory.xml.security.XmlUsecasesFactory;
 import net.sf.ahtutils.factory.xml.security.XmlViewsFactory;
@@ -14,10 +17,9 @@ import net.sf.ahtutils.interfaces.model.status.UtilsDescription;
 import net.sf.ahtutils.interfaces.model.status.UtilsLang;
 import net.sf.ahtutils.model.interfaces.idm.UtilsUser;
 import net.sf.ahtutils.xml.access.Role;
+import net.sf.exlp.util.io.StringUtil;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
+@Deprecated
 public class XmlRoleFactory <L extends UtilsLang,
 	D extends UtilsDescription,
 	C extends UtilsSecurityCategory<L,D,C,R,V,U,A,USER>,
@@ -70,8 +72,20 @@ public class XmlRoleFactory <L extends UtilsLang,
     
     public net.sf.ahtutils.xml.security.Role build(R role)
     {
+    	if(logger.isTraceEnabled())
+    	{
+    		logger.info(StringUtil.stars());
+    		logger.info(role.toString());
+    		logger.info("Query: "+q.isSetDocumentation());
+    		logger.info("\t"+(role.getDocumentation()!=null));
+    		if(role.getDocumentation()!=null){logger.info("\t"+role.getDocumentation());}
+    	}
+    	
     	net.sf.ahtutils.xml.security.Role xml = new net.sf.ahtutils.xml.security.Role();
-    	if(qSec.isSetCode()){xml.setCode(role.getCode());}
+    	if(q.isSetCode()){xml.setCode(role.getCode());}
+//		if(q.isSetPosition()){xml.setPosition(role.getPosition());}
+//		if(q.isSetVisible()){xml.setVisible(role.isVisible());}
+		if(q.isSetDocumentation() && role.getDocumentation()!=null){xml.setDocumentation(role.getDocumentation());}
     	
     	if(qSec.isSetLangs())
 		{

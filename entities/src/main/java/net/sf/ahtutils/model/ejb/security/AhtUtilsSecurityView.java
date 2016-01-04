@@ -12,6 +12,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.MapKey;
 import javax.persistence.OneToMany;
@@ -61,6 +62,10 @@ public class AhtUtilsSecurityView implements EjbWithCode,Serializable,EjbRemovea
 	private boolean visible;
 	@Override public boolean isVisible() {return visible;}
 	@Override public void setVisible(boolean visible) {this.visible = visible;}
+	
+	private Boolean documentation;
+	@Override public Boolean getDocumentation() {return documentation;}
+	@Override public void setDocumentation(Boolean documentation) {this.documentation = documentation;}
 
 	private int position;
 	@Override public int getPosition() {return position;}
@@ -82,6 +87,11 @@ public class AhtUtilsSecurityView implements EjbWithCode,Serializable,EjbRemovea
 	private List<AhtUtilsSecurityAction> actions;
 	@Override public List<AhtUtilsSecurityAction> getActions() {if(actions==null){actions=new ArrayList<AhtUtilsSecurityAction>();}return actions;}
 	@Override public void setActions(List<AhtUtilsSecurityAction> actions) {this.actions = actions;}
+	
+	@ManyToMany(fetch=FetchType.LAZY)
+	private List<AhtUtilsSecurityUsecase> usecases;
+	@Override public List<AhtUtilsSecurityUsecase> getUsecases() {if(usecases==null){usecases = new ArrayList<AhtUtilsSecurityUsecase>();}return usecases;}
+	@Override public void setUsecases(List<AhtUtilsSecurityUsecase> usecases) {this.usecases = usecases;}
 	
 	private Boolean accessPublic;
 	@Override public Boolean getAccessPublic() {return accessPublic;}
@@ -106,6 +116,11 @@ public class AhtUtilsSecurityView implements EjbWithCode,Serializable,EjbRemovea
 	private String urlBase;
 	@Override public String getUrlBase() {return urlBase;}
 	@Override public void setUrlBase(String urlBase) {this.urlBase = urlBase;}
+	
+	@ManyToMany(fetch=FetchType.LAZY)
+	private List<AhtUtilsSecurityRole> roles;
+	@Override public List<AhtUtilsSecurityRole> getRoles() {if(roles==null){roles = new ArrayList<AhtUtilsSecurityRole>();}return roles;}
+	@Override public void setRoles(List<AhtUtilsSecurityRole> roles) {this.roles = roles;}
 	
 	public boolean equals(Object object)
 	{

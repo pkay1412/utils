@@ -23,6 +23,7 @@ import net.sf.ahtutils.interfaces.model.security.UtilsSecurityUsecase;
 import net.sf.ahtutils.interfaces.model.security.UtilsSecurityView;
 import net.sf.ahtutils.interfaces.model.status.UtilsDescription;
 import net.sf.ahtutils.interfaces.model.status.UtilsLang;
+import net.sf.ahtutils.interfaces.web.UtilsJsfSecurityHandler;
 import net.sf.ahtutils.model.interfaces.idm.UtilsUser;
 import net.sf.ahtutils.web.mbean.util.AbstractLogMessage;
 
@@ -54,7 +55,7 @@ public class AbstractAdminSecurityBean <L extends UtilsLang,
 	protected Class<V> cView;
 	protected Class<U> cUsecase;
 	protected Class<A> cAction;
-	
+		
 	//Category
 	protected List<C> categories;
 	public List<C> getCategories() {return categories;}
@@ -115,6 +116,10 @@ public class AbstractAdminSecurityBean <L extends UtilsLang,
 	
 	public void initSecuritySuper(final Class<L> cLang, final Class<D> cDescription, final Class<C> cCategory, final Class<R> cRole, final Class<V> cView, final Class<U> cUsecase, final Class<A> cAction, final Class<USER> cUser, String[] langs)
 	{
+		showInvisibleCategories = true;
+		showInvisibleRecords = true;
+		showDocumentation = true;
+		
 		this.cCategory=cCategory;
 		this.cRole=cRole;
 		this.cUsecase=cUsecase;
@@ -146,7 +151,11 @@ public class AbstractAdminSecurityBean <L extends UtilsLang,
 	protected void reloadCategories()
 	{
 		logger.info("reloadCategories");
-		categories = fSecurity.allOrderedPositionVisible(cCategory,categoryType);
+		
+		if(showInvisibleCategories){categories = fSecurity.allOrderedPosition(cCategory,categoryType);}
+		else{categories = fSecurity.allOrderedPositionVisible(cCategory,categoryType);}
+				
+		
 	}
 	
 	protected void reorderCategories() throws UtilsConstraintViolationException, UtilsLockingException
@@ -158,6 +167,27 @@ public class AbstractAdminSecurityBean <L extends UtilsLang,
 			c.setPosition(i);
 			fSecurity.update(c);
 			i++;
+		}
+	}
+	
+	protected void categorySaved(){}
+	
+	//Handling for Invisible entries
+	private boolean showInvisibleCategories; public boolean isShowInvisibleCategories() {return showInvisibleCategories;}
+	protected boolean showInvisibleRecords; public boolean isShowInvisibleRecords() {return showInvisibleRecords;}
+	protected boolean showDocumentation; public boolean isShowDocumentation() {return showDocumentation;}
+	
+	protected void updateSecurity(UtilsJsfSecurityHandler jsfSecurityHandler, String actionInvisible, String actionDocumentation)
+	{
+		showInvisibleCategories = jsfSecurityHandler.allow(actionInvisible);
+		showInvisibleRecords = jsfSecurityHandler.allow(actionInvisible);
+		showDocumentation = jsfSecurityHandler.allow(actionDocumentation);
+		
+		if(logger.isTraceEnabled())
+		{
+			logger.info(showInvisibleCategories+" showInvisibleCategories "+actionInvisible);
+			logger.info(showInvisibleRecords+" showInvisibleRecords "+actionInvisible);
+			logger.info(showDocumentation+" showInvisibleCategories "+actionDocumentation);
 		}
 	}
 }

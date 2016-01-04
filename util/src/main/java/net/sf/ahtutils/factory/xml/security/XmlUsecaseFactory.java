@@ -40,6 +40,7 @@ public class XmlUsecaseFactory <L extends UtilsLang,
 		if(q.isSetCode()){xml.setCode(usecase.getCode());}
 		if(q.isSetPosition()){xml.setPosition(usecase.getPosition());}
 		if(q.isSetVisible()){xml.setVisible(usecase.isVisible());}
+		if(q.isSetDocumentation() && usecase.getDocumentation()!=null){xml.setDocumentation(usecase.getDocumentation());}
 		
 		if(q.isSetLangs())
 		{

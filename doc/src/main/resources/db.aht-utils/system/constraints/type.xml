@@ -9,7 +9,7 @@
         <us:descriptions>
             <us:description key="de">TBD</us:description>
             <us:description key="fr">TBD</us:description>
-            <us:description key="en">This constraint is enforced by the database and requires a non-empty attribute.</us:description>
+            <us:description key="en">This constraint is enforced by the database and requires an non-empty attribute.</us:description>
         </us:descriptions>
     </us:status>
     <us:status code="unique" position="1">
@@ -33,9 +33,7 @@
         <us:descriptions>
             <us:description key="de">Selection</us:description>
             <us:description key="fr">Selection</us:description>
-            <us:description key="en">
-            	This constraint is similar to a not-empty constraint, but the user interface ensures that
-            	the reference is set by providing a pull-down menu.
+            <us:description key="en">This constraint is similar to a non-empty constraint but the user interface ensures that the reference is set by providing a pull-down menu.
             </us:description>
         </us:descriptions>
     </us:status>
@@ -75,7 +73,7 @@
         <us:descriptions>
             <us:description key="de">Symbol</us:description>
             <us:description key="fr">Symbol</us:description>
-            <us:description key="en">The current date is before a specifc date</us:description>
+            <us:description key="en">The entered date needs to be prior to the current date.</us:description>
         </us:descriptions>
     </us:status>
     <us:status code="afterCurrentDate" position="4">
@@ -87,7 +85,7 @@
         <us:descriptions>
             <us:description key="de">Symbol</us:description>
             <us:description key="fr">Symbol</us:description>
-            <us:description key="en">The current date is after a specifc date.</us:description>
+            <us:description key="en">The current date is after the current date.</us:description>
         </us:descriptions>
     </us:status>
     <us:status code="precondition" position="5">

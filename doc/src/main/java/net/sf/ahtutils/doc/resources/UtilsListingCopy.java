@@ -116,7 +116,7 @@ public class UtilsListingCopy
 				logger.trace("Line: "+line);
 			}
 			File target = new File(dirListing,dst);
-			logger.info("Writing to :"+target.getAbsolutePath());
+			logger.debug("Writing to :"+target.getAbsolutePath());
 			writer.writeFile(target);
 		}
 		catch (FileNotFoundException e) {throw new UtilsConfigurationException(e.getMessage());}

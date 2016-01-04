@@ -1,5 +1,7 @@
 package net.sf.ahtutils.interfaces.model.security;
 
+import java.util.List;
+
 import net.sf.ahtutils.interfaces.model.behaviour.EjbSaveable;
 import net.sf.ahtutils.interfaces.model.status.UtilsDescription;
 import net.sf.ahtutils.interfaces.model.status.UtilsLang;
@@ -25,4 +27,10 @@ public interface UtilsSecurityUsecase<L extends UtilsLang,
 					UtilsSecurityWithActions<L,D,C,R,V,U,A,USER>
 {
 	public static final String extractId = "securityUsecases";
+	
+	public List<R> getRoles();
+	public void setRoles(List<R> roles);
+	
+	public Boolean getDocumentation();
+	public void setDocumentation(Boolean documentation);
 }

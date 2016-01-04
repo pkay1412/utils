@@ -110,19 +110,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Category }
-     * 
-     */
-    public Category createCategory() {
-        return new Category();
-    }
-
-    /**
      * Create an instance of {@link Roles }
      * 
      */
     public Roles createRoles() {
         return new Roles();
+    }
+
+    /**
+     * Create an instance of {@link Category }
+     * 
+     */
+    public Category createCategory() {
+        return new Category();
     }
 
     /**

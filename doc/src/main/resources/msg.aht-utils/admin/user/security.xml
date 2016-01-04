@@ -51,8 +51,6 @@
     	</s:langs>
     </s:translation>
     
-    
-    
 	<s:translation key="aupSecurityAction">
     	<s:langs>
     		<s:lang key="de" translation="Action"/>
@@ -74,12 +72,27 @@
     		<s:lang key="fr" translation="Use-Cases"/>
     	</s:langs>
     </s:translation>    
-    	<s:translation key="aupSecurityUsecase">
+	<s:translation key="aupSecurityUsecase">
     	<s:langs>
     		<s:lang key="de" translation="Use-Case"/>
     		<s:lang key="en" translation="Use-Case"/>
     		<s:lang key="fr" translation="Use-Case"/>
     	</s:langs>
     </s:translation> 
+    
+    <s:translation key="aupSecurityVisible">
+    	<s:langs>
+    		<s:lang key="de" translation="Sichtbar"/>
+    		<s:lang key="en" translation="Visible"/>
+    		<s:lang key="fr" translation="Visible"/>
+    	</s:langs>
+    </s:translation>
+        <s:translation key="aupSecurityIncludeInManual">
+    	<s:langs>
+    		<s:lang key="de" translation="Handbuch"/>
+    		<s:lang key="en" translation="Manual"/>
+    		<s:lang key="fr" translation="Manual"/>
+    	</s:langs>
+    </s:translation>
     
 </s:translations>

@@ -45,7 +45,7 @@ final static Logger logger = LoggerFactory.getLogger(OfxSecurityUsecaseTableFact
 //		table.setId("table.qa.nfr.questions."+section.getPosition());
 		table.setSpecification(createSpecifications());
 		
-		table.setTitle(OfxMultiLangFactory.title(langs, category.getLangs()));
+		table.setTitle(OfxMultiLangFactory.title(langs, category.getLangs(), "Roles in category:",null));
 			
 		table.setContent(createContent(category.getRoles()));
 		
@@ -71,7 +71,12 @@ final static Logger logger = LoggerFactory.getLogger(OfxSecurityUsecaseTableFact
 		Body body = new Body();
 		for(Role role : roles.getRole())
 		{
-			body.getRow().add(createRow(role));
+			if(!role.isSetDocumentation()){role.setDocumentation(false);}
+			if(role.isDocumentation())
+			{
+				body.getRow().add(createRow(role));
+			}
+			
 		}
 		
 		Content content = new Content();
