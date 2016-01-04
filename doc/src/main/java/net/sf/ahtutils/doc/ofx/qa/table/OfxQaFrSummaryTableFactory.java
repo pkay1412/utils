@@ -125,9 +125,12 @@ public class OfxQaFrSummaryTableFactory extends AbstractUtilsOfxDocumentationFac
 		head.getRow().get(0).getCell().add(OfxCellFactory.createParagraphCell(category.getQa().getDeveloper()));
 		
 		Body body = new Body();
-		for(Test staff : category.getTest())
+		for(Test test : category.getTest())
 		{
-			body.getRow().add(createRow(staff));
+			if(test.isVisible())
+			{
+				body.getRow().add(createRow(test));
+			}
 		}
 		
 		Content content = new Content();

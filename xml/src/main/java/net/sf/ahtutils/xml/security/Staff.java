@@ -9,6 +9,7 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 import net.sf.ahtutils.xml.status.Domain;
+import net.sf.ahtutils.xml.status.Level;
 import net.sf.ahtutils.xml.status.Responsible;
 import net.sf.ahtutils.xml.status.Status;
 import net.sf.ahtutils.xml.status.Type;
@@ -30,6 +31,7 @@ import net.sf.ahtutils.xml.status.Type;
  *         &lt;element ref="{http://ahtutils.aht-group.com/status}status"/&gt;
  *         &lt;element ref="{http://ahtutils.aht-group.com/status}type"/&gt;
  *         &lt;element ref="{http://ahtutils.aht-group.com/status}responsible"/&gt;
+ *         &lt;element ref="{http://ahtutils.aht-group.com/status}level"/&gt;
  *       &lt;/sequence&gt;
  *       &lt;attribute name="id" type="{http://www.w3.org/2001/XMLSchema}long" /&gt;
  *     &lt;/restriction&gt;
@@ -46,7 +48,8 @@ import net.sf.ahtutils.xml.status.Type;
     "domain",
     "status",
     "type",
-    "responsible"
+    "responsible",
+    "level"
 })
 @XmlRootElement(name = "staff")
 public class Staff
@@ -66,6 +69,8 @@ public class Staff
     protected Type type;
     @XmlElement(namespace = "http://ahtutils.aht-group.com/status", required = true)
     protected Responsible responsible;
+    @XmlElement(namespace = "http://ahtutils.aht-group.com/status", required = true)
+    protected Level level;
     @XmlAttribute(name = "id")
     protected Long id;
 
@@ -235,6 +240,34 @@ public class Staff
 
     public boolean isSetResponsible() {
         return (this.responsible!= null);
+    }
+
+    /**
+     * Gets the value of the level property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Level }
+     *     
+     */
+    public Level getLevel() {
+        return level;
+    }
+
+    /**
+     * Sets the value of the level property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Level }
+     *     
+     */
+    public void setLevel(Level value) {
+        this.level = value;
+    }
+
+    public boolean isSetLevel() {
+        return (this.level!= null);
     }
 
     /**

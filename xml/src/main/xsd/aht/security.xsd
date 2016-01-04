@@ -118,6 +118,7 @@
                 <xsd:element ref="us:status" maxOccurs="1"/> <!-- Possibility to use this individually -->
                 <xsd:element ref="us:type" maxOccurs="1"/> <!-- Possibility to use this individually -->
                 <xsd:element ref="us:responsible" maxOccurs="1"/> <!-- Possibility to use this individually -->
+                <xsd:element ref="us:level" maxOccurs="1"/> <!-- Possibility to use this individually -->
             </xsd:sequence>
             <xsd:attribute name="id" type="xsd:long"/>
         </xsd:complexType>

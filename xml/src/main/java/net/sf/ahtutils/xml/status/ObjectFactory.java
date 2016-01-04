@@ -118,6 +118,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link Level }
+     * 
+     */
+    public Level createLevel() {
+        return new Level();
+    }
+
+    /**
      * Create an instance of {@link Statement }
      * 
      */
@@ -411,14 +419,6 @@ public class ObjectFactory {
      */
     public Freeze createFreeze() {
         return new Freeze();
-    }
-
-    /**
-     * Create an instance of {@link Level }
-     * 
-     */
-    public Level createLevel() {
-        return new Level();
     }
 
     /**

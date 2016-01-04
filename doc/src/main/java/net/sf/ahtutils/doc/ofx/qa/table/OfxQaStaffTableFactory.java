@@ -161,6 +161,7 @@ public class OfxQaStaffTableFactory extends AbstractUtilsOfxDocumentationFactory
 	
 	private Cell build(ColumCode column, Staff staff)
 	{
+		
 		switch(column)
 		{
 			case organisation: return OfxCellFactory.createParagraphCell(staff.getStatus().getLabel());

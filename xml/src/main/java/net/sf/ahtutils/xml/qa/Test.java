@@ -37,6 +37,7 @@ import net.sf.ahtutils.xml.status.Status;
  *       &lt;attribute name="name" type="{http://www.w3.org/2001/XMLSchema}string" /&gt;
  *       &lt;attribute name="code" type="{http://www.w3.org/2001/XMLSchema}string" /&gt;
  *       &lt;attribute name="duration" type="{http://www.w3.org/2001/XMLSchema}int" /&gt;
+ *       &lt;attribute name="visible" type="{http://www.w3.org/2001/XMLSchema}boolean" /&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
@@ -91,6 +92,8 @@ public class Test
     protected String code;
     @XmlAttribute(name = "duration")
     protected Integer duration;
+    @XmlAttribute(name = "visible")
+    protected Boolean visible;
 
     /**
      * Gets the value of the status property.
@@ -490,6 +493,38 @@ public class Test
 
     public void unsetDuration() {
         this.duration = null;
+    }
+
+    /**
+     * Gets the value of the visible property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Boolean }
+     *     
+     */
+    public boolean isVisible() {
+        return visible;
+    }
+
+    /**
+     * Sets the value of the visible property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Boolean }
+     *     
+     */
+    public void setVisible(boolean value) {
+        this.visible = value;
+    }
+
+    public boolean isSetVisible() {
+        return (this.visible!= null);
+    }
+
+    public void unsetVisible() {
+        this.visible = null;
     }
 
 }

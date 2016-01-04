@@ -109,7 +109,11 @@ public class OfxQaNfrResultTableFactory extends AbstractUtilsOfxDocumentationFac
 
 		for(Staff staff : staffs)
 		{
-			if(hasStaffAnswers(section,mapAnswers,staff))
+			boolean withAnswers = hasStaffAnswers(section,mapAnswers,staff);
+			boolean reportingRelevant = false;
+			if(staff.isSetLevel() && staff.getLevel().isSetVisible()){reportingRelevant=staff.getLevel().isVisible();}
+			
+			if(withAnswers && reportingRelevant)
 			{
 				body.getRow().add(buildRow(section,mapAnswers.get(staff.getId()),staff));
 			}
@@ -141,6 +145,7 @@ public class OfxQaNfrResultTableFactory extends AbstractUtilsOfxDocumentationFac
 	
 	private Row buildRow(net.sf.ahtutils.xml.survey.Section section, Map<Long,Answer> mapAnswers, Staff staff)
 	{
+		JaxbUtil.info(staff);
 		Row row = new Row();
 		
 		row.getCell().add(OfxCellFactory.createParagraphCell(staff.getUser().getLastName()));

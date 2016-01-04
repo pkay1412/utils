@@ -66,7 +66,7 @@ public class QaQuery
 		xml.setResults(new Results());
 		xml.getResults().getResult().add(result());
 		xml.setInfo(info);
-		
+		xml.setVisible(true);
 		
 		xml.setGroups(XmlGroupsFactory.build());
 		xml.getGroups().getGroup().add(XmlGroupFactory.build(""));

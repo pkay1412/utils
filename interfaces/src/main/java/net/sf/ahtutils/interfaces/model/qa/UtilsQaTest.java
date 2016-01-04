@@ -87,6 +87,9 @@ QAUS extends UtilsStatus<QAUS,L,D>>
 	Integer getDuration();
 	void setDuration(Integer duration);
 	
+	Boolean getVisible();
+	void setVisible(Boolean visible);
+	
 	List<GROUP> getGroups();
 	void setGroups(List<GROUP> groups);
 }
