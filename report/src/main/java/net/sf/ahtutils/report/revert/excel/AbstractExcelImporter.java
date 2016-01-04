@@ -17,6 +17,8 @@ import net.sf.ahtutils.util.reflection.ReflectionsUtil;
 
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.DateUtil;
+import org.apache.poi.ss.usermodel.FormulaEvaluator;
+import org.apache.poi.ss.usermodel.Hyperlink;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
@@ -124,6 +126,14 @@ public abstract class AbstractExcelImporter <C extends Serializable, I extends I
 		// Prevent a NullPointerException
 		if (cell != null)
 		{
+			if (cell.getHyperlink()!=null)
+						{
+							FormulaEvaluator evaluator = workbook.getCreationHelper().createFormulaEvaluator();
+							Hyperlink link = cell.getHyperlink();
+							String address = link.getAddress();
+							logger.info("Found a Hyperlink to " +cell.getHyperlink().getAddress() +" in cell " +cell.getRowIndex() +"," +cell.getColumnIndex());
+							cell = evaluator.evaluateInCell(cell);
+						}
 			// Depending on the cell type, the value is read using Apache POI methods
 			switch (cell.getCellType()) {
 			
@@ -230,7 +240,9 @@ public abstract class AbstractExcelImporter <C extends Serializable, I extends I
 					
 					Object parent   = entity;
 					String property = propertyName;
-					invokeMethod("set" +property,
+					logger.info("Setting " +property + " to " +object.toString());
+					tempPropertyStore.put(property, object.toString());
+					invokeSetter(property,
 							      new Object[] { object },
 							      entity.getClass(),
 							      entity);
@@ -249,11 +261,12 @@ public abstract class AbstractExcelImporter <C extends Serializable, I extends I
 	
 	
 		
-	 protected void invokeMethod(String   methodName, 
+	 protected void invokeSetter(String   property, 
 			 							Object[] parameters,
 			 							Class    targetClass,
 			 							Object   target)        throws Exception
 	 {
+		String methodName = "set" +property;
 	 	logger.trace("Invoking " +methodName);
 	 	
 	 	// Now find the correct method
@@ -268,7 +281,7 @@ public abstract class AbstractExcelImporter <C extends Serializable, I extends I
 	 			m = method;
 	 		}
 	 	}
-	 	
+	
         if (Modifier.isPrivate(m.getModifiers()))
         {
             m.setAccessible(true);
@@ -294,20 +307,36 @@ public abstract class AbstractExcelImporter <C extends Serializable, I extends I
             	ImportStrategy strategy = (ImportStrategy) handler.get(parameterClass).newInstance();
             	
             	// Pass database connection and current set of temporary properties
+				
             	strategy.setFacade(facade);
             	strategy.setTempPropertyStore(tempPropertyStore);
             	
             	// Process import step
-            	parameters[0]    = strategy.handleObject(parameters[0], parameterClass);
+				Object value  = strategy.handleObject(parameters[0], parameterClass, property);
+            	parameters[0] =  value;
             	
             	// Sync new temporary properties if any added
             	tempPropertyStore = strategy.getTempPropertyStore();
+				
+				// Add the current property/value pair, can be useful when inspecting IDs (overwritten for new lines for examples)
+				logger.info("Set " +property + " to " + value.toString());
+				tempPropertyStore.put(property, value);
             }
+			
+			// Needed to correct the Class of the general number
             if (parameterClass.equals("long"))
             {
             	Number number = (Number) parameters[0];
             	parameters[0] = number.longValue();
             }
+			
+			// This is important if the String is a Number, Excel will format the cell to be a "general number"
+			if (parameterClass.equals("java.lang.String"))
+            {
+            	parameters[0] = parameters[0] +"";
+            }
+			
+			// Now invoke the method with the parameter from the Excel sheet
             m.invoke(target, parameters);
         }
         else
