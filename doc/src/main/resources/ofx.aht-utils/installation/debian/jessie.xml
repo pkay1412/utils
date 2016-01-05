@@ -78,13 +78,6 @@
 		<ofx:section id="section.admin.installation.debian.base.jessie.partition">
 			<ofx:title lang="en">Partition Disks</ofx:title>
 			
-			<media:image id="image.admin.installation.debian.base.jessie.partition.method">
-				<ofx:title lang="en">Partition Method</ofx:title>
-				<layout:alignment horizontal="center"/>
-				<layout:width unit="percentage">60</layout:width>
-				<media:media lang="en" src="png.aht-utils/installation/debian/jessie/partition-method.png" dst="en/admin/installation/debian/jessie/partitionMethod"/>
-			</media:image>
-			
 			<ofx:paragraph lang="en" version="1">
 				The installation continues with the partition method. 
 				Disk partitioning is the act of dividing a hard disk drive (HDD) into multiple logical storage units referred to as partitions,
@@ -103,11 +96,11 @@
 				Finish partitioning and write changes to disk, select Yes to apply changes.
 			</ofx:paragraph>
 			
-			<media:image id="image.admin.installation.debian.base.jessie.partition.scheme">
-				<ofx:title lang="en">Partition Scheme</ofx:title>
+			<media:image id="image.admin.installation.debian.base.jessie.partition.method">
+				<ofx:title lang="en">Partitioning</ofx:title>
 				<layout:alignment horizontal="center"/>
 				<layout:width unit="percentage">60</layout:width>
-				<media:media lang="en" src="png.aht-utils/installation/debian/jessie/partition-scheme.png" dst="en/admin/installation/debian/jessie/partitionScheme"/>
+				<media:media lang="en" src="png.aht-utils/installation/debian/jessie/partition.png" dst="en/admin/installation/debian/jessie/partition"/>
 			</media:image>
 						
 		</ofx:section>
