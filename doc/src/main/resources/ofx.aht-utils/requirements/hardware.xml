@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <ofx:section xmlns:ofx="http://www.openfuxml.org"
-			xmlns:t="http://www.openfuxml.org/table"
-			xmlns:layout="http://www.openfuxml.org/layout"
-			id="section.admin.requirements.hardware">
+		xmlns:ed="http://www.openfuxml.org/editorial"
+		xmlns:t="http://www.openfuxml.org/table"
+		xmlns:layout="http://www.openfuxml.org/layout"
+		id="section.admin.requirements.hardware">
 	<ofx:title lang="en" version="1">Hardware</ofx:title>
 
 	<ofx:section id="installation.requirement.hardware.prototype">
@@ -39,15 +40,15 @@
 		        </t:head>
 		        <t:body>
 		            <t:row>
-		                <t:cell><ofx:paragraph>\acrshort{ram}</ofx:paragraph></t:cell>
+		                <t:cell><ofx:paragraph><ed:acronym short="true" code="ram"/></ofx:paragraph></t:cell>
 		                <t:cell><ofx:paragraph>4 GB</ofx:paragraph></t:cell>
 		            </t:row>
 		            <t:row>
-		                <t:cell><ofx:paragraph>\acrshort{cpu}</ofx:paragraph></t:cell>
+		                <t:cell><ofx:paragraph><ed:acronym short="true" code="cpu"/></ofx:paragraph></t:cell>
 		                <t:cell><ofx:paragraph>Core2 Duo, 2 GHz</ofx:paragraph></t:cell>
 		            </t:row>
 		            <t:row>
-		                <t:cell><ofx:paragraph>\acrshort{hdd}</ofx:paragraph></t:cell>
+		                <t:cell><ofx:paragraph><ed:acronym short="true" code="hdd"/></ofx:paragraph></t:cell>
 		                <t:cell><ofx:paragraph>400 GB</ofx:paragraph></t:cell>
 		            </t:row>
 		            <t:row>
@@ -55,7 +56,7 @@
 		                <t:cell><ofx:paragraph>Network adapter with one interface (100 Mbps)</ofx:paragraph></t:cell>
 		            </t:row>
 		            <t:row>
-		                <t:cell><ofx:paragraph>\acrshort{os}</ofx:paragraph></t:cell>
+		                <t:cell><ofx:paragraph><ed:acronym short="true" code="os"/></ofx:paragraph></t:cell>
 		                <t:cell><ofx:paragraph>Linux Debian</ofx:paragraph></t:cell>
 		            </t:row>
 		        </t:body>
@@ -98,22 +99,22 @@
 		        </t:head>
 		        <t:body>
 		            <t:row>
-		                <t:cell><ofx:paragraph>RAM</ofx:paragraph></t:cell>
+		                <t:cell><ofx:paragraph><ed:acronym short="true" code="ram"/></ofx:paragraph></t:cell>
 		                <t:cell><ofx:paragraph>64 GB DDR3 ECC or more, at least 1600 MHz</ofx:paragraph></t:cell>
 		                <t:cell><ofx:paragraph>64 GB DDR3 ECC or more, at least 1600 MHz</ofx:paragraph></t:cell>
 		            </t:row>
 		            <t:row>
-		                <t:cell><ofx:paragraph>CPU</ofx:paragraph></t:cell>
+		                <t:cell><ofx:paragraph><ed:acronym short="true" code="cpu"/></ofx:paragraph></t:cell>
 		                <t:cell><ofx:paragraph>64-bit dual processors (each at least 6 cores), 3.0 GHz or better</ofx:paragraph></t:cell>
 		                <t:cell><ofx:paragraph>64-bit dual processors (each at least 6 cores), 2.6 GHz or better</ofx:paragraph></t:cell>
 		            </t:row>
 		            <t:row>
-		                <t:cell><ofx:paragraph>HDD</ofx:paragraph></t:cell>
+		                <t:cell><ofx:paragraph><ed:acronym short="true" code="hdd"/></ofx:paragraph></t:cell>
 		                <t:cell><ofx:paragraph>4 or more 10.000 RPM SAS drives, each with at least 6 TB disk space</ofx:paragraph></t:cell>
 		                <t:cell><ofx:paragraph>4 or more 15.000 RPM SAS drives, each with at least 2 TB disk space</ofx:paragraph></t:cell>
 		            </t:row>
 		            <t:row>
-		                <t:cell><ofx:paragraph>RAID</ofx:paragraph></t:cell>
+		                <t:cell><ofx:paragraph><ed:acronym short="true" code="auRAID"/></ofx:paragraph></t:cell>
 		                <t:cell><ofx:paragraph>at least RAID 5 with one hot-standby drive</ofx:paragraph></t:cell>
 		                <t:cell><ofx:paragraph>at least RAID 5 with one hot-standby drive</ofx:paragraph></t:cell>
 		            </t:row>
@@ -123,7 +124,7 @@
 		                <t:cell><ofx:paragraph>Network adapter with 1 Gbps</ofx:paragraph></t:cell>
 		            </t:row>
 		            <t:row>
-		                <t:cell><ofx:paragraph>OS</ofx:paragraph></t:cell>
+		                <t:cell><ofx:paragraph><ed:acronym short="true" code="os"/></ofx:paragraph></t:cell>
 		                <t:cell><ofx:paragraph>Linux Debian</ofx:paragraph></t:cell>
 		                <t:cell><ofx:paragraph>Linux Debian</ofx:paragraph></t:cell>
 		            </t:row>

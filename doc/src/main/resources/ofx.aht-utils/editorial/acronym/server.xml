@@ -6,4 +6,10 @@
     		Central Processing Unit
     	</ofx:paragraph>
 	</ed:term>
+	<ed:term code="auRAID">
+    	<text:text>RAID</text:text>
+    	<ofx:paragraph>
+    		RAID
+    	</ofx:paragraph>
+	</ed:term>
 </ed:acronyms>

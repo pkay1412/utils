@@ -9,13 +9,14 @@
 		with an emphasis on extensibility and standards-compliance.
 	</ofx:paragraph>	
 	<ofx:paragraph lang="en" >
-		As a database server, its primary function is to store data, securely in line with best practices to retrieve it later, as requested by other software applications, be it those on the same computer
+		As a database server, its primary function is to store data, securely and supporting best practices,
+		and retrieve it later, as requested by other software applications, be it those on the same computer
 		or those running on another computer across a network (including the Internet).
 	</ofx:paragraph>
 	<ofx:paragraph lang="en" >
 		It can handle workloads ranging from small single-machine applications to large Internet-facing applications
 		with many concurrent users.
-		Recent versions also allow for replication of the database itself in order to ensure security and scalability.
+		Recent versions also provide replication of the database itself for security and scalability.
 	</ofx:paragraph>
 	
 	<ofx:section>

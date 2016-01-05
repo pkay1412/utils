@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <ofx:section xmlns:ofx="http://www.openfuxml.org"
-			 xmlns:media="http://www.openfuxml.org/media"
-			 xmlns:table="http://www.openfuxml.org/table"
-			 xmlns:layout="http://www.openfuxml.org/layout"
-			 xmlns:text="http://www.openfuxml.org/text"
-			 xmlns:l="http://www.openfuxml.org/list"
+		xmlns:ed="http://www.openfuxml.org/editorial"
+		xmlns:media="http://www.openfuxml.org/media"
+		xmlns:table="http://www.openfuxml.org/table"
+		xmlns:layout="http://www.openfuxml.org/layout"
+		xmlns:text="http://www.openfuxml.org/text"
+		xmlns:l="http://www.openfuxml.org/list"
 		id="section.user.ui.export.file">
 	<ofx:title lang="en">File Export</ofx:title>
 	
@@ -42,9 +43,9 @@
 	                        <media:media src="svg.aht-utils/icon/ui/system/file/xls.svg" dst="icon/ui/export/xls"/>
 	                    </media:image>
 	                </table:cell>
-	                <table:cell><ofx:paragraph>\gls{c10}</ofx:paragraph></table:cell>
+	                <table:cell><ofx:paragraph><ed:glossary code="c10"/></ofx:paragraph></table:cell>
 	                <table:cell>
-	                    <ofx:paragraph>Binary file format called Excel Binary File Format (.\acrshort{xls}) used by <text:emphasis bold="true"> Microsoft Excel.</text:emphasis></ofx:paragraph>
+	                    <ofx:paragraph>Binary file format called Excel Binary File Format (.\acrshort{xls}) used by <text:emphasis bold="true">Microsoft Excel</text:emphasis>.</ofx:paragraph>
 	                </table:cell>
 	            </table:row>
 	            <table:row>
@@ -94,7 +95,7 @@
 	<ofx:highlight>
 		<ofx:paragraph>
 			<ofx:marginalia><ofx:paragraph><text:symbol code="faExclamationTriangle"/></ofx:paragraph></ofx:marginalia>
-			Please note: The generation of files can take longer (depending on the amount of data processed). Hence,
+			Since the generation of files can take longer (depending on the amount of data processed),
 			please wait until the file has appeared. Do not start another export before the first has been completed.
 		</ofx:paragraph>
 	</ofx:highlight>
