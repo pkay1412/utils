@@ -9,10 +9,13 @@
 	<ofx:title lang="en">Revisions</ofx:title>
 	
 	<ofx:paragraph lang="en">
-        Revisions are changes to data items in the system. This includes the <text:emphasis italic="true">creation</text:emphasis>, <text:emphasis italic="true">modification</text:emphasis> and <text:emphasis italic="true">deletion</text:emphasis> of items.
+        Revisions are changes to data items in the system.
+        This includes the <text:emphasis italic="true">creation</text:emphasis>,
+        <text:emphasis italic="true">modification</text:emphasis>
+        and <text:emphasis italic="true">deletion</text:emphasis> of items.
         All of these changes are stored in the system with a global revision
-        number together with a time stamp and information about the user who performed the action.
-        Table <ofx:reference target="table.user.ui.icons"/> explains the symbols used for revisions.
+        number, a time stamp and information about the user who performed the action.
+        Table <ofx:reference target="table.user.ui.revisions"/> explains the symbols used for revisions.
 	</ofx:paragraph>
 	
 	<table:table  id="table.user.ui.revisions">

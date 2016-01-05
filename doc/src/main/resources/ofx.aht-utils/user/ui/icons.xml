@@ -10,19 +10,17 @@
 	
 	<ofx:paragraph lang="en">
 		Icons are used as an instrument for user interaction with the system.
-		These icons and their meaning will now be explained.
+		These symbols and their meaning will now be explained.
         For most of the icons, you can move your mouse over the icon and if you leave the
         mouse pointer for a second, information about the meaning of the icon will appear.
 	</ofx:paragraph>
 	
-	<ofx:section id="section.user.ui.icons.general">
-		<ofx:title lang="en">General</ofx:title>
 		
-		<ofx:paragraph lang="en">
-			Icons are part of the graphical user interface and users can activate them using a mouse.
-            Their placement on the screen - also in relation to other icons - may provide the user with further information about their usage.
-			Table <ofx:reference target="table.user.ui.icons"/> gives a general overview of the existing icons.
-		</ofx:paragraph>
+	<ofx:paragraph lang="en">
+		Icons are part of the graphical user interface and users can activate them using a mouse.
+           Their placement on the screen - also in relation to other icons - may provide the user with further information about their usage.
+		Table <ofx:reference target="table.user.ui.icons"/> gives a general overview of the existing icons.
+	</ofx:paragraph>
 	
 	<table:table  id="table.user.ui.icons">
 	    <ofx:title lang="en">Summary of commonly used icons</ofx:title>
@@ -53,7 +51,7 @@
 	                    <ofx:paragraph>Info</ofx:paragraph>
 	                </table:cell>
 	                <table:cell>
-	                    <ofx:paragraph>Shows \gls{c6}s and advises</ofx:paragraph>
+	                    <ofx:paragraph>Shows \gls{c6}s and useful pieces of advice</ofx:paragraph>
 	                </table:cell>
 	            </table:row>
 	            <table:row>
@@ -65,7 +63,7 @@
 	                </table:cell>
 	                <table:cell><ofx:paragraph>Search</ofx:paragraph></table:cell>
 	                <table:cell>
-	                    <ofx:paragraph>Search through a table for example</ofx:paragraph>
+	                    <ofx:paragraph>Search through table for example</ofx:paragraph>
 	                </table:cell>
 	            </table:row>
 	            <table:row>
@@ -256,12 +254,11 @@
 	                </table:cell>
 	                <table:cell><ofx:paragraph>Wizard</ofx:paragraph></table:cell>
 	                <table:cell>
-	                    <ofx:paragraph>Wizard ....</ofx:paragraph>
+	                    <ofx:paragraph>The wizards indicates some algorithms executed by the system to help you performing some tasks.</ofx:paragraph>
 	                </table:cell>
 	            </table:row>
 	        </table:body>
     	</table:content>
 	</table:table>
-		
-	</ofx:section>
+
 </ofx:section>

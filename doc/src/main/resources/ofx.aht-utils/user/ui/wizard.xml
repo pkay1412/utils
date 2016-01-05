@@ -16,9 +16,10 @@
     		</media:image>
 		</ofx:marginalia>
         Sometimes the information system puts forward suggestions on how to solve a problem.
-        For example, it can suggest that one could spread payments across different budget lines or the types of indicators that could be used for monitoring.
+        For example, it can suggest that one could spread payments across different budget lines
+        or the types of indicators that could be used for monitoring.
 
-        Whenever this \grqq <text:emphasis italic="true">magic</text:emphasis>\grqq happens, you will see the \iconUiMagicS symbol.
+        Whenever this <text:emphasis italic="true" quote="true">magic</text:emphasis> happens, you will see the \iconUiMagicS symbol.
         When the friendly wizard next to this paragraph appears, it indicates that such an
         option is available and he will tell you how to work with the \iconUiMagicS.
 		
