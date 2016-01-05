@@ -75,7 +75,7 @@
 			It may fail, if no Internet connection is established.
 		</ofx:paragraph>
 		
-		<ofx:section id="section.admin.installation.debian.base.jessie.partition" classifier="simple">
+		<ofx:section id="section.admin.installation.debian.base.jessie.partition">
 			<ofx:title lang="en">Partition Disks</ofx:title>
 			
 			<media:image id="image.admin.installation.debian.base.jessie.partition.method">
@@ -92,9 +92,15 @@
 				The total data storage space of a PC HDD can contain at most four primary partitions, 
 				or alternatively three primary partitions and an extended partition. A primary partition contains one file system.
 				
-				Please select "Guided - use entire disk". Now select 
-				your HDD and choose "All files in one partition" and go on. After this move to "finish partitioning" and write the changes 
-				to disk. Check your configuration and confirm it.
+				
+				The installer can guide you through partitioning a disk (using different standard schemes) or you can do it manually if you prefer.
+				With guided partitioning you will still have the chance to later review and customize the results.
+				Choose <text:emphasis italic="true">Guided – use the entire disk</text:emphasis>, then you will next be asked which disk should be used.
+				Note that all data on the disk you select will be erased, but not before you have confirmed that you want to make the changes. 
+				Select disk to partition, e.g. <text:emphasis italic="true">SCSI1 (0,0,0) (sda) – 100.0 GB HARDDISK</text:emphasis>.
+				This disk can be partitioned using one of several different schemes. If you are unsure, choose the first one
+				<text:emphasis italic="true">All files in one partition</text:emphasis>.
+				Finish partitioning and write changes to disk, select Yes to apply changes.
 			</ofx:paragraph>
 			
 			<media:image id="image.admin.installation.debian.base.jessie.partition.scheme">
