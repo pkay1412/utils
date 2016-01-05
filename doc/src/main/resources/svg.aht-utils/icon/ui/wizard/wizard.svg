@@ -11,7 +11,7 @@
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    id="svg6608"
-   sodipodi:docname="wizard_new.svg"
+   sodipodi:docname="wizard.svg"
    viewBox="0 0 136.82 177.79"
    version="1.1"
    inkscape:version="0.91 r13725">
@@ -687,7 +687,7 @@
        sodipodi:nodetypes="ccccccc"
        transform="translate(171.76,295.22)" />
     <g
-       transform="matrix(0.69465837,-0.71933982,0.71933982,0.69465837,153.10631,507.8902)"
+       transform="matrix(0.69465837,-0.71933982,0.71933982,0.69465837,154.25566,506.45351)"
        id="g3630"
        inkscape:label="Ebene 1">
       <path
@@ -708,7 +708,7 @@
          d="m 30.838824,10.823482 c -0.432897,0.363884 -4.344343,-2.848525 -4.908449,-2.8085868 -0.564106,0.039938 -3.983934,3.7713938 -4.46378,3.4721318 -0.479846,-0.299262 1.366633,-5.0119585 1.154331,-5.5361134 -0.212301,-0.5241548 -4.817912,-2.623521 -4.681577,-3.172359 0.136335,-0.5488379 5.188968,-0.2490353 5.621865,-0.6129189 0.432896,-0.3638836 1.0063,-5.3928194 1.570405,-5.4327575 0.564106,-0.039938 1.840326,4.8580462 2.320173,5.1573086 0.479846,0.2992624 5.439839,-0.7094246 5.652141,-0.1852698 0.212302,0.5241549 -4.051584,3.251473 -4.187919,3.800311 -0.136335,0.5488379 2.355706,4.954371 1.92281,5.318254 z" />
     </g>
     <g
-       transform="matrix(0.8105365,-0.97977033,0.97977033,0.8105365,154.9849,426.16115)"
+       transform="matrix(0.8105365,-0.97977033,0.97977033,0.8105365,156.42159,425.87381)"
        id="g3634"
        inkscape:label="Ebene 1">
       <path
@@ -749,7 +749,7 @@
             <dc:title>Openclipart</dc:title>
           </cc:Agent>
         </dc:publisher>
-        <dc:title></dc:title>
+        <dc:title />
         <dc:date>2013-02-10T13:16:21</dc:date>
         <dc:description>This little penguin can work magic ;-)</dc:description>
         <dc:source>https://openclipart.org/detail/174987/wizard-penguin-by-moini-174987</dc:source>
