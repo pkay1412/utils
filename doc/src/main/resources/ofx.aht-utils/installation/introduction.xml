@@ -72,7 +72,8 @@
 	</l:list>
 	
 	<ofx:paragraph lang="en" version="1">
-		Advanced users may choose to deploy the system on their own existing infrastructure, but may encounter issues that are not covered by this manual, since it only describes the supported setup to operate the software.
+		Advanced users may choose to deploy the system on their own existing infrastructure,
+		but may encounter issues that are not covered by this manual, since it only describes the supported setup to operate the software.
 	</ofx:paragraph>
 
 	
