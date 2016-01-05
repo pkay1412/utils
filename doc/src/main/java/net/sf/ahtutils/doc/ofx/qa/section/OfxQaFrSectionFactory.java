@@ -63,9 +63,11 @@ public class OfxQaFrSectionFactory extends AbstractUtilsOfxDocumentationFactory
 		
 		for(Test test : category.getTest())
 		{
-			section.getContent().add(buildFrTestSection(test));
+			if(test.isVisible())
+			{
+				section.getContent().add(buildFrTestSection(test));
+			}
 		}
-		
 		return section;
 	}
 	

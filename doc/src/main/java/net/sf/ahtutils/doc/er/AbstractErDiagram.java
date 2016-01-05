@@ -54,8 +54,6 @@ public class AbstractErDiagram
 		ErAttributesProcessor eap = new ErAttributesProcessor(ofxWriter,config,fSrc);
 		eap.addPackages(packages);
 		
-		System.exit(-1);
-		
 		ErGraphProcessor egp = new ErGraphProcessor(fSrc);
 		egp.addPackages(packages,subset);
 		

@@ -8,6 +8,7 @@ import java.util.Map;
 
 import org.apache.commons.configuration.Configuration;
 import org.openfuxml.content.ofx.Comment;
+import org.openfuxml.content.ofx.Paragraph;
 import org.openfuxml.content.ofx.Section;
 import org.openfuxml.content.ofx.Title;
 import org.openfuxml.content.table.Table;
@@ -27,6 +28,7 @@ import net.sf.ahtutils.xml.aht.Aht;
 import net.sf.ahtutils.xml.security.Staff;
 import net.sf.ahtutils.xml.status.Translations;
 import net.sf.ahtutils.xml.survey.Answer;
+import net.sf.ahtutils.xml.survey.Question;
 import net.sf.ahtutils.xml.survey.Survey;
 import net.sf.exlp.util.xml.JaxbUtil;
 
@@ -47,11 +49,11 @@ public class OfxQaNfrSectionFactory extends AbstractUtilsOfxDocumentationFactory
 	
 	public void setUnits(Aht units) {ofxTableQuestions.setUnits(units);}
 	
-	public Section build(net.sf.ahtutils.xml.survey.Section surveySection, Survey surveyAnswers, List<Staff> staff) throws OfxAuthoringException
+	public Section build(net.sf.ahtutils.xml.survey.Section mainSection, Survey surveyAnswers, List<Staff> staff) throws OfxAuthoringException
 	{
 		Section xml = XmlSectionFactory.build();
 
-		xml.getContent().add(XmlTitleFactory.build(surveySection.getDescription().getValue()));
+		xml.getContent().add(XmlTitleFactory.build(mainSection.getDescription().getValue()));
 		
 		Comment comment = XmlCommentFactory.build();
 		OfxCommentBuilder.doNotModify(comment);
@@ -60,9 +62,9 @@ public class OfxQaNfrSectionFactory extends AbstractUtilsOfxDocumentationFactory
 		Map<Long,Map<Long,Answer>> mapAnswers = buildAnswerMap(surveyAnswers);
 		
 		List<Section> sections = new ArrayList<Section>();
-		for(net.sf.ahtutils.xml.survey.Section ss : surveySection.getSection())
+		for(net.sf.ahtutils.xml.survey.Section subSection : mainSection.getSection())
 		{
-			sections.add(section(ss,mapAnswers,staff));
+			sections.add(section(mainSection,subSection,mapAnswers,staff));
 		}
 
 		if(sections.size()==1)
@@ -81,16 +83,20 @@ public class OfxQaNfrSectionFactory extends AbstractUtilsOfxDocumentationFactory
 		return xml;
 	}
 	
-	private Section section(net.sf.ahtutils.xml.survey.Section section, Map<Long,Map<Long,Answer>> mapAnswers, List<Staff> staff) throws OfxAuthoringException
+	private Section section(net.sf.ahtutils.xml.survey.Section mainSection, net.sf.ahtutils.xml.survey.Section subSection, Map<Long,Map<Long,Answer>> mapAnswers, List<Staff> staff) throws OfxAuthoringException
 	{
 		Section xml = XmlSectionFactory.build();
 
-		xml.getContent().add(XmlTitleFactory.build(section.getDescription().getValue()));
+		xml.getContent().add(XmlTitleFactory.build(subSection.getDescription().getValue()));
 		
-		if(section.isSetRemark()){xml.getContent().add(XmlParagraphFactory.text(section.getRemark().getValue()));}
-		if(section.isSetQuestion()){xml.getContent().add(ofxTableQuestions.build(section));}
+		if(subSection.isSetRemark()){xml.getContent().add(XmlParagraphFactory.text(subSection.getRemark().getValue()));}
+		if(subSection.isSetQuestion())
+		{
+			xml.getContent().add(ofxTableQuestions.build(mainSection,subSection));
+			xml.getContent().addAll(questionRemarks(subSection));
+		}
 		
-		Table table = ofxTableAnswers.build(section,mapAnswers,staff);
+		Table table = ofxTableAnswers.build(subSection,mapAnswers,staff);
 		JaxbUtil.trace(table);
 		if(table.isSetContent() && table.getContent().isSetBody() && table.getContent().getBody().get(0).isSetRow())
 		{
@@ -113,5 +119,25 @@ public class OfxQaNfrSectionFactory extends AbstractUtilsOfxDocumentationFactory
 			logger.trace(sId+" "+qId);
 		}
 		return map;
+	}
+	
+	private List<Paragraph> questionRemarks(net.sf.ahtutils.xml.survey.Section section)
+	{
+		List<Paragraph> list = new ArrayList<Paragraph>();
+		
+		for(Question q : section.getQuestion())
+		{
+			
+			if(q.isSetRemark() && q.getRemark().isSetValue() && q.getRemark().getValue().trim().length()>0)
+			{
+				JaxbUtil.info(q);
+				StringBuffer sb = new StringBuffer();
+				sb.append(" (").append(q.getPosition()).append(") ");
+				sb.append(q.getRemark().getValue());
+				list.add(XmlParagraphFactory.text(sb.toString()));
+			}
+		}
+		
+		return list;
 	}
 }

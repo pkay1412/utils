@@ -87,6 +87,7 @@ QAUS extends UtilsStatus<QAUS,L,D>>
 		if(q.isSetId()){xml.setId(test.getId());}
 		if(q.isSetCode()){xml.setCode(test.getCode());}
 		if(q.isSetName()){xml.setName(test.getName());}
+		if(q.isSetVisible()){xml.setVisible(test.getVisible());}
 		if(q.isSetDuration())
 		{
 			if(test.getDuration()!=null){xml.setDuration(test.getDuration());}

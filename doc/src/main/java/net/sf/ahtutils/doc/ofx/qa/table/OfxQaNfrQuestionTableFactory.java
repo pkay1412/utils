@@ -50,15 +50,15 @@ public class OfxQaNfrQuestionTableFactory extends AbstractUtilsOfxDocumentationF
 		headerKeys.add("auTableQaNfrUnit");
 	}
 	
-	public Table build(net.sf.ahtutils.xml.survey.Section section) throws OfxAuthoringException
+	public Table build(net.sf.ahtutils.xml.survey.Section mainSection, net.sf.ahtutils.xml.survey.Section subSection) throws OfxAuthoringException
 	{
 		try
 		{	
-			Table table = toOfx(section);
-			table.setId("table.qa.nfr.questions."+section.getPosition());
+			Table table = toOfx(subSection);
+			table.setId("table.qa.nfr.questions."+subSection.getPosition());
 			
 			Lang lCaption = StatusXpath.getLang(translations, "auTableQaNfrQuestionSummary", langs[0]);
-			table.setTitle(XmlTitleFactory.build(lCaption.getTranslation()+": "+section.getDescription().getValue()));
+			table.setTitle(XmlTitleFactory.build(lCaption.getTranslation()+": "+mainSection.getDescription().getValue()+" - "+subSection.getDescription().getValue()));
 						
 			return table;
 		}
@@ -95,7 +95,10 @@ public class OfxQaNfrQuestionTableFactory extends AbstractUtilsOfxDocumentationF
 		Body body = new Body();
 		for(Question q : section.getQuestion())
 		{
-			body.getRow().add(createRow(q));
+			if(q.isVisible())
+			{
+				body.getRow().add(createRow(q));
+			}
 		}
 		
 		Content content = new Content();

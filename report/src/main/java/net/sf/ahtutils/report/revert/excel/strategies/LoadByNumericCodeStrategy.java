@@ -19,7 +19,7 @@ public class LoadByNumericCodeStrategy implements ImportStrategy {
 	public void setTempPropertyStore(Hashtable<String, Object> tempPropertyStore) {this.tempPropertyStore = tempPropertyStore;}
 
 	@Override
-	public Object handleObject(Object object, String parameterClass) {
+	public Object handleObject(Object object, String parameterClass, String property) {
             Double d = (Double) object;
             String code = d.intValue() +"";
             logger.debug(".. searching for Entity with numeric code of " +code);

@@ -122,7 +122,10 @@ public class OfxQaAgreementTableFactory extends AbstractUtilsOfxDocumentationFac
 		Body body = new Body();
 		for(Test staff : category.getTest())
 		{
-			body.getRow().add(createRow(staff));
+			if(staff.isVisible())
+			{
+				body.getRow().add(createRow(staff));
+			}
 		}
 		
 		Content content = new Content();
