@@ -34,7 +34,7 @@
 			Click language selection and choose "English - English" for your base
 			installation and continue by selecting your current country. The next step is to install the keyboard layout, 
 			which is "en_US.UTF-8". This step is required to ensure that your keyboard is working properly.
-			Select for key map: "actual keyboard mapping". 
+			Select for key map: "actual keyboard mapping".
 		</ofx:paragraph>
 		
 		<ofx:paragraph lang="en" version="1">Now choose: </ofx:paragraph>
@@ -72,7 +72,7 @@
 	   		
 		<ofx:paragraph lang="en" version="1">				
 			Network Time Protocol (NTP) is a networking protocol for clock synchronisation between computer systems.
-			It may fail, if no Internet connection is established.		
+			It may fail, if no Internet connection is established.
 		</ofx:paragraph>
 		
 		<ofx:section id="section.admin.installation.debian.base.jessie.partition" classifier="simple">

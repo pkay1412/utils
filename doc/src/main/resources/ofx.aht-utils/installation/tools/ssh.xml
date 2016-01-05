@@ -10,7 +10,7 @@
 			<ofx:paragraph lang="en" version="1">
 				The Secure Shell (SSH) is a cryptographic network protocol for secure data communication,
 				remote command-line login, remote command execution, and other secure network services between
-				two networked computers. The purpose of this system is for the administrator to remotely login
+				two networked computers. For this system it is used for the administrator to remotely login
 				to the system and execute shell commands.
 				
 				<ofx:listing>
@@ -36,13 +36,13 @@
 			<ofx:paragraph lang="en" version="1">
 				A commonly used best practice for running SSH on a server is to deactivate the authentication by password
 				and the permission for the user <text:emphasis italic="true">root</text:emphasis> to log in remotely.
-				To edit the file below you can use the <text:emphasis italic="true">nano</text:emphasis> editor.
+				For editing the file below you can use the <text:emphasis italic="true">nano</text:emphasis> editor.
 				<text:emphasis style="typewriter">nano /etc/ssh/sshd-config</text:emphasis> 			
 			</ofx:paragraph>
 			
 			<ofx:listing>
 				<ofx:raw>permitrootlogin no
-                    challengeresponsepasswords no</ofx:raw>
+challengeresponsepasswords no</ofx:raw>
 			</ofx:listing>
 			
 			<ofx:section>
@@ -50,7 +50,7 @@
 				
 				<ofx:paragraph lang="en" version="1">
 					First of all, a cryptographic key has to be generated on the computer of the user. This procedure varies
-					for different operating systems. The process for Linux is described here.
+					for different operating systems. Here the process for Linux is described.
 				</ofx:paragraph>
 				
 				<ofx:listing>

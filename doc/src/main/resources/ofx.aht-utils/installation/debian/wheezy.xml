@@ -30,7 +30,7 @@
 		</media:image>
 		
 		<ofx:paragraph lang="en" version="1">
-			Your installation starts with the boot menu - select "install" for the command-line version.
+			Your installation starts with the boot menu, select "install" for the command-line version.
 			Click language selection and choose "English - English" for your base
 			installation and continue by selecting your current country. The next step is to install the keyboard layout, 
 			which is "en_US.UTF-8". This step is required to ensure that your keyboard is working properly.
@@ -70,7 +70,7 @@
 	   		
 		<ofx:paragraph lang="en" version="1">				
 			Network Time Protocol (NTP) is a networking protocol for clock synchronisation between computer systems.
-			It may fail if no Internet connection can be established.
+			It may fail, if no Internet connection is established.
 		</ofx:paragraph>
 		
 		<ofx:section id="section.admin.installation.debian.base.wheezy.partition" classifier="simple">
@@ -111,7 +111,7 @@
 				A package manager is a collection of software tools that automates the process of installing, 
 				upgrading, configuring, and removing software packages for a computer's operating system.
 				
-				Select your country (or one that you have good connection to). Choose a
+				Select your country (or a country with good connection to). Choose a
 				mirror, for example "ftp.(your country).debian.org/debian/". If there is a proxy server in your domain, 
 				add the proxy server information and continue. No participation in package usage survey.
 			</ofx:paragraph>
@@ -130,7 +130,7 @@
 			
 			<ofx:paragraph lang="en" version="1">
 				All available software packages can be de-selected. This ensures that the installation will only have a minimal
-				number of packages and modules available. This minimises both the risks of errors and faulty configurations and
+				number of packages and modules available. This minimises the risks of errors or faulty configurations and
 				facilitates future upgrade procedures. Press TAB and select <text:emphasis style="typewriter">CONTINUE</text:emphasis>. 
 				All necessary packages will be installed manually.
 			</ofx:paragraph>
