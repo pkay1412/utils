@@ -36,8 +36,8 @@ public class UtilsLatexUserDocumentationBuilder extends AbstractLatexDocumentati
 		addConfig(Code.uiIcons.toString(),"ofx.aht-utils/user/ui/icons.xml","user/ui/icons");
 		addConfig(Code.uiExport.toString(),"ofx.aht-utils/user/ui/export.xml","user/ui/fileExport");
 		addConfig(Code.uiRevision.toString(),"ofx.aht-utils/user/ui/revisions.xml","user/ui/revisions");
-		addConfig(Code.uiApprovals.toString(),"ofx.aht-utils/user/ui/approval.xml","user/ui/approval");
-		addConfig(Code.uiConstraints.toString(),"ofx.aht-utils/user/ui/constraints.xml","user/ui/constraints");
+		addConfig(Code.uiApprovals.toString(), "ofx.aht-utils/user/components/approval.xml","user/components/approval");
+		addConfig(Code.uiConstraints.toString(), "ofx.aht-utils/user/components/constraints.xml","user/components/constraints");
 		addConfig(Code.uiWizard.toString(),"ofx.aht-utils/user/ui/wizard.xml","user/ui/wizard");
 	}
 
