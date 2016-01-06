@@ -18,6 +18,9 @@ public class UtilsLatexDefinitionBuilder extends OfxLatexDefinitionBuilder
 	public static String glossaryFile = "ofx.aht-utils/editorial/glossary/file.xml";
 	public static String glossaryDb = "ofx.aht-utils/editorial/glossary/db.xml";
 	public static String glossaryOs = "ofx.aht-utils/editorial/glossary/os.xml";
+	public static String glossaryJava = "ofx.aht-utils/editorial/glossary/java.xml";
+	public static String glossaryDev = "ofx.aht-utils/editorial/glossary/development.xml";
+	public static String glossaryUi = "ofx.aht-utils/editorial/glossary/ui.xml";
 	
 	public static String acronymServer = "ofx.aht-utils/editorial/acronym/server.xml";
 	

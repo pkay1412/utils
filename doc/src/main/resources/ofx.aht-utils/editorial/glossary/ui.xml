@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ed:glossary xmlns:text="http://www.openfuxml.org/text" xmlns:ofx="http://www.openfuxml.org" xmlns:layout="http://www.openfuxml.org/layout" xmlns:media="http://www.openfuxml.org/media" xmlns:ed="http://www.openfuxml.org/editorial" xmlns:wiki="http://www.openfuxml.org/wiki" xmlns:l="http://www.openfuxml.org/list" xmlns:table="http://www.openfuxml.org/table">
+	<ed:term code="c12">
+    	<text:text classifier="name">User Interface</text:text>
+        <text:text classifier="text">user interface</text:text>
+        <ofx:paragraph lang="en">
+           Part of a programme, mostly graphical, which is supposed to simplify communication and interaction between the user and a programme, or the computer in general.
+        </ofx:paragraph>
+        <ofx:paragraph lang="fr">
+            user interface FR
+        </ofx:paragraph>
+    </ed:term>
+	<ed:term code="c11">
+        <text:text classifier="name">Breadcrumb Menu</text:text>
+        <text:text classifier="text">breadcrumb menu</text:text>
+        <ofx:paragraph lang="en">
+            A menu that shows where you are and every Super-menu you need to pass to get there.
+            The name pays homage to the trail of breadcrumbs left by Hansel and Gretel in the eponymous fairytale in order for them not to get lost.
+        </ofx:paragraph>
+        <ofx:paragraph lang="fr">
+            breadcrumb menu FR
+        </ofx:paragraph>
+    </ed:term>
+</ed:glossary>

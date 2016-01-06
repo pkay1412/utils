@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ed:glossary xmlns:text="http://www.openfuxml.org/text" xmlns:ofx="http://www.openfuxml.org" xmlns:layout="http://www.openfuxml.org/layout" xmlns:media="http://www.openfuxml.org/media" xmlns:ed="http://www.openfuxml.org/editorial" xmlns:wiki="http://www.openfuxml.org/wiki" xmlns:l="http://www.openfuxml.org/list" xmlns:table="http://www.openfuxml.org/table">
+	<ed:term code="c22">
+        <text:text classifier="name">Entity</text:text>
+        <text:text classifier="text">entity</text:text>
+        <ofx:paragraph lang="en">
+            An entity is a piece of data - an object or concept about which data is stored or processed.
+        </ofx:paragraph>
+        <ofx:paragraph lang="fr">
+            entity FR
+        </ofx:paragraph>
+    </ed:term>
+    <ed:term code="c21">
+        <text:text classifier="name">Entity Relationship Diagram</text:text>
+        <text:text classifier="text">entity relationship diagram</text:text>
+        <ofx:paragraph lang="en">
+            An entity-relationship (ER) diagram is a graphical representation of entities and their relationships to each other typically used in regard to the organisation of data within databases or information systems.
+        </ofx:paragraph>
+        <ofx:paragraph lang="fr">
+            entity relationship diagrams FR
+        </ofx:paragraph>
+    </ed:term>
+    <ed:term code="c18">
+        <text:text classifier="name">Business Logic</text:text>
+        <text:text classifier="text">business logic</text:text>
+        <ofx:paragraph lang="en">
+            This is a summary of processes and procedures inside a programme. It determines how data is transformed or calculated and it ensures that there are appropriate data types.
+        </ofx:paragraph>
+        <ofx:paragraph lang="fr">
+            business logic FR
+        </ofx:paragraph>
+    </ed:term>
+    <ed:term code="c14">
+    	<text:text classifier="name">Constraint</text:text>
+        <text:text classifier="text">constraint</text:text>
+        <ofx:paragraph lang="en">
+            Requirement to perform an action, e.g. information needs to be entered in a schedule before saving it.
+        </ofx:paragraph>
+        <ofx:paragraph lang="fr">
+            constraint FR
+        </ofx:paragraph>
+    </ed:term>
+</ed:glossary>
