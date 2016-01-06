@@ -19,8 +19,7 @@ import net.sf.ahtutils.interfaces.model.status.UtilsDescription;
 public class AhtUtilsDescription implements UtilsDescription,EjbRemoveable,Serializable
 {
 	public static final long serialVersionUID=1;
-	
-	// >>>>>>>>>>>>>>>>>>>>>>>>>>Fields<<<<<<<<<<<<<<<<<<<<<<<<<<<	
+
 	
 	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long id;
@@ -30,6 +29,10 @@ public class AhtUtilsDescription implements UtilsDescription,EjbRemoveable,Seria
 	
 	@NotNull
 	private String lang;
+	
+	private Boolean styled;
+	@Override public Boolean getStyled() {return styled;}
+	@Override public void setStyled(Boolean styled) {this.styled = styled;}
 	
 	// >>>>>>>>>>>>>>>>>>>>>Getters and Setters<<<<<<<<<<<<<<<<<<<
 	
@@ -42,7 +45,6 @@ public class AhtUtilsDescription implements UtilsDescription,EjbRemoveable,Seria
 	public String getLang() {return lang;}
 	public void setLang(String name) {this.lang = name;}
 	
-	// >>>>>>>>>>>>>>>>>>>>>>>>>Methods<<<<<<<<<<<<<<<<<<<<<<<<<
 	
 	public String toString()
 	{

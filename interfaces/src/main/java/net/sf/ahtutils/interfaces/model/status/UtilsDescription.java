@@ -12,4 +12,7 @@ public interface UtilsDescription extends EjbRemoveable
 	
 	String getLang();
 	void setLang(String name);
+	
+	public Boolean getStyled();
+	public void setStyled(Boolean styled);
 }
