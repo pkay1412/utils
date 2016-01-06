@@ -46,10 +46,7 @@
         <us:descriptions>
             <us:description key="de">Selection</us:description>
             <us:description key="fr">Selection</us:description>
-            <us:description key="en">
-            	This constraint is technically a not-empty constraint, but the system handles
-            	the reference internally.
-            </us:description>
+            <us:description key="en">This constraint is technically a not-empty constraint, but the system handles the reference internally.</us:description>
         </us:descriptions>
     </us:status>
     <us:status code="dateSequence" position="4">

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ed:acronyms xmlns:text="http://www.openfuxml.org/text" xmlns:ofx="http://www.openfuxml.org" xmlns:layout="http://www.openfuxml.org/layout" xmlns:media="http://www.openfuxml.org/media" xmlns:ed="http://www.openfuxml.org/editorial" xmlns:wiki="http://www.openfuxml.org/wiki" xmlns:l="http://www.openfuxml.org/list" xmlns:table="http://www.openfuxml.org/table">
+	<ed:term code="jsf">
+        <text:text>JSF</text:text>
+        <ofx:paragraph>
+            JavaServer Faces
+        </ofx:paragraph>
+    </ed:term>
+    <ed:term code="jaxp">
+        <text:text>JAXP</text:text>
+        <ofx:paragraph>
+            Java API for XML Processing
+        </ofx:paragraph>
+    </ed:term>
+    <ed:term code="jaxb">
+        <text:text>JAXB</text:text>
+        <ofx:paragraph>
+            Java Architecture for XML Binding
+        </ofx:paragraph>
+    </ed:term>
+    <ed:term code="jpa">
+        <text:text>JPA</text:text>
+        <ofx:paragraph>
+            Java Perstistence API
+        </ofx:paragraph>
+    </ed:term>
+</ed:acronyms>

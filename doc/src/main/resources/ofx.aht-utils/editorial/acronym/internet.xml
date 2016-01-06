@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ed:acronyms xmlns:text="http://www.openfuxml.org/text" xmlns:ofx="http://www.openfuxml.org" xmlns:layout="http://www.openfuxml.org/layout" xmlns:media="http://www.openfuxml.org/media" xmlns:ed="http://www.openfuxml.org/editorial" xmlns:wiki="http://www.openfuxml.org/wiki" xmlns:l="http://www.openfuxml.org/list" xmlns:table="http://www.openfuxml.org/table">
+	<ed:term code="https">
+        <text:text>HTTPS</text:text>
+        <ofx:paragraph>
+            Hypertext Transfer Protocol Secure
+        </ofx:paragraph>
+    </ed:term>
+    <ed:term code="http">
+        <text:text>HTTP</text:text>
+        <ofx:paragraph>
+            Hypertext Transfer Protocol
+        </ofx:paragraph>
+    </ed:term>
+    <ed:term code="ssh">
+        <text:text>SSH</text:text>
+        <ofx:paragraph>
+            Secure Shell
+        </ofx:paragraph>
+    </ed:term>
+	<ed:term code="soap">
+        <text:text>SOAP</text:text>
+        <ofx:paragraph>
+            Simple Object Access Protocol
+        </ofx:paragraph>
+    </ed:term>
+    <ed:term code="wsld">
+        <text:text>WSLD</text:text>
+        <ofx:paragraph>
+            Web Services Description Language
+        </ofx:paragraph>
+    </ed:term>
+	<ed:term code="xml">
+        <text:text>XML</text:text>
+        <ofx:paragraph>
+            Extensible Markup Language
+        </ofx:paragraph>
+    </ed:term>
+    <ed:term code="scp">
+        <text:text>SCP</text:text>
+        <ofx:paragraph>
+            Secure Copy Protocol
+        </ofx:paragraph>
+    </ed:term>
+    <ed:term code="tcp">
+        <text:text>TCP</text:text>
+        <ofx:paragraph>
+            Transmisson Control Protocol
+        </ofx:paragraph>
+    </ed:term>
+</ed:acronyms>

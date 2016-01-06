@@ -1,23 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <ed:acronyms xmlns:text="http://www.openfuxml.org/text" xmlns:ofx="http://www.openfuxml.org" xmlns:layout="http://www.openfuxml.org/layout" xmlns:media="http://www.openfuxml.org/media" xmlns:ed="http://www.openfuxml.org/editorial" xmlns:wiki="http://www.openfuxml.org/wiki" xmlns:l="http://www.openfuxml.org/list" xmlns:table="http://www.openfuxml.org/table">
-    <ed:term code="cpu">
-    	<text:text>CPU</text:text>
-    	<ofx:paragraph>Central Processing Unit</ofx:paragraph>
-	</ed:term>
-	<ed:term code="hdd">
-        <text:text>HDD</text:text>
+    <ed:term code="pdf">
+        <text:text>PDF</text:text>
         <ofx:paragraph>
-           Hard Disc Drive
+            Portable Document Format
         </ofx:paragraph>
     </ed:term>
-	<ed:term code="auRAID">
-    	<text:text>RAID</text:text>
-    	<ofx:paragraph>Redundant Array of Independent Disks</ofx:paragraph>
-	</ed:term>
-	<ed:term code="ram">
-        <text:text>RAM</text:text>
+	<ed:term code="xls">
+        <text:text>XLS</text:text>
         <ofx:paragraph>
-            Random Access Memory
+            Excel Binary File Format
         </ofx:paragraph>
     </ed:term>
 </ed:acronyms>

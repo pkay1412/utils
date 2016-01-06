@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <ofx:section xmlns:ofx="http://www.openfuxml.org"
+			xmlns:ed="http://www.openfuxml.org/editorial"
 			 xmlns:media="http://www.openfuxml.org/media"
 			 xmlns:table="http://www.openfuxml.org/table"
 			 xmlns:layout="http://www.openfuxml.org/layout"
@@ -34,7 +35,7 @@
 	   		</l:item>
 	   		
 	   		<l:item>
-	    		<ofx:paragraph lang="en">Deploy the application on the application server</ofx:paragraph>
+	    		<ofx:paragraph lang="en">Deploy the application to the application server</ofx:paragraph>
 	   		</l:item>
 	</l:list>
 	
@@ -55,11 +56,11 @@
 	    	<l:type ordering="unordered"/>	
 	    		   		
 			<l:item>
-	    		<ofx:paragraph lang="en"><text:emphasis bold="true">Debian Linux </text:emphasis>as the operating system.</ofx:paragraph>
+	    		<ofx:paragraph lang="en"><text:emphasis bold="true">Debian Linux</text:emphasis> as operating system.</ofx:paragraph>
 	   		</l:item>
 	   		
 	   		<l:item>
-	    		<ofx:paragraph lang="en"><text:emphasis bold="true">PostgreSQL</text:emphasis> as the database with <text:emphasis bold="true">PostGIS</text:emphasis> extention to store \gls{c23} data</ofx:paragraph>
+	    		<ofx:paragraph lang="en"><text:emphasis bold="true">PostgreSQL</text:emphasis> as database with <text:emphasis bold="true">PostGIS</text:emphasis> extension to store <ed:glossary code="c23"/> data</ofx:paragraph>
 	   		</l:item>
 	   		
 	   		<l:item>
@@ -67,15 +68,13 @@
 	   		</l:item>
 	   		
 			<l:item>
-	    		<ofx:paragraph lang="en"><text:emphasis bold="true">JBoss</text:emphasis> Application Server as the runtime environment for the Java EE web application</ofx:paragraph>
+	    		<ofx:paragraph lang="en"><text:emphasis bold="true">JBoss</text:emphasis> Application Server as runtime environment for the Java EE web application</ofx:paragraph>
 	   		</l:item>
 	</l:list>
 	
 	<ofx:paragraph lang="en" version="1">
-		Advanced users may choose to deploy the system on their own existing infrastructure,
+		Advanced users may choose to deploy the system to their own existing infrastructure,
 		but may encounter issues that are not covered by this manual, since it only describes the supported setup to operate the software.
 	</ofx:paragraph>
 
-	
-	
 </ofx:section>

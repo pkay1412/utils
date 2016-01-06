@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <ofx:section xmlns:ofx="http://www.openfuxml.org"
 			xmlns:text="http://www.openfuxml.org/text"
+			xmlns:ed="http://www.openfuxml.org/editorial"
 			container="true" classifier="eap6">
 		<ofx:title lang="en">EAP 6.3</ofx:title>
 		
@@ -323,7 +324,8 @@ fi</ofx:raw>
 			
 			<ofx:paragraph lang="en" version="1">
                             The next step is to configure the service with the shown script below. 
-                            Copy this script to your clipboard and past it into the \gls{c28} terminal and save your configuration.
+                            Copy this script to your clipboard and past it into the <ed:glossary code="c28"/>
+                            terminal (or similar editor) and save your configuration.
                             Verify your installation with of the JBoss Application Server by starting and stopping it
                             (monitor this events with the log terminal).
                             Use the commands "/etc/init.d/jboss {start|stop|log}" to perform this test.

@@ -23,6 +23,12 @@ public class UtilsLatexDefinitionBuilder extends OfxLatexDefinitionBuilder
 	public static String glossaryUi = "ofx.aht-utils/editorial/glossary/ui.xml";
 	
 	public static String acronymServer = "ofx.aht-utils/editorial/acronym/server.xml";
+	public static String acronymDonor = "ofx.aht-utils/editorial/acronym/donor.xml";
+	public static String acronymFile = "ofx.aht-utils/editorial/acronym/file.xml";
+	public static String acronymOs = "ofx.aht-utils/editorial/acronym/os.xml";
+	public static String acronymInternet = "ofx.aht-utils/editorial/acronym/internet.xml";
+	public static String acronymDev = "ofx.aht-utils/editorial/acronym/development.xml";
+	public static String acronymJava = "ofx.aht-utils/editorial/acronym/java.xml";
 	
 	public UtilsLatexDefinitionBuilder(Configuration config)
 	{
