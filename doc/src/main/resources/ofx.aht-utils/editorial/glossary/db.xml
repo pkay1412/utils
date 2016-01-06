@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ed:glossary xmlns:text="http://www.openfuxml.org/text" xmlns:ofx="http://www.openfuxml.org" xmlns:layout="http://www.openfuxml.org/layout" xmlns:media="http://www.openfuxml.org/media" xmlns:ed="http://www.openfuxml.org/editorial" xmlns:wiki="http://www.openfuxml.org/wiki" xmlns:l="http://www.openfuxml.org/list" xmlns:table="http://www.openfuxml.org/table">
+    <ed:term code="c26">
+        <text:text classifier="name">Database Server</text:text>
+        <text:text classifier="text">database server</text:text>
+        <ofx:paragraph lang="en">
+            A server that runs a database software in order that data can stored and processed inside the database.
+        </ofx:paragraph>
+        <ofx:paragraph lang="fr">
+            database server FR
+        </ofx:paragraph>
+    </ed:term>
+    <ed:term code="c15">
+        <text:text classifier="name">Database</text:text>
+        <text:text classifier="text">database</text:text>
+        <ofx:paragraph lang="en">
+            A efficient system used to store data inside of tables, related with each other.
+        </ofx:paragraph>
+        <ofx:paragraph lang="fr">
+            database FR
+        </ofx:paragraph>
+    </ed:term>
+    <ed:term code="c16">
+    	<text:text classifier="name">Data Integrity</text:text>
+        <text:text classifier="text">data integrity</text:text>
+        <ofx:paragraph lang="en">
+            A process for maintaining and assuring the accuracy and consistency of data over its entire life-cycle.
+        </ofx:paragraph>
+        <ofx:paragraph lang="fr">
+            data integrity FR
+        </ofx:paragraph>
+    </ed:term>
+    <ed:term code="c17">
+        <text:text classifier="name">Referential Data Integrity</text:text>
+        <text:text classifier="text">referential data integrity</text:text>
+        <ofx:paragraph lang="en">
+            This phrase is mostly used in connection with databases. It refers to the concept that the data shared in multiple tables must be consistent and the relationship between the tables and data must be maintained.
+        </ofx:paragraph>
+        <ofx:paragraph lang="fr">
+            referential data integrity FR
+        </ofx:paragraph>
+    </ed:term>
+</ed:glossary>

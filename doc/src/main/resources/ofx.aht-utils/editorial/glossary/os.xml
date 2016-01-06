@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ed:glossary xmlns:text="http://www.openfuxml.org/text" xmlns:ofx="http://www.openfuxml.org" xmlns:layout="http://www.openfuxml.org/layout" xmlns:media="http://www.openfuxml.org/media" xmlns:ed="http://www.openfuxml.org/editorial" xmlns:wiki="http://www.openfuxml.org/wiki" xmlns:l="http://www.openfuxml.org/list" xmlns:table="http://www.openfuxml.org/table">
+    <ed:term code="c27">
+        <text:text classifier="name">Cron Daemon</text:text>
+        <text:text classifier="text">cron daemon</text:text>
+        <ofx:paragraph lang="en">
+            A programme that runs as a background programme (daemon) which schedules periodical jobs. Typical are system maintenance and administration tasks executed at a fix time, date or interval, e.g. running a database backup.
+        </ofx:paragraph>
+        <ofx:paragraph lang="fr">
+            database server FR
+        </ofx:paragraph>
+    </ed:term>
+</ed:glossary>

@@ -15,6 +15,9 @@ public class UtilsLatexDefinitionBuilder extends OfxLatexDefinitionBuilder
 	public static enum Code {colors}
 	
 	public static String glossaryWeb = "ofx.aht-utils/editorial/glossary/web.xml";
+	public static String glossaryFile = "ofx.aht-utils/editorial/glossary/file.xml";
+	public static String glossaryDb = "ofx.aht-utils/editorial/glossary/db.xml";
+	public static String glossaryOs = "ofx.aht-utils/editorial/glossary/os.xml";
 	
 	public static String acronymServer = "ofx.aht-utils/editorial/acronym/server.xml";
 	
@@ -24,6 +27,4 @@ public class UtilsLatexDefinitionBuilder extends OfxLatexDefinitionBuilder
 	}
 	
 	public void copyColors() throws OfxConfigurationException {copyResource("tex.aht-utils","colors");}
-	
-	
 }
