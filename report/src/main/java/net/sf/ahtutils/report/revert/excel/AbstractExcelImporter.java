@@ -132,7 +132,7 @@ public abstract class AbstractExcelImporter <C extends Serializable, I extends I
 							FormulaEvaluator evaluator = workbook.getCreationHelper().createFormulaEvaluator();
 							Hyperlink link = cell.getHyperlink();
 							String address = link.getAddress();
-							logger.info("Found a Hyperlink to " +cell.getHyperlink().getAddress() +" in cell " +cell.getRowIndex() +"," +cell.getColumnIndex());
+							if(logger.isTraceEnabled()){logger.trace("Found a Hyperlink to " +cell.getHyperlink().getAddress() +" in cell " +cell.getRowIndex() +"," +cell.getColumnIndex());}
 							cell = evaluator.evaluateInCell(cell);
 						}
 			// Depending on the cell type, the value is read using Apache POI methods
@@ -235,13 +235,10 @@ public abstract class AbstractExcelImporter <C extends Serializable, I extends I
 			
 			    // Assign the data to the entity using the setter
 				logger.trace("Cell " +row.getRowNum() +"," +j);
-				if (propertyName!=null && object.getClass().getCanonicalName()!="java.lang.Object")
+				if (propertyName!=null && !object.getClass().getCanonicalName().endsWith("java.lang.Object"))
 				{
-					logger.trace("Setting value of type " +object.getClass().getCanonicalName());
-					
-					Object parent   = entity;
 					String property = propertyName;
-					logger.info("Setting " +property + " to " +object.toString());
+					if(logger.isTraceEnabled()){logger.trace("Setting " +property + " to " +object.toString() +" type: " +object.getClass().getCanonicalName() +")");}
 					tempPropertyStore.put(property, object.toString());
 					invokeSetter(property,
 							      new Object[] { object },
@@ -320,7 +317,7 @@ public abstract class AbstractExcelImporter <C extends Serializable, I extends I
             	tempPropertyStore = strategy.getTempPropertyStore();
 				
 				// Add the current property/value pair, can be useful when inspecting IDs (overwritten for new lines for examples)
-				logger.info("Set " +property + " to " + value.toString());
+				if(logger.isTraceEnabled()){logger.trace("Set " +property + " to " + value.toString());}
 				tempPropertyStore.put(property, value);
             }
 			
