@@ -201,7 +201,6 @@ public class OfxSecurityViewsSectionFactory extends AbstractUtilsOfxDocumentatio
 	
 	private Section build(net.sf.ahtutils.xml.security.Category category, net.sf.ahtutils.xml.access.View view) throws OfxAuthoringException
 	{
-		if(view.getCode().equals("projectGeneral")){JaxbUtil.info(view);}
 		Section section = XmlSectionFactory.build();
 		
 		Title title = XmlTitleFactory.build();

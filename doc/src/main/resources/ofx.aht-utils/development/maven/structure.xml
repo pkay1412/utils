@@ -8,9 +8,13 @@
 			id="section.admin.development.maven.pms">
 	<ofx:title lang="en">Maven Structure</ofx:title>
 		
+	<ofx:paragraph lang="en">
+		As stated above, this system is divided into sub-modules. These modules are organized as follows:
+	</ofx:paragraph>
+		
 	<l:list>
 	    <l:type ordering="unordered"/>
-	    
+	    <layout:layout><layout:spacing unit="pt">0</layout:spacing></layout:layout>
 	    <l:item>
 	    	<ofx:paragraph lang="en">
 				The <text:emphasis italic="true">beans</text:emphasis> module is responsible for the data processing and

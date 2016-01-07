@@ -12,6 +12,17 @@
         Depending on the state of the approval process this button adopts one of three shapes shown in Table
 		<ofx:reference target="section.user.ui.buttons"/>.
 	</ofx:paragraph>
+		
+	<ofx:paragraph lang="en">
+		<ofx:marginalia>
+			<media:image>
+        		<layout:width unit="percentage">100</layout:width>
+        		<media:media src="svg.aht-utils/icon/ui/approval/stamp.svg" dst="icon/ui/approval/stamp"/>
+    		</media:image>
+		</ofx:marginalia>
+        Whenever a approval process is described, you will see the green stamp in this handbook.
+	</ofx:paragraph>
+	
 	
 	<table:table  id="section.user.ui.buttons">
 	    <ofx:title lang="en">Approval buttons</ofx:title>

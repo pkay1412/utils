@@ -11,7 +11,7 @@
 		
 	<ofx:paragraph lang="en">
 		Maven is a build automation tool used primarily for Java projects.
-		The word maven means 'accumulator of knowledge' in Yiddish.
+		The word maven means <text:emphasis quote="true">accumulator of knowledge</text:emphasis> in Yiddish.
 		Maven addresses two aspects of building software:
 		First, it describes how software is built, and second, it describes its dependencies.
 	</ofx:paragraph>

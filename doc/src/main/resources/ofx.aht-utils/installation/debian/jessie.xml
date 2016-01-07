@@ -79,12 +79,14 @@
 			<ofx:title lang="en">Partition Disks</ofx:title>
 			
 			<ofx:paragraph lang="en" version="1">
-				The installation continues with the partition method. 
-				Disk partitioning is the act of dividing a hard disk drive (HDD) into multiple logical storage units referred to as partitions,
-				to treat one physical disk drive as if it were multiple disks, so that a different file system can be used on each partition.
-				The total data storage space of a PC HDD can contain at most four primary partitions, 
-				or alternatively three primary partitions and an extended partition. A primary partition contains one file system.
+			
+				A disk partition is a logical division of a hard disk drive.
+				With different partitions it is possible to have different operating systems on the same hard disk
+				or to create the appearance of having separate hard drives for file management, multiple users, or other purposes.
 				
+				A file system requires a partition and is used to control how data is stored and retrieved. 
+				Linux supports many different file systems, but common choices for the system disk include the
+				<text:emphasis quote="true">ext</text:emphasis> family (such as ext2, ext3 and ext4), XFS, JFS, ReiserFS and btrfs.
 				
 				The installer can guide you through partitioning a disk (using different standard schemes) or you can do it manually if you prefer.
 				With guided partitioning you will still have the chance to later review and customize the results.
