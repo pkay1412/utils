@@ -11,6 +11,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Hashtable;
+import java.util.Map;
 
 import net.sf.ahtutils.interfaces.facade.UtilsFacade;
 import net.sf.ahtutils.util.reflection.ReflectionsUtil;
@@ -33,7 +34,7 @@ public abstract class AbstractExcelImporter <C extends Serializable, I extends I
 	protected XSSFWorkbook               workbook;
 	protected Sheet                      activeSheet;
 	public  UtilsFacade                facade;
-	protected Hashtable<String, Class>   handler;
+	protected Map<String, Class>   handler;
 	protected short                      primaryKey;
 	protected Hashtable<String, C>       entities          = new Hashtable<String, C>();
 	protected Hashtable<String, Object>  tempPropertyStore = new Hashtable<String, Object>();
@@ -64,7 +65,7 @@ public abstract class AbstractExcelImporter <C extends Serializable, I extends I
 		this.hasPrimaryKey = true;
 	}
 	
-	public void setHandler(Hashtable<String, Class> strategies)
+	public void setHandler(Map<String, Class> strategies)
 	{
 		this.handler = strategies;
 	}
@@ -194,7 +195,7 @@ public abstract class AbstractExcelImporter <C extends Serializable, I extends I
 		return value;
 	}
 	
-	public ArrayList<C> createEntitiesFromData(Hashtable<Short, String> associationTable, Boolean skipTitle, Class<C> entityObject) throws Exception
+	public ArrayList<C> createEntitiesFromData(Map<Short, String> associationTable, Boolean skipTitle, Class<C> entityObject) throws Exception
 	{
 		// Create a list to hold the Entity classes to be created
 		ArrayList<C> importedEntities = new ArrayList<C>();
