@@ -49,7 +49,7 @@ public class AbstractSecurityInit <L extends UtilsLang,
     protected final Class<A> cA;
     protected final Class<USER> cUser;
 	
-	protected UtilsSecurityFacade fSecurity;
+	protected UtilsSecurityFacade<L,D,C,R,V,U,A,USER> fSecurity;
 	protected EjbLangFactory<L> ejbLangFactory;
 	protected EjbDescriptionFactory<D> ejbDescriptionFactory;
 	
@@ -62,7 +62,7 @@ public class AbstractSecurityInit <L extends UtilsLang,
 	   			   A extends UtilsSecurityAction<L,D,C,R,V,U,A,USER>,
 	   			   USER extends UtilsUser<L,D,C,R,V,U,A,USER>>
 		SecurityInitRoles<L,D,C,R,V,U,A,USER>
-		factoryRoles(final Class<L> cL,final Class<D> cD,final Class<C> cC,final Class<R> cR, final Class<V> cV, final Class<U> cU, final Class<A> cA, final Class<USER> cUser, UtilsSecurityFacade fAcl)
+		factoryRoles(final Class<L> cL,final Class<D> cD,final Class<C> cC,final Class<R> cR, final Class<V> cV, final Class<U> cU, final Class<A> cA, final Class<USER> cUser, UtilsSecurityFacade<L,D,C,R,V,U,A,USER> fAcl)
 	{
 		return new SecurityInitRoles<L,D,C,R,V,U,A,USER>(cL,cD,cC,cR,cV,cU,cA,cUser,fAcl);
 	}
@@ -76,7 +76,7 @@ public class AbstractSecurityInit <L extends UtilsLang,
 	   			   A extends UtilsSecurityAction<L,D,C,R,V,U,A,USER>,
 	   			USER extends UtilsUser<L,D,C,R,V,U,A,USER>>
 		SecurityInitViews<L,D,C,R,V,U,A,USER>
-		factoryViews(final Class<L> cL,final Class<D> cD,final Class<C> cC,final Class<R> cR, final Class<V> cV, final Class<U> cU, final Class<A> cA, final Class<USER> cUser, UtilsSecurityFacade fAcl)
+		factoryViews(final Class<L> cL,final Class<D> cD,final Class<C> cC,final Class<R> cR, final Class<V> cV, final Class<U> cU, final Class<A> cA, final Class<USER> cUser, UtilsSecurityFacade<L,D,C,R,V,U,A,USER> fAcl)
 	{
 		return new SecurityInitViews<L,D,C,R,V,U,A,USER>(cL,cD,cC,cR,cV,cU,cA,cUser,fAcl);
 	}
@@ -90,12 +90,12 @@ public class AbstractSecurityInit <L extends UtilsLang,
 	   			   A extends UtilsSecurityAction<L,D,C,R,V,U,A,USER>,
 	   			USER extends UtilsUser<L,D,C,R,V,U,A,USER>>
 		SecurityInitUsecases<L,D,C,R,V,U,A,USER>
-		factoryUsecases(final Class<L> cL,final Class<D> cD,final Class<C> cC,final Class<R> cR, final Class<V> cV, final Class<U> cU, final Class<A> cA, final Class<USER> cUser, UtilsSecurityFacade fAcl)
+		factoryUsecases(final Class<L> cL,final Class<D> cD,final Class<C> cC,final Class<R> cR, final Class<V> cV, final Class<U> cU, final Class<A> cA, final Class<USER> cUser, UtilsSecurityFacade<L,D,C,R,V,U,A,USER> fAcl)
 	{
 		return new SecurityInitUsecases<L,D,C,R,V,U,A,USER>(cL,cD,cC,cR,cV,cU,cA,cUser,fAcl);
 	}
 	
-	public AbstractSecurityInit(final Class<L> cL, final Class<D> cD,final Class<C> cC,final Class<R> cR, final Class<V> cV,final Class<U> cU,final Class<A> cA,final Class<USER> cUser,UtilsSecurityFacade fAcl)
+	public AbstractSecurityInit(final Class<L> cL, final Class<D> cD,final Class<C> cC,final Class<R> cR, final Class<V> cV,final Class<U> cU,final Class<A> cA,final Class<USER> cUser,UtilsSecurityFacade<L,D,C,R,V,U,A,USER> fAcl)
 	{       
         this.cL = cL;
         this.cD = cD;

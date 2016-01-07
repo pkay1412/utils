@@ -1,31 +1,18 @@
 package net.sf.ahtutils.xml.sync;
 
-import java.io.FileNotFoundException;
-
-import net.sf.ahtutils.test.UtilsXmlTestBootstrap;
-import net.sf.exlp.util.DateUtil;
-import net.sf.exlp.util.xml.JaxbUtil;
-
-import org.junit.BeforeClass;
-import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class TestXmlEntity extends AbstractXmlSyncTest
+import net.sf.ahtutils.test.UtilsXmlTestBootstrap;
+
+public class TestXmlEntity extends AbstractXmlSyncTest<Entity>
 {
 	final static Logger logger = LoggerFactory.getLogger(TestXmlEntity.class);
 	
-	@BeforeClass public static void initFiles(){setXmlFile(dirSuffix,Entity.class);}
+	public TestXmlEntity(){super(Entity.class);}
+	public static Entity create(boolean withChildren){return (new TestXmlEntity()).build(withChildren);}
     
-    @Test
-    public void xml() throws FileNotFoundException
-    {
-    	Entity actual = create(true);
-    	Entity expected = JaxbUtil.loadJAXB(fXml.getAbsolutePath(), Entity.class);
-    	assertJaxbEquals(expected, actual);
-    }  
-    
-    public static Entity create(boolean withChilds)
+    public Entity build(boolean withChilds)
     {
     	Entity xml = new Entity();
     	xml.setVersion(0);
@@ -34,17 +21,11 @@ public class TestXmlEntity extends AbstractXmlSyncTest
     	
     	return xml;
     }
-    
-    public void save() {save(create(true),fXml);}
 	
 	public static void main(String[] args)
     {
-		UtilsXmlTestBootstrap.init();
-		DateUtil.ignoreTimeZone=true;
-		
-		TestXmlEntity.initJaxb();
-		TestXmlEntity.initFiles();	
+		UtilsXmlTestBootstrap.init();	
 		TestXmlEntity test = new TestXmlEntity();
-		test.save();
+		test.saveReferenceXml();
     }
 }

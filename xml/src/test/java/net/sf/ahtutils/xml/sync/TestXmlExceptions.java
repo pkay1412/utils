@@ -1,35 +1,18 @@
 package net.sf.ahtutils.xml.sync;
 
-import java.io.FileNotFoundException;
-
-import net.sf.ahtutils.test.UtilsXmlTestBootstrap;
-import net.sf.exlp.util.DateUtil;
-import net.sf.exlp.util.xml.JaxbUtil;
-
-import org.junit.BeforeClass;
-import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class TestXmlExceptions extends AbstractXmlSyncTest
+import net.sf.ahtutils.test.UtilsXmlTestBootstrap;
+
+public class TestXmlExceptions extends AbstractXmlSyncTest<Exceptions>
 {
 	final static Logger logger = LoggerFactory.getLogger(TestXmlExceptions.class);
 	
-	@BeforeClass
-	public static void initFiles()
-	{
-        setXmlFile(dirSuffix,Exceptions.class);
-	}
+	public TestXmlExceptions(){super(Exceptions.class);}
+	public static Exceptions create(boolean withChildren){return (new TestXmlExceptions()).build(withChildren);}
     
-    @Test
-    public void xml() throws FileNotFoundException
-    {
-    	Exceptions actual = create(true);
-    	Exceptions expected = JaxbUtil.loadJAXB(fXml.getAbsolutePath(), Exceptions.class);
-    	assertJaxbEquals(expected, actual);
-    }  
-    
-    public static Exceptions create(boolean withChilds)
+    public Exceptions build(boolean withChilds)
     {
     	Exceptions xml = new Exceptions();
 
@@ -46,12 +29,8 @@ public class TestXmlExceptions extends AbstractXmlSyncTest
 	
 	public static void main(String[] args)
     {
-		UtilsXmlTestBootstrap.init();
-		DateUtil.ignoreTimeZone=true;
-		
-		TestXmlExceptions.initJaxb();
-		TestXmlExceptions.initFiles();	
+		UtilsXmlTestBootstrap.init();	
 		TestXmlExceptions test = new TestXmlExceptions();
-		test.save();
+		test.saveReferenceXml();
     }
 }

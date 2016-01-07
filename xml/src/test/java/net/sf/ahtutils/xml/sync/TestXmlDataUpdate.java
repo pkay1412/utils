@@ -1,33 +1,20 @@
 package net.sf.ahtutils.xml.sync;
 
-import java.io.FileNotFoundException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import net.sf.ahtutils.test.AbstractAhtUtilsXmlTest;
 import net.sf.ahtutils.test.UtilsXmlTestBootstrap;
 import net.sf.ahtutils.xml.status.Type;
-import net.sf.exlp.util.DateUtil;
-import net.sf.exlp.util.xml.JaxbUtil;
 
-import org.junit.BeforeClass;
-import org.junit.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-public class TestXmlDataUpdate extends AbstractXmlSyncTest
+public class TestXmlDataUpdate extends AbstractXmlSyncTest<DataUpdate>
 {
 	final static Logger logger = LoggerFactory.getLogger(TestXmlDataUpdate.class);
 	
-	@BeforeClass public static void initFiles(){setXmlFile(dirSuffix,DataUpdate.class);}
+	public TestXmlDataUpdate(){super(DataUpdate.class);}
+	public static DataUpdate create(boolean withChildren){return (new TestXmlDataUpdate()).build(withChildren);}
     
-    @Test
-    public void xml() throws FileNotFoundException
-    {
-    	DataUpdate actual = create(true);
-    	DataUpdate expected = JaxbUtil.loadJAXB(fXml.getAbsolutePath(), DataUpdate.class);
-    	assertJaxbEquals(expected, actual);
-    }  
-    
-    public static DataUpdate create(boolean withChilds)
+    public DataUpdate build(boolean withChilds)
     {
     	DataUpdate xml = new DataUpdate();
     	xml.setBegin(AbstractAhtUtilsXmlTest.getDefaultXmlDate());
@@ -45,17 +32,11 @@ public class TestXmlDataUpdate extends AbstractXmlSyncTest
     	
     	return xml;
     }
-    
-    public void save() {save(create(true),fXml);}
 	
 	public static void main(String[] args)
     {
 		UtilsXmlTestBootstrap.init();
-		DateUtil.ignoreTimeZone=true;
-		
-		TestXmlDataUpdate.initJaxb();
-		TestXmlDataUpdate.initFiles();	
 		TestXmlDataUpdate test = new TestXmlDataUpdate();
-		test.save();
+		test.saveReferenceXml();
     }
 }

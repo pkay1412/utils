@@ -1,31 +1,18 @@
 package net.sf.ahtutils.xml.sync;
 
-import java.io.FileNotFoundException;
-
-import net.sf.ahtutils.test.UtilsXmlTestBootstrap;
-import net.sf.exlp.util.DateUtil;
-import net.sf.exlp.util.xml.JaxbUtil;
-
-import org.junit.BeforeClass;
-import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class TestXmlMapper extends AbstractXmlSyncTest
+import net.sf.ahtutils.test.UtilsXmlTestBootstrap;
+
+public class TestXmlMapper extends AbstractXmlSyncTest<Mapper>
 {
 	final static Logger logger = LoggerFactory.getLogger(TestXmlMapper.class);
-	
-	@BeforeClass public static void initFiles(){setXmlFile(dirSuffix,Mapper.class);}
     
-    @Test
-    public void xml() throws FileNotFoundException
-    {
-    	Mapper actual = create(true);
-    	Mapper expected = JaxbUtil.loadJAXB(fXml.getAbsolutePath(), Mapper.class);
-    	assertJaxbEquals(expected, actual);
-    }  
+	public TestXmlMapper(){super(Mapper.class);}
+	public static Mapper create(boolean withChildren){return (new TestXmlMapper()).build(withChildren);}
     
-    public static Mapper create(boolean withChilds)
+    public Mapper build(boolean withChilds)
     {
     	Mapper xml = new Mapper();
     	xml.setClazz(TestXmlMapper.class.getName());
@@ -36,17 +23,11 @@ public class TestXmlMapper extends AbstractXmlSyncTest
     	
     	return xml;
     }
-    
-    public void save() {save(create(true),fXml);}
 	
 	public static void main(String[] args)
     {
 		UtilsXmlTestBootstrap.init();
-		DateUtil.ignoreTimeZone=true;
-		
-		TestXmlMapper.initJaxb();
-		TestXmlMapper.initFiles();	
 		TestXmlMapper test = new TestXmlMapper();
-		test.save();
+		test.saveReferenceXml();
     }
 }

@@ -38,7 +38,7 @@ public class SecurityInitUsecases <L extends UtilsLang,
 	
 	private AhtDbEjbUpdater<U> updateUsecases;
 	
-	public SecurityInitUsecases(final Class<L> cL, final Class<D> cD,final Class<C> cC,final Class<R> cR, final Class<V> cV,final Class<U> cU,final Class<A> cA,final Class<USER> cUser,UtilsSecurityFacade fAcl)
+	public SecurityInitUsecases(final Class<L> cL, final Class<D> cD,final Class<C> cC,final Class<R> cR, final Class<V> cV,final Class<U> cU,final Class<A> cA,final Class<USER> cUser,UtilsSecurityFacade<L,D,C,R,V,U,A,USER> fAcl)
 	{       
         super(cL,cD,cC,cR,cV,cU,cA,cUser,fAcl);
 	}

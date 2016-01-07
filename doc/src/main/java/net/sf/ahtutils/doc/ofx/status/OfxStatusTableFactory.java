@@ -518,8 +518,9 @@ public class OfxStatusTableFactory extends AbstractUtilsOfxDocumentationFactory
 			else if(code.equals(Code.description)){cDescription=true;}
 		}
 		
-		if     ( cCode &&  cName && !cDescription){return Code.code;}
-		else if(!cCode &&  cName &&  cDescription){return Code.name;}
+		if     ( cParent  && !cCode && !cName && !cDescription){return Code.parent;}
+		else if(              cCode &&  cName && !cDescription){return Code.code;}
+		else if(             !cCode &&  cName &&  cDescription){return Code.name;}
 		else {throw new OfxAuthoringException("Unknown narrow calculation");}
 	}
 	

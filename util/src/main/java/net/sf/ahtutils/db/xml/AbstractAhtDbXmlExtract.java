@@ -53,6 +53,7 @@ public abstract class AbstractAhtDbXmlExtract extends UtilsDbXmlSeedUtil
 		}
 	}
 	
+	@SuppressWarnings("unused")
 	public void singleJarExtract(String extractId) throws UtilsConfigurationException
 	{
 		String from = getExtractName(extractId);

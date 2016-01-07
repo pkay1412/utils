@@ -4,12 +4,11 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-import net.sf.ahtutils.test.AhtUtilsEjbTestBootstrap;
-import net.sf.exlp.interfaces.util.TextWriter;
-
 import org.apache.commons.configuration.Configuration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import net.sf.ahtutils.test.AhtUtilsEjbTestBootstrap;
 
 public class CliDatabaseScripts
 {
@@ -24,11 +23,7 @@ public class CliDatabaseScripts
 	{
 		this.config=config;
 		fWorkspace = new File(config.getString(prefix+".workspace"));
-		
-		TextWriter tw;
 	}
-	
-	
 	
 	public void build(List<String> listOs, List<String> listDb)
 	{
