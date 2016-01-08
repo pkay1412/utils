@@ -5,9 +5,12 @@ import net.sf.ahtutils.test.AbstractXmlTest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public abstract class AbstractXmlProjectTest extends AbstractXmlTest
+public abstract class AbstractXmlProjectTest <T extends Object> extends AbstractXmlTest<T> 
 {
 	final static Logger logger = LoggerFactory.getLogger(AbstractXmlProjectTest.class);
 
-    protected static final String dirSuffix = "project";
+	public AbstractXmlProjectTest(Class<T> cXml)
+	{
+		super(cXml,"project");
+	}
 }
