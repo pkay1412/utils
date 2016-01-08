@@ -23,15 +23,30 @@
 				<p:selectOneMenu value="#{adminSecurityViewsBean.view.category}" effect="fade" >
 					<f:selectItems value="#{adminSecurityViewsBean.categories}" var="c" itemLabel="#{c.name[userBean.localeCode].lang}" itemValue="#{c}"/>
 				</p:selectOneMenu>
-				
-				<p:outputLabel value="#{msg.aupSecurityCode}"/>
-				<h:outputText value="#{adminSecurityViewsBean.view.code}"/>
-				
+								
 				<p:outputLabel rendered="#{adminSecurityViewsBean.showInvisibleRecords}" value="#{msg.aupSecurityVisible}"/>
 				<p:selectBooleanCheckbox rendered="#{adminSecurityViewsBean.showInvisibleRecords}" value="#{adminSecurityViewsBean.view.visible}"/>
 				
+				<p:outputLabel value="#{msg.aupSecurityCode}"/>
+				<h:outputText rendered="#{not cc.attrs.bean.showDeveloper}" value="#{cc.attrs.bean.view.code}"/>
+				<h:inputText rendered="#{cc.attrs.bean.showDeveloper}" value="#{cc.attrs.bean.view.code}"/>
+				
 				<p:outputLabel rendered="#{cc.attrs.bean.showDocumentation}" value="#{msg.aupSecurityIncludeInManual}"/>
 				<p:selectBooleanCheckbox rendered="#{cc.attrs.bean.showDocumentation}" value="#{cc.attrs.bean.view.documentation}"/>
+			</h:panelGrid>
+			<h:panelGrid rendered="#{cc.attrs.bean.showDeveloper}" columns="2" columnClasses="auPwg30,auPwg70" styleClass="auCleanPanelGrid">
+				<p:outputLabel value="#{msg.aupSecurityAccessPublic}"/>
+				<p:selectBooleanCheckbox value="#{cc.attrs.bean.view.accessPublic}"/>
+				<p:outputLabel value="#{msg.aupSecurityAccessLogin}"/>
+				<p:selectBooleanCheckbox value="#{cc.attrs.bean.view.accessLogin}"/>
+				<p:outputLabel value="#{msg.aupSecurityJavaPackage}"/>
+				<h:inputText value="#{cc.attrs.bean.view.packageName}"/>
+				<p:outputLabel value="#{msg.aupSecurityViewPattern}"/>
+				<h:inputText value="#{cc.attrs.bean.view.viewPattern}"/>
+				<p:outputLabel value="#{msg.aupSecurityViewMapping}"/>
+				<h:inputText value="#{cc.attrs.bean.view.urlMapping}"/>
+				<p:outputLabel value="#{msg.aupSecurityViewUrlBase}"/>
+				<h:inputText value="#{cc.attrs.bean.view.urlBase}"/>
 			</h:panelGrid>
 			<aht:tabTranslationEditor value="#{adminSecurityViewsBean.view}"
 					labelTranslation="#{msg.Name}" labelDescription="#{msg.Description}"

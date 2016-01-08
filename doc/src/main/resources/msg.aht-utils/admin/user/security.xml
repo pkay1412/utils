@@ -87,12 +87,61 @@
     		<s:lang key="fr" translation="Visible"/>
     	</s:langs>
     </s:translation>
-        <s:translation key="aupSecurityIncludeInManual">
+	<s:translation key="aupSecurityIncludeInManual">
     	<s:langs>
     		<s:lang key="de" translation="Handbuch"/>
     		<s:lang key="en" translation="Manual"/>
     		<s:lang key="fr" translation="Manual"/>
     	</s:langs>
     </s:translation>
-    
+	<s:translation key="aupSecurityAccessPublic">
+    	<s:langs>
+    		<s:lang key="de" translation="Öffentlich"/>
+    		<s:lang key="en" translation="Public"/>
+    		<s:lang key="fr" translation="Public"/>
+    	</s:langs>
+    </s:translation>
+  
+ 	<s:translation key="aupSecurityAccessPublic">
+    	<s:langs>
+    		<s:lang key="de" translation="Öffentlich"/>
+    		<s:lang key="en" translation="Public"/>
+    		<s:lang key="fr" translation="Public"/>
+    	</s:langs>
+    </s:translation>
+    	<s:translation key="aupSecurityAccessLogin">
+    	<s:langs>
+    		<s:lang key="de" translation="For Logged-In"/>
+    		<s:lang key="en" translation="For Logged-In"/>
+    		<s:lang key="fr" translation="For Logged-In"/>
+    	</s:langs>
+    </s:translation>
+	<s:translation key="aupSecurityJavaPackage">
+    	<s:langs>
+    		<s:lang key="de" translation="Java Paket"/>
+    		<s:lang key="en" translation="Java Package"/>
+    		<s:lang key="fr" translation="Java Package"/>
+    	</s:langs>
+    </s:translation>
+	<s:translation key="aupSecurityViewPattern">
+    	<s:langs>
+    		<s:lang key="de" translation="View Pattern"/>
+    		<s:lang key="en" translation="View Pattern"/>
+    		<s:lang key="fr" translation="View Pattern"/>
+    	</s:langs>
+    </s:translation>
+    <s:translation key="aupSecurityViewMapping">
+    	<s:langs>
+    		<s:lang key="de" translation="View Mapping"/>
+    		<s:lang key="en" translation="View Mapping"/>
+    		<s:lang key="fr" translation="View Mapping"/>
+    	</s:langs>
+    </s:translation>
+    <s:translation key="aupSecurityViewUrlBase">
+    	<s:langs>
+    		<s:lang key="de" translation="Base URL"/>
+    		<s:lang key="en" translation="Base URL"/>
+    		<s:lang key="fr" translation="Base URL"/>
+    	</s:langs>
+    </s:translation>
 </s:translations>

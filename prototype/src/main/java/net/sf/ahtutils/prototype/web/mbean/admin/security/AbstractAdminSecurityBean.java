@@ -154,8 +154,6 @@ public class AbstractAdminSecurityBean <L extends UtilsLang,
 		
 		if(showInvisibleCategories){categories = fSecurity.allOrderedPosition(cCategory,categoryType);}
 		else{categories = fSecurity.allOrderedPositionVisible(cCategory,categoryType);}
-				
-		
 	}
 	
 	protected void reorderCategories() throws UtilsConstraintViolationException, UtilsLockingException
@@ -176,18 +174,24 @@ public class AbstractAdminSecurityBean <L extends UtilsLang,
 	private boolean showInvisibleCategories; public boolean isShowInvisibleCategories() {return showInvisibleCategories;}
 	protected boolean showInvisibleRecords; public boolean isShowInvisibleRecords() {return showInvisibleRecords;}
 	protected boolean showDocumentation; public boolean isShowDocumentation() {return showDocumentation;}
+	private boolean showDeveloper; public boolean isShowDeveloper() {return showDeveloper;}
 	
-	protected void updateSecurity(UtilsJsfSecurityHandler jsfSecurityHandler, String actionInvisible, String actionDocumentation)
+	protected void updateSecurity(UtilsJsfSecurityHandler jsfSecurityHandler, String actionInvisible, String actionDocumentation){updateSecurity(jsfSecurityHandler,actionInvisible,actionDocumentation,null);}
+	protected void updateSecurity(UtilsJsfSecurityHandler jsfSecurityHandler, String actionInvisible, String actionDocumentation, String actionDeveloper)
 	{
 		showInvisibleCategories = jsfSecurityHandler.allow(actionInvisible);
 		showInvisibleRecords = jsfSecurityHandler.allow(actionInvisible);
 		showDocumentation = jsfSecurityHandler.allow(actionDocumentation);
 		
-		if(logger.isTraceEnabled())
+		if(actionDeveloper!=null){showDeveloper = jsfSecurityHandler.allow(actionDeveloper);}
+		else{showDeveloper=false;}
+		
+		if(logger.isInfoEnabled())
 		{
 			logger.info(showInvisibleCategories+" showInvisibleCategories "+actionInvisible);
 			logger.info(showInvisibleRecords+" showInvisibleRecords "+actionInvisible);
 			logger.info(showDocumentation+" showInvisibleCategories "+actionDocumentation);
+			logger.info(showDeveloper+" showDeveloper "+actionDeveloper);
 		}
 	}
 }
