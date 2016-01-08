@@ -222,6 +222,46 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link ImportStructure }
+     * 
+     */
+    public ImportStructure createImportStructure() {
+        return new ImportStructure();
+    }
+
+    /**
+     * Create an instance of {@link DataAssociations }
+     * 
+     */
+    public DataAssociations createDataAssociations() {
+        return new DataAssociations();
+    }
+
+    /**
+     * Create an instance of {@link DataAssociation }
+     * 
+     */
+    public DataAssociation createDataAssociation() {
+        return new DataAssociation();
+    }
+
+    /**
+     * Create an instance of {@link DataHandlers }
+     * 
+     */
+    public DataHandlers createDataHandlers() {
+        return new DataHandlers();
+    }
+
+    /**
+     * Create an instance of {@link DataHandler }
+     * 
+     */
+    public DataHandler createDataHandler() {
+        return new DataHandler();
+    }
+
+    /**
      * Create an instance of {@link XlsColumn }
      * 
      */

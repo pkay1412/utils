@@ -22,6 +22,7 @@ import net.sf.ahtutils.xml.status.Langs;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
+ *         &lt;element ref="{http://ahtutils.aht-group.com/report}importStructure"/&gt;
  *         &lt;element ref="{http://ahtutils.aht-group.com/report}xlsColumn" maxOccurs="unbounded"/&gt;
  *         &lt;element ref="{http://ahtutils.aht-group.com/status}langs"/&gt;
  *       &lt;/sequence&gt;
@@ -34,6 +35,7 @@ import net.sf.ahtutils.xml.status.Langs;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
+    "importStructure",
     "xlsColumn",
     "langs"
 })
@@ -44,9 +46,39 @@ public class XlsSheet
 
     private final static long serialVersionUID = 1L;
     @XmlElement(required = true)
+    protected ImportStructure importStructure;
+    @XmlElement(required = true)
     protected List<XlsColumn> xlsColumn;
     @XmlElement(namespace = "http://ahtutils.aht-group.com/status", required = true)
     protected Langs langs;
+
+    /**
+     * Gets the value of the importStructure property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link ImportStructure }
+     *     
+     */
+    public ImportStructure getImportStructure() {
+        return importStructure;
+    }
+
+    /**
+     * Sets the value of the importStructure property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link ImportStructure }
+     *     
+     */
+    public void setImportStructure(ImportStructure value) {
+        this.importStructure = value;
+    }
+
+    public boolean isSetImportStructure() {
+        return (this.importStructure!= null);
+    }
 
     /**
      * Gets the value of the xlsColumn property.
