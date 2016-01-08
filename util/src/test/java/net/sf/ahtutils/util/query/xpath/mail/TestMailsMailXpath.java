@@ -1,4 +1,4 @@
-package net.sf.ahtutils.util.query.xpath;
+package net.sf.ahtutils.util.query.xpath.mail;
 
 import org.junit.Assert;
 import org.junit.Before;

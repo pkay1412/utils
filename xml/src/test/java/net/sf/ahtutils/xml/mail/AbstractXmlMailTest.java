@@ -11,6 +11,6 @@ public abstract class AbstractXmlMailTest <T extends Object> extends AbstractXml
 	
 	public AbstractXmlMailTest(Class<T> cXml)
 	{
-		super(cXml,"sync");
+		super(cXml,"mail");
 	}
 }

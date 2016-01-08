@@ -1,36 +1,18 @@
 package net.sf.ahtutils.xml.dbseed;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-
-import net.sf.ahtutils.test.UtilsXmlTestBootstrap;
-import net.sf.exlp.util.xml.JaxbUtil;
-
-import org.junit.BeforeClass;
-import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class TestSeed extends AbstractXmlDbseedTest
+import net.sf.ahtutils.test.UtilsXmlTestBootstrap;
+
+public class TestSeed extends AbstractXmlDbseedTest<Seed>
 {
 	final static Logger logger = LoggerFactory.getLogger(TestSeed.class);
 	
-	@BeforeClass
-	public static void initFiles()
-	{
-		fXml = new File(rootDir,"xseed.xml");
-	}
-    
-    @Test
-    public void xml() throws FileNotFoundException
-    {
-    	Seed actual = createSeed();
-    	Seed expected = (Seed)JaxbUtil.loadJAXB(fXml.getAbsolutePath(), Seed.class);
-    	assertJaxbEquals(expected, actual);
-    }
- 
-    private static Seed createSeed(){return createSeed(true);}
-    public static Seed createSeed(boolean withChilds)
+	public TestSeed(){super(Seed.class);}
+	public static Seed create(boolean withChildren){return (new TestSeed()).build(withChildren);}
+	
+    public Seed build(boolean withChilds)
     {
     	Seed xml = new Seed();
     	xml.setCode("myCode");
@@ -38,16 +20,11 @@ public class TestSeed extends AbstractXmlDbseedTest
     	xml.setContent("myContent");
     	return xml;
     }
-    
-    public void save() {save(createSeed(),fXml);}
 	
 	public static void main(String[] args)
     {
 		UtilsXmlTestBootstrap.init();
-			
-		TestSeed.initJaxb();
-		TestSeed.initFiles();	
 		TestSeed test = new TestSeed();
-		test.save();
+		test.saveReferenceXml();
     }
 }

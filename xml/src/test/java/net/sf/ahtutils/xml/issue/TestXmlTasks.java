@@ -1,35 +1,18 @@
 package net.sf.ahtutils.xml.issue;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-
-import net.sf.ahtutils.test.UtilsXmlTestBootstrap;
-import net.sf.exlp.util.xml.JaxbUtil;
-
-import org.junit.BeforeClass;
-import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class TestXmlTasks extends AbstractXmlIssueTest
+import net.sf.ahtutils.test.UtilsXmlTestBootstrap;
+
+public class TestXmlTasks extends AbstractXmlIssueTest<Tasks>
 {
 	final static Logger logger = LoggerFactory.getLogger(TestXmlTasks.class);
 	
-	@BeforeClass
-	public static void initFiles()
-	{
-		fXml = new File(rootDir,Tasks.class.getSimpleName()+".xml");
-	}
+	public TestXmlTasks(){super(Tasks.class);}
+	public static Tasks create(boolean withChildren){return (new TestXmlTasks()).build(withChildren);} 
     
-    @Test
-    public void xml() throws FileNotFoundException
-    {
-    	Tasks actual = create(true);
-    	Tasks expected = JaxbUtil.loadJAXB(fXml.getAbsolutePath(), Tasks.class);
-    	assertJaxbEquals(expected, actual);
-    }  
-    
-    public static Tasks create(boolean withChilds)
+    public Tasks build(boolean withChilds)
     {
     	Tasks xml = new Tasks();
     	
@@ -40,16 +23,11 @@ public class TestXmlTasks extends AbstractXmlIssueTest
     	    	
     	return xml;
     }
-    
-    public void save() {save(create(true),fXml);}
 	
 	public static void main(String[] args)
     {
 		UtilsXmlTestBootstrap.init();
-			
-		TestXmlTasks.initJaxb();
-		TestXmlTasks.initFiles();	
 		TestXmlTasks test = new TestXmlTasks();
-		test.save();
+		test.saveReferenceXml();
     }
 }

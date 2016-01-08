@@ -1,16 +1,16 @@
 package net.sf.ahtutils.xml.issue;
 
-import java.io.File;
-
-import net.sf.ahtutils.test.AbstractXmlTest;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public abstract class AbstractXmlIssueTest extends AbstractXmlTest
+import net.sf.ahtutils.test.AbstractXmlTest;
+
+public abstract class AbstractXmlIssueTest <T extends Object> extends AbstractXmlTest<T>
 {
 	final static Logger logger = LoggerFactory.getLogger(AbstractXmlIssueTest.class);
 	
-	protected static final String rootDir = "src/test/resources/data/xml/issue";
-	protected static File fXml;
+	public AbstractXmlIssueTest(Class<T> cXml)
+	{
+		super(cXml,"issue");
+	}
 }
