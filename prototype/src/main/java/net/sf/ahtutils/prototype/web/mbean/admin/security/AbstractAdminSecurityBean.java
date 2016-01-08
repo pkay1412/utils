@@ -186,7 +186,7 @@ public class AbstractAdminSecurityBean <L extends UtilsLang,
 		if(actionDeveloper!=null){showDeveloper = jsfSecurityHandler.allow(actionDeveloper);}
 		else{showDeveloper=false;}
 		
-		if(logger.isInfoEnabled())
+		if(logger.isTraceEnabled())
 		{
 			logger.info(showInvisibleCategories+" showInvisibleCategories "+actionInvisible);
 			logger.info(showInvisibleRecords+" showInvisibleRecords "+actionInvisible);
