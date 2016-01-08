@@ -1,57 +1,34 @@
 package net.sf.ahtutils.xml.mail;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-
-import net.sf.ahtutils.test.UtilsXmlTestBootstrap;
-import net.sf.exlp.util.xml.JaxbUtil;
-
-import org.junit.BeforeClass;
-import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class TestXmlTo extends AbstractXmlMailTest
+import net.sf.ahtutils.test.UtilsXmlTestBootstrap;
+
+public class TestXmlTo extends AbstractXmlMailTest<To>
 {
 	final static Logger logger = LoggerFactory.getLogger(TestXmlTo.class);
 	
-	@BeforeClass
-	public static void initFiles()
-	{
-		fXml = new File(rootDir,"to.xml");
-	}
-    
-    @Test
-    public void xml() throws FileNotFoundException
-    {
-    	To actual = create();
-    	To expected = JaxbUtil.loadJAXB(fXml.getAbsolutePath(), To.class);
-    	assertJaxbEquals(expected, actual);
-    }  
-    
-    private static To create() {return create(true);}
-    public static To create(boolean withChilds)
+	public TestXmlTo(){super(To.class);}
+	public static To create(boolean withChildren){return (new TestXmlTo()).build(withChildren);}
+	
+    public To build(boolean withChilds)
     {
     	To xml = new To();
 
     	if(withChilds)
     	{
-    		xml.getEmailAddress().add(TestXmlEmailAddress.createEmailAddress(false));
-    		xml.getEmailAddress().add(TestXmlEmailAddress.createEmailAddress(false));
+    		xml.getEmailAddress().add(TestXmlEmailAddress.create(false));
+    		xml.getEmailAddress().add(TestXmlEmailAddress.create(false));
     	}
     	    	
     	return xml;
     }
-    
-    public void save() {save(create(),fXml);}
 	
 	public static void main(String[] args)
     {
 		UtilsXmlTestBootstrap.init();
-			
-		TestXmlTo.initJaxb();
-		TestXmlTo.initFiles();	
 		TestXmlTo test = new TestXmlTo();
-		test.save();
+		test.saveReferenceXml();
     }
 }

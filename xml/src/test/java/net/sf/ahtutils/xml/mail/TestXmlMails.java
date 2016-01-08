@@ -1,36 +1,18 @@
 package net.sf.ahtutils.xml.mail;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-
-import net.sf.ahtutils.test.UtilsXmlTestBootstrap;
-import net.sf.exlp.util.xml.JaxbUtil;
-
-import org.junit.BeforeClass;
-import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class TestXmlMails extends AbstractXmlMailTest
+import net.sf.ahtutils.test.UtilsXmlTestBootstrap;
+
+public class TestXmlMails extends AbstractXmlMailTest<Mails>
 {
 	final static Logger logger = LoggerFactory.getLogger(TestXmlMails.class);
 	
-	@BeforeClass
-	public static void initFiles()
-	{
-		fXml = new File(rootDir,"mails.xml");
-	}
-    
-    @Test
-    public void xml() throws FileNotFoundException
-    {
-    	Mails actual = create();
-    	Mails expected = JaxbUtil.loadJAXB(fXml.getAbsolutePath(), Mails.class);
-    	assertJaxbEquals(expected, actual);
-    }  
-    
-    private static Mails create() {return create(true);}
-    public static Mails create(boolean withChilds)
+	public TestXmlMails(){super(Mails.class);}
+	public static Mails create(boolean withChildren){return (new TestXmlMails()).build(withChildren);}
+	
+    public Mails build(boolean withChilds)
     {
     	Mails xml = new Mails();
     	xml.setDir("myDir");
@@ -42,16 +24,11 @@ public class TestXmlMails extends AbstractXmlMailTest
     	    	
     	return xml;
     }
-    
-    public void save() {save(create(),fXml);}
 	
 	public static void main(String[] args)
     {
 		UtilsXmlTestBootstrap.init();
-			
-		TestXmlMails.initJaxb();
-		TestXmlMails.initFiles();	
 		TestXmlMails test = new TestXmlMails();
-		test.save();
+		test.saveReferenceXml();
     }
 }

@@ -1,43 +1,25 @@
 package net.sf.ahtutils.xml.mail;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-
-import net.sf.ahtutils.test.UtilsXmlTestBootstrap;
-import net.sf.exlp.util.xml.JaxbUtil;
-
-import org.junit.BeforeClass;
-import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class TestXmlHeader extends AbstractXmlMailTest
+import net.sf.ahtutils.test.UtilsXmlTestBootstrap;
+
+public class TestXmlHeader extends AbstractXmlMailTest<Header>
 {
 	final static Logger logger = LoggerFactory.getLogger(TestXmlHeader.class);
 	
-	@BeforeClass
-	public static void initFiles()
-	{
-		fXml = new File(rootDir,"header.xml");
-	}
-    
-    @Test
-    public void xml() throws FileNotFoundException
-    {
-    	Header actual = createHeader();
-    	Header expected = JaxbUtil.loadJAXB(fXml.getAbsolutePath(), Header.class);
-    	assertJaxbEquals(expected, actual);
-    }  
-    
-    private static Header createHeader() {return createHeader(true);}
-    public static Header createHeader(boolean withChilds)
+	public TestXmlHeader(){super(Header.class);}
+	public static Header create(boolean withChildren){return (new TestXmlHeader()).build(withChildren);}
+	
+    public Header build(boolean withChilds)
     {
     	Header xml = new Header();
     	xml.setSubject("mySubject");
     	
     	if(withChilds)
     	{
-    		xml.setFrom(TestXmlFrom.createFrom(false));
+    		xml.setFrom(TestXmlFrom.create(false));
     		xml.setTo(TestXmlTo.create(false));
     		xml.setCc(TestXmlCc.create(false));
     		xml.setBcc(TestXmlBcc.create(false));
@@ -45,16 +27,11 @@ public class TestXmlHeader extends AbstractXmlMailTest
     	
     	return xml;
     }
-    
-    public void save() {save(createHeader(),fXml);}
 	
 	public static void main(String[] args)
     {
 		UtilsXmlTestBootstrap.init();
-			
-		TestXmlHeader.initJaxb();
-		TestXmlHeader.initFiles();	
 		TestXmlHeader test = new TestXmlHeader();
-		test.save();
+		test.saveReferenceXml();
     }
 }

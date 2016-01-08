@@ -1,35 +1,18 @@
 package net.sf.ahtutils.xml.mail;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-
-import net.sf.ahtutils.test.UtilsXmlTestBootstrap;
-import net.sf.exlp.util.xml.JaxbUtil;
-
-import org.junit.BeforeClass;
-import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class TestXmlLink extends AbstractXmlMailTest
+import net.sf.ahtutils.test.UtilsXmlTestBootstrap;
+
+public class TestXmlLink extends AbstractXmlMailTest<Link>
 {
 	final static Logger logger = LoggerFactory.getLogger(TestXmlLink.class);
 	
-	@BeforeClass
-	public static void initFiles()
-	{
-		fXml = new File(rootDir,"link.xml");
-	}
+	public TestXmlLink(){super(Link.class);}
+	public static Link create(boolean withChildren){return (new TestXmlLink()).build(withChildren);}
     
-    @Test
-    public void xml() throws FileNotFoundException
-    {
-    	Link actual = createLink(true);
-    	Link expected = JaxbUtil.loadJAXB(fXml.getAbsolutePath(), Link.class);
-    	assertJaxbEquals(expected, actual);
-    }  
-    
-    public static Link createLink(boolean withChilds)
+    public Link build(boolean withChilds)
     {
     	Link xml = new Link();
 
@@ -41,16 +24,11 @@ public class TestXmlLink extends AbstractXmlMailTest
     	    	
     	return xml;
     }
-    
-    public void save() {save(createLink(true),fXml);}
 	
 	public static void main(String[] args)
     {
-		UtilsXmlTestBootstrap.init();
-			
-		TestXmlLink.initJaxb();
-		TestXmlLink.initFiles();	
+		UtilsXmlTestBootstrap.init();	
 		TestXmlLink test = new TestXmlLink();
-		test.save();
+		test.saveReferenceXml();
     }
 }
