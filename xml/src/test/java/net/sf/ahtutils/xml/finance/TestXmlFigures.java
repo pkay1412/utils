@@ -1,32 +1,19 @@
 package net.sf.ahtutils.xml.finance;
 
-import java.io.FileNotFoundException;
-
-import net.sf.ahtutils.test.AbstractXmlTest;
-import net.sf.ahtutils.test.UtilsXmlTestBootstrap;
-import net.sf.ahtutils.xml.text.TestXmlRemark;
-import net.sf.exlp.util.xml.JaxbUtil;
-
-import org.junit.BeforeClass;
-import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class TestXmlFigures extends AbstractXmlFinanceTest
+import net.sf.ahtutils.test.UtilsXmlTestBootstrap;
+import net.sf.ahtutils.xml.text.TestXmlRemark;
+
+public class TestXmlFigures extends AbstractXmlFinanceTest<Figures>
 {
 	final static Logger logger = LoggerFactory.getLogger(TestXmlFigures.class);
 	
-	@BeforeClass public static void initFiles(){setXmlFile(dirSuffix,"xfigures");}
+	public TestXmlFigures(){super(Figures.class);}
+	public static Figures create(boolean withChildren){return (new TestXmlFigures()).build(withChildren);}
     
-    @Test
-    public void xml() throws FileNotFoundException
-    {
-    	Figures actual = create(true);
-    	Figures expected = JaxbUtil.loadJAXB(fXml.getAbsolutePath(), Figures.class);
-    	assertJaxbEquals(expected, actual);
-    }  
-    
-    public static Figures create(boolean withChilds)
+    public Figures build(boolean withChilds)
     {
     	Figures xml = new Figures();
     	xml.setId(123);
@@ -44,16 +31,11 @@ public class TestXmlFigures extends AbstractXmlFinanceTest
     	    	
     	return xml;
     }
-    
-    public void save() {save(create(true),fXml);}
 	
 	public static void main(String[] args)
     {
 		UtilsXmlTestBootstrap.init();
-		AbstractXmlTest.initJaxb();
-		
-		TestXmlFigures.initFiles();	
 		TestXmlFigures test = new TestXmlFigures();
-		test.save();
+		test.saveReferenceXml();
     }
 }

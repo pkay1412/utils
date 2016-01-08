@@ -1,36 +1,19 @@
 package net.sf.ahtutils.xml.finance;
 
-import java.io.FileNotFoundException;
-
-import net.sf.ahtutils.test.AbstractAhtUtilsXmlTest;
-import net.sf.ahtutils.test.AbstractXmlTest;
-import net.sf.ahtutils.test.UtilsXmlTestBootstrap;
-import net.sf.exlp.util.xml.JaxbUtil;
-
-import org.junit.BeforeClass;
-import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class TestXmlTime extends AbstractXmlFinanceTest
+import net.sf.ahtutils.test.AbstractAhtUtilsXmlTest;
+import net.sf.ahtutils.test.UtilsXmlTestBootstrap;
+
+public class TestXmlTime extends AbstractXmlFinanceTest<Time>
 {
 	final static Logger logger = LoggerFactory.getLogger(TestXmlTime.class);
 	
-	@BeforeClass
-	public static void initFiles()
-	{
-        setXmlFile(dirSuffix,Time.class);
-	}
+	public TestXmlTime(){super(Time.class);}
+	public static Time create(boolean withChildren){return (new TestXmlTime()).build(withChildren);}
     
-    @Test
-    public void xml() throws FileNotFoundException
-    {
-    	Time actual = create(true);
-    	Time expected = JaxbUtil.loadJAXB(fXml.getAbsolutePath(), Time.class);
-    	assertJaxbEquals(expected, actual);
-    }  
-    
-    public static Time create(boolean withChilds)
+    public Time build(boolean withChilds)
     {
     	Time xml = new Time();
     	xml.setId(123);
@@ -40,16 +23,11 @@ public class TestXmlTime extends AbstractXmlFinanceTest
     	    	
     	return xml;
     }
-    
-    public void save() {save(create(true),fXml);}
 	
 	public static void main(String[] args)
     {
 		UtilsXmlTestBootstrap.init();
-		AbstractXmlTest.initJaxb();
-		
-		TestXmlTime.initFiles();	
 		TestXmlTime test = new TestXmlTime();
-		test.save();
+		test.saveReferenceXml();
     }
 }

@@ -1,36 +1,19 @@
 package net.sf.ahtutils.xml.finance;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-
-import net.sf.ahtutils.test.UtilsXmlTestBootstrap;
-import net.sf.ahtutils.xml.status.TestXmlLangs;
-import net.sf.exlp.util.xml.JaxbUtil;
-
-import org.junit.BeforeClass;
-import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class TestXmlCurrency extends AbstractXmlFinanceTest
+import net.sf.ahtutils.test.UtilsXmlTestBootstrap;
+import net.sf.ahtutils.xml.status.TestXmlLangs;
+
+public class TestXmlCurrency extends AbstractXmlFinanceTest<Currency>
 {
 	final static Logger logger = LoggerFactory.getLogger(TestXmlCurrency.class);
 	
-	@BeforeClass
-	public static void initFiles()
-	{
-		fXml = new File(rootDir,Currency.class.getSimpleName()+".xml");
-	}
+	public TestXmlCurrency(){super(Currency.class);}
+	public static Currency create(boolean withChildren){return (new TestXmlCurrency()).build(withChildren);}
     
-    @Test
-    public void xml() throws FileNotFoundException
-    {
-    	Currency actual = create(true);
-    	Currency expected = JaxbUtil.loadJAXB(fXml.getAbsolutePath(), Currency.class);
-    	assertJaxbEquals(expected, actual);
-    }  
-    
-    public static Currency create(boolean withChilds)
+    public Currency build(boolean withChilds)
     {
     	Currency xml = new Currency();
     	xml.setId(123);
@@ -45,16 +28,11 @@ public class TestXmlCurrency extends AbstractXmlFinanceTest
     	    	
     	return xml;
     }
-    
-    public void save() {save(create(true),fXml);}
 	
 	public static void main(String[] args)
     {
 		UtilsXmlTestBootstrap.init();
-			
-		TestXmlCurrency.initJaxb();
-		TestXmlCurrency.initFiles();	
 		TestXmlCurrency test = new TestXmlCurrency();
-		test.save();
+		test.saveReferenceXml();
     }
 }
