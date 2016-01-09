@@ -126,7 +126,7 @@ public class JavaSecuritySeamPagesFactory extends AbstractJavaSecurityFileFactor
 		freemarkerNodeModel.put("views", mViews);
 		
 		File fJava = new File(fPackage,"SeamPages.java");
-		this.createFile(fJava, "security.ahtutils-util/seamPages.ftl");
+		this.createFile(fJava, "ahtutils/freemarker/java/security/seamPages.ftl");
 	}
 	
 	private List<View> getViewForPackage(String packageName)

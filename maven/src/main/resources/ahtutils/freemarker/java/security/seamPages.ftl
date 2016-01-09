@@ -8,7 +8,7 @@ ${i}
 </#list>
 
 <#list views as v>
-<#if !v.public || v.onlyLoginRequired>
+<#if !(v.public || v.onlyLoginRequired)>
 import ${v.import};
 </#if>
 </#list>
