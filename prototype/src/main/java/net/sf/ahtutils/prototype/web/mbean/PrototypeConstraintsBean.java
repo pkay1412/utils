@@ -8,6 +8,7 @@ import java.util.Map;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import net.sf.ahtutils.interfaces.bean.ConstraintsBean;
 import net.sf.ahtutils.monitor.ProcessingTimeTracker;
 import net.sf.ahtutils.web.mbean.util.AbstractLogMessage;
 import net.sf.ahtutils.web.mbean.util.AbstractMenuBean;
@@ -17,7 +18,7 @@ import net.sf.ahtutils.xml.system.ConstraintScope;
 import net.sf.ahtutils.xml.system.Constraints;
 import net.sf.exlp.util.xml.JaxbUtil;
 
-public class PrototypeConstraintsBean extends AbstractMenuBean implements Serializable
+public class PrototypeConstraintsBean extends AbstractMenuBean implements Serializable,ConstraintsBean
 {
 	final static Logger logger = LoggerFactory.getLogger(PrototypeConstraintsBean.class);
 	private static final long serialVersionUID = 1L;
