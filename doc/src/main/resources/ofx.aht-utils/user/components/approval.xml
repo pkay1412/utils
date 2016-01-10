@@ -46,6 +46,18 @@
 	                <table:cell>
 	                    <media:image>
 	                        <layout:height unit="em">1.0</layout:height>
+	                        <media:media src="svg.aht-utils/icon/ui/approval/preparation.svg" dst="icon/ui/approval/preparation"/>
+	                    </media:image>
+	                </table:cell>
+	                <table:cell><ofx:paragraph>Preparation</ofx:paragraph></table:cell>
+	                <table:cell>
+	                    <ofx:paragraph>The process is in preparation, it is too early to approve something.</ofx:paragraph>
+	                </table:cell>
+	            </table:row>
+	        	<table:row>
+	                <table:cell>
+	                    <media:image>
+	                        <layout:height unit="em">1.0</layout:height>
 	                        <media:media src="svg.aht-utils/icon/ui/approval/waiting.svg" dst="icon/ui/approval/waiting"/>
 	                    </media:image>
 	                </table:cell>
