@@ -19,7 +19,7 @@
             <us:lang key="en" translation="Unique"/>
         </us:langs>
         <us:descriptions>
-            <us:description key="de">TBD</us:description>
+            <us:description key="de">Das Attribut muss für alle Einträge einmalig sein.</us:description>
             <us:description key="fr">TBD</us:description>
             <us:description key="en">The attribute needs to unique for all records.</us:description>
         </us:descriptions>
