@@ -8,9 +8,9 @@
 		id="section.user.ui.approval.introduction" >
 	
 	<ofx:paragraph lang="en">
-        The approval process can be tracked by clicking on a "thumbs up/ thumbs down" button in your panel.
+        It can be tracked by the appearance of a "thumbs up/ thumbs down" button in your panel.
         Depending on the state of the approval process this button adopts one of three shapes shown in Table
-		<ofx:reference target="section.user.ui.buttons"/>.
+		<ofx:reference target="section.user.ui.buttons"/>. This button can also be used by a person in charge to change the state by clicking on it.
 	</ofx:paragraph>
 		
 	<ofx:paragraph lang="en">
@@ -20,7 +20,7 @@
         		<media:media src="svg.aht-utils/icon/ui/approval/stamp.svg" dst="icon/ui/approval/stamp"/>
     		</media:image>
 		</ofx:marginalia>
-        Whenever a approval process is described, you will see the green stamp in this handbook.
+        Whenever a approval process is available, you will see the green stamp in this handbook.
 	</ofx:paragraph>
 	
 	

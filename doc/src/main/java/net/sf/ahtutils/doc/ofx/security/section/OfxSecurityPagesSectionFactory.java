@@ -49,6 +49,15 @@ public class OfxSecurityPagesSectionFactory extends AbstractUtilsOfxDocumentatio
 
 	private OfxEmphasisFactory ofxItalic;
 	private Font fMarginText;
+
+	private static int count;
+	private final String[] intro = {"The actions defined on this page cannot be carried out by everyone. Depending on your access rights you may or may not be entitled to carry them out. To the side you can see a summary of the available actions and those people who are allowed to perform them.",
+										"There are several actions defined on this page, they require certain access rights (membership to a role) to be performed. The available actions are summarised here together with the relevant roles for this page affecting the allowed actions.",
+										"Not everyone can perform the actions listed here as these depend on your access rights. To the side you can also find a summary of the available actions and the roles that can perform them.",
+										"Your access rights determine which actions you can carry out. A summary is also available to the side of this text which shows you which roles there are and the accompanying available actions.",
+										"Access rights are not the same for everyone. This means that the same actions cannot be performed by everyone. Also, a summary is provided to the side of this text which shows you which roles there are and the actions they can perform.",
+										"Not everyone can carry out the actions listed here. Here you can also see a summary of the roles and the actions that go with them."
+									};
 		
 	public OfxSecurityPagesSectionFactory(Configuration config, String[] langs, Translations translations)
 	{
@@ -113,15 +122,17 @@ public class OfxSecurityPagesSectionFactory extends AbstractUtilsOfxDocumentatio
 	}
 	
 	private java.util.List<Serializable> introductionAction(net.sf.ahtutils.xml.access.View view)
-	{		
+	{
 		java.util.List<Serializable> content = new ArrayList<Serializable>();
 		
 		Paragraph p = new Paragraph();
-		p.getContent().add("There are several actions defined on this page, they require certain access rights (membership to a role) to be performed.");
-		p.getContent().add(" The security indicators on the status bar show your roles and allowed actions for this page.");
-		p.getContent().add(" The available actions are summarized here together with the relevant roles for this page affecting the allowed actions.");
+		p.getContent().add(intro[count]);
+//		p.getContent().add("The security indicators on the status bar show your roles and allowed actions for this page.");
+//		p.getContent().add("");
 		content.add(p);
-		
+
+		if(++count == intro.length) {count = 0;}
+
 		if(view.getRoles().getRole().size()>0)
 		{
 			Marginalia m = XmlMarginaliaFactory.build();
@@ -135,20 +146,20 @@ public class OfxSecurityPagesSectionFactory extends AbstractUtilsOfxDocumentatio
 			for(String lang : langs)
 			{
 				Paragraph pText = XmlParagraphFactory.build(lang);
-				pText.getContent().add("Roles for");
+				pText.getContent().add("Restricted to:");
 				cTopText.getContent().add(pText);
 				
-				Paragraph pRoles = XmlParagraphFactory.build(lang);
-				try
-				{
-					Lang l = StatusXpath.getLang(view.getLangs(), lang);
-					pRoles.getContent().add(ofxItalic.build(l.getTranslation()));
-					pRoles.getContent().add(":");
-				}
-				catch (ExlpXpathNotFoundException e) {e.printStackTrace();}
-				catch (ExlpXpathNotUniqueException e) {e.printStackTrace();}
-				
-				cTopText.getContent().add(pRoles);
+//				Paragraph pRoles = XmlParagraphFactory.build(lang);
+//				try
+//				{
+//					Lang l = StatusXpath.getLang(view.getLangs(), lang);
+//					pRoles.getContent().add(ofxItalic.build(l.getTranslation()));
+//					pRoles.getContent().add(":");
+//				}
+//				catch (ExlpXpathNotFoundException e) {e.printStackTrace();}
+//				catch (ExlpXpathNotUniqueException e) {e.printStackTrace();}
+//
+//				cTopText.getContent().add(pRoles);
 			}
 	
 			m.getContent().add(XmlColumnFactory.build(XmlWidthFactory.percentage(25),XmlHeightFactory.shift(-0.60),image));
