@@ -12,4 +12,7 @@ public interface UtilsProperty extends EjbSaveable
 	
 	public boolean isFrozen();
 	public void setFrozen(boolean frozen);
+	
+	public Integer getPosition();
+	public void setPosition(Integer position);
 }
