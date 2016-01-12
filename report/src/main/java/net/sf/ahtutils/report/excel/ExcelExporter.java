@@ -167,8 +167,23 @@ public class ExcelExporter
 
     public CellStyle getCellStyle(XlsColumn columnDefinition)
     {
+		// Refer to POI standard styles at https://poi.apache.org/apidocs/org/apache/poi/ss/usermodel/BuiltinFormats.html
         CellStyle style = wb.createCellStyle();
-        style.setDataFormat(createHelper.createDataFormat().getFormat(columnDefinition.getXlsTransformation().getFormatPattern()));
+		String dataClass = columnDefinition.getXlsTransformation().getDataClass();
+		if (dataClass.equalsIgnoreCase("String"))
+		{
+			// BuiltIn Style:  0x31 "text" - Alias for "@"
+			style.setDataFormat(createHelper.createDataFormat().getFormat("text"));
+		} 
+		else if (dataClass.equalsIgnoreCase("Integer"))
+		{
+			// BuiltIn Style: 1, "0"
+			style.setDataFormat((short) 1);
+		} else if (columnDefinition.getXlsTransformation().isSetFormatPattern())
+		{
+			// Use custom style
+			style.setDataFormat(createHelper.createDataFormat().getFormat(columnDefinition.getXlsTransformation().getFormatPattern()));
+		}
         return style;
     }
 

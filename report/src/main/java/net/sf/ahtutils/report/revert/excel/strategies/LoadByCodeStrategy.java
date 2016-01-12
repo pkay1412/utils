@@ -1,9 +1,13 @@
 package net.sf.ahtutils.report.revert.excel.strategies;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Hashtable;
 import java.util.logging.Level;
+import static net.sf.ahtutils.factory.xml.survey.XmlCorrelationFactory.id;
 
 import net.sf.ahtutils.interfaces.facade.UtilsFacade;
+import net.sf.ahtutils.interfaces.model.with.code.EjbWithCode;
 import net.sf.ahtutils.report.revert.excel.ImportStrategy;
 import net.sf.ahtutils.util.reflection.ReflectionsUtil;
 
@@ -40,10 +44,11 @@ public class LoadByCodeStrategy implements ImportStrategy {
 		if(logger.isTraceEnabled()){logger.trace("Searching for Entity with Code " +code);}
 		
 		// Try to find the entity with given code in database
-		if (facade != null)
+		if (facade != null && (Boolean) getTempPropertyStore().get("lookup"))
 		{
 			try {
 				lutClass = (Class) Class.forName(parameterClass);
+				logger.info("lutClass " +lutClass.getName());
 				lookupEntity = facade.fByCode(lutClass, code);
 			} catch (Exception e) {
 				if(logger.isTraceEnabled())
@@ -90,7 +95,7 @@ public class LoadByCodeStrategy implements ImportStrategy {
 			logger.error("Could not invoke setCode method!");
 			logger.error(ex.getMessage());
 		}
-	
+		
     	// Return the result
     	return lookupEntity;
 	}
