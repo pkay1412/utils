@@ -54,6 +54,22 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link Objective }
+     * 
+     */
+    public Objective createObjective() {
+        return new Objective();
+    }
+
+    /**
+     * Create an instance of {@link Impact }
+     * 
+     */
+    public Impact createImpact() {
+        return new Impact();
+    }
+
+    /**
      * Create an instance of {@link Hint }
      * 
      */

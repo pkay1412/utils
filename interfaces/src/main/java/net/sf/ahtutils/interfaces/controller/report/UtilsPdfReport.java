@@ -2,7 +2,7 @@ package net.sf.ahtutils.interfaces.controller.report;
 
 import java.io.InputStream;
 
-public interface UtilsPdfReport
+public interface UtilsPdfReport extends UtilsReport
 {	
 	public static String mimeType = "application/pdf";
 	

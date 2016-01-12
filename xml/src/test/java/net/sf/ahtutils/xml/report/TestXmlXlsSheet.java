@@ -28,6 +28,7 @@ public class TestXmlXlsSheet extends AbstractXmlReportTest
     public static XlsSheet create(boolean withChildren)
     {
     	XlsSheet xml = new XlsSheet();
+    	xml.setQuery("myQuery");
     	
     	if(withChildren)
     	{

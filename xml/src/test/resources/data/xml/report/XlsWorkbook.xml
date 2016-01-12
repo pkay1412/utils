@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<r:xlsWorkbook xmlns:r="http://ahtutils.aht-group.com/report" code="myCode">
-    <r:xlsSheet/>
-    <r:xlsSheet/>
+<r:xlsWorkbook xmlns:r="http://ahtutils.aht-group.com/report" xmlns:s="http://ahtutils.aht-group.com/status" code="myCode">
+    <r:xlsSheet query="myQuery"/>
+    <r:xlsSheet query="myQuery"/>
 </r:xlsWorkbook>

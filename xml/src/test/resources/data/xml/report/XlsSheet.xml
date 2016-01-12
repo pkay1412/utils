@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<r:xlsSheet xmlns:s="http://ahtutils.aht-group.com/status" xmlns:r="http://ahtutils.aht-group.com/report">
+<r:xlsSheet xmlns:r="http://ahtutils.aht-group.com/report" xmlns:s="http://ahtutils.aht-group.com/status" query="myQuery">
     <r:xlsColumn column="A" required="true" label="myLabel" example="myExample"/>
     <r:xlsColumn column="A" required="true" label="myLabel" example="myExample"/>
     <s:langs/>

@@ -2,7 +2,7 @@ package net.sf.ahtutils.interfaces.controller.report;
 
 import java.io.InputStream;
 
-public interface UtilsXlsReport
+public interface UtilsXlsReport extends UtilsReport
 {		
 	public static String mimeType = "application/msexcel";
 	
