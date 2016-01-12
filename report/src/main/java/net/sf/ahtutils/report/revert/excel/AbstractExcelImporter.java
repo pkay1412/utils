@@ -10,10 +10,12 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Hashtable;
 import java.util.Map;
 
 import net.sf.ahtutils.interfaces.facade.UtilsFacade;
+import net.sf.ahtutils.interfaces.model.with.code.EjbWithCode;
 import net.sf.ahtutils.util.reflection.ReflectionsUtil;
 
 import org.apache.poi.ss.usermodel.Cell;
@@ -334,6 +336,30 @@ public abstract class AbstractExcelImporter <C extends Serializable, I extends I
             	parameters[0] = parameters[0] +"";
             }
 			
+			// Validate the result
+			// Get the list of validators from context
+			HashMap<String, String> validators = (HashMap<String, String>) tempPropertyStore.get("validators");
+			HashMap<String, ArrayList<String>> validationFailed = (HashMap) tempPropertyStore.get("validationFailed");
+			
+			if (validators.containsKey(property))
+			{
+				String entityType = validators.get(property);
+				logger.info("Validator found for " +property +" class to be searched: " +entityType);
+				if(!validate(parameters[0].toString(), property, entityType))
+				{
+					ArrayList<String> failed = new ArrayList<String>();
+					if (validationFailed.containsKey(property))
+					{
+						validationFailed.get(property).add(parameters[0].toString());
+					}
+					else
+					{
+						failed.add(parameters[0].toString());
+						validationFailed.put(property, failed);
+					}
+				}
+			}
+			
 			// Now invoke the method with the parameter from the Excel sheet
             m.invoke(target, parameters);
         }
@@ -344,6 +370,26 @@ public abstract class AbstractExcelImporter <C extends Serializable, I extends I
         }
         
 	 }
+	 
+	 public Boolean validate(String code, String property, String entityType)
+	{
+		// Try to get an object from database
+		Object o = null;
+		try {
+			Class entityClass = Class.forName(entityType);
+			o = facade.fByCode(entityClass, code);
+
+		} catch (Exception ex) {
+			logger.error(ex.getMessage());
+		}
+		
+		if (!(o == null))
+		{
+			return false;
+		}
+		return true;
+		
+	}
 	 
 	public Hashtable<String, Object> getTempPropertyStore() {return tempPropertyStore;}
 	public void setTempPropertyStore(Hashtable<String, Object> tempPropertyStore) {this.tempPropertyStore = tempPropertyStore;}
