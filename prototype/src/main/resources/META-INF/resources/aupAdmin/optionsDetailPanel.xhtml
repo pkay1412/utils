@@ -21,23 +21,23 @@
 				 rendered="#{not empty cc.attrs.bean.status}" styleClass="auPanelWithGrid">
 			<f:facet name="actions">
 				<aht:icon type="aupCancel" listener="#{cc.attrs.bean.cancel()}" update="#{cc.attrs.update}" tooltip="#{msg.ttCancel}"/>
-				<aht:icon type="aupSave"   listener="#{cc.attrs.bean.save()}" update="#{cc.attrs.update}" tooltip="#{msg.ttSave}"/>
-				<aht:icon type="aupDelete" rendered="#{cc.attrs.bean.supportsCodeChange}" listener="#{cc.attrs.bean.rm(cc.attrs.bean.status)}" update="#{cc.attrs.update}" tooltip="#{msg.ttDelete}"/>
+				<aht:icon type="aupSave"   rendered="#{cc.attrs.bean.allowSave}" listener="#{cc.attrs.bean.save()}" update="#{cc.attrs.update}" tooltip="#{msg.ttSave}"/>
+				<aht:icon type="aupDelete" rendered="#{cc.attrs.bean.allowRemove and cc.attrs.bean.allowCodeChange}" listener="#{cc.attrs.bean.rm(cc.attrs.bean.status)}" update="#{cc.attrs.update}" tooltip="#{msg.ttDelete}"/>
 			</f:facet>
 			<p:panelGrid columns="2" columnClasses="auPwg30,auPwg70" styleClass="auCleanPanelGrid">
 
 				<p:outputLabel value="#{msg.aupOptionCode}"/>
-				<p:inputText rendered="#{cc.attrs.bean.supportsCodeChange}" value="#{cc.attrs.bean.status.code}"/>
-				<h:outputText rendered="#{!cc.attrs.bean.supportsCodeChange}" value="#{cc.attrs.bean.status.code}"/>
+				<p:inputText rendered="#{cc.attrs.bean.allowCodeChange}" value="#{cc.attrs.bean.status.code}"/>
+				<h:outputText rendered="#{not cc.attrs.bean.allowCodeChange}" value="#{cc.attrs.bean.status.code}"/>
 
 				<p:outputLabel rendered="#{cc.attrs.bean.supportsSymbol}" for="sSymbol" value="#{msg.aupOptionSymbol}"/>
 				<p:inputText rendered="#{cc.attrs.bean.supportsSymbol}" id="sSymbol" value="#{adminTableBean.status.style}"/>
 
-				<p:outputLabel value="#{msg.aupOptionPosition}"/>
-				<p:inputText  value="#{cc.attrs.bean.status.position}"/>
+				<p:outputLabel rendered="#{cc.attrs.bean.allowStatusReorder}" value="#{msg.aupOptionPosition}"/>
+				<p:inputText rendered="#{cc.attrs.bean.allowStatusReorder}" value="#{cc.attrs.bean.status.position}"/>
 				
-				<p:outputLabel value="#{msg.aupOptionVisible}" />
-				<p:selectBooleanCheckbox value="#{cc.attrs.bean.status.visible}" />
+				<p:outputLabel rendered="#{cc.attrs.bean.hasDeveloperAction}" value="#{msg.aupOptionVisible}" />
+				<p:selectBooleanCheckbox rendered="#{cc.attrs.bean.hasDeveloperAction}" value="#{cc.attrs.bean.status.visible}" />
 				
 				<p:outputLabel rendered="#{not empty cc.attrs.bean.parents}" value="#{msg.StatusParent}"/>
 				<p:selectOneMenu rendered="#{not empty cc.attrs.bean.parents}" value="#{cc.attrs.bean.parentId}" effect="fade" >

@@ -4,7 +4,6 @@ import java.util.Map;
 
 public interface UtilsJsfOptionTableBean
 {
-	boolean getSupportsCodeChange();
 	boolean getSupportsSymbol();
 	boolean getSupportsGraphic();
 	
