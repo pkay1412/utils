@@ -10,8 +10,15 @@
 	<ofx:title lang="en">Constraints and Validity Checks</ofx:title>
 	
 	<ofx:paragraph lang="en">
+		<ofx:marginalia>
+			<media:image>
+        		<layout:width unit="percentage">100</layout:width>
+        		<media:media src="svg.aht-utils/icon/ui/system/constraint.svg" dst="icon/ui/system/constraint"/>
+    		</media:image>
+		</ofx:marginalia>
         Plausibility checks and data constraints are very important. These checks guarantee data validity
-        and consistency. They are carried out in the following ways:
+        and consistency. Whenever this is described, you will see the symbol in this handbook.
+        They are carried out in the following ways:
 	</ofx:paragraph>
 	
 	<l:list>

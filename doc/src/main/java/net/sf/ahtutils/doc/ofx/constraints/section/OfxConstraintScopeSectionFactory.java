@@ -1,14 +1,20 @@
 package net.sf.ahtutils.doc.ofx.constraints.section;
 
 import org.apache.commons.configuration.Configuration;
+import org.openfuxml.content.media.Image;
+import org.openfuxml.content.media.Media;
 import org.openfuxml.content.ofx.Comment;
+import org.openfuxml.content.ofx.Marginalia;
 import org.openfuxml.content.ofx.Paragraph;
 import org.openfuxml.content.ofx.Section;
 import org.openfuxml.content.table.Table;
 import org.openfuxml.exception.OfxAuthoringException;
+import org.openfuxml.factory.xml.layout.XmlWidthFactory;
 import org.openfuxml.factory.xml.ofx.OfxReferenceFactory;
 import org.openfuxml.factory.xml.ofx.content.XmlCommentFactory;
+import org.openfuxml.factory.xml.ofx.content.structure.XmlParagraphFactory;
 import org.openfuxml.factory.xml.ofx.content.structure.XmlSectionFactory;
+import org.openfuxml.factory.xml.ofx.editorial.XmlMarginaliaFactory;
 import org.openfuxml.util.OfxCommentBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -46,7 +52,9 @@ public class OfxConstraintScopeSectionFactory extends AbstractUtilsOfxDocumentat
 		
 		Table table = ofTable.build(scope);
 		
-		Paragraph p = OfxMultiLangFactory.paragraph(langs, scope.getDescriptions()).get(0);
+		Paragraph p = XmlParagraphFactory.build();
+		p.getContent().add(marginalia());
+		p.getContent().addAll(OfxMultiLangFactory.paragraph(langs, scope.getDescriptions()).get(0).getContent());
 		p.getContent().add(" All constraints are summarised in Table ");
 		p.getContent().add(OfxReferenceFactory.build(table.getId()));
 		p.getContent().add(".");
@@ -55,5 +63,19 @@ public class OfxConstraintScopeSectionFactory extends AbstractUtilsOfxDocumentat
 		section.getContent().add(table);
 		
 		return section;
+	}
+	
+	private Marginalia marginalia()
+	{
+		Media media = new Media();
+		media.setSrc("svg.aht-utils/icon/ui/system/constraint.svg");
+		media.setDst("icon/ui/system/constraint");
+		
+		Image image = new Image();
+		image.setMedia(media);
+//		image.setAlignment(XmlAlignmentFactory.buildHorizontal(XmlAlignmentFactory.Horizontal.center));
+		image.setWidth(XmlWidthFactory.percentage(50));
+		
+		return XmlMarginaliaFactory.build(image);
 	}
 }
