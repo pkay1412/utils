@@ -2,7 +2,12 @@ package net.sf.ahtutils.prototype.web.mbean.admin.security;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import net.sf.ahtutils.exception.ejb.UtilsConstraintViolationException;
 import net.sf.ahtutils.exception.ejb.UtilsLockingException;
@@ -15,10 +20,9 @@ import net.sf.ahtutils.interfaces.model.security.UtilsSecurityView;
 import net.sf.ahtutils.interfaces.model.status.UtilsDescription;
 import net.sf.ahtutils.interfaces.model.status.UtilsLang;
 import net.sf.ahtutils.model.interfaces.idm.UtilsUser;
+import net.sf.ahtutils.util.comparator.ejb.security.SecurityActionComparator;
+import net.sf.ahtutils.util.comparator.ejb.security.SecurityViewComparator;
 import net.sf.ahtutils.web.mbean.util.AbstractLogMessage;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 public class AbstractAdminSecurityUsecasesBean <L extends UtilsLang,
 											D extends UtilsDescription,
@@ -62,6 +66,8 @@ public class AbstractAdminSecurityUsecasesBean <L extends UtilsLang,
 		usecase = efLang.persistMissingLangs(fSecurity,langs,usecase);
 		usecase = efDescription.persistMissingLangs(fSecurity,langs,usecase);
 		usecase = fSecurity.find(cUsecase,usecase);
+		Collections.sort(usecase.getViews(), comparatorView);
+		Collections.sort(usecase.getActions(), comparatorAction);
 		reloadActions();
 	}
 	
@@ -79,6 +85,7 @@ public class AbstractAdminSecurityUsecasesBean <L extends UtilsLang,
 			v = fSecurity.load(cView,v);
 			opActions.addAll(v.getActions());
 		}
+		Collections.sort(opActions, comparatorAction);
 	}
 	
 	//Add
@@ -96,7 +103,6 @@ public class AbstractAdminSecurityUsecasesBean <L extends UtilsLang,
 		usecase.setName(efLang.createEmpty(langs));
 		usecase.setDescription(efDescription.createEmpty(langs));
 	}
-	
 
 	//Save
 	public void saveCategory() throws UtilsNotFoundException, UtilsConstraintViolationException, UtilsLockingException

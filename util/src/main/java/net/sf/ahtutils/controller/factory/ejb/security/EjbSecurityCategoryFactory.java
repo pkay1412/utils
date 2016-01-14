@@ -66,7 +66,7 @@ public class EjbSecurityCategoryFactory <L extends UtilsLang,
 			ejb = clCategory.newInstance();
 			ejb.setCode(code);
 			ejb.setType(type);
-			ejb.setPosition(0);
+			ejb.setPosition(1);
 			ejb.setVisible(true);
 		}
     	catch (InstantiationException e) {e.printStackTrace();}

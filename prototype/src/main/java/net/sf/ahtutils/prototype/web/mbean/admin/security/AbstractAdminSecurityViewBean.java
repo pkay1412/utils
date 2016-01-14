@@ -1,6 +1,7 @@
 package net.sf.ahtutils.prototype.web.mbean.admin.security;
 
 import java.io.Serializable;
+import java.util.Collections;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -16,6 +17,7 @@ import net.sf.ahtutils.interfaces.model.security.UtilsSecurityUsecase;
 import net.sf.ahtutils.interfaces.model.security.UtilsSecurityView;
 import net.sf.ahtutils.interfaces.model.status.UtilsDescription;
 import net.sf.ahtutils.interfaces.model.status.UtilsLang;
+import net.sf.ahtutils.jsf.util.PositionListReorderer;
 import net.sf.ahtutils.model.interfaces.idm.UtilsUser;
 import net.sf.ahtutils.web.mbean.util.AbstractLogMessage;
 
@@ -88,6 +90,7 @@ public class AbstractAdminSecurityViewBean <L extends UtilsLang,
 	{
 		view = fSecurity.load(cView,view);
 		actions = view.getActions();
+		Collections.sort(actions, comparatorAction);
 	}
 	
 	//SAVE
@@ -133,12 +136,12 @@ public class AbstractAdminSecurityViewBean <L extends UtilsLang,
 	protected void reorderViews() throws UtilsConstraintViolationException, UtilsLockingException
 	{
 		logger.info("updateOrder "+views.size());
-		int i=1;
-		for(V v : views)
-		{
-			v.setPosition(i);
-			fSecurity.update(v);
-			i++;
-		}
+		PositionListReorderer.reorder(fSecurity, views);
+	}
+	
+	protected void reorderActions() throws UtilsConstraintViolationException, UtilsLockingException
+	{
+		logger.info("updateOrder "+actions.size());
+		PositionListReorderer.reorder(fSecurity, actions);
 	}
 }

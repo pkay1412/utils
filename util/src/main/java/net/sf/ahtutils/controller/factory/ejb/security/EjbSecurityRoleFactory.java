@@ -64,6 +64,7 @@ public class EjbSecurityRoleFactory <L extends UtilsLang,
     	try
     	{
 			ejb = clRole.newInstance();
+			ejb.setPosition(1);
 			ejb.setCategory(category);
 			ejb.setCode(code);
 			ejb.setVisible(true);

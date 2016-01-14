@@ -10,18 +10,23 @@
 	xmlns:composite="http://java.sun.com/jsf/composite">
 	
 	<composite:interface>
-
+		<composite:attribute name="bean" required="false" default="#{adminSecurityViewsBean}"/>
+		<composite:attribute name="update" required="true"/>
 	</composite:interface>
 	
 	<composite:implementation>
-		<p:dataTable var="a" value="#{adminSecurityViewsBean.actions}"
+		<p:dataTable var="a" value="#{adminSecurityViewsBean.actions}" draggableRows="true"
 			selection="#{adminSecurityViewsBean.action}" selectionMode="single" rowKey="#{a.id}">
 			<f:facet name="header">
 				<aht:pfDataTableHeader title="#{msg.aupSecurityActions}">
-					<aht:icon type="add" listener="#{adminSecurityViewsBean.addAction()}" update=":sActions" tooltip="#{msg.ttNew}"/>
+					<aht:icon type="add" listener="#{adminSecurityViewsBean.addAction()}" update="#{cc.attrs.update}" tooltip="#{msg.ttNew}"/>
 				</aht:pfDataTableHeader>
 			</f:facet>
-			<p:ajax event="rowSelect" update=":fAction" listener="#{adminSecurityViewsBean.selectAction}"/>  
+			<p:ajax event="rowReorder" listener="#{cc.attrs.bean.reorderActions()}" update="@form"/>
+			<p:ajax event="rowSelect" update="#{cc.attrs.update}" listener="#{adminSecurityViewsBean.selectAction}"/>
+			<p:column>  
+				<h:outputText value="#{a.position}" />  
+            </p:column>
             <p:column headerText="#{msg.aupSecurityAction}">  
 				<h:outputText value="#{a.name[userBean.localeCode].lang}"/>  
             </p:column>

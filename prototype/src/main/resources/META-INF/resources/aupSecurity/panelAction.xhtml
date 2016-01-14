@@ -10,14 +10,14 @@
 	xmlns:composite="http://java.sun.com/jsf/composite">
 	
 	<composite:interface>
-
+		<composite:attribute name="update" required="true"/>
 	</composite:interface>
 	
 	<composite:implementation>
 		<p:panel header="#{msg.aupSecurityAction}" styleClass="auPanelWithGrid">
 			<f:facet name="actions">
-				<aht:icon type="delete" listener="#{adminSecurityViewsBean.rmAction()}" update=":sActions" tooltip="#{msg.ttDelete}"/>
-				<aht:icon type="save" listener="#{adminSecurityViewsBean.saveAction()}" update=":sActions" tooltip="#{msg.ttSave}"/>
+				<aht:icon type="delete" listener="#{adminSecurityViewsBean.rmAction()}" update="#{cc.attrs.update}" tooltip="#{msg.ttDelete}"/>
+				<aht:icon type="save" listener="#{adminSecurityViewsBean.saveAction()}" update="#{cc.attrs.update}" tooltip="#{msg.ttSave}"/>
 			</f:facet>
 			<h:panelGrid columns="2" columnClasses="col1,col2" styleClass="auCleanPanelGrid">
 				<p:outputLabel value="#{msg.aupSecurityCode}"/>

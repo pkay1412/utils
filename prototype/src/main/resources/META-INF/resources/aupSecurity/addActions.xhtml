@@ -27,6 +27,9 @@
 				</aht:pfDataTableHeader>
 			</f:facet>
 			<p:ajax event="rowSelect" update="#{cc.attrs.update}" listener="#{cc.attrs.bean.selectTblAction}"/>
+			<p:column>
+				<h:outputText value="#{a.view.category.position}.#{a.view.position}.#{a.position}"/>
+			</p:column>
 			<p:column headerText="#{msg.aupSecurityView}" >
 				<h:outputText value="#{a.view.name[userBean.localeCode].lang}" />
 			</p:column>

@@ -11,12 +11,13 @@
 	
 	<composite:interface>
 		<composite:attribute name="bean" required="false" default="#{adminSecurityViewsBean}"/>
+		<composite:attribute name="update" required="true"/>
 	</composite:interface>
 	
 	<composite:implementation>
 		<p:panel header="#{msg.aupSecurityView}" styleClass="auPanelWithGrid">
 			<f:facet name="actions">
-				<aht:icon type="save" listener="#{adminSecurityViewsBean.saveView()}" update=":sViews" tooltip="#{msg.ttSave}"/>
+				<aht:icon type="save" listener="#{adminSecurityViewsBean.saveView()}" update="#{cc.attrs.update}" tooltip="#{msg.ttSave}"/>
 			</f:facet>
 			<h:panelGrid columns="2" columnClasses="auPwg30,auPwg70" styleClass="auCleanPanelGrid">
 				<p:outputLabel value="#{msg.aupSecurityCategory}"/>

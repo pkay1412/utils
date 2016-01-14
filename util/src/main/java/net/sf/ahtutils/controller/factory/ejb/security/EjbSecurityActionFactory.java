@@ -64,6 +64,7 @@ public class EjbSecurityActionFactory <L extends UtilsLang,
     	try
     	{
 			ejb = clAction.newInstance();
+			ejb.setPosition(1);
 			ejb.setView(view);
 			ejb.setCode(code);
 		}

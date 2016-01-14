@@ -1,6 +1,7 @@
 package net.sf.ahtutils.prototype.web.mbean.admin.security;
 
 import java.io.Serializable;
+import java.util.Comparator;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -25,6 +26,8 @@ import net.sf.ahtutils.interfaces.model.status.UtilsDescription;
 import net.sf.ahtutils.interfaces.model.status.UtilsLang;
 import net.sf.ahtutils.interfaces.web.UtilsJsfSecurityHandler;
 import net.sf.ahtutils.model.interfaces.idm.UtilsUser;
+import net.sf.ahtutils.util.comparator.ejb.security.SecurityActionComparator;
+import net.sf.ahtutils.util.comparator.ejb.security.SecurityViewComparator;
 import net.sf.ahtutils.web.mbean.util.AbstractLogMessage;
 
 public class AbstractAdminSecurityBean <L extends UtilsLang,
@@ -55,6 +58,12 @@ public class AbstractAdminSecurityBean <L extends UtilsLang,
 	protected Class<V> cView;
 	protected Class<U> cUsecase;
 	protected Class<A> cAction;
+	
+	protected Comparator<V> comparatorView;
+	protected Comparator<A> comparatorAction;
+	
+	private SecurityViewComparator<L,D,C,R,V,U,A,USER> cfView;
+	private SecurityActionComparator<L,D,C,R,V,U,A,USER> cfAction;
 		
 	//Category
 	protected List<C> categories;
@@ -133,6 +142,12 @@ public class AbstractAdminSecurityBean <L extends UtilsLang,
 		efRole = EjbSecurityRoleFactory.factory(cLang,cDescription,cCategory,cRole,cView,cUsecase,cAction,cUser);
 		efUsecase = EjbSecurityUsecaseFactory.factory(cLang,cDescription,cCategory,cRole,cView,cUsecase,cAction,cUser);
 		efAction = EjbSecurityActionFactory.factory(cLang,cDescription,cCategory,cRole,cView,cUsecase,cAction,cUser);
+		
+		cfView = new SecurityViewComparator<L,D,C,R,V,U,A,USER>();
+		cfAction = new SecurityActionComparator<L,D,C,R,V,U,A,USER>();
+		
+		comparatorView = cfView.factory(SecurityViewComparator.Type.position);
+		comparatorAction = cfAction.factory(SecurityActionComparator.Type.position); 
 		
 		reloadCategories();
 	}
