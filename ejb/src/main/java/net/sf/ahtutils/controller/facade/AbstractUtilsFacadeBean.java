@@ -75,6 +75,12 @@ public class AbstractUtilsFacadeBean implements UtilsFacade
 	public <T extends Object> T persist(T o) throws UtilsConstraintViolationException {return fUtils.persist(o);}
 	public <T extends Object> T update(T o) throws UtilsConstraintViolationException, UtilsLockingException {return fUtils.update(o);}
 	
+	// Remove
+	@TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
+	public <T extends EjbRemoveable> void rmTransaction(T o) throws UtilsConstraintViolationException {rmProtected(o);}
+	public <T extends EjbRemoveable> void rm(T o) throws UtilsConstraintViolationException {rmProtected(o);}
+	protected <T extends Object> void rmProtected(T o) throws UtilsConstraintViolationException {fUtils.rmProtected(o);}
+	
 	// Finder
 	public <T extends EjbWithId> T find(Class<T> type, T t) {return fUtils.find(type, t);}
 	public <T extends Object> T find(Class<T> type, long id) throws UtilsNotFoundException {return fUtils.find(type, id);}
@@ -88,11 +94,7 @@ public class AbstractUtilsFacadeBean implements UtilsFacade
 	@Override public <T extends EjbWithCode> T fByCode(Class<T> type, String code) throws UtilsNotFoundException {return fUtils.fByCode(type, code);}
 	@Override public <T extends EjbWithTypeCode> T fByTypeCode(Class<T> c, String type, String code) throws UtilsNotFoundException {return fUtils.fByTypeCode(c,type,code);}
 	@Override public <T extends EjbWithNonUniqueCode> List<T> allByCode(Class<T> type, String code) {return fUtils.allByCode(type,code);}
-	
-	// Remove
-	public <T extends EjbRemoveable> void rm(T o) throws UtilsConstraintViolationException {rmProtected(o);}
-	protected <T extends Object> void rmProtected(T o) throws UtilsConstraintViolationException {fUtils.rmProtected(o);}
-	
+		
 	// All
 	@Override public <T extends Object> List<T> all(Class<T> type) {return fUtils.all(type);}
 	@Override public <T extends Object> List<T> all(Class<T> type,int maxResults) {return fUtils.all(type,maxResults);}

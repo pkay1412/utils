@@ -7,4 +7,11 @@
     		<s:lang key="fr" translation="Projet"/>
     	</s:langs>
     </s:translation>
+	<s:translation key="aupProjects">
+    	<s:langs>
+    		<s:lang key="de" translation="Projekte"/>
+    		<s:lang key="en" translation="Projects"/>
+    		<s:lang key="fr" translation="Projets"/>
+    	</s:langs>
+    </s:translation>
 </s:translations>

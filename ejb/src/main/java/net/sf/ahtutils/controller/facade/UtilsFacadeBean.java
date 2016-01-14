@@ -59,6 +59,8 @@ public class UtilsFacadeBean implements UtilsFacade
 {
 	final static Logger logger = LoggerFactory.getLogger(UtilsFacadeBean.class);
 	
+	private static boolean isLoggingEnabled = false; 
+	
 	protected EntityManager em;
 	private boolean handleTransaction;
 	
@@ -496,15 +498,21 @@ public class UtilsFacadeBean implements UtilsFacade
 		return em.createQuery(select).getResultList();
 	}
 	
+	@Override public <T extends EjbRemoveable> void rmTransaction(T o) throws UtilsConstraintViolationException {rmProtected(o);}
 	@Override public <T extends EjbRemoveable> void rm(T o) throws UtilsConstraintViolationException {rmProtected(o);}
 	
 	public <T extends Object> void rmProtected(T o) throws UtilsConstraintViolationException
 	{
+		if(isLoggingEnabled){logger.info("Removing "+o.toString());}
 		try
 		{
+			if(isLoggingEnabled){logger.info("Before merge");}
 			o=em.merge(o);
+			if(isLoggingEnabled){logger.info("Before remove");}
 			em.remove(o);
+			if(isLoggingEnabled){logger.info("Before flush");}
 			em.flush();
+			if(isLoggingEnabled){logger.info("After flush");}
 		}
 		catch(javax.persistence.PersistenceException e)
 		{

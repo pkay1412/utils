@@ -97,6 +97,18 @@
             <us:description key="en">A specific precondition is checked before data is saved.</us:description>
         </us:descriptions>
     </us:status>
+	<us:status code="limit" position="5">
+        <us:langs>
+            <us:lang key="de" translation="Grenzwert"/>
+            <us:lang key="fr" translation="Limit"/>
+            <us:lang key="en" translation="Limit"/>
+        </us:langs>
+        <us:descriptions>
+            <us:description key="de">Limit</us:description>
+            <us:description key="fr">Limit</us:description>
+            <us:description key="en">There is a limit defined which can not be exceeded or undercut.</us:description>
+        </us:descriptions>
+    </us:status>
 	<us:status code="rmIntegrity" position="5">
         <us:langs>
             <us:lang key="de" translation="Integrität"/>
@@ -107,6 +119,18 @@
             <us:description key="de">Vorbedingung</us:description>
             <us:description key="fr">Precondition</us:description>
             <us:description key="en">The item cannot be deleted if it is still in use somewhere else. This would violate the referential integrity and the system prevents such violations.</us:description>
+        </us:descriptions>
+    </us:status>
+    <us:status code="rmUsed" position="5">
+        <us:langs>
+            <us:lang key="de" translation="In Gebrauch"/>
+            <us:lang key="fr" translation="Precondition"/>
+            <us:lang key="en" translation="In Use"/>
+        </us:langs>
+        <us:descriptions>
+            <us:description key="de">Vorbedingung</us:description>
+            <us:description key="fr">Precondition</us:description>
+            <us:description key="en">The item cannot be deleted because it is in use.</us:description>
         </us:descriptions>
     </us:status>
 </aht:aht>

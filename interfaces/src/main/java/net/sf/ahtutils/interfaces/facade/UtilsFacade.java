@@ -89,6 +89,7 @@ public interface UtilsFacade extends UtilsIdFacade
 	<T extends EjbSaveable> void save(List<T> list) throws UtilsConstraintViolationException,UtilsLockingException;
 	<T extends EjbSaveable> void saveTransaction(List<T> list) throws UtilsConstraintViolationException,UtilsLockingException;
 	
+	<T extends EjbRemoveable> void rmTransaction(T o) throws UtilsConstraintViolationException;
 	<T extends EjbRemoveable> void rm(T o) throws UtilsConstraintViolationException;
 	
 	//Parent
