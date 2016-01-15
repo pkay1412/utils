@@ -147,6 +147,18 @@ public class AbstractLogMessage <L extends UtilsLang,D extends UtilsDescription,
         sb.append(": ").append(t.toString());
         return sb.toString();
 	 }
+	 
+	 //Toggle
+	 public static <T extends EjbWithId> String toggle(T t)
+	 {
+        StringBuffer sb = new StringBuffer();
+        sb.append("Toggeling ");
+        if(t!=null)
+        {
+        	sb.append(" ... ").append(t.toString());
+        }
+        return sb.toString();
+	 }
 
     public static <T extends EjbWithId> String saveEntity(T t)
     {
