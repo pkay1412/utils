@@ -11,36 +11,40 @@ import org.slf4j.LoggerFactory;
 import net.sf.ahtutils.interfaces.bean.ConstraintsBean;
 import net.sf.ahtutils.monitor.ProcessingTimeTracker;
 import net.sf.ahtutils.web.mbean.util.AbstractLogMessage;
-import net.sf.ahtutils.web.mbean.util.AbstractMenuBean;
 import net.sf.ahtutils.xml.status.Description;
 import net.sf.ahtutils.xml.system.Constraint;
 import net.sf.ahtutils.xml.system.ConstraintScope;
 import net.sf.ahtutils.xml.system.Constraints;
 import net.sf.exlp.util.xml.JaxbUtil;
 
-public class PrototypeConstraintsBean extends AbstractMenuBean implements Serializable,ConstraintsBean
+public class PrototypeConstraintsBean implements Serializable,ConstraintsBean
 {
 	final static Logger logger = LoggerFactory.getLogger(PrototypeConstraintsBean.class);
 	private static final long serialVersionUID = 1L;
 		
 	private Map<String,Constraint> constraints;
+	private Map<String,ConstraintScope> scopes;
 
     public void init(String artifact) throws FileNotFoundException
     {
 		ProcessingTimeTracker ptt = new ProcessingTimeTracker(true);
 
 		constraints = new Hashtable<String,Constraint>();
+		scopes = new Hashtable<String,ConstraintScope>();
+		
 		Constraints index = JaxbUtil.loadJAXB("constraints."+artifact+"/index.xml", Constraints.class);
 		for(ConstraintScope scopeCategory : index.getConstraintScope())
 		{
 			Constraints c = JaxbUtil.loadJAXB("constraints."+artifact+"/"+scopeCategory.getCategory()+".xml", Constraints.class);
 			for(ConstraintScope scope : c.getConstraintScope())
 			{
+				String scopeCode = scopeCategory.getCategory()+"-"+scope.getCode();
+				scopes.put(scopeCode, scope);
 				for(Constraint constraint : scope.getConstraint())
 				{
 					if(constraint.isSetCode())
 					{
-						String key = scopeCategory.getCategory()+"-"+scope.getCode()+"-"+constraint.getCode();
+						String key = scopeCode+"-"+constraint.getCode();
 						logger.info("Adding "+key);
 						constraints.put(key, constraint);
 					}
@@ -68,5 +72,11 @@ public class PrototypeConstraintsBean extends AbstractMenuBean implements Serial
     	}
     	
     	return "Constraint not found in list: "+key;
+    }
+    
+    public ConstraintScope getScope(String category, String scope, String lang)
+    {    	
+    	String key = category+"-"+scope;
+    	return scopes.get(key);
     }
 }

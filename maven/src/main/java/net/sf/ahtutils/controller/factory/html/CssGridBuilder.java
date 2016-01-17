@@ -25,7 +25,7 @@ public class CssGridBuilder extends AbstractFreemarkerFileFactory
 
 	public void buildCss()
 	{
-		for(int slot=30;slot<=100;slot=slot+1)
+		for(int slot=50;slot<=100;slot=slot+5)
 		{
 			for(int gutter=1;gutter<=5;gutter++)
 			{
@@ -63,8 +63,14 @@ public class CssGridBuilder extends AbstractFreemarkerFileFactory
 		freemarkerNodeModel.clear();
 		
 		freemarkerNodeModel.put("width", ""+((slot+(2*gutter))*12));
+		
 		freemarkerNodeModel.put("gutter", ""+gutter);
 		freemarkerNodeModel.put("doublegutter", ""+gutter*2);
+		
+		for(int i=6;i<=10;i++)
+		{
+			freemarkerNodeModel.put("op"+i+"Width", ""+((slot+(2*gutter))*i));
+		}
 		
 		createSlots(slot, gutter);
 	}

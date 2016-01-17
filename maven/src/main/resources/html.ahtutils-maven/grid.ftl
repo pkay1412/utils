@@ -14,11 +14,41 @@ body {min-width: ${width}px;}
 
 /* Container
 ----------------------------------------------------------------------------------------------------*/
-.auContainer
-{
+.auContainer {
   margin-left: auto;
   margin-right: auto;
   width: ${width}px;
+  padding-bottom: ${doublegutter}px;
+}
+
+.auOp6Container {
+  margin-left: auto;
+  margin-right: auto;
+  width: ${op8Width}px;
+  padding-bottom: ${doublegutter}px;
+}
+.auOp7Container {
+  margin-left: auto;
+  margin-right: auto;
+  width: ${op8Width}px;
+  padding-bottom: ${doublegutter}px;
+}
+.auOp8Container {
+  margin-left: auto;
+  margin-right: auto;
+  width: ${op8Width}px;
+  padding-bottom: ${doublegutter}px;
+}
+.auOp9Container {
+  margin-left: auto;
+  margin-right: auto;
+  width: ${op8Width}px;
+  padding-bottom: ${doublegutter}px;
+}
+.auOp10Container {
+  margin-left: auto;
+  margin-right: auto;
+  width: ${op8Width}px;
   padding-bottom: ${doublegutter}px;
 }
 
@@ -31,7 +61,7 @@ body {min-width: ${width}px;}
   margin-right: ${gutter}px;
 }
 
-/* Grid >> Children (Alpha ~ First, Omega ~ Last)
+/* Grid >> Children
 ----------------------------------------------------------------------------------------------------*/
 .alpha {margin-left: 0;}
 .omega {margin-right: 0;}

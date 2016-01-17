@@ -25,7 +25,7 @@ public class Grid extends AbstractUtilsGrid
 	public Grid()
 	{
 		super();
-		width=70;
+		slot=70;
 		gutter=5;
 	}
 	
@@ -34,8 +34,8 @@ public class Grid extends AbstractUtilsGrid
 	{
 		if(event instanceof PostAddToViewEvent)
 		{
-			if(event.getComponent().getFacets().containsKey("left")) {width=width-15;}
-			if(event.getComponent().getFacets().containsKey("right")) {width=width-15;}
+			if(event.getComponent().getFacets().containsKey("left")) {slot=slot-15;}
+			if(event.getComponent().getFacets().containsKey("right")) {slot=slot-15;}
 					
 			super.pushCssToHead();
 		 }

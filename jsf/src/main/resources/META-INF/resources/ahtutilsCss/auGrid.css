@@ -14,11 +14,41 @@ body {min-width: 960px;}
 
 /* Container
 ----------------------------------------------------------------------------------------------------*/
-.auContainer
-{
+.auContainer {
   margin-left: auto;
   margin-right: auto;
   width: 960px;
+  padding-bottom: 10px;
+}
+
+.auOp6Container {
+  margin-left: auto;
+  margin-right: auto;
+  width: 640px;
+  padding-bottom: 10px;
+}
+.auOp7Container {
+  margin-left: auto;
+  margin-right: auto;
+  width: 640px;
+  padding-bottom: 10px;
+}
+.auOp8Container {
+  margin-left: auto;
+  margin-right: auto;
+  width: 640px;
+  padding-bottom: 10px;
+}
+.auOp9Container {
+  margin-left: auto;
+  margin-right: auto;
+  width: 640px;
+  padding-bottom: 10px;
+}
+.auOp10Container {
+  margin-left: auto;
+  margin-right: auto;
+  width: 640px;
   padding-bottom: 10px;
 }
 
@@ -31,7 +61,7 @@ body {min-width: 960px;}
   margin-right: 5px;
 }
 
-/* Grid >> Children (Alpha ~ First, Omega ~ Last)
+/* Grid >> Children
 ----------------------------------------------------------------------------------------------------*/
 .alpha {margin-left: 0;}
 .omega {margin-right: 0;}
