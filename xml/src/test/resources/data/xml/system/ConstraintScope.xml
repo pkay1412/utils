@@ -4,4 +4,6 @@
     <s:descriptions/>
     <sys:constraint code="myCode"/>
     <sys:constraint code="myCode"/>
+    <s:lang version="1" key="myKey" translation="myTranslation"/>
+    <s:description version="1" key="myKey">myValue</s:description>
 </sys:constraintScope>

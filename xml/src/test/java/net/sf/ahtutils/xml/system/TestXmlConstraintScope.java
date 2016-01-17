@@ -4,7 +4,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import net.sf.ahtutils.test.UtilsXmlTestBootstrap;
+import net.sf.ahtutils.xml.status.TestXmlDescription;
 import net.sf.ahtutils.xml.status.TestXmlDescriptions;
+import net.sf.ahtutils.xml.status.TestXmlLang;
 import net.sf.ahtutils.xml.status.TestXmlLangs;
 
 public class TestXmlConstraintScope extends AbstractXmlSystemTest<ConstraintScope>
@@ -27,6 +29,9 @@ public class TestXmlConstraintScope extends AbstractXmlSystemTest<ConstraintScop
     		xml.setDescriptions(TestXmlDescriptions.create(false));
     		
     		xml.getConstraint().add(TestXmlConstraint.create(false));xml.getConstraint().add(TestXmlConstraint.create(false));
+    		
+    		xml.setLang(TestXmlLang.create(false));
+    		xml.setDescription(TestXmlDescription.create(false));
     	}
     	
     	return xml;

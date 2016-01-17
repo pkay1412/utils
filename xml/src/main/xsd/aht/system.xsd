@@ -51,6 +51,8 @@
 				<xsd:element ref="us:langs" maxOccurs="1"/>
 				<xsd:element ref="us:descriptions" maxOccurs="1"/>
                 <xsd:element ref="sys:constraint" maxOccurs="unbounded"/>
+                <xsd:element ref="us:lang" maxOccurs="1"/>
+				<xsd:element ref="us:description" maxOccurs="1"/>
             </xsd:sequence>
             <xsd:attribute name="id" type="xsd:long"/>
             <xsd:attribute name="category" type="xsd:string"/>
@@ -64,6 +66,8 @@
                 <xsd:element ref="us:langs" maxOccurs="1"/>
 				<xsd:element ref="us:descriptions" maxOccurs="1"/>
                 <xsd:element ref="sys:constraintAttribute" maxOccurs="unbounded"/>
+                <xsd:element ref="us:lang" maxOccurs="1"/>
+				<xsd:element ref="us:description" maxOccurs="1"/>
             </xsd:sequence>
             <xsd:attribute name="code" type="xsd:string"/>
             <xsd:attribute name="since" type="xsd:dateTime"/>

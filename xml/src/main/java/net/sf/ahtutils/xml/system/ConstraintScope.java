@@ -10,7 +10,9 @@ import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
+import net.sf.ahtutils.xml.status.Description;
 import net.sf.ahtutils.xml.status.Descriptions;
+import net.sf.ahtutils.xml.status.Lang;
 import net.sf.ahtutils.xml.status.Langs;
 
 
@@ -27,6 +29,8 @@ import net.sf.ahtutils.xml.status.Langs;
  *         &lt;element ref="{http://ahtutils.aht-group.com/status}langs"/&gt;
  *         &lt;element ref="{http://ahtutils.aht-group.com/status}descriptions"/&gt;
  *         &lt;element ref="{http://ahtutils.aht-group.com/system}constraint" maxOccurs="unbounded"/&gt;
+ *         &lt;element ref="{http://ahtutils.aht-group.com/status}lang"/&gt;
+ *         &lt;element ref="{http://ahtutils.aht-group.com/status}description"/&gt;
  *       &lt;/sequence&gt;
  *       &lt;attribute name="id" type="{http://www.w3.org/2001/XMLSchema}long" /&gt;
  *       &lt;attribute name="category" type="{http://www.w3.org/2001/XMLSchema}string" /&gt;
@@ -42,7 +46,9 @@ import net.sf.ahtutils.xml.status.Langs;
 @XmlType(name = "", propOrder = {
     "langs",
     "descriptions",
-    "constraint"
+    "constraint",
+    "lang",
+    "description"
 })
 @XmlRootElement(name = "constraintScope")
 public class ConstraintScope
@@ -56,6 +62,10 @@ public class ConstraintScope
     protected Descriptions descriptions;
     @XmlElement(required = true)
     protected List<Constraint> constraint;
+    @XmlElement(namespace = "http://ahtutils.aht-group.com/status", required = true)
+    protected Lang lang;
+    @XmlElement(namespace = "http://ahtutils.aht-group.com/status", required = true)
+    protected Description description;
     @XmlAttribute(name = "id")
     protected Long id;
     @XmlAttribute(name = "category")
@@ -154,6 +164,62 @@ public class ConstraintScope
 
     public void unsetConstraint() {
         this.constraint = null;
+    }
+
+    /**
+     * Gets the value of the lang property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Lang }
+     *     
+     */
+    public Lang getLang() {
+        return lang;
+    }
+
+    /**
+     * Sets the value of the lang property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Lang }
+     *     
+     */
+    public void setLang(Lang value) {
+        this.lang = value;
+    }
+
+    public boolean isSetLang() {
+        return (this.lang!= null);
+    }
+
+    /**
+     * Gets the value of the description property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Description }
+     *     
+     */
+    public Description getDescription() {
+        return description;
+    }
+
+    /**
+     * Sets the value of the description property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Description }
+     *     
+     */
+    public void setDescription(Description value) {
+        this.description = value;
+    }
+
+    public boolean isSetDescription() {
+        return (this.description!= null);
     }
 
     /**
