@@ -8,10 +8,13 @@ import java.util.Map;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import net.sf.ahtutils.factory.xml.system.XmlConstraintFactory;
+import net.sf.ahtutils.factory.xml.system.XmlConstraintScopeFactory;
 import net.sf.ahtutils.interfaces.bean.ConstraintsBean;
 import net.sf.ahtutils.monitor.ProcessingTimeTracker;
 import net.sf.ahtutils.web.mbean.util.AbstractLogMessage;
 import net.sf.ahtutils.xml.status.Description;
+import net.sf.ahtutils.xml.status.Lang;
 import net.sf.ahtutils.xml.system.Constraint;
 import net.sf.ahtutils.xml.system.ConstraintScope;
 import net.sf.ahtutils.xml.system.Constraints;
@@ -77,6 +80,28 @@ public class PrototypeConstraintsBean implements Serializable,ConstraintsBean
     public ConstraintScope getScope(String category, String scope, String lang)
     {    	
     	String key = category+"-"+scope;
-    	return scopes.get(key);
+    	ConstraintScope xml = XmlConstraintScopeFactory.build(key);
+    	if(scopes.containsKey(key))
+    	{
+    		ConstraintScope x = scopes.get(key);
+    		for(Lang l : x.getLangs().getLang()){if(l.getKey().equals(lang)){xml.setLang(l);}}
+    		for(Description d : x.getDescriptions().getDescription()) {if(d.getKey().equals(lang)){xml.setDescription(d);}}
+    		
+    		for(Constraint c : x.getConstraint())
+    		{
+    			Constraint xmlC = XmlConstraintFactory.build();
+    			if(c.isSetLangs())
+    			{
+    				for(Lang l : c.getLangs().getLang()){if(l.getKey().equals(lang)){xmlC.setLang(l);}}
+    			}
+    			if(c.isSetDescriptions())
+    			{
+    				for(Description d : c.getDescriptions().getDescription()) {if(d.getKey().equals(lang)){xmlC.setDescription(d);}}
+    			}
+        		xml.getConstraint().add(xmlC);
+    		}
+    	}
+    	
+    	return xml;
     }
 }
