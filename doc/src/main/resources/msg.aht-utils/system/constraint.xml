@@ -7,4 +7,11 @@
     		<s:lang key="fr" translation="Constraint"/>
     	</s:langs>
     </s:translation>
+    	<s:translation key="aupConstraints">
+    	<s:langs>
+    		<s:lang key="de" translation="Constraints"/>
+    		<s:lang key="en" translation="Constraints"/>
+    		<s:lang key="fr" translation="Constraints"/>
+    	</s:langs>
+    </s:translation>
 </s:translations>
