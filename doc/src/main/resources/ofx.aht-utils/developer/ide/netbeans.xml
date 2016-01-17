@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ofx:section xmlns:ofx="http://www.openfuxml.org"
+	xmlns:text="http://www.openfuxml.org/text"
+	id="section.developer.ide.netbeans">
+	<ofx:title lang="en">Netbeans</ofx:title>
+	
+    <ofx:paragraph lang="en" version="1">
+		Preferences - Editor - Formatting
+		 deselect "expand tables to spaces"
+	</ofx:paragraph>
+	
+	    <ofx:paragraph lang="en" version="1">
+			To do this we have to right click on an empty area of the Projects Panel. 
+			The "View Java Packages As" menu only appears when we right click on an empty space of the Projects Panel. 
+			This menu has two options and the List one is selected by default. 
+			We can choose the Tree option to change the display of the Projects Panel to hierarchy mode.
+	</ofx:paragraph>
+	
+</ofx:section>

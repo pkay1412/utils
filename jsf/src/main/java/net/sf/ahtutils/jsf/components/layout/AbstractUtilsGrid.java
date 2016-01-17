@@ -18,13 +18,13 @@ import org.slf4j.LoggerFactory;
 public class AbstractUtilsGrid extends UIPanel
 {	
 	final static Logger logger = LoggerFactory.getLogger(AbstractUtilsGrid.class);
-	protected static enum Properties {width,gutter,styleClass,renderChildren}
+	protected static enum Properties {width,gutter,type,styleClass,renderChildren}
 
-	protected int width,gutter;
+	protected int slot,gutter;
 	
 	public AbstractUtilsGrid()
 	{	
-		width=70;
+		slot=70;
 		gutter=5;
 	}
 	
@@ -32,7 +32,7 @@ public class AbstractUtilsGrid extends UIPanel
 	{
 		StringBuffer sbCss = new StringBuffer();
 		sbCss.append("grid-");
-		sbCss.append(width).append("-").append(gutter);
+		sbCss.append(slot).append("-").append(gutter);
 		sbCss.append(".css");
 		pushCssToHead(sbCss.toString());
 	}
@@ -59,7 +59,19 @@ public class AbstractUtilsGrid extends UIPanel
 		responseWriter.writeAttribute("id",getClientId(context),"id");
 		
 		StringBuffer sbStyleClass = new StringBuffer();
-		sbStyleClass.append("auContainer");
+		if(mapAttribute.containsKey(Properties.type.toString()))
+		{
+			String type = (String)mapAttribute.get(Properties.type.toString());
+			if(type.equals("container")){sbStyleClass.append("auContainer");}
+			else if(type.equals("op6")){sbStyleClass.append("auOp6Container");}
+			else if(type.equals("op7")){sbStyleClass.append("auOp7Container");}
+			else if(type.equals("op8")){sbStyleClass.append("auOp8Container");}
+			else if(type.equals("op9")){sbStyleClass.append("auOp9Container");}
+			else if(type.equals("op10")){sbStyleClass.append("auOp10Container");}
+			else {logger.warn("Unknown Type");}
+		}
+		else {sbStyleClass.append("auContainer");}
+		
 		if(mapAttribute.containsKey(Properties.styleClass.toString()))
 		{
 			sbStyleClass.append(" ").append(mapAttribute.get(Properties.styleClass.toString()));
