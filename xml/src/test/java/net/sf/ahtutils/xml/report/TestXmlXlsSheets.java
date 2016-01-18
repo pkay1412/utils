@@ -10,28 +10,27 @@ import org.slf4j.LoggerFactory;
 import net.sf.ahtutils.test.UtilsXmlTestBootstrap;
 import net.sf.exlp.util.xml.JaxbUtil;
 
-public class TestXmlXlsWorkbook extends AbstractXmlReportTest
+public class TestXmlXlsSheets extends AbstractXmlReportTest
 {
-	final static Logger logger = LoggerFactory.getLogger(TestXmlXlsWorkbook.class);
+	final static Logger logger = LoggerFactory.getLogger(TestXmlXlsSheets.class);
 	
-	@BeforeClass public static void initFiles(){setXmlFile(dirSuffix,XlsWorkbook.class);}
+	@BeforeClass public static void initFiles(){setXmlFile(dirSuffix,XlsSheets.class);}
     
     @Test
     public void xml() throws FileNotFoundException
     {
-    	XlsWorkbook test = create(true);
-    	XlsWorkbook ref = JaxbUtil.loadJAXB(fXml.getAbsolutePath(), XlsWorkbook.class);
+    	XlsSheets test = create(true);
+    	XlsSheets ref = JaxbUtil.loadJAXB(fXml.getAbsolutePath(), XlsSheets.class);
     	assertJaxbEquals(ref, test);
     }
     
-    public static XlsWorkbook create(boolean withChildren)
+    public static XlsSheets create(boolean withChildren)
     {
-    	XlsWorkbook xml = new XlsWorkbook();
-    	xml.setCode("myCode");
+    	XlsSheets xml = new XlsSheets();
+    	xml.setQuery("myQuery");
     	
     	if(withChildren)
     	{
-    		xml.setXlsSheets(TestXmlXlsSheets.create(false));
     		xml.getXlsSheet().add(TestXmlXlsSheet.create(false));
     		xml.getXlsSheet().add(TestXmlXlsSheet.create(false));
     	}
@@ -45,9 +44,9 @@ public class TestXmlXlsWorkbook extends AbstractXmlReportTest
     {
 		UtilsXmlTestBootstrap.init();
 			
-		TestXmlXlsWorkbook.initJaxb();
-		TestXmlXlsWorkbook.initFiles();
-		TestXmlXlsWorkbook test = new TestXmlXlsWorkbook();
+		TestXmlXlsSheets.initJaxb();
+		TestXmlXlsSheets.initFiles();
+		TestXmlXlsSheets test = new TestXmlXlsSheets();
 		test.save();
     }
 }

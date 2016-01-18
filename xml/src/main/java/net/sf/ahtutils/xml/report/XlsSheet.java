@@ -23,9 +23,9 @@ import net.sf.ahtutils.xml.status.Langs;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element ref="{http://ahtutils.aht-group.com/report}importStructure"/&gt;
- *         &lt;element ref="{http://ahtutils.aht-group.com/report}xlsColumn" maxOccurs="unbounded"/&gt;
  *         &lt;element ref="{http://ahtutils.aht-group.com/status}langs"/&gt;
+ *         &lt;element ref="{http://ahtutils.aht-group.com/report}xlsColumn" maxOccurs="unbounded"/&gt;
+ *         &lt;element ref="{http://ahtutils.aht-group.com/report}importStructure"/&gt;
  *       &lt;/sequence&gt;
  *       &lt;attribute name="query" type="{http://www.w3.org/2001/XMLSchema}string" /&gt;
  *     &lt;/restriction&gt;
@@ -37,9 +37,9 @@ import net.sf.ahtutils.xml.status.Langs;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "importStructure",
+    "langs",
     "xlsColumn",
-    "langs"
+    "importStructure"
 })
 @XmlRootElement(name = "xlsSheet")
 public class XlsSheet
@@ -47,41 +47,41 @@ public class XlsSheet
 {
 
     private final static long serialVersionUID = 1L;
-    @XmlElement(required = true)
-    protected ImportStructure importStructure;
-    @XmlElement(required = true)
-    protected List<XlsColumn> xlsColumn;
     @XmlElement(namespace = "http://ahtutils.aht-group.com/status", required = true)
     protected Langs langs;
+    @XmlElement(required = true)
+    protected List<XlsColumn> xlsColumn;
+    @XmlElement(required = true)
+    protected ImportStructure importStructure;
     @XmlAttribute(name = "query")
     protected String query;
 
     /**
-     * Gets the value of the importStructure property.
+     * Gets the value of the langs property.
      * 
      * @return
      *     possible object is
-     *     {@link ImportStructure }
+     *     {@link Langs }
      *     
      */
-    public ImportStructure getImportStructure() {
-        return importStructure;
+    public Langs getLangs() {
+        return langs;
     }
 
     /**
-     * Sets the value of the importStructure property.
+     * Sets the value of the langs property.
      * 
      * @param value
      *     allowed object is
-     *     {@link ImportStructure }
+     *     {@link Langs }
      *     
      */
-    public void setImportStructure(ImportStructure value) {
-        this.importStructure = value;
+    public void setLangs(Langs value) {
+        this.langs = value;
     }
 
-    public boolean isSetImportStructure() {
-        return (this.importStructure!= null);
+    public boolean isSetLangs() {
+        return (this.langs!= null);
     }
 
     /**
@@ -122,31 +122,31 @@ public class XlsSheet
     }
 
     /**
-     * Gets the value of the langs property.
+     * Gets the value of the importStructure property.
      * 
      * @return
      *     possible object is
-     *     {@link Langs }
+     *     {@link ImportStructure }
      *     
      */
-    public Langs getLangs() {
-        return langs;
+    public ImportStructure getImportStructure() {
+        return importStructure;
     }
 
     /**
-     * Sets the value of the langs property.
+     * Sets the value of the importStructure property.
      * 
      * @param value
      *     allowed object is
-     *     {@link Langs }
+     *     {@link ImportStructure }
      *     
      */
-    public void setLangs(Langs value) {
-        this.langs = value;
+    public void setImportStructure(ImportStructure value) {
+        this.importStructure = value;
     }
 
-    public boolean isSetLangs() {
-        return (this.langs!= null);
+    public boolean isSetImportStructure() {
+        return (this.importStructure!= null);
     }
 
     /**

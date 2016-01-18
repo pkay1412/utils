@@ -89,7 +89,7 @@ public class ExcelExporter
         // Now lets create the sheets and export the data
         for (XlsSheet sheet : workbook.getXlsSheet())
         {
-                exportSheet(sheet, id);
+                exportSheet(sheet, sheet.getLangs().getLang().get(0).getTranslation());
         }
     }
 
@@ -117,8 +117,9 @@ public class ExcelExporter
         createHeader(sheet, headers.toArray(headerArray));
 
         // Create Content Rows
-		logger.info("Iterating to find " +query);
-		Iterator iterator     = context.iteratePointers(query);
+		String queryExpression = sheetDefinition.getQuery();
+		logger.info("Iterating to find " +queryExpression);
+		Iterator iterator     = context.iteratePointers(queryExpression);
         int rowNr = 1;
 		logger.debug("Beginning iteration");
         while (iterator.hasNext())

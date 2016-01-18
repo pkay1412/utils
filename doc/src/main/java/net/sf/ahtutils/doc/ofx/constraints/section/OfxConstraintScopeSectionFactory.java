@@ -1,6 +1,7 @@
 package net.sf.ahtutils.doc.ofx.constraints.section;
 
 import org.apache.commons.configuration.Configuration;
+import org.openfuxml.content.layout.Layout;
 import org.openfuxml.content.media.Image;
 import org.openfuxml.content.media.Media;
 import org.openfuxml.content.ofx.Comment;
@@ -9,12 +10,15 @@ import org.openfuxml.content.ofx.Paragraph;
 import org.openfuxml.content.ofx.Section;
 import org.openfuxml.content.table.Table;
 import org.openfuxml.exception.OfxAuthoringException;
+import org.openfuxml.factory.xml.layout.XmlSpacingFactory;
 import org.openfuxml.factory.xml.layout.XmlWidthFactory;
 import org.openfuxml.factory.xml.ofx.OfxReferenceFactory;
 import org.openfuxml.factory.xml.ofx.content.XmlCommentFactory;
 import org.openfuxml.factory.xml.ofx.content.structure.XmlParagraphFactory;
 import org.openfuxml.factory.xml.ofx.content.structure.XmlSectionFactory;
 import org.openfuxml.factory.xml.ofx.editorial.XmlMarginaliaFactory;
+import org.openfuxml.factory.xml.ofx.layout.XmlLayoutFactory;
+import org.openfuxml.factory.xml.ofx.list.XmlListFactory;
 import org.openfuxml.util.OfxCommentBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -25,6 +29,7 @@ import net.sf.ahtutils.doc.ofx.util.OfxMultiLangFactory;
 import net.sf.ahtutils.exception.processing.UtilsConfigurationException;
 import net.sf.ahtutils.xml.aht.Aht;
 import net.sf.ahtutils.xml.status.Translations;
+import net.sf.ahtutils.xml.system.Constraint;
 import net.sf.ahtutils.xml.system.ConstraintScope;
 
 public class OfxConstraintScopeSectionFactory extends AbstractUtilsOfxDocumentationFactory
@@ -32,6 +37,7 @@ public class OfxConstraintScopeSectionFactory extends AbstractUtilsOfxDocumentat
 	final static Logger logger = LoggerFactory.getLogger(OfxConstraintScopeSectionFactory.class);
 
 	private OfxConstraintTableFactory ofTable;
+	private Layout layout;
 		
 	public void setConstraintTypes(Aht constraintTypes) {ofTable.setConstraintTypes(constraintTypes);}
 	
@@ -39,6 +45,8 @@ public class OfxConstraintScopeSectionFactory extends AbstractUtilsOfxDocumentat
 	{
 		super(config,langs,translations);
 		ofTable = new OfxConstraintTableFactory(config,langs,translations);
+		
+		layout = XmlLayoutFactory.build(XmlSpacingFactory.pt(0));
 	}
 	
 	public Section build(ConstraintScope scope) throws OfxAuthoringException, UtilsConfigurationException
@@ -55,14 +63,27 @@ public class OfxConstraintScopeSectionFactory extends AbstractUtilsOfxDocumentat
 		Paragraph p = XmlParagraphFactory.build();
 		p.getContent().add(marginalia());
 		p.getContent().addAll(OfxMultiLangFactory.paragraph(langs, scope.getDescriptions()).get(0).getContent());
-		p.getContent().add(" All constraints are summarised in Table ");
-		p.getContent().add(OfxReferenceFactory.build(table.getId()));
-		p.getContent().add(".");
+//		p.getContent().add(" All constraints are summarised in Table ");
+//		p.getContent().add(OfxReferenceFactory.build(table.getId()));
+//		p.getContent().add(".");
 		
 		section.getContent().add(p);
-		section.getContent().add(table);
+//		section.getContent().add(table);
+		section.getContent().add(list(scope));
 		
 		return section;
+	}
+		
+	private org.openfuxml.content.list.List list(ConstraintScope scope) throws OfxAuthoringException
+	{
+		org.openfuxml.content.list.List list = XmlListFactory.unordered();
+		list.setLayout(layout);
+		for(Constraint c : scope.getConstraint())
+		{
+			list.getItem().add(OfxMultiLangFactory.item(langs, c.getDescriptions()));
+		}
+		
+		return list;
 	}
 	
 	private Marginalia marginalia()

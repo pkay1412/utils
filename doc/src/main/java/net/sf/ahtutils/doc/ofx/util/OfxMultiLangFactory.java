@@ -4,12 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.openfuxml.content.layout.Font;
+import org.openfuxml.content.list.Item;
 import org.openfuxml.content.ofx.Paragraph;
 import org.openfuxml.content.ofx.Title;
 import org.openfuxml.content.table.Cell;
 import org.openfuxml.exception.OfxAuthoringException;
 import org.openfuxml.factory.xml.ofx.content.structure.XmlParagraphFactory;
 import org.openfuxml.factory.xml.ofx.content.text.XmlTitleFactory;
+import org.openfuxml.factory.xml.ofx.list.XmlListItemFactory;
 import org.openfuxml.factory.xml.table.OfxCellFactory;
 import org.openfuxml.factory.xml.text.OfxTextFactory;
 import org.slf4j.Logger;
@@ -116,6 +118,13 @@ public class OfxMultiLangFactory
 		if(font!=null){cell.getContent().add(font);}
 		cell.getContent().addAll(paragraph(keys,descriptions));
 		return cell;
+	}
+	
+	public static Item item(String[] keys, Descriptions descriptions) throws OfxAuthoringException
+	{
+		Item item = XmlListItemFactory.build();
+		item.getContent().addAll(paragraph(keys,descriptions));
+		return item;
 	}
 	
 	public static List<Paragraph> paragraph(String[] keys, Langs langs){return paragraph(keys,langs,null);}
