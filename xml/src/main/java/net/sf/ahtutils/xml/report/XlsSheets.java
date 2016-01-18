@@ -22,10 +22,9 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element ref="{http://ahtutils.aht-group.com/report}xlsSheets"/&gt;
  *         &lt;element ref="{http://ahtutils.aht-group.com/report}xlsSheet" maxOccurs="unbounded"/&gt;
  *       &lt;/sequence&gt;
- *       &lt;attribute name="code" type="{http://www.w3.org/2001/XMLSchema}string" /&gt;
+ *       &lt;attribute name="query" type="{http://www.w3.org/2001/XMLSchema}string" /&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
@@ -35,49 +34,18 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "xlsSheets",
     "xlsSheet"
 })
-@XmlRootElement(name = "xlsWorkbook")
-public class XlsWorkbook
+@XmlRootElement(name = "xlsSheets")
+public class XlsSheets
     implements Serializable
 {
 
     private final static long serialVersionUID = 1L;
     @XmlElement(required = true)
-    protected XlsSheets xlsSheets;
-    @XmlElement(required = true)
     protected List<XlsSheet> xlsSheet;
-    @XmlAttribute(name = "code")
-    protected String code;
-
-    /**
-     * Gets the value of the xlsSheets property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link XlsSheets }
-     *     
-     */
-    public XlsSheets getXlsSheets() {
-        return xlsSheets;
-    }
-
-    /**
-     * Sets the value of the xlsSheets property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link XlsSheets }
-     *     
-     */
-    public void setXlsSheets(XlsSheets value) {
-        this.xlsSheets = value;
-    }
-
-    public boolean isSetXlsSheets() {
-        return (this.xlsSheets!= null);
-    }
+    @XmlAttribute(name = "query")
+    protected String query;
 
     /**
      * Gets the value of the xlsSheet property.
@@ -117,31 +85,31 @@ public class XlsWorkbook
     }
 
     /**
-     * Gets the value of the code property.
+     * Gets the value of the query property.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getCode() {
-        return code;
+    public String getQuery() {
+        return query;
     }
 
     /**
-     * Sets the value of the code property.
+     * Sets the value of the query property.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setCode(String value) {
-        this.code = value;
+    public void setQuery(String value) {
+        this.query = value;
     }
 
-    public boolean isSetCode() {
-        return (this.code!= null);
+    public boolean isSetQuery() {
+        return (this.query!= null);
     }
 
 }

@@ -214,11 +214,35 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link XlsSheets }
+     * 
+     */
+    public XlsSheets createXlsSheets() {
+        return new XlsSheets();
+    }
+
+    /**
      * Create an instance of {@link XlsSheet }
      * 
      */
     public XlsSheet createXlsSheet() {
         return new XlsSheet();
+    }
+
+    /**
+     * Create an instance of {@link XlsColumn }
+     * 
+     */
+    public XlsColumn createXlsColumn() {
+        return new XlsColumn();
+    }
+
+    /**
+     * Create an instance of {@link XlsTransformation }
+     * 
+     */
+    public XlsTransformation createXlsTransformation() {
+        return new XlsTransformation();
     }
 
     /**
@@ -259,22 +283,6 @@ public class ObjectFactory {
      */
     public DataHandler createDataHandler() {
         return new DataHandler();
-    }
-
-    /**
-     * Create an instance of {@link XlsColumn }
-     * 
-     */
-    public XlsColumn createXlsColumn() {
-        return new XlsColumn();
-    }
-
-    /**
-     * Create an instance of {@link XlsTransformation }
-     * 
-     */
-    public XlsTransformation createXlsTransformation() {
-        return new XlsTransformation();
     }
 
 }
