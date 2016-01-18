@@ -14,6 +14,13 @@ public class XmlMailFactory
 {
 	final static Logger logger = LoggerFactory.getLogger(XmlEmailAddressFactory.class);
 	
+	public static Mail build(String code)
+	{
+		Mail xml = new Mail();
+		xml.setCode(code);
+		return xml;
+	}
+	
     public static Mail create(String code, String lang, String type)
     {
     	Template template = new Template();
