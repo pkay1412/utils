@@ -45,23 +45,13 @@ public class PostgresDrop extends AbstractPostgresShell implements UtilsDbShell
             List<Element> elementList = xpe.evaluateFirst(xmlConfig).getChildren();
             for(Element e : elementList)
             {
-                if(e.getName().equals("table"))
-                {
-                   dropTable(e.getText(),false);
-                }
+                if(e.getName().equals("table")) {dropTable(e.getText(),false);}
+                else if(e.getName().equals("cascade")){dropTable(e.getText(),true);}
+                else if(e.getName().equals("sequence")){dropSequence(e.getText());}
+                else if(e.getName().equals("column")){dropColumn(e.getText());}
                 else
                 {
-                    if(e.getName().equals("cascade"))
-                    {
-                        dropTable(e.getText(),true);
-                    }
-                    else
-                    {
-                        if(e.getName().equals("sequence"))
-                        {
-                            dropSequence(e.getText());
-                        }
-                    }
+                	logger.warn("Unknwon element: "+e.getName());
                 }
             }
 		}
@@ -86,6 +76,27 @@ public class PostgresDrop extends AbstractPostgresShell implements UtilsDbShell
 		sb.append(" -c \"");
 		sb.append("DROP TABLE IF EXISTS ").append(table);
 		if(cascade){sb.append(" CASCADE");}
+		sb.append(";\"");
+		
+		super.addLine(sb.toString());
+		return sb.toString();
+	}
+	
+	private String dropColumn(String text)
+	{
+		String[] s = text.split(",");
+		return dropColumn(s[0],s[1]);
+	}
+	
+	private String dropColumn(String table, String column)
+	{
+		StringBuffer sb = new StringBuffer();
+		sb.append(pDbShell.getValue());
+		sb.append(" -h ").append(pDbHost.getValue());
+		sb.append(" -U ").append(pDbUser.getValue());
+		sb.append(" -d ").append(pDbName.getValue());
+		sb.append(" -c \"");
+		sb.append("ALTER TABLE ").append(table).append(" DROP COLUMN IF EXISTS ").append(column);
 		sb.append(";\"");
 		
 		super.addLine(sb.toString());
