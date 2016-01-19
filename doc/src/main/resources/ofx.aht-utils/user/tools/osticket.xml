@@ -5,7 +5,7 @@
 			 xmlns:layout="http://www.openfuxml.org/layout"
 			 xmlns:text="http://www.openfuxml.org/text"
 			 xmlns:l="http://www.openfuxml.org/list"
-		id="section.user.tools.osticker">
+		id="section.user.tools.osticket">
 		
 	<ofx:title lang="en">OS Ticket</ofx:title>
 	
@@ -23,15 +23,73 @@ Osticket acts as a connector and interacts between users and Administrators for 
 When a user encounter a problem, the self-service knowledge base articles are there to help themselves, quickly find what they need, and minimize their frustration but if success isn't achieved then users will contact the respective technician through the open ticket system.
 OsTicket helps build an excellent connection and problem solving technique between Customers and Helpdesk Experts.
 		</ofx:paragraph>
-	</ofx:section>
-	
+		
 	<ofx:section>
 		<ofx:title lang="en">Self – Service Solutions</ofx:title>
-			
+			 
 		<ofx:paragraph lang="en" version="1">
-			Before a user attempt to send a ticket to report a problem, there are automated services like FAQs, Hot Topics etc that users can access themselves to resolve an issue without the aid of the Helpdesk. Figure 10.1 shows how users use FAQs to reset Password on their own without any technical assistance. 
+			Before a user attempt to send a ticket to report a problem, there are automated services like FAQs, Hot Topics etc that users can access themselves to resolve an issue without the aid of the Helpdesk. Figure 10.1 shows how users use FAQs to reset Password on their own without any technical assistance.
+		</ofx:paragraph>
+	
+		<media:image id="figure.user.tools.osticket.faqs">
+			<ofx:title lang="en">Automated Service (FAQs)</ofx:title>
+			<layout:alignment horizontal="center"/>
+			<layout:width unit="percentage">90</layout:width>
+			<media:media lang="en" src="png.aht-utils/user/tools/osticket/faqs.png" dst="user/tools/osticket/faqs"/>
+		</media:image>
+		<ofx:paragraph lang="en" version="1">Figure 10.2 – Opening New Ticket</ofx:paragraph>
+		
+	</ofx:section>
+	
+		
+	
+	<ofx:section>
+		<ofx:title lang="en">User Portal</ofx:title>
+		
+		<ofx:paragraph lang="en" version="1">
+			Users utilize the support ticket system in order to streamline support requests and get better remedy to their request. The escalation process starts from here.
+Every support request is assigned a unique ticket number which you can use to track the progress and responses online. 
+For references OsTicket provide complete archives and history of all support requests. 
+Lastly, a user must have a valid email address or a login credentials to submit a ticket. Users do not need to be registered in the system before submitting and tracking tickets.
 		</ofx:paragraph>
 	</ofx:section>	
+	
+	<ofx:section>
+		<ofx:title lang="en">Opening New Ticket</ofx:title>
+		
+		<ofx:paragraph lang="en" version="1">
+			Users can click on the green button under the Open a New Ticket which can be found on the left hand side of the welcome page.
+ Figure 10.2 below shows how a new ticket is opened. The two red arrows are just pointing to where users need to click to opening a new ticket.
+	</ofx:paragraph>
+	
+	
 		
 		
-</ofx:section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
