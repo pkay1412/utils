@@ -230,6 +230,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link XlsColumns }
+     * 
+     */
+    public XlsColumns createXlsColumns() {
+        return new XlsColumns();
+    }
+
+    /**
      * Create an instance of {@link XlsColumn }
      * 
      */

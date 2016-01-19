@@ -24,6 +24,7 @@ import net.sf.ahtutils.xml.status.Langs;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
  *         &lt;element ref="{http://ahtutils.aht-group.com/status}langs"/&gt;
+ *         &lt;element ref="{http://ahtutils.aht-group.com/report}xlsColumns" maxOccurs="unbounded"/&gt;
  *         &lt;element ref="{http://ahtutils.aht-group.com/report}xlsColumn" maxOccurs="unbounded"/&gt;
  *         &lt;element ref="{http://ahtutils.aht-group.com/report}importStructure"/&gt;
  *       &lt;/sequence&gt;
@@ -38,6 +39,7 @@ import net.sf.ahtutils.xml.status.Langs;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
     "langs",
+    "xlsColumns",
     "xlsColumn",
     "importStructure"
 })
@@ -49,6 +51,8 @@ public class XlsSheet
     private final static long serialVersionUID = 1L;
     @XmlElement(namespace = "http://ahtutils.aht-group.com/status", required = true)
     protected Langs langs;
+    @XmlElement(required = true)
+    protected List<XlsColumns> xlsColumns;
     @XmlElement(required = true)
     protected List<XlsColumn> xlsColumn;
     @XmlElement(required = true)
@@ -82,6 +86,43 @@ public class XlsSheet
 
     public boolean isSetLangs() {
         return (this.langs!= null);
+    }
+
+    /**
+     * Gets the value of the xlsColumns property.
+     * 
+     * <p>
+     * This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the xlsColumns property.
+     * 
+     * <p>
+     * For example, to add a new item, do as follows:
+     * <pre>
+     *    getXlsColumns().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link XlsColumns }
+     * 
+     * 
+     */
+    public List<XlsColumns> getXlsColumns() {
+        if (xlsColumns == null) {
+            xlsColumns = new ArrayList<XlsColumns>();
+        }
+        return this.xlsColumns;
+    }
+
+    public boolean isSetXlsColumns() {
+        return ((this.xlsColumns!= null)&&(!this.xlsColumns.isEmpty()));
+    }
+
+    public void unsetXlsColumns() {
+        this.xlsColumns = null;
     }
 
     /**

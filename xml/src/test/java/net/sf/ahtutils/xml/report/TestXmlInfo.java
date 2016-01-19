@@ -18,7 +18,7 @@ public class TestXmlInfo extends AbstractXmlReportTest
 	@BeforeClass
 	public static void initFiles()
 	{
-		setXmlFile(dirSuffix,"info");
+		setXmlFile(dirSuffix,"info2");
 	}
     
     @Test
@@ -50,7 +50,7 @@ public class TestXmlInfo extends AbstractXmlReportTest
     	
     	if(withChildren)
     	{
-    		xml.getJr().add(TestJr.create());xml.getJr().add(TestJr.create());
+    		xml.getJr().add(TestXmlJr.create());xml.getJr().add(TestXmlJr.create());
     		
     		xml.setLabels(TestXmlLabels.create(false));
     	}

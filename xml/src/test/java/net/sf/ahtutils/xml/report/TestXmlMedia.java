@@ -11,14 +11,14 @@ import org.slf4j.LoggerFactory;
 import net.sf.ahtutils.test.UtilsXmlTestBootstrap;
 import net.sf.exlp.util.xml.JaxbUtil;
 
-public class TestMedia extends AbstractXmlReportTest
+public class TestXmlMedia extends AbstractXmlReportTest
 {
-	final static Logger logger = LoggerFactory.getLogger(TestMedia.class);
+	final static Logger logger = LoggerFactory.getLogger(TestXmlMedia.class);
 	
 	@BeforeClass
 	public static void initFiles()
 	{
-		fXml = new File(rootDir,"media.xml");
+		fXml = new File(rootDir,"media2.xml");
 	}
     
     @Test
@@ -34,7 +34,7 @@ public class TestMedia extends AbstractXmlReportTest
     {
     	Media media = new Media();
     	media.setDir("testDir");
-    	media.getJr().add(TestJr.create());
+    	media.getJr().add(TestXmlJr.create());
     	media.setType(type);
 //    	media.setChart(new Chart());
     	return media;
@@ -46,9 +46,9 @@ public class TestMedia extends AbstractXmlReportTest
     {
 		UtilsXmlTestBootstrap.init();
 			
-		TestMedia.initJaxb();
-		TestMedia.initFiles();	
-		TestMedia test = new TestMedia();
+		TestXmlMedia.initJaxb();
+		TestXmlMedia.initFiles();	
+		TestXmlMedia test = new TestXmlMedia();
 		test.save();
     }
 }

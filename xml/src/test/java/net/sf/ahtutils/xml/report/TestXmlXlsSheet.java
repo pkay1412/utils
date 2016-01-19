@@ -34,6 +34,7 @@ public class TestXmlXlsSheet extends AbstractXmlReportTest
     	{
     		xml.setLangs(TestXmlLangs.create(false));
     		xml.getXlsColumn().add(TestXmlXlsColumn.create(false));xml.getXlsColumn().add(TestXmlXlsColumn.create(false));
+    		xml.getXlsColumns().add(TestXmlXlsColumns.create(false));xml.getXlsColumns().add(TestXmlXlsColumns.create(false));
     	}
     	
     	return xml;

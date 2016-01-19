@@ -5,7 +5,7 @@ import java.util.List;
 
 import net.sf.ahtutils.test.AbstractXmlTest;
 import net.sf.ahtutils.xml.report.Media;
-import net.sf.ahtutils.xml.report.TestMedia;
+import net.sf.ahtutils.xml.report.TestXmlMedia;
 import net.sf.ahtutils.xml.report.XlsDefinition;
 import net.sf.ahtutils.xml.report.XlsWorkbook;
 import net.sf.ahtutils.xml.xpath.ReportXpath;

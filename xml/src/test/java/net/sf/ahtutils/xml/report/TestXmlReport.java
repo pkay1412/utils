@@ -17,7 +17,7 @@ public class TestXmlReport extends AbstractXmlReportTest
 	@BeforeClass
 	public static void initFiles()
 	{
-        setXmlFile(dirSuffix,"report");
+        setXmlFile(dirSuffix,"report2");
 	}
     
     @Test
@@ -35,8 +35,8 @@ public class TestXmlReport extends AbstractXmlReportTest
     	report.setId(id);
     	report.setDir("testDir");
     	report.setExample("testExampleXmlFile");
-    	report.getMedia().add(TestMedia.create("pdf"));
-    	report.getMedia().add(TestMedia.create("xls"));
+    	report.getMedia().add(TestXmlMedia.create("pdf"));
+    	report.getMedia().add(TestXmlMedia.create("xls"));
     	report.setLtr(true);
     	report.setRtl(false);
     	return report;

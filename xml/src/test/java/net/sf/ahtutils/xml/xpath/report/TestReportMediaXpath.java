@@ -5,7 +5,7 @@ import java.util.List;
 
 import net.sf.ahtutils.test.AbstractXmlTest;
 import net.sf.ahtutils.xml.report.Media;
-import net.sf.ahtutils.xml.report.TestMedia;
+import net.sf.ahtutils.xml.report.TestXmlMedia;
 import net.sf.ahtutils.xml.xpath.ReportXpath;
 import net.sf.exlp.exception.ExlpXpathNotFoundException;
 import net.sf.exlp.exception.ExlpXpathNotUniqueException;
@@ -27,13 +27,13 @@ public class TestReportMediaXpath extends AbstractXmlTest
 	@Before
 	public void iniMedia()
 	{
-		media1 = TestMedia.create("t1");
+		media1 = TestXmlMedia.create("t1");
     	media1.setDir("d1");
     	
-    	media2 = TestMedia.create("t2");
+    	media2 = TestXmlMedia.create("t2");
 
-    	media3 = TestMedia.create("t3");
-    	media4 = TestMedia.create("t3");
+    	media3 = TestXmlMedia.create("t3");
+    	media4 = TestXmlMedia.create("t3");
     	
     	mediaList = new ArrayList<Media>();
     	mediaList.add(media1);
