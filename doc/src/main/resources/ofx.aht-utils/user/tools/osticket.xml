@@ -14,12 +14,24 @@
 	</ofx:paragraph>
 	
 	<ofx:section>
-		<ofx:title lang="en">Base Installation</ofx:title>
+		<ofx:title lang="en">What is OsTicket?</ofx:title>
 	
 		<ofx:paragraph lang="en" version="1">
-			After your Debian base installation, osticket needs some requirements test
+			OsTicket is a trusted open source support ticket system which ideally collects all inquiries created via e-mail, webs-based customer support platform into a simple easy-to-use multi-user web interface.
+Osticket makes it easy to support customers when they need your help and also makes it easy for them (customers/users) to help themselves when they don’t. 
+Osticket acts as a connector and interacts between users and Administrators for challenge solving.   
+When a user encounter a problem, the self-service knowledge base articles are there to help themselves, quickly find what they need, and minimize their frustration but if success isn't achieved then users will contact the respective technician through the open ticket system.
+OsTicket helps build an excellent connection and problem solving technique between Customers and Helpdesk Experts.
 		</ofx:paragraph>
-		
 	</ofx:section>
 	
+	<ofx:section>
+		<ofx:title lang="en">Self – Service Solutions</ofx:title>
+			
+		<ofx:paragraph lang="en" version="1">
+			Before a user attempt to send a ticket to report a problem, there are automated services like FAQs, Hot Topics etc that users can access themselves to resolve an issue without the aid of the Helpdesk. Figure 10.1 shows how users use FAQs to reset Password on their own without any technical assistance. 
+		</ofx:paragraph>
+	</ofx:section>	
+		
+		
 </ofx:section>
