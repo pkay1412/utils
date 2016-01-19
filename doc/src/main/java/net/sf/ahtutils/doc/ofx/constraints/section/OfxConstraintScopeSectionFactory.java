@@ -8,11 +8,9 @@ import org.openfuxml.content.ofx.Comment;
 import org.openfuxml.content.ofx.Marginalia;
 import org.openfuxml.content.ofx.Paragraph;
 import org.openfuxml.content.ofx.Section;
-import org.openfuxml.content.table.Table;
 import org.openfuxml.exception.OfxAuthoringException;
 import org.openfuxml.factory.xml.layout.XmlSpacingFactory;
 import org.openfuxml.factory.xml.layout.XmlWidthFactory;
-import org.openfuxml.factory.xml.ofx.OfxReferenceFactory;
 import org.openfuxml.factory.xml.ofx.content.XmlCommentFactory;
 import org.openfuxml.factory.xml.ofx.content.structure.XmlParagraphFactory;
 import org.openfuxml.factory.xml.ofx.content.structure.XmlSectionFactory;
@@ -58,7 +56,7 @@ public class OfxConstraintScopeSectionFactory extends AbstractUtilsOfxDocumentat
 		OfxCommentBuilder.doNotModify(comment);
 		section.getContent().add(comment);
 		
-		Table table = ofTable.build(scope);
+//		Table table = ofTable.build(scope);
 		
 		Paragraph p = XmlParagraphFactory.build();
 		p.getContent().add(marginalia());
