@@ -11,13 +11,20 @@
 	
 	<ofx:paragraph lang="en" version="1">
 		What are Editorial Elements?
-	</ofx:paragraph>
+	
+	</ofx:paragraph lang="en" version="1">
+			Editorial Elements are articles that presents the publication's opinion on an issue.
+			Editorials are written according to a well-established formula;
+			Introduction - state the problem
+			Body - expresses an opinion
+			Solution - offers a solution to the problem
+			Conclusion - emphasizes the main issue
 	
 	<ofx:section>
 		<ofx:title lang="en">Acronyms</ofx:title>
 	
 		<ofx:paragraph lang="en" version="1">
-			Explain
+			Acronyms is an abbreviation of several words in such a way that the abbreviation itself forms a pronounceable word. The word may already exist or it can be a new word. Examples are NATO, PCM etc.  
 		</ofx:paragraph>
 	</ofx:section>
 	
@@ -25,7 +32,7 @@
 		<ofx:title lang="en">Glossary</ofx:title>
 	
 		<ofx:paragraph lang="en" version="1">
-			Explain
+			Glossary, also known as a vocabulary, or clavis, is an alphabetical list of terms in a particular domain of knowledge with the definitions for those terms. 
 		</ofx:paragraph>
 	</ofx:section>
 	
@@ -33,7 +40,7 @@
 		<ofx:title lang="en">Index</ofx:title>
 	
 		<ofx:paragraph lang="en" version="1">
-			Explain
+			Index is alphabetically arranged list of items (such as names or terms) given at the end of a publication with page numbers on which the item can be found.
 		</ofx:paragraph>
 	</ofx:section>
 	
