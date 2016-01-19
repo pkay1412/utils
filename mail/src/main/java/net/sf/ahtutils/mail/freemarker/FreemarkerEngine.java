@@ -31,6 +31,7 @@ public class FreemarkerEngine
 {
 	final static Logger logger = LoggerFactory.getLogger(FreemarkerEngine.class);
 
+	@SuppressWarnings("unused")
 	private String encoding;
 	private Mails mails;
 	private Template ftl;
