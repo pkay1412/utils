@@ -17,7 +17,7 @@
 		<ofx:title lang="en">Base Installation</ofx:title>
 	
 		<ofx:paragraph lang="en" version="1">
-			After your Debian base installation, osticket needs some requirements
+			After your Debian base installation, osticket needs some requirements test
 		</ofx:paragraph>
 		
 	</ofx:section>
